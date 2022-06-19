@@ -68,6 +68,10 @@ h1{
     color: white;
 }
 
+.navigation-logo{
+    height: 40pt;
+}
+
 .background-source{
     min-height: 100vh;
     min-width: 100vw;
