@@ -21,7 +21,17 @@ var ParksandRecreation = [6,24,16,22,22,20,12];
 var SquidGameS1 = [1,'Red Light, Green Light','Hell','The Man with the Umbrella','Stick to the Team','A Fair World','Gganbu','VIPS','Front Man','One Lucky Day']
 var SquidGame = [9];
 
+var SquidGame = [9];
+
+//
+//
+//
+//
 // Build data to transver to viewer
+//
+//
+//
+//
 
 function synthesizeTV(showTitle, season, episode) {
     localStorage['tvShowTitleSpaced'] = showTitle
@@ -40,7 +50,15 @@ function synthesizeMovie(movieTitle) {
     linkAction('viewer');
 }
 
+//
+//
+//
+//
 // Recall data in viewer
+//
+//
+//
+//
 
 var idleTimer = 0;
 
@@ -87,20 +105,38 @@ function recallVideoData() {
         idleTimer = idleTimer + 0.1;
         if (idleTimer < 3) {
             document.getElementById('video-player-ui').style.opacity = '1';
+            document.getElementById('video-player-ui').style.cursor = 'default';
         }
         if (idleTimer >= 3) {
             document.getElementById('video-player-ui').style.opacity = '0';
+            document.getElementById('video-player-ui').style.cursor = 'none';
         }
     }, 100);
 }
 
+//
+//
+//
+//
 // Quick reference functions
+//
+//
+//
+//
 
 function linkAction(page) {
     window.open(page + '.html', "_self");
 }
 
+//
+//
+//
+//
 // Video player
+//
+//
+//
+//
 
 function togglePlayPause() {
     idleTimer = 0;
@@ -206,7 +242,7 @@ function mouseMoved() {
     idleTimer = 0;
 }
 
-document.addEventListener('keyup', event => {
+function keyboardShortcut(event) {
     if (event.code === 'Space') {
         togglePlayPause();
     }
@@ -221,6 +257,9 @@ document.addEventListener('keyup', event => {
     }
     if (event.code === 'KeyK') {
         togglePlayPause();
+    }
+    if (event.code === 'KeyL') {
+        document.getElementById('video').currentTime = document.getElementById('video').currentTime + 15;
     }
     if (event.code === 'KeyF') {
         var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
@@ -268,7 +307,7 @@ document.addEventListener('keyup', event => {
         showKeyboardControls();
     }
     console.log(event.code);
-})
+}
 
 function fullScreen() {
     var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
@@ -313,7 +352,15 @@ function downloadVideo(uri, name) {
     link.click();
 }
 
+//
+//
+//
+//
 // TV episode panel
+//
+//
+//
+//
 
 function moreInfoTV(tvShowTitleSpaced) {
     localStorage['tvShowTitleSpaced'] = tvShowTitleSpaced;
@@ -392,10 +439,19 @@ function closeMoreInfoTV() {
     document.getElementById('seasonEpisodesOrderedList').innerHTML = '';
 }
 
+//
+//
+//
+//
 // Search bar
+//
+//
+//
+//
 
 function expandSearchField() {
     document.getElementById('searchBar').style.width = '250pt';
+    document.getElementById('searchBar').style.backgroundColor  = 'rgb(64,64,64)';
     document.getElementById('searchBar').style.paddingLeft = '10pt';
     document.getElementById('searchIcon').style.right = '250pt';
     document.getElementById('searchIcon').style.backgroundColor  = 'rgb(64,64,64)';
@@ -415,7 +471,15 @@ function search() {
     }
 }
 
+//
+//
+//
+//
 // Javascript helper
+//
+//
+//
+//
 
 function convertMessage(season, message) {
     var newText = 'var ParksandRecreationS' + season + ' = [' + season + ',"' + message.replace(/\n/g, '","') + '"];';

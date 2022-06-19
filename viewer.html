@@ -9,7 +9,7 @@
         }
         </style>
     </head>
-    <body id='viewerBody' onload='recallVideoData(), console.log("it works")' onmousemove='mouseMoved()' onclick='togglePlayPause()'>
+    <body id='viewerBody' onload='recallVideoData(), console.log("it works")' onmousemove='mouseMoved()' onclick='togglePlayPause()' onkeydown="keyboardShortcut(event)">
         <div id='video-player-ui'>
             <img src='images/back.png' class='back-viewer-button' onclick='linkAction("index")'>
             <div id='video-player-banner'>

@@ -92,30 +92,21 @@ h1{
 
 .search-container {
     height: 40pt;
-    position: absolute;
-    top: 0;
-    right: 0;
 }
 
 #searchIcon{
-    height: 25pt;
-    padding: 7.5pt;
-    position: absolute;
-    top: 0;
-    right: 0;
+    height: 20pt;
+    padding: 10pt;
     transition: right 500ms;
-    border-top-left-radius: 100vh;
-    border-bottom-left-radius: 100vh;
+    float: left;
 }
 
 #searchBar {
     height: 100%;
     width: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
     background: none;
-    background-color: rgb(64,64,64);
+    background-color: none;
+    border: none;
     padding-left: 0;
     outline: none;
     font-size: 15pt;
@@ -123,6 +114,7 @@ h1{
     color: white;
     border: none;
     transition: width 500ms;
+    float: left;
 }
 
 /* .active-navbar-item:hover{
