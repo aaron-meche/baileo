@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Mulish:wght@100;300;400;700;900');
+
+/* font-family: 'Lato', sans-serif; */
+/* font-family: 'Mulish', sans-serif; */
+
+body{
+    margin: 0;
+    background-color: rgb(14,14,14);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    padding-bottom: 10pt;
+}
+
+video{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+h1{
+    font-size: 40pt;
+    font-weight: 700;
+    font-family: 'Mulish', sans-serif;
+    padding: 30pt 30pt 0 30pt;
+    margin: 0;
+}
+
+.navbar{
+    height: 40pt;
+    width: auto;
+    background-color: rgb(24,24,24);
+    font-size: 15pt;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10pt -5pt black;
+}
+
+.navbar-item{
+    padding: 10pt;
+    padding-bottom: 10pt;
+    height: auto;
+    width: fit-content;
+    cursor: pointer;
+    float: left;
+    color: gray;
+    z-index: 10;
+}
+
+.navbar-item:hover{
+    border-bottom: solid 3pt white;
+    padding-bottom: calc(10pt - 3pt);
+    color: white;
+}
+
+.active-navbar-item{
+    padding: 10pt;
+    padding-bottom: 10pt;
+    height: auto;
+    width: fit-content;
+    cursor: pointer;
+    float: left;
+    color: gray;
+    z-index: 10;
+    color: white;
+}
+
+.background-source{
+    min-height: 100vh;
+    min-width: 100vw;
+    position: fixed;
+    top: 0vh;
+    object-fit: cover;
+    left: 0;
+    z-index: -10;
+    opacity: 0.9;
+}
+
+#backgroundBlurProvider{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -9;
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
+}
+
+.search-container {
+    height: 40pt;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#searchIcon{
+    height: 25pt;
+    padding: 7.5pt;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: right 500ms;
+    border-top-left-radius: 100vh;
+    border-bottom-left-radius: 100vh;
+}
+
+#searchBar {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    background-color: rgb(64,64,64);
+    padding-left: 0;
+    outline: none;
+    font-size: 15pt;
+    font-weight: 500;
+    color: white;
+    border: none;
+    transition: width 500ms;
+}
+
+/* .active-navbar-item:hover{
+    text-decoration: underline;
+} */
+
+.cover-image-button{
+    height: 13vw;
+    width: 22vw;
+    margin: 1.5vw;
+    background: transparent no-repeat center;
+    background-size: cover;
+    float: left;
+    transition-duration: 200ms;
+}
+
+.cover-image-button:hover{
+    height: 14vw;
+    width: 23vw;
+    margin: 1vw;
+}
+
+.cover-image-button-moreinfo{
+    height: 100%;
+    width: 90%;
+    font-size: 35pt;
+    color: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    background-color: rgba(0,0,0,.35);
+    font-weight: 900;
+    opacity: 0;
+    transition-duration: 300ms;
+    padding-right: 10%;
+    cursor: default;
+}
+
+.cover-image-button:hover .cover-image-button-moreinfo{
+    opacity: 1;
+}
+
+#moreInfoTVWindow{
+    height: 90vh;
+    width: 80vw;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    background-color: rgb(27,27,27);
+    border-top-left-radius: 30pt;
+    border-top-right-radius: 30pt;
+    box-shadow: 0 0 30pt 0 black;
+    z-index: 5;
+    display: none;
+    overflow-x: auto;
+}
+
+.close-more-info-button{
+    height: 20pt;
+    width: 20pt;
+    border: solid 2pt rgb(144,51,249);
+    padding: 10pt;
+    border-radius: 100%;
+    position: absolute;
+    top: 30pt;
+    left: 30pt;
+    cursor: pointer;
+    z-index: 7;
+}
+
+.close-more-info-button:hover{
+    border: solid 2pt red;
+}
+
+#more-info-title-bar{
+    height: 100pt;
+    width: calc(100% - 7.5vw);
+    border-top-left-radius: 50pt;
+    border-top-right-radius: 50pt;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    padding-left: 100pt;
+    font-size: 50pt;
+    font-weight: 900;
+}
+
+#continue-watching-panel{
+    height: 50vh;
+    width: 100vw;
+}
+
+.media-collection {
+    height: auto;
+    width: 100vw;
+    float: left;
+}
+
+#more-info-navbar{
+    height: auto;
+    width: 80vw;
+    font-size: 15pt;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    padding-left: 10pt;
+    background-color: rgb(41,41,41);
+}
+
+.more-info-navbar-item{
+    padding: 10pt;
+    padding-bottom: 10pt;
+    height: auto;
+    width: fit-content;
+    cursor: pointer;
+    float: left;
+    color: gray;
+    z-index: 10;
+}
+
+.more-info-navbar-item:hover{
+    border-bottom: solid 2px white;
+    padding-bottom: calc(10pt - 2px);
+    color: white;
+}
+
+.active-more-info-navbar-item{
+    padding: 10pt;
+    padding-bottom: 10pt;
+    height: auto;
+    width: fit-content;
+    cursor: pointer;
+    float: left;
+    color: gray;
+    z-index: 10;
+    color: white;
+}
+
+.seasonEpisodesList{
+    height: auto;
+    width: 100%;
+    padding-top: 10pt;
+}
+
+.seasonEpisodesList ol{
+    height: auto;
+    width: 93%;
+    padding-left: 7%;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 1vw;
+}
+
+.seasonEpisodesList ol li{
+    padding: 10pt;
+    font-size: 25pt;
+    font-weight: 900;
+    color: rgb(193,193,193);
+    border-left: solid 0px rgba(255,0,0,0);
+    cursor: default;
+    transition: border 100ms, padding-left 100ms;
+}
+
+.seasonEpisodesList ol li:hover{
+    color: white;
+    border-left: solid 10px white;
+    padding-left: 15pt;
+}
+
+.back-viewer-button{
+    height: 25pt;
+    width: 25pt;
+    border: solid 2pt rgb(144,51,249);
+    padding: 0.625vw;
+    border-radius: 100%;
+    position: absolute;
+    top: 20pt;
+    left: 20pt;
+    cursor: pointer;
+    z-index: 7;
+}
+
+.back-viewer-button:hover{
+    border: solid 2pt rgb(255,0,0);
+    background-color: red;
+}
+
+video{
+    z-index: 0;
+}
+
+#video-player-banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+    height: auto;
+    width: 100vw;
+}
+
+#video-player-title{
+    font-size: 50pt;
+    font-weight: 900;
+    text-align: center;
+    padding: 10pt;
+}
+
+#video-player-caption{
+    font-size: 20pt;
+    font-weight: 500;
+    text-align: center;
+    padding: 10pt;
+    padding-top: 0;
+}
+
+#pauseIcon{
+    height: 10vh;
+    width: 10vh;
+    position: absolute;
+    top: 45vh;
+    left: calc(50vw - 5vh);
+    z-index: 10;
+    opacity: 0.7;
+}
+
+#progress-bar{
+    position: absolute;
+    bottom: 0;
+    left: 5vw;
+    height: 55pt;
+    width: calc(100vw - 10vw);
+    z-index: 3;
+    cursor: default;
+}
+
+#progress-bar:hover #possible-progress{
+    height: 10pt;
+    bottom: 40pt;
+}
+
+#progress-bar:hover #progressScroll{
+    transition: width 300ms;
+}
+
+#progress-bar:hover #video-time-watched{
+    top: 15pt
+}
+
+#progress-bar:hover #video-time-total{
+    top: 15pt;
+}
+
+#current-progress{
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background-color: white;
+    z-index: 5;
+    border-radius: 100vh;
+}
+
+#progress-scroll{
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background-color: rgba(255,255,255,.73);
+    z-index: 6;
+    border-top-left-radius: 100vh;
+    border-bottom-left-radius: 100vh;
+}
+
+#possible-progress{
+    position: absolute;
+    bottom: 45pt;
+    left: 0;
+    height: 5pt;
+    width: 100%;
+    background-color: rgb(68,68,68);
+    transition: height 200ms, bottom 200ms;
+    z-index: 4;
+    border-radius: 100vh;
+}
+
+#video-player-ui{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 500ms;
+}
+
+#video-time-watched{
+    position: absolute;
+    top: 10pt;
+    left: 0;
+    transition: top 200ms;
+    font-size: 12pt;
+}
+
+#video-time-total{
+    position: absolute;
+    top: 10pt;
+    right: 0;
+    transition: top 200ms;
+    font-size: 12pt;
+}
+
+#video-time-scroll{
+    position: absolute;
+    width: 100vh;
+    text-align: center;
+    bottom: 15pt;
+    right: -50vh;
+    font-size: 12pt;
+}
+
+.full-screen-icon{
+    height: 25pt;
+    width: 25pt;
+    padding: 0.625vw;
+    position: absolute;
+    bottom: 65pt;
+    right: 20pt;
+    cursor: pointer;
+}
+
+.viewer-toolbar-item:hover{
+    padding: 0.5vw;
+    height: calc(25pt + 0.25vw);
+    width: calc(25pt + 0.25vw);
+}
+
+.volume-icon{
+    height: 25pt;
+    width: 25pt;
+    padding: 0.625vw;
+    position: absolute;
+    bottom: 65pt;
+    right: 65pt;
+    cursor: pointer;
+}
+
+.download-icon{
+    height: 25pt;
+    width: 25pt;
+    padding: 0.625vw;
+    position: absolute;
+    bottom: 65pt;
+    right: 110pt;
+    cursor: pointer;
+}
+
+.panel{
+    height: auto;
+    width: 18vw;
+    padding: 2.5vw;
+    margin: 1vw;
+    background-color: rgba(0,0,0,.5);
+    float: left;
+    border-radius: 2.5vw;
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
+}

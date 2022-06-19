@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='style.css'>
+        <script src='main.js'></script>
+    </head>
+    <body onload='loadHomePage()'>
+        <div class='navbar'>
+            <div class='active-navbar-item' onclick='linkAction("Index")'>
+                Home
+            </div>
+            <div class='navbar-item' onclick='linkAction("Media")'>
+                Media
+            </div>
+            <div class='navbar-item' onclick='linkAction("Settings")'>
+                Settings
+            </div>
+        </div>
+        <div id='continue-watching-panel'>
+            <h1>Continue Watching</h1>
+            <div id='contine-watching-panel-contents'>
+                <div class='cover-image-button' style="background-image: url('images/coraline-cover-image.jpg')" onclick='synthesizeMovie("Coraline")'>
+                    <div class='cover-image-button-moreinfo'>
+                        Coraline
+                    </div>
+                </div>
+                <div class='cover-image-button' style="background-image: url('images/the-office-cover-image.jpg')" onclick='moreInfoTV("The Office")'>
+                    <div class='cover-image-button-moreinfo'>
+                        The Office
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

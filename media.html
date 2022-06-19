@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Baileo - Media</title>
+        <link rel='stylesheet' href='style.css'>
+        <script src='main.js'></script>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <div class='navbar'>
+            <div class='navbar-item' onclick='linkAction("Index")'>
+                Home
+            </div>
+            <div class='active-navbar-item' onclick='linkAction("Media")'>
+                Media
+            </div>
+            <div class='navbar-item' onclick='linkAction("Settings")'>
+                Settings
+            </div>
+            <div class='search-container'>
+                <img id='searchIcon' src='images/search.png' onclick='expandSearchField()'>
+                <input id="searchBar" onkeyup="search()" type="text" name="search" placeholder="Search">
+            </div>
+        </div>
+
+        <!-- TV Shows -->
+        <div id='tvShowsCollection' class='media-collection'>
+            <h1>TV Shows</h1>
+            <div class='cover-image-button' style="background-image: url('images/the-office-cover-image.jpg')" onclick='moreInfoTV("The Office")'>
+                <div class='cover-image-button-moreinfo'>
+                    The Office
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/parks-and-recreation-cover-image.jpeg')" onclick='moreInfoTV("Parks and Recreation")'>
+                <div class='cover-image-button-moreinfo'>
+                    Parks and Recreation
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/squid-game-cover-image.jpg')" onclick='moreInfoTV("Squid Game")'>
+                <div class='cover-image-button-moreinfo'>
+                    Squid Game
+                </div>
+            </div>
+        </div>
+        <div id='moviesCollection' class='media-collection'>
+            <h1>Movies</h1>
+            <div class='cover-image-button' style="background-image: url('images/american-psycho-cover-image.jpg')" onclick='synthesizeMovie("American Psycho")'>
+                <div class='cover-image-button-moreinfo'>
+                    American Psycho
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/coraline-cover-image.jpg')" onclick='synthesizeMovie("Coraline")'>
+                <div class='cover-image-button-moreinfo'>
+                    Coraline
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/dumb-and-dumber-cover-image.jpg.webp')" onclick='synthesizeMovie("Dumb and Dumber")'>
+                <div class='cover-image-button-moreinfo'>
+                    Dumb and Dumber
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/knives-out-cover-image.jpg')" onclick='synthesizeMovie("Knives Out")'>
+                <div class='cover-image-button-moreinfo'>
+                    Knives Out
+                </div>
+            </div>
+            <div class='cover-image-button' style="background-image: url('images/the-amazing-spider-man-2-cover-image.png')" onclick='synthesizeMovie("The Amazing Spider Man 2")'>
+                <div class='cover-image-button-moreinfo'>
+                    The Amazing Spider Man 2
+                </div>
+            </div>
+        </div>
+        <div id='moreInfoTVWindow'>
+            <img src='images/close.png' class='close-more-info-button' onclick='closeMoreInfoTV()'>
+            <div id='more-info-title-bar'>TV Show Title</div>
+            <div id='more-info-navbar'>
+            </div>
+            <div class='seasonEpisodesList'>
+                <ol id='seasonEpisodesOrderedList'>
+
+                </ol>
+            </div>
+        </div>
+
+        <!-- Movies -->
+
+    </body>
+</html>
