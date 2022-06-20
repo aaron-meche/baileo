@@ -12,7 +12,7 @@ body{
     padding-bottom: 10pt;
 }
 
-.wallpaper{
+#wallpaper{
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -194,7 +194,7 @@ h1{
 #moreInfoTVWindow{
     height: 90vh;
     width: 80vw;
-    position: absolute;
+    position: fixed;
     top: 10vh;
     left: 10vw;
     background-color: rgb(27,27,27);

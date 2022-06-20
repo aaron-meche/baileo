@@ -21,7 +21,10 @@ var ParksandRecreation = [6,24,16,22,22,20,12];
 var SquidGameS1 = [1,'Red Light, Green Light','Hell','The Man with the Umbrella','Stick to the Team','A Fair World','Gganbu','VIPS','Front Man','One Lucky Day']
 var SquidGame = [9];
 
-var SquidGame = [9];
+var SherlockS1 = [1,'A Study in Pink','The Blind Banker','The Great Game'];
+var SherlockS2 = [2,'A Scandal in Belgravia','The Hounds of Baskerville','The Reichenbach Fall'];
+var SherlockS3 = [3,'The Empty Hearse','The Sign of Three','His Last Vow'];
+var Sherlock = [3,3,3];
 
 //
 //
@@ -51,6 +54,8 @@ function buildHomePage() {
 //
 //
 
+var array = [0];
+
 function synthesizeTV(showTitle, season, episode) {
     localStorage['tvShowTitleSpaced'] = showTitle
     var tvShowTitleUnspaced = showTitle.replace(/\s/g, '');
@@ -59,9 +64,9 @@ function synthesizeTV(showTitle, season, episode) {
     localStorage['tvSeasonNum'] = season;
     localStorage['tvSeasonCapacity'] = eval(tvShowTitleUnspaced)[season - 1];
     localStorage['mediaType'] = 'tv';
-    linkAction('viewer');
+    // linkAction('viewer');
 
-    localStorage['hasWatchedContent'] == 'true';
+    
 }
 
 function synthesizeMovie(movieTitle) {
@@ -471,6 +476,7 @@ function expandSearchField() {
     document.getElementById('searchBar').style.paddingLeft = '10pt';
     document.getElementById('searchIcon').style.right = '250pt';
     document.getElementById('searchIcon').style.backgroundColor  = 'rgb(64,64,64)';
+    document.getElementById('searchBar').focus();
 }
 
 function search() {
