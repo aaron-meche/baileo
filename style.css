@@ -160,7 +160,7 @@ h1{
     background: transparent no-repeat center;
     background-size: cover;
     float: left;
-    transition-duration: 200ms;
+    transition-duration: 100ms;
 }
 
 .cover-image-button:hover{
@@ -180,7 +180,7 @@ h1{
     background-color: rgba(0,0,0,.45);
     font-weight: 900;
     opacity: 0;
-    transition-duration: 300ms;
+    transition-duration: 200ms;
     padding-right: 0;
     cursor: default;
 }
@@ -502,6 +502,16 @@ video{
     position: absolute;
     bottom: 65pt;
     right: 110pt;
+    cursor: pointer;
+}
+
+.next-episode-icon{
+    height: 25pt;
+    width: 25pt;
+    padding: 0.625vw;
+    position: absolute;
+    bottom: 65pt;
+    right: 155pt;
     cursor: pointer;
 }
 

@@ -13,7 +13,7 @@ var ParksandRecreationS1 = [1,"Pilot","Canvassing","The Reporter","Boys' Club","
 var ParksandRecreationS2 = [2,"Pawnee Zoo","The Stakeout","Beauty Pageant","Practice Date","Sister City","Kaboom","Greg Pitkins","Ron and Tammy","The Camel","Hunting Trip","Tom’s Divorce","Christmas Scandal","The Set Up","Leslie’s House","Sweetums","Galentine’s Day","Woman of the Year","The Possum","Park Safety","Summer Catalog","94 Meetings","Telethon","The Master Plan","Freddy Spaghetti"];
 var ParksandRecreationS3 = [3,"Go Big or Go Home","Flu Season","Time Capsule","Ron & Tammy: Part Two","Media Blitz","Indianapolis","Harvest Festival","Camping","Andy and April’s Fancy Party","Soulmates","Jerry’s Painting","Eagleton","The Fight","Road Trip","The Bubble","Li’l Sebastian"];
 var ParksandRecreationS4 = [4,"I’m Leslie Knope","Ron and Tammys","Born & Raised","Pawnee Rangers","Meet n Greet","End of the World","The Treaty","Smallest Park","The Trial of Leslie Know","Citizen Knope","The Comeback Kid","Campaign Ad","Bowling for Votes","Operation Ann","Dave Returns","Sweet Sixteen","Campaign Shake-Up","Lucky","Live Ammo","The Debate","Bus Tour","Win, Lose, or Draw"];
-var ParksandRecreationS5 = [5,"Ms. Knope Goes to Washington","Soda Tax","How a Bill Becomes a Law","Sex Education","Halloween Surprise","Ben’s Parents","Leslie vs. April","Pawnee Commons","Ron and Diane","Two Parties","Women in Garbage","Ann’s Decision","Emergency Response","Leslie and Ben","Correspondent’s Lunch","Bailout","Partridge","Animal Control","Article Two","Jerry’s Retirement","Swing Vote","Are You Better Off?"];
+var ParksandRecreationS5 = [5,"Ms. Knope Goes to Washington","Soda Tax","How a Bill Becomes a Law","Sex Education","Halloween Suprise","Ben’s Parents","Leslie vs. April","Pawnee Commons","Ron and Diane","Two Parties","Women in Garbage","Ann’s Decision","Emergency Response","Leslie and Ben","Correspondent’s Lunch","Bailout","Partridge","Animal Control","Article Two","Jerry’s Retirement","Swing Vote","Are You Better Off?"];
 var ParksandRecreationS6 = [6,"London","The Pawnee-Eagleton Tip Off Classic","Doppelgängers","Gin it Up!","Filibuster","Recall Vote","Fluoride","The Cones of Dunshire","Second Chunce","New Beginnings","Farmers Market","Ann and Chris","Anniversaries","The Wall","New Slogan","Galentine’s Day","Prom","Flu Season 2","One in 8,000","Moving Up"];
 var ParksandRecreationS7 = [7,"2017","Ron and Jammy","William Henry Harrison","Leslie and Ron","Gryzzlbox","Save JJ’s","Donna and Joe","Ms. Ludgate-Dwyer Goes to Washington","Pie-Mary","The Johnny Karate Super Awesome Musical Explosion Show","Two Funerals","One Last Ride"];
 var ParksandRecreation = [6,24,16,22,22,20,12];
@@ -56,11 +56,12 @@ function buildHomePage() {
 
 function synthesizeTV(showTitle, season, episode) {
     localStorage['tvShowTitleSpaced'] = showTitle
-    var tvShowTitleUnspaced = showTitle.replace(/\s/g, '');
-    localStorage['tvEpisodeTitle'] = eval(tvShowTitleUnspaced + 'S' + season)[episode];
+    localStorage['tvShowTitleUnspaced'] = showTitle.replace(/\s/g, '');
+    localStorage['tvEpisodeTitle'] = eval(localStorage['tvShowTitleUnspaced'] + 'S' + season)[episode];
     localStorage['tvEpisodeNum'] = episode;
     localStorage['tvSeasonNum'] = season;
-    localStorage['tvSeasonCapacity'] = eval(tvShowTitleUnspaced)[season - 1];
+    localStorage['tvSeasonCapacity'] = eval(localStorage['tvShowTitleUnspaced'])[season - 1];
+    localStorage['tvSeasons'] = eval(localStorage['tvShowTitleUnspaced']).length;
     localStorage['mediaType'] = 'tv';
     linkAction('viewer');
 }
@@ -368,6 +369,23 @@ function downloadVideo(uri, name) {
         link.href = "VideoVault/" + localStorage['movieTitle'] + ".mp4";
     }
     link.click();
+}
+
+function nextEpisode() {
+    if (localStorage['tvEpisodeNum'] == localStorage['tvSeasonCapacity']) {
+        if (localStorage['tvSeasonNum'] == localStorage['tvSeasons']) {
+            linkAction('index');
+        } else {
+            localStorage['tvSeasonNum']++;
+            localStorage['tvEpisodeNum'] = 1;
+            localStorage['tvEpisodeTitle'] = eval(localStorage['tvShowTitleUnspaced'] + 'S' + localStorage['tvSeasonNum'])[1];
+            window.location.reload(true)
+        }
+    } else {
+        localStorage['tvEpisodeNum']++;
+        localStorage['tvEpisodeTitle'] = eval(localStorage['tvShowTitleUnspaced'] + 'S' + localStorage['tvSeasonNum'])[localStorage['tvEpisodeNum']];
+        window.location.reload(true)
+    }
 }
 
 //
