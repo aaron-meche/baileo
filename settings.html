@@ -4,7 +4,7 @@
         <link rel='stylesheet' href='style.css'>
         <script src='main.js'></script>
     </head>
-    <body>
+    <body onload='loadSettings()'>
         <div class='navbar'>
             <div class='navbar-item' onclick='linkAction("index")'>
                 Home
@@ -23,7 +23,10 @@
             <div class='panel-title'>
                 Delete Data
             </div>
-            <div class='delete-button' onclick='deleteAllData()'>
+            <div class='caption'>
+                You currently have <span id='localStorageItemsCount'>0</span> data items
+            </div>
+            <div class='delete-button' onclick='deleteAllData()' id='deleteAllDataPrompt'>
                 Delete all saved data
             </div>
         </div>

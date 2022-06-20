@@ -4,9 +4,8 @@
         <link rel='stylesheet' href='style.css'>
         <script src='main.js'></script>
     </head>
-    <body onload='loadHomePage()'>
+    <body onload='buildHomePage()'>
         <div class='navbar'>
-            <img src='images/BAILEO.TRANSPARENT.png' class='navigation-logo'>
             <div class='active-navbar-item' onclick='linkAction("index")'>
                 Home
             </div>
@@ -19,20 +18,13 @@
         </div>
         <div class='wallpaper'></div>
         <div class='wallpaperBlurProvider'></div>
+
         <div id='continue-watching-panel'>
             <h1>Continue Watching</h1>
-            <div id='contine-watching-panel-contents'>
-                <div class='cover-image-button' style="background-image: url('images/coraline-ci.jpg')" onclick='synthesizeMovie("Coraline")'>
-                    <div class='cover-image-button-moreinfo'>
-                        Coraline
-                    </div>
-                </div>
-                <div class='cover-image-button' style="background-image: url('images/the-office-ci.jpg')" onclick='moreInfoTV("The Office")'>
-                    <div class='cover-image-button-moreinfo'>
-                        The Office
-                    </div>
-                </div>
+            <div id='continue-watching-panel-contents'>
+
             </div>
         </div>
+
     </body>
 </html>

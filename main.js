@@ -27,6 +27,24 @@ var SquidGame = [9];
 //
 //
 //
+// Home Page
+//
+//
+//
+//
+
+function buildHomePage() {
+    if (localStorage['hasWatchedContent'] == 'true') {
+        console.log('building');
+    } else {
+        document.getElementById('continue-watching-panel').style.display = "none";
+    }
+}
+
+//
+//
+//
+//
 // Build data to transver to viewer
 //
 //
@@ -42,6 +60,8 @@ function synthesizeTV(showTitle, season, episode) {
     localStorage['tvSeasonCapacity'] = eval(tvShowTitleUnspaced)[season - 1];
     localStorage['mediaType'] = 'tv';
     linkAction('viewer');
+
+    localStorage['hasWatchedContent'] == 'true';
 }
 
 function synthesizeMovie(movieTitle) {
@@ -143,13 +163,11 @@ function togglePlayPause() {
     var video = document.getElementById('video');
     if (localStorage['isPlaying'] == 'true') {
         video.pause();
-        console.log('pause');
         localStorage['isPlaying'] = 'false';
         document.getElementById('pauseIcon').style.display='block';
 
     } else {
         video.play();
-        console.log('play');
         localStorage['isPlaying'] = 'true';
 
         document.getElementById('pauseIcon').style.display='none';
@@ -233,7 +251,6 @@ function updateWatchTime() {
     }
     if (minutesWatched >= 60) {
         minutesWatched = (Math.floor(minutesWatched / 60)) + ':' + minutesWithinHour;
-        console.log(minutesWatched);
     }
     document.getElementById('video-time-watched').innerHTML = minutesWatched + ':' + secondsWithinMinute;
 }
@@ -370,7 +387,6 @@ function moreInfoTV(tvShowTitleSpaced) {
     localStorage['activeEpisodesTab'] = 1;
     a = 0;
     length = eval(tvShowTitleUnspaced).length;
-    console.log(length);
     document.getElementById('more-info-navbar').innerHTML = '';
     while (a < length) {
         a++;
@@ -481,8 +497,20 @@ function search() {
 //
 //
 
+function loadSettings() {
+    document.getElementById('localStorageItemsCount').innerHTML = localStorage.length;
+    sessionStorage['clickedDeleteAllData'] = 'false';
+}
+
 function deleteAllData() {
-    localStorage.clear();
+    if (sessionStorage['clickedDeleteAllData'] == 'false') {
+        document.getElementById('deleteAllDataPrompt').innerHTML = '<strong>Are you sure you want to delete all data?</strong>';
+        sessionStorage['clickedDeleteAllData'] = 'true';
+    } else {
+        document.getElementById('deleteAllDataPrompt').innerHTML = 'Data has been deleted';
+        localStorage.clear();
+        loadSettings();
+    }
 }
 
 //
