@@ -45,7 +45,7 @@ function buildHomePage() {
 //
 //
 //
-// Build data to transver to viewer
+// Build data to transfer to viewer
 //
 //
 //
