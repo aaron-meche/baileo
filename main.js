@@ -91,7 +91,7 @@ function recallVideoData() {
         document.getElementById('video-player-title').innerHTML = localStorage['tvShowTitleSpaced'];
         document.getElementById('video-player-caption').innerHTML = localStorage['tvEpisodeTitle'] + ' - S' + localStorage['tvSeasonNum'] + ' E' + localStorage['tvEpisodeNum'];
     } if (localStorage['mediaType'] == 'movie') {
-        document.getElementById('video').innerHTML = `<source id='source' src="http://50.58.218.209/VideoVault/` + localStorage['movieTitle'] + `.mp4" type="video/mp4">`
+        document.getElementById('video').innerHTML = `<source id='source' src="http://50.58.218.209/VideoVault/` + localStorage['movieTitle'].replace(/\s/g, '%20') + `.mp4" type="video/mp4">`
         document.getElementById('title').innerHTML = 'Watching : ' + localStorage['movieTitle'];
         document.getElementById('video-player-title').innerHTML = localStorage['movieTitle'];
         document.getElementById('video-player-caption').style.display = 'none';
