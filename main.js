@@ -64,8 +64,6 @@ function synthesizeTV(showTitle, season, episode) {
     localStorage['tvSeasonNum'] = season;
     localStorage['tvSeasonCapacity'] = eval(tvShowTitleUnspaced)[season - 1];
     localStorage['mediaType'] = 'tv';
-    // linkAction('viewer');
-
     linkAction('viewer');
 }
 
