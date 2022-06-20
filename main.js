@@ -66,7 +66,7 @@ function synthesizeTV(showTitle, season, episode) {
     localStorage['mediaType'] = 'tv';
     // linkAction('viewer');
 
-    
+    linkAction('viewer');
 }
 
 function synthesizeMovie(movieTitle) {
