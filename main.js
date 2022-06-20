@@ -54,8 +54,6 @@ function buildHomePage() {
 //
 //
 
-var array = [0];
-
 function synthesizeTV(showTitle, season, episode) {
     localStorage['tvShowTitleSpaced'] = showTitle
     var tvShowTitleUnspaced = showTitle.replace(/\s/g, '');
