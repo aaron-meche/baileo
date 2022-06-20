@@ -12,12 +12,36 @@ body{
     padding-bottom: 10pt;
 }
 
+.wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    background: url('images/startScreensaver.png') no-repeat center;
+    background-size: cover;
+}
+
+.wallpaperBlurProvider{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -99;
+    backdrop-filter: blur(100pt);
+    -webkit-backdrop-filter: blur(100pt);
+}
+
 video{
     height: 100vh;
     width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
+    background-color: none;
+    background: none;
 }
 
 h1{
@@ -31,12 +55,13 @@ h1{
 .navbar{
     height: 40pt;
     width: auto;
-    background-color: rgb(24,24,24);
+    background-color: rgba(24,24,24,0.75);
     font-size: 15pt;
     font-weight: 500;
     display: flex;
     align-items: center;
-    box-shadow: 0 0 10pt -5pt black;
+    backdrop-filter: blur(200pt);
+    -webkit-backdrop-filter: blur(200pt);
 }
 
 .navbar-item{
@@ -80,7 +105,7 @@ h1{
     object-fit: cover;
     left: 0;
     z-index: -10;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 #backgroundBlurProvider{
@@ -90,8 +115,9 @@ h1{
     top: 0;
     left: 0;
     z-index: -9;
-    backdrop-filter: blur(25pt);
-    -webkit-backdrop-filter: blur(25pt);
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50pt);
+    background-color: rgba(255,255,255,.05);
 }
 
 .search-container {
@@ -143,22 +169,24 @@ h1{
 
 .cover-image-button-moreinfo{
     height: 100%;
-    width: 90%;
+    width: 85%;
     font-size: 35pt;
     color: auto;
     display: flex;
     align-items: center;
-    padding-left: 5%;
-    background-color: rgba(0,0,0,.35);
+    padding-left: 15%;
+    background-color: rgba(0,0,0,.45);
     font-weight: 900;
     opacity: 0;
     transition-duration: 300ms;
-    padding-right: 10%;
+    padding-right: 0;
     cursor: default;
 }
 
 .cover-image-button:hover .cover-image-button-moreinfo{
     opacity: 1;
+    padding-right: 10%;
+    padding-left: 5%;
 }
 
 #moreInfoTVWindow{
@@ -477,12 +505,37 @@ video{
 
 .panel{
     height: auto;
-    width: 18vw;
-    padding: 2.5vw;
-    margin: 1vw;
+    width: 19vw;
+    padding: 1.75vw;
+    margin: 1.25vw;
     background-color: rgba(0,0,0,.5);
     float: left;
     border-radius: 2.5vw;
     backdrop-filter: blur(25pt);
     -webkit-backdrop-filter: blur(25pt);
+}
+
+.panel-title{
+    font-size: 30pt;
+    font-weight: 900;
+    margin-bottom: 15pt;
+    padding-left: 10pt;
+}
+
+.delete-button{
+    height: auto;
+    padding: 10pt;
+    font-size: 16pt;
+    background-color: rgba(0,0,0,.5);
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
+    border-radius: 10pt;
+    color: lightcoral;
+    text-align: center;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background-color: rgba(100,0,0,.5);
+    color: white;
 }

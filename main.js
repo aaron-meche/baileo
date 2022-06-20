@@ -475,6 +475,20 @@ function search() {
 //
 //
 //
+// Settings
+//
+//
+//
+//
+
+function deleteAllData() {
+    localStorage.clear();
+}
+
+//
+//
+//
+//
 // Javascript helper
 //
 //

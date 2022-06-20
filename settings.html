@@ -4,7 +4,7 @@
         <link rel='stylesheet' href='style.css'>
         <script src='main.js'></script>
     </head>
-    <body onload='blowBubbles()'>
+    <body>
         <div class='navbar'>
             <div class='navbar-item' onclick='linkAction("index")'>
                 Home
@@ -16,40 +16,15 @@
                 Settings
             </div>
         </div>
-
-        <video class='background-source' autoplay muted loop>
-            <source src="VideoVault/screensaver.mp4" type="video/mp4">
-        </video>
-        <div id='backgroundBlurProvider'></div>
+        <div class='wallpaper'></div>
+        <div class='wallpaperBlurProvider'></div>
 
         <div class='panel'>
-            <div class='panelTitle'>
+            <div class='panel-title'>
                 Delete Data
             </div>
-        </div>
-        <div class='panel'>
-            <div class='panelTitle'>
-                Delete Data<br><br><br><br><br>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class='panelTitle'>
-                Delete Data
-            </div>
-        </div>
-        <div class='panel'>
-            <div class='panelTitle'>
-                Delete Data<br><br><br><br><br>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class='panelTitle'>
-                Delete Data
-            </div>
-        </div>
-        <div class='panel'>
-            <div class='panelTitle'>
-                Delete Data<br><br><br><br><br>
+            <div class='delete-button' onclick='deleteAllData()'>
+                Delete all saved data
             </div>
         </div>
     </body>
