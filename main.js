@@ -85,8 +85,6 @@ function synthesizeMovie(movieTitle) {
 var idleTimer = 0;
 
 function recallVideoData() {
-    document.getElementById('video').play();
-    document.getElementById('video').volume = 1;
     if (localStorage['mediaType'] == 'tv') {
         document.getElementById('video').innerHTML = `"<source id='source' src="http://50.58.218.209/VideoVault/` + localStorage['tvShowTitleSpaced'] + `/Season ` + localStorage['tvSeasonNum'] + `/` + localStorage['tvEpisodeTitle'] + `.mp4" type="video/mp4">`
         document.getElementById('title').innerHTML = localStorage['tvShowTitleSpaced'] + ' ' + localStorage['tvSeasonNum'] + ':' + localStorage['tvEpisodeNum'] + ' - ' + localStorage['tvEpisodeTitle'];
