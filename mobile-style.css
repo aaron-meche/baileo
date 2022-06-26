@@ -1,0 +1,178 @@
+@font-face {
+    font-family: 'WorkSans';
+    src: url('Work_Sans/WorkSans-VariableFont_wght.ttf');
+}
+
+:root {
+    --contrast: #F1F1F1;
+    --theme: #333333;
+    --accent: #80DCB7;
+    --main: #FF8F00;
+    --main2: #F6AE2D;
+}
+
+body{
+    font-family: WorkSans;
+    background-color: var(--theme);
+    color: var(--contrast);
+    margin: 0;
+    overflow-y: auto;
+    padding-bottom: 45pt;
+}
+
+#navbar{
+    height: 45pt;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main);
+}
+
+.navbar-logo{
+    display: none;
+}
+
+.navbar-item-container{
+    height: 30pt;
+    width: 25vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+}
+
+.navbar-item-text{
+    display: none;
+}
+
+.navbar-item-icon{
+    height: 15pt;
+    width: 15pt;
+}
+
+.h1{
+    font-size: 25pt;
+    padding: 10pt;
+    font-weight: 500;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.media-category{
+    padding: 5pt;
+}
+
+.horizontal-scroll{
+    white-space: nowrap;
+    overflow-x: scroll; 
+}
+
+.media-image-button{
+    height: 45vw;
+    width: 80vw;
+    margin: 3vw;
+    background: transparent no-repeat center;
+    background-size: cover;
+    display: inline-block;
+}
+
+.media-image-button-title{
+    height: calc(100% - 10pt);
+    width: auto;
+    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 75%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 5pt;
+    font-weight: 600;
+}
+
+.odd{
+    background-color: black;
+}
+
+.search-section{
+    padding-bottom: 15pt;
+}
+
+input{
+    height: 25pt;
+    font-size: 10pt;
+    padding: 10pt;
+    width: calc(100% - 20pt);
+    margin: 0 10pt 0 10pt;
+    background-color: var(--theme);
+    color: white;
+    outline: none;
+    border-radius: 10pt;
+}
+
+form{
+    position: relative;
+}
+
+form button {
+    position: absolute;
+    border: none;
+    width: 15pt;
+    height: 15pt;
+    line-height: 16px;
+    font-size: 12px;
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    right: 20pt;
+    margin: auto;
+    background: rgb(124, 45, 45);
+    padding: 0;
+    outline: none;
+    color: white;
+    font-size: 10pt;
+  }
+
+.profile-picture-container{
+    height: 130pt;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture{
+    height: 70pt;
+    width: 70pt;
+    background-color: rgb(110, 110, 110);
+    border-radius: 100%;
+    border: solid 5pt var(--main2);
+    padding: 5pt;
+}
+
+.profile-username{
+    font-size: 23pt;
+    padding-bottom: 10pt;
+}
+
+.section{
+    height: auto;
+    width: 90vw;
+    margin-left: 5vw;
+    background-color: var(--themePop);
+    border-radius: 10pt;
+}
+
+.section-divider{
+    height: 1px;
+    width: 90vw;
+    background-color: var(--theme);
+}
+
+.section-choice{
+    height: auto;
+    padding: 8pt;
+}
