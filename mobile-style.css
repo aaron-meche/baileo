@@ -5,7 +5,7 @@
 
 :root {
     --contrast: #F1F1F1;
-    --theme: #333333;
+    --theme: #1b1b1b;
     --accent: #80DCB7;
     --main: #FF8F00;
     --main2: #F6AE2D;
@@ -61,8 +61,8 @@ body{
 }
 
 .h1{
-    font-size: 25pt;
-    padding: 10pt;
+    font-size: 20pt;
+    padding: 5pt 0 5pt 10pt;
     font-weight: 500;
 }
 
@@ -100,11 +100,13 @@ body{
 }
 
 .odd{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
-.search-section{
-    padding-bottom: 15pt;
+#searchBar{
+    height: 25pt;
+    width: calc(100vw - 30pt);
+    color: white;
 }
 
 input{
@@ -112,7 +114,7 @@ input{
     font-size: 10pt;
     padding: 10pt;
     width: calc(100% - 20pt);
-    margin: 0 10pt 0 10pt;
+    margin: 10pt;
     background-color: var(--theme);
     color: white;
     outline: none;

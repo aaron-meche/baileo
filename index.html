@@ -16,19 +16,19 @@
             <a href='index.html'>
                 <div class='navbar-item-container active-navbar-container'>
                     <img src='icons/home-icon-active.png' class='navbar-item-icon'>
-                    <div class='navbar-item-text'>Home</div>
+                    <div class='navbar-item-text'>Discover</div>
                 </div>
             </a>
-            <a href='media.html'>
+            <a href='movies.html'>
                 <div class='navbar-item-container'>
-                    <img src='icons/play-icon.png' class='navbar-item-icon'>
-                    <div class='navbar-item-text'>Media</div>
+                    <img src='icons/movie-icon.png' class='navbar-item-icon'>
+                    <div class='navbar-item-text'>Movies</div>
                 </div>
             </a>
-            <a href='settings.html'>
+            <a href='tvshows.html'>
                 <div class='navbar-item-container'>
-                    <img src='icons/settings-icon.png' class='navbar-item-icon'>
-                    <div class='navbar-item-text'>Settings</div>
+                    <img src='icons/tv-icon.png' class='navbar-item-icon'>
+                    <div class='navbar-item-text'>TV Shows</div>
                 </div>
             </a>
             <a href='profile.html'>
@@ -40,7 +40,121 @@
         </div>
 
         <div class='content'>
-            <div class='h1'>Welcome</div>
+
+            <div id='featuredPanel'>
+                <div id='homeFeaturedPanel'></div>
+                <div id='utilityCollectionFeatured'>
+
+                </div>
+            </div>
+
+            <div class='media-category odd'>
+                <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search">
+            </div>
+    
+            <div class='media-category'>
+                <div class='h1'>Animation</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button movieButton' style='background-image: url(images/cars-2-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Cars 2
+                        </div>
+                    </div>
+                    <div class='media-image-button movieButton' style='background-image: url(images/cars-3-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Cars 3
+                        </div>
+                    </div>
+                    <div class='media-image-button movieButton' style='background-image: url(images/coraline-ci.jpg)'>
+                        <div class='media-image-button-title'>
+                            Coraline
+                        </div>
+                    </div>
+                    <div class='media-image-button movieButton' style='background-image: url(images/ratatouille-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Ratatouille
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class='media-category odd'>
+                <div class='h1'>Comedy</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/daddys-home-2-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Daddy's Home 2
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/dumb-and-dumber-ci.jpg.webp)'>
+                        <div class='media-image-button-title'>
+                            Dumb and Dumber
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)'>
+                        <div class='media-image-button-title'>
+                            The Office
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Parks and Recreation
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class='media-category'>
+                <div class='h1'>Drama</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/american-psycho-ci.jpg)'>
+                        <div class='media-image-button-title'>
+                            American Psycho
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/hidden-figures-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Hidden Figures
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/knives-out-ci.jpg)'>
+                        <div class='media-image-button-title'>
+                            Knives Out
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Sherlock
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)'>
+                        <div class='media-image-button-title'>
+                            Squid Game
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class='media-category odd'>
+                <div class='h1'>Spider Man</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-amazing-spider-man-2-ci.png)'>
+                        <div class='media-image-button-title'>
+                            The Amazing Spider Man 2
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-homecoming-ci.jpeg)'>
+                        <div class='media-image-button-title'>
+                            Spider Man: Homecoming
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-no-way-home.png)'>
+                        <div class='media-image-button-title'>
+                            Spider Man: No Way Home
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
