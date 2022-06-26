@@ -5,7 +5,7 @@
 
 :root {
     --contrast: #F1F1F1;
-    --theme: #000000;
+    --theme: #141414;
     --accent: #80DCB7;
     --main: #FF8F00;
     --main2: #F6AE2D;
@@ -18,6 +18,12 @@ body{
     margin: 0;
     background-color: var(--theme);
     color: var(--contrast);
+}
+
+#account-page-body{
+    background: url('images/wallpaper.jpeg') transparent no-repeat center;
+    background-size: cover;
+    color: black;
 }
 
 #navbar{
@@ -67,16 +73,13 @@ body{
 }
 
 .content{
-    height: auto;
-    width: 80vw;
-    margin-left: 5vw;
     padding: 15pt 5vw 15pt 5vw;
 }
 
 .h1{
-    font-size: 40pt;
-    font-weight: 700;
-    padding: 15pt;
+    font-size: 2vw;
+    font-weight: 500;
+    padding: 1vw;
 }
 
 .text-center{
@@ -84,7 +87,7 @@ body{
 }
 
 .media-category{
-    margin-bottom: 50pt;
+    padding-bottom: 1vw;
 }
 
 .horizontal-scroll{
@@ -102,39 +105,41 @@ body{
 }
 
 .media-image-button{
-    height: 14vw;
-    width: 25vw;
-    margin: 15pt;
+    height: 10vw;
+    width: 17vw;
+    margin: 0.5vw;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
-    box-shadow: 0 0 0 0 var(--accent);
 }
 
 .media-image-button:hover{
-    box-shadow: 0 0 0 5pt white;
+    height: 11vw;
+    width: 18vw;
+    margin: 0;
 }
 
 .media-image-button-title{
-    height: calc(100% - 10pt);
-    width: auto;
+    height: 14vw;
+    width: 25vw;
     background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 75%);
+    font-weight: 400;
+    font-size: 2vw;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 5pt;
-    font-weight: 600;
-    font-size: 20pt;
+    display: none;
 }
 
 .search-section{
     display: none;
 }
 
-input{
+#searchBar{
     height: 25pt;
     font-size: 10pt;
     padding: 10pt;
+    margin: 10pt;
     width: calc(100% - 20pt);
     margin: 0 10pt 0 10pt;
     background-color: var(--theme);
@@ -206,4 +211,26 @@ form button {
 .section-choice{
     height: auto;
     padding: 8pt;
+}
+
+#account-window-container{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(30pt);
+    -webkit-backdrop-filter: blur(30pt);
+    overflow-y: scroll;
+}
+
+.account-window{
+    max-height: 80vh;
+    width: 40vw;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(30pt);
+    -webkit-backdrop-filter: blur(30pt);
+    border-radius: 25pt;
+    padding: 10vh 10vw 10vh 10vw;
+    margin: 5vw 20vw 5vw 20vw;
 }

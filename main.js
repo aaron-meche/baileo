@@ -60,6 +60,22 @@ var SpiderManNoWayHomeDescription = `Spider-Man: No Way Home is a 2021 American 
 
 var TheAmazingSpiderMan2Description = `The Amazing Spider-Man 2 (internationally titled The Amazing Spider-Man 2: Rise of Electro)[6] is a 2014 American superhero film based on the Marvel Comics character Spider-Man. The film was directed by Marc Webb and produced by Avi Arad and Matt Tolmach. It is the fifth theatrical Spider-Man film produced by Columbia Pictures and Marvel Entertainment, the sequel to The Amazing Spider-Man (2012), and the final film in The Amazing Spider-Man series. The studio hired James Vanderbilt to write the screenplay and Alex Kurtzman and Roberto Orci to rewrite it. The film stars Andrew Garfield as Peter Parker / Spider-Man, alongside Emma Stone, Jamie Foxx, Dane DeHaan, Campbell Scott, Embeth Davidtz, Colm Feore, Paul Giamatti, and Sally Field. In the film, Peter Parker tries to protect Gwen Stacy as he investigates his parents' death, while also dealing with the supervillain Electro and the return of his childhood friend Harry Osborn, who is dying from a deadly genetic disease.`;
 
+function setData(reference, value) {
+    firebase.database().ref(reference).set(value);
+}
+
+function callData(reference) {
+    firebase.database().ref(reference).on('value', function(snapshot) {
+        console.log(snapshot.val());
+    });
+}
+
+function getData(reference) {
+    firebase.database().ref(reference).once('value', (snapshot) => {
+        console.log(snapshot.val())
+    });
+}
+
 function search() {
     let input = document.getElementById('searchBar').value
     input = input.toLowerCase();
@@ -74,18 +90,36 @@ function search() {
     }
 }
 
-function setData(reference, value) {
-    firebase.database().ref(reference).set(value);
+function checkAccount() {
+    if (localStorage['isLoggedIn'] == 'true') {
+        console.log('Account found, user is logged in');
+    } else {
+        window.open("account.html", "_self");
+    }
 }
 
-function callData(reference) {
-    firebase.database().ref(reference).on('value', function(snapshot) {
-        return snapshot.val();
+function signIn() {
+    firebase.database().ref('users/' + document.getElementById("username-input-login").value.toLowerCase() + '/password').once('value', (snapshot) => {
+        if (snapshot.val() == document.getElementById("password-input-login").value) {
+            localStorage['isLoggedIn'] = 'true';
+            window.open("index.html", "_self");
+        } else {
+            document.getElementById("signInButton").innerHTML = 'Username or Password Incorrect';
+        }
     });
 }
 
-function getData(reference) {
-    firebase.database().ref(reference).once('value', (snapshot) => {
-        console.log(snapshot.val())
-    });
+function signUp() {
+    if (document.getElementById("password-input-signup").value == document.getElementById("confirm-password-input-signup").value) {
+        setData('users/' + document.getElementById("username-input-signup").value.toLowerCase() + '/password', document.getElementById("password-input-signup").value)
+    } else {
+        document.getElementById("signInButton").innerHTML = 'Passwords do not match';
+        localStorage['isLoggedIn'] = 'true';
+        window.open("index.html", "_self");
+    }
+}
+
+function logOut() {
+    localStorage['isLoggedIn'] = 'false';
+    window.open("account.html", "_self");
 }

@@ -20,6 +20,12 @@ body{
     padding-bottom: 45pt;
 }
 
+#account-page-body{
+    background: url('images/wallpaper.jpeg') transparent no-repeat center;
+    background-size: cover;
+    color: black;
+}
+
 #navbar{
     height: 45pt;
     width: 100vw;
@@ -162,17 +168,38 @@ form button {
     height: auto;
     width: 90vw;
     margin-left: 5vw;
-    background-color: var(--themePop);
+    background-color: rgb(66, 66, 66);
     border-radius: 10pt;
 }
 
 .section-divider{
     height: 1px;
     width: 90vw;
-    background-color: var(--theme);
+    background-color: rgb(103, 103, 103);
 }
 
 .section-choice{
     height: auto;
     padding: 8pt;
+}
+
+#account-window-container{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(30pt);
+    -webkit-backdrop-filter: blur(30pt);
+    overflow-y: scroll;
+}
+
+.account-window{
+    width: 80vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(70pt);
+    -webkit-backdrop-filter: blur(70pt);
+    border-radius: 25pt;
+    margin: 5vh 5vw 5vh 5vw;
+    padding: 5vh 5vw 5vh 5vw;
 }

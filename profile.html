@@ -7,7 +7,7 @@
         <script src='main.js'></script>
         <link rel="icon" type="image/x-icon" href="images/icon.ico">
     </head>
-    <body id='body'>
+    <body id='body' onload='checkAccount()'>
 
         <div id='navbar'>
             <img src='images/baileo-logo.png' class='navbar-logo'>
@@ -44,15 +44,9 @@
             Aaron Meche
         </div>
         <div class='section'>
-            <div class='section-choice'>Edit Profile</div>
+            <div class='section-choice' onclick='clearData()'>Clear Data</div>
             <div class='section-divider'></div>
-            <div class='section-choice'>View Saved Data</div>
-            <div class='section-divider'></div>
-            <div class='section-choice'>Clear all Data</div>
-            <div class='section-divider'></div>
-            <div class='section-choice'>Delete Account</div>
-            <div class='section-divider'></div>
-            <div class='section-choice'>Log Out</div>
+            <div class='section-choice' onclick='logOut()'>Log Out</div>
         </div>
     </body>
 </html>
