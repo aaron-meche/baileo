@@ -77,6 +77,11 @@ function getData(reference) {
 }
 
 function search() {
+    if (document.getElementById('searchBar').value == '') {
+        document.getElementById('featuredPanel').style.display = 'block';
+    } else {
+        document.getElementById('featuredPanel').style.display = 'none';
+    }
     let input = document.getElementById('searchBar').value
     input = input.toLowerCase();
     let x = document.getElementsByClassName('media-image-button');

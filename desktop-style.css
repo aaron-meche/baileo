@@ -232,6 +232,9 @@ body{
 #featuredPanel{
     height: 80vh;
     width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 #homeFeaturedPanel{
@@ -251,6 +254,52 @@ body{
 #tvFeaturedPanel{
     height: 100%;
     width: 100%;
-    background: url('images/squid-game-ci.jpg') transparent no-repeat center;
+    background: url('images/the-office-ci.jpg') transparent no-repeat center;
     background-size: cover;
+}
+
+#utilityCollectionFeatured{
+    height: 40vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, var(--theme) 0%, #14141480 50%, rgba(0,0,0,0) 100%);
+    display: flex;
+    align-items: flex-end;
+}
+
+#utilityCollectionFeatured .utilityItems{
+    margin: 50pt;
+}
+
+.featured-panel-title{
+    font-size: 30pt;
+    font-weight: 600;
+    color: white;
+    margin: 5pt 5pt 20pt 5pt;
+}
+
+.button{
+    height: auto;
+    width: fit-content;
+    padding: 10pt;
+    margin: 5pt;
+    background-color: rgb(60, 60, 60);
+    font-size: 15pt;
+    text-align: center;
+    border-radius: 10pt;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: rgb(100, 100, 100);
+}
+
+.watch-button{
+    background-color: rgb(63, 63, 172);
+}
+
+.watch-button:hover{
+    background-color: rgb(84, 84, 222);
 }
