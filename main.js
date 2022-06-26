@@ -103,24 +103,44 @@ function checkAccount() {
     }
 }
 
+function checkAccountLoading() {
+    if (localStorage['isLoggedIn'] == 'true') {
+        window.open("index.html", "_self");
+    } else {
+        window.open("account.html", "_self");
+    }
+}
+
 function signIn() {
     firebase.database().ref('users/' + document.getElementById("username-input-login").value.toLowerCase() + '/password').once('value', (snapshot) => {
         if (snapshot.val() == document.getElementById("password-input-login").value) {
             localStorage['isLoggedIn'] = 'true';
             window.open("index.html", "_self");
         } else {
-            document.getElementById("signInButton").innerHTML = 'Username or Password Incorrect';
+            document.getElementById("signInButton").innerHTML = 'Login Unsuccessful';
+            document.getElementById("signInButton").style.backgroundColor = 'lightcoral';
         }
     });
 }
 
 function signUp() {
     if (document.getElementById("password-input-signup").value == document.getElementById("confirm-password-input-signup").value) {
-        setData('users/' + document.getElementById("username-input-signup").value.toLowerCase() + '/password', document.getElementById("password-input-signup").value)
+        if (document.getElementById("password-input-signup").value == '') {
+            document.getElementById("signUpButton").innerHTML = 'Sign Up Unsuccessful';
+            document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
+        } else {
+            if (document.getElementById("username-input-signup").value == '') {
+                document.getElementById("signUpButton").innerHTML = 'Sign Up Unsuccessful';
+                document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
+            } else {
+                setData('users/' + document.getElementById("username-input-signup").value.toLowerCase() + '/password', document.getElementById("password-input-signup").value)
+                localStorage['isLoggedIn'] = 'true';
+                window.open("index.html", "_self");
+            }
+        }
     } else {
-        document.getElementById("signInButton").innerHTML = 'Passwords do not match';
-        localStorage['isLoggedIn'] = 'true';
-        window.open("index.html", "_self");
+        document.getElementById("signUpButton").innerHTML = 'Passwords do not match';
+        document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
     }
 }
 

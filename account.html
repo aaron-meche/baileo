@@ -48,32 +48,45 @@
                     font-weight: 600;
                 }
                 input{
-                    height: 40pt;
+                    height: 30pt;
                     width: 100%;
-                    margin: 10pt 0 10pt 0;
+                    margin: 5pt 0 5pt 0;
                     padding: 5pt;
-                    font-size: 15pt;
-                    background-color: rgb(255, 255, 255);
-                    border: none;
+                    font-size: 12pt;
+                    background-color: rgb(237, 237, 237);
+                    border: solid 1pt gray;
                     outline: none;
-                    border-radius: 10pt;
-                    box-shadow: 5pt 5pt 20pt -10pt black;
                     color: black;
+                    border-radius: 0;
                 }
                 button{
-                    min-height: 40pt;
+                    height: 30pt;
                     width: 100%;
-                    background-color: #77c8de;
-                    font-size: 20pt;
+                    background-color: #dca371;
+                    font-size: 12pt;
                     outline: none;
                     border: none;
-                    border-radius: 20pt;
+                    border-radius: 0;
                     margin: 10pt 0 10pt 0;
                     font-family: WorkSans;
                     color: white;
                 }
-                button:hover{
-                    background-color: #4598af;
+                #account-window-container{
+                    height: 100vh;
+                    width: 100vw;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    backdrop-filter: blur(30pt);
+                    -webkit-backdrop-filter: blur(30pt);
+                    background-color: rgba(0, 0, 0, 0.5);
+                    overflow-y: scroll;
+                }
+                .account-window{
+                    width: 80vw;
+                    background-color: rgba(255, 255, 255, 1);
+                    padding: 5vh 5vw 5vh 5vw;
+                    margin: 10vh 5vw 10vh 5vw;
                 }
             }
         </style>
@@ -91,8 +104,8 @@
             <div class='account-window'>
                 <div class='h1'>Sign Up</div>
                 <input type='text' id='username-input-signup' placeholder="Username">
-                <input id='password-input-signup' placeholder="Password">
-                <input id='confirm-password-input-signup' placeholder="Confirm Password">
+                <input type='text id='password-input-signup' placeholder="Password">
+                <input type='text id='confirm-password-input-signup' placeholder="Confirm Password">
                 <button id='signUpButton' onclick="signUp()">Sign Up</button>
             </div>
         </div>
