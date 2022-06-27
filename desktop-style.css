@@ -5,7 +5,7 @@
 
 :root {
     --contrast: #F1F1F1;
-    --theme: #141414;
+    --theme: #1b1b1b;
     --accent: #80DCB7;
     --main: #FF8F00;
     --main2: #F6AE2D;
@@ -82,8 +82,7 @@ body{
 #navbar{
     height: 55pt;
     width: 100vw;
-    color: black;
-    background-color: rgb(85, 123, 132);
+    background-color: rgb(53, 53, 53);
     display: inline-block;
 }
 
@@ -91,7 +90,7 @@ body{
     height: 40pt;
     width: 40pt;
     float: left;
-    margin: 7.5pt;
+    margin: 7.5pt 15pt 7.5pt 7.5pt;
 }
 
 .navbar-item-container{
@@ -101,13 +100,20 @@ body{
     float: left;
     display: flex;
     align-items: center;
-    padding: 7pt;
-    margin-right: 15pt;
+    padding: 7pt 15pt 7pt 15pt;
     cursor: default;
+    color: rgb(194, 194, 194);
+    font-weight: 400;
 }
 
 .navbar-item-container:hover{
     text-decoration: underline;
+    color: white;
+}
+
+.active-navbar-container {
+    color: white;
+    font-weight: 600;
 }
 
 #navbar a{

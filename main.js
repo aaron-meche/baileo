@@ -165,3 +165,20 @@ function logOut() {
     localStorage.clear();
     window.open("account.html", "_self");
 }
+
+function transporter(type, title, season, episode) {
+    if (type == 'tv') {
+        localStorage['media-type'] = 'tv';
+        localStorage['media-title'] = title;
+        localStorage['watching-tv-title-unspaced'] = title.replace(/\s/g, '');
+        localStorage['watching-tv-season'] = season;
+        localStorage['watching-tv-episode'] = episode;
+        localStorage['watching-tv-episode-name'] = eval(localStorage['watching-tv-title-unspaced'] + 'S' + season)[episode];
+        var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title.replace(/\s/g, '_') + '&episode=' + localStorage['watching-tv-episode-name'] + '&user=' + localStorage['username'];
+    } if (type == 'movie') {
+        localStorage['media-type'] = 'tv';
+        localStorage['media-title'] = title;
+        var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title.replace(/\s/g, '_');
+    }
+    window.open(generatedLink, "_self");
+}
