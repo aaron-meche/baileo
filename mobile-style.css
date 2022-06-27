@@ -117,29 +117,6 @@ input{
     border-radius: 10pt;
 }
 
-form{
-    position: relative;
-}
-
-form button {
-    position: absolute;
-    border: none;
-    width: 15pt;
-    height: 15pt;
-    line-height: 16px;
-    font-size: 12px;
-    border-radius: 50%;
-    top: 0;
-    bottom: 0;
-    right: 20pt;
-    margin: auto;
-    background: rgb(124, 45, 45);
-    padding: 0;
-    outline: none;
-    color: white;
-    font-size: 10pt;
-  }
-
 .profile-picture-container{
     height: 130pt;
     width: 100vw;
@@ -149,17 +126,16 @@ form button {
 }
 
 .profile-picture{
-    height: 70pt;
-    width: 70pt;
-    background-color: rgb(110, 110, 110);
+    height: 90pt;
+    width: 90pt;
+    background-color: none;
     border-radius: 100%;
     border: solid 5pt var(--main2);
-    padding: 5pt;
 }
 
 .profile-username{
     font-size: 23pt;
-    padding-bottom: 10pt;
+    padding-bottom: 15pt;
 }
 
 .section{

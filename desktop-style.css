@@ -166,47 +166,6 @@ body{
     display: none;
 }
 
-.profile-picture-container{
-    height: 130pt;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-picture{
-    height: 70pt;
-    width: 70pt;
-    background-color: rgb(110, 110, 110);
-    border-radius: 100%;
-    border: solid 5pt var(--main2);
-    padding: 5pt;
-}
-
-.profile-username{
-    font-size: 23pt;
-    padding-bottom: 10pt;
-}
-
-.section{
-    height: auto;
-    width: 90vw;
-    margin-left: 5vw;
-    background-color: var(--themePop);
-    border-radius: 10pt;
-}
-
-.section-divider{
-    height: 1px;
-    width: 90vw;
-    background-color: var(--theme);
-}
-
-.section-choice{
-    height: auto;
-    padding: 8pt;
-}
-
 #account-window-container{
     height: 100vh;
     width: 100vw;
@@ -302,4 +261,48 @@ body{
 
 .watch-button:hover{
     background-color: rgb(84, 84, 222);
+}
+
+.profile-picture-container{
+    height: 200pt;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture{
+    height: 150pt;
+    width: 150pt;
+    background-color: rgb(110, 110, 110);
+    border-radius: 100%;
+    border: solid 5pt var(--main2);
+}
+
+.profile-username{
+    font-size: 23pt;
+    padding-bottom: 30pt;
+}
+
+.section{
+    height: auto;
+    width: 40vw;
+    margin-left: 5vw;
+    background-color: rgb(66, 66, 66);
+    float: left;
+    border-radius: 20pt;
+}
+
+.section-divider{
+    height: 1px;
+    width: 100%;
+    background-color: rgb(103, 103, 103);
+    cursor: pointer;
+}
+
+.section-choice{
+    height: auto;
+    padding: 1vw;
+    cursor: pointer;
+    font-size: 1.5vw;
 }

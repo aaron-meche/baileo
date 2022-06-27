@@ -115,6 +115,7 @@ function signIn() {
     firebase.database().ref('users/' + document.getElementById("username-input-login").value.toLowerCase() + '/password').once('value', (snapshot) => {
         if (snapshot.val() == document.getElementById("password-input-login").value) {
             localStorage['isLoggedIn'] = 'true';
+            localStorage['username'] = document.getElementById("username-input-login").value.toLowerCase();
             window.open("index.html", "_self");
         } else {
             document.getElementById("signInButton").innerHTML = 'Login Unsuccessful';
@@ -133,8 +134,10 @@ function signUp() {
                 document.getElementById("signUpButton").innerHTML = 'Sign Up Unsuccessful';
                 document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
             } else {
-                setData('users/' + document.getElementById("username-input-signup").value.toLowerCase() + '/password', document.getElementById("password-input-signup").value)
+                firebase.database().ref('users/' + document.getElementById("username-input-signup").value.toLowerCase() + '/password').set(document.getElementById("password-input-signup").value);
                 localStorage['isLoggedIn'] = 'true';
+                localStorage['username'] = document.getElementById("username-input-signup").value.toLowerCase();
+                console.log('done');
                 window.open("index.html", "_self");
             }
         }
@@ -144,7 +147,21 @@ function signUp() {
     }
 }
 
+function loadAccountProfile() {
+    document.getElementById('profileUsername').innerHTML = '@' + localStorage['username'];
+    if (localStorage['profilePictureLoaded'] == 'true') {
+        document.getElementById('profilePicture').src = localStorage['profilePictureURL'];
+    } else {
+        firebase.database().ref('users/' + localStorage['username'] + '/pfp').once('value', (snapshot) => {
+            console.log(snapshot.val());
+            document.getElementById('profilePicture').src = snapshot.val();
+            localStorage['profilePictureLoaded'] = 'true';
+            localStorage['profilePictureURL'] = snapshot.val();
+        });
+    }
+}
+
 function logOut() {
-    localStorage['isLoggedIn'] = 'false';
+    localStorage.clear();
     window.open("account.html", "_self");
 }

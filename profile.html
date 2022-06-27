@@ -4,10 +4,12 @@
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop-style.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile-style.css'>
         <meta name="viewport" content="initial-scale = 1.3, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <script src='main.js'></script>
         <link rel="icon" type="image/x-icon" href="images/icon.ico">
     </head>
-    <body id='body' onload='checkAccount()'>
+    <body id='body' onload='checkAccount(), loadAccountProfile()'>
 
         <div id='navbar'>
             <img src='images/baileo-logo.png' class='navbar-logo'>
@@ -38,10 +40,10 @@
         </div>
 
         <div class='profile-picture-container'>
-            <img src='icons/profile-icon.png' class='profile-picture'>
+            <img src='images/wallpaper.jpeg' id='profilePicture' class='profile-picture'>
         </div>
-        <div class='profile-username text-center'>
-            Aaron Meche
+        <div id="profileUsername" class='profile-username text-center'>
+            username
         </div>
         <div class='section'>
             <div class='section-choice' onclick='clearData()'>Clear Data</div>
