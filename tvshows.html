@@ -62,13 +62,20 @@
                     <div id="tvExpandPanelTopImage"></div>
                     <div id="tvExpandPanelTopImageSheet">
                         <div class='utilityItems'>
-                            <div class='tv-expand-panel-title'>Show Title</div>
-                            <div class='watch-button button' onclick='transporter("tv","The Office",1,1)'>Start Watching</div>
-                            <div class='watch-button button' onclick='transporter("tv","The Office",1,1)'>Continue Watching</div>
-                            <div class='button' onclick='shuffle(mediaTitle)'>Shuffle</div>
+                            <div id='tv-expand-panel-title'>Show Title</div>
+                            <span id="startWatchingButtonContainer"></span>
+                            <div class='watch-button button' id='continueWatchingButton' onclick='continueTvProgress("The Office")' style='display:none;'>Continue Watching</div>
+                            <!-- <div class='button' onclick='shuffle(mediaTitle)'>Shuffle</div> -->
                         </div>
                     </div>
                     <img src="icons/close.png" id='closeTvExpandScreenButton' onclick='closeTvExpandScreen()'>
+                    <div id='tv-expand-panel-content-title'>
+                        Episodes
+                        <select name="Season" id="season-selector">
+                            <option value="1">Season 1</option>
+                            <option value="2">Season 2</option>
+                        </select>
+                    </div>
                 </div>
             </div>
     
@@ -80,7 +87,7 @@
                             The Office
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpeg)' onclick='expandTvShow("Parks and Recreation")'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
                         <div class='media-image-button-title'>
                             Parks and Recreation
                         </div>
@@ -88,7 +95,7 @@
                 </div>
                 <div class='h1'>Drama</div>
                 <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpeg)' onclick='expandTvShow("Sherlock")'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
                         <div class='media-image-button-title'>
                             Sherlock
                         </div>

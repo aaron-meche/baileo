@@ -206,14 +206,14 @@ body{
 #homeFeaturedPanel{
     height: 100%;
     width: 100%;
-    background: url('images/ratatouille-ci.jpeg') transparent no-repeat center;
+    background: url('images/ratatouille-ci.jpg') transparent no-repeat center;
     background-size: cover;
 }
 
 #moviesFeaturedPanel{
     height: 100%;
     width: 100%;
-    background: url('images/spider-man-homecoming-ci.jpeg') transparent no-repeat center;
+    background: url('images/spider-man-homecoming-ci.jpg') transparent no-repeat center;
     background-size: cover;
 }
 
@@ -296,16 +296,15 @@ body{
 .section{
     height: auto;
     width: 40vw;
-    margin-left: 5vw;
-    background-color: rgb(66, 66, 66);
+    margin-left: 4vw;
+    /* background-color: rgb(183, 64, 64); */
     float: left;
-    border-radius: 20pt;
 }
 
 .section-divider{
-    height: 1px;
+    height: 10pt;
     width: 100%;
-    background-color: rgb(103, 103, 103);
+    background-color: var(--theme);
     cursor: pointer;
 }
 
@@ -314,6 +313,13 @@ body{
     padding: 1vw;
     cursor: pointer;
     font-size: 1.5vw;
+    border-radius: 1vw;
+    background-color: rgb(78, 78, 78);
+    margin: 1vw;
+}
+
+.section-choice:hover{
+    background-color: var(--main);
 }
 
 #tvExpandScreen{
@@ -337,6 +343,8 @@ body{
     top: 10vh;
     left: 20vw;
     background-color: var(--theme);
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
 }
 
 #tvExpandPanelTopImage{
@@ -345,6 +353,8 @@ body{
     background-color: black;
     background: url('images/the-office-ci.jpg') transparent no-repeat center;
     background-size: cover;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
 }
 
 #tvExpandPanelTopImageSheet{
@@ -365,20 +375,32 @@ body{
     background-color: rgba(255, 0, 0, 0.5);
     position: absolute;
     top: 1vw;
-    left: 1vw;
+    right: 1vw;
+    border-radius: 100%;
 }
 
 #closeTvExpandScreenButton:hover{
     background-color: red;
 }
 
-.tv-expand-panel-title{
+#tv-expand-panel-title{
     font-size: 40pt;
     font-weight: 600;
+    padding: 0.5vw;
 }
 
 .utilityItems{
     position: absolute;
     bottom: 2vw;
     left: 2vw;
+}
+
+#tv-expand-panel-content-title{
+    height: 70pt;
+    background-color: black;
+    font-size: 30pt;
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;
+    font-weight: 600;
 }

@@ -61,8 +61,14 @@ var SpiderManNoWayHomeDescription = `Spider-Man: No Way Home is a 2021 American 
 
 var TheAmazingSpiderMan2Description = `The Amazing Spider-Man 2 (internationally titled The Amazing Spider-Man 2: Rise of Electro)[6] is a 2014 American superhero film based on the Marvel Comics character Spider-Man. The film was directed by Marc Webb and produced by Avi Arad and Matt Tolmach. It is the fifth theatrical Spider-Man film produced by Columbia Pictures and Marvel Entertainment, the sequel to The Amazing Spider-Man (2012), and the final film in The Amazing Spider-Man series. The studio hired James Vanderbilt to write the screenplay and Alex Kurtzman and Roberto Orci to rewrite it. The film stars Andrew Garfield as Peter Parker / Spider-Man, alongside Emma Stone, Jamie Foxx, Dane DeHaan, Campbell Scott, Embeth Davidtz, Colm Feore, Paul Giamatti, and Sally Field. In the film, Peter Parker tries to protect Gwen Stacy as he investigates his parents' death, while also dealing with the supervillain Electro and the return of his childhood friend Harry Osborn, who is dying from a deadly genetic disease.`;
 
+// Firebase base functions
+
 function setData(reference, value) {
     firebase.database().ref(reference).set(value);
+}
+
+function setDataProfile(reference, value) {
+    firebase.database().ref('users/' + localStorage['username'] + '/' + reference).set(value);
 }
 
 function callData(reference) {
@@ -76,6 +82,8 @@ function getData(reference) {
         console.log(snapshot.val())
     });
 }
+
+// Functions
 
 function search() {
     if (document.getElementById('searchBar').value == '') {
@@ -180,14 +188,36 @@ function transporter(type, title, season, episode) {
         localStorage['media-type'] = 'tv';
         localStorage['media-title'] = title;
         var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
-    } else {
-        console.log('none detected');
     }
     window.open(generatedLink, "_self");
 }
 
 function expandTvShow(tvShow) {
     document.getElementById('tvExpandScreen').style.display = 'block';
+    document.getElementById('tv-expand-panel-title').innerHTML = tvShow;
+    document.getElementById('tvExpandPanelTopImage').style.backgroundImage = 'url("images/' + tvShow.replace(/\s/g, '-').toLowerCase() +'-ci.jpg")';
+    document.getElementById('startWatchingButtonContainer').innerHTML = `<div class='watch-button button' id='startWatchingButton' onclick='transporter("tv","` + tvShow + `",1,1)' style='display:none;'>Start Watching</div>`
+    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow).once('value', (snapshot) => {
+        if (snapshot.val() == 'true') {
+            document.getElementById('continueWatchingButton').style.display = 'inline-block';
+            document.getElementById('startWatchingButton').style.display = 'none';
+        } else {
+            document.getElementById('startWatchingButton').style.display = 'inline-block';
+            document.getElementById('continueWatchingButton').style.display = 'none';
+        }
+    });
+}
+
+function continueTvProgress(tvShow) {
+    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow + 'S').once('value', (snapshot) => {
+        sessionStorage['savedSeason'] = snapshot.val();
+    });
+    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow + 'E').once('value', (snapshot) => {
+        sessionStorage['savedEpisode'] = snapshot.val();
+    });
+    setTimeout(function() {
+        transporter('tv',tvShow,sessionStorage['savedSeason'],sessionStorage['savedEpisode']);
+    }, 500);
 }
 
 function closeTvExpandScreen() {
