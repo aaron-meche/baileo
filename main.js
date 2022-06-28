@@ -180,6 +180,16 @@ function transporter(type, title, season, episode) {
         localStorage['media-type'] = 'tv';
         localStorage['media-title'] = title;
         var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
+    } else {
+        console.log('none detected');
     }
     window.open(generatedLink, "_self");
+}
+
+function expandTvShow(tvShow) {
+    document.getElementById('tvExpandScreen').style.display = 'block';
+}
+
+function closeTvExpandScreen() {
+    document.getElementById('tvExpandScreen').style.display = 'none';
 }

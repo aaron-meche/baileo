@@ -50,21 +50,37 @@
                 <div id='utilityCollectionFeatured'>
                     <div class='utilityItems'>
                         <div class='featured-panel-title'>The Office</div>
-                        <span class='watch-button button' onclick='transporter("tv","The Office",1,2)'>Watch Now</span>
+                        <span class='watch-button button' onclick='expandTvShow("The Office")'>Watch Now</span>
                         <span class='button moreinfo-button'>More Info</span>
                     </div>
+                </div>
+            </div>
+
+            <div id='tvExpandScreen' style="display:none;">
+                <div id='exitTvExpandScreenClicker' onclick='closeTvExpandScreen()'></div>
+                <div id='tvExpandPanel'>
+                    <div id="tvExpandPanelTopImage"></div>
+                    <div id="tvExpandPanelTopImageSheet">
+                        <div class='utilityItems'>
+                            <div class='tv-expand-panel-title'>Show Title</div>
+                            <div class='watch-button button' onclick='transporter("tv","The Office",1,1)'>Start Watching</div>
+                            <div class='watch-button button' onclick='transporter("tv","The Office",1,1)'>Continue Watching</div>
+                            <div class='button' onclick='shuffle(mediaTitle)'>Shuffle</div>
+                        </div>
+                    </div>
+                    <img src="icons/close.png" id='closeTvExpandScreenButton' onclick='closeTvExpandScreen()'>
                 </div>
             </div>
     
             <div class='media-category'>
                 <div class='h1'>Comedy</div>
                 <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
                         <div class='media-image-button-title'>
                             The Office
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpeg)'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpeg)' onclick='expandTvShow("Parks and Recreation")'>
                         <div class='media-image-button-title'>
                             Parks and Recreation
                         </div>
@@ -72,12 +88,12 @@
                 </div>
                 <div class='h1'>Drama</div>
                 <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpeg)'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpeg)' onclick='expandTvShow("Sherlock")'>
                         <div class='media-image-button-title'>
                             Sherlock
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
                         <div class='media-image-button-title'>
                             Squid Game
                         </div>
