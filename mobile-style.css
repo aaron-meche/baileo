@@ -3,6 +3,11 @@
     src: url('Work_Sans/WorkSans-VariableFont_wght.ttf');
 }
 
+@font-face {
+    font-family: 'Gantari';
+    src: url('Gantari/Gantari-VariableFont_wght.ttf');
+}
+
 :root {
     --contrast: #F1F1F1;
     --theme: #1b1b1b;
@@ -12,25 +17,22 @@
 }
 
 body{
-    font-family: WorkSans;
+    font-family: Gantari;
     background-color: var(--theme);
     color: var(--contrast);
     margin: 0;
     overflow-y: auto;
-}
-
-#account-page-body{
-    background-color: var(--theme);
-    color: black;
+    padding-bottom: 45pt;
 }
 
 #navbar{
-    height: 45pt;
+    height: 35pt;
     width: 100vw;
     position: fixed;
     bottom: 0;
     left: 0;
     background-color: var(--main);
+    z-index: 718;
 }
 
 .navbar-logo{
@@ -38,7 +40,7 @@ body{
 }
 
 .navbar-item-container{
-    height: 30pt;
+    height: 100%;
     width: 25vw;
     text-align: center;
     display: flex;
@@ -60,37 +62,45 @@ body{
 
 .h1{
     font-size: 20pt;
-    padding: 5pt 0 5pt 10pt;
+    padding: 15pt 0 0 10pt;
     font-weight: 500;
-}
-
-.text-center{
-    text-align: center;
 }
 
 .horizontal-scroll{
     white-space: nowrap;
     overflow-x: scroll; 
+    padding: 8pt;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .media-image-button{
-    height: 45vw;
-    width: 80vw;
-    margin: 3vw;
+    height: 40vw;
+    width: 70vw;
+    margin: 3pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
 }
 
 .media-image-button-title{
-    height: calc(100% - 10pt);
-    width: auto;
-    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 75%);
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 255, 0.394);
+    /* background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 75%); */
+    text-align: center;
+    font-weight: 600;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 5pt;
-    font-weight: 600;
+    flex-wrap: wrap;
 }
 
 .odd{
@@ -98,133 +108,80 @@ body{
 }
 
 #searchBar{
-    height: 25pt;
     width: calc(100vw - 20pt);
-    color: white;
-    background-color: rgb(84, 84, 84);
+}
+
+.desktop-search{
+    display: none;
 }
 
 input{
     height: 25pt;
     font-size: 10pt;
     padding: 10pt;
-    width: calc(100% - 20pt);
+    width: auto;
     margin: 10pt;
-    background-color: var(--theme);
+    background-color: rgb(84, 84, 84);
     color: white;
     outline: none;
     border-radius: 10pt;
 }
 
-.profile-picture-container{
-    height: 130pt;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-picture{
-    height: 90pt;
-    width: 90pt;
-    background-color: none;
-    border-radius: 100%;
-    border: solid 5pt var(--main2);
-}
-
-.profile-username{
-    font-size: 23pt;
-    padding-bottom: 15pt;
-}
-
-.section{
-    height: auto;
-    width: 90vw;
-    margin-left: 5vw;
-    background-color: rgb(66, 66, 66);
-    border-radius: 10pt;
-}
-
-.section-divider{
-    height: 1px;
-    width: 90vw;
-    background-color: rgb(103, 103, 103);
-}
-
-.section-choice{
-    height: auto;
-    padding: 8pt;
-}
-
-#featuredPanel{
+.gradient-display-panel{
     height: 60vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     top: 0;
     left: 0;
 }
 
-#homeFeaturedPanel{
+.gradient-display-image{
     height: 100%;
     width: 100%;
-    background: url('images/ratatouille-ci.jpeg') transparent no-repeat center;
+    background: transparent no-repeat center;
     background-size: cover;
 }
 
-#moviesFeaturedPanel{
+.utility-items-container{
     height: 100%;
     width: 100%;
-    background: url('images/spider-man-homecoming-ci.jpeg') transparent no-repeat center;
-    background-size: cover;
-}
-
-#tvFeaturedPanel{
-    height: 100%;
-    width: 100%;
-    background: url('images/the-office-ci.jpg') transparent no-repeat center;
-    background-size: cover;
-}
-
-#utilityCollectionFeatured{
-    height: 60vh;
-    width: 100vw;
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    background: linear-gradient(0deg, black 0%, #14141480 25%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 80%, var(--theme) 100%);
-    display: flex;
-    align-items: flex-end;
+    background: linear-gradient(0deg, black 0%, #141414c6 25%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 90%, var(--theme) 100%);
 }
 
-#utilityCollectionFeatured .utilityItems{
-    margin-bottom: 10vh;
+.utility-items{
+    height: auto;
+    position: absolute;
+    bottom: 17pt;
+    left: 10pt;
 }
 
-.featured-panel-title{
-    font-size: 30pt;
-    font-weight: 600;
+.gradient-display-panel-title{
+    font-size: 25pt;
+    font-weight: 700;
+    margin: 5pt 5pt 10pt 5pt;
     color: white;
-    margin: 4pt 4pt 10pt 4pt;
 }
 
 .button{
     height: auto;
     width: auto;
     padding: 7pt;
-    margin: 4pt;
+    margin: 5pt;
     background-color: rgb(60, 60, 60);
     font-size: 10pt;
     text-align: center;
     border-radius: 10pt;
     cursor: pointer;
     font-weight: 600;
-    letter-spacing: -0.5pt;
 }
 
 .button:hover{
     background-color: rgb(100, 100, 100);
 }
 
-.watch-button{
+.activity-button{
     background-color: var(--main);
 }

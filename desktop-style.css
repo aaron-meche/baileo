@@ -3,6 +3,11 @@
     src: url('Work_Sans/WorkSans-VariableFont_wght.ttf');
 }
 
+@font-face {
+    font-family: 'Gantari';
+    src: url('Gantari/Gantari-VariableFont_wght.ttf');
+}
+
 :root {
     --contrast: #F1F1F1;
     --theme: #1b1b1b;
@@ -12,30 +17,15 @@
 }
 
 body{
-    font-family: WorkSans;
+    font-family: Gantari;
     height: 100%;
     width: 100%;
     margin: 0;
-    padding-bottom: 25vh;
     background-color: var(--theme);
     color: var(--contrast);
 }
 
 @media screen and (max-width: 600pt) {
-    #searchBar{
-        height: 20pt;
-        padding: 5pt;
-        width: calc(100vw - 30pt);
-        margin: 15pt;
-        color: white;
-        background-color: rgb(39, 39, 39);
-        border: none;
-        outline: none;
-    }
-
-    #searchBar:focus{
-        background-color: rgb(82, 82, 82);
-    }
     .navbar-item-icon{
         height: 15pt;
         width: 15pt;
@@ -44,76 +34,76 @@ body{
     .navbar-item-text{
         display: none;
     }
+    #navbar{
+        background-color: var(--main);
+    }
+    .navbar-logo{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 600pt) {
-    #searchBar{
-        position: absolute;
-        top: 10pt;
-        right: 10pt;
-        padding: 10pt;
-        font-size: 12pt;
-        height: 35pt;
-        width: 15vw;
-        color: white;
-        background-color: var(--theme);
-        border-radius: 10pt;
-        border: none;
-        outline: none;
-        transition: width 100ms;
-    }
     #searchBar:focus{
         width: 20vw;
     }
     .navbar-item-icon{
         display: none;
     }
-    .navbar-item-text{
-        font-size: 13pt;
+    #navbar{
+        background-color: rgb(53, 53, 53);
     }
 }
 
-#account-page-body{
-    background: url('images/wallpaper.jpeg') transparent no-repeat center;
-    background-size: cover;
-    color: black;
+#searchBar{
+    height: 35pt;
+    width: auto;
+    margin: 10pt;
+    padding: 10pt;
+    font-size: 12pt;
+    color: white;
+    background-color: var(--theme);
+    border-radius: 10pt;
+    border: none;
+    outline: none;
+    transition: width 100ms;
+    float: left;
+}
+
+.mobile-search{
+    display: none;
 }
 
 #navbar{
     height: 55pt;
     width: 100vw;
-    background-color: rgb(53, 53, 53);
     display: inline-block;
 }
 
 .navbar-logo{
-    height: 40pt;
-    width: 40pt;
+    height: 35pt;
+    width: 35pt;
     float: left;
-    margin: 7.5pt 15pt 7.5pt 7.5pt;
+    margin: 10pt;
 }
 
 .navbar-item-container{
     height: 40pt;
-    width: fit-content;
-    text-align: center;
     float: left;
     display: flex;
     align-items: center;
     padding: 7pt 15pt 7pt 15pt;
     cursor: default;
-    color: rgb(194, 194, 194);
-    font-weight: 400;
+    font-size: 13pt;
+    font-weight: 500;
+    color: white;
 }
 
 .navbar-item-container:hover{
-    text-decoration: underline;
-    color: white;
+    color: var(--accent);
 }
 
 .active-navbar-container {
-    color: white;
-    font-weight: 600;
+    color: var(--main);
 }
 
 #navbar a{
@@ -156,94 +146,77 @@ body{
 }
 
 .media-image-button:hover{
-    height: 11vw;
-    width: 18vw;
-    margin: 0;
+    height: 10.5vw;
+    width: 17.5vw;
+    margin: 0.25vw;
+    box-shadow: 0 0 0 1pt rgb(134, 134, 134);
 }
 
-.media-image-button-title{
-    height: 14vw;
-    width: 25vw;
-    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 75%);
-    font-weight: 400;
-    font-size: 2vw;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+.media-image-button:hover .media-image-button-text-container{
+    display: block;
+}
+
+.media-image-button-text-container{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(0deg, #1b1b1b 0%, #1b1b1b48 50%, rgba(0,0,0,0) 100%);
+    position: relative;
+    top: 0;
+    left: 0;
     display: none;
 }
 
-#account-window-container{
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
+.media-image-button-text{
+    height: auto;
+    width: 100%;
+    position: absolute;
+    bottom: 10pt;
     left: 0;
-    backdrop-filter: blur(30pt);
-    -webkit-backdrop-filter: blur(30pt);
-    overflow-y: scroll;
+    text-align: center;
+    font-size: 1.5vw;
+    font-weight: 600;
+    white-space: normal; 
 }
 
-.account-window{
-    max-height: 80vh;
-    width: 40vw;
-    background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(30pt);
-    -webkit-backdrop-filter: blur(30pt);
-    border-radius: 25pt;
-    padding: 10vh 10vw 10vh 10vw;
-    margin: 5vw 20vw 5vw 20vw;
+.featured-panel-gradient{
+    background: linear-gradient(0deg, var(--theme) 0%, #1b1b1bd3 25%, rgba(0,0,0,0) 75%);
 }
 
-#featuredPanel{
+.gradient-display-panel{
     height: 80vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     top: 0;
     left: 0;
 }
 
-#homeFeaturedPanel{
+.gradient-display-image{
     height: 100%;
     width: 100%;
-    background: url('images/ratatouille-ci.jpg') transparent no-repeat center;
+    background: transparent no-repeat center;
     background-size: cover;
 }
 
-#moviesFeaturedPanel{
+.utility-items-container{
     height: 100%;
     width: 100%;
-    background: url('images/spider-man-homecoming-ci.jpg') transparent no-repeat center;
-    background-size: cover;
-}
-
-#tvFeaturedPanel{
-    height: 100%;
-    width: 100%;
-    background: url('images/the-office-ci.jpg') transparent no-repeat center;
-    background-size: cover;
-}
-
-#utilityCollectionFeatured{
-    height: 40vh;
-    width: 100vw;
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    background: linear-gradient(0deg, var(--theme) 0%, #14141480 50%, rgba(0,0,0,0) 100%);
-    display: flex;
-    align-items: flex-end;
 }
 
-#utilityCollectionFeatured .utilityItems{
-    margin: 50pt;
+.utility-items{
+    height: auto;
+    position: absolute;
+    bottom: 27pt;
+    left: 20pt;
 }
 
-.featured-panel-title{
-    font-size: 30pt;
-    font-weight: 600;
+.gradient-display-panel-title{
+    font-size: 40pt;
+    font-weight: 700;
+    margin: 5pt 5pt 10pt 5pt;
     color: white;
-    margin: 5pt 5pt 20pt 5pt;
 }
 
 .button{
@@ -264,62 +237,12 @@ body{
     background-color: rgb(100, 100, 100);
 }
 
-.watch-button{
+.activity-button{
     background-color: var(--main);
 }
 
-.watch-button:hover{
+.activity-button:hover{
     background-color: var(--main2);
-}
-
-.profile-picture-container{
-    height: 200pt;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-picture{
-    height: 150pt;
-    width: 150pt;
-    background-color: rgb(110, 110, 110);
-    border-radius: 100%;
-    border: solid 5pt var(--main2);
-}
-
-.profile-username{
-    font-size: 23pt;
-    padding-bottom: 30pt;
-}
-
-.section{
-    height: auto;
-    width: 40vw;
-    margin-left: 4vw;
-    /* background-color: rgb(183, 64, 64); */
-    float: left;
-}
-
-.section-divider{
-    height: 10pt;
-    width: 100%;
-    background-color: var(--theme);
-    cursor: pointer;
-}
-
-.section-choice{
-    height: auto;
-    padding: 1vw;
-    cursor: pointer;
-    font-size: 1.5vw;
-    border-radius: 1vw;
-    background-color: rgb(78, 78, 78);
-    margin: 1vw;
-}
-
-.section-choice:hover{
-    background-color: var(--main);
 }
 
 #tvExpandScreen{
@@ -372,7 +295,7 @@ body{
     width: 2vw;
     min-width: 20pt;
     padding: 5pt;
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgb(255, 0, 0);
     position: absolute;
     top: 1vw;
     right: 1vw;
@@ -380,7 +303,7 @@ body{
 }
 
 #closeTvExpandScreenButton:hover{
-    background-color: red;
+    background-color: coral;
 }
 
 #tv-expand-panel-title{

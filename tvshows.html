@@ -1,13 +1,18 @@
 <html>
     <head>
-        <title>Baileo - Media</title>
+        <title>Baileo - TV Shows</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="initial-scale = 1.3, user-scalable = no, minimal-ui">
+        <link rel="apple-touch-icon" href="images/app-icon.jpg">
+        <meta name="apple-mobile-web-app-title" content="Baileo">
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop-style.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile-style.css'>
         <meta name="viewport" content="initial-scale = 1.3, user-scalable = no">
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-        <script src='main.js'></script>
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script src='main.js'></script>
     </head>
     <body id='body' onload='checkAccount()'>
 
@@ -37,21 +42,62 @@
                     <div class='navbar-item-text'>Profile</div>
                 </div>
             </a>
+            <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='desktop-search'>
         </div>
 
         <div class='content'>
 
             <div class='media-category'>
-                <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search">
+                <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
             </div>
 
-            <div id='featuredPanel'>
-                <div id='tvFeaturedPanel'></div>
-                <div id='utilityCollectionFeatured'>
-                    <div class='utilityItems'>
-                        <div class='featured-panel-title'>The Office</div>
-                        <span class='watch-button button' onclick='expandTvShow("The Office")'>Watch Now</span>
+            <div class='gradient-display-panel'>
+                <div class='gradient-display-image' style="background-image: url('images/the-office-ci.jpg')"></div>
+                <div class='utility-items-container featured-panel-gradient'>
+                    <div class='utility-items'>
+                        <div class='gradient-display-panel-title'>The Office</div>
+                        <span class='activity-button button' onclick='expandTvShow("The Office")'>Watch Now</span>
                         <span class='button moreinfo-button'>More Info</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class='media-category odd'>
+                <div class='h1'>Comedy</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
+                        <div class='media-image-button-text-container'>
+                            <div class='media-image-button-text'>
+                                The Office
+                            </div>
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
+                        <div class='media-image-button-text-container'>
+                            <div class='media-image-button-text'>
+                                Parks and Recreation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='media-category'>
+                <div class='h1'>Drama</div>
+                <div class='horizontal-scroll'>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
+                        <div class='media-image-button-text-container'>
+                            <div class='media-image-button-text'>
+                                Sherlock
+                            </div>
+                        </div>
+                    </div>
+                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
+                        <div class='media-image-button-text-container'>
+                            <div class='media-image-button-text'>
+                                Squid Game
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,35 +121,6 @@
                             <option value="1">Season 1</option>
                             <option value="2">Season 2</option>
                         </select>
-                    </div>
-                </div>
-            </div>
-    
-            <div class='media-category'>
-                <div class='h1'>Comedy</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
-                        <div class='media-image-button-title'>
-                            The Office
-                        </div>
-                    </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
-                        <div class='media-image-button-title'>
-                            Parks and Recreation
-                        </div>
-                    </div>
-                </div>
-                <div class='h1'>Drama</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
-                        <div class='media-image-button-title'>
-                            Sherlock
-                        </div>
-                    </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
-                        <div class='media-image-button-title'>
-                            Squid Game
-                        </div>
                     </div>
                 </div>
             </div>
