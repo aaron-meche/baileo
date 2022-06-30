@@ -45,83 +45,80 @@
             <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='desktop-search'>
         </div>
 
-        <div class='content'>
+        <div class='media-category'>
+            <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
+        </div>
 
-            <div class='media-category'>
-                <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
-            </div>
-
-            <div class='gradient-display-panel'>
-                <div class='gradient-display-image' style="background-image: url('images/the-office-ci.jpg')"></div>
-                <div class='utility-items-container featured-panel-gradient'>
-                    <div class='utility-items'>
-                        <div class='gradient-display-panel-title'>The Office</div>
-                        <span class='activity-button button' onclick='expandTvShow("The Office")'>Watch Now</span>
-                        <span class='button moreinfo-button'>More Info</span>
-                    </div>
+        <div class='gradient-display-panel'>
+            <div class='gradient-display-image' style="background-image: url('images/the-office-ci.jpg')"></div>
+            <div class='utility-items-container featured-panel-gradient'>
+                <div class='utility-items'>
+                    <div class='gradient-display-panel-title'>The Office</div>
+                    <span class='activity-button button' onclick='expandTvShow("The Office")'>Watch Now</span>
+                    <span class='button moreinfo-button'>More Info</span>
                 </div>
             </div>
-    
-            <div class='media-category odd'>
-                <div class='h1'>Comedy</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                The Office
-                            </div>
+        </div>
+
+        <div class='media-category odd'>
+            <div class='h1'>Comedy</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            The Office
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Parks and Recreation
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Parks and Recreation
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class='media-category'>
-                <div class='h1'>Drama</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Sherlock
-                            </div>
+        <div class='media-category'>
+            <div class='h1'>Drama</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Sherlock
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Squid Game
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Squid Game
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id='tvExpandScreen' style="display:none;">
-                <div id='exitTvExpandScreenClicker' onclick='closeTvExpandScreen()'></div>
-                <div id='tvExpandPanel'>
-                    <div id="tvExpandPanelTopImage"></div>
-                    <div id="tvExpandPanelTopImageSheet">
-                        <div class='utilityItems'>
-                            <div id='tv-expand-panel-title'>Show Title</div>
-                            <span id="startWatchingButtonContainer"></span>
-                            <div class='watch-button button' id='continueWatchingButton' onclick='continueTvProgress("The Office")' style='display:none;'>Continue Watching</div>
-                            <!-- <div class='button' onclick='shuffle(mediaTitle)'>Shuffle</div> -->
-                        </div>
+        <div id='tvExpandScreen' style="display:none;">
+            <div id='exitTvExpandScreenClicker' onclick='closeTvExpandScreen()'></div>
+            <div id='tvExpandPanel'>
+                <div id="tvExpandPanelTopImage"></div>
+                <div id="tvExpandPanelTopImageSheet">
+                    <div class='utilityItems'>
+                        <div id='tv-expand-panel-title'>Show Title</div>
+                        <span id="startWatchingButtonContainer"></span>
+                        <div class='watch-button button' id='continueWatchingButton' onclick='continueTvProgress("The Office")' style='display:none;'>Continue Watching</div>
+                        <!-- <div class='button' onclick='shuffle(mediaTitle)'>Shuffle</div> -->
                     </div>
-                    <img src="icons/close.png" id='closeTvExpandScreenButton' onclick='closeTvExpandScreen()'>
-                    <div id='tv-expand-panel-content-title'>
-                        Episodes
-                        <select name="Season" id="season-selector">
-                            <option value="1">Season 1</option>
-                            <option value="2">Season 2</option>
-                        </select>
-                    </div>
+                </div>
+                <img src="icons/close.png" id='closeTvExpandScreenButton' onclick='closeTvExpandScreen()'>
+                <div id='tv-expand-panel-content-title'>
+                    Episodes
+                    <select name="Season" id="season-selector">
+                        <option value="1">Season 1</option>
+                        <option value="2">Season 2</option>
+                    </select>
                 </div>
             </div>
         </div>

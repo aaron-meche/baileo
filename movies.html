@@ -45,126 +45,123 @@
             <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='desktop-search'>
         </div>
 
-        <div class='content'>
+        <div class='media-category'>
+            <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
+        </div>
 
-            <div class='media-category'>
-                <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
+        <div class='gradient-display-panel'>
+            <div class='gradient-display-image' style="background-image: url('images/hidden-figures-ci.jpg')"></div>
+            <div class='utility-items-container featured-panel-gradient'>
+                <div class='utility-items'>
+                    <div class='gradient-display-panel-title'>Hidden Figures</div>
+                    <span class='activity-button button' onclick='transporter("movie","Hidden Figures")'>Watch Now</span>
+                    <span class='button moreinfo-button'>More Info</span>
+                </div>
             </div>
+        </div>
 
-            <div class='gradient-display-panel'>
-                <div class='gradient-display-image' style="background-image: url('images/hidden-figures-ci.jpg')"></div>
-                <div class='utility-items-container featured-panel-gradient'>
-                    <div class='utility-items'>
-                        <div class='gradient-display-panel-title'>Hidden Figures</div>
-                        <span class='activity-button button' onclick='transporter("movie","Hidden Figures")'>Watch Now</span>
-                        <span class='button moreinfo-button'>More Info</span>
+        <div class='media-category odd'>
+            <div class='h1'>Animation</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button movieButton' style='background-image: url(images/cars-2-ci.jpg)' onclick='transporter("movie","Cars 2")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Cars 2
+                        </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class='media-category odd'>
-                <div class='h1'>Animation</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button movieButton' style='background-image: url(images/cars-2-ci.jpg)' onclick='transporter("movie","Cars 2")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Cars 2
-                            </div>
+                <div class='media-image-button movieButton' style='background-image: url(images/cars-3-ci.jpg)' onclick='transporter("movie","Cars 3")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Cars 3
                         </div>
                     </div>
-                    <div class='media-image-button movieButton' style='background-image: url(images/cars-3-ci.jpg)' onclick='transporter("movie","Cars 3")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Cars 3
-                            </div>
+                </div>
+                <div class='media-image-button movieButton' style='background-image: url(images/coraline-ci.jpg)' onclick='transporter("movie","Coraline")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Coraline
                         </div>
                     </div>
-                    <div class='media-image-button movieButton' style='background-image: url(images/coraline-ci.jpg)' onclick='transporter("movie","Coraline")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Coraline
-                            </div>
-                        </div>
-                    </div>
-                    <div class='media-image-button movieButton' style='background-image: url(images/ratatouille-ci.jpg)' onclick='transporter("movie","Ratatouille")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Ratatouille
-                            </div>
+                </div>
+                <div class='media-image-button movieButton' style='background-image: url(images/ratatouille-ci.jpg)' onclick='transporter("movie","Ratatouille")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Ratatouille
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <div class='media-category'>
-                <div class='h1'>Comedy</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/daddys-home-2-ci.jpg)' onclick="transporter(`movie`,`Daddy's Home 2`)">
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Daddy's Home 2
-                            </div>
+        </div>
+
+        <div class='media-category'>
+            <div class='h1'>Comedy</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/daddys-home-2-ci.jpg)' onclick="transporter(`movie`,`Daddy's Home 2`)">
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Daddy's Home 2
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/dumb-and-dumber-ci.jpg)' onclick='transporter("movie","Dumb and Dumber")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Dumb and Dumber
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/dumb-and-dumber-ci.jpg)' onclick='transporter("movie","Dumb and Dumber")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Dumb and Dumber
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <div class='media-category odd'>
-                <div class='h1'>Drama</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/american-psycho-ci.jpg)' onclick='transporter("movie","American Psycho")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                American Psycho
-                            </div>
+        </div>
+
+        <div class='media-category odd'>
+            <div class='h1'>Drama</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/american-psycho-ci.jpg)' onclick='transporter("movie","American Psycho")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            American Psycho
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/hidden-figures-ci.jpg)' onclick='transporter("movie","Hidden Figures")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Hidden Figures
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/hidden-figures-ci.jpg)' onclick='transporter("movie","Hidden Figures")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Hidden Figures
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/knives-out-ci.jpg)' onclick='transporter("movie","Knives Out")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Knives Out
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/knives-out-ci.jpg)' onclick='transporter("movie","Knives Out")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Knives Out
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <div class='media-category'>
-                <div class='h1'>Spider Man</div>
-                <div class='horizontal-scroll'>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/the-amazing-spider-man-2-ci.jpg)' onclick='transporter("movie","The Amazing Spider Man 2")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                The Amazing Spider Man 2
-                            </div>
+        </div>
+
+        <div class='media-category'>
+            <div class='h1'>Spider Man</div>
+            <div class='horizontal-scroll'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/the-amazing-spider-man-2-ci.jpg)' onclick='transporter("movie","The Amazing Spider Man 2")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            The Amazing Spider Man 2
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-homecoming-ci.jpg)' onclick='transporter("movie","Spider Man Homecoming")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Spider Man: Homecoming
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-homecoming-ci.jpg)' onclick='transporter("movie","Spider Man Homecoming")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Spider Man: Homecoming
                         </div>
                     </div>
-                    <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-no-way-home.jpg)' onclick='transporter("movie","Spider Man No Way Home")'>
-                        <div class='media-image-button-text-container'>
-                            <div class='media-image-button-text'>
-                                Spider Man: No Way Home
-                            </div>
+                </div>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/spider-man-no-way-home.jpg)' onclick='transporter("movie","Spider Man No Way Home")'>
+                    <div class='media-image-button-text-container'>
+                        <div class='media-image-button-text'>
+                            Spider Man: No Way Home
                         </div>
                     </div>
                 </div>
