@@ -111,14 +111,14 @@
                         </div>
                     </div>
                 </div>
-                <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/the-office-ci.jpg)' onclick='expandTvShow("The Office")'>
                     <div class='media-image-button-text-container'>
                         <div class='media-image-button-text'>
                             The Office
                         </div>
                     </div>
                 </div>
-                <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/parks-and-recreation-ci.jpg)' onclick='expandTvShow("Parks and Recreation")'>
                     <div class='media-image-button-text-container'>
                         <div class='media-image-button-text'>
                             Parks and Recreation
@@ -152,14 +152,14 @@
                         </div>
                     </div>
                 </div>
-                <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/sherlock-ci.jpg)' onclick='expandTvShow("Sherlock")'>
                     <div class='media-image-button-text-container'>
                         <div class='media-image-button-text'>
                             Sherlock
                         </div>
                     </div>
                 </div>
-                <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)'>
+                <div class='media-image-button tvshowButton' style='background-image: url(images/squid-game-ci.jpg)' onclick='expandTvShow("Squid Game")'>
                     <div class='media-image-button-text-container'>
                         <div class='media-image-button-text'>
                             Squid Game
@@ -192,6 +192,25 @@
                             Spider Man: No Way Home
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='tvExpandScreen'>
+            <div id='exitTvExpandScreenClicker' onclick='closeTvExpandScreen()'></div>
+            <div id='tvExpandPanel'>
+                <div id="tvExpandPanelTopImage"></div>
+                <div id="tvExpandPanelTopImageSheet">
+                    <div class='utilityItems'>
+                        <div id='tv-expand-panel-title'>Show Title</div>
+                        <div class='activity-button button' onclick='watchNow("The Office")'>Watch Now</div>
+                    </div>
+                </div>
+                <img src="icons/close.png" id='closeTvExpandScreenButton' onclick='closeTvExpandScreen()'>
+                <div id='tv-expand-panel-navbar' class='horizontal-scroll'>
+                </div>
+                <div id='seasonEpisodesList'>
+
                 </div>
             </div>
         </div>

@@ -193,19 +193,65 @@ function transporter(type, title, season, episode) {
 }
 
 function expandTvShow(tvShow) {
+    localStorage['expandTvShowTitle'] = tvShow;
     document.getElementById('tvExpandScreen').style.display = 'block';
     document.getElementById('tv-expand-panel-title').innerHTML = tvShow;
     document.getElementById('tvExpandPanelTopImage').style.backgroundImage = 'url("images/' + tvShow.replace(/\s/g, '-').toLowerCase() +'-ci.jpg")';
-    document.getElementById('startWatchingButtonContainer').innerHTML = `<div class='watch-button button' id='startWatchingButton' onclick='transporter("tv","` + tvShow + `",1,1)' style='display:none;'>Start Watching</div>`
-    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow).once('value', (snapshot) => {
-        if (snapshot.val() == 'true') {
-            document.getElementById('continueWatchingButton').style.display = 'inline-block';
-            document.getElementById('startWatchingButton').style.display = 'none';
+    localStorage['activeEpisodesTab'] = 1;
+    document.getElementById('seasonEpisodesList').innerHTML = '';
+    var season1Episodes = eval(tvShow.replace(/\s/g, ''))[0];
+    document.getElementById('tv-expand-panel-navbar').innerHTML = '';
+    document.getElementById('tvExpandPanel').scrollTop = '0';
+    // firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow).once('value', (snapshot) => {
+    //     if (snapshot.val() == 'true') {
+    //     } else {
+    //     }
+    // });
+
+
+    var a = 0;
+    while (a < eval(tvShow.replace(/\s/g, '')).length) {
+        a++;
+        if (a == localStorage['activeEpisodesTab']) {
+            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='active-tv-expand-panel-navbar-item' onclick='selectSeason("`+ a + `")'>Season ` + a + `</div>`
         } else {
-            document.getElementById('startWatchingButton').style.display = 'inline-block';
-            document.getElementById('continueWatchingButton').style.display = 'none';
+            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='tv-expand-panel-navbar-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`
         }
-    });
+    }
+
+
+    var b = 0;
+    while (b < season1Episodes) {
+        b++;
+        document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
+    }
+}
+
+function selectSeason(seasonNum) {
+    var tvShowTitleSpaced = localStorage['expandTvShowTitle'];
+    var tvShowTitleUnspaced = localStorage['expandTvShowTitle'].replace(/\s/g, '');
+    var seasonXEpisodes = eval(tvShowTitleUnspaced)[seasonNum - 1];
+    document.getElementById('seasonEpisodesList').innerHTML = '';
+    localStorage['activeEpisodesTab'] = seasonNum;
+    document.getElementById('tv-expand-panel-navbar').innerHTML = '';
+
+
+    var c = 0;
+    while (c < seasonXEpisodes) {
+        c++;
+        document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShowTitleSpaced + `","` + seasonNum + `","` + c + `")'><div class='orderedListNumber'>` + c + `.</div><div class="orderedListContent">` + eval(tvShowTitleUnspaced + 'S' + seasonNum)[c] + `</div></div>`;
+    }
+
+
+    var d = 0;
+    while (d < eval(tvShowTitleUnspaced).length) {
+        d++;
+        if (d == localStorage['activeEpisodesTab']) {
+            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='active-tv-expand-panel-navbar-item' onclick='selectSeason("`+ d + `")'>Season ` + d + `</div>`
+        } else {
+            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='tv-expand-panel-navbar-item' onclick='selectSeason("` + d + `")'>Season ` + d + `</div>`
+        }
+    }
 }
 
 function continueTvProgress(tvShow) {

@@ -251,6 +251,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
+    display: none;
 }
 
 #exitTvExpandScreenClicker{
@@ -268,6 +269,7 @@ body{
     background-color: var(--theme);
     border-top-left-radius: 2vw;
     border-top-right-radius: 2vw;
+    overflow-y: scroll;
 }
 
 #tvExpandPanelTopImage{
@@ -294,7 +296,7 @@ body{
     min-height: 20pt;
     width: 2vw;
     min-width: 20pt;
-    padding: 5pt;
+    padding: 7pt;
     background-color: rgb(255, 0, 0);
     position: absolute;
     top: 1vw;
@@ -307,7 +309,7 @@ body{
 }
 
 #tv-expand-panel-title{
-    font-size: 40pt;
+    font-size: 45pt;
     font-weight: 600;
     padding: 0.5vw;
 }
@@ -318,12 +320,57 @@ body{
     left: 2vw;
 }
 
-#tv-expand-panel-content-title{
-    height: 70pt;
+#tv-expand-panel-navbar{
+    height: auto;
+    width: auto;
+    padding: 10pt;
+}
+
+.tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 12pt;
+    font-size: 18pt;
+    font-weight: 500;
+    cursor: default;
+    color: white;
+}
+
+.tv-expand-panel-navbar-item:hover{
+    color: var(--accent);
+}
+
+.active-tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 12pt;
+    font-size: 18pt;
+    font-weight: 500;
+    cursor: default;
+    color: var(--main);
+}
+
+#seasonEpisodesList{
+    font-size: 25pt;
+    padding-bottom: 50pt
+}
+
+.orderedListItem{
+    padding-top: 7pt;
+    padding-bottom: 7pt;
+    cursor: default;
+}
+
+.orderedListItem:hover{
     background-color: black;
-    font-size: 30pt;
-    display: flex;
-    align-items: center;
-    padding-left: 2vw;
-    font-weight: 600;
+}
+
+.orderedListNumber{
+    width: 10%;
+    display: inline-block;
+    text-align: right;
+}
+
+.orderedListContent{
+    width: calc(90% - 25pt);
+    padding-left: 25pt;
+    display: inline-block;
 }
