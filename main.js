@@ -321,6 +321,7 @@ function continueTvProgress(tvShow) {
 }
 
 function processRequest() {
+    var urlParams = new URLSearchParams(document.location.search);
     if (urlParams.get('action') == 'nextEpisode') {
         nextEpisode(urlParams.get('title'),urlParams.get('season'),urlParams.get('episode'));
     }
