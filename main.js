@@ -133,18 +133,35 @@ function searchMobile() {
 
 function checkAccount() {
     if (localStorage['isLoggedIn'] == 'true') {
-        console.log('Account found, user is logged in');
+        void(0)
     } else {
-        window.open("account.html", "_self");
+        if (sessionStorage['hasBeenAskedToLogin'] == 'true') {
+            void(0)
+        } else {
+            notifyUser('Login or Create Account','Login or create an account to unlock new features from Baileo such as progress saving, customized user interface, and more. Click to create or login to an account','account.html');
+            sessionStorage['hasBeenAskedToLogin'] = 'true';
+        }
     }
 }
 
-function checkAccountLoading() {
-    if (localStorage['isLoggedIn'] == 'true') {
-        window.open("index.html", "_self");
-    } else {
-        window.open("account.html", "_self");
-    }
+function  notifyUser(title, message, location) {
+    document.getElementById('notificationModule').style.top = '10pt';
+    document.getElementById('notificationModule').style.display = 'block';
+    document.getElementById("notificationModule").onclick = function() { 
+        window.open(location, "_self");
+    };
+    document.getElementById('notificationModuleTitle').innerHTML = title;
+    document.getElementById('notificationModuleMessage').innerHTML = message;
+    setTimeout(function() {
+        document.getElementById('notificationModule').style.top = '-100vh';
+    }, 5000);
+    setTimeout(function() {
+        document.getElementById('notificationModule').style.display = 'none';
+    }, 5500);
+}
+
+function linkAction(location) {
+    window.open(location, "_self");
 }
 
 function signIn() {
@@ -183,37 +200,29 @@ function signUp() {
     }
 }
 
-function loadAccountProfile() {
-    document.getElementById('profileUsername').innerHTML = '@' + localStorage['username'];
-    if (localStorage['profilePictureLoaded'] == 'true') {
-        document.getElementById('profilePicture').src = localStorage['profilePictureURL'];
-    } else {
-        firebase.database().ref('users/' + localStorage['username'] + '/pfp').once('value', (snapshot) => {
-            console.log(snapshot.val());
-            document.getElementById('profilePicture').src = snapshot.val();
-            localStorage['profilePictureLoaded'] = 'true';
-            localStorage['profilePictureURL'] = snapshot.val();
-        });
-    }
-}
+// function loadAccountProfile() {
+//     document.getElementById('profileUsername').innerHTML = '@' + localStorage['username'];
+//     if (localStorage['profilePictureLoaded'] == 'true') {
+//         document.getElementById('profilePicture').src = localStorage['profilePictureURL'];
+//     } else {
+//         firebase.database().ref('users/' + localStorage['username'] + '/pfp').once('value', (snapshot) => {
+//             console.log(snapshot.val());
+//             document.getElementById('profilePicture').src = snapshot.val();
+//             localStorage['profilePictureLoaded'] = 'true';
+//             localStorage['profilePictureURL'] = snapshot.val();
+//         });
+//     }
+// }
 
 function logOut() {
     localStorage.clear();
-    window.open("account.html", "_self");
+    window.open("index.html", "_self");
 }
 
 function transporter(type, title, season, episode) {
     if (type == 'tv') {
-        localStorage['media-type'] = 'tv';
-        localStorage['media-title'] = title;
-        localStorage['watching-tv-title-unspaced'] = title.replace(/\s/g, '');
-        localStorage['watching-tv-season'] = season;
-        localStorage['watching-tv-episode'] = episode;
-        localStorage['watching-tv-episode-name'] = eval(localStorage['watching-tv-title-unspaced'] + 'S' + season)[episode];
-        var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title + '&season=' + localStorage['watching-tv-season'] + '&episode=' + localStorage['watching-tv-episode-name'] + '&epnum=' + episode + '&user=' + localStorage['username'];
+        var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title + '&season=' + season + '&episode=' + eval(title.replace(/\s/g, '') + 'S' + season)[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
     } if (type == 'movie') {
-        localStorage['media-type'] = 'tv';
-        localStorage['media-title'] = title;
         var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
     }
     window.open(generatedLink, "_self");
@@ -229,11 +238,6 @@ function expandTvShow(tvShow) {
     var season1Episodes = eval(tvShow.replace(/\s/g, ''))[0];
     document.getElementById('tv-expand-panel-navbar').innerHTML = '';
     document.getElementById('tvExpandPanel').scrollTop = '0';
-    // firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow).once('value', (snapshot) => {
-    //     if (snapshot.val() == 'true') {
-    //     } else {
-    //     }
-    // });
 
 
     var a = 0;
@@ -252,6 +256,10 @@ function expandTvShow(tvShow) {
         b++;
         document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
     }
+}
+
+function closeTvExpandScreen() {
+    document.getElementById('tvExpandScreen').style.display = 'none';
 }
 
 function selectSeason(seasonNum) {
@@ -281,6 +289,25 @@ function selectSeason(seasonNum) {
     }
 }
 
+function watchNow(tvShow) {
+    if (localStorage['username'] == undefined) {
+        transporter('tv',tvShow,1,1);
+    } else {
+        firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow).once('value', (snapshot) => {
+            if (snapshot.val() == 'true') {
+                firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow + 'S').once('value', (snapshot) => {
+                    sessionStorage['savedSeason'] = snapshot.val();
+                    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow + 'E').once('value', (snapshot) => {
+                        transporter('tv',tvShow,sessionStorage['savedSeason'],snapshot.val())
+                    });
+                });
+            } else {
+                transporter('tv',tvShow,1,1);
+            }
+        });
+    }
+}
+
 function continueTvProgress(tvShow) {
     firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + tvShow + 'S').once('value', (snapshot) => {
         sessionStorage['savedSeason'] = snapshot.val();
@@ -293,6 +320,17 @@ function continueTvProgress(tvShow) {
     }, 500);
 }
 
-function closeTvExpandScreen() {
-    document.getElementById('tvExpandScreen').style.display = 'none';
+function nextEpisode() {
+    if (localStorage['tvEpisodeNumber'] == eval(localStorage['tvShowTitle'])[localStorage['tvShowSeason'] - 1]) {
+        if (localStorage['tvSeasonNum'] == eval(localStorage['tvShowTitle']).length) {
+            linkAction('index');
+        } else {
+            localStorage['tvSeasonNum']++;
+            localStorage['tvEpisodeNum'] = 1;
+            transporter('tv',localStorage['tvShowTitle'],localStorage['tvSeasonNum'],localStorage['tvEpisodeNum']);
+        }
+    } else {
+        localStorage['tvEpisodeNum']++;
+        transporter('tv',localStorage['tvShowTitle'],localStorage['tvSeasonNum'],localStorage['tvEpisodeNum']);
+    }
 }

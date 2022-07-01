@@ -14,7 +14,7 @@
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
         <script src='main.js'></script>
     </head>
-    <body id='body' onload='checkAccount(), onload()'>
+    <body id='body' onload='checkAccount()'>
 
         <div id='navbar'>
             <img src='images/baileo-logo.png' class='navbar-logo'>
@@ -213,6 +213,11 @@
 
                 </div>
             </div>
+        </div>
+
+        <div id='notificationModule' onclick='console.log("no action assigned")'>
+            <div id='notificationModuleTitle'></div>
+            <div id='notificationModuleMessage'></div>
         </div>
     </body>
 </html>

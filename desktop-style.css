@@ -283,7 +283,7 @@ body{
 }
 
 #tvExpandPanelTopImageSheet{
-    height: 60vh;
+    height: 61vh;
     width: 100%;
     position: absolute;
     top: 0;
@@ -373,4 +373,39 @@ body{
     width: calc(90% - 25pt);
     padding-left: 25pt;
     display: inline-block;
+}
+
+#notificationModule{
+    height: auto;
+    max-height: 50vh;
+    overflow-y: hidden;
+    width: 28vw;
+    position: fixed;
+    top: -50vh;
+    left: 35vw;
+    background-color: rgba(255, 255, 255, 0.883);
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+    color: black;
+    padding: 1vw;
+    border-radius: 1vw;
+    transition-duration: 500ms;
+}
+
+#notificationModule:hover{
+    background-color: white;
+    padding: 2vw;
+    left: 34vw
+}
+
+#notificationModuleTitle{
+    width: auto;
+    font-size: 2vw;
+    font-weight: 600;
+    text-align: center;
+    margin: 0.5vw;
+}
+
+#notificationModuleMessage{
+    font-size: 1vw;
 }
