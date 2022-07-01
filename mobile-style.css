@@ -23,6 +23,7 @@ body{
     margin: 0;
     overflow-y: auto;
     padding-bottom: 45pt;
+    overflow-y: scroll;
 }
 
 #navbar{
@@ -108,14 +109,14 @@ body{
     font-size: 12pt;
     font-weight: 600;
     white-space: normal;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(53, 53, 53, 0.8);
 }
 
 .odd{
     background-color: rgb(0, 0, 0);
 }
 
-#searchBar{
+#searchBarMobile{
     width: calc(100vw - 20pt);
 }
 
@@ -156,7 +157,7 @@ input{
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(0deg, black 0%, #141414c6 25%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 90%, var(--theme) 100%);
+    background: linear-gradient(0deg, black 0%, #141414c6 25%, rgba(0,0,0,0.3) 50%);
 }
 
 .utility-items{
@@ -175,7 +176,7 @@ input{
 
 .button{
     height: auto;
-    width: auto;
+    width: fit-content;
     padding: 7pt;
     margin: 5pt;
     background-color: rgb(60, 60, 60);
@@ -184,12 +185,127 @@ input{
     border-radius: 10pt;
     cursor: pointer;
     font-weight: 600;
-}
-
-.button:hover{
-    background-color: rgb(100, 100, 100);
+    float: left;
 }
 
 .activity-button{
     background-color: var(--main);
+}
+
+#tvExpandScreen{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#exitTvExpandScreenClicker{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#tvExpandPanel{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--theme);
+    overflow-y: scroll;
+}
+
+#tvExpandPanelTopImage{
+    height: 50vh;
+    width: 100%;
+    background-color: black;
+    background: url('images/the-office-ci.jpg') transparent no-repeat center;
+    background-size: cover;
+}
+
+#tvExpandPanelTopImageSheet{
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, var(--theme) 0%, #1414143c 50%, rgba(0,0,0,0) 100%);
+}
+
+#closeTvExpandScreenButton{
+    height: 10pt;
+    width: 10pt;
+    padding: 7pt;
+    background-color: rgba(255, 0, 0, 0.55);
+    position: absolute;
+    top: 5pt;
+    left: 5pt;
+}
+
+#tv-expand-panel-title{
+    font-size: 20pt;
+    font-weight: 600;
+    padding-left: 5pt;
+}
+
+.utilityItems{
+    position: absolute;
+    bottom: 10pt;
+    left: 10pt;
+}
+
+#tv-expand-panel-navbar{
+    height: auto;
+    width: auto;
+    padding: 5pt;
+}
+
+.tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 10pt;
+    font-size: 12pt;
+    font-weight: 500;
+    cursor: default;
+    color: white;
+}
+
+.tv-expand-panel-navbar-item:hover{
+    color: var(--accent);
+}
+
+.active-tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 10pt;
+    font-size: 12pt;
+    font-weight: 500;
+    cursor: default;
+    color: var(--main);
+}
+
+#seasonEpisodesList{
+    font-size: 15pt;
+    padding-bottom: 100pt;
+}
+
+.orderedListItem{
+    padding-top: 7pt;
+    padding-bottom: 7pt;
+}
+
+.orderedListItem:hover{
+    background-color: black;
+}
+
+.orderedListNumber{
+    width: 30pt;
+    display: inline-block;
+    text-align: right;
+}
+
+.orderedListContent{
+    width: calc(90% - 40pt);
+    padding-left: 10pt;
+    display: inline-block;
 }

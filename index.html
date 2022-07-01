@@ -42,20 +42,20 @@
                     <div class='navbar-item-text'>Profile</div>
                 </div>
             </a>
-            <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='desktop-search'>
+            <input onkeyup="searchDesktop()" id="searchBarDesktop" type="text" name="searchD" placeholder="Search" class='desktop-search search-bar'>
         </div>
 
         <div class='media-category'>
-            <input onkeyup="search()" id="searchBar" type="text" name="search" placeholder="Search" class='mobile-search'>
+            <input onkeyup="searchMobile()" id="searchBarMobile" type="text" name="searchM" placeholder="Search" class='mobile-search search-bar'>
         </div>
 
-        <div class='gradient-display-panel'>
+        <div class='gradient-display-panel' id='featuredPanel'>
             <div class='gradient-display-image' style="background-image: url('images/ratatouille-ci.jpg')"></div>
             <div class='utility-items-container featured-panel-gradient'>
                 <div class='utility-items'>
                     <div class='gradient-display-panel-title'>Ratatouille</div>
-                    <span class='activity-button button' onclick='transporter("movie","Ratatouille")'>Watch Now</span>
-                    <span class='button moreinfo-button'>More Info</span>
+                    <div class='activity-button button' onclick='transporter("movie","Ratatouille")'>Watch Now</div>
+                    <div class='button moreinfo-button'>More Info</div>
                 </div>
             </div>
         </div>

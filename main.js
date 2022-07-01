@@ -85,13 +85,40 @@ function getData(reference) {
 
 // Functions
 
-function search() {
-    if (document.getElementById('searchBar').value == '') {
+function searchDesktop() {
+    if (document.getElementById('searchBarDesktop').value == '') {
+        document.getElementById('featuredPanel').style.display = 'block';
+        let x = document.getElementsByClassName('media-image-button-text-container');
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'none';
+        }
+    } else {
+        document.getElementById('featuredPanel').style.display = 'none';
+        let x = document.getElementsByClassName('media-image-button-text-container');
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'block';
+        }
+    }
+    let input = document.getElementById('searchBarDesktop').value
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('media-image-button');
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "inline-block";
+        }
+    }
+}
+
+function searchMobile() {
+    if (document.getElementById('searchBarMobile').value == '') {
         document.getElementById('featuredPanel').style.display = 'block';
     } else {
         document.getElementById('featuredPanel').style.display = 'none';
     }
-    let input = document.getElementById('searchBar').value
+    let input = document.getElementById('searchBarMobile').value
     input = input.toLowerCase();
     let x = document.getElementsByClassName('media-image-button');
     for (i = 0; i < x.length; i++) {

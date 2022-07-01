@@ -54,7 +54,7 @@ body{
     }
 }
 
-#searchBar{
+#searchBarDesktop{
     height: 35pt;
     width: auto;
     margin: 10pt;
@@ -230,7 +230,7 @@ body{
     border-radius: 10pt;
     cursor: pointer;
     font-weight: 600;
-    display: inline-block;
+    float: left;
 }
 
 .button:hover{
