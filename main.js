@@ -320,17 +320,23 @@ function continueTvProgress(tvShow) {
     }, 500);
 }
 
-function nextEpisode() {
-    if (localStorage['tvEpisodeNumber'] == eval(localStorage['tvShowTitle'])[localStorage['tvShowSeason'] - 1]) {
-        if (localStorage['tvSeasonNum'] == eval(localStorage['tvShowTitle']).length) {
+function progressRequest() {
+    if (urlParams.get('action') == 'nextEpisode') {
+        nextEpisode(urlParams.get('title'),urlParams.get('season'),urlParams.get('episode'));
+    }
+}
+
+function nextEpisode(title, season, episode) {
+    if (episode == eval(title.replace(/\s/g, ''))[season - 1]) {
+        if (season == eval(title.replace(/\s/g, '')).length) {
             linkAction('index');
         } else {
-            localStorage['tvSeasonNum']++;
-            localStorage['tvEpisodeNum'] = 1;
-            transporter('tv',localStorage['tvShowTitle'],localStorage['tvSeasonNum'],localStorage['tvEpisodeNum']);
+            season++;
+            episode = 1;
+            transporter('tv',title,season,episode);
         }
     } else {
         localStorage['tvEpisodeNum']++;
-        transporter('tv',localStorage['tvShowTitle'],localStorage['tvSeasonNum'],localStorage['tvEpisodeNum']);
+        transporter('tv',title,season,episode);
     }
 }
