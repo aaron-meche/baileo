@@ -342,3 +342,11 @@ function nextEpisode(title, season, episode) {
         transporter('tv',title,season,episode);
     }
 }
+
+function loading() {
+    document.getElementById('loadingScreen').style.display = 'block';
+}
+
+function stopLoading() {
+    document.getElementById('loadingScreen').style.display = 'none';
+}
