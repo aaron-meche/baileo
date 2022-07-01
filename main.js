@@ -323,7 +323,7 @@ function continueTvProgress(tvShow) {
 function processRequest() {
     var urlParams = new URLSearchParams(document.location.search);
     if (urlParams.get('action') == 'nextEpisode') {
-        nextEpisode(urlParams.get('title'),urlParams.get('season'),urlParams.get('episode'));
+        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
     }
 }
 
@@ -337,7 +337,8 @@ function nextEpisode(title, season, episode) {
             transporter('tv',title,season,episode);
         }
     } else {
-        localStorage['tvEpisodeNum']++;
+        episode++;
+        console.log('tv',title,season,episode);
         transporter('tv',title,season,episode);
     }
 }
