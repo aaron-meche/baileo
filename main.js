@@ -320,7 +320,7 @@ function continueTvProgress(tvShow) {
     }, 500);
 }
 
-function progressRequest() {
+function processRequest() {
     if (urlParams.get('action') == 'nextEpisode') {
         nextEpisode(urlParams.get('title'),urlParams.get('season'),urlParams.get('episode'));
     }
