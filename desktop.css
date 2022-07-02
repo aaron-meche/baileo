@@ -1,0 +1,97 @@
+:root{
+    --darkGray: rgb(41, 41, 41);
+    --seafoam: #80DCB7;
+    --aqua: #0c1b2f;
+    --darkAqua: rgb(5, 5, 36);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+
+    --themePicker: rgb(111, 185, 238);
+}
+
+@font-face {
+    font-family: 'WatchFace';
+    src: url('product-sans/Product\ Sans\ Regular.ttf');
+}
+
+@font-face {
+    font-family: 'WatchFaceBold';
+    src: url('product-sans/Product\ Sans\ Bold.ttf');
+}
+
+body{
+    margin: 0;
+    background-color: var(--aqua);
+    color: white;
+    font-family: WatchFace;
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--darkAqua);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navigation bar */
+
+.navbar-link-item{
+    display: inline;
+    padding: 15pt;
+    margin: 2pt;
+    border-radius: 10pt;
+    cursor: pointer;
+    color: white;
+    font-size: 13pt;
+    font-weight: 1000;
+    transition-duration: 100ms;
+}
+
+.navbar-link-item:hover{
+    background-color: var(--darkGray);
+    margin: 7pt;
+    padding: 10pt;
+}
+
+.active-navbar-link-item{
+    color: var(--seafoam);
+}
+
+/* Media slider */
+
+.media-slider-section{
+    padding-top: 4rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.media-slider-title-bar{
+    font-size: 1.5rem;
+    font-weight: 1000;
+    padding-bottom: 1vw;
+}
+
+.media-slider{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.media-slider-carousel{
+    position: relative;
+    left: 0%;
+    font-size: 0;
+}
+
+.media-slider-object{
+    height: 10vw;
+    width: 18.4vw;
+    border-radius: 1vw;
+    margin: 0;
+    margin-right: 1vw;
+    background: transparent no-repeat center;
+    background-size: cover;
+    display: inline-block;
+}
