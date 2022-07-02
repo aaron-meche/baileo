@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='desktop.css' />
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse) and (orientation: portrait)' href='mobile.css' />
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse) and (orientation: landscape)' href='desktop.css' />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
+        <script src='main.js'></script>
+        <link rel="icon" type="image/x-icon" href="images/icon.ico">
+    </head>
+    <body onload='buildHomePage(), loadSetPreferences()' id='body'>
+
+        <!-- Navbar -->
+
+        <div class='navbar'>
+            <a href='index.html' class='active-navbar-item'>
+                Home
+            </a>
+            <a href='media.html' class='navbar-item'>
+                Media
+            </a>
+            <a href='settings.html' class='navbar-item'>
+                Settings
+            </a>
+        </div>
+
+        <!-- Content -->
+
+        <div id='continue-watching-panel'>
+            <h1>Continue Watching</h1>
+            <div id='continue-watching-panel-contents'>
+
+            </div>
+        </div>
+
+    </body>
+</html>
