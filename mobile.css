@@ -1,0 +1,449 @@
+:root{
+    --navbarBgColor: rgb(17, 20, 29);
+    --bodyBgColor: rgb(27, 31, 40);
+    --seafoam: #80DCB7;
+    --aqua: #0c1b2f;
+    --darkAqua: rgb(18, 18, 47);
+    --silverAqua: rgb(40, 55, 93);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+
+    --themePicker: rgb(111, 185, 238);
+}
+
+@font-face {
+    font-family: 'WatchFace';
+    src: url('product-sans/Product\ Sans\ Regular.ttf');
+}
+
+@font-face {
+    font-family: 'WatchFaceBold';
+    src: url('product-sans/Product\ Sans\ Bold.ttf');
+}
+
+body{
+    margin: 0;
+    background-color: var(--bodyBgColor);
+    color: white;
+    font-family: WatchFace;
+    padding-bottom: 4rem;
+}
+
+    /* Navigation bar */
+
+.navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--navbarBgColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    
+.navbar-link-item{
+    display: inline-block;
+    margin: 6pt;
+    padding: 10pt;
+    border-radius: 10pt;
+    cursor: pointer;
+    font-size: 13pt;
+    font-weight: 1000;
+    color: rgb(160,166,178);
+}
+
+.navbar-link-item:hover{
+    background-color: rgb(26, 37, 78);
+}
+
+.active-navbar-link-item{
+    color: white;
+}
+
+/* Media slider */
+
+.media-slider-section{
+    padding-top: 4rem;
+    /* padding-right: 2vw; */
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.media-slider-title-bar{
+    font-size: 1.5rem;
+    font-weight: 1000;
+    padding-bottom: 10pt;
+    padding-left: 2vw;
+}
+
+.horizontal-scroll{
+    white-space: nowrap;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.media-slider-carousel{
+    font-size: 0;
+    padding-left: 2vw;
+}
+
+.media-slider-object{
+    height: 10.35vw;
+    width: 18.4vw;
+    border-radius: 1vw;
+    margin: 0;
+    margin-right: 1vw;
+    background: transparent no-repeat center;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+}
+
+@media screen and (max-width: 700px) {
+    .media-slider-object {
+        height: 26.71875vw;
+        width: 47.5vw;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .media-slider-object {
+        height: 17.6249998125vw;
+        width: 31.3333333333vw;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+    .media-slider-object {
+        height: 13.078125vw;
+        width: 23.25vw;
+    }
+}
+
+.media-slider-object .media-slider-object-shade{
+    height: calc(100% - 6pt);
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: solid 3pt rgb(255, 255, 255);
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 100ms;
+}
+
+.media-slider-object img{
+    height: 30pt;
+    width: 30pt;
+    position: absolute;
+    top: calc(50% - 15pt);
+    left: calc(50% - 15pt);
+    background-color: white;
+    border-radius: 100vh;
+    transition: left 200ms;
+}
+
+.media-slider-object:hover .media-slider-object-shade{
+    opacity: 1;
+}
+
+/* Media expand screen */
+
+#mediaExpandScreen{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    display: none;
+}
+
+#mediaExpandScreenContents{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 50vh;
+    left: 0;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    opacity: 0;
+}
+
+#mediaExpandScreenBackgroundSheet{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#closeMediaExpandScreenClicker{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#mediaExpandScreenPanel{
+    height: 95vh;
+    width: 75vw;
+    position: absolute;
+    top: 5vh;
+    left: 12.5vw;
+    background-color: var(--bodyBgColor);
+    overflow-y: scroll;
+}
+
+#mediaExpandPanelTopbar{
+    height: 50pt;
+    width: 75vw;
+    position: absolute;
+    top: calc(5vh - 1pt);
+    left: 12.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    /* border-bottom: solid 1pt gray; */
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
+    background-color: rgba(27, 31, 40, 0.25);
+    z-index: 12;
+    border-bottom: solid 1pt gray;
+}
+
+#mediaExpandPanelMediaTitle{
+    font-size: 15pt;
+    font-weight: 1000;
+}
+
+@media screen and (max-width: 800px) {
+    #mediaExpandScreenPanel{
+        height: 90vh;
+        width: 100vw;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        border-radius: 0;
+    }
+    #mediaExpandPanelTopbar{
+        justify-content: right;
+        height: 50pt;
+        width: calc(100vw - 15pt);
+        position: absolute;
+        top: calc(10vh - 1pt);
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        /* border-bottom: solid 1pt gray; */
+        backdrop-filter: blur(10pt);
+        -webkit-backdrop-filter: blur(10pt);
+        background-color: rgba(27, 31, 40, 0.25);
+        z-index: 12;
+        border-bottom: solid 1pt gray;
+        padding-right: 15pt;
+    }
+}
+
+#closeMediaExpandScreenButton{
+    height: 20pt;
+    padding: 5pt;
+    margin: 10pt;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#closeMediaExpandScreenButton:hover{
+    background-color: red;
+}
+
+#mediaExpandPanelNavbarContents{
+    position: sticky;
+    top: 49pt;
+    z-index: 10;
+}
+
+#mediaExpandPanelCoverImage{
+    height: 70vh;
+    width: 100%;
+    position: absolute;
+    top: 49pt;
+    left: 0;
+    background: transparent no-repeat center;
+    background-size: cover;
+}
+
+#mediaExpandPanelCoverImageSheet{
+    height: 70vh;
+    width: 100%;
+    position: absolute;
+    top: 49pt;
+    left: 0;
+    background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(0,0,0,0) 50%);
+}
+
+#mediaExpandPanelContents{
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top: 65vh;
+}
+
+#mediaExpandPanelEpisodeList{
+    padding-bottom: 15vh;
+}
+
+.episodeChoice{
+    min-height: 40pt;
+    position: relative;
+    cursor: default;
+    padding: 10pt;
+}
+
+.episodeChoice:hover{
+    background-color: var(--navbarBgColor);
+}
+
+.episodeTitle{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 20pt;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 20pt;
+    font-weight: 1000;
+    max-width: 60%;
+}
+
+.episodeLabel{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 20pt;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    max-width: 40%;
+}
+
+/* Unused (old) panel expand content */
+
+/* 
+
+#mediaExpandPanelTopImage{
+    height: 60vh;
+    width: 100%;
+    background-color: black;
+    background: url('images/the-office-ci.jpg') transparent no-repeat center;
+    background-size: cover;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+}
+
+#mediaExpandPanelTopImageSheet{
+    height: 61vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, var(--theme) 0%, #1414143c 50%, rgba(0,0,0,0) 100%);
+}
+
+#closeMediaExpandScreenButton{
+    height: 2vw;
+    min-height: 20pt;
+    width: 2vw;
+    min-width: 20pt;
+    padding: 7pt;
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    border-radius: 100%;
+}
+
+#closeMediaExpandScreenButton:hover{
+    background-color: coral;
+}
+
+#media-expand-panel-title{
+    font-size: 45pt;
+    font-weight: 600;
+    padding: 0.5vw;
+}
+
+.utilityItems{
+    position: absolute;
+    bottom: 2vw;
+    left: 2vw;
+}
+
+#tv-expand-panel-navbar{
+    height: auto;
+    width: auto;
+    padding: 10pt;
+}
+
+.tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 12pt;
+    font-size: 18pt;
+    font-weight: 500;
+    cursor: default;
+    color: white;
+}
+
+.tv-expand-panel-navbar-item:hover{
+    color: var(--accent);
+}
+
+.active-tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 12pt;
+    font-size: 18pt;
+    font-weight: 500;
+    cursor: default;
+    color: var(--main);
+}
+
+#seasonEpisodesList{
+    font-size: 25pt;
+    padding-bottom: 50pt
+}
+
+.orderedListItem{
+    padding-top: 7pt;
+    padding-bottom: 7pt;
+    cursor: default;
+}
+
+.orderedListItem:hover{
+    background-color: black;
+}
+
+.orderedListNumber{
+    width: 10%;
+    display: inline-block;
+    text-align: right;
+}
+
+.orderedListContent{
+    width: calc(90% - 25pt);
+    padding-left: 25pt;
+    display: inline-block;
+} 
+
+*/

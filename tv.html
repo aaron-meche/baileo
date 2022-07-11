@@ -1,0 +1,118 @@
+<html>
+
+    <head>
+
+        <title>Baileo - Home</title>
+        <meta name="viewport" content="initial-scale = 1.3, user-scalable = no">
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 1.3, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script src='script.js'></script>
+
+    </head>
+
+    <body id='body'>
+
+
+
+        <div class='navbar'>
+            <!-- <img src='images/baileo-logo.png' class='navbar-logo'> -->
+            <div class='navbar-link-item' onclick='openPage("index.html")'>
+                Home
+            </div>
+            <div class='navbar-link-item active-navbar-link-item'>
+                TV
+            </div>
+            <div class='navbar-link-item' onclick='openPage("movies.html")'>
+                Movies
+            </div>
+            <!-- <input onkeyup="searchDesktop()" id="searchBarDesktop" type="text" name="searchD" placeholder="Search" class='desktop-search search-bar'> -->
+        </div>
+
+        
+
+        <div class='media-slider-section'>
+            <div class='media-slider-title-bar'>
+                <div class='media-slider-title'>Comedies</div>
+            </div>
+            <div class='horizontal-scroll'>
+                <div class='media-slider-carousel'>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/the-office.jpg')" onclick='expandTv("The Office")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/parks-and-recreation.jpg')" onclick='expandTv("Parks and Recreation")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='media-slider-section'>
+            <div class='media-slider-title-bar'>
+                <div class='media-slider-title'>Dramas</div>
+            </div>
+            <div class='horizontal-scroll'>
+                <div class='media-slider-carousel'>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/sherlock.jpg')" onclick='expandTv("Sherlock")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/squid-game.jpg')" onclick='expandTv("Squid Game")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='tvExpandScreen'>
+
+            <div id='tvScreenContents'>
+
+                <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+                <div id='tvTopbar'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span id='tvPanelTitle'>Tv Title</span>
+                </div>
+
+                <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id="tvPanelCoverImage"></div>
+                    <div id="tvPanelCoverImageSheet">
+                        <!-- <div class='utilityItems'>
+                            <div id='tv-expand-panel-title'>Show Title</div>
+                            <div class='activity-button button' onclick='watchNow("The Office")'>Watch Now</div>
+                        </div> -->
+                    </div>
+
+                    <div id='tvPanelContents'>
+
+                        <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+
+                        <div id='tvPanelEpisodeList'>
+                            <div class='episodeChoice'>
+                                <div class='episodeTitle'>Pilot</div>
+                                <div class='episodeLabel'>Episode 1</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
