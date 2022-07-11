@@ -32,9 +32,6 @@ body{
     /* Navigation bar */
 
 .navbar{
-    position: sticky;
-    top: 0;
-    left: 0;
     background-color: var(--navbarBgColor);
     display: flex;
     align-items: center;
@@ -50,10 +47,12 @@ body{
     font-size: 13pt;
     font-weight: 1000;
     color: rgb(160,166,178);
+    border: solid 1pt rgba(128, 128, 128, 0);
 }
 
 .navbar-link-item:hover{
     background-color: rgb(26, 37, 78);
+    border: solid 1pt gray;
 }
 
 .active-navbar-link-item{
@@ -155,7 +154,7 @@ body{
 
 /* Media expand screen */
 
-#mediaExpandScreen{
+#tvExpandScreen{
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -163,12 +162,13 @@ body{
     left: 0;
     overflow-y: hidden;
     display: none;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
-#mediaExpandScreenContents{
+#tvScreenContents{
     height: 100vh;
     width: 100vw;
-    position: fixed;
+    position: absolute;
     top: 50vh;
     left: 0;
     transition-duration: 300ms;
@@ -176,24 +176,15 @@ body{
     opacity: 0;
 }
 
-#mediaExpandScreenBackgroundSheet{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-#closeMediaExpandScreenClicker{
-    height: 100%;
-    width: 100%;
-    position: absolute;
+.close-screen-clicker{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
     top: 0;
     left: 0;
 }
 
-#mediaExpandScreenPanel{
+#tvPanel{
     height: 95vh;
     width: 75vw;
     position: absolute;
@@ -203,7 +194,7 @@ body{
     overflow-y: scroll;
 }
 
-#mediaExpandPanelTopbar{
+#tvTopbar{
     height: 50pt;
     width: 75vw;
     position: absolute;
@@ -216,18 +207,17 @@ body{
     /* border-bottom: solid 1pt gray; */
     backdrop-filter: blur(10pt);
     -webkit-backdrop-filter: blur(10pt);
-    background-color: rgba(27, 31, 40, 0.25);
     z-index: 12;
     border-bottom: solid 1pt gray;
 }
 
-#mediaExpandPanelMediaTitle{
+#tvPanelTitle{
     font-size: 15pt;
     font-weight: 1000;
 }
 
 @media screen and (max-width: 800px) {
-    #mediaExpandScreenPanel{
+    #tvPanel{
         height: 90vh;
         width: 100vw;
         position: absolute;
@@ -235,7 +225,7 @@ body{
         left: 0;
         border-radius: 0;
     }
-    #mediaExpandPanelTopbar{
+    #tvTopbar{
         justify-content: right;
         height: 50pt;
         width: calc(100vw - 15pt);
@@ -255,7 +245,7 @@ body{
     }
 }
 
-#closeMediaExpandScreenButton{
+.close-panel-icon{
     height: 20pt;
     padding: 5pt;
     margin: 10pt;
@@ -264,18 +254,18 @@ body{
     left: 0;
 }
 
-#closeMediaExpandScreenButton:hover{
+.close-panel-icon:hover{
     background-color: red;
 }
 
-#mediaExpandPanelNavbarContents{
+#tvPanelNavbarContents{
     position: sticky;
     top: 49pt;
     z-index: 10;
 }
 
-#mediaExpandPanelCoverImage{
-    height: 70vh;
+#tvPanelCoverImage{
+    height: 65vh;
     width: 100%;
     position: absolute;
     top: 49pt;
@@ -284,24 +274,33 @@ body{
     background-size: cover;
 }
 
-#mediaExpandPanelCoverImageSheet{
-    height: 70vh;
+#tvPanelCoverImageSheet{
+    height: 65vh;
     width: 100%;
     position: absolute;
     top: 49pt;
     left: 0;
-    background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(0,0,0,0) 50%);
+    background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(27, 31, 40, 0.8) 20%, rgba(0,0,0,0) 60%);
 }
 
-#mediaExpandPanelContents{
+#tvPanelContents{
     height: auto;
     width: 100%;
     position: absolute;
-    top: 65vh;
+    top: 60vh;
 }
 
-#mediaExpandPanelEpisodeList{
+#tvPanelEpisodeList{
     padding-bottom: 15vh;
+}
+
+.activity-button-choice{
+    border: solid 1pt gray;
+    border-radius: 0;
+}
+
+.activity-button-choice:hover{
+    background-color: rgb(52, 52, 52);
 }
 
 .episodeChoice{
