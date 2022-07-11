@@ -171,7 +171,7 @@ function expandTv(mediaTitle) {
     var b = 0;
     while (b < (eval(titleUS)['s1']).length) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
-            <div class='episodeChoice'>
+            <div class='episodeChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
                 <div class='episodeTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
                 <div class='episodeLabel'>Episode ` + (b + 1) + `</div>
             </div>`;
