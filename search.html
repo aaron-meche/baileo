@@ -1,0 +1,213 @@
+<html>
+
+    <head>
+
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script src='script.js'></script>
+
+    </head>
+
+    <body id='body' onload='isMobileDevice()'>
+
+
+
+        <div class='navbar main-navbar'>
+            <a class='navbar-link-item' href='index.html'>
+                Home
+            </a>
+            <a class='navbar-link-item' href='tv.html'>
+                TV
+            </a>
+            <a class='navbar-link-item' href='movies.html'>
+                Movies
+            </a>
+            <!-- <input onkeyup="searchDesktop()" id="searchBarDesktop" type="text" name="searchD" placeholder="Search" class='desktop-search search-bar'> -->
+        </div>
+
+        <div class='right-navbar'>
+            <a href='search.html'><img src='icons/search.png' class='navbar-link-item active-navbar-link-item'></a>
+            <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item profile-preview-icon'></a>
+        </div>
+
+        <input onkeyup="search()" id="searchBar" type="text" placeholder="Search">
+
+        <div class='searchList'>
+            <div class='listItemChoice' onclick='transporter("movie","American Psycho")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/american-psycho.jpg')"></div>
+                    American Psycho
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Cars 2")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/cars-2.jpg')"></div>
+                    Cars 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Cars 3")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/cars-3.jpg')"></div>
+                    Cars 3
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Coraline")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/coraline.jpg')"></div>
+                    Coraline
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick="transporter('movie',`Daddy's Home 2`)">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/daddys-home-2.jpg')"></div>
+                    Daddy's Home 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Dumb and Dumber")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/dumb-and-dumber.jpg')"></div>
+                    Dumb and Dumber
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Hidden Figures")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/hidden-figures.jpg')"></div>
+                    Hidden Figures
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Knives Out")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/knives-out.jpg')"></div>
+                    Knives Out
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='expandTv("Parks and Recreation")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/parks-and-recreation.jpg')"></div>
+                    Parks and Recreation
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Ratatoille")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/ratatoille.jpg')"></div>
+                    Ratatoille
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='expandTv("Sherlock")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/sherlock.jpg')"></div>
+                    Sherlock
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Spider Man Homecoming")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/spider-man-homecoming.jpg')"></div>
+                    Spider Man: Homecoming
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","Spider Man: No Way Home")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/spider-man-no-way-home.jpg')"></div>
+                    Spider Man: No Way Home
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='expandTv("Squid Game")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/squid-game.jpg')"></div>
+                    Squid Game
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+            </div>
+
+            <div class='listItemChoice' onclick='transporter("movie","The Amazing Spider Man 2")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-amazing-spider-man-2.jpg')"></div>
+                    The Amazing Spider Man 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+            </div>
+
+            <div class='listItemChoice' onclick='expandTv("The Office")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-office.jpg')"></div>
+                    The Office
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+            </div>
+        </div>
+
+        
+
+        <div id='tvExpandScreen'>
+
+            <div id='tvScreenContents'>
+
+                <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+                <div id='tvTopbar'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span id='tvPanelTitle'>Tv Title</span>
+                </div>
+
+                <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id="tvPanelCoverImage"></div>
+                    <div id="tvPanelCoverImageSheet">
+                        <!-- <div class='utilityItems'>
+                            <div id='tv-expand-panel-title'>Show Title</div>
+                            <div class='activity-button button' onclick='watchNow("The Office")'>Watch Now</div>
+                        </div> -->
+                    </div>
+
+                    <div id='tvPanelContents'>
+
+                        <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+
+                        <div id='tvPanelEpisodeList'>
+                            <div class='listItemChoice'>
+                                <div class='listItemTitle'>Pilot</div>
+                                <div class='listItemLabel'>Episode 1</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

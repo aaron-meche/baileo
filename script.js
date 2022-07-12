@@ -136,6 +136,20 @@ function mobileDeviceTester(){
 
 // Working functions
 
+function search() {
+    let input = document.getElementById('searchBar').value;
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('listItemChoice');
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "flex";
+        }
+    }
+}
+
 function expandTv(mediaTitle) {
     var tvScreen = document.getElementById('tvExpandScreen');
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
@@ -175,9 +189,9 @@ function expandTv(mediaTitle) {
     var b = 0;
     while (b < (eval(titleUS)['s1']).length) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
-            <div class='episodeChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
-                <div class='episodeTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
-                <div class='episodeLabel'>Episode ` + (b + 1) + `</div>
+            <div class='listItemChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
+                <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
+                <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
             </div>`;
         // document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
         b++;
@@ -209,9 +223,9 @@ function selectSeason(seasonNum) {
     var b = 0;
     while (b < (eval(titleUS)['s' + seasonNum]).length) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
-            <div class='episodeChoice' onclick='transporter("tv","` + title + `","` + seasonNum + `","` + b + `")'>
-                <div class='episodeTitle'>` + (eval(titleUS)['s' + seasonNum])[b] + `</div>
-                <div class='episodeLabel'>Episode ` + (b + 1) + `</div>
+            <div class='listItemChoice' onclick='transporter("tv","` + title + `","` + seasonNum + `","` + b + `")'>
+                <div class='listItemTitle'>` + (eval(titleUS)['s' + seasonNum])[b] + `</div>
+                <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
             </div>`;
         // document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
         b++;
@@ -245,9 +259,11 @@ function closeTvScreen() {
     var tvExpandScreen = document.getElementById('tvExpandScreen');
     var tvScreenContents = document.getElementById('tvScreenContents');
 
-    tvExpandScreen.style.display = 'none';
     tvScreenContents.style.top = '100vh';
     tvScreenContents.style.opacity = '0';
+    setTimeout(function() {
+        tvExpandScreen.style.display = 'none';
+    }, 100);
 }
 
 sessionStorage['savedScrollLocation22838'] = 0;

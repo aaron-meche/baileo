@@ -32,15 +32,26 @@ body{
     /* Navigation bar */
 
 .navbar{
+    height: 50pt;
     background-color: var(--navbarBgColor);
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.right-navbar{
+    height: 50pt;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    position: absolute;
+    top: 0;
+    right: 10pt;
+}
     
 .navbar-link-item{
-    display: inline-block;
-    margin: 6pt;
+    height: 15pt;
+    margin: 10pt 5pt 10pt 5pt;
     padding: 10pt;
     border-radius: 10pt;
     cursor: pointer;
@@ -48,6 +59,10 @@ body{
     font-weight: 1000;
     color: rgb(160,166,178);
     border: solid 1pt rgba(128, 128, 128, 0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .navbar-link-item:hover{
@@ -57,6 +72,20 @@ body{
 
 .active-navbar-link-item{
     color: white;
+    background-color: rgba(40, 55, 93, 0.5);
+}
+
+.profile-preview-icon{
+    background-color: white;
+    border-radius: 100%;
+    height: 15pt;
+    padding: 5pt;
+    border: solid 3pt rgba(0,0,0,0);
+}
+
+.profile-preview-icon:hover{
+    background-color: white;
+    border: solid 3pt var(--princeton);
 }
 
 /* Media slider */
@@ -302,18 +331,18 @@ body{
     background-color: rgb(52, 52, 52);
 }
 
-.episodeChoice{
+.listItemChoice{
     min-height: 40pt;
     position: relative;
     cursor: default;
     padding: 10pt;
 }
 
-.episodeChoice:hover{
+.listItemChoice:hover{
     background-color: var(--navbarBgColor);
 }
 
-.episodeTitle{
+.listItemTitle{
     height: 100%;
     position: absolute;
     top: 0;
@@ -326,7 +355,7 @@ body{
     max-width: 60%;
 }
 
-.episodeLabel{
+.listItemLabel{
     height: 100%;
     position: absolute;
     top: 0;
@@ -335,6 +364,39 @@ body{
     align-items: center;
     justify-content: right;
     max-width: 40%;
+}
+
+/* Search bar */
+
+.listItemImageFrame{
+    height: 40pt;
+    min-width: 65pt;
+    display: inline-block;
+    background: transparent no-repeat center;
+    background-size: cover;
+    margin-right: 10pt;
+    border-radius: 5pt;
+    border: solid 1pt rgb(255, 255, 255);
+}
+
+#searchBar{
+    height: 50pt;
+    width: calc(100vw - 40pt);
+    margin: 5vh 20pt 5vh 20pt;
+    background-color: var(--silverAqua);
+    padding: 10pt;
+    outline: none;
+    font-size: 20pt;
+    font-family: WatchFace;
+    font-weight: 1000;
+    color: white;
+}
+
+#searchBar::placeholder{
+    font-size: 20pt;
+    font-family: WatchFace;
+    font-weight: 1000;
+    color: rgb(189, 189, 189);
 }
 
 /* Unused (old) panel expand content */

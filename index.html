@@ -3,7 +3,6 @@
     <head>
 
         <title>Baileo - Home</title>
-        <meta name="viewport" content="initial-scale = 1.3, user-scalable = no">
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
@@ -18,18 +17,22 @@
 
 
 
-        <div class='navbar'>
-            <!-- <img src='images/baileo-logo.png' class='navbar-logo'> -->
-            <div class='navbar-link-item active-navbar-link-item'>
+        <div class='navbar main-navbar'>
+            <a class='navbar-link-item active-navbar-link-item' href='index.html'>
                 Home
-            </div>
-            <div class='navbar-link-item' onclick='openPage("tv.html")'>
+            </a>
+            <a class='navbar-link-item' href='tv.html'>
                 TV
-            </div>
-            <div class='navbar-link-item' onclick='openPage("movies.html")'>
+            </a>
+            <a class='navbar-link-item' href='movies.html'>
                 Movies
-            </div>
+            </a>
             <!-- <input onkeyup="searchDesktop()" id="searchBarDesktop" type="text" name="searchD" placeholder="Search" class='desktop-search search-bar'> -->
+        </div>
+
+        <div class='right-navbar'>
+            <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
+            <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item profile-preview-icon'></a>
         </div>
 
         
@@ -191,9 +194,9 @@
                         <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
 
                         <div id='tvPanelEpisodeList'>
-                            <div class='episodeChoice'>
-                                <div class='episodeTitle'>Pilot</div>
-                                <div class='episodeLabel'>Episode 1</div>
+                            <div class='listItemChoice'>
+                                <div class='listItemTitle'>Pilot</div>
+                                <div class='listItemLabel'>Episode 1</div>
                             </div>
                         </div>
 
