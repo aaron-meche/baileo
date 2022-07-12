@@ -32,16 +32,16 @@ body{
     /* Navigation bar */
 
 .navbar{
-    background-color: var(--navbarBgColor);
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: solid 1pt gray;
 }
     
 .navbar-link-item{
     display: inline-block;
-    margin: 6pt;
     padding: 10pt;
+    margin: 5pt;
     border-radius: 10pt;
     cursor: pointer;
     font-size: 13pt;
@@ -50,13 +50,9 @@ body{
     border: solid 1pt rgba(128, 128, 128, 0);
 }
 
-.navbar-link-item:hover{
-    background-color: rgb(26, 37, 78);
-    border: solid 1pt gray;
-}
-
 .active-navbar-link-item{
     color: white;
+    background-color: rgba(40, 55, 93, 0.75);
 }
 
 /* Media slider */
@@ -70,10 +66,10 @@ body{
 }
 
 .media-slider-title-bar{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 1000;
-    padding-bottom: 10pt;
-    padding-left: 2vw;
+    padding-bottom: 15pt;
+    padding-left: 5vw;
 }
 
 .horizontal-scroll{
@@ -89,67 +85,23 @@ body{
 
 .media-slider-carousel{
     font-size: 0;
-    padding-left: 2vw;
+    padding-left: 5vw;
 }
 
 .media-slider-object{
-    height: 10.35vw;
-    width: 18.4vw;
-    border-radius: 1vw;
+    height: 50vw;
+    width: 35vw;
+    border-radius: 2vw;
     margin: 0;
-    margin-right: 1vw;
+    margin-right: 3vw;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
     position: relative;
 }
 
-@media screen and (max-width: 700px) {
-    .media-slider-object {
-        height: 26.71875vw;
-        width: 47.5vw;
-    }
-}
-
-@media screen and (min-width: 700px) and (max-width: 900px) {
-    .media-slider-object {
-        height: 17.6249998125vw;
-        width: 31.3333333333vw;
-    }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1200px) {
-    .media-slider-object {
-        height: 13.078125vw;
-        width: 23.25vw;
-    }
-}
-
 .media-slider-object .media-slider-object-shade{
-    height: calc(100% - 6pt);
-    border-radius: 1vw;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: solid 3pt rgb(255, 255, 255);
-    position: relative;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 100ms;
-}
-
-.media-slider-object img{
-    height: 30pt;
-    width: 30pt;
-    position: absolute;
-    top: calc(50% - 15pt);
-    left: calc(50% - 15pt);
-    background-color: white;
-    border-radius: 100vh;
-    transition: left 200ms;
-}
-
-.media-slider-object:hover .media-slider-object-shade{
-    opacity: 1;
+    display: none;
 }
 
 /* Media expand screen */
@@ -169,7 +121,7 @@ body{
     height: 100vh;
     width: 100vw;
     position: absolute;
-    top: 50vh;
+    top: 100vh;
     left: 0;
     transition-duration: 300ms;
     transition-timing-function: ease-out;
@@ -185,21 +137,21 @@ body{
 }
 
 #tvPanel{
-    height: 95vh;
-    width: 75vw;
+    height: 100vh;
+    width: 100vw;
     position: absolute;
-    top: 5vh;
-    left: 12.5vw;
+    top: 0;
+    left: 0;
     background-color: var(--bodyBgColor);
     overflow-y: scroll;
 }
 
 #tvTopbar{
     height: 50pt;
-    width: 75vw;
+    width: 100vw;
     position: absolute;
-    top: calc(5vh - 1pt);
-    left: 12.5vw;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,39 +168,9 @@ body{
     font-weight: 1000;
 }
 
-@media screen and (max-width: 800px) {
-    #tvPanel{
-        height: 90vh;
-        width: 100vw;
-        position: absolute;
-        top: 10vh;
-        left: 0;
-        border-radius: 0;
-    }
-    #tvTopbar{
-        justify-content: right;
-        height: 50pt;
-        width: calc(100vw - 15pt);
-        position: absolute;
-        top: calc(10vh - 1pt);
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: right;
-        /* border-bottom: solid 1pt gray; */
-        backdrop-filter: blur(10pt);
-        -webkit-backdrop-filter: blur(10pt);
-        background-color: rgba(27, 31, 40, 0.25);
-        z-index: 12;
-        border-bottom: solid 1pt gray;
-        padding-right: 15pt;
-    }
-}
-
 .close-panel-icon{
     height: 20pt;
-    padding: 5pt;
-    margin: 10pt;
+    padding: 15pt;
     position: absolute;
     top: 0;
     left: 0;

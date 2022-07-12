@@ -130,6 +130,10 @@ function transporter(type, title, season, episode) {
     window.open(generatedLink, "_self");
 }
 
+function mobileDeviceTester(){
+    return window.matchMedia('(hover: none)').matches;
+}
+
 // Working functions
 
 function expandTv(mediaTitle) {
@@ -156,7 +160,7 @@ function expandTv(mediaTitle) {
     setTimeout(function() {
         tvScreenContents.style.top = '0';
         tvScreenContents.style.opacity = '1';
-    }, 100);
+    }, 1);
 
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
@@ -242,7 +246,7 @@ function closeTvScreen() {
     var tvScreenContents = document.getElementById('tvScreenContents');
 
     tvExpandScreen.style.display = 'none';
-    tvScreenContents.style.top = '50vh';
+    tvScreenContents.style.top = '100vh';
     tvScreenContents.style.opacity = '0';
 }
 
@@ -262,6 +266,19 @@ function tvExpandPanelScrolled() {
     }
 }
 
+function isMobileDevice() {
+    if (mobileDeviceTester()) {
+        console.log('is mobile device');
+        var thumbnails = document.querySelectorAll(".media-slider-object");
+        for (var i = 0; i < thumbnails.length; i++) {
+            var mobileThumbails = thumbnails[i].style.backgroundImage.replace("thumbnails", "mobile thumbnails");
+            thumbnails[i].style.backgroundImage = mobileThumbails;
+            thumbnails[i].style.height = ''
+        }
+    } else {
+        console.log('no');
+    }
+}
 
 
 
