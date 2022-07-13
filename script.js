@@ -155,8 +155,7 @@ function nextEpisode(title, season, episode) {
             openPage('index.html');
         } else {
             season++;
-            episode = 1;
-            transporter('tv',title,season,episode);
+            transporter('tv',title,season,1);
         }
     } else {
         episode++;
