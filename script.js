@@ -139,6 +139,9 @@ function processRequest() {
     if (urlParams.get('action') == 'nextEpisode') {
         nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
     }
+    if (urlParams.get('action') == 'tvShowPanel') {
+        expandTv(urlParams.get('title').replace(/%20/g, ' '));
+    }
 }
 
 function nextEpisode(title, season, episode) {

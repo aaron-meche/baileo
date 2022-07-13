@@ -1,8 +1,12 @@
 <html>
     <head>
         <title>Baileo - Processing...</title>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
         <script src='script.js'></script>
         <style>
             body{
@@ -11,6 +15,43 @@
         </style>
     </head>
     <body onload='processRequest()'>
-        
+        <div id='tvExpandScreen'>
+
+            <div id='tvScreenContents'>
+
+                <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+                <div id='tvTopbar'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span id='tvPanelTitle'>Tv Title</span>
+                </div>
+
+                <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id="tvPanelCoverImage"></div>
+                    <div id="tvPanelCoverImageSheet">
+                        <!-- <div class='utilityItems'>
+                            <div id='tv-expand-panel-title'>Show Title</div>
+                            <div class='activity-button button' onclick='watchNow("The Office")'>Watch Now</div>
+                        </div> -->
+                    </div>
+
+                    <div id='tvPanelContents'>
+
+                        <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+
+                        <div id='tvPanelEpisodeList'>
+                            <div class='listItemChoice'>
+                                <div class='listItemTitle'>Pilot</div>
+                                <div class='listItemLabel'>Episode 1</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </body>
 </html>
