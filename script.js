@@ -175,6 +175,10 @@ function nextEpisode(title, season, episode) {
     }
 }
 
+window.addEventListener('load', function () {
+    console.log("It's loaded!")
+})
+
 // Working functions
 
 function search() {
