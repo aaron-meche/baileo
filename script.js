@@ -149,17 +149,18 @@ function nextEpisode(title, season, episode) {
     console.log('titleUS ' + tvShowUS);
     console.log('scap ' + seasonCapacity);
     console.log('stotal ' + seasonsTotal);
+    console.log('episodeGiven ' + episode)
 
     if (episode == (seasonCapacity - 1)) {
         if (season == seasonsTotal) {
             openPage('index.html');
         } else {
             season++;
-            transporter('tv',title,season,1);
+            transporter('tv',title,season,0);
         }
     } else {
         episode++;
-        transporter('tv',title,season,episode);
+        // transporter('tv',title,season,episode);
     }
 }
 
