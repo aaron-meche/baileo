@@ -96,6 +96,11 @@
                             <img src='icons/play-video-icon.png'>
                         </div>
                     </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/family-guy.jpg')" onclick='expandTv("Family Guy")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
 
                     <div class='media-slider-object'>
                     </div>
@@ -174,12 +179,13 @@
             <div id='tvScreenContents'>
 
                 <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-                <div id='tvTopbar'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span id='tvPanelTitle'>Tv Title</span>
-                </div>
 
                 <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id='tvTopbar'>
+                        <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                        <span id='tvPanelTitle'>Tv Title</span>
+                    </div>
 
                     <div id="tvPanelCoverImage"></div>
                     <div id="tvPanelCoverImageSheet">

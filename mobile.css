@@ -183,7 +183,7 @@ body{
 #tvTopbar{
     height: 50pt;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -216,7 +216,7 @@ body{
 
 #tvPanelNavbarContents{
     position: sticky;
-    top: 49pt;
+    top: 50pt;
     z-index: 10;
 }
 
@@ -224,7 +224,7 @@ body{
     height: 65vh;
     width: 100%;
     position: absolute;
-    top: 49pt;
+    top: 50pt;
     left: 0;
     background: transparent no-repeat center;
     background-size: cover;
@@ -234,7 +234,7 @@ body{
     height: 65vh;
     width: 100%;
     position: absolute;
-    top: 49pt;
+    top: 50pt;
     left: 0;
     background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(27, 31, 40, 0.8) 20%, rgba(0,0,0,0) 60%);
 }

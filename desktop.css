@@ -8,7 +8,7 @@
     --princeton: #FF8F00;
     --honey: #F6AE2D;
 
-    --themePicker: rgb(111, 185, 238);
+    --themePicker: rgba(227, 45, 255, 0.5);
 }
 
 @font-face {
@@ -72,7 +72,7 @@ body{
 
 .active-navbar-link-item{
     color: white;
-    background-color: rgba(40, 55, 93, 0.5);
+    background-color: var(--silverAqua);
 }
 
 .profile-preview-icon{
@@ -225,16 +225,15 @@ body{
 #tvTopbar{
     height: 50pt;
     width: 75vw;
-    position: absolute;
-    top: calc(5vh - 1pt);
-    left: 12.5vw;
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    float: left;
     /* border-bottom: solid 1pt gray; */
-    backdrop-filter: blur(10pt);
-    -webkit-backdrop-filter: blur(10pt);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
     z-index: 12;
     border-bottom: solid 1pt gray;
 }
@@ -288,7 +287,7 @@ body{
 
 #tvPanelNavbarContents{
     position: sticky;
-    top: 49pt;
+    top: 50pt;
     z-index: 10;
 }
 
@@ -296,7 +295,7 @@ body{
     height: 65vh;
     width: 100%;
     position: absolute;
-    top: 49pt;
+    top: 50pt;
     left: 0;
     background: transparent no-repeat center;
     background-size: cover;
@@ -306,7 +305,7 @@ body{
     height: 65vh;
     width: 100%;
     position: absolute;
-    top: 49pt;
+    top: 50pt;
     left: 0;
     background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(27, 31, 40, 0.8) 20%, rgba(0,0,0,0) 60%);
 }

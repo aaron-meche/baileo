@@ -58,6 +58,24 @@
 
         <div class='media-slider-section'>
             <div class='media-slider-title-bar'>
+                <div class='media-slider-title'>Animations</div>
+            </div>
+            <div class='horizontal-scroll'>
+                <div class='media-slider-carousel'>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/family-guy.jpg')" onclick='expandTv("Family Guy")'>
+                        <div class='media-slider-object-shade'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
+
+                    <div class='media-slider-object'>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='media-slider-section'>
+            <div class='media-slider-title-bar'>
                 <div class='media-slider-title'>Dramas</div>
             </div>
             <div class='horizontal-scroll'>
@@ -84,12 +102,13 @@
             <div id='tvScreenContents'>
 
                 <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-                <div id='tvTopbar'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span id='tvPanelTitle'>Tv Title</span>
-                </div>
 
                 <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id='tvTopbar'>
+                        <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                        <span id='tvPanelTitle'>Tv Title</span>
+                    </div>
 
                     <div id="tvPanelCoverImage"></div>
                     <div id="tvPanelCoverImageSheet">
