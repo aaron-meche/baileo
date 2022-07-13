@@ -160,7 +160,7 @@ function nextEpisode(title, season, episode) {
         }
     } else {
         episode++;
-        // transporter('tv',title,season,episode);
+        transporter('tv',title,season,episode);
     }
 }
 
