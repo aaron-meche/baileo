@@ -134,6 +134,36 @@ function mobileDeviceTester(){
     return window.matchMedia('(hover: none)').matches;
 }
 
+function processRequest() {
+    var urlParams = new URLSearchParams(document.location.search);
+    if (urlParams.get('action') == 'nextEpisode') {
+        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
+    }
+}
+
+function nextEpisode(title, season, episode) {
+    var tvShowUS = unspace(title);
+    var seasonCapacity = eval(tvShowUS)['s' + season].length;
+    var seasonsTotal = eval(tvShowUS)['sTotal'];
+
+    console.log('titleUS ' + tvShowUS);
+    console.log('scap ' + seasonCapacity);
+    console.log('stotal ' + seasonsTotal);
+
+    if (episode == (seasonCapacity - 1)) {
+        if (season == seasonsTotal) {
+            openPage('index.html');
+        } else {
+            season++;
+            episode = 1;
+            transporter('tv',title,season,episode);
+        }
+    } else {
+        episode++;
+        transporter('tv',title,season,episode);
+    }
+}
+
 // Working functions
 
 function search() {
