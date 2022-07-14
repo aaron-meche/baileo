@@ -29,7 +29,20 @@ body{
     padding-bottom: 4rem;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
 /* Loading Screen */
+
+
+
+
 
 #loadingScreen{
     height: 100vh;
@@ -48,7 +61,15 @@ body{
     height: 30vh;
 }
 
+
+
+
+
 /* Navigation bar */
+
+
+
+
 
 .navbar{
     height: 50pt;
@@ -56,6 +77,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main-navbar{
+    z-index: 1;
 }
 
 .right-navbar{
@@ -95,23 +120,30 @@ body{
 }
 
 .profile-preview-icon{
-    background-color: white;
     border-radius: 100%;
     height: 15pt;
     padding: 5pt;
-    border: solid 3pt rgba(0,0,0,0);
+    border: solid 2pt rgba(0,0,0,0);
+    background-color: white;
 }
 
 .profile-preview-icon:hover{
     background-color: white;
-    border: solid 3pt var(--princeton);
+    border: solid 2pt white;
 }
+
+
+
+
 
 /* Media slider */
 
+
+
+
+
 .media-slider-section{
     padding-top: 4rem;
-    /* padding-right: 2vw; */
     position: relative;
     top: 0;
     left: 0;
@@ -200,7 +232,15 @@ body{
     opacity: 1;
 }
 
+
+
+
+
 /* Media expand screen */
+
+
+
+
 
 #tvExpandScreen{
     height: 100vh;
@@ -264,20 +304,19 @@ body{
 
 @media screen and (max-width: 800px) {
     #tvPanel{
-        height: 90vh;
+        height: 100vh;
         width: 100vw;
         position: absolute;
-        top: 10vh;
+        top: 0;
         left: 0;
         border-radius: 0;
     }
     #tvTopbar{
         justify-content: right;
         height: 50pt;
-        width: calc(100vw - 15pt);
-        position: absolute;
-        top: calc(10vh - 1pt);
-        left: 0;
+        width: calc(100% - 15pt);
+        position: sticky;
+        top: 0;
         display: flex;
         align-items: center;
         justify-content: right;
@@ -308,6 +347,8 @@ body{
     position: sticky;
     top: 50pt;
     z-index: 1;
+    margin-bottom: 10pt;
+    padding-left: 15pt;
 }
 
 #tvPanelCoverImage{
@@ -338,15 +379,6 @@ body{
 
 #tvPanelEpisodeList{
     padding-bottom: 15vh;
-}
-
-.activity-button-choice{
-    border: solid 1pt gray;
-    border-radius: 0;
-}
-
-.activity-button-choice:hover{
-    background-color: rgb(52, 52, 52);
 }
 
 .listItemChoice{
@@ -384,7 +416,35 @@ body{
     max-width: 40%;
 }
 
+.activity-button{
+    width: auto;
+    background-color: rgb(67, 103, 132);
+    color: white;
+    font-size: 15pt;
+    font-family: WatchFace;
+    font-weight: 1000;
+    border: none;
+    outline: none;
+    padding: 10pt;
+    border-radius: 5pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-bottom: 10pt;
+}
+
+.activity-button:hover{
+    background-color: rgb(34, 68, 95);
+}
+
+
+
+
+
 /* Search bar */
+
+
+
+
 
 .listItemImageFrame{
     height: 40pt;
@@ -417,4 +477,86 @@ body{
     font-family: WatchFace;
     font-weight: 1000;
     color: rgb(189, 189, 189);
+}
+
+
+
+
+
+/* Use account prompt */
+
+
+
+
+
+.screen-card{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen-content{
+    padding: 50pt;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.screen-content .prompt-card{
+    margin: auto;
+}
+
+.blur-background{
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
+}
+
+.prompt-card{
+    width: 30vw;
+    background-color: var(--bodyBgColor);
+    padding: 25pt;
+}
+
+.prompt-card .title{
+    font-size: 20pt;
+    font-weight: 1000;
+    border-bottom: solid 1pt gray;
+    padding-bottom: 10pt;
+    margin-bottom: 10pt;
+}
+
+.horizontal-screen-button{
+    margin: 10pt auto 0 auto;
+    text-align: center;
+    font-size: 12pt;
+    padding: 5pt;
+    cursor: pointer;
+}
+
+.horizontal-screen-button:hover{
+    background-color: var(--navbarBgColor);
+}
+
+.primary-button{
+    background-color: var(--silverAqua);
+    border: solid 2pt rgb(97, 98, 133);
+}
+
+.secondary-button{
+    border: solid 2pt var(--silverAqua);
+}
+
+.account-input-field{
+    width: 100%;
+    background-color: var(--navbarBgColor);
+    outline: none;
+    border: solid 1pt gray;
+    padding: 10pt;
+    color: white;
+    font-size: 12pt;
+    margin-top: 10pt;
 }

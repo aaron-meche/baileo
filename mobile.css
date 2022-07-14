@@ -29,6 +29,11 @@ body{
     padding-bottom: 4rem;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 #loadingScreen{
     height: 100vh;
     width: 100vw;
@@ -46,7 +51,15 @@ body{
     width: 50vw;
 }
 
+
+
+
+
 /* Navigation bar */
+
+
+
+
 
 .navbar{
     height: 50pt;
@@ -98,15 +111,25 @@ body{
 
 .active-navbar-link-item{
     color: white;
-    background-color: rgba(40, 55, 93, 0.75);
+    background-color: var(--silverAqua);
 }
 
 .profile-preview-icon{
-    background-color: white;
     border-radius: 100%;
+    height: 15pt;
+    padding: 5pt;
+    border: solid 2pt rgba(0,0,0,0);
+    background-color: white;
 }
 
+
+
+
 /* Media slider */
+
+
+
+
 
 .media-slider-section{
     padding-top: 4rem;
@@ -155,7 +178,15 @@ body{
     display: none;
 }
 
-/* Media expand screen */
+
+
+
+
+/* TV expand screen */
+
+
+
+
 
 #tvExpandScreen{
     height: 100vh;
@@ -235,10 +266,12 @@ body{
     position: sticky;
     top: 50pt;
     z-index: 10;
+    margin-bottom: 10pt;
+    padding-left: 15pt;
 }
 
 #tvPanelCoverImage{
-    height: 65vh;
+    height: 55vh;
     width: 100%;
     position: absolute;
     top: 50pt;
@@ -248,7 +281,7 @@ body{
 }
 
 #tvPanelCoverImageSheet{
-    height: 65vh;
+    height: 55vh;
     width: 100%;
     position: absolute;
     top: 50pt;
@@ -260,20 +293,11 @@ body{
     height: auto;
     width: 100%;
     position: absolute;
-    top: 60vh;
+    top: 50vh;
 }
 
 #tvPanelEpisodeList{
     padding-bottom: 15vh;
-}
-
-.activity-button-choice{
-    border: solid 1pt gray;
-    border-radius: 0;
-}
-
-.activity-button-choice:hover{
-    background-color: rgb(52, 52, 52);
 }
 
 .listItemChoice{
@@ -310,7 +334,29 @@ body{
     max-width: 30%;
 }
 
+.activity-button{
+    width: auto;
+    background-color: rgb(67, 103, 132);
+    color: white;
+    font-size: 15pt;
+    font-family: WatchFace;
+    font-weight: 1000;
+    border: none;
+    outline: none;
+    padding: 10pt;
+    border-radius: 5pt;
+    margin: 10pt;
+}
+
+
+
+
+
 /* Search bar */
+
+
+
+
 
 .listItemImageFrame{
     height: 40pt;
@@ -341,4 +387,86 @@ body{
     font-family: WatchFace;
     font-weight: 1000;
     color: rgb(189, 189, 189);
+}
+
+
+
+
+
+/* Use account prompt */
+
+
+
+
+
+.screen-card{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen-content{
+    padding: 50pt 0 50pt 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.screen-content .prompt-card{
+    margin: auto;
+}
+
+.blur-background{
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
+}
+
+.prompt-card{
+    width: calc(100vw - 50pt);
+    background-color: var(--bodyBgColor);
+    padding: 25pt;
+}
+
+.prompt-card .title{
+    font-size: 20pt;
+    font-weight: 1000;
+    border-bottom: solid 1pt gray;
+    padding-bottom: 10pt;
+    margin-bottom: 10pt;
+}
+
+.horizontal-screen-button{
+    margin: 10pt auto 0 auto;
+    text-align: center;
+    font-size: 15pt;
+    padding: 7pt;
+    cursor: pointer;
+}
+
+.horizontal-screen-button:hover{
+    background-color: var(--navbarBgColor);
+}
+
+.primary-button{
+    background-color: var(--silverAqua);
+    border: solid 2pt rgb(97, 98, 133);
+}
+
+.secondary-button{
+    border: solid 2pt var(--silverAqua);
+}
+
+.account-input-field{
+    width: 100%;
+    background-color: var(--navbarBgColor);
+    outline: none;
+    border: solid 1pt gray;
+    padding: 10pt;
+    color: white;
+    font-size: 12pt;
+    margin-top: 10pt;
 }

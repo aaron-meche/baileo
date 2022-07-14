@@ -13,7 +13,7 @@
 
     </head>
 
-    <body id='body' onload='isMobileDevice()'>
+    <body id='body' onload='isMobileDevice(), checkForAccount(), injectTvScreen()'>
 
 
 
@@ -104,46 +104,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div id='tvExpandScreen'>
-
-            <div id='tvScreenContents'>
-
-                <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-
-                <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-
-                    <div id='tvTopbar' onclick='closeTvScreen()'>
-                        <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                        <span id='tvPanelTitle'>Tv Title</span>
-                    </div>
-
-                    <div id="tvPanelCoverImage"></div>
-                    <div id="tvPanelCoverImageSheet">
-                        <!-- <div class='utilityItems'>
-                            <div id='tv-expand-panel-title'>Show Title</div>
-                            <div class='activity-button button' onclick='watchNow("The Office")'>Watch Now</div>
-                        </div> -->
-                    </div>
-
-                    <div id='tvPanelContents'>
-
-                        <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
-
-                        <div id='tvPanelEpisodeList'>
-                            <div class='listItemChoice'>
-                                <div class='listItemTitle'>Pilot</div>
-                                <div class='listItemLabel'>Episode 1</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
 
     </body>

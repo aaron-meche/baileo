@@ -34,8 +34,8 @@ const ParksandRecreation = {
     s1: ["Pilot", "Canvassing", "The Reporter", "Boys' Club", "The Banquet", "Rock Show"],
     s2: ["Pawnee Zoo", "The Stakeout", "Beauty Pageant", "Practice Date", "Sister City", "Kaboom", "Greg Pitkins", "Ron and Tammy", "The Camel", "Hunting Trip", "Tom’s Divorce", "Christmas Scandal", "The Set Up", "Leslie’s House", "Sweetums", "Galentine’s Day", "Woman of the Year", "The Possum", "Park Safety", "Summer Catalog", "94 Meetings", "Telethon", "The Master Plan", "Freddy Spaghetti"],
     s3: ["Go Big or Go Home", "Flu Season", "Time Capsule", "Ron & Tammy: Part Two", "Media Blitz", "Indianapolis", "Harvest Festival", "Camping", "Andy and April’s Fancy Party", "Soulmates", "Jerry’s Painting", "Eagleton", "The Fight", "Road Trip", "The Bubble", "Li’l Sebastian"],
-    s4: ["I'm Leslie Knope", "Ron and Tammys", "Born & Raised", "Pawnee Rangers", "Meet n Greet", "End of the World", "The Treaty", "Smallest Park", "The Trial of Leslie Know", "Citizen Knope", "The Comeback Kid", "Campaign Ad", "Bowling for Votes", "Operation Ann", "Dave Returns", "Sweet Sixteen", "Campaign Shake-Up", "Lucky", "Live Ammo", "The Debate", "Bus Tour", "Win, Lose, or Draw"],
-    s5: ["Ms. Knope Goes to Washington", "Soda Tax", "How a Bill Becomes a Law", "Sex Education", "Halloween Suprise", "Ben's Parents", "Leslie vs. April", "Pawnee Commons", "Ron and Diane", "Two Parties", "Women in Garbage", "Ann’s Decision", "Emergency Response", "Leslie and Ben", "Correspondent’s Lunch", "Bailout", "Partridge", "Animal Control", "Article Two", "Jerry’s Retirement", "Swing Vote", "Are You Better Off?"],
+    s4: ["I'm Leslie Knope", "Ron and Tammys", "Born and Raised", "Pawnee Rangers", "Meet n Greet", "End of the World", "The Treaty", "Smallest Park", "The Trial of Leslie Know", "Citizen Knope", "The Comeback Kid", "Campaign Ad", "Bowling for Votes", "Operation Ann", "Dave Returns", "Sweet Sixteen", "Campaign Shake-Up", "Lucky", "Live Ammo", "The Debate", "Bus Tour", "Win, Lose, or Draw"],
+    s5: ["Ms. Knope Goes to Washington", "Soda Tax", "How a Bill Becomes a Law", "Sex Education", "Halloween Suprise", "Ben's Parents", "Leslie v April", "Pawnee Commons", "Ron and Diane", "Two Parties", "Women in Garbage", "Ann’s Decision", "Emergency Response", "Leslie and Ben", "Correspondent’s Lunch", "Bailout", "Partridge", "Animal Control", "Article Two", "Jerry’s Retirement", "Swing Vote", "Are You Better Off"],
     s6: ["London", "The Pawnee-Eagleton Tip Off Classic", "Doppelgängers", "Gin it Up!", "Filibuster", "Recall Vote", "Fluoride", "The Cones of Dunshire", "Second Chunce", "New Beginnings", "Farmers Market", "Ann and Chris", "Anniversaries", "The Wall", "New Slogan", "Galentine’s Day", "Prom", "Flu Season 2", "One in 8,000", "Moving Up"],
     s7: ["2017", "Ron and Jammy", "William Henry Harrison", "Leslie and Ron", "Gryzzlbox", "Save JJ's", "Donna and Joe", "Ms. Ludgate-Dwyer Goes to Washington", "Pie-Mary", "The Johnny Karate Super Awesome Musical Explosion Show", "Two Funerals", "One Last Ride"],
     description: "Parks and Recreation (also known as Parks and Rec) is an American political satire mockumentary sitcom television series created by Greg Daniels and Michael Schur. The series aired on NBC from April 9, 2009, to February 24, 2015, for 125 episodes, over seven seasons. A special reunion episode aired on April 30, 2020. The series stars Amy Poehler as Leslie Knope, a perky, mid-level bureaucrat in the Parks Department of Pawnee, a fictional town in Indiana. The ensemble and supporting cast features Rashida Jones as Ann Perkins, Paul Schneider as Mark Brendanawicz, Aziz Ansari as Tom Haverford, Nick Offerman as Ron Swanson, Aubrey Plaza as April Ludgate, Chris Pratt as Andy Dwyer, Adam Scott as Ben Wyatt, Rob Lowe as Chris Traeger, Jim O'Heir as Garry (Jerry) Gergich, Retta as Donna Meagle, and Billy Eichner as Craig Middlebrooks.",
@@ -64,8 +64,9 @@ const Sherlock = {
 const FamilyGuy = {
     mediaType: 'tv',
     sTotal: 20,
-    s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
-    description: "Sherlock is a British mystery crime drama television series based on Sir Arthur Conan Doyle's Sherlock Holmes detective stories. Created by Steven Moffat and Mark Gatiss, it stars Benedict Cumberbatch as Sherlock Holmes and Martin Freeman as Doctor John Watson. Thirteen episodes have been produced, with four three-part series airing from 2010 to 2017 and a special episode that aired on 1 January 2016. The series is set in the present day, while the one-off special features a Victorian period fantasy resembling the original Holmes stories. Sherlock is produced by the British network BBC, along with Hartswood Films, with Moffat, Gatiss, Sue Vertue and Rebecca Eaton serving as executive producers. The series is supported by the American station WGBH-TV Boston for its Masterpiece anthology series on PBS, where it also airs in the United States. The series is primarily filmed in Cardiff, Wales, with North Gower Street in London used for exterior shots of Holmes and Watson's 221B Baker Street residence.",
+    // s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
+    s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
+    description: "Family Guy! Description coming soon",
     color: "rgba(227, 45, 255, 0.25)",
 }
 
@@ -119,7 +120,15 @@ const TheAmazingSpiderMan2 = {
     description: `The Amazing Spider-Man 2 (internationally titled The Amazing Spider-Man 2: Rise of Electro)[6] is a 2014 American superhero film based on the Marvel Comics character Spider-Man. The film was directed by Marc Webb and produced by Avi Arad and Matt Tolmach. It is the fifth theatrical Spider-Man film produced by Columbia Pictures and Marvel Entertainment, the sequel to The Amazing Spider-Man (2012), and the final film in The Amazing Spider-Man series. The studio hired James Vanderbilt to write the screenplay and Alex Kurtzman and Roberto Orci to rewrite it. The film stars Andrew Garfield as Peter Parker / Spider-Man, alongside Emma Stone, Jamie Foxx, Dane DeHaan, Campbell Scott, Embeth Davidtz, Colm Feore, Paul Giamatti, and Sally Field. In the film, Peter Parker tries to protect Gwen Stacy as he investigates his parents' death, while also dealing with the supervillain Electro and the return of his childhood friend Harry Osborn, who is dying from a deadly genetic disease.`,
 }
 
+
+
+
+
 // Reference functions
+
+
+
+
 
 function openPage(location) {
     window.open(location, "_self");
@@ -130,12 +139,16 @@ function unspace(string) {
 }
 
 function transporter(type, title, season, episode) {
-    if (type == 'tv') {
-        var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-    } if (type == 'movie') {
-        var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
+    if (localStorage['username'] == undefined) {
+        openPage('login.html');
+    } else {
+        if (type == 'tv') {
+            var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+        } if (type == 'movie') {
+            var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
+        }
+        window.open(generatedLink, "_self");
     }
-    window.open(generatedLink, "_self");
 }
 
 function mobileDeviceTester(){
@@ -146,9 +159,6 @@ function processRequest() {
     var urlParams = new URLSearchParams(document.location.search);
     if (urlParams.get('action') == 'nextEpisode') {
         nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
-    } 
-    if (urlParams.get('action') == 'tvShowPanel') {
-        expandTv(urlParams.get('title').replace(/%20/g, ' '));
     }
 }
 
@@ -185,7 +195,19 @@ window.addEventListener('load', function () {
     }, 50);
 })
 
+function notify(title, message) {
+    document.getElementById('notification').innerHTML = "<div class='notification-title'>" + title + "</div>" + message
+}
+
+
+
+
+
 // Working functions
+
+
+
+
 
 function search() {
     let input = document.getElementById('searchBar').value;
@@ -202,6 +224,7 @@ function search() {
 }
 
 function expandTv(mediaTitle) {
+
     var tvScreen = document.getElementById('tvExpandScreen');
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
     var tvPanelTitle = document.getElementById('tvPanelTitle');
@@ -211,17 +234,39 @@ function expandTv(mediaTitle) {
     var tvPanel = document.getElementById('tvPanel');
     var title = mediaTitle;
     var titleUS = unspace(mediaTitle);
-    var mediaType = eval(unspace(mediaTitle))['mediaType'];
+    var mediaType = eval(titleUS)['mediaType'];
+
+    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + title).once('value', (snapshot) => {
+        if (localStorage['username'] == undefined) {
+            console.log('You can not watch content on baileo without an account!')
+        } else {
+            if (snapshot.val() > 0) {
+                document.getElementById('continueWatchingTvButton').style.display = 'block';
+                var season = 0;
+                var episode = 0;
+                firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'S').once('value', (snapshot) => {
+                    season = snapshot.val();
+                    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
+                        episode = snapshot.val();
+                        document.getElementById('continueWatchingTvButton').innerHTML = 'Continue Watching: S' + season + 'E' + (Number(episode) + 1)  + ' - ' + (eval(titleUS)['s' + season])[episode];
+                    }); 
+                });
+            } else {
+                document.getElementById('startWatchingTvButton').style.display = 'block';
+            }
+        }
+    }); 
     
     localStorage['tvTitle'] = title;
     localStorage['activeSeasonTab'] = 1;
 
     tvScreen.style.display = 'block';
     tvPanel.scrollTop = '0';
-    tvPanelTitle.innerHTML = mediaTitle;
+    tvNavbarContent.scrollLeft = '0';
+    tvPanelTitle.innerHTML = title;
     tvNavbarContent.innerHTML = '';
     tvPanelEpisodeList.innerHTML = '';
-    tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + mediaTitle.replace(/\s/g, '-').toLowerCase() + '.jpg")';
+    tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
     setTimeout(function() {
         tvScreenContents.style.top = '0';
         tvScreenContents.style.opacity = '1';
@@ -244,9 +289,18 @@ function expandTv(mediaTitle) {
                 <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
                 <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
             </div>`;
-        // document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
         b++;
     }
+}
+
+function continueWatchingTv() {
+    var season = 0;
+    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['tvTitle'] + 'S').once('value', (snapshot) => {
+        season = snapshot.val();
+        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['tvTitle'] + 'E').once('value', (snapshot) => {
+            transporter('tv',localStorage['tvTitle'],season,snapshot.val())
+        }); 
+    });
 }
 
 function selectSeason(seasonNum) {
@@ -262,7 +316,6 @@ function selectSeason(seasonNum) {
 
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
-        // mediaNavbarContent.innerHTML = mediaNavbarContent.innerHTML + `<div class='navbar-link-item activity-button-choice' onclick='startTV()'>▶ Start Series</div><div class='navbar-link-item activity-button-choice' onclick='continueTV()'>➔ Continue Watching</div>`;
         if (a == localStorage['activeSeasonTab']) {
             tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`
         } else {
@@ -277,33 +330,8 @@ function selectSeason(seasonNum) {
             <div class='listItemChoice' onclick='transporter("tv","` + title + `","` + seasonNum + `","` + b + `")'>
                 <div class='listItemTitle'>` + (eval(titleUS)['s' + seasonNum])[b] + `</div>
                 <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
-            </div>`;
-        // document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
-        b++;
+            </div>`;b++;
     }
-
-    // var seasonXEpisodes = (eval(titleUS).s + seasonNum);
-    // document.getElementById('seasonEpisodesList').innerHTML = '';
-    // localStorage['activeEpisodesTab'] = seasonNum;
-    // document.getElementById('tv-expand-panel-navbar').innerHTML = '';
-
-
-    // var c = 0;
-    // while (c < seasonXEpisodes) {
-    //     c++;
-    //     document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShowTitleSpaced + `","` + seasonNum + `","` + c + `")'><div class='orderedListNumber'>` + c + `.</div><div class="orderedListContent">` + eval(tvShowTitleUnspaced + 'S' + seasonNum)[c] + `</div></div>`;
-    // }
-
-
-    // var d = 0;
-    // while (d < eval(tvShowTitleUnspaced).length) {
-    //     d++;
-    //     if (d == localStorage['activeEpisodesTab']) {
-    //         document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='active-tv-expand-panel-navbar-item' onclick='selectSeason("`+ d + `")'>Season ` + d + `</div>`
-    //     } else {
-    //         document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='tv-expand-panel-navbar-item' onclick='selectSeason("` + d + `")'>Season ` + d + `</div>`
-    //     }
-    // }
 }
 
 function closeTvScreen() {
@@ -315,6 +343,10 @@ function closeTvScreen() {
     setTimeout(function() {
         tvExpandScreen.style.display = 'none';
     }, 100);
+
+
+    document.getElementById('continueWatchingTvButton').style.display = 'none';
+    document.getElementById('startWatchingTvButton').style.display = 'none';
 }
 
 sessionStorage['savedScrollLocation22838'] = 0;
@@ -343,72 +375,91 @@ function isMobileDevice() {
             thumbnails[i].style.height = ''
         }
     } else {
-        console.log('no');
+        console.log('No mobile device detected');
     }
 }
 
+function injectTvScreen() {
+    document.getElementById('body').insertAdjacentHTML('beforeend',`
+    <div id='tvExpandScreen'>
+        <div id='tvScreenContents'>
+            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+            <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                <div id='tvTopbar' onclick='closeTvScreen()'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span id='tvPanelTitle'>Tv Title</span>
+                </div>
+                <div id="tvPanelCoverImage"></div>
+                <div id="tvPanelCoverImageSheet"></div>
+                <div id='tvPanelContents'>
+                    <button class='activity-button' style='display: none;' onclick='continueWatchingTv()' id='continueWatchingTvButton'>Continue Watching</button>
+                    <button class='activity-button' style='display: none;' onclick='transporter("tv",localStorage["tvTitle"],1,0)' id='startWatchingTvButton'>Start from Beginning</button>
+                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+                    <div id='tvPanelEpisodeList'>
+                        <div class='listItemChoice'>
+                            <div class='listItemTitle'>Pilot</div>
+                            <div class='listItemLabel'>Episode 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`);
+}
 
+function checkForAccount() {
+    if (localStorage['username'] == undefined) {
+        document.getElementById('body').insertAdjacentHTML('beforeend',`
+        <div id='useAccountPrompt' class='screen-card blur-background'>
+            <div class='prompt-card'>
+                <div class='title'>Login or Create Account to Continue</div>
+                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
+                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
+            </div>
+        </div>`);
+    }
+}
 
-
-function expandMediaShow(mediaTitle) {
-    // document.getElementById('tvExpandPanel').scrollTop = '0';
-    var mediaExpandScreen = document.getElementById('mediaExpandScreen');
-    localStorage['expandMediaShowTitle'] = mediaTitle;
-
-    mediaExpandScreen.style.display = 'block';
-    document.getElementById('media-expand-panel-title').innerHTML = tvShow;
-    localStorage['activeEpisodesTab'] = 1;
-    document.getElementById('seasonEpisodesList').innerHTML = '';
-    var season1Episodes = eval(tvShow.replace(/\s/g, ''))[0];
-    document.getElementById('media-expand-panel-navbar').innerHTML = '';
-    document.getElementById('mediaExpandPanel').scrollTop = '0';
-
-
-    var a = 0;
-    while (a < eval(mediaTitle.replace(/\s/g, '')).length) {
-        a++;
-        if (a == localStorage['activeEpisodesTab']) {
-            document.getElementById('media-expand-panel-navbar').innerHTML = document.getElementById('media-expand-panel-navbar').innerHTML + `<div class='active-tv-expand-panel-navbar-item' onclick='selectSeason("`+ a + `")'>Season ` + a + `</div>`
+function login() {
+    var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
+    var passwordInput = document.getElementById("passwordInput").value;
+    firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
+        if (snapshot.val() == passwordInput) {
+            localStorage['username'] = usernameInput;
+            openPage('index.html');
         } else {
-            document.getElementById('media-expand-panel-navbar').innerHTML = document.getElementById('media-expand-panel-navbar').innerHTML + `<div class='tv-expand-panel-navbar-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`
+            alert('Login unsuccessful: username or password incorrect');
         }
-    }
-
-
-    var b = 0;
-    while (b < season1Episodes) {
-        b++;
-        document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShow + `","1","` + b + `")'><div class='orderedListNumber'>` + b + `.</div><div class="orderedListContent">` + eval(tvShow.replace(/\s/g, '') + 'S1')[b] + `</div></div>`
-    }
+    });
 }
 
-function closeTvExpandScreen() {
-    document.getElementById('tvExpandScreen').style.display = 'none';
-}
-
-function selectSeasonOld(seasonNum) {
-    var tvShowTitleSpaced = localStorage['expandTvShowTitle'];
-    var tvShowTitleUnspaced = localStorage['expandTvShowTitle'].replace(/\s/g, '');
-    var seasonXEpisodes = eval(tvShowTitleUnspaced)[seasonNum - 1];
-    document.getElementById('seasonEpisodesList').innerHTML = '';
-    localStorage['activeEpisodesTab'] = seasonNum;
-    document.getElementById('tv-expand-panel-navbar').innerHTML = '';
-
-
-    var c = 0;
-    while (c < seasonXEpisodes) {
-        c++;
-        document.getElementById('seasonEpisodesList').innerHTML = document.getElementById('seasonEpisodesList').innerHTML + `<div class='orderedListItem' onclick='transporter("tv","` + tvShowTitleSpaced + `","` + seasonNum + `","` + c + `")'><div class='orderedListNumber'>` + c + `.</div><div class="orderedListContent">` + eval(tvShowTitleUnspaced + 'S' + seasonNum)[c] + `</div></div>`;
-    }
-
-
-    var d = 0;
-    while (d < eval(tvShowTitleUnspaced).length) {
-        d++;
-        if (d == localStorage['activeEpisodesTab']) {
-            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='active-tv-expand-panel-navbar-item' onclick='selectSeason("`+ d + `")'>Season ` + d + `</div>`
+function signup() {
+    var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
+    var passwordInput = document.getElementById("passwordInput").value;
+    var confirmPasswordInput = document.getElementById("passwordInput").value;
+    if (passwordInput == confirmPasswordInput) {
+        if (passwordInput == '') {
+            alert('You must enter a password!');
         } else {
-            document.getElementById('tv-expand-panel-navbar').innerHTML = document.getElementById('tv-expand-panel-navbar').innerHTML + `<div class='tv-expand-panel-navbar-item' onclick='selectSeason("` + d + `")'>Season ` + d + `</div>`
+            if (usernameInput == '') {
+                alert('You must enter a username!')
+            } else {
+                firebase.database().ref('users/' + usernameInput + '/password').set(passwordInput);
+                localStorage['username'] = usernameInput;
+                // openPage('index.html');
+            }
         }
+    } else {
+        document.getElementById("signUpButton").innerHTML = 'Passwords do not match';
+        document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
     }
+}
+
+function loadProfile() {
+    document.getElementById('profilePageUsername').innerHTML = 'Welcome, ' + localStorage['username'];
+}
+
+function logout() {
+    localStorage.clear();
+    openPage('index.html');
 }
