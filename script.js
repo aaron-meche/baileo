@@ -436,7 +436,7 @@ function login() {
 function signup() {
     var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
     var passwordInput = document.getElementById("passwordInput").value;
-    var confirmPasswordInput = document.getElementById("passwordInput").value;
+    var confirmPasswordInput = document.getElementById("confirmPasswordInput").value;
     if (passwordInput == confirmPasswordInput) {
         if (passwordInput == '') {
             alert('You must enter a password!');
@@ -444,14 +444,19 @@ function signup() {
             if (usernameInput == '') {
                 alert('You must enter a username!')
             } else {
-                firebase.database().ref('users/' + usernameInput + '/password').set(passwordInput);
-                localStorage['username'] = usernameInput;
-                // openPage('index.html');
+                firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
+                    if (snapshot.val() == undefined) {
+                        firebase.database().ref('users/' + usernameInput + '/password').set(passwordInput);
+                        localStorage['username'] = usernameInput;
+                        // openPage('index.html');
+                    } else {
+                        alert('That username is already taken!');
+                    }
+                });
             }
         }
     } else {
-        document.getElementById("signUpButton").innerHTML = 'Passwords do not match';
-        document.getElementById("signUpButton").style.backgroundColor = 'lightcoral';
+        alert('Passwords do not match!');
     }
 }
 
