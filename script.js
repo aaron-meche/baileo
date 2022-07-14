@@ -448,7 +448,7 @@ function signup() {
                     if (snapshot.val() == undefined) {
                         firebase.database().ref('users/' + usernameInput + '/password').set(passwordInput);
                         localStorage['username'] = usernameInput;
-                        // openPage('index.html');
+                        openPage('index.html');
                     } else {
                         alert('That username is already taken!');
                     }
