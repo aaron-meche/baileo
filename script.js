@@ -33,7 +33,7 @@ const ParksandRecreation = {
     sTotal: 7,
     s1: ["Pilot", "Canvassing", "The Reporter", "Boys' Club", "The Banquet", "Rock Show"],
     s2: ["Pawnee Zoo", "The Stakeout", "Beauty Pageant", "Practice Date", "Sister City", "Kaboom", "Greg Pitkins", "Ron and Tammy", "The Camel", "Hunting Trip", "Tom’s Divorce", "Christmas Scandal", "The Set Up", "Leslie’s House", "Sweetums", "Galentine’s Day", "Woman of the Year", "The Possum", "Park Safety", "Summer Catalog", "94 Meetings", "Telethon", "The Master Plan", "Freddy Spaghetti"],
-    s3: ["Go Big or Go Home", "Flu Season", "Time Capsule", "Ron & Tammy: Part Two", "Media Blitz", "Indianapolis", "Harvest Festival", "Camping", "Andy and April’s Fancy Party", "Soulmates", "Jerry’s Painting", "Eagleton", "The Fight", "Road Trip", "The Bubble", "Li’l Sebastian"],
+    s3: ["Go Big or Go Home", "Flu Season", "Time Capsule", "Ron and Tammy Part Two", "Media Blitz", "Indianapolis", "Harvest Festival", "Camping", "Andy and April’s Fancy Party", "Soulmates", "Jerry’s Painting", "Eagleton", "The Fight", "Road Trip", "The Bubble", "Li’l Sebastian"],
     s4: ["I'm Leslie Knope", "Ron and Tammys", "Born and Raised", "Pawnee Rangers", "Meet n Greet", "End of the World", "The Treaty", "Smallest Park", "The Trial of Leslie Know", "Citizen Knope", "The Comeback Kid", "Campaign Ad", "Bowling for Votes", "Operation Ann", "Dave Returns", "Sweet Sixteen", "Campaign Shake-Up", "Lucky", "Live Ammo", "The Debate", "Bus Tour", "Win, Lose, or Draw"],
     s5: ["Ms. Knope Goes to Washington", "Soda Tax", "How a Bill Becomes a Law", "Sex Education", "Halloween Suprise", "Ben's Parents", "Leslie v April", "Pawnee Commons", "Ron and Diane", "Two Parties", "Women in Garbage", "Ann’s Decision", "Emergency Response", "Leslie and Ben", "Correspondent’s Lunch", "Bailout", "Partridge", "Animal Control", "Article Two", "Jerry’s Retirement", "Swing Vote", "Are You Better Off"],
     s6: ["London", "The Pawnee-Eagleton Tip Off Classic", "Doppelgängers", "Gin it Up!", "Filibuster", "Recall Vote", "Fluoride", "The Cones of Dunshire", "Second Chunce", "New Beginnings", "Farmers Market", "Ann and Chris", "Anniversaries", "The Wall", "New Slogan", "Galentine’s Day", "Prom", "Flu Season 2", "One in 8,000", "Moving Up"],
@@ -139,6 +139,7 @@ function unspace(string) {
 }
 
 function transporter(type, title, season, episode) {
+    closeTvScreen();
     if (localStorage['username'] == undefined) {
         openPage('login.html');
     } else {
@@ -275,12 +276,13 @@ function expandTv(mediaTitle) {
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
         if (a == localStorage['activeSeasonTab']) {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`;
         } else {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`;
         }
         a++;
     }
+    tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='randomizeTv()'>Random Episode</div>`
 
     var b = 0;
     while (b < (eval(titleUS)['s1']).length) {
@@ -303,6 +305,14 @@ function continueWatchingTv() {
     });
 }
 
+function randomizeTv() {
+    var title = localStorage['tvTitle'];
+    var sTotal = eval(unspace(title))['sTotal'];
+    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
+    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
+    transporter('tv',localStorage['tvTitle'],randomSeason,randomEpisode);
+}
+
 function selectSeason(seasonNum) {
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
     var tvPanelEpisodeList = document.getElementById('tvPanelEpisodeList');
@@ -323,6 +333,7 @@ function selectSeason(seasonNum) {
         }
         a++;
     }
+    tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='randomizeTv()'>Random Episode</div>`
 
     var b = 0;
     while (b < (eval(titleUS)['s' + seasonNum]).length) {
@@ -392,8 +403,8 @@ function injectTvScreen() {
                 <div id="tvPanelCoverImage"></div>
                 <div id="tvPanelCoverImageSheet"></div>
                 <div id='tvPanelContents'>
-                    <button class='activity-button' style='display: none;' onclick='continueWatchingTv()' id='continueWatchingTvButton'>Continue Watching</button>
-                    <button class='activity-button' style='display: none;' onclick='transporter("tv",localStorage["tvTitle"],1,0)' id='startWatchingTvButton'>Start from Beginning</button>
+                    <div class='activity-button' style='display: none;' onclick='continueWatchingTv()' id='continueWatchingTvButton'>Continue Watching</div>
+                    <div class='activity-button' style='display: none;' onclick='transporter("tv",localStorage["tvTitle"],1,0)' id='startWatchingTvButton'>Start from Beginning</div>
                     <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
                     <div id='tvPanelEpisodeList'>
                         <div class='listItemChoice'>

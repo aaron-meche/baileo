@@ -417,23 +417,18 @@ a{
 }
 
 .activity-button{
-    width: auto;
-    background-color: rgb(67, 103, 132);
+    width: fit-content;
     color: white;
     font-size: 15pt;
-    font-family: WatchFace;
     font-weight: 1000;
-    border: none;
-    outline: none;
     padding: 10pt;
-    border-radius: 5pt;
-    margin-left: 20pt;
-    margin-right: 20pt;
-    margin-bottom: 10pt;
+    margin: 10pt 10pt 10pt 20pt;
+    border: solid 1pt white;
+    cursor: pointer;
 }
 
 .activity-button:hover{
-    background-color: rgb(34, 68, 95);
+    background-color: var(--silverAqua);
 }
 
 
