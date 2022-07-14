@@ -29,7 +29,24 @@ body{
     padding-bottom: 4rem;
 }
 
-    /* Navigation bar */
+#loadingScreen{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#loadingScreen img{
+    width: 50vw;
+}
+
+/* Navigation bar */
 
 .navbar{
     height: 50pt;
@@ -325,112 +342,3 @@ body{
     font-weight: 1000;
     color: rgb(189, 189, 189);
 }
-
-/* Unused (old) panel expand content */
-
-/* 
-
-#mediaExpandPanelTopImage{
-    height: 60vh;
-    width: 100%;
-    background-color: black;
-    background: url('images/the-office-ci.jpg') transparent no-repeat center;
-    background-size: cover;
-    border-top-left-radius: 2vw;
-    border-top-right-radius: 2vw;
-}
-
-#mediaExpandPanelTopImageSheet{
-    height: 61vh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(0deg, var(--theme) 0%, #1414143c 50%, rgba(0,0,0,0) 100%);
-}
-
-#closeMediaExpandScreenButton{
-    height: 2vw;
-    min-height: 20pt;
-    width: 2vw;
-    min-width: 20pt;
-    padding: 7pt;
-    background-color: rgb(255, 0, 0);
-    position: absolute;
-    top: 1vw;
-    left: 1vw;
-    border-radius: 100%;
-}
-
-#closeMediaExpandScreenButton:hover{
-    background-color: coral;
-}
-
-#media-expand-panel-title{
-    font-size: 45pt;
-    font-weight: 600;
-    padding: 0.5vw;
-}
-
-.utilityItems{
-    position: absolute;
-    bottom: 2vw;
-    left: 2vw;
-}
-
-#tv-expand-panel-navbar{
-    height: auto;
-    width: auto;
-    padding: 10pt;
-}
-
-.tv-expand-panel-navbar-item{
-    display: inline-block;
-    padding: 12pt;
-    font-size: 18pt;
-    font-weight: 500;
-    cursor: default;
-    color: white;
-}
-
-.tv-expand-panel-navbar-item:hover{
-    color: var(--accent);
-}
-
-.active-tv-expand-panel-navbar-item{
-    display: inline-block;
-    padding: 12pt;
-    font-size: 18pt;
-    font-weight: 500;
-    cursor: default;
-    color: var(--main);
-}
-
-#seasonEpisodesList{
-    font-size: 25pt;
-    padding-bottom: 50pt
-}
-
-.orderedListItem{
-    padding-top: 7pt;
-    padding-bottom: 7pt;
-    cursor: default;
-}
-
-.orderedListItem:hover{
-    background-color: black;
-}
-
-.orderedListNumber{
-    width: 10%;
-    display: inline-block;
-    text-align: right;
-}
-
-.orderedListContent{
-    width: calc(90% - 25pt);
-    padding-left: 25pt;
-    display: inline-block;
-} 
-
-*/

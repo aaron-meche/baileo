@@ -35,6 +35,10 @@
             <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item profile-preview-icon'></a>
         </div>
 
+        <div id='loadingScreen'>
+            <img src='icons/loading.gif'>
+        </div>
+
         <input onkeyup="search()" id="searchBar" type="text" placeholder="Search">
 
         <div class='searchList'>
@@ -182,12 +186,13 @@
             <div id='tvScreenContents'>
 
                 <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-                <div id='tvTopbar'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span id='tvPanelTitle'>Tv Title</span>
-                </div>
 
                 <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+
+                    <div id='tvTopbar' onclick='closeTvScreen()'>
+                        <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                        <span id='tvPanelTitle'>Tv Title</span>
+                    </div>
 
                     <div id="tvPanelCoverImage"></div>
                     <div id="tvPanelCoverImageSheet">

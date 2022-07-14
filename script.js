@@ -175,8 +175,14 @@ function nextEpisode(title, season, episode) {
     }
 }
 
+function loading() {
+    document.getElementById('loadingScreen').style.display = 'block';
+}
+
 window.addEventListener('load', function () {
-    console.log("It's loaded!")
+    setTimeout(function() {
+        document.getElementById('loadingScreen').style.display = 'none';
+    }, 50);
 })
 
 // Working functions
