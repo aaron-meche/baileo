@@ -83,7 +83,6 @@ a{
 
 .main-navbar{
     z-index: 1;
-    border-bottom: solid 1pt gray;
 }
 
 .right-navbar{
@@ -468,7 +467,7 @@ a{
 
 .screen-card-content{
     padding: 50pt 0 50pt 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
