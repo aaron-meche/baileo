@@ -139,14 +139,15 @@ function unspace(string) {
 }
 
 function transporter(type, title, season, episode) {
+    var receiverPageLink = 'http://50.58.218.209/receiver.html'
     // closeTvScreen();
     if (localStorage['username'] == undefined) {
         openPage('login.html');
     } else {
         if (type == 'tv') {
-            var generatedLink = 'http://50.58.218.209/receiver.html?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-        } if (type == 'movie') {
-            var generatedLink = 'http://50.58.218.209/receiver.html?type=movie&title=' + title + '&user=' + localStorage['username'];
+            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+        } else if (type == 'movie') {
+            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
         }
         window.open(generatedLink, "_self");
     }
@@ -192,7 +193,6 @@ function loading() {
 
 window.addEventListener('load', function () {
     isMobileDevice();
-    checkForAccount();
     document.getElementById('body').insertAdjacentHTML('beforeend',`
     <div class='expand-screen' id='tvExpandScreen'>
         <div class='expand-screen-contents' id='tvScreenContents'>

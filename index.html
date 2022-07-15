@@ -3,6 +3,7 @@
     <head>
 
         <title>Baileo - Home</title>
+        <link rel='stylesheet' href='shared.css'>
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
@@ -13,11 +14,11 @@
 
     </head>
 
-    <body id='body'>
+    <body id='body' onload='checkForAccount()'>
 
 
 
-        <div class='navbar main-navbar'>
+        <div class='navbar main-navbar horizontal-scroll'>
             <a class='navbar-link-item active-navbar-link-item' href='index.html'>
                 Home
             </a>
