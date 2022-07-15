@@ -18,7 +18,7 @@
 
 
 
-        <div class='navbar main-navbar'>
+        <div class='navbar main-navbar horizontal-scroll'>
             <a class='navbar-link-item' href='index.html'>
                 Home
             </a>
@@ -28,11 +28,10 @@
             <a class='navbar-link-item' href='movies.html'>
                 Movies
             </a>
-        </div>
-
-        <div class='right-navbar'>
-            <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
-            <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item active-navbar-link-item'></a>
+            <div class='right-navbar'>
+                <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
+                <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item active-navbar-link-item'></a>
+            </div>
         </div>
 
         <div id='loadingScreen'>
@@ -44,7 +43,8 @@
         <div class='screen-card-content'>
             <div class='panel-card'>
                 <div class='title' id='profilePageUsername'>Welcome</div>
-                <div class='horizontal-screen-button secondary-button' onclick='logout()'>Log out</div>
+                <div class='horizontal-screen-button secondary-button' onclick='systemLogout()'>Log out of all other devices</div>
+                <div class='horizontal-screen-button primary-button' onclick='logout()'>Log out</div>
             </div>
         </div>
         

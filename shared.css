@@ -21,7 +21,8 @@
 
 body{
     margin: 0;
-    background-color: var(--bodyBgColor);
+    /* background-color: var(--bodyBgColor); */
+    background: linear-gradient(45deg, var(--silverAqua) 0%, var(--bodyBgColor) 100%);
     color: white;
     font-family: var(--mainFont);
     font-weight: 400;
@@ -57,7 +58,7 @@ a{
 }
 
 #loadingScreen img{
-    height: 30vh;
+    width: 25vw;
 }
 
 
@@ -73,6 +74,8 @@ a{
 .navbar{
     height: 50pt;
     background-color: var(--navbarBgColor);
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,17 +83,19 @@ a{
 
 .main-navbar{
     z-index: 1;
+    border-bottom: solid 1pt gray;
 }
 
 .right-navbar{
     height: 50pt;
-    width: 100pt;
+    width: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--navbarBgColor);
     display: flex;
     align-items: center;
     justify-content: right;
-    position: absolute;
-    top: 0;
-    right: 10pt;
 }
     
 .navbar-link-item{
@@ -206,6 +211,7 @@ a{
     overflow-y: hidden;
     display: none;
     background-color: rgba(0, 0, 0, 0.75);
+    z-index: 2;
 }
 
 .expand-screen-contents{
@@ -226,7 +232,7 @@ a{
     left: 0;
 }
 
-#tvPanel{
+.expand-panel{
     height: 95vh;
     width: 75vw;
     position: absolute;
@@ -236,7 +242,7 @@ a{
     overflow-y: scroll;
 }
 
-#tvTopbar{
+.expand-panel-topbar{
     height: 50pt;
     width: 75vw;
     position: sticky;
@@ -252,19 +258,19 @@ a{
     border-bottom: solid 1pt gray;
 }
 
-#tvPanelTitle{
+.expand-panel-title{
     font-size: 15pt;
 }
 
 @media screen and (max-width: 800px) {
-    #tvPanel{
+    .expand-panel{
         height: 100vh;
         width: 100vw;
         position: absolute;
         top: 0;
         left: 0;
     }
-    #tvTopbar{
+    .expand-panel-topbar{
         justify-content: right;
         height: 50pt;
         width: calc(100% - 15pt);
@@ -291,7 +297,7 @@ a{
     top: 50pt;
     z-index: 1;
     margin-bottom: 10pt;
-    padding-left: 15pt;
+    padding-left: 5pt;
 }
 
 .expand-panel-impression-image{

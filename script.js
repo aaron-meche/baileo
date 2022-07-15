@@ -66,7 +66,7 @@ const FamilyGuy = {
     sTotal: 20,
     // s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
     s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
-    description: "Family Guy! Description coming soon",
+    description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane for the Fox Broadcasting Company. The series centers on the Griffins, a family consisting of parents Peter and Lois; their children, Meg, Chris, and Stewie; and their anthropomorphic pet dog, Brian. Set in the fictional city of Quahog, Rhode Island, the show exhibits much of its humor in the form of metafictional cutaway gags that often lampoon American culture.",
     color: "rgba(227, 45, 255, 0.25)",
 }
 
@@ -129,80 +129,18 @@ const TheAmazingSpiderMan2 = {
 
 
 
-
-function openPage(location) {
-    window.open(location, "_self");
-}
-
-function unspace(string) {
-    return string.replace(/\s/g, '');
-}
-
-function transporter(type, title, season, episode) {
-    var receiverPageLink = 'http://50.58.218.209/receiver.html'
-    // closeTvScreen();
-    if (localStorage['username'] == undefined) {
-        openPage('login.html');
-    } else {
-        if (type == 'tv') {
-            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-        } else if (type == 'movie') {
-            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
-        }
-        window.open(generatedLink, "_self");
-    }
-}
-
-function mobileDeviceTester(){
-    return window.matchMedia('(hover: none)').matches;
-}
-
-function processRequest() {
-    var urlParams = new URLSearchParams(document.location.search);
-    if (urlParams.get('action') == 'nextEpisode') {
-        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
-    }
-}
-
-function nextEpisode(title, season, episode) {
-    var tvShowUS = unspace(title);
-    var seasonCapacity = eval(tvShowUS)['s' + season].length;
-    var seasonsTotal = eval(tvShowUS)['sTotal'];
-
-    console.log('titleUS ' + tvShowUS);
-    console.log('scap ' + seasonCapacity);
-    console.log('stotal ' + seasonsTotal);
-    console.log('episodeGiven ' + episode)
-
-    if (episode == (seasonCapacity - 1)) {
-        if (season == seasonsTotal) {
-            openPage('index.html');
-        } else {
-            season++;
-            transporter('tv',title,season,0);
-        }
-    } else {
-        episode++;
-        transporter('tv',title,season,episode);
-    }
-}
-
-function loading() {
-    document.getElementById('loadingScreen').style.display = 'block';
-}
-
 window.addEventListener('load', function () {
     isMobileDevice();
     document.getElementById('body').insertAdjacentHTML('beforeend',`
     <div class='expand-screen' id='tvExpandScreen'>
         <div class='expand-screen-contents' id='tvScreenContents'>
             <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div id='tvTopbar' onclick='closeTvScreen()'>
+            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
                     <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span id='tvPanelTitle'>Tv Title</span>
+                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
                 </div>
-                <div id="tvPanelCoverImage" class='expand-panel-impression-image'></div>
+                <div class='expand-panel-impression-image' id="tvPanelCoverImage"></div>
                 <div class='expand-panel-impression-shade'></div>
                 <div class='expand-panel-contents'>
                     <div class='action-button-container'>
@@ -227,8 +165,63 @@ window.addEventListener('load', function () {
     }, 50);
 })
 
-function notify(title, message) {
-    document.getElementById('notification').innerHTML = "<div class='notification-title'>" + title + "</div>" + message
+function setData(reference, value) {
+    firebase.database().ref(reference).set(value);
+}
+
+function setDataProfile(reference, value) {
+    firebase.database().ref('users/' + localStorage['username'] + '/' + reference).set(value);
+}
+
+function systemLogout() {
+    var newKey = createEncryptionKey(50);
+    localStorage['ekey'] = newKey;
+    setDataProfile('key',newKey);
+    alert('Your authentication key has been changed and you have been logged out of all other devices.')
+}
+
+function logout() {
+    localStorage.clear();
+    openPage('index.html');
+}
+
+function openPage(location) {
+    window.open(location, "_self");
+}
+
+function unspace(string) {
+    return string.replace(/\s/g, '');
+}
+
+function transporter(type, title, season, episode) {
+    checkAccountValidity();
+    var receiverPageLink = 'http://50.58.218.209/receiver.html';
+    // closeTvScreen();
+    if (localStorage['username'] == undefined) {
+        openPage('login.html');
+    } else {
+        if (type == 'tv') {
+            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+        } else if (type == 'movie') {
+            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
+        }
+        window.open(generatedLink, "_self");
+    }
+}
+
+function mobileDeviceTester(){
+    return window.matchMedia('(hover: none)').matches;
+}
+
+function processRequest() {
+    var urlParams = new URLSearchParams(document.location.search);
+    if (urlParams.get('action') == 'nextEpisode') {
+        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
+    }
+}
+
+function loading() {
+    document.getElementById('loadingScreen').style.display = 'block';
 }
 
 function checkForAccount() {
@@ -241,7 +234,30 @@ function checkForAccount() {
                 <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
             </div>
         </div>`);
+    } else {
+        checkAccountValidity();
     }
+}
+
+function checkAccountValidity() {
+    firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
+        if (localStorage['ekey'] == snapshot.val()) {
+            console.log('Account is valid');
+        } else {
+            console.log('Account is not valid');
+            alert('Error: Faulty login credentials. Your authentication key is not valid.');
+            logout();
+        }
+    });
+}
+
+function createEncryptionKey(length) {
+    var library = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','-','=','_','+','.',',','<','>','!','~',':'];
+    var collection = '';
+    for (var i = 0; i < length; i++) {
+        collection = collection + library[Math.floor(Math.random() * library.length)];
+    }
+    return collection;
 }
 
 
@@ -442,7 +458,10 @@ function login() {
     firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
         if (snapshot.val() == passwordInput) {
             localStorage['username'] = usernameInput;
-            openPage('index.html');
+            firebase.database().ref('users/' + usernameInput + '/key').once('value', (snapshot) => {
+                localStorage['ekey'] = snapshot.val();
+                openPage('index.html');
+            });
         } else {
             alert('Login unsuccessful: username or password incorrect');
         }
@@ -453,6 +472,7 @@ function signup() {
     var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
     var passwordInput = document.getElementById("passwordInput").value;
     var confirmPasswordInput = document.getElementById("confirmPasswordInput").value;
+
     if (passwordInput == confirmPasswordInput) {
         if (passwordInput == '') {
             alert('You must enter a password!');
@@ -462,8 +482,13 @@ function signup() {
             } else {
                 firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
                     if (snapshot.val() == undefined) {
-                        firebase.database().ref('users/' + usernameInput + '/password').set(passwordInput);
+                        var key = createEncryptionKey(50);
+
+                        localStorage['ekey'] = key;
                         localStorage['username'] = usernameInput;
+
+                        setDataProfile('ekey',key);
+                        setDataProfile('password',passwordInput);
                         openPage('index.html');
                     } else {
                         alert('That username is already taken!');
@@ -480,7 +505,25 @@ function loadProfile() {
     document.getElementById('profilePageUsername').innerHTML = 'Welcome, ' + localStorage['username'];
 }
 
-function logout() {
-    localStorage.clear();
-    openPage('index.html');
+function nextEpisode(title, season, episode) {
+    var tvShowUS = unspace(title);
+    var seasonCapacity = eval(tvShowUS)['s' + season].length;
+    var seasonsTotal = eval(tvShowUS)['sTotal'];
+
+    console.log('titleUS ' + tvShowUS);
+    console.log('scap ' + seasonCapacity);
+    console.log('stotal ' + seasonsTotal);
+    console.log('episodeGiven ' + episode)
+
+    if (episode == (seasonCapacity - 1)) {
+        if (season == seasonsTotal) {
+            openPage('index.html');
+        } else {
+            season++;
+            transporter('tv',title,season,0);
+        }
+    } else {
+        episode++;
+        transporter('tv',title,season,episode);
+    }
 }

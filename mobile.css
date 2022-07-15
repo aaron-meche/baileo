@@ -1,14 +1,13 @@
 .navbar{
-    background: none;
+    justify-content: left;
 }
 
 .main-navbar{
-    max-width: calc(100vw - 110pt);
-    border-bottom: solid 1pt gray;
+    padding-right: 100pt;
 }
 
 .right-navbar{
-    border-bottom: solid 1pt gray;
+    width: 100pt;
 }
 
 
@@ -38,4 +37,18 @@
 
 .image-shader{
     display: none;
+}
+
+
+
+
+
+/* Loading screen */
+
+
+
+
+
+#loadingScreen img{
+    width: 75vw;
 }
