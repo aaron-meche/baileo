@@ -139,7 +139,7 @@ function unspace(string) {
 }
 
 function transporter(type, title, season, episode) {
-    closeTvScreen();
+    // closeTvScreen();
     if (localStorage['username'] == undefined) {
         openPage('login.html');
     } else {
