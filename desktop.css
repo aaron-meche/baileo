@@ -7,6 +7,7 @@
     --silverAqua: rgb(40, 55, 93);
     --princeton: #FF8F00;
     --honey: #F6AE2D;
+    --violetBlue: rgb(54, 54, 105);
 
     --themePicker: rgba(227, 45, 255, 0.5);
 }
@@ -97,7 +98,7 @@ a{
     height: 15pt;
     margin: 10pt 5pt 10pt 5pt;
     padding: 10pt;
-    border-radius: 10pt;
+    border-radius: 12pt;
     cursor: pointer;
     font-size: 13pt;
     font-weight: 1000;
@@ -110,12 +111,17 @@ a{
 }
 
 .navbar-link-item:hover{
-    background-color: rgb(26, 37, 78);
-    border: solid 1pt gray;
+    border: solid 1pt white;
+    color: white;
 }
 
 .active-navbar-link-item{
+    border: solid 1pt rgb(255, 255, 255);
     color: white;
+    background-color: var(--violetBlue);
+}
+
+.active-navbar-link-item:hover{
     background-color: var(--silverAqua);
 }
 
@@ -205,7 +211,7 @@ a{
     }
 }
 
-.media-slider-object .media-slider-object-shade{
+.image-shader{
     height: calc(100% - 6pt);
     border-radius: 1vw;
     background-color: rgba(0, 0, 0, 0.3);
@@ -217,7 +223,7 @@ a{
     transition: opacity 100ms;
 }
 
-.media-slider-object img{
+.image-shader img{
     height: 30pt;
     width: 30pt;
     position: absolute;
@@ -228,7 +234,7 @@ a{
     transition: left 200ms;
 }
 
-.media-slider-object:hover .media-slider-object-shade{
+.image-shader:hover{
     opacity: 1;
 }
 
@@ -242,7 +248,7 @@ a{
 
 
 
-#tvExpandScreen{
+.expand-screen{
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -253,7 +259,7 @@ a{
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-#tvScreenContents{
+.expand-screen-contents{
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -309,23 +315,12 @@ a{
         position: absolute;
         top: 0;
         left: 0;
-        border-radius: 0;
     }
     #tvTopbar{
         justify-content: right;
         height: 50pt;
         width: calc(100% - 15pt);
-        position: sticky;
-        top: 0;
-        display: flex;
-        align-items: center;
         justify-content: right;
-        /* border-bottom: solid 1pt gray; */
-        backdrop-filter: blur(10pt);
-        -webkit-backdrop-filter: blur(10pt);
-        background-color: rgba(27, 31, 40, 0.25);
-        z-index: 1;
-        border-bottom: solid 1pt gray;
         padding-right: 15pt;
     }
 }
@@ -351,7 +346,7 @@ a{
     padding-left: 15pt;
 }
 
-#tvPanelCoverImage{
+.expand-panel-impression-image{
     height: 65vh;
     width: 100%;
     position: absolute;
@@ -361,7 +356,7 @@ a{
     background-size: cover;
 }
 
-#tvPanelCoverImageSheet{
+.expand-panel-impression-shade{
     height: 65vh;
     width: 100%;
     position: absolute;
@@ -370,14 +365,14 @@ a{
     background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(27, 31, 40, 0.8) 20%, rgba(0,0,0,0) 60%);
 }
 
-#tvPanelContents{
+.expand-panel-contents{
     height: auto;
     width: 100%;
     position: absolute;
     top: 60vh;
 }
 
-#tvPanelEpisodeList{
+.list{
     padding-bottom: 15vh;
 }
 
@@ -416,31 +411,6 @@ a{
     max-width: 40%;
 }
 
-.activity-button{
-    width: fit-content;
-    color: white;
-    font-size: 15pt;
-    font-weight: 1000;
-    padding: 10pt;
-    margin: 10pt 10pt 10pt 20pt;
-    border: solid 1pt white;
-    cursor: pointer;
-}
-
-.activity-button:hover{
-    background-color: var(--silverAqua);
-}
-
-
-
-
-
-/* Search bar */
-
-
-
-
-
 .listItemImageFrame{
     height: 40pt;
     min-width: 65pt;
@@ -452,12 +422,54 @@ a{
     border: solid 1pt rgb(255, 255, 255);
 }
 
+.action-button-container {
+    height: auto;
+    width: 100%;
+    /* background-color: rgb(54, 35, 80); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-button{
+    width: fit-content;
+    color: white;
+    font-size: 15pt;
+    font-weight: 1000;
+    padding: 10pt;
+    border: solid 1pt gray;
+    cursor: pointer;
+    border-radius: 10pt;
+    margin: 7pt;
+    transition-duration: 300ms;
+}
+
+.activity-button:hover{
+    background-color: rgb(84, 68, 145);
+    border: solid 1pt white;
+}
+
+.filled-activity-button{
+    border: solid 1pt var(--seafoam);
+}
+
+
+
+
+
+
+/* Search bar */
+
+
+
+
+
 #searchBar{
     height: 50pt;
     width: calc(100vw - 40pt);
     margin: 5vh 20pt 5vh 20pt;
     background-color: var(--silverAqua);
-    padding: 10pt;
+    padding: 20pt;
     outline: none;
     font-size: 20pt;
     font-family: WatchFace;
@@ -465,6 +477,7 @@ a{
     color: white;
     border-radius: 15pt;
     border: none;
+    transition: padding-left 300ms, box-shadow 300ms;
 }
 
 #searchBar::placeholder{
@@ -472,6 +485,11 @@ a{
     font-family: WatchFace;
     font-weight: 1000;
     color: rgb(189, 189, 189);
+}
+
+#searchBar:focus{
+    box-shadow: 0 0 40pt 0 var(--navbarBgColor);
+    padding-left: 30pt;
 }
 
 
@@ -496,12 +514,15 @@ a{
     justify-content: center;
 }
 
-.screen-content{
+.screen-card-content{
     padding: 50pt;
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.screen-content .prompt-card{
+.screen-card-content .prompt-card{
     margin: auto;
 }
 
@@ -510,13 +531,13 @@ a{
     -webkit-backdrop-filter: blur(10pt);
 }
 
-.prompt-card{
+.panel-card{
     width: 30vw;
     background-color: var(--bodyBgColor);
     padding: 25pt;
 }
 
-.prompt-card .title{
+.panel-card .title{
     font-size: 20pt;
     font-weight: 1000;
     border-bottom: solid 1pt gray;
@@ -555,3 +576,5 @@ a{
     font-size: 12pt;
     margin-top: 10pt;
 }
+
+/* Featured Panel */

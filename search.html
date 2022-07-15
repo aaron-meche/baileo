@@ -13,7 +13,7 @@
 
     </head>
 
-    <body id='body' onload='checkForAccount(), injectTvScreen()'>
+    <body id='body'>
 
 
 
@@ -41,10 +41,11 @@
 
         <input onkeyup="search()" id="searchBar" type="text" placeholder="Search">
 
-        <div class='searchList'>
+        <div class='list'>
             <div class='listItemChoice' onclick='transporter("movie","American Psycho")'>
                 <div class='listItemTitle'>
-                    <div class="listItemImageFrame" style="background-image: url('thumbnails/american-psycho.jpg')"></div>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/american-psycho.jpg')">
+                    </div>
                     American Psycho
                 </div>
                 <div class='listItemLabel'>Movie</div>

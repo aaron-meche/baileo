@@ -191,6 +191,37 @@ function loading() {
 }
 
 window.addEventListener('load', function () {
+    isMobileDevice();
+    checkForAccount();
+    document.getElementById('body').insertAdjacentHTML('beforeend',`
+    <div class='expand-screen' id='tvExpandScreen'>
+        <div class='expand-screen-contents' id='tvScreenContents'>
+            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+            <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                <div id='tvTopbar' onclick='closeTvScreen()'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span id='tvPanelTitle'>Tv Title</span>
+                </div>
+                <div id="tvPanelCoverImage" class='expand-panel-impression-image'></div>
+                <div class='expand-panel-impression-shade'></div>
+                <div class='expand-panel-contents'>
+                    <div class='action-button-container'>
+
+                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["tvTitle"],1,0)'>Start Watching</div>
+                        <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
+                        <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
+                    </div>
+                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+                    <div id='tvPanelEpisodeList' class='list'>
+                        <!-- <div class='listItemChoice'>
+                            <div class='listItemTitle'>Pilot</div>
+                            <div class='listItemLabel'>Episode 1</div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`);
     setTimeout(function() {
         document.getElementById('loadingScreen').style.display = 'none';
     }, 50);
@@ -198,6 +229,19 @@ window.addEventListener('load', function () {
 
 function notify(title, message) {
     document.getElementById('notification').innerHTML = "<div class='notification-title'>" + title + "</div>" + message
+}
+
+function checkForAccount() {
+    if (localStorage['username'] == undefined) {
+        document.getElementById('body').insertAdjacentHTML('beforeend',`
+        <div id='useAccountPrompt' class='screen-card blur-background'>
+            <div class='panel-card'>
+                <div class='title'>Login or Create Account to Continue</div>
+                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
+                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
+            </div>
+        </div>`);
+    }
 }
 
 
@@ -237,9 +281,11 @@ function expandTv(mediaTitle) {
     var titleUS = unspace(mediaTitle);
     var mediaType = eval(titleUS)['mediaType'];
 
+    document.getElementById('tvTopbar').style.backgroundColor = eval(unspace(mediaTitle))['color'];
+
     firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + title).once('value', (snapshot) => {
         if (localStorage['username'] == undefined) {
-            console.log('You can not watch content on baileo without an account!')
+            console.log('You can not watch content on baileo without an account!');
         } else {
             if (snapshot.val() > 0) {
                 document.getElementById('continueWatchingTvButton').style.display = 'block';
@@ -249,11 +295,19 @@ function expandTv(mediaTitle) {
                     season = snapshot.val();
                     firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
                         episode = snapshot.val();
-                        document.getElementById('continueWatchingTvButton').innerHTML = 'Continue Watching: S' + season + 'E' + (Number(episode) + 1)  + ' - ' + (eval(titleUS)['s' + season])[episode];
+                        document.getElementById('continueWatchingTvButton').innerHTML = 'Continue - S' + season + 'E' + (Number(episode) + 1);
+                        setTimeout(function() {
+                            tvScreenContents.style.top = '0';
+                            tvScreenContents.style.opacity = '1';
+                        }, 1);
                     }); 
                 });
             } else {
                 document.getElementById('startWatchingTvButton').style.display = 'block';
+                setTimeout(function() {
+                    tvScreenContents.style.top = '0';
+                    tvScreenContents.style.opacity = '1';
+                }, 1);
             }
         }
     }); 
@@ -268,10 +322,6 @@ function expandTv(mediaTitle) {
     tvNavbarContent.innerHTML = '';
     tvPanelEpisodeList.innerHTML = '';
     tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
-    setTimeout(function() {
-        tvScreenContents.style.top = '0';
-        tvScreenContents.style.opacity = '1';
-    }, 1);
 
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
@@ -282,7 +332,6 @@ function expandTv(mediaTitle) {
         }
         a++;
     }
-    tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='randomizeTv()'>Random Episode</div>`
 
     var b = 0;
     while (b < (eval(titleUS)['s1']).length) {
@@ -305,7 +354,7 @@ function continueWatchingTv() {
     });
 }
 
-function randomizeTv() {
+function  randomizeTv() {
     var title = localStorage['tvTitle'];
     var sTotal = eval(unspace(title))['sTotal'];
     var randomSeason = Math.floor(Math.random() * sTotal) + 1;
@@ -333,7 +382,6 @@ function selectSeason(seasonNum) {
         }
         a++;
     }
-    tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='randomizeTv()'>Random Episode</div>`
 
     var b = 0;
     while (b < (eval(titleUS)['s' + seasonNum]).length) {
@@ -365,12 +413,10 @@ sessionStorage['savedScrollLocation22838'] = 0;
 function tvExpandPanelScrolled() {
     var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
     if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        document.getElementById('tvTopbar').style.backgroundColor = eval(unspace(localStorage['tvTitle']))['color'];
         document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgb(27, 31, 40)';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
     } else {
         sessionStorage['savedScrollLocation22838'] = scrollTop;
-        document.getElementById('tvTopbar').style.backgroundColor = 'rgba(27, 31, 40, 0.25)';
         document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgba(0,0,0,0)';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
     }
@@ -387,47 +433,6 @@ function isMobileDevice() {
         }
     } else {
         console.log('No mobile device detected');
-    }
-}
-
-function injectTvScreen() {
-    document.getElementById('body').insertAdjacentHTML('beforeend',`
-    <div id='tvExpandScreen'>
-        <div id='tvScreenContents'>
-            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div id='tvTopbar' onclick='closeTvScreen()'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span id='tvPanelTitle'>Tv Title</span>
-                </div>
-                <div id="tvPanelCoverImage"></div>
-                <div id="tvPanelCoverImageSheet"></div>
-                <div id='tvPanelContents'>
-                    <div class='activity-button' style='display: none;' onclick='continueWatchingTv()' id='continueWatchingTvButton'>Continue Watching</div>
-                    <div class='activity-button' style='display: none;' onclick='transporter("tv",localStorage["tvTitle"],1,0)' id='startWatchingTvButton'>Start from Beginning</div>
-                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
-                    <div id='tvPanelEpisodeList'>
-                        <div class='listItemChoice'>
-                            <div class='listItemTitle'>Pilot</div>
-                            <div class='listItemLabel'>Episode 1</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`);
-}
-
-function checkForAccount() {
-    if (localStorage['username'] == undefined) {
-        document.getElementById('body').insertAdjacentHTML('beforeend',`
-        <div id='useAccountPrompt' class='screen-card blur-background'>
-            <div class='prompt-card'>
-                <div class='title'>Login or Create Account to Continue</div>
-                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
-                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
-            </div>
-        </div>`);
     }
 }
 

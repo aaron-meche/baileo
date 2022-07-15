@@ -334,18 +334,41 @@ a{
     max-width: 30%;
 }
 
+.listItemImageFrame{
+    height: 40pt;
+    min-width: 65pt;
+    display: inline-block;
+    background: transparent no-repeat center;
+    background-size: cover;
+    margin-right: 10pt;
+    border-radius: 5pt;
+    border: solid 1pt rgb(255, 255, 255);
+}
+
+.action-button-container {
+    height: auto;
+    width: 100%;
+    /* background-color: rgb(54, 35, 80); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .activity-button{
-    width: auto;
-    background-color: rgb(67, 103, 132);
+    width: fit-content;
     color: white;
     font-size: 15pt;
-    font-family: WatchFace;
     font-weight: 1000;
-    border: none;
-    outline: none;
     padding: 10pt;
-    border-radius: 5pt;
-    margin: 10pt;
+    border: solid 1pt gray;
+    cursor: pointer;
+    border-radius: 10pt;
+    margin: 7pt;
+    transition-duration: 300ms;
+}
+
+.filled-activity-button{
+    border: solid 1pt var(--seafoam);
 }
 
 
@@ -358,16 +381,6 @@ a{
 
 
 
-.listItemImageFrame{
-    height: 40pt;
-    min-width: 65pt;
-    display: inline-block;
-    background: transparent no-repeat center;
-    background-size: cover;
-    margin-right: 10pt;
-    border-radius: 5pt;
-    border: solid 1pt rgb(255, 255, 255);
-}
 
 #searchBar{
     height: 50pt;
@@ -387,6 +400,11 @@ a{
     font-family: WatchFace;
     font-weight: 1000;
     color: rgb(189, 189, 189);
+}
+
+#searchBar:focus{
+    box-shadow: 0 0 40pt 0 var(--navbarBgColor);
+    padding-left: 30pt;
 }
 
 
