@@ -602,12 +602,21 @@ function getCurrentlyWatching() {
             // console.log(allMedia);
 
             for (var i = 0; i < Object.keys(ordered).length; i++) {
-                document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
-                <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                    <div class='image-shader'>
-                        <img src='icons/play-video-icon.png'>
-                    </div>
-                </div>`);
+                if (mobileDeviceTester()) {
+                    document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
+                    <div class='media-slider-object' style="background-image: url('mobile thumbnails/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>`);
+                } else {
+                    document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
+                    <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>`);
+                }
                 // console.log(Object.keys(ordered)[i]); 
             }
             stopLoading(); 
