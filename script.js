@@ -196,16 +196,21 @@ function unspace(string) {
 function transporter(type, title, season, episode) {
     checkAccountValidity();
     var receiverPageLink = 'http://50.58.218.209/receiver.html';
-    // closeTvScreen();
-    if (localStorage['username'] == undefined) {
-        openPage('login.html');
+    var errorList = 'Despicable Me, Despicable Me 2, Vacation, Mean Girls, Minions';
+    if (errorList.includes(title + ',')) {
+        alert('Sorry, but this is not yet available to watch on Baileo yet! Please check back later.');
     } else {
-        if (type == 'tv') {
-            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-        } else if (type == 'movie') {
-            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
+        closeTvScreen();
+        if (localStorage['username'] == undefined) {
+            openPage('login.html');
+        } else {
+            if (type == 'tv') {
+                var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+            } else if (type == 'movie') {
+                var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
+            }
+            window.open(generatedLink, "_self");
         }
-        window.open(generatedLink, "_self");
     }
 }
 
@@ -260,16 +265,6 @@ function createEncryptionKey(length) {
     return collection;
 }
 
-
-
-
-
-// Working functions
-
-
-
-
-
 function search() {
     let input = document.getElementById('searchBar').value;
     input = input.toLowerCase();
@@ -283,6 +278,16 @@ function search() {
         }
     }
 }
+
+
+
+
+
+// Working functions
+
+
+
+
 
 function expandTv(mediaTitle) {
 
