@@ -145,7 +145,7 @@ window.addEventListener('load', function () {
                 <div class='expand-panel-contents'>
                     <div class='action-button-container'>
 
-                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["tvTitle"],1,0)'>Start Watching</div>
+                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
                         <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
                         <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
                     </div>
@@ -328,7 +328,7 @@ function expandTv(mediaTitle) {
         }
     }); 
     
-    localStorage['tvTitle'] = title;
+    localStorage['expandPanelTitle'] = title;
     localStorage['activeSeasonTab'] = 1;
 
     tvScreen.style.display = 'block';
@@ -362,26 +362,26 @@ function expandTv(mediaTitle) {
 
 function continueWatchingTv() {
     var season = 0;
-    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['tvTitle'] + 'S').once('value', (snapshot) => {
+    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['expandPanelTitle'] + 'S').once('value', (snapshot) => {
         season = snapshot.val();
-        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['tvTitle'] + 'E').once('value', (snapshot) => {
-            transporter('tv',localStorage['tvTitle'],season,snapshot.val())
+        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['expandPanelTitle'] + 'E').once('value', (snapshot) => {
+            transporter('tv',localStorage['expandPanelTitle'],season,snapshot.val())
         }); 
     });
 }
 
 function  randomizeTv() {
-    var title = localStorage['tvTitle'];
+    var title = localStorage['expandPanelTitle'];
     var sTotal = eval(unspace(title))['sTotal'];
     var randomSeason = Math.floor(Math.random() * sTotal) + 1;
     var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
-    transporter('tv',localStorage['tvTitle'],randomSeason,randomEpisode);
+    transporter('tv',localStorage['expandPanelTitle'],randomSeason,randomEpisode);
 }
 
 function selectSeason(seasonNum) {
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
     var tvPanelEpisodeList = document.getElementById('tvPanelEpisodeList');
-    var title = localStorage['tvTitle'];
+    var title = localStorage['expandPanelTitle'];
     var titleUS = unspace(title);
 
     localStorage['activeSeasonTab'] = seasonNum;
@@ -526,4 +526,29 @@ function nextEpisode(title, season, episode) {
         episode++;
         transporter('tv',title,season,episode);
     }
+}
+
+function getCurrentlyWatching() {
+    var tvOrdered = '';
+    var moviesOrdered = '';
+    firebase.database().ref('users/' + localStorage['username'] + '/watched').once('value', (snapshot) => {
+        tvOrdered = Object.entries(snapshot.val()['tv'])
+            .sort(([,a],[,b]) => b - a)
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+        console.log(tvOrdered);
+
+        moviesOrdered = Object.entries(snapshot.val()['movie'])
+            .sort(([,a],[,b]) => b - a)
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+        console.log(moviesOrdered);
+        // console.log(snapshot.val()['tv']);
+        // console.log(snapshot.val()['movie']);
+        // console.log(Object.keys(snapshot.val()['tv']))
+        // console.log(Object.values(snapshot.val()['tv']).sort((a, b) => b-a))
+        // for (var i = 0; i < snapshot.val()['tv'].length; i++) {
+        //     console.log('tv show');
+        // }
+        // let highestToLowest = array.sort((a, b) => b-a);
+        // console.log(highestToLowest);
+    });
 }

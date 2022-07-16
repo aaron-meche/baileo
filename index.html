@@ -14,7 +14,7 @@
 
     </head>
 
-    <body id='body' onload='checkForAccount()'>
+    <body id='body' onload='checkForAccount(), getCurrentlyWatching()'>
 
 
 
@@ -46,7 +46,7 @@
 
 
 
-        <div class='media-slider-section'>
+        <!-- <div class='media-slider-section'>
             <div class='media-slider-title-bar'>
                 <div class='media-slider-title'>Continue Watching</div>
             </div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         
 
@@ -116,6 +116,21 @@
                         </div>
                     </div>
                     <div class='media-slider-object' style="background-image: url('thumbnails/coraline.jpg')" onclick='transporter("movie","Coraline")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me.jpg')" onclick='transporter("movie","Despicable Me")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me-2.jpg')" onclick='transporter("movie","Despicable Me 2")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                    </div>
+                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me-3.jpg')" onclick='transporter("movie","Despicable Me 3")'>
                         <div class='image-shader'>
                             <img src='icons/play-video-icon.png'>
                         </div>
