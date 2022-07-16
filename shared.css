@@ -59,15 +59,16 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0, 0, 0);
+    z-index: 10;
 }
 
 #loadingScreen img{
-    width: 25vw;
+    height: 20vh;
+    width: 20vh;
+    position: absolute;
+    top: 40vh;
+    left: calc(50vw - 10vh);
 }
 
 
@@ -114,7 +115,7 @@ a{
     cursor: pointer;
     font-size: 13pt;
     color: rgb(160,166,178);
-    border: solid 1pt rgba(128, 128, 128, 0);
+    border: solid 2pt rgba(128, 128, 128, 0);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +123,7 @@ a{
 }
 
 .active-navbar-link-item{
-    border: solid 1pt rgb(255, 255, 255);
+    border: solid 2pt rgb(255, 255, 255);
     color: white;
     background-color: var(--violetBlue);
 }

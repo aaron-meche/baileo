@@ -38,17 +38,3 @@
 .image-shader{
     display: none;
 }
-
-
-
-
-
-/* Loading screen */
-
-
-
-
-
-#loadingScreen img{
-    width: 75vw;
-}

@@ -1,5 +1,9 @@
+.right-navbar{
+    padding-right: 10pt;
+}
+
 .navbar-link-item:hover{
-    border: solid 1pt white;
+    border: solid 2pt white;
     color: white;
 }
 
