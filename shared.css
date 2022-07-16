@@ -59,7 +59,9 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.646);
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
     z-index: 10;
 }
 
@@ -554,4 +556,18 @@ a{
     margin-top: 10pt;
 }
 
+
+
+
+
 /* Featured Panel */
+
+
+
+
+
+.featured-panel{
+    height: 70vh;
+    width: 100vw;
+    background-color: blue;
+}

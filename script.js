@@ -256,6 +256,7 @@ function loading() {
 }
 
 function stopLoading() {
+    console.log('stop loading');
     document.getElementById('loadingScreen').style.display = 'none';
 }
 
@@ -300,9 +301,9 @@ window.addEventListener('load', function () {
             </div>
         </div>
     </div>`);
-    setTimeout(function() {
-        stopLoading();
-    }, 1);
+    // setTimeout(function() {
+    //     stopLoading();
+    // }, 1);
 })
 
 function checkForAccount() {
@@ -322,7 +323,6 @@ function checkForAccount() {
 
 function checkAccountValidity() {
     firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
-        stopLoading();
         if (localStorage['ekey'] == snapshot.val()) {
             console.log('Account is valid');
         } else {
@@ -330,6 +330,7 @@ function checkAccountValidity() {
             alert('Error: Faulty login credentials. Your authentication key is not valid.');
             logout();
         }
+        stopLoading();
     });
 }
 

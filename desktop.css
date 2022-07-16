@@ -47,8 +47,8 @@
 }
 
 .searchItemChoice:hover .listItemTitle .listItemImageFrame{
-    height: 80%;
-    width: calc(80pt + 4vw);
+    height: 70%;
+    min-width: calc(80pt + 4vw);
 }
 
 .listItemChoice:hover{
