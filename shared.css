@@ -150,11 +150,12 @@ a{
     padding-top: 10pt;
     padding-bottom: 10pt;
     margin-left: 2.5vw;
-    cursor: pointer;
+    cursor: default;
     transition: padding-left 200ms;
 }
 
-.media-slider-title-bar:hover{
+.clickable-title:hover{
+    cursor: pointer;
     padding-left: 10pt;
     padding-right: 1vw;
     font-weight: 600;
@@ -355,7 +356,7 @@ a{
     cursor: default;
     padding: 10pt;
     cursor: pointer;
-    transition: height 200ms;
+    transition: height 300ms;
 }
 
 .listItemTitle{

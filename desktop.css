@@ -38,17 +38,20 @@
     height: 80pt;
 }
 
-.listItemChoice:hover .listItemTitle{
+.searchItemChoice:hover .listItemTitle{
     left: 1%;
 }
 
-.listItemChoice:hover .listItemTitle .listItemImageFrame{
+.searchItemChoice:hover .listItemTitle .listItemImageFrame{
     height: 80%;
     width: calc(80pt + 4vw);
 }
 
 .listItemChoice:hover{
     background-color: var(--violetBlue);
+}
+
+.searchItemChoice:hover{
     border-top: solid 1pt gray;
     border-bottom: solid 1pt gray;
 }

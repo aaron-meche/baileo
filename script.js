@@ -211,14 +211,20 @@ function unspace(string) {
     return string.replace(/\s/g, '');
 }
 
-function continueWatchingTv(tvTitle) {
-    var season = 0;
-    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + tvTitle + 'S').once('value', (snapshot) => {
-        season = snapshot.val();
-        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + tvTitle + 'E').once('value', (snapshot) => {
-            transporter('tv',tvTitle,season,snapshot.val())
-        }); 
-    });
+function continueWatching(title) {
+    var mediaType = eval(unspace(title))['mediaType'];
+    
+    if (mediaType == 'tv') {
+        var season = 0;
+        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'S').once('value', (snapshot) => {
+            season = snapshot.val();
+            firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
+                transporter('tv',title,season,snapshot.val())
+            }); 
+        });
+    } else if (mediaType == 'movie') {
+        transporter('movie',title);
+    }
 }
 
 function transporter(type, title, season, episode) {
@@ -280,7 +286,7 @@ window.addEventListener('load', function () {
                     <div class='action-button-container'>
 
                         <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
+                        <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching()'>Continue</div>
                         <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
                     </div>
                     <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
@@ -385,14 +391,14 @@ function expandTv(mediaTitle) {
             console.log('You can not watch content on baileo without an account!');
         } else {
             if (snapshot.val() > 0) {
-                document.getElementById('continueWatchingTvButton').style.display = 'block';
+                document.getElementById('continueWatchingButton').style.display = 'block';
                 var season = 0;
                 var episode = 0;
                 firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'S').once('value', (snapshot) => {
                     season = snapshot.val();
                     firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
                         episode = snapshot.val();
-                        document.getElementById('continueWatchingTvButton').innerHTML = 'Continue - S' + season + 'E' + (Number(episode) + 1);
+                        document.getElementById('continueWatchingButton').innerHTML = 'Continue - S' + season + 'E' + (Number(episode) + 1);
                         setTimeout(function() {
                             tvScreenContents.style.top = '0';
                             tvScreenContents.style.opacity = '1';
@@ -423,20 +429,20 @@ function expandTv(mediaTitle) {
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
         if (a == localStorage['activeSeasonTab']) {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`;
+            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`);
         } else {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`;
+            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`);
         }
         a++;
     }
 
     var b = 0;
     while (b < (eval(titleUS)['s1']).length) {
-        tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
+        tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
             <div class='listItemChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
                 <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
                 <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
-            </div>`;
+            </div>`);
         b++;
     }
 }
@@ -497,7 +503,7 @@ function closeTvScreen() {
     }, 100);
 
 
-    document.getElementById('continueWatchingTvButton').style.display = 'none';
+    document.getElementById('continueWatchingButton').style.display = 'none';
     document.getElementById('startWatchingTvButton').style.display = 'none';
 }
 
@@ -569,28 +575,36 @@ function loadProfile() {
 }
 
 function getCurrentlyWatching() {
-    var tvOrdered = '';
-    var moviesOrdered = '';
     firebase.database().ref('users/' + localStorage['username'] + '/watched').once('value', (snapshot) => {
-        tvOrdered = Object.entries(snapshot.val()['tv'])
-            .sort(([,a],[,b]) => b - a)
-            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-        console.log(tvOrdered);
+        if (snapshot.val() == undefined) {
+            document.getElementById('continueWatchingSection').style.display = 'none';
+        } else {
+            document.getElementById('continueWatchingSection').style.display = 'block';
+        }
+        var tvOrdered = '';
+        var moviesOrdered = '';
+        firebase.database().ref('users/' + localStorage['username'] + '/watched').once('value', (snapshot) => {
+            var allMedia = {};
+            Object.assign(allMedia, snapshot.val()['movie']);
+            Object.assign(allMedia, snapshot.val()['tv']);
+            
+            ordered = Object.entries(allMedia)
+                .sort(([,a],[,b]) => b - a)
+                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+            // console.log(allMedia);
 
-        moviesOrdered = Object.entries(snapshot.val()['movie'])
-            .sort(([,a],[,b]) => b - a)
-            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-        console.log(moviesOrdered);
-        // console.log(snapshot.val()['tv']);
-        // console.log(snapshot.val()['movie']);
-        // console.log(Object.keys(snapshot.val()['tv']))
-        // console.log(Object.values(snapshot.val()['tv']).sort((a, b) => b-a))
-        // for (var i = 0; i < snapshot.val()['tv'].length; i++) {
-        //     console.log('tv show');
-        // }
-        // let highestToLowest = array.sort((a, b) => b-a);
-        // console.log(highestToLowest);
+            for (var i = 0; i < Object.keys(ordered).length; i++) {
+                document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
+                <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                    <div class='image-shader'>
+                        <img src='icons/play-video-icon.png'>
+                    </div>
+                </div>`);
+                // console.log(Object.keys(ordered)[i]); 
+            }
+        });
     });
+        
 }
 
 function search() {
