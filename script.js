@@ -95,6 +95,21 @@ const DaddysHome2 = {
     description: `Daddy's Home 2 (known in-film as Daddy's Home Two) is a 2017 American Christmas comedy film directed by Sean Anders and written by Anders and John Morris. A sequel to Daddy's Home (2015), it stars Will Ferrell, Mark Wahlberg, Linda Cardellini, John Cena, with John Lithgow and Mel Gibson. The plot follows now-reformed fathers Brad and Dusty (Ferrell and Wahlberg), now co-parenting Dusty's kids, who have to deal with their own fathers (Lithgow and Gibson) visiting for the holidays. Unlike its predecessor, Red Granite Pictures was not involved in the film's production. Principal photography on the film began in Massachusetts in March 2017 and it was released in the United States by Paramount Pictures on November 10, 2017. Although the film received generally negative reviews from critics, it grossed over $180 million worldwide against a production budget of $70 million.`,
 }
 
+const DespicableMe = {
+    mediaType: 'movie',
+    description: `Despicable Me is a computer-animated media franchise centering on Gru, a reformed super-villain (who later becomes a father, husband, and secret agent), and his yellow-colored Minions. It is produced by Illumination and distributed by its parent company Universal Pictures. The franchise began with the 2010 film of the same name, which was followed by two sequels, Despicable Me 2 (2013) and Despicable Me 3 (2017), with a future sequel, Despicable Me 4, expected to hit theaters in 2024; and by two spin-off prequels, Minions (2015) and Minions: The Rise of Gru (2022). The franchise also includes many short films, a television special, several video games, and a theme park attraction. It is the highest-grossing animated film franchise and the 15th highest-grossing film franchise of all time, having grossed over $4.1 billion globally.`,
+}
+
+const DespicableMe2 = {
+    mediaType: 'movie',
+    description: `Despicable Me 2 is a 2013 American computer-animated comedy film produced by Illumination Entertainment and distributed by Universal Pictures. The sequel to Despicable Me (2010), it is directed by Chris Renaud and Pierre Coffin, and written by Cinco Paul and Ken Daurio. Despicable Me 2 stars the voices of Steve Carell, Kristen Wiig, Benjamin Bratt, Miranda Cosgrove, Russell Brand, and Ken Jeong. The film follows Gru (Carell) as he is recruited by agent Lucy Wilde (Wiig), who is investigating a theft of the mutagen called PX-41, stolen from the Arctic Circle. During their investigations, they befriend a man named Eduardo Pérez (Bratt), who happens to be the supervillain named El Macho, who faked his death many years back.`,
+}
+
+const DespicableMe3 = {
+    mediaType: 'movie',
+    description: `Despicable Me is a computer-animated media franchise centering on Gru, a reformed super-villain (who later becomes a father, husband, and secret agent), and his yellow-colored Minions. It is produced by Illumination and distributed by its parent company Universal Pictures. The franchise began with the 2010 film of the same name, which was followed by two sequels, Despicable Me 2 (2013) and Despicable Me 3 (2017), with a future sequel, Despicable Me 4, expected to hit theaters in 2024; and by two spin-off prequels, Minions (2015) and Minions: The Rise of Gru (2022). The franchise also includes many short films, a television special, several video games, and a theme park attraction. It is the highest-grossing animated film franchise and the 15th highest-grossing film franchise of all time, having grossed over $4.1 billion globally.`,
+}
+
 const DumbandDumber = {
     mediaType: 'movie',
     description: `Dumb and Dumber is a 1994 American buddy comedy film directed by Peter Farrelly, who co-wrote the screenplay with Bobby Farrelly and Bennett Yellin. It is the first installment in the Dumb and Dumber franchise. Starring Jim Carrey and Jeff Daniels, it tells the story of Lloyd Christmas (Carrey) and Harry Dunne (Daniels), two dumb but well-meaning friends from Providence, Rhode Island, who set out on a cross-country trip to Aspen, Colorado, to return a briefcase full of money to its owner, thinking it was abandoned as a mistake though it was actually left as a ransom. Lauren Holly, Karen Duffy, Mike Starr, Charles Rocket, and Teri Garr play supporting roles.`,
@@ -103,6 +118,26 @@ const DumbandDumber = {
 const KnivesOut = {
     mediaType: 'movie',
     description: `Knives Out is a 2019 American mystery film written and directed by Rian Johnson and produced by Johnson and Ram Bergman. It follows a master detective investigating the death of the patriarch of a wealthy, dysfunctional family. The film features an ensemble cast including Daniel Craig, Chris Evans, Ana de Armas, Jamie Lee Curtis, Michael Shannon, Don Johnson, Toni Collette, Lakeith Stanfield, Katherine Langford, Jaeden Martell, and Christopher Plummer.`,
+}
+
+const LegallyBlonde = {
+    mediaType: 'movie',
+    description: `Legally Blonde is a 2001 American comedy film directed by Robert Luketic in his feature-length directorial debut. Written by Karen McCullah Lutz and Kirsten Smith from Amanda Brown's 2001 novel of the same name, it stars Reese Witherspoon, Luke Wilson, Selma Blair, Matthew Davis, Victor Garber, and Jennifer Coolidge. Witherspoon plays Elle Woods, a sorority girl who attempts to win back her ex-boyfriend Warner Huntington III by getting a Juris Doctor degree at Harvard Law School, and in the process, overcomes stereotypes against blondes and triumphs as a successful lawyer through unflappable self-confidence and fashion/beauty knowhow.`,
+}
+
+const MeanGirls = {
+    mediaType: 'movie',
+    description: `Mean Girls is a 2004 American teen comedy film directed by Mark Waters and written by Tina Fey. The film stars Lindsay Lohan, Rachel McAdams, Lacey Chabert, Amanda Seyfried (in her film debut), Tim Meadows, Ana Gasteyer, Amy Poehler, and Fey. It is based in part on Rosalind Wiseman's 2002 non-fiction self-help book, Queen Bees and Wannabes, which describes female high school social cliques, school bullying, and the damaging effects they can have on students. Fey also drew from her own experience at Upper Darby High School as an inspiration for some of the concepts in the film. The plot centers on a naïve teenage girl navigating her way through the social hierarchy of a modern American high school after years of her parents homeschooling her while conducting research in Africa.`,
+}
+
+const MeanGirls2 = {
+    mediaType: 'movie',
+    description: `Mean Girls 2 is a 2011 American teen comedy television film directed by Melanie Mayron, and serves as a sequel to the 2004 film Mean Girls. The film premiered on ABC Family on January 23, 2011, and released direct-to-video on February 1. It stars Meaghan Martin, Jennifer Stone, Maiara Walsh, Nicole Gale Anderson, Claire Holt, Diego Boneta, and Linden Ashby.`,
+}
+
+const Minions = {
+    mediaType: 'movie',
+    description: `Minions is a 2015 American computer-animated comedy film produced by Illumination Entertainment and distributed by Universal Pictures. It is the spin-off/prequel and the third installment overall in the Despicable Me franchise. Directed by Pierre Coffin and Kyle Balda (in Balda's directorial debut), produced by Chris Meledandri and Janet Healy, and written by Brian Lynch, the film stars the voices of Coffin as the Minions (including Kevin, Stuart, and Bob), Sandra Bullock, Jon Hamm, Michael Keaton, Allison Janney, Steve Coogan, Jennifer Saunders, and is narrated by Geoffrey Rush.`,
 }
 
 const SpiderManHomecoming = {
@@ -120,6 +155,15 @@ const TheAmazingSpiderMan2 = {
     description: `The Amazing Spider-Man 2 (internationally titled The Amazing Spider-Man 2: Rise of Electro)[6] is a 2014 American superhero film based on the Marvel Comics character Spider-Man. The film was directed by Marc Webb and produced by Avi Arad and Matt Tolmach. It is the fifth theatrical Spider-Man film produced by Columbia Pictures and Marvel Entertainment, the sequel to The Amazing Spider-Man (2012), and the final film in The Amazing Spider-Man series. The studio hired James Vanderbilt to write the screenplay and Alex Kurtzman and Roberto Orci to rewrite it. The film stars Andrew Garfield as Peter Parker / Spider-Man, alongside Emma Stone, Jamie Foxx, Dane DeHaan, Campbell Scott, Embeth Davidtz, Colm Feore, Paul Giamatti, and Sally Field. In the film, Peter Parker tries to protect Gwen Stacy as he investigates his parents' death, while also dealing with the supervillain Electro and the return of his childhood friend Harry Osborn, who is dying from a deadly genetic disease.`,
 }
 
+const TheNotebook = {
+    mediaType: 'movie',
+    description: `The Notebook is a 2004 American romantic drama film directed by Nick Cassavetes, with a screenplay by Jeremy Leven and Jan Sardi, based on the 1996 novel of the same name by Nicholas Sparks. The film stars Ryan Gosling and Rachel McAdams as a young couple who fall in love in the 1940s. Their story is read from a notebook in the present day by an elderly man (played by James Garner), telling the tale to a fellow nursing home resident (played by Gena Rowlands, the director Cassavetes' mother).`,
+}
+
+const Vacation = {
+    mediaType: 'movie',
+    description: `Vacation is a 2015 American road comedy film written and directed by Jonathan Goldstein and John Francis Daley (in their directorial debuts). It stars Ed Helms, Christina Applegate, Leslie Mann, Beverly D'Angelo, Chris Hemsworth, and Chevy Chase. It is the fifth theatrical installment of the Vacation film series, serving as a standalone sequel to Vegas Vacation (1997). It is also the second not to carry the National Lampoon name after Vegas Vacation, and was released by New Line Cinema and Warner Bros. on July 29, 2015. It grossed $104 million on a $31 million budget and received generally negative reviews.`,
+}
 
 
 
@@ -129,42 +173,6 @@ const TheAmazingSpiderMan2 = {
 
 
 
-window.addEventListener('load', function () {
-    isMobileDevice();
-    document.getElementById('body').insertAdjacentHTML('beforeend',`
-    <div class='expand-screen' id='tvExpandScreen'>
-        <div class='expand-screen-contents' id='tvScreenContents'>
-            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
-                </div>
-                <div class='expand-panel-impression-image' id="tvPanelCoverImage"></div>
-                <div class='expand-panel-impression-shade'></div>
-                <div class='expand-panel-contents'>
-                    <div class='action-button-container'>
-
-                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
-                        <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
-                    </div>
-                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
-                    <div id='tvPanelEpisodeList' class='list'>
-                        <!-- <div class='listItemChoice'>
-                            <div class='listItemTitle'>Pilot</div>
-                            <div class='listItemLabel'>Episode 1</div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`);
-    setTimeout(function() {
-        document.getElementById('loadingScreen').style.display = 'none';
-    }, 1);
-})
-
 function setData(reference, value) {
     firebase.database().ref(reference).set(value);
 }
@@ -173,35 +181,9 @@ function setDataProfile(reference, value) {
     firebase.database().ref('users/' + localStorage['username'] + '/' + reference).set(value);
 }
 
-function checkForAccount() {
-    if (localStorage['username'] == undefined) {
-        document.getElementById('body').insertAdjacentHTML('beforeend',`
-        <div id='useAccountPrompt' class='screen-card blur-background'>
-            <div class='panel-card'>
-                <div class='title'>Login or Create Account to Continue</div>
-                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
-                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
-            </div>
-        </div>`);
-    } else {
-        checkAccountValidity();
-    }
-}
-
-function checkAccountValidity() {
-    firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
-        if (localStorage['ekey'] == snapshot.val()) {
-            console.log('Account is valid');
-        } else {
-            console.log('Account is not valid');
-            alert('Error: Faulty login credentials. Your authentication key is not valid.');
-            logout();
-        }
-    });
-}
-
 function createEncryptionKey(length) {
     var library = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','-','=','_','+','.',',','<','>','!','~',':'];
+    console.log(library.length);
     var collection = '';
     for (var i = 0; i < length; i++) {
         collection = collection + library[Math.floor(Math.random() * library.length)];
@@ -239,32 +221,22 @@ function continueWatchingTv(tvTitle) {
     });
 }
 
-function  randomizeTv() {
-    var title = localStorage['expandPanelTitle'];
-    var sTotal = eval(unspace(title))['sTotal'];
-    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
-    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
-    transporter('tv',localStorage['expandPanelTitle'],randomSeason,randomEpisode);
-}
-
 function transporter(type, title, season, episode) {
     checkAccountValidity();
     var receiverPageLink = 'http://50.58.218.209/receiver.html';
-    var errorList = 'Movie Title,';
-    if (errorList.includes(title + ',')) {
-        alert('Sorry, but this is not yet available to watch on Baileo yet! Please check back later.');
+    if (mobileDeviceTester()) {
+        receiverPageLink = 'http://50.58.218.209/mobile-viewer.html';
+    }
+    closeTvScreen();
+    if (localStorage['username'] == undefined) {
+        openPage('login.html');
     } else {
-        closeTvScreen();
-        if (localStorage['username'] == undefined) {
-            openPage('login.html');
-        } else {
-            if (type == 'tv') {
-                var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-            } else if (type == 'movie') {
-                var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
-            }
-            window.open(generatedLink, "_self");
+        if (type == 'tv') {
+            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+        } else if (type == 'movie') {
+            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
         }
+        window.open(generatedLink, "_self");
     }
 }
 
@@ -272,29 +244,12 @@ function mobileDeviceTester(){
     return window.matchMedia('(hover: none)').matches;
 }
 
-function processRequest() {
-    var urlParams = new URLSearchParams(document.location.search);
-    if (urlParams.get('action') == 'nextEpisode') {
-        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
-    }
-}
-
 function loading() {
     document.getElementById('loadingScreen').style.display = 'block';
 }
 
-function search() {
-    let input = document.getElementById('searchBar').value;
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('listItemChoice');
-    for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display = "none";
-        }
-        else {
-            x[i].style.display = "flex";
-        }
-    }
+function stopLoading() {
+    document.getElementById('loadingScreen').style.display = 'none';
 }
 
 
@@ -306,6 +261,107 @@ function search() {
 
 
 
+
+window.addEventListener('load', function () {
+    isMobileDevice();
+    document.getElementById('body').insertAdjacentHTML('beforeend',`
+    <div class='expand-screen' id='tvExpandScreen'>
+        <div class='expand-screen-contents' id='tvScreenContents'>
+            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
+                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
+                </div>
+                <div class='expand-panel-impression-image' id="tvPanelCoverImage"></div>
+                <div class='expand-panel-impression-shade'></div>
+                <div class='expand-panel-contents'>
+                    <div class='action-button-container'>
+
+                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
+                        <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
+                        <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
+                    </div>
+                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+                    <div id='tvPanelEpisodeList' class='list'>
+                        <!-- <div class='listItemChoice'>
+                            <div class='listItemTitle'>Pilot</div>
+                            <div class='listItemLabel'>Episode 1</div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`);
+    setTimeout(function() {
+        stopLoading();
+    }, 1);
+})
+
+function checkForAccount() {
+    if (localStorage['username'] == undefined) {
+        document.getElementById('body').insertAdjacentHTML('beforeend',`
+        <div id='useAccountPrompt' class='screen-card blur-background'>
+            <div class='panel-card'>
+                <div class='title'>Login or Create Account to Continue</div>
+                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
+                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
+            </div>
+        </div>`);
+    } else {
+        checkAccountValidity();
+    }
+}
+
+function checkAccountValidity() {
+    firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
+        if (localStorage['ekey'] == snapshot.val()) {
+            console.log('Account is valid');
+        } else {
+            console.log('Account is not valid');
+            alert('Error: Faulty login credentials. Your authentication key is not valid.');
+            logout();
+        }
+    });
+}
+
+function processRequest() {
+    var urlParams = new URLSearchParams(document.location.search);
+    if (urlParams.get('action') == 'nextEpisode') {
+        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
+    }
+}
+
+function nextEpisode(title, season, episode) {
+    var tvShowUS = unspace(title);
+    var seasonCapacity = eval(tvShowUS)['s' + season].length;
+    var seasonsTotal = eval(tvShowUS)['sTotal'];
+
+    console.log('titleUS ' + tvShowUS);
+    console.log('scap ' + seasonCapacity);
+    console.log('stotal ' + seasonsTotal);
+    console.log('episodeGiven ' + episode)
+
+    if (episode == (seasonCapacity - 1)) {
+        if (season == seasonsTotal) {
+            openPage('index.html');
+        } else {
+            season++;
+            transporter('tv',title,season,0);
+        }
+    } else {
+        episode++;
+        transporter('tv',title,season,episode);
+    }
+}
+
+function randomizeTv() {
+    var title = localStorage['expandPanelTitle'];
+    var sTotal = eval(unspace(title))['sTotal'];
+    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
+    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
+    transporter('tv',localStorage['expandPanelTitle'],randomSeason,randomEpisode);
+}
 
 function expandTv(mediaTitle) {
 
@@ -414,6 +470,20 @@ function selectSeason(seasonNum) {
     }
 }
 
+sessionStorage['savedScrollLocation22838'] = 0;
+
+function tvExpandPanelScrolled() {
+    var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
+    if (scrollTop == sessionStorage['savedScrollLocation22838']) {
+        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgb(27, 31, 40)';
+        document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
+    } else {
+        sessionStorage['savedScrollLocation22838'] = scrollTop;
+        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgba(0,0,0,0)';
+        document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
+    }
+}
+
 function closeTvScreen() {
     var tvExpandScreen = document.getElementById('tvExpandScreen');
     var tvScreenContents = document.getElementById('tvScreenContents');
@@ -427,20 +497,6 @@ function closeTvScreen() {
 
     document.getElementById('continueWatchingTvButton').style.display = 'none';
     document.getElementById('startWatchingTvButton').style.display = 'none';
-}
-
-sessionStorage['savedScrollLocation22838'] = 0;
-
-function tvExpandPanelScrolled() {
-    var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
-    if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgb(27, 31, 40)';
-        document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
-    } else {
-        sessionStorage['savedScrollLocation22838'] = scrollTop;
-        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgba(0,0,0,0)';
-        document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
-    }
 }
 
 function isMobileDevice() {
@@ -510,29 +566,6 @@ function loadProfile() {
     document.getElementById('profilePageUsername').innerHTML = 'Welcome, ' + localStorage['username'];
 }
 
-function nextEpisode(title, season, episode) {
-    var tvShowUS = unspace(title);
-    var seasonCapacity = eval(tvShowUS)['s' + season].length;
-    var seasonsTotal = eval(tvShowUS)['sTotal'];
-
-    console.log('titleUS ' + tvShowUS);
-    console.log('scap ' + seasonCapacity);
-    console.log('stotal ' + seasonsTotal);
-    console.log('episodeGiven ' + episode)
-
-    if (episode == (seasonCapacity - 1)) {
-        if (season == seasonsTotal) {
-            openPage('index.html');
-        } else {
-            season++;
-            transporter('tv',title,season,0);
-        }
-    } else {
-        episode++;
-        transporter('tv',title,season,episode);
-    }
-}
-
 function getCurrentlyWatching() {
     var tvOrdered = '';
     var moviesOrdered = '';
@@ -558,8 +591,23 @@ function getCurrentlyWatching() {
     });
 }
 
+function search() {
+    let input = document.getElementById('searchBar').value;
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('listItemChoice');
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "flex";
+        }
+    }
+}
+
 function readSearchUrl() {
     var urlParams = new URLSearchParams(document.location.search);
     document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
+    // document.getElementById('searchBar').style.display = 'none';
     search();
 }

@@ -34,13 +34,6 @@
     opacity: 1;
 }
 
-.media-slider-title-bar:hover{
-    padding-left: 1vw;
-    padding-right: 1vw;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
 .listItemChoice:hover{
     height: 80pt;
 }
@@ -50,10 +43,12 @@
 }
 
 .listItemChoice:hover .listItemTitle .listItemImageFrame{
-    height: 80pt;
+    height: 80%;
     width: calc(80pt + 4vw);
 }
 
 .listItemChoice:hover{
-    background-color: var(--navbarBgColor);
+    background-color: var(--violetBlue);
+    border-top: solid 1pt gray;
+    border-bottom: solid 1pt gray;
 }

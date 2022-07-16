@@ -154,6 +154,13 @@ a{
     transition: padding-left 200ms;
 }
 
+.media-slider-title-bar:hover{
+    padding-left: 10pt;
+    padding-right: 1vw;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .horizontal-scroll{
     white-space: nowrap;
     overflow-x: scroll;
@@ -348,6 +355,7 @@ a{
     cursor: default;
     padding: 10pt;
     cursor: pointer;
+    transition: height 200ms;
 }
 
 .listItemTitle{
@@ -430,7 +438,7 @@ a{
 #searchBar{
     height: 50pt;
     width: 90%;
-    margin: 5vh 5% 5vh 5%;
+    margin: 5vh 5vw 5vh 5vw;
     background-color: var(--violetBlue);
     padding: 20pt;
     outline: none;
