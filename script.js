@@ -583,26 +583,31 @@ function getCurrentlyWatching() {
         }
         var tvOrdered = '';
         var moviesOrdered = '';
-        firebase.database().ref('users/' + localStorage['username'] + '/watched').once('value', (snapshot) => {
-            var allMedia = {};
-            Object.assign(allMedia, snapshot.val()['movie']);
-            Object.assign(allMedia, snapshot.val()['tv']);
-            
-            ordered = Object.entries(allMedia)
-                .sort(([,a],[,b]) => b - a)
-                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-            // console.log(allMedia);
 
-            for (var i = 0; i < Object.keys(ordered).length; i++) {
-                document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
-                <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                    <div class='image-shader'>
-                        <img src='icons/play-video-icon.png'>
-                    </div>
-                </div>`);
-                // console.log(Object.keys(ordered)[i]); 
-            }
-        });
+        var allMedia = {};
+        if (snapshot.val()['movie'] == undefined) {
+            Object.assign(allMedia, snapshot.val()['tv']);
+        } else if (snapshot.val()['tv'] == undefined) {
+            Object.assign(allMedia, snapshot.val()['movie']);
+        } else {
+            Object.assign(allMedia, snapshot.val()['tv']);
+            Object.assign(allMedia, snapshot.val()['movie']);
+        }
+        
+        ordered = Object.entries(allMedia)
+            .sort(([,a],[,b]) => b - a)
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+        // console.log(allMedia);
+
+        for (var i = 0; i < Object.keys(ordered).length; i++) {
+            document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
+            <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                <div class='image-shader'>
+                    <img src='icons/play-video-icon.png'>
+                </div>
+            </div>`);
+            // console.log(Object.keys(ordered)[i]); 
+        }
     });
         
 }
