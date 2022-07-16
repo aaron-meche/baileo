@@ -33,10 +33,10 @@ a{
     color: inherit;
 }
 
-.gradient-background{
+#gradientWallpaper{
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(45deg, var(--silverAqua) 0%, var(--bodyBgColor) 100%);
+    background: linear-gradient(45deg, rgb(51, 20, 45) 0%, rgb(51, 33, 102) 100%);
     z-index: -1;
     position: fixed;
     top: 0;
@@ -569,5 +569,10 @@ a{
 .featured-panel{
     height: 70vh;
     width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
     background-color: blue;
+    background: transparent no-repeat center center;
+    background-size: cover;
 }

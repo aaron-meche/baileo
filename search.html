@@ -34,13 +34,13 @@
             </div>
         </div>
 
-        <div class='gradient-background'></div>
+        <div class='gradient-background' id='gradientWallpaper'></div>
 
         <div id='loadingScreen'>
             <img src='icons/loading.gif'>
         </div>
 
-        <input onkeyup="search()" id="searchBar" type="text" placeholder="Search">
+        <input onkeyup="search(this.value)" id="searchBar" type="text" placeholder="Search">
 
         <div class='list'>
             <div class='listItemChoice searchItemChoice' onclick='transporter("movie","American Psycho")'>
@@ -68,6 +68,15 @@
                 </div>
                 <div class='listItemLabel'>Movie</div>
                 <div style='display: none'>type:movie category:animation </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Clueless")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/clueless.jpg')"></div>
+                    Clueless
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy </div>
             </div>
 
             <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Coraline")'>
@@ -119,6 +128,15 @@
                 <div class='listItemTitle'>
                     <div class="listItemImageFrame" style="background-image: url('thumbnails/dumb-and-dumber.jpg')"></div>
                     Dumb and Dumber
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy comedy stupid </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Dumb and Dumber To")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/dumb-and-dumber-to.jpg')"></div>
+                    Dumb and Dumber To
                 </div>
                 <div class='listItemLabel'>Movie</div>
                 <div style='display: none'>type:movie category:comedy comedy stupid </div>
@@ -275,6 +293,15 @@
                 </div>
                 <div class='listItemLabel'>Movie</div>
                 <div style='display: none'>type:movie category:romcom ryan reynolds </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","The Waterboy")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-waterboy.jpg')"></div>
+                    The Waterboy
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy adam sandler </div>
             </div>
 
             <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Vacation")'>

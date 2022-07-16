@@ -616,8 +616,8 @@ function getCurrentlyWatching() {
         
 }
 
-function search() {
-    let input = document.getElementById('searchBar').value;
+function search(string) {
+    let input = string;
     input = input.toLowerCase();
     let x = document.getElementsByClassName('listItemChoice');
     for (i = 0; i < x.length; i++) {
@@ -632,7 +632,16 @@ function search() {
 
 function readSearchUrl() {
     var urlParams = new URLSearchParams(document.location.search);
+    search(urlParams.get('search').replace(/%20/g, ' '));
     document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
-    // document.getElementById('searchBar').style.display = 'none';
-    search();
+}
+
+function bodyScroll() {
+    if (mobileDeviceTester()) {
+        void(0);
+    } else {
+        console.log(document.getElementById('body').scrollTop);
+        document.getElementById('featuredPanel').style.height = 'calc(70vh - ' + document.getElementById('body').scrollTop + 'px';
+        document.getElementById('featuredPanel').style.top = '-' + (document.getElementById('body').scrollTop * 0.5);
+    }
 }

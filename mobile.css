@@ -38,3 +38,7 @@
 .image-shader{
     display: none;
 }
+
+.featured-panel{
+    height: 40vh;
+}
