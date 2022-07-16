@@ -222,6 +222,7 @@ function continueWatchingTv(tvTitle) {
 }
 
 function transporter(type, title, season, episode) {
+    loading();
     checkAccountValidity();
     var receiverPageLink = 'http://50.58.218.209/receiver.html';
     if (mobileDeviceTester()) {
@@ -315,6 +316,7 @@ function checkForAccount() {
 
 function checkAccountValidity() {
     firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
+        stopLoading();
         if (localStorage['ekey'] == snapshot.val()) {
             console.log('Account is valid');
         } else {
