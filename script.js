@@ -162,7 +162,7 @@ window.addEventListener('load', function () {
     </div>`);
     setTimeout(function() {
         document.getElementById('loadingScreen').style.display = 'none';
-    }, 50);
+    }, 1);
 })
 
 function setData(reference, value) {
@@ -171,62 +171,6 @@ function setData(reference, value) {
 
 function setDataProfile(reference, value) {
     firebase.database().ref('users/' + localStorage['username'] + '/' + reference).set(value);
-}
-
-function systemLogout() {
-    var newKey = createEncryptionKey(50);
-    localStorage['ekey'] = newKey;
-    setDataProfile('key',newKey);
-    alert('Your authentication key has been changed and you have been logged out of all other devices.')
-}
-
-function logout() {
-    localStorage.clear();
-    openPage('index.html');
-}
-
-function openPage(location) {
-    window.open(location, "_self");
-}
-
-function unspace(string) {
-    return string.replace(/\s/g, '');
-}
-
-function transporter(type, title, season, episode) {
-    checkAccountValidity();
-    var receiverPageLink = 'http://50.58.218.209/receiver.html';
-    var errorList = 'Despicable Me, Despicable Me 2, Vacation, Mean Girls, Minions';
-    if (errorList.includes(title + ',')) {
-        alert('Sorry, but this is not yet available to watch on Baileo yet! Please check back later.');
-    } else {
-        closeTvScreen();
-        if (localStorage['username'] == undefined) {
-            openPage('login.html');
-        } else {
-            if (type == 'tv') {
-                var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-            } else if (type == 'movie') {
-                var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
-            }
-            window.open(generatedLink, "_self");
-        }
-    }
-}
-
-function mobileDeviceTester(){
-    return window.matchMedia('(hover: none)').matches;
-}
-
-function processRequest() {
-    var urlParams = new URLSearchParams(document.location.search);
-    if (urlParams.get('action') == 'nextEpisode') {
-        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
-    }
-}
-
-function loading() {
-    document.getElementById('loadingScreen').style.display = 'block';
 }
 
 function checkForAccount() {
@@ -263,6 +207,80 @@ function createEncryptionKey(length) {
         collection = collection + library[Math.floor(Math.random() * library.length)];
     }
     return collection;
+}
+
+function systemLogout() {
+    var newKey = createEncryptionKey(50);
+    localStorage['ekey'] = newKey;
+    setDataProfile('key',newKey);
+    alert('Your authentication key has been changed and you have been logged out of all other devices.')
+}
+
+function logout() {
+    localStorage.clear();
+    openPage('index.html');
+}
+
+function openPage(location) {
+    window.open(location, "_self");
+}
+
+function unspace(string) {
+    return string.replace(/\s/g, '');
+}
+
+function continueWatchingTv(tvTitle) {
+    var season = 0;
+    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + tvTitle + 'S').once('value', (snapshot) => {
+        season = snapshot.val();
+        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + tvTitle + 'E').once('value', (snapshot) => {
+            transporter('tv',tvTitle,season,snapshot.val())
+        }); 
+    });
+}
+
+function  randomizeTv() {
+    var title = localStorage['expandPanelTitle'];
+    var sTotal = eval(unspace(title))['sTotal'];
+    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
+    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
+    transporter('tv',localStorage['expandPanelTitle'],randomSeason,randomEpisode);
+}
+
+function transporter(type, title, season, episode) {
+    checkAccountValidity();
+    var receiverPageLink = 'http://50.58.218.209/receiver.html';
+    var errorList = 'Despicable Me, Despicable Me 2, Minions';
+    if (errorList.includes(title + ',')) {
+        alert('Sorry, but this is not yet available to watch on Baileo yet! Please check back later.');
+    } else {
+        closeTvScreen();
+        if (localStorage['username'] == undefined) {
+            openPage('login.html');
+        } else {
+            if (type == 'tv') {
+                var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
+            } else if (type == 'movie') {
+                var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
+            }
+            window.open(generatedLink, "_self");
+        }
+    }
+}
+
+function mobileDeviceTester(){
+    return window.matchMedia('(hover: none)').matches;
+}
+
+function processRequest() {
+    var urlParams = new URLSearchParams(document.location.search);
+    if (urlParams.get('action') == 'nextEpisode') {
+        nextEpisode(urlParams.get('title').replace(/%20/g, ' '),urlParams.get('season'),urlParams.get('episode'));
+    }
+}
+
+function loading() {
+    document.getElementById('loadingScreen').style.display = 'block';
 }
 
 function search() {
@@ -363,24 +381,6 @@ function expandTv(mediaTitle) {
             </div>`;
         b++;
     }
-}
-
-function continueWatchingTv() {
-    var season = 0;
-    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['expandPanelTitle'] + 'S').once('value', (snapshot) => {
-        season = snapshot.val();
-        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + localStorage['expandPanelTitle'] + 'E').once('value', (snapshot) => {
-            transporter('tv',localStorage['expandPanelTitle'],season,snapshot.val())
-        }); 
-    });
-}
-
-function  randomizeTv() {
-    var title = localStorage['expandPanelTitle'];
-    var sTotal = eval(unspace(title))['sTotal'];
-    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
-    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
-    transporter('tv',localStorage['expandPanelTitle'],randomSeason,randomEpisode);
 }
 
 function selectSeason(seasonNum) {

@@ -21,8 +21,7 @@
 
 body{
     margin: 0;
-    /* background-color: var(--bodyBgColor); */
-    background: linear-gradient(45deg, var(--silverAqua) 0%, var(--bodyBgColor) 100%);
+    background-color: var(--navbarBgColor);
     color: white;
     font-family: var(--mainFont);
     font-weight: 400;
@@ -37,6 +36,11 @@ a{
 .gradient-background{
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(45deg, var(--silverAqua) 0%, var(--bodyBgColor) 100%);
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 
@@ -141,9 +145,15 @@ a{
 }
 
 .media-slider-title-bar{
+    width: fit-content;
     font-size: 1.5rem;
     padding-bottom: 10pt;
     padding-left: 2vw;
+    cursor: pointer;
+}
+
+.media-slider-title-bar:hover{
+    font-weight: 600;
 }
 
 .horizontal-scroll{
