@@ -147,13 +147,11 @@ a{
 .media-slider-title-bar{
     width: fit-content;
     font-size: 1.5rem;
+    padding-top: 10pt;
     padding-bottom: 10pt;
-    padding-left: 2vw;
+    margin-left: 2.5vw;
     cursor: pointer;
-}
-
-.media-slider-title-bar:hover{
-    font-weight: 600;
+    transition: padding-left 200ms;
 }
 
 .horizontal-scroll{
@@ -345,14 +343,11 @@ a{
 }
 
 .listItemChoice{
-    min-height: 40pt;
+    height: 50pt;
     position: relative;
     cursor: default;
     padding: 10pt;
-}
-
-.listItemChoice:hover{
-    background-color: var(--navbarBgColor);
+    cursor: pointer;
 }
 
 .listItemTitle{
@@ -381,8 +376,8 @@ a{
 }
 
 .listItemImageFrame{
-    height: 40pt;
-    min-width: 65pt;
+    height: calc(100% - 20pt);
+    min-width: 80pt;
     display: inline-block;
     background: transparent no-repeat center;
     background-size: cover;
@@ -436,7 +431,7 @@ a{
     height: 50pt;
     width: 90%;
     margin: 5vh 5% 5vh 5%;
-    background-color: var(--silverAqua);
+    background-color: var(--violetBlue);
     padding: 20pt;
     outline: none;
     font-size: 20pt;
@@ -445,6 +440,7 @@ a{
     border-radius: 15pt;
     border: none;
     transition: padding-left 300ms, box-shadow 300ms;
+    border: solid 2pt gray;
 }
 
 #searchBar::placeholder{
@@ -454,7 +450,7 @@ a{
 }
 
 #searchBar:focus{
-    box-shadow: 0 0 40pt 0 var(--navbarBgColor);
+    border: solid 2pt white;
     padding-left: 30pt;
 }
 

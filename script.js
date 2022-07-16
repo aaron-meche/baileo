@@ -250,7 +250,7 @@ function  randomizeTv() {
 function transporter(type, title, season, episode) {
     checkAccountValidity();
     var receiverPageLink = 'http://50.58.218.209/receiver.html';
-    var errorList = 'Despicable Me, Despicable Me 2, Minions';
+    var errorList = 'Movie Title,';
     if (errorList.includes(title + ',')) {
         alert('Sorry, but this is not yet available to watch on Baileo yet! Please check back later.');
     } else {
@@ -556,4 +556,10 @@ function getCurrentlyWatching() {
         // let highestToLowest = array.sort((a, b) => b-a);
         // console.log(highestToLowest);
     });
+}
+
+function readSearchUrl() {
+    var urlParams = new URLSearchParams(document.location.search);
+    document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
+    search();
 }

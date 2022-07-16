@@ -33,3 +33,27 @@
 .image-shader:hover{
     opacity: 1;
 }
+
+.media-slider-title-bar:hover{
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.listItemChoice:hover{
+    height: 80pt;
+}
+
+.listItemChoice:hover .listItemTitle{
+    left: 1%;
+}
+
+.listItemChoice:hover .listItemTitle .listItemImageFrame{
+    height: 80pt;
+    width: calc(80pt + 4vw);
+}
+
+.listItemChoice:hover{
+    background-color: var(--navbarBgColor);
+}

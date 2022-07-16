@@ -44,32 +44,7 @@
 
         <div class='media-slider-section'>
             <div class='media-slider-title-bar'>
-                <div class='media-slider-title'>Comedies</div>
-            </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-office.jpg')" onclick='expandTv("The Office")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue-icon.png'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/parks-and-recreation.jpg')" onclick='expandTv("Parks and Recreation")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue-icon.png'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar'>
-                <div class='media-slider-title'>Animations</div>
+                <div class='media-slider-title' onclick='openPage("search.html?search=type:tv category:comedy")'>Comedies ></div>
             </div>
             <div class='horizontal-scroll'>
                 <div class='media-slider-carousel'>
@@ -79,6 +54,18 @@
                             <img src='icons/continue-icon.png'>
                         </div>
                     </div>
+                    
+                    <div class='media-slider-object' style="background-image: url('thumbnails/parks-and-recreation.jpg')" onclick='expandTv("Parks and Recreation")'>
+                        <div class='image-shader'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
+
+                    <div class='media-slider-object' style="background-image: url('thumbnails/the-office.jpg')" onclick='expandTv("The Office")'>
+                        <div class='image-shader'>
+                            <img src='icons/continue-icon.png'>
+                        </div>
+                    </div>
 
                     <div class='media-slider-object'>
                     </div>
@@ -88,7 +75,7 @@
 
         <div class='media-slider-section'>
             <div class='media-slider-title-bar'>
-                <div class='media-slider-title'>Dramas</div>
+                <div class='media-slider-title' onclick='openPage("search.html?search=type:tv category:drama")'>Dramas ></div>
             </div>
             <div class='horizontal-scroll'>
                 <div class='media-slider-carousel'>
