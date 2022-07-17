@@ -215,6 +215,25 @@ a{
     }
 }
 
+.view-progress-container{
+    height: 5pt;
+    width: calc(100% - 2vw - 1pt);
+    position: absolute;
+    bottom: 10pt;
+    left: 1vw;
+    background-color: black;
+    border-radius: 100vh;
+    border: solid 1pt gray;
+    box-shadow: 0 0 5pt 0 black;
+}
+
+.view-progress-bar{
+    height: 100%;
+    width: 50%;
+    border-radius: 100vh;
+    background-color: var(--princeton);
+}
+
 
 
 

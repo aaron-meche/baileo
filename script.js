@@ -601,24 +601,30 @@ function getCurrentlyWatching() {
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
             // console.log(allMedia);
 
-            for (var i = 0; i < Object.keys(ordered).length; i++) {
-                if (mobileDeviceTester()) {
-                    document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
-                    <div class='media-slider-object' style="background-image: url('mobile thumbnails/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                        <div class='image-shader'>
-                            <img src='icons/play-video-icon.png'>
-                        </div>
-                    </div>`);
-                } else {
-                    document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
-                    <div class='media-slider-object' style="background-image: url('thumbnails/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                        <div class='image-shader'>
-                            <img src='icons/play-video-icon.png'>
-                        </div>
-                    </div>`);
-                }
-                // console.log(Object.keys(ordered)[i]); 
+            if (mobileDeviceTester()) {
+                var thumbnailFolder = 'mobile thumbnails'
+            } else {
+                var thumbnailFolder = 'thumbnails';
             }
+
+            firebase.database().ref('users/' + localStorage['username'] + '/progress').once('value', (snapshot) => {
+                const progressData = snapshot.val();
+                for (var i = 0; i < Object.keys(ordered).length; i++) {
+                    var mediaType = eval(unspace(Object.keys(ordered)[i]))['mediaType'];
+                    console.log(progressData[mediaType][Object.keys(ordered)[i]]);
+                    document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
+                    <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                        <div class='image-shader'>
+                            <img src='icons/play-video-icon.png'>
+                        </div>
+                        <div class='view-progress-container'>
+                            <div style='width: ` + (progressData[mediaType][Object.keys(ordered)[i]] * 100) + `%' class='view-progress-bar'></div>
+                        </div>
+                    </div>`);
+                    // console.log(Object.keys(ordered)[i]); 
+                }
+            });
+
             stopLoading(); 
         }
     });
