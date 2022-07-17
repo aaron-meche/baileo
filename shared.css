@@ -224,14 +224,14 @@ a{
     background-color: black;
     border-radius: 100vh;
     border: solid 1pt gray;
-    box-shadow: 0 0 5pt 0 black;
+    box-shadow: 0 0 10pt 0 black;
 }
 
 .view-progress-bar{
     height: 100%;
     width: 50%;
     border-radius: 100vh;
-    background-color: var(--princeton);
+    background-color: rgb(183, 98, 222);
 }
 
 
