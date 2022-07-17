@@ -316,6 +316,7 @@ function checkForAccount() {
                 <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
             </div>
         </div>`);
+        stopLoading();
     } else {
         checkAccountValidity();
     }
@@ -566,6 +567,30 @@ function signup() {
                 });
             }
         }
+    } else {
+        alert('Passwords do not match!');
+    }
+}
+
+function changePassword() {
+    var oldPasswordInput = document.getElementById("oldPasswordInput").value;
+    var newPasswordInput = document.getElementById("newPasswordInput").value;
+    var confirmNewPasswordInput = document.getElementById("confirmNewPasswordInput").value;
+
+    if (newPasswordInput == confirmNewPasswordInput) {
+        firebase.database().ref('users/' + localStorage['username'] + '/password').once('value', (snapshot) => {
+            if (oldPasswordInput == newPasswordInput) {
+                alert('You need to pick a new password!');
+            } else {
+                if (oldPasswordInput == snapshot.val()) {
+                    setDataProfile('password',newPasswordInput);
+                    systemLogout();
+                    openPage('profile.html');
+                } else {
+                    alert('The old password is incorrect!');
+                }
+            }
+        });
     } else {
         alert('Passwords do not match!');
     }

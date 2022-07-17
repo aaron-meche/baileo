@@ -3,10 +3,11 @@
 }
 
 .main-navbar{
-    padding-right: 100pt;
+    padding-right: 110pt;
 }
 
 .right-navbar{
+    padding-right: 10pt;
     width: 100pt;
 }
 
@@ -37,8 +38,4 @@
 
 .image-shader{
     display: none;
-}
-
-.featured-panel{
-    height: 40vh;
 }

@@ -3,12 +3,8 @@
 }
 
 .navbar-link-item:hover{
-    border: solid 2pt white;
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
-}
-
-.active-navbar-link-item:hover{
-    background-color: var(--silverAqua);
 }
 
 .image-shader{
@@ -39,20 +35,20 @@
 }
 
 .listItemChoice:hover{
-    height: 80pt;
+    height: 60pt;
 }
 
 .searchItemChoice:hover .listItemTitle{
-    left: 1%;
+    left: 2%;
 }
 
 .searchItemChoice:hover .listItemTitle .listItemImageFrame{
-    height: 70%;
-    min-width: calc(80pt + 4vw);
+    height: 80%;
+    min-width: calc(80pt + 3vw);
 }
 
 .listItemChoice:hover{
-    background-color: var(--violetBlue);
+    background-color: var(--aqua);
 }
 
 .searchItemChoice:hover{

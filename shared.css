@@ -36,7 +36,7 @@ a{
 #gradientWallpaper{
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(45deg, rgb(51, 20, 45) 0%, rgb(51, 33, 102) 100%);
+    background: linear-gradient(-135deg, rgb(39, 14, 19) 0%, rgb(54, 25, 65) 100%);
     z-index: -1;
     position: fixed;
     top: 0;
@@ -85,7 +85,10 @@ a{
 
 .navbar{
     height: 50pt;
-    background-color: var(--navbarBgColor);
+    width: auto;
+    background: linear-gradient(45deg, rgba(115, 54, 15, 0.75) 0%, rgba(77, 6, 58, 0.75) 100%);
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50pt);
     position: sticky;
     top: 0;
     display: flex;
@@ -100,10 +103,9 @@ a{
 .right-navbar{
     height: 50pt;
     width: auto;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
-    background-color: var(--navbarBgColor);
     display: flex;
     align-items: center;
     justify-content: right;
@@ -113,11 +115,10 @@ a{
     height: 15pt;
     margin: 5pt;
     padding: 10pt;
-    border-radius: 12pt;
+    border-radius: 10pt;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     font-size: 13pt;
-    color: rgb(160,166,178);
-    border: solid 2pt rgba(128, 128, 128, 0);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -125,9 +126,8 @@ a{
 }
 
 .active-navbar-link-item{
-    border: solid 2pt rgb(255, 255, 255);
     color: white;
-    background-color: var(--violetBlue);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -141,7 +141,7 @@ a{
 
 
 .media-slider-section{
-    padding-top: 4rem;
+    padding-top: 5rem;
     position: relative;
     top: 0;
     left: 0;
@@ -149,10 +149,11 @@ a{
 
 .media-slider-title-bar{
     width: fit-content;
-    font-size: 1.5rem;
-    padding-top: 10pt;
-    padding-bottom: 10pt;
-    margin-left: 2.5vw;
+    font-size: 1.25rem;
+    padding-top: 5pt;
+    padding-right: 10pt;
+    padding-bottom: 5pt;
+    margin: 5pt 0 5pt 2.5vw;
     cursor: default;
     transition: padding-left 200ms;
 }
@@ -161,7 +162,7 @@ a{
     cursor: pointer;
     padding-left: 10pt;
     padding-right: 1vw;
-    font-weight: 600;
+    /* font-weight: 600; */
     text-decoration: underline;
 }
 
@@ -216,22 +217,22 @@ a{
 }
 
 .view-progress-container{
-    height: 5pt;
+    height: 4pt;
     width: calc(100% - 2vw - 1pt);
     position: absolute;
     bottom: 10pt;
     left: 1vw;
     background-color: black;
     border-radius: 100vh;
-    border: solid 1pt gray;
-    box-shadow: 0 0 10pt 0 black;
+    border: solid 2pt black;
 }
 
 .view-progress-bar{
     height: 100%;
     width: 50%;
+    min-width: 5%;
     border-radius: 100vh;
-    background-color: rgb(183, 98, 222);
+    background-color: var(--princeton);
 }
 
 
@@ -339,7 +340,7 @@ a{
     top: 50pt;
     z-index: 1;
     margin-bottom: 10pt;
-    padding-left: 5pt;
+    padding: 5pt;
 }
 
 .expand-panel-impression-image{
@@ -417,7 +418,7 @@ a{
     border: solid 1pt rgb(255, 255, 255);
 }
 
-.action-button-container {
+.action-button-container{
     height: auto;
     width: 100%;
     /* background-color: rgb(54, 35, 80); */
@@ -431,22 +432,23 @@ a{
     color: white;
     font-size: 15pt;
     padding: 10pt;
-    border: solid 1pt gray;
+    border: solid 1.5pt white;
     cursor: pointer;
-    border-radius: 10pt;
-    margin: 7pt;
-    transition-duration: 300ms;
-}
-
-.activity-button:hover{
-    background-color: rgb(84, 68, 145);
-    border: solid 1pt white;
+    border-radius: 5pt;
+    margin: 10pt;
 }
 
 .filled-activity-button{
-    border: solid 1pt var(--seafoam);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: solid 1.5pt rgba(128, 128, 128, 0);
+    color: black;
 }
 
+.activity-button:hover{
+    background-color: var(--violetBlue);
+    color: white;
+    border: solid 1.5pt white;
+}
 
 
 
@@ -544,6 +546,9 @@ a{
 }
 
 .horizontal-screen-button{
+    color: white;
+    font-family: var(--mainFont);
+    background: none;
     margin: 10pt auto 0 auto;
     text-align: center;
     font-size: 12pt;
@@ -585,13 +590,38 @@ a{
 
 
 
-.featured-panel{
-    height: 70vh;
+.featured-panel-container{
+    min-height: 40vh;
+    height: 40vw;
+    max-height: 75vh;
     width: 100vw;
     position: relative;
     top: 0;
     left: 0;
-    background-color: blue;
+}
+
+.featured-panel-impression-image{
+    height: 100%;
+    width: 100%;
     background: transparent no-repeat center center;
     background-size: cover;
+}
+
+.featured-panel-utility{
+    height: auto;
+    width: fit-content;
+    padding: 10pt;
+    border-radius: 20pt;
+    position: absolute;
+    bottom: 1vw;
+    left: 1vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
+}
+
+.featured-panel-utility .title{
+    margin: 10pt 10pt 0 10pt;
+    font-size: 2rem;
+    font-weight: 600;
 }

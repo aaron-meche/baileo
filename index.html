@@ -19,7 +19,7 @@
 
 
 
-        <div class='navbar main-navbar horizontal-scroll'>
+        <div class='navbar main-navbar fixed horizontal-scroll'>
             <a class='navbar-link-item active-navbar-link-item' href='index.html'>
                 Home
             </a>
@@ -41,11 +41,20 @@
 
         <div class='gradient-background' id='gradientWallpaper'></div>
         
-        <!-- <div class='featured-panel' style="background-image: url('cover-image/ratatouille.jpg')" id='featuredPanel'>
+
+
+        <div class='featured-panel-container'>
+            <div class='featured-panel-impression-image' style="background-image: url('cover-image/ratatouille.jpg')">
             
-        </div> -->
-
-
+            </div>
+            <div class='featured-panel-utility'>
+                <div class='title'>Ratatouille</div>
+                <div class='action-button-container'>
+                    <div class='activity-button filled-activity-button' onclick='transporter("movie","Ratatouille")'>Play</div>
+                    <div class='activity-button' onclick='openPage("https://www.imdb.com/title/tt0382932/")'>More Info</div>
+                </div>
+            </div>
+        </div>
 
         <div class='media-slider-section' id='continueWatchingSection' style='display:none;'>
             <div class='media-slider-title-bar'>
