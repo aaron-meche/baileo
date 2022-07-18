@@ -233,7 +233,7 @@ function transporter(type, title, season, episode) {
     createLink(type, title, season, episode);
 }
 
-function createLink() {
+function createLink(type, title, season, episode) {
     var key = createEncryptionKey((Math.floor(Math.random() * 50)) + 5);
     setData('links/' + key + '/type',type);
     setData('links/' + key + '/title',title);
