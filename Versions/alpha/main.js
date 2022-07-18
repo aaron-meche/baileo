@@ -130,7 +130,7 @@ function recallVideoData() {
         document.getElementById('moreinfo-video-player-title').innerHTML = localStorage['tvShowTitleSpaced'];
         document.getElementById('moreinfo-video-player-caption').innerHTML = localStorage['tvEpisodeTitle'] + ' - S' + localStorage['tvSeasonNum'] + ' E' + localStorage['tvEpisodeNum'];
         document.getElementById('moreinfo-video-player-description').innerHTML = eval(localStorage['tvShowTitleUnspaced'] + 'Description');
-        document.getElementById('video').innerHTML = `"<source id='source' src="VideoVault/` + localStorage['tvShowTitleSpaced'] + `/Season%20` + localStorage['tvSeasonNum'] + `/` + localStorage['tvEpisodeTitle'] + `.mp4" type="video/mp4">`
+        document.getElementById('video').innerHTML = `"<source id='source' src="http://50.58.218.209/VideoVault/` + localStorage['tvShowTitleSpaced'] + `/Season%20` + localStorage['tvSeasonNum'] + `/` + localStorage['tvEpisodeTitle'] + `.mp4" type="video/mp4">`
         document.getElementById('title').innerHTML = localStorage['tvShowTitleSpaced'] + ' ' + localStorage['tvSeasonNum'] + ':' + localStorage['tvEpisodeNum'] + ' - ' + localStorage['tvEpisodeTitle'];
         document.getElementById('video-player-title').innerHTML = localStorage['tvShowTitleSpaced'];
         document.getElementById('video-player-caption').innerHTML = localStorage['tvEpisodeTitle'] + ' - S' + localStorage['tvSeasonNum'] + ' E' + localStorage['tvEpisodeNum'];
@@ -146,7 +146,7 @@ function recallVideoData() {
         document.getElementById('moreinfo-video-player-title').innerHTML = localStorage['movieTitle'];
         document.getElementById('moreinfo-video-player-caption').style.display = 'none';
         document.getElementById('moreinfo-video-player-description').innerHTML = eval((localStorage['movieTitle'].replace(/\s/g, '').replace(/'/g, '')) + 'Description');
-        document.getElementById('video').innerHTML = `<source id='source' src="VideoVault/` + localStorage['movieTitle'] + `.mp4" type="video/mp4">`
+        document.getElementById('video').innerHTML = `<source id='source' src="http://50.58.218.209/VideoVault/` + localStorage['movieTitle'] + `.mp4" type="video/mp4">`
         document.getElementById('title').innerHTML = 'Watching : ' + localStorage['movieTitle'];
         document.getElementById('video-player-title').innerHTML = localStorage['movieTitle'];
         document.getElementById('video-player-caption').style.display = 'none';
@@ -490,11 +490,11 @@ function downloadVideo(uri, name) {
     var link = document.createElement("a");
     if (localStorage['mediaType'] == 'tv') {
         link.download = localStorage['tvShowTitleSpaced'] + ' S' + localStorage['tvSeasonNum'] + ' E' + localStorage['tvEpisodeNum'] + ' - ' + localStorage['tvEpisodeTitle'];
-        link.href = "VideoVault/" + localStorage['tvShowTitleSpaced'] + "/Season " + localStorage['tvSeasonNum'] + "/" + localStorage['tvEpisodeTitle'] + ".mp4";
+        link.href = "http://50.58.218.209/VideoVault/" + localStorage['tvShowTitleSpaced'] + "/Season " + localStorage['tvSeasonNum'] + "/" + localStorage['tvEpisodeTitle'] + ".mp4";
     }
     if (localStorage['mediaType'] == 'movie') {
         link.download = localStorage['movieTitle'];
-        link.href = "VideoVault/" + localStorage['movieTitle'] + ".mp4";
+        link.href = "http://50.58.218.209/VideoVault/" + localStorage['movieTitle'] + ".mp4";
     }
     link.click();
 }

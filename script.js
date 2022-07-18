@@ -140,6 +140,10 @@ const Minions = {
     description: `Minions is a 2015 American computer-animated comedy film produced by Illumination Entertainment and distributed by Universal Pictures. It is the spin-off/prequel and the third installment overall in the Despicable Me franchise. Directed by Pierre Coffin and Kyle Balda (in Balda's directorial debut), produced by Chris Meledandri and Janet Healy, and written by Brian Lynch, the film stars the voices of Coffin as the Minions (including Kevin, Stuart, and Bob), Sandra Bullock, Jon Hamm, Michael Keaton, Allison Janney, Steve Coogan, Jennifer Saunders, and is narrated by Geoffrey Rush.`,
 }
 
+const Ratatouille = {
+    mediaType: 'movie',
+}
+
 const SpiderManHomecoming = {
     mediaType: 'movie',
     description: `Spider-Man: Homecoming is a 2017 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios, and distributed by Sony Pictures Releasing. It is the second Spider-Man film reboot and the 16th film in the Marvel Cinematic Universe (MCU). The film was directed by Jon Watts, from a screenplay by the writing teams of Jonathan Goldstein and John Francis Daley, Watts and Christopher Ford, and Chris McKenna and Erik Sommers. Tom Holland stars as Peter Parker / Spider-Man, alongside Michael Keaton, Jon Favreau, Gwyneth Paltrow, Zendaya, Donald Glover, Jacob Batalon, Laura Harrier, Tony Revolori, Bokeem Woodbine, Tyne Daly, Marisa Tomei, and Robert Downey Jr. In Spider-Man: Homecoming, Peter Parker tries to balance high school life with being Spider-Man while facing the Vulture (Keaton).`,
@@ -631,6 +635,8 @@ function getCurrentlyWatching() {
                 Object.assign(allMedia, snapshot.val()['tv']);
                 Object.assign(allMedia, snapshot.val()['movie']);
             }
+
+            console.log(allMedia);
             
             const ordered = Object.entries(allMedia)
                 .sort(([,a],[,b]) => b - a)
