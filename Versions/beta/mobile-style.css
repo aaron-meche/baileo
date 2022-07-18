@@ -1,0 +1,311 @@
+@font-face {
+    font-family: 'WorkSans';
+    src: url('Work_Sans/WorkSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Gantari';
+    src: url('Gantari/Gantari-VariableFont_wght.ttf');
+}
+
+:root {
+    --contrast: #F1F1F1;
+    --theme: #1b1b1b;
+    --accent: #80DCB7;
+    --main: #FF8F00;
+    --main2: #F6AE2D;
+}
+
+body{
+    font-family: Gantari;
+    background-color: var(--theme);
+    color: var(--contrast);
+    margin: 0;
+    overflow-y: auto;
+    padding-bottom: 45pt;
+    overflow-y: scroll;
+}
+
+#navbar{
+    height: 35pt;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main);
+    z-index: 718;
+}
+
+.navbar-logo{
+    display: none;
+}
+
+.navbar-item-container{
+    height: 100%;
+    width: 25vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+}
+
+.navbar-item-text{
+    display: none;
+}
+
+.navbar-item-icon{
+    height: 15pt;
+    width: 15pt;
+}
+
+.h1{
+    font-size: 20pt;
+    padding: 15pt 0 0 10pt;
+    font-weight: 500;
+}
+
+.horizontal-scroll{
+    white-space: nowrap;
+    overflow-x: scroll; 
+    padding: 8pt;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.media-image-button{
+    height: 40vw;
+    width: 70vw;
+    margin: 3pt;
+    background: transparent no-repeat center;
+    background-size: cover;
+    display: inline-block;
+}
+
+.media-image-button-text-container{
+    height: 40vw;
+    width: 70vw;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.media-image-button-text{
+    height: auto;
+    width: 70vw;
+    position: absolute;
+    bottom: -1pt;
+    left: 0;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 600;
+    white-space: normal;
+    background-color: rgba(53, 53, 53, 0.8);
+}
+
+.odd{
+    background-color: rgb(0, 0, 0);
+}
+
+#searchBarMobile{
+    width: calc(100vw - 20pt);
+}
+
+.desktop-search{
+    display: none;
+}
+
+input{
+    height: 25pt;
+    font-size: 10pt;
+    padding: 10pt;
+    width: auto;
+    margin: 10pt;
+    background-color: rgb(84, 84, 84);
+    color: white;
+    outline: none;
+    border-radius: 10pt;
+}
+
+.gradient-display-panel{
+    height: 60vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.gradient-display-image{
+    height: 100%;
+    width: 100%;
+    background: transparent no-repeat center;
+    background-size: cover;
+}
+
+.utility-items-container{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, black 0%, #141414c6 25%, rgba(0,0,0,0.3) 50%);
+}
+
+.utility-items{
+    height: auto;
+    position: absolute;
+    bottom: 17pt;
+    left: 10pt;
+}
+
+.gradient-display-panel-title{
+    font-size: 25pt;
+    font-weight: 700;
+    margin: 5pt 5pt 10pt 5pt;
+    color: white;
+}
+
+.button{
+    height: auto;
+    width: fit-content;
+    padding: 7pt;
+    margin: 5pt;
+    background-color: rgb(60, 60, 60);
+    font-size: 10pt;
+    text-align: center;
+    border-radius: 10pt;
+    cursor: pointer;
+    font-weight: 600;
+    float: left;
+}
+
+.activity-button{
+    background-color: var(--main);
+}
+
+#tvExpandScreen{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#exitTvExpandScreenClicker{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#tvExpandPanel{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--theme);
+    overflow-y: scroll;
+}
+
+#tvExpandPanelTopImage{
+    height: 50vh;
+    width: 100%;
+    background-color: black;
+    background: url('images/the-office-ci.jpg') transparent no-repeat center;
+    background-size: cover;
+}
+
+#tvExpandPanelTopImageSheet{
+    height: 51vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, var(--theme) 0%, #1414143c 50%, rgba(0,0,0,0) 100%);
+}
+
+#closeTvExpandScreenButton{
+    height: 10pt;
+    width: 10pt;
+    padding: 7pt;
+    background-color: rgba(255, 0, 0, 0.55);
+    position: absolute;
+    top: 5pt;
+    left: 5pt;
+}
+
+#tv-expand-panel-title{
+    font-size: 20pt;
+    font-weight: 600;
+    padding-left: 5pt;
+}
+
+.utilityItems{
+    position: absolute;
+    bottom: 10pt;
+    left: 10pt;
+}
+
+#tv-expand-panel-navbar{
+    height: auto;
+    width: auto;
+    padding: 5pt;
+}
+
+.tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 10pt;
+    font-size: 12pt;
+    font-weight: 500;
+    cursor: default;
+    color: white;
+}
+
+.tv-expand-panel-navbar-item:hover{
+    color: var(--accent);
+}
+
+.active-tv-expand-panel-navbar-item{
+    display: inline-block;
+    padding: 10pt;
+    font-size: 12pt;
+    font-weight: 500;
+    cursor: default;
+    color: var(--main);
+}
+
+#seasonEpisodesList{
+    font-size: 15pt;
+    padding-bottom: 100pt;
+}
+
+.orderedListItem{
+    padding-top: 7pt;
+    padding-bottom: 7pt;
+}
+
+.orderedListItem:hover{
+    background-color: black;
+}
+
+.orderedListNumber{
+    width: 30pt;
+    display: inline-block;
+    text-align: right;
+}
+
+.orderedListContent{
+    width: calc(90% - 40pt);
+    padding-left: 10pt;
+    display: inline-block;
+}

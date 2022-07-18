@@ -1,0 +1,319 @@
+<html>
+
+    <head>
+
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script src='script.js'></script>
+
+    </head>
+
+    <body id='body' onload='checkForAccount(), readSearchUrl()'>
+
+
+
+        <div class='navbar main-navbar horizontal-scroll'>
+            <a class='navbar-link-item' href='index.html'>
+                Home
+            </a>
+            <a class='navbar-link-item' href='tv.html'>
+                TV
+            </a>
+            <a class='navbar-link-item' href='movies.html'>
+                Movies
+            </a>
+            <div class='right-navbar'>
+                <a href='search.html'><img src='icons/search.png' class='navbar-link-item active-navbar-link-item'></a>
+                <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item'></a>
+            </div>
+        </div>
+
+        <div class='gradient-background' id='gradientWallpaper'></div>
+
+        <div id='loadingScreen'>
+            <img src='icons/loading.gif'>
+        </div>
+
+        <input onkeyup="search(this.value)" id="searchBar" type="text" placeholder="Search">
+
+        <div class='list'>
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","American Psycho")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/american-psycho.jpg')"></div>
+                    American Psycho
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:drama horror </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Cars 2")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/cars-2.jpg')"></div>
+                    Cars 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Cars 3")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/cars-3.jpg')"></div>
+                    Cars 3
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Clueless")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/clueless.jpg')"></div>
+                    Clueless
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Coraline")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/coraline.jpg')"></div>
+                    Coraline
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation horror </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick="transporter('movie',`Daddy's Home 2`)">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/daddys-home-2.jpg')"></div>
+                    Daddy's Home 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick="transporter('movie','Despicable Me')">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/despicable-me.jpg')"></div>
+                    Despicable Me
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation minions illumination gru </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick="transporter('movie','Despicable Me 2')">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/despicable-me-2.jpg')"></div>
+                    Despicable Me 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation minions illumination gru </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick="transporter('movie','Despicable Me 3')">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/despicable-me-3.jpg')"></div>
+                    Despicable Me 3
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation minions illumination gru </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Dumb and Dumber")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/dumb-and-dumber.jpg')"></div>
+                    Dumb and Dumber
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy comedy stupid </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Dumb and Dumber To")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/dumb-and-dumber-to.jpg')"></div>
+                    Dumb and Dumber To
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy comedy stupid </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='expandTv("Family Guy")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/family-guy.jpg')"></div>
+                    Family Guy
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+                <div style='display: none'>type:tv category:comedy animation satire </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Hidden Figures")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/hidden-figures.jpg')"></div>
+                    Hidden Figures
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:drama nasa history </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Knives Out")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/knives-out.jpg')"></div>
+                    Knives Out
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:drama mystery </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Legally Blonde")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/legally-blonde.jpg')"></div>
+                    Legally Blonde
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy reece witherspoon</div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Mean Girls")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/mean-girls.jpg')"></div>
+                    Mean Girls
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy funny laugh drama high school </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Mean Girls 2")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/mean-girls-2.jpg')"></div>
+                    Mean Girls 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy funny laugh drama high school </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick="transporter('movie','Minions')">
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/minions.jpg')"></div>
+                    Minions
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation minions illumination gru </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='expandTv("Parks and Recreation")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/parks-and-recreation.jpg')"></div>
+                    Parks and Recreation
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+                <div style='display: none'>type:tv category:comedy satire story mockumentary </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Ratatouille")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/ratatouille.jpg')"></div>
+                    Ratatouille
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:animation animation rat </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='expandTv("Sherlock")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/sherlock.jpg')"></div>
+                    Sherlock
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+                <div style='display: none'>type:tv category:drama mystery </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Spider Man Homecoming")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/spider-man-homecoming.jpg')"></div>
+                    Spider Man: Homecoming
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:superhero spider man marvel </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Spider Man: No Way Home")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/spider-man-no-way-home.jpg')"></div>
+                    Spider Man: No Way Home
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:superhero spider man marvel </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='expandTv("Squid Game")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/squid-game.jpg')"></div>
+                    Squid Game
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+                <div style='display: none'>type:tv category:drama korea foreign </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","The Amazing Spider Man 2")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-amazing-spider-man-2.jpg')"></div>
+                    The Amazing Spider Man 2
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:superhero spider man marvel </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","The Notebook")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-notebook.jpg')"></div>
+                    The Notebook
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:drama </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='expandTv("The Office")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-office.jpg')"></div>
+                    The Office
+                </div>
+                <div class='listItemLabel'>TV Show</div>
+                <div style='display: none'>type:tv category:comedy satire mockumentary </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","The Proposal")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-proposal.jpg')"></div>
+                    The Proposal
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:romcom ryan reynolds </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","The Waterboy")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/the-waterboy.jpg')"></div>
+                    The Waterboy
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy adam sandler </div>
+            </div>
+
+            <div class='listItemChoice searchItemChoice' onclick='transporter("movie","Vacation")'>
+                <div class='listItemTitle'>
+                    <div class="listItemImageFrame" style="background-image: url('thumbnails/vacation.jpg')"></div>
+                    Vacation
+                </div>
+                <div class='listItemLabel'>Movie</div>
+                <div style='display: none'>type:movie category:comedy </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
