@@ -14,7 +14,7 @@
 
     </head>
 
-    <body id='body' onload='expandTv("Parks and Recreation")'>
+    <body id='body' onload='expandTv("Parks and Recreation"), stopLoading(), selectSeason(3)'>
 
         <div id='loadingScreen'>
             <img src='icons/loading.gif'>
@@ -23,20 +23,19 @@
         <div class='expand-screen' id='tvExpandScreen'>
             <div class='expand-screen-contents' id='tvScreenContents'>
                 <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-                <div id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                    <div id='tvTopbar' onclick='closeTvScreen()'>
+                <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                    <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
                         <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                        <span id='tvPanelTitle'>Tv Title</span>
+                        <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
                     </div>
-                    <div id="tvPanelCoverImage" class='expand-panel-impression-image'></div>
-                    <div class='expand-panel-impression-shade'></div>
-                    <div class='expand-panel-contents'>
-                        <div class='action-button-container'>
-
-                            <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["tvTitle"],1,0)'>Start Watching</div>
-                            <div class='activity-button filled-activity-button' id='continueWatchingTvButton' style='display:none' onclick='continueWatchingTv()'>Continue</div>
+                    <div class='expand-panel-impression-image' id="tvPanelCoverImage">
+                        <div class='action-button-container absolute bottom'>
+                            <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
+                            <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(localStorage["expandPanelTitle"])'>Continue</div>
                             <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
                         </div>
+                    </div>
+                    <div class='expand-panel-contents'>
                         <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
                         <div id='tvPanelEpisodeList' class='list'>
                             <!-- <div class='listItemChoice'>

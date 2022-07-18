@@ -281,7 +281,7 @@ a{
     position: absolute;
     top: 5vh;
     left: 12.5vw;
-    background: rgb(54, 25, 65);
+    background: linear-gradient(45deg, rgba(115, 54, 15) 0%, rgba(77, 6, 58) 100%);
     overflow-y: scroll;
 }
 
@@ -297,7 +297,8 @@ a{
     /* border-bottom: solid 1pt gray; */
     backdrop-filter: blur(25pt);
     -webkit-backdrop-filter: blur(25pt);
-    background: linear-gradient(-135deg, rgba(39, 14, 19, 0.5) 0%, rgba(54, 25, 65, 0.5) 100%);
+    background-color: rgba(0, 0, 0, 0.25);
+    /* background: linear-gradient(-135deg, rgba(39, 14, 19, 0.5) 0%, rgba(54, 25, 65, 0.5) 100%); */
     z-index: 1;
     border-bottom: solid 1pt gray;
 }
@@ -347,27 +348,14 @@ a{
 .expand-panel-impression-image{
     height: 70vh;
     width: 100%;
-    position: absolute;
-    top: 50pt;
-    left: 0;
+    position: relative;
     background: transparent no-repeat center;
     background-size: cover;
-}
-
-.expand-panel-impression-shade{
-    height: 70vh;
-    width: 100%;
-    position: absolute;
-    top: 50pt;
-    left: 0;
-    background: linear-gradient(0deg, rgb(54, 25, 65) 0%, rgba(54, 25, 65, 0.8) 20%, rgba(0,0,0,0) 60%);
 }
 
 .expand-panel-contents{
     height: auto;
     width: 100%;
-    position: absolute;
-    top: 60vh;
 }
 
 .list{
@@ -381,6 +369,7 @@ a{
     padding: 10pt;
     cursor: pointer;
     transition: height 300ms;
+    border-bottom: solid 1pt rgb(0, 0, 0);
 }
 
 .listItemTitle{
@@ -420,7 +409,7 @@ a{
 }
 
 .action-button-container{
-    height: auto;
+    height: 70pt;
     width: 100%;
     /* background-color: rgb(54, 35, 80); */
     display: flex;
@@ -431,6 +420,9 @@ a{
 .activity-button{
     width: fit-content;
     color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
     font-size: 15pt;
     padding: 10pt;
     border: solid 1.5pt white;
@@ -440,8 +432,8 @@ a{
 }
 
 .filled-activity-button{
-    background-color: rgba(255, 255, 255, 0.8);
-    border: solid 1.5pt rgba(128, 128, 128, 0);
+    background-color: rgba(255, 255, 255, 0.75);
+    border: solid 1.5pt rgba(255, 255, 255, 0);
     color: black;
 }
 
@@ -449,6 +441,18 @@ a{
     background-color: var(--violetBlue);
     color: white;
     border: solid 1.5pt white;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.top{
+    top: 0;
+}
+
+.bottom{
+    bottom: 0;
 }
 
 

@@ -285,33 +285,32 @@ window.addEventListener('load', function () {
     isMobileDevice();
     document.getElementById('body').insertAdjacentHTML('beforeend',`
     <div class='expand-screen' id='tvExpandScreen'>
-        <div class='expand-screen-contents' id='tvScreenContents'>
-            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
+    <div class='expand-screen-contents' id='tvScreenContents'>
+        <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+        <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+            <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
+                <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
+            </div>
+            <div class='expand-panel-impression-image' id="tvPanelCoverImage">
+                <div class='action-button-container absolute bottom'>
+                    <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
+                    <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(localStorage["expandPanelTitle"])'>Continue</div>
+                    <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
                 </div>
-                <div class='expand-panel-impression-image' id="tvPanelCoverImage"></div>
-                <div class='expand-panel-impression-shade' id='tvPanelCoverImageShade'></div>
-                <div class='expand-panel-contents'>
-                    <div class='action-button-container'>
-
-                        <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(localStorage["expandPanelTitle"])'>Continue</div>
-                        <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
-                    </div>
-                    <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
-                    <div id='tvPanelEpisodeList' class='list'>
-                        <!-- <div class='listItemChoice'>
-                            <div class='listItemTitle'>Pilot</div>
-                            <div class='listItemLabel'>Episode 1</div>
-                        </div> -->
-                    </div>
+            </div>
+            <div class='expand-panel-contents'>
+                <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
+                <div id='tvPanelEpisodeList' class='list'>
+                    <!-- <div class='listItemChoice'>
+                        <div class='listItemTitle'>Pilot</div>
+                        <div class='listItemLabel'>Episode 1</div>
+                    </div> -->
                 </div>
             </div>
         </div>
-    </div>`);
+    </div>
+</div>`);
     // setTimeout(function() {
     //     stopLoading();
     // }, 1);
@@ -495,11 +494,11 @@ sessionStorage['savedScrollLocation22838'] = 0;
 function tvExpandPanelScrolled() {
     var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
     if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgb(27, 31, 40)';
+        document.getElementById('tvPanelNavbarContents').style.background = 'linear-gradient(45deg, rgb(89, 14, 49) 0%, rgb(54, 25, 65) 100%)';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
     } else {
         sessionStorage['savedScrollLocation22838'] = scrollTop;
-        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'rgba(0,0,0,0)';
+        document.getElementById('tvPanelNavbarContents').style.background = 'none';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
     }
 }
@@ -682,13 +681,4 @@ function readSearchUrl() {
     var urlParams = new URLSearchParams(document.location.search);
     search(urlParams.get('search').replace(/%20/g, ' '));
     document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
-}
-
-function bodyScroll() {
-    if (mobileDeviceTester()) {
-        void(0);
-    } else {
-        document.getElementById('featuredPanel').style.height = 'calc(70vh - ' + document.getElementById('body').scrollTop + 'px';
-        document.getElementById('featuredPanel').style.top = '-' + (document.getElementById('body').scrollTop * 0.5);
-    }
 }
