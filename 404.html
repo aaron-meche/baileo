@@ -1,0 +1,56 @@
+<html>
+
+    <head>
+
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script>
+            window.addEventListener('load', function () {
+                document.getElementById('fillURL').innerHTML = window.location.href;
+            })
+        </script>
+
+    </head>
+
+    <body id='body'>
+
+
+
+        <div class='navbar main-navbar horizontal-scroll'>
+            <a class='navbar-link-item' href='index.html'>
+                Home
+            </a>
+            <a class='navbar-link-item' href='tv.html'>
+                TV
+            </a>
+            <a class='navbar-link-item' href='movies.html'>
+                Movies
+            </a>
+            <div class='right-navbar'>
+                <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
+                <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item'></a>
+            </div>
+        </div>
+
+        <div class='gradient-background' id='gradientWallpaper'></div>
+
+
+
+        <div class='screen-card-content'>
+            <div class='panel-card'>
+                <div class='title' id='profilePageUsername'>That page does not exist!</div>
+                <p>Unfortunately, there was an error while searching for your page. Either this page does not exist, it has been recently removed, or the server is having a bad day (least likely, computers don't have feelings). Some possible solutions include: </p>
+                <ul>
+                    <li>Recheck the url and make sure it is correct<br>(<span id='fillURL'></span>)</li>
+                    <a href='#'><li>Refresh the page</li></a>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+
+</html>

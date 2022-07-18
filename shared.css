@@ -12,6 +12,8 @@
     --mainFont: WatchFace;
 
     --themePicker: rgb(0, 51, 255);
+
+    --prounit: calc(100vh * 100vw);
 }
 
 @font-face {
@@ -29,8 +31,17 @@ body{
 }
 
 a{
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.navbar a:hover{
+    text-decoration: none;
 }
 
 #gradientWallpaper{
@@ -66,11 +77,11 @@ a{
 }
 
 #loadingScreen img{
-    height: 20vh;
-    width: 20vh;
+    height: 30vh;
+    width: 30vh;
     position: absolute;
-    top: 40vh;
-    left: calc(50vw - 10vh);
+    top: 35vh;
+    left: calc(50vw - 15vh);
 }
 
 
@@ -217,22 +228,24 @@ a{
 }
 
 .view-progress-container{
-    height: 4pt;
-    width: calc(100% - 2vw - 1pt);
+    height: 100%;
+    width: 100%;
     position: absolute;
-    bottom: 10pt;
-    left: 1vw;
-    background-color: black;
-    border-radius: 100vh;
-    border: solid 2pt black;
+    top: 0;
+    right: 0;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    z-index: 0.5;
 }
 
 .view-progress-bar{
     height: 100%;
     width: 50%;
-    min-width: 5%;
-    border-radius: 100vh;
-    background-color: var(--princeton);
+    min-width: 1vw;
+    max-width: calc(100vw - 1vw);
+    background-color: rgba(0, 0, 0, 0.75);
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
 }
 
 
@@ -508,22 +521,18 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .screen-card-content{
-    padding: 50pt 0 50pt 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    padding: 25pt 0 25pt 0;
+    background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.screen-card-content .prompt-card{
-    margin: auto;
 }
 
 .blur-background{
@@ -533,13 +542,15 @@ a{
 
 .panel-card{
     width: 30vw;
-    background-color: var(--bodyBgColor);
+    background-color: var(--navbarBgColor);
     padding: 25pt;
+    border-radius: 10pt;
 }
 
 @media screen and (max-width: 700px) {
     .panel-card{
         width: calc(100vw - 50pt);
+        border-radius: 0;
     }
 }
 

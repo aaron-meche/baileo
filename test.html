@@ -14,39 +14,15 @@
 
     </head>
 
-    <body id='body' onload='expandTv("Parks and Recreation"), stopLoading(), selectSeason(3)'>
+    <body id='body' onload='stopLoading()'>
 
+        <div class='gradient-background' id='gradientWallpaper'></div>
+        
         <div id='loadingScreen'>
             <img src='icons/loading.gif'>
         </div>
 
-        <div class='expand-screen' id='tvExpandScreen'>
-            <div class='expand-screen-contents' id='tvScreenContents'>
-                <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-                <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                    <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
-                        <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                        <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
-                    </div>
-                    <div class='expand-panel-impression-image' id="tvPanelCoverImage">
-                        <div class='action-button-container absolute bottom'>
-                            <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                            <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(localStorage["expandPanelTitle"])'>Continue</div>
-                            <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
-                        </div>
-                    </div>
-                    <div class='expand-panel-contents'>
-                        <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
-                        <div id='tvPanelEpisodeList' class='list'>
-                            <!-- <div class='listItemChoice'>
-                                <div class='listItemTitle'>Pilot</div>
-                                <div class='listItemLabel'>Episode 1</div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class='proUnit'></div>
 
     </body>
 
