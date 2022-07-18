@@ -230,7 +230,10 @@ function transporter(type, title, season, episode) {
     loading();
     checkForAccount();
     closeTvScreen();
+    createLink(type, title, season, episode);
+}
 
+function createLink() {
     var key = createEncryptionKey((Math.floor(Math.random() * 50)) + 5);
     setData('links/' + key + '/type',type);
     setData('links/' + key + '/title',title);
@@ -365,11 +368,11 @@ function nextEpisode(title, season, episode) {
             openPage('index.html');
         } else {
             season++;
-            transporter('tv',title,season,0);
+            createLink('tv',title,season,0);
         }
     } else {
         episode++;
-        transporter('tv',title,season,episode);
+        createLink('tv',title,season,episode);
     }
 }
 
