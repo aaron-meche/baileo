@@ -204,6 +204,7 @@ a:hover{
     background-size: cover;
     display: inline-block;
     position: relative;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 700px) {
@@ -233,19 +234,16 @@ a:hover{
     position: absolute;
     top: 0;
     right: 0;
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
+    border-radius: inherit;
     z-index: 0.5;
 }
 
 .view-progress-bar{
     height: 100%;
-    width: 50%;
-    min-width: 1vw;
-    max-width: calc(100vw - 1vw);
-    background-color: rgba(0, 0, 0, 0.75);
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
+    min-width: 5%;
+    /* max-width: calc(100vw - 1vw); */
+    background-color: rgba(127, 127, 127, 0.4);
+    border-right: solid 3pt rgb(255, 255, 255);
 }
 
 
