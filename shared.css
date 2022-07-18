@@ -11,7 +11,7 @@
 
     --mainFont: WatchFace;
 
-    --themePicker: rgba(227, 45, 255, 0.5);
+    --themePicker: rgb(0, 51, 255);
 }
 
 @font-face {
@@ -281,7 +281,7 @@ a{
     position: absolute;
     top: 5vh;
     left: 12.5vw;
-    background-color: var(--bodyBgColor);
+    background: rgb(54, 25, 65);
     overflow-y: scroll;
 }
 
@@ -295,8 +295,9 @@ a{
     align-items: center;
     justify-content: center;
     /* border-bottom: solid 1pt gray; */
-    backdrop-filter: blur(15pt);
-    -webkit-backdrop-filter: blur(15pt);
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
+    background: linear-gradient(-135deg, rgba(39, 14, 19, 0.5) 0%, rgba(54, 25, 65, 0.5) 100%);
     z-index: 1;
     border-bottom: solid 1pt gray;
 }
@@ -344,7 +345,7 @@ a{
 }
 
 .expand-panel-impression-image{
-    height: 65vh;
+    height: 70vh;
     width: 100%;
     position: absolute;
     top: 50pt;
@@ -354,12 +355,12 @@ a{
 }
 
 .expand-panel-impression-shade{
-    height: 65vh;
+    height: 70vh;
     width: 100%;
     position: absolute;
     top: 50pt;
     left: 0;
-    background: linear-gradient(0deg, var(--bodyBgColor) 0%, rgba(27, 31, 40, 0.8) 20%, rgba(0,0,0,0) 60%);
+    background: linear-gradient(0deg, rgb(54, 25, 65) 0%, rgba(54, 25, 65, 0.8) 20%, rgba(0,0,0,0) 60%);
 }
 
 .expand-panel-contents{

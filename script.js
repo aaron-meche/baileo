@@ -25,7 +25,7 @@ const TheOffice = {
     s8: ["The List", "The Incentive", "Lotto", "Garden Party", "Spooked", "Doomsday", "Pam's Replacement", "Gettysburg", "Mrs. California", "Christmas Wishes", "Trivia", "Pool Party", "Jury Duty", "Special Project", "Tallahassee", "After Hours", "Test the Store", "Last Day in Florida", "Get the Girl", "Welcome Party", "Angry Andy", "Fundraiser", "Turf War", "Free Family Portrait Studio"],
     s9: ["New Guys", "Roy's Wedding", "Andy's Ancestry", "Work Bus", "Here Comes Treble", "The Boat", "The Whale", "The Target", "Dwight Christmas", "Lice", "Suit Warehouse", "Customer Loyalty", "Junior Salesman", "Vandalism", "Couples Discount", "Moving On", "The Farm", "Promos", "Stairmageddon", "Paper Airplane", "Livin' The Dream", "AARM", "Finale"],
     description: "The Office is an American mockumentary sitcom television series that depicts the everyday work lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company. It aired on NBC from March 24, 2005, to May 16, 2013, spanning a total of nine seasons. Based on the 2001-2003 BBC series of the same name created by Ricky Gervais and Stephen Merchant, it was adapted for American television by Greg Daniels, a veteran writer for Saturday Night Live, King of the Hill, and The Simpsons. It was co-produced by Daniels's Deedle-Dee Productions and Reveille Productions (later Shine America), in association with Universal Television. The original executive producers were Daniels, Gervais, Merchant, Howard Klein, and Ben Silverman, with numerous others being promoted in later seasons.",
-    color: 'rgba(155, 242, 255, 0.25)',
+    color: 'rgba(0, 51, 255)',
 }
 
 const ParksandRecreation = {
@@ -39,7 +39,7 @@ const ParksandRecreation = {
     s6: ["London", "The Pawnee-Eagleton Tip Off Classic", "Doppelgängers", "Gin it Up!", "Filibuster", "Recall Vote", "Fluoride", "The Cones of Dunshire", "Second Chunce", "New Beginnings", "Farmers Market", "Ann and Chris", "Anniversaries", "The Wall", "New Slogan", "Galentine’s Day", "Prom", "Flu Season 2", "One in 8,000", "Moving Up"],
     s7: ["2017", "Ron and Jammy", "William Henry Harrison", "Leslie and Ron", "Gryzzlbox", "Save JJ's", "Donna and Joe", "Ms. Ludgate-Dwyer Goes to Washington", "Pie-Mary", "The Johnny Karate Super Awesome Musical Explosion Show", "Two Funerals", "One Last Ride"],
     description: "Parks and Recreation (also known as Parks and Rec) is an American political satire mockumentary sitcom television series created by Greg Daniels and Michael Schur. The series aired on NBC from April 9, 2009, to February 24, 2015, for 125 episodes, over seven seasons. A special reunion episode aired on April 30, 2020. The series stars Amy Poehler as Leslie Knope, a perky, mid-level bureaucrat in the Parks Department of Pawnee, a fictional town in Indiana. The ensemble and supporting cast features Rashida Jones as Ann Perkins, Paul Schneider as Mark Brendanawicz, Aziz Ansari as Tom Haverford, Nick Offerman as Ron Swanson, Aubrey Plaza as April Ludgate, Chris Pratt as Andy Dwyer, Adam Scott as Ben Wyatt, Rob Lowe as Chris Traeger, Jim O'Heir as Garry (Jerry) Gergich, Retta as Donna Meagle, and Billy Eichner as Craig Middlebrooks.",
-    color: 'rgba(188, 230, 149, 0.25)',
+    color: 'rgba(188, 230, 149, 1)',
 }
 
 const SquidGame = {
@@ -47,7 +47,7 @@ const SquidGame = {
     sTotal: 1,
     s1: ['Red Light', "Green Light", "Hell", "The Man with the Umbrella", "Stick to the Team", "A Fair World", "Gganbu", "VIPS", "Front Man", "One Lucky Day"],
     description: "Squid Game is a South Korean survival drama television series created by Hwang Dong-hyuk for Netflix. Its cast includes Lee Jung-jae, Park Hae-soo, Wi Ha-joon, HoYeon Jung, O Yeong-su, Heo Sung-tae, Anupam Tripathi, and Kim Joo-ryoung. The series revolves around a contest where 456 players, all of whom are in deep financial hardship, risk their lives to play a series of deadly children's games for the chance to win a 5.6 billion KRW (38 million USD) prize. The title of the series draws from a similarly named Korean children's game. Hwang had conceived of the idea based on his own economic struggles early in life, as well as the class disparity in South Korea and capitalism. Though he had initially written it in 2009, he was unable to find a production company to fund the idea until Netflix took an interest around 2019 as part of their drive to expand their foreign programming offerings.",
-    color: 'rgba(164, 79, 255, 0.25)',
+    color: 'rgba(164, 79, 255, 1)',
 }
 
 const Sherlock = {
@@ -58,7 +58,7 @@ const Sherlock = {
     s3: ["The Empty Hearse", "The Sign of Three", "His Last Vow"],
     s4: ["The Six Thatchers", "The Lying Detective", "The Final Problem"],
     description: "Sherlock is a British mystery crime drama television series based on Sir Arthur Conan Doyle's Sherlock Holmes detective stories. Created by Steven Moffat and Mark Gatiss, it stars Benedict Cumberbatch as Sherlock Holmes and Martin Freeman as Doctor John Watson. Thirteen episodes have been produced, with four three-part series airing from 2010 to 2017 and a special episode that aired on 1 January 2016. The series is set in the present day, while the one-off special features a Victorian period fantasy resembling the original Holmes stories. Sherlock is produced by the British network BBC, along with Hartswood Films, with Moffat, Gatiss, Sue Vertue and Rebecca Eaton serving as executive producers. The series is supported by the American station WGBH-TV Boston for its Masterpiece anthology series on PBS, where it also airs in the United States. The series is primarily filmed in Cardiff, Wales, with North Gower Street in London used for exterior shots of Holmes and Watson's 221B Baker Street residence.",
-    color: "rgba(255, 49, 49, 0.25)",
+    color: "rgba(255, 49, 49, 1)",
 }
 
 const FamilyGuy = {
@@ -67,7 +67,7 @@ const FamilyGuy = {
     // s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
     s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
     description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane for the Fox Broadcasting Company. The series centers on the Griffins, a family consisting of parents Peter and Lois; their children, Meg, Chris, and Stewie; and their anthropomorphic pet dog, Brian. Set in the fictional city of Quahog, Rhode Island, the show exhibits much of its humor in the form of metafictional cutaway gags that often lampoon American culture.",
-    color: "rgba(227, 45, 255, 0.25)",
+    color: "rgba(227, 45, 255, 1)",
 }
 
 const AmericanPsycho = {
@@ -182,8 +182,7 @@ function setDataProfile(reference, value) {
 }
 
 function createEncryptionKey(length) {
-    var library = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','-','=','_','+','.',',','<','>','!','~',':'];
-    console.log(library.length);
+    var library = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0'];
     var collection = '';
     for (var i = 0; i < length; i++) {
         collection = collection + library[Math.floor(Math.random() * library.length)];
@@ -229,22 +228,35 @@ function continueWatching(title) {
 
 function transporter(type, title, season, episode) {
     loading();
-    checkAccountValidity();
+    checkForAccount();
+    closeTvScreen();
+
+    var key = createEncryptionKey((Math.floor(Math.random() * 50)) + 5);
+    setData('links/' + key + '/type',type);
+    setData('links/' + key + '/title',title);
+    if (type == 'tv') {
+        setData('links/' + key + '/season',season);
+        setData('links/' + key + '/episodeNumberRaw',episode);
+        setData('links/' + key + '/episodeTitle',eval(unspace(title))['s' + season][episode]);
+    }
+    setData('links/' + key + '/username',localStorage['username']);
+
+    let current = new Date();
+    let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+    let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+    let dateTime = cDate + ' ' + cTime;
+    console.log(dateTime);
+
+    setData('links/' + key + '/requestTime',dateTime);
+
     var receiverPageLink = 'http://50.58.218.209/receiver.html';
     if (mobileDeviceTester()) {
         receiverPageLink = 'http://50.58.218.209/mobile-viewer.html';
     }
-    closeTvScreen();
-    if (localStorage['username'] == undefined) {
-        openPage('login.html');
-    } else {
-        if (type == 'tv') {
-            var generatedLink = receiverPageLink + '?type=tv&title=' + title + '&season=' + season + '&episode=' + (eval(unspace(title))['s' + season])[episode] + '&epnum=' + episode + '&user=' + localStorage['username'];
-        } else if (type == 'movie') {
-            var generatedLink = receiverPageLink + '?type=movie&title=' + title + '&user=' + localStorage['username'];
-        }
-        window.open(generatedLink, "_self");
-    }
+
+    var generatedLink = receiverPageLink + '?key=' + key;
+    
+    window.open(generatedLink, "_self");
 }
 
 function mobileDeviceTester(){
@@ -256,7 +268,6 @@ function loading() {
 }
 
 function stopLoading() {
-    console.log('stop loading');
     document.getElementById('loadingScreen').style.display = 'none';
 }
 
@@ -282,12 +293,12 @@ window.addEventListener('load', function () {
                     <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
                 </div>
                 <div class='expand-panel-impression-image' id="tvPanelCoverImage"></div>
-                <div class='expand-panel-impression-shade'></div>
+                <div class='expand-panel-impression-shade' id='tvPanelCoverImageShade'></div>
                 <div class='expand-panel-contents'>
                     <div class='action-button-container'>
 
                         <div class='activity-button filled-activity-button' id='startWatchingTvButton' style='display:none' onclick='transporter("tv",localStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching()'>Continue</div>
+                        <div class='activity-button filled-activity-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(localStorage["expandPanelTitle"])'>Continue</div>
                         <div class='activity-button' onclick='randomizeTv()'>Random Episode</div>
                     </div>
                     <div class='horizontal-scroll' id='tvPanelNavbarContents'></div>
@@ -325,9 +336,7 @@ function checkForAccount() {
 function checkAccountValidity() {
     firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
         if (localStorage['ekey'] == snapshot.val()) {
-            console.log('Account is valid');
         } else {
-            console.log('Account is not valid');
             alert('Error: Faulty login credentials. Your authentication key is not valid.');
             logout();
         }
@@ -382,11 +391,12 @@ function expandTv(mediaTitle) {
     var tvScreenContents = document.getElementById('tvScreenContents');
     var tvPanelCoverImage = document.getElementById('tvPanelCoverImage');
     var tvPanel = document.getElementById('tvPanel');
+    var tvTopbar = document.getElementById('tvTopbar');
     var title = mediaTitle;
     var titleUS = unspace(mediaTitle);
     var mediaType = eval(titleUS)['mediaType'];
 
-    document.getElementById('tvTopbar').style.backgroundColor = eval(unspace(mediaTitle))['color'];
+    // tvTopbar.style.backgroundColor = eval(unspace(mediaTitle))['color'];
 
     firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + title).once('value', (snapshot) => {
         if (localStorage['username'] == undefined) {
@@ -511,7 +521,6 @@ function closeTvScreen() {
 
 function isMobileDevice() {
     if (mobileDeviceTester()) {
-        console.log('is mobile device');
         var thumbnails = document.querySelectorAll(".media-slider-object");
         for (var i = 0; i < thumbnails.length; i++) {
             var mobileThumbails = thumbnails[i].style.backgroundImage.replace("thumbnails", "mobile thumbnails");
@@ -636,7 +645,6 @@ function getCurrentlyWatching() {
                 const progressData = snapshot.val();
                 for (var i = 0; i < Object.keys(ordered).length; i++) {
                     var mediaType = eval(unspace(Object.keys(ordered)[i]))['mediaType'];
-                    console.log(progressData[mediaType][Object.keys(ordered)[i]]);
                     document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
                     <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
                         <div class='image-shader'>
@@ -680,7 +688,6 @@ function bodyScroll() {
     if (mobileDeviceTester()) {
         void(0);
     } else {
-        console.log(document.getElementById('body').scrollTop);
         document.getElementById('featuredPanel').style.height = 'calc(70vh - ' + document.getElementById('body').scrollTop + 'px';
         document.getElementById('featuredPanel').style.top = '-' + (document.getElementById('body').scrollTop * 0.5);
     }
