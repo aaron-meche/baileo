@@ -1,0 +1,33 @@
+body{
+    height: calc(100vh + 300px);
+    margin: 0;
+    background-color: rgb(215, 88, 183);
+}
+
+.screen{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+
+#screenContainer{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: top 300ms;
+}
+
+.red{
+    background-color: red;
+}
+
+.green{
+    background-color: lime;
+}
+
+.blue{
+    background-color: blue;
+}

@@ -1,0 +1,64 @@
+:root{
+    --navbarBgColor: rgb(17, 20, 29);
+    --bodyBgColor: rgb(27, 31, 40);
+    --seafoam: #80DCB7;
+    --aqua: #0c1b2f;
+    --darkAqua: rgb(18, 18, 47);
+    --silverAqua: rgb(40, 55, 93);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+    --violetBlue: rgb(54, 54, 105);
+
+    --mainFont: WatchFace;
+
+    --themePicker: rgb(0, 51, 255);
+
+    --prounit: calc(100vh * 100vw);
+}
+
+@font-face {
+    font-family: 'WatchFace';
+    src: url('Lexend_Deca/LexendDeca-VariableFont_wght.ttf');
+}
+
+body{
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    font-family: var(--mainFont);
+    background: linear-gradient(-135deg, rgb(80, 26, 37) 0%, rgb(60, 37, 109) 100%);
+}
+
+.dock-wrapper{
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dock{
+    width: fit-content;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5pt;
+    backdrop-filter: blur(10pt);
+    -webkit-backdrop-filter: blur(10pt);
+    border-radius: 10pt;
+}
+
+.dock img{
+    height: 45pt;
+    background-color: rgb(55, 55, 55);
+    margin: 2pt;
+    transition: height 200ms;
+}
+
+.dock img:hover{
+    height: 60pt;
+}
+
+iframe{
+    resize: both;
+}
