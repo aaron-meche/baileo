@@ -18,14 +18,14 @@
 
 @font-face {
     font-family: 'WatchFace';
-    src: url('Lexend_Deca/LexendDeca-VariableFont_wght.ttf');
+    src: url('../Lexend_Deca/LexendDeca-VariableFont_wght.ttf');
 }
 
 body{
     margin: 0;
     background-color: rgb(255, 255, 255);
     font-family: var(--mainFont);
-    background: linear-gradient(-135deg, rgb(80, 26, 37) 0%, rgb(60, 37, 109) 100%);
+    background: linear-gradient(135deg, rgb(41, 14, 78) 0%, rgb(32, 51, 80) 100%);
 }
 
 .dock-wrapper{
@@ -41,7 +41,7 @@ body{
 
 .dock{
     width: fit-content;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 5pt;
     backdrop-filter: blur(10pt);
     -webkit-backdrop-filter: blur(10pt);
@@ -53,12 +53,31 @@ body{
     background-color: rgb(55, 55, 55);
     margin: 2pt;
     transition: height 200ms;
+    border-radius: 10pt;
 }
 
 .dock img:hover{
     height: 60pt;
 }
 
-iframe{
-    resize: both;
+.app-wrapper{
+    min-height: 15vh;
+    min-width: 15vw;
+    height: 40vh;
+    width: 40vw;
+    background-color: blue;
+    display: none;
+}
+
+.app-wrapper .title{
+    height: 20pt;
+    width: 100%;
+    background-color: yellow;
+}
+
+.app-wrapper iframe{
+    height: calc(100% - 20pt);
+    width: 100%;
+    outline: none;
+    border: none;
 }
