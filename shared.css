@@ -240,7 +240,6 @@ a:hover{
 
 .view-progress-bar{
     height: 100%;
-    min-width: 5%;
     /* max-width: calc(100vw - 1vw); */
     background-color: rgba(127, 127, 127, 0.4);
     border-right: solid 3pt rgb(255, 255, 255);
