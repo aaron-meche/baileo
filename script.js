@@ -241,11 +241,13 @@ function createLink(type, title, season, episode) {
     var key = createEncryptionKey((Math.floor(Math.random() * 50)) + 5);
     setData('links/' + key + '/type',type);
     setData('links/' + key + '/title',title);
+
     if (type == 'tv') {
         setData('links/' + key + '/season',season);
         setData('links/' + key + '/episodeNumberRaw',episode);
         setData('links/' + key + '/episodeTitle',eval(unspace(title))['s' + season][episode]);
     }
+
     setData('links/' + key + '/username',localStorage['username']);
 
     let current = new Date();
@@ -256,14 +258,29 @@ function createLink(type, title, season, episode) {
 
     setData('links/' + key + '/requestTime',dateTime);
 
-    var receiverPageLink = 'http://50.58.218.209/receiver.html';
+    var receiverPageLink = '';
     if (mobileDeviceTester()) {
         receiverPageLink = 'http://50.58.218.209/mobile-viewer.html';
+    } else {
+        receiverPageLink = 'http://50.58.218.209/receiver.html';
     }
 
     var generatedLink = receiverPageLink + '?key=' + key;
+
+    console.log(generatedLink);
+
+    var interval = setInterval(function(){
+        firebase.database().ref('links/' + key).once('value', (snapshot) => {
+            if (snapshot.val() == undefined) {
+                console.log('link not found')
+            } else {
+                console.log('linked');
+                clearInterval(interval);
+                window.open(generatedLink, "_self");
+            }
+        });
+    }, 100);
     
-    window.open(generatedLink, "_self");
 }
 
 function mobileDeviceTester(){
@@ -361,11 +378,6 @@ function nextEpisode(title, season, episode) {
     var tvShowUS = unspace(title);
     var seasonCapacity = eval(tvShowUS)['s' + season].length;
     var seasonsTotal = eval(tvShowUS)['sTotal'];
-
-    console.log('titleUS ' + tvShowUS);
-    console.log('scap ' + seasonCapacity);
-    console.log('stotal ' + seasonsTotal);
-    console.log('episodeGiven ' + episode)
 
     if (episode == (seasonCapacity - 1)) {
         if (season == seasonsTotal) {
