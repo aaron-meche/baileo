@@ -115,6 +115,10 @@ const DumbandDumber = {
     description: `Dumb and Dumber is a 1994 American buddy comedy film directed by Peter Farrelly, who co-wrote the screenplay with Bobby Farrelly and Bennett Yellin. It is the first installment in the Dumb and Dumber franchise. Starring Jim Carrey and Jeff Daniels, it tells the story of Lloyd Christmas (Carrey) and Harry Dunne (Daniels), two dumb but well-meaning friends from Providence, Rhode Island, who set out on a cross-country trip to Aspen, Colorado, to return a briefcase full of money to its owner, thinking it was abandoned as a mistake though it was actually left as a ransom. Lauren Holly, Karen Duffy, Mike Starr, Charles Rocket, and Teri Garr play supporting roles.`,
 }
 
+const Elf = {
+    mediaType: 'movie',
+}
+
 const KnivesOut = {
     mediaType: 'movie',
     description: `Knives Out is a 2019 American mystery film written and directed by Rian Johnson and produced by Johnson and Ram Bergman. It follows a master detective investigating the death of the patriarch of a wealthy, dysfunctional family. The film features an ensemble cast including Daniel Craig, Chris Evans, Ana de Armas, Jamie Lee Curtis, Michael Shannon, Don Johnson, Toni Collette, Lakeith Stanfield, Katherine Langford, Jaeden Martell, and Christopher Plummer.`,
@@ -138,6 +142,10 @@ const MeanGirls2 = {
 const Minions = {
     mediaType: 'movie',
     description: `Minions is a 2015 American computer-animated comedy film produced by Illumination Entertainment and distributed by Universal Pictures. It is the spin-off/prequel and the third installment overall in the Despicable Me franchise. Directed by Pierre Coffin and Kyle Balda (in Balda's directorial debut), produced by Chris Meledandri and Janet Healy, and written by Brian Lynch, the film stars the voices of Coffin as the Minions (including Kevin, Stuart, and Bob), Sandra Bullock, Jon Hamm, Michael Keaton, Allison Janney, Steve Coogan, Jennifer Saunders, and is narrated by Geoffrey Rush.`,
+}
+
+const MissCongeniality = {
+    mediaType: 'movie',
 }
 
 const Ratatouille = {

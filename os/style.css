@@ -65,8 +65,12 @@ body{
     min-width: 15vw;
     height: 40vh;
     width: 40vw;
-    background-color: blue;
+    top: 30vh;
+    left: 30vw;
+    background-color: rgb(255, 255, 255);
     display: none;
+    position: absolute;
+    overflow: hidden;
 }
 
 .app-wrapper .title{

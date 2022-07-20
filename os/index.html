@@ -4,26 +4,25 @@
         <link rel='stylesheet' href='style.css'>
         <script src='main.js'></script>
     </head>
-    <body id='body' onmousemove="mouseMoved()">
-
-        Hello there, welcome to baileOS
+    <body id='body'>
 
         <div class='dock-wrapper'>
             <div class='dock'>
-                <img src='../icons/app-icon.jpeg' onclick='launch("Baileo")'>
+                <img src='../icons/webicon.ico' onclick='launch("Baileo")'>
                 <img src='../icons/search.png' onclick='launch("Search")'>
             </div>
         </div>
 
         <div id='Baileo.app' class='app-wrapper'>
-            <div class='title' onmousedown="titlePress(this)" onmouseup="titleUnpress(this)">Baileo</div>
-            <iframe src='../index.html'></iframe>
+            <div id='Baileo.app-title-bar' class='title'>Baileo</div>
+            <iframe src='https://baileo.us/index.html'></iframe>
         </div>
 
         <div id='Search.app' class='app-wrapper'>
-            <div class='title'>Baileo</div>
-            <iframe src='../search.html'></iframe>
+            <div id='Search.app-title-bar' class='title'>Search</div>
+            <iframe src='https://baileo.us/search.html'></iframe>
         </div>
 
     </body>
+    <script src='window.js'></script>
 </html>
