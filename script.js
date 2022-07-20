@@ -582,7 +582,7 @@ function signup() {
                     if (snapshot.val() == undefined) {
                         var key = createEncryptionKey(50);
 
-                        localStorage['ekey'] = key;
+                        localStorage['key'] = key;
                         localStorage['username'] = usernameInput;
 
                         setDataProfile('ekey',key);
