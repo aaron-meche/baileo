@@ -9,7 +9,7 @@
     --honey: #F6AE2D;
     --violetBlue: rgb(54, 54, 105);
 
-    --mainFont: WatchFace;
+    --mainFont: BaileyScript;
 
     --themePicker: rgb(0, 51, 255);
 
@@ -17,8 +17,8 @@
 }
 
 @font-face {
-    font-family: 'WatchFace';
-    src: url('Lexend_Deca/LexendDeca-VariableFont_wght.ttf');
+    font-family: 'BaileyScript';
+    src: url('BaileyScript/BaileyScript.ttf');
 }
 
 body{
