@@ -63,7 +63,7 @@ const Sherlock = {
 
 const FamilyGuy = {
     mediaType: 'tv',
-    sTotal: 18,
+    sTotal: 20,
     // s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
     s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
     description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane for the Fox Broadcasting Company. The series centers on the Griffins, a family consisting of parents Peter and Lois; their children, Meg, Chris, and Stewie; and their anthropomorphic pet dog, Brian. Set in the fictional city of Quahog, Rhode Island, the show exhibits much of its humor in the form of metafictional cutaway gags that often lampoon American culture.",
@@ -184,9 +184,6 @@ const Vacation = {
 
 
 
-
-
-lib.hello();
 
 function setData(reference, value) {
     firebase.database().ref(reference).set(value);
@@ -524,11 +521,11 @@ sessionStorage['savedScrollLocation22838'] = 0;
 function tvExpandPanelScrolled() {
     var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
     if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        document.getElementById('tvPanelNavbarContents').style.background = 'linear-gradient(45deg, rgb(89, 14, 49) 0%, rgb(54, 25, 65) 100%)';
+        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'var(--aqua)';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
     } else {
         sessionStorage['savedScrollLocation22838'] = scrollTop;
-        document.getElementById('tvPanelNavbarContents').style.background = 'none';
+        document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'lightgray';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
     }
 }
@@ -679,7 +676,7 @@ function getCurrentlyWatching() {
                     document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
                     <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
                         <div class='image-shader'>
-                            <img src='icons/play-video-icon.png'>
+                            <img src='icons/play circle.png'>
                         </div>
                         <div class='view-progress-container'>
                             <div style='width: ` + (progressData[mediaType][Object.keys(ordered)[i]] * 100) + `%' class='view-progress-bar'></div>
@@ -713,4 +710,20 @@ function readSearchUrl() {
     var urlParams = new URLSearchParams(document.location.search);
     search(urlParams.get('search').replace(/%20/g, ' '));
     document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
+}
+
+var mobileNavMenuExpanded = false;
+
+function mobileNavMenu() {
+    if (mobileNavMenuExpanded) {
+        document.getElementById('mobileNavbarDropMenu').style.display = 'none';
+        document.getElementById('expandMobileNavmenu').style.display = 'block';
+        document.getElementById('closeMobileNavmenu').style.display = 'none';
+        mobileNavMenuExpanded = false;
+    } else {
+        document.getElementById('mobileNavbarDropMenu').style.display = 'block';
+        document.getElementById('expandMobileNavmenu').style.display = 'none';
+        document.getElementById('closeMobileNavmenu').style.display = 'block';
+        mobileNavMenuExpanded = true;
+    }
 }

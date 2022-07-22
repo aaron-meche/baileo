@@ -2,7 +2,7 @@
 
     <head>
 
-        <title>Baileo - Home</title>
+        <title>Baileo - Profile</title>
         <link rel='stylesheet' href='shared.css'>
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
@@ -14,27 +14,86 @@
 
     </head>
 
-    <body id='body' onload='loadProfile(), checkForAccount()'>
+    <body id='body' onload='checkForAccount(), getCurrentlyWatching()'>
 
+        <div class='wallpaper'></div>
 
+        <div class='navbar main-navbar desktop-navbar'>
+            <div class='left-navbar side-navbar'>
+                <a href='index.html'>
+                    <div class='navbar-logo-display'>
+                        <img class='navbar-logo' src='icons/logo unfilled.png'>
+                        <span class='logo-title'>baileo</span>
+                    </div>
+                </a>
+            </div>
 
-        <div class='navbar main-navbar horizontal-scroll'>
             <a class='navbar-link-item' href='index.html'>
                 Home
             </a>
+
             <a class='navbar-link-item' href='tv.html'>
-                TV
+                TV Shows
             </a>
+
             <a class='navbar-link-item' href='movies.html'>
                 Movies
             </a>
-            <div class='right-navbar'>
-                <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
-                <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item active-navbar-link-item'></a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='search.html'>
+                    <img class='navbar-link-item' src='icons/search.png'>
+                </a>
+                <a href='profile.html'>
+                    <img class='navbar-link-item active-navbar-link-item' src='icons/profile.png'>
+                </a>
             </div>
         </div>
 
-        <div class='gradient-background' id='gradientWallpaper'></div>
+        <div class='navbar main-navbar mobile-navbar sunset-background'>
+            <div class='left-navbar side-navbar'>
+                <img class='navbar-link-item' id='expandMobileNavmenu' src='icons/menu.png' onclick='mobileNavMenu()'>
+                <img class='navbar-link-item' id='closeMobileNavmenu' src='icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+            </div>
+
+            <a href='index.html'>
+                <div class='navbar-logo-display'>
+                    <img class='navbar-logo' src='icons/logo unfilled.png'>
+                    <span class='logo-title'>watch</span>
+                </div>
+            </a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='profile.html'>
+                    <img class='navbar-link-item active-navbar-link-item' src='icons/profile.png'>
+                </a>
+            </div>
+
+            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
+
+                <div>
+                    <a class='mobile-navmenu-link-item' href='index.html'>
+                        Home
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='tv.html'>
+                        TV Shows
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='movies.html'>
+                        Movies
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='search.html'>
+                        Search
+                    </a>
+    
+                    <a class='mobile-navmenu-link-item' href='movies.html'>
+                        Movies
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div id='loadingScreen'>
             <img src='icons/loading.gif'>

@@ -1,8 +1,162 @@
+:root{
+    --seafoam: #80DCB7;
+    --aqua: #13335c;
+    --darkAqua: rgb(18, 18, 47);
+    --silverAqua: rgb(40, 55, 93);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+    --violetBlue: rgb(54, 54, 105);
+
+    --mainFont: BaileyScript;
+}
+
+@font-face {
+    font-family: 'BaileyScript';
+    src: url('https://baileo.us/BaileyScript/BaileyScript.ttf');
+}
+
+body{
+    margin: 0;
+    background-color:rgb(0, 0, 0);
+    color: white;
+    font-family: var(--mainFont);
+    font-weight: 400;
+    padding-bottom: 4rem;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (hover: none) {
+    .desktop-navbar{
+        display: none !important;
+    }
+    .mobile-navbar{
+        display: flex;
+    }
+}
+
+@media screen and (hover: hover) {
+    .desktop-navbar{
+        display: flex;
+    }
+    .mobile-navbar{
+        display: none !important;
+    }
+}
+
+.sunset-background{
+    background: linear-gradient(135deg, rgb(150, 72, 24) 0%, rgb(116, 17, 90) 100%);
+}
+
+.darkSunset-background{
+    background: linear-gradient(-135deg, rgb(72, 33, 85) 0%, rgb(108, 52, 32) 100%);
+}
+
+.ocean-background{
+    background: linear-gradient(-45deg, rgb(24, 144, 150) 0%, rgb(17, 52, 116) 100%);
+}
+
+.darkOcean-background{
+    background: linear-gradient(-135deg, rgb(48, 51, 116) 0%, rgb(18, 15, 84) 100%);
+}
+
+.wallpaper{
+    height: 100%;
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgb(150, 72, 24) 0%, rgb(116, 17, 90) 100%);
+}
+
+
+
+
+
+/* Loading screen */
+
+
+
+
+
+#loadingScreen{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
+}
+
+#loadingScreen img{
+    height: 30vh;
+    width: 30vh;
+    position: absolute;
+    top: 35vh;
+    left: calc(50vw - 15vh);
+}
+
+
+
+
+
+/* Navbar */
+
+
+
+
+
+.navbar-logo{
+    height: 35pt;
+    padding: 7.5pt;
+    float: left;
+}
+
+.navbar-logo-display{
+    height: 50pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-title{
+    font-size: 18pt;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.side-navbar{
+    height: 50pt;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.left-navbar{
+    left: 0;
+    justify-content: left;
+}
+
+.main-navbar{
+    background-color: rgb(98, 98, 98); 
+}
+
+.right-navbar{
+    right: 0;
+    justify-content: right;
+}
 
 .navbar{
     height: 50pt;
     width: auto;
-    background: linear-gradient(45deg, rgba(115, 54, 15, 0.75) 0%, rgba(77, 6, 58, 0.75) 100%);
     backdrop-filter: blur(50pt);
     -webkit-backdrop-filter: blur(50pt);
     position: sticky;
@@ -10,24 +164,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    z-index: 3;
 }
 
-.main-navbar{
-    z-index: 5;
-}
-
-.right-navbar{
-    height: 50pt;
-    width: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-    
 .navbar-link-item{
     height: 15pt;
     margin: 5pt;
@@ -42,23 +181,74 @@
     text-decoration: none;
 }
 
+.navbar-link-item:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
 .active-navbar-link-item{
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+#mobileNavbarDropMenu{
+    height: calc(100vh - 50pt);
+    width: 100vw;
+    position: absolute;
+    top: 50pt;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5pt);
+    -webkit-backdrop-filter: blur(5pt);
+    display: none;
+}
+
+#mobileNavbarDropMenu div{
+    height: auto;
+    width: 100%;
+    background-color: rgb(25, 25, 25);
+}
+
+.mobile-navmenu-link-item{
+    height: 15pt;
+    width: 100%;
+    padding: 15pt 0 15pt 0;
+    color: rgb(216, 216, 216);
+    cursor: pointer;
+    font-size: 13pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-bottom: solid 1pt gray;
+}
+
+.active-mobile-navmenu-link-item{
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+}
+
+.close-menu-clicker{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
 }
 
 
 
 
 
-/* Media slider */
+/* Media Sliders */
 
 
 
 
 
 .media-slider-section{
-    padding-top: 5rem;
+    padding-top: 4rem;
     position: relative;
     top: 0;
     left: 0;
@@ -155,7 +345,7 @@
 
 
 
-/* Media expand screen */
+/* Media Screen (Watch) */
 
 
 
@@ -170,7 +360,7 @@
     overflow-y: hidden;
     display: none;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 2;
+    z-index: 4;
 }
 
 .expand-screen-contents{
@@ -186,7 +376,7 @@
 .close-screen-clicker{
     height: 100vh;
     width: 100vw;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
 }
@@ -197,8 +387,9 @@
     position: absolute;
     top: 5vh;
     left: 12.5vw;
-    background: linear-gradient(45deg, rgba(115, 54, 15) 0%, rgba(77, 6, 58) 100%);
+    background-color: var(--darkAqua);
     overflow-y: scroll;
+    z-index: 5;
 }
 
 .expand-panel-topbar{
@@ -210,13 +401,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-bottom: solid 1pt gray; */
-    backdrop-filter: blur(25pt);
-    -webkit-backdrop-filter: blur(25pt);
-    background-color: rgba(0, 0, 0, 0.25);
-    /* background: linear-gradient(-135deg, rgba(39, 14, 19, 0.5) 0%, rgba(54, 25, 65, 0.5) 100%); */
-    z-index: 1;
     border-bottom: solid 1pt gray;
+    z-index: 6;
+    background-color: lightgray;
 }
 
 .expand-panel-title{
@@ -256,9 +443,10 @@
 #tvPanelNavbarContents{
     position: sticky;
     top: 50pt;
-    z-index: 1;
-    margin-bottom: 10pt;
     padding: 5pt;
+    z-index: 6;
+    display: flex;
+    align-items: center;
 }
 
 .expand-panel-impression-image{
@@ -535,8 +723,8 @@
     bottom: 1vw;
     left: 1vw;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10pt);
-    -webkit-backdrop-filter: blur(10pt);
+    backdrop-filter: blur(20pt);
+    -webkit-backdrop-filter: blur(20pt);
 }
 
 .featured-panel-utility .title{
