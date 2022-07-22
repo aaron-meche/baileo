@@ -215,8 +215,8 @@ a{
     width: 100%;
     background-color: lightgray;
     padding: 10pt 0 10pt 0;
-    border-bottom-left-radius: 5vw;
-    border-bottom-right-radius: 5vw;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 2vw;
     position: absolute;
     top: 0;
 }
@@ -235,6 +235,11 @@ a{
     text-decoration: none;
     border-radius: 5pt;
     border: solid 2pt gray;
+}
+
+.mobile-navmenu-link-item:hover{
+    background-color: rgb(87, 87, 87);
+    color: white;
 }
 
 .active-mobile-navmenu-link-item{
