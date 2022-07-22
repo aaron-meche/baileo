@@ -16,14 +16,21 @@
 
     <body id='body' onload='stopLoading()'>
 
+        <div id='loadingScreen'>
+            <img src='icons/loading.gif'>
+        </div>
+
+        <div class='wallpaper'></div>
+
         <div id='useAccountPrompt' class='screen-card' style='display:flex;'>
             <div class='panel-card'>
-                <form>
+                <form onsubmit='signup()'>
                     <div class='title'>Sign Up</div>
-                    <input type='text' id='usernameInput' class='account-input-field' placeholder="Username">
-                    <input type='password' id='passwordInput' class='account-input-field' placeholder="Password">
-                    <input type='password' id='confirmPasswordInput' class='account-input-field' placeholder="Confirm Password">
-                    <div class='horizontal-screen-button primary-button' onclick='signup()'>Sign Up</div>
+                    <input type='text' id='usernameInput' class='input-field' placeholder="Username">
+                    <input type='password' id='passwordInput' class='input-field' placeholder="Password">
+                    <input type='password' id='confirmPasswordInput' class='input-field' placeholder="Confirm Password">
+                    <input type="submit" class='horizontal-screen-button primary-button' value="Sign Up" onclick='signup()'>
+                    <div class='horizontal-screen-button primary-button' onclick='signup()'>Create Account</div>
                     <div class='horizontal-screen-button secondary-button' onclick='openPage("login.html")'>Already have an account?</div>
                 </form>
             </div>

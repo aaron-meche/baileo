@@ -239,10 +239,14 @@ function continueWatching(title) {
 }
 
 function transporter(type, title, season, episode) {
-    loading();
-    checkForAccount();
-    closeTvScreen();
-    createLink(type, title, season, episode);
+    if (isLoggedIn()) {
+        loading();
+        closeTvScreen();
+        createLink(type, title, season, episode);
+    } else {
+        alert('You must be logged in to an account before you start watching!');
+        useAccountPrompt();
+    }
 }
 
 function createLink(type, title, season, episode) {
@@ -341,27 +345,36 @@ window.addEventListener('load', function () {
                 </div>
             </div>
         </div>
-    </div>
-</div>`);
-    // setTimeout(function() {
-    //     stopLoading();
-    // }, 1);
+    </div>`);
 })
+
+function isLoggedIn() {
+    if (localStorage['username'] == undefined) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
 function checkForAccount() {
     if (localStorage['username'] == undefined) {
-        document.getElementById('body').insertAdjacentHTML('beforeend',`
-        <div id='useAccountPrompt' class='screen-card blur-background'>
-            <div class='panel-card'>
-                <div class='title'>Login or Create Account to Continue</div>
-                <a href='login.html'><div class='horizontal-screen-button primary-button'>Login</div></a>
-                <a href='signup.html'><div class='horizontal-screen-button secondary-button'>Create Account</div></a>
-            </div>
-        </div>`);
+        useAccountPrompt();
         stopLoading();
     } else {
         checkAccountValidity();
     }
+}
+
+function useAccountPrompt() {
+    document.getElementById('body').insertAdjacentHTML('beforeend',`
+    <div id='useAccountPrompt' class='screen-card blur-background'>
+        <div class='panel-card'>
+            <div class='title'>Login or Create Account</div>
+            <div class='horizontal-screen-button primary-button' onclick='openPage("login.html")'>Login</div>
+            <div class='horizontal-screen-button primary-button' onclick='openPage("signup.html")'>Create Account</div>
+            <div class='horizontal-screen-button secondary-button' onclick='this.parentNode.parentNode.style.display="none"'>Ignore</div>
+        </div>
+    </div>`);
 }
 
 function checkAccountValidity() {
@@ -422,67 +435,73 @@ function expandTv(mediaTitle) {
     var titleUS = unspace(mediaTitle);
     var mediaType = eval(titleUS)['mediaType'];
 
+    if (isLoggedIn()) {
+        firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + title).once('value', (snapshot) => {
+            if (localStorage['username'] == undefined) {
+                console.log('You can not watch content on baileo without an account!');
+            } else {
+                if (snapshot.val() > 0) {
+                    document.getElementById('continueWatchingButton').style.display = 'block';
+                    var season = 0;
+                    var episode = 0;
+                    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'S').once('value', (snapshot) => {
+                        season = snapshot.val();
+                        firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
+                            episode = snapshot.val();
+                            document.getElementById('continueWatchingButton').innerHTML = 'Continue - S' + season + 'E' + (Number(episode) + 1);
+                            setTimeout(function() {
+                                tvScreenContents.style.top = '0';
+                                tvScreenContents.style.opacity = '1';
+                            }, 1);
+                        }); 
+                    });
+                } else {
+                    document.getElementById('startWatchingTvButton').style.display = 'block';
+                    setTimeout(function() {
+                        tvScreenContents.style.top = '0';
+                        tvScreenContents.style.opacity = '1';
+                    }, 1);
+                }
+            }
+        }); 
+        
+        localStorage['expandPanelTitle'] = title;
+        localStorage['activeSeasonTab'] = 1;
+    
+        tvScreen.style.display = 'block';
+        tvPanel.scrollTop = '0';
+        tvNavbarContent.scrollLeft = '0';
+        tvPanelTitle.innerHTML = title;
+        tvNavbarContent.innerHTML = '';
+        tvPanelEpisodeList.innerHTML = '';
+        tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
+    
+        var a = 1;
+        while (a <= eval(titleUS)['sTotal']) {
+            if (a == localStorage['activeSeasonTab']) {
+                tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`);
+            } else {
+                tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`);
+            }
+            a++;
+        }
+    
+        var b = 0;
+        while (b < (eval(titleUS)['s1']).length) {
+            tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
+                <div class='listItemChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
+                    <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
+                    <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
+                </div>`);
+            b++;
+        }
+    } else {
+        alert('You must be logged in to an account before you start watching!');
+        useAccountPrompt();
+    }
+
     // tvTopbar.style.backgroundColor = eval(unspace(mediaTitle))['color'];
 
-    firebase.database().ref('users/' + localStorage['username'] + '/watched/tv/' + title).once('value', (snapshot) => {
-        if (localStorage['username'] == undefined) {
-            console.log('You can not watch content on baileo without an account!');
-        } else {
-            if (snapshot.val() > 0) {
-                document.getElementById('continueWatchingButton').style.display = 'block';
-                var season = 0;
-                var episode = 0;
-                firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'S').once('value', (snapshot) => {
-                    season = snapshot.val();
-                    firebase.database().ref('users/' + localStorage['username'] + '/progress/tv/' + title + 'E').once('value', (snapshot) => {
-                        episode = snapshot.val();
-                        document.getElementById('continueWatchingButton').innerHTML = 'Continue - S' + season + 'E' + (Number(episode) + 1);
-                        setTimeout(function() {
-                            tvScreenContents.style.top = '0';
-                            tvScreenContents.style.opacity = '1';
-                        }, 1);
-                    }); 
-                });
-            } else {
-                document.getElementById('startWatchingTvButton').style.display = 'block';
-                setTimeout(function() {
-                    tvScreenContents.style.top = '0';
-                    tvScreenContents.style.opacity = '1';
-                }, 1);
-            }
-        }
-    }); 
-    
-    localStorage['expandPanelTitle'] = title;
-    localStorage['activeSeasonTab'] = 1;
-
-    tvScreen.style.display = 'block';
-    tvPanel.scrollTop = '0';
-    tvNavbarContent.scrollLeft = '0';
-    tvPanelTitle.innerHTML = title;
-    tvNavbarContent.innerHTML = '';
-    tvPanelEpisodeList.innerHTML = '';
-    tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
-
-    var a = 1;
-    while (a <= eval(titleUS)['sTotal']) {
-        if (a == localStorage['activeSeasonTab']) {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`);
-        } else {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`);
-        }
-        a++;
-    }
-
-    var b = 0;
-    while (b < (eval(titleUS)['s1']).length) {
-        tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
-            <div class='listItemChoice' onclick='transporter("tv","` + title + `","1","` + b + `")'>
-                <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
-                <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
-            </div>`);
-        b++;
-    }
 }
 
 function selectSeason(seasonNum) {
@@ -559,6 +578,7 @@ function isMobileDevice() {
 }
 
 function login() {
+    loading();
     var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
     var passwordInput = document.getElementById("passwordInput").value;
     firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
@@ -570,11 +590,14 @@ function login() {
             });
         } else {
             alert('Login unsuccessful: username or password incorrect');
+            stopLoading();
         }
     });
 }
 
 function signup() {
+    loading();
+
     var usernameInput = document.getElementById("usernameInput").value.toLowerCase();
     var passwordInput = document.getElementById("passwordInput").value;
     var confirmPasswordInput = document.getElementById("confirmPasswordInput").value;
@@ -582,9 +605,11 @@ function signup() {
     if (passwordInput == confirmPasswordInput) {
         if (passwordInput == '') {
             alert('You must enter a password!');
+            stopLoading();
         } else {
             if (usernameInput == '') {
-                alert('You must enter a username!')
+                alert('You must enter a username!');
+                stopLoading();
             } else {
                 firebase.database().ref('users/' + usernameInput + '/password').once('value', (snapshot) => {
                     if (snapshot.val() == undefined) {
@@ -598,6 +623,7 @@ function signup() {
                         openPage('index.html');
                     } else {
                         alert('That username is already taken!');
+                        stopLoading();
                     }
                 });
             }

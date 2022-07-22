@@ -213,26 +213,34 @@ a{
 #mobileNavbarDropMenu div{
     height: auto;
     width: 100%;
-    background-color: rgb(25, 25, 25);
+    background-color: lightgray;
+    padding: 10pt 0 10pt 0;
+    border-bottom-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
+    position: absolute;
+    top: 0;
 }
 
 .mobile-navmenu-link-item{
     height: 15pt;
-    width: 100%;
-    padding: 15pt 0 15pt 0;
-    color: rgb(216, 216, 216);
+    width: 90%;
+    padding: 10pt 0 10pt 0;
+    margin: 10pt 5% 10pt 5%;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     font-size: 13pt;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    border-bottom: solid 1pt gray;
+    border-radius: 5pt;
+    border: solid 2pt gray;
 }
 
 .active-mobile-navmenu-link-item{
-    background-color: rgb(51, 51, 51);
+    background-color: var(--darkPlum);
     color: rgb(255, 255, 255);
+    border-color: var(--darkPlum);
 }
 
 .close-menu-clicker{
@@ -581,7 +589,7 @@ a{
     height: 50pt;
     width: 90%;
     margin: 5vh 5vw 5vh 5vw;
-    background-color: var(--violetBlue);
+    background-color: var(--darkPlum);
     padding: 20pt;
     outline: none;
     font-size: 20pt;
@@ -590,7 +598,7 @@ a{
     border-radius: 15pt;
     border: none;
     transition: padding-left 300ms, box-shadow 300ms;
-    border: solid 2pt gray;
+    box-shadow: 0 0 2vh 0 var(--darkPlum);
 }
 
 #searchBar::placeholder{
@@ -600,7 +608,7 @@ a{
 }
 
 #searchBar:focus{
-    border: solid 2pt white;
+    border: solid 2pt var(--lightPistachio);
     padding-left: 30pt;
 }
 
@@ -620,15 +628,16 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 50;
 }
 
 .screen-card-content{
     padding: 25pt 0 25pt 0;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -641,7 +650,7 @@ a{
 
 .panel-card{
     width: 30vw;
-    background-color: var(--navbarBgColor);
+    background-color: var(--darkAqua);
     padding: 25pt;
     border-radius: 10pt;
 }
@@ -655,44 +664,46 @@ a{
 
 .panel-card .title{
     font-size: 20pt;
-    border-bottom: solid 1pt gray;
+    border-bottom: solid 2pt white;
     padding-bottom: 10pt;
-    margin-bottom: 10pt;
 }
 
 .horizontal-screen-button{
+    width: 100%;
     color: white;
     font-family: var(--mainFont);
     background: none;
-    margin: 10pt auto 0 auto;
+    margin: 13pt auto 0 auto;
     text-align: center;
     font-size: 12pt;
-    padding: 5pt;
+    padding: 5pt 0 5pt 0;
     cursor: pointer;
+    border: solid 1pt var(--lightPistachio);
 }
 
 .horizontal-screen-button:hover{
-    background-color: var(--navbarBgColor);
+    background-color: var(--darkPlum);
+    transition: letter-spacing 10s;
+    letter-spacing: 1pt;
 }
 
 .primary-button{
     background-color: var(--silverAqua);
-    border: solid 2pt rgb(97, 98, 133);
 }
 
-.secondary-button{
+/* .secondary-button{
     border: solid 2pt var(--silverAqua);
-}
+} */
 
-.account-input-field{
+.input-field{
     width: 100%;
     background-color: var(--navbarBgColor);
     outline: none;
-    border: solid 1pt gray;
+    border: solid 1pt var(--lightPistachio);
     padding: 10pt;
     color: white;
     font-size: 12pt;
-    margin-top: 10pt;
+    margin: 15pt auto 0 auto;
 }
 
 
