@@ -1,38 +1,3 @@
-Loading Screen
-
-
-
-
-
-#loadingScreen{
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.646);
-    backdrop-filter: blur(10pt);
-    -webkit-backdrop-filter: blur(10pt);
-    z-index: 10;
-}
-
-#loadingScreen img{
-    height: 30vh;
-    width: 30vh;
-    position: absolute;
-    top: 35vh;
-    left: calc(50vw - 15vh);
-}
-
-
-
-
-
-/* Navigation bar */
-
-
-
-
 
 .navbar{
     height: 50pt;
