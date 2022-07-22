@@ -3,35 +3,71 @@
     <head>
 
         <title>Baileo - Home</title>
-        <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <!-- <link rel='stylesheet' href='shared.css'> -->
+        <link rel='stylesheet' href='library.css'>
+        <!-- <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'> -->
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
         <script src='script.js'></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
 
     </head>
 
     <body id='body'>
 
+        <div class='sunset-background wallpaper'></div>
 
+        <div class='navbar main-navbar desktop-navbar darkSunset-background'>
+            <div class='left-navbar side-navbar'>
+                <img class='navbar-logo' src='icons/watch unfilled.png'>
+            </div>
 
-        <div class='navbar main-navbar fixed horizontal-scroll'>
             <a class='navbar-link-item active-navbar-link-item' href='index.html'>
-                Home
+                Portal
             </a>
-        </div>
 
-        <div class='gradient-background' id='gradientWallpaper'></div>
-        
-        <div class='screen-card-content'>
-            <div class='panel-card'>
-                <div class='title' id='profilePageUsername'>This page is under construction!</div>
-                <p>Baileo, the video player, has moved to <a href='https://watch.baileo.us'>watch.baileo.us</a>. This site will become a hub for all things baileo and your baileo account!</p>
+            <a class='navbar-link-item' href='about.html'>
+                About
+            </a>
+
+            <a class='navbar-link-item' href='version.html'>
+                Version
+            </a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='profile.html'>
+                    <img class='navbar-link-item' src='icons/profile.png'>
+                </a>
             </div>
         </div>
+
+        <div class='navbar main-navbar mobile-navbar darkSunset-background'>
+            <div class='left-navbar side-navbar'>
+                <img class='navbar-link-item' src='icons/menu.png'>
+            </div>
+
+            <a class='navbar-link-item active-navbar-link-item' href='index.html'>
+                Portal
+            </a>
+
+            <a class='navbar-link-item' href='about.html'>
+                About
+            </a>
+
+            <a class='navbar-link-item' href='version.html'>
+                Version
+            </a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='profile.html'>
+                    <img class='navbar-link-item' src='icons/profile.png'>
+                </a>
+            </div>
+        </div>
+
+        if you are reading, you caught us at the wrong time! baileo is tranforming into a software EMPIRE (lol jk) with this being the hub. please wait while we stabilize and CONNECT all of our software applications together under one common libary (this site) check back soon!
 
     </body>
 

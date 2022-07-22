@@ -1,0 +1,116 @@
+:root{
+    --seafoam: #80DCB7;
+    --aqua: #13335c;
+    --darkAqua: rgb(18, 18, 47);
+    --silverAqua: rgb(40, 55, 93);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+    --violetBlue: rgb(54, 54, 105);
+
+    --mainFont: BaileyScript;
+}
+
+@font-face {
+    font-family: 'BaileyScript';
+    src: url('https://baileo.us/BaileyScript/BaileyScript.ttf');
+}
+
+body{
+    margin: 0;
+    background-color:indianred;
+    color: white;
+    font-family: var(--mainFont);
+    font-weight: 400;
+    padding-bottom: 4rem;
+}
+
+@media screen and (hover: none) {
+    .desktop-navbar{
+        display: none !important;
+    }
+    .mobile-navbar{
+        display: flex;
+    }
+}
+
+.mobile-navbar{
+    display: none !important;
+}
+
+.sunset-background{
+    background: linear-gradient(150deg, rgb(150, 72, 24) 0%, rgb(116, 17, 90) 100%);
+}
+
+.darkSunset-background{
+    background: linear-gradient(-135deg, rgb(72, 33, 85) 0%, rgb(108, 52, 32) 100%);
+}
+
+.wallpaper{
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-logo{
+    height: 35pt;
+    padding: 7.5pt;
+}
+
+.side-navbar{
+    height: 50pt;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.left-navbar{
+    left: 0;
+    justify-content: left;
+}
+
+.right-navbar{
+    right: 0;
+    justify-content: right;
+}
+
+.navbar{
+    height: 50pt;
+    width: auto;
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50pt);
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.navbar-link-item{
+    height: 15pt;
+    margin: 5pt;
+    padding: 10pt;
+    border-radius: 10pt;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 13pt;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.navbar-link-item:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+.active-navbar-link-item{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+}

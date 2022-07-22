@@ -185,6 +185,9 @@ const Vacation = {
 
 
 
+
+lib.hello();
+
 function setData(reference, value) {
     firebase.database().ref(reference).set(value);
 }
