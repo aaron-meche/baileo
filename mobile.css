@@ -1,3 +1,25 @@
+.navbar{
+    justify-content: left;
+}
+
+.main-navbar{
+    padding-right: 110pt;
+}
+
+.right-navbar{
+    padding-right: 10pt;
+    width: 100pt;
+}
+
+
+
+
+/* Media slider */
+
+
+
+
+
 .media-slider-title-bar{
     margin-left: 5vw;
 }
