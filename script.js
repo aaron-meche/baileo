@@ -319,7 +319,7 @@ window.addEventListener('load', function () {
     <div class='expand-screen' id='tvExpandScreen'>
     <div class='expand-screen-contents' id='tvScreenContents'>
         <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-        <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+        <div class='expand-panel purple-background' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
             <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
                 <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
                 <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
@@ -521,11 +521,11 @@ sessionStorage['savedScrollLocation22838'] = 0;
 function tvExpandPanelScrolled() {
     var scrollTop = document.getElementById('tvPanelNavbarContents').getBoundingClientRect().top;
     if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        document.getElementById('tvPanelNavbarContents').style.background = 'linear-gradient(45deg, rgb(89, 14, 49) 0%, rgb(54, 25, 65) 100%)';
+        // document.getElementById('tvPanelNavbarContents').style.backgroundColor = 'var(--royalPurple)';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'solid 1pt gray';
     } else {
         sessionStorage['savedScrollLocation22838'] = scrollTop;
-        document.getElementById('tvPanelNavbarContents').style.background = 'none';
+        // document.getElementById('tvPanelNavbarContents').style.background = 'none';
         document.getElementById('tvPanelNavbarContents').style.borderBottom = 'none';
     }
 }
@@ -676,7 +676,7 @@ function getCurrentlyWatching() {
                     document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
                     <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
                         <div class='image-shader'>
-                            <img src='icons/play-video-icon.png'>
+                            <img src='icons/play circle.png'>
                         </div>
                         <div class='view-progress-container'>
                             <div style='width: ` + (progressData[mediaType][Object.keys(ordered)[i]] * 100) + `%' class='view-progress-bar'></div>
@@ -710,4 +710,20 @@ function readSearchUrl() {
     var urlParams = new URLSearchParams(document.location.search);
     search(urlParams.get('search').replace(/%20/g, ' '));
     document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
+}
+
+var mobileNavMenuExpanded = false;
+
+function mobileNavMenu() {
+    if (mobileNavMenuExpanded) {
+        document.getElementById('mobileNavbarDropMenu').style.display = 'none';
+        document.getElementById('expandMobileNavmenu').style.display = 'block';
+        document.getElementById('closeMobileNavmenu').style.display = 'none';
+        mobileNavMenuExpanded = false;
+    } else {
+        document.getElementById('mobileNavbarDropMenu').style.display = 'block';
+        document.getElementById('expandMobileNavmenu').style.display = 'none';
+        document.getElementById('closeMobileNavmenu').style.display = 'block';
+        mobileNavMenuExpanded = true;
+    }
 }

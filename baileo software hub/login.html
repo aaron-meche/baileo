@@ -14,15 +14,21 @@
 
     </head>
 
-    <body id='body' onload='stopLoading()'>
+    <body id='body'>
 
         <div class='gradient-background' id='gradientWallpaper'></div>
-        
-        <div id='loadingScreen'>
-            <img src='icons/loading.gif'>
-        </div>
 
-        <div class='proUnit'></div>
+        <div id='useAccountPrompt' class='screen-card' style='display:flex;'>
+            <div class='panel-card'>
+                <form>
+                    <div class='title'>Login</div>
+                    <input type='text' id='usernameInput' class='account-input-field' placeholder="Username">
+                    <input type='password' id='passwordInput' class='account-input-field' placeholder="Password">
+                    <div class='horizontal-screen-button primary-button' onclick='login()'>Login</div>
+                    <div class='horizontal-screen-button secondary-button' onclick='openPage("signup.html")'>Create an Account</div>
+                </form>
+            </div>
+        </div>
 
     </body>
 

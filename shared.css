@@ -1,29 +1,31 @@
 :root{
-    --navbarBgColor: rgb(17, 20, 29);
-    --bodyBgColor: rgb(27, 31, 40);
     --seafoam: #80DCB7;
-    --aqua: #0c1b2f;
+    --aqua: #13335c;
     --darkAqua: rgb(18, 18, 47);
     --silverAqua: rgb(40, 55, 93);
     --princeton: #FF8F00;
     --honey: #F6AE2D;
     --violetBlue: rgb(54, 54, 105);
+    --lightPistachio: #9AB9AC;
+    --vanillaCream: #E5D9BE;
+    --softLightBlue: #91A7CF;
+    --burntOrange: #BC6039;
+    --silkyPurple: #7B6380;
+    --darkPlum: #24105C;
+    --royalPurple: #51284a;
+    --spruceLeaves: #2C494B;
 
     --mainFont: BaileyScript;
-
-    --themePicker: rgb(0, 51, 255);
-
-    --prounit: calc(100vh * 100vw);
 }
 
 @font-face {
     font-family: 'BaileyScript';
-    src: url('BaileyScript/BaileyScript.ttf');
+    src: url('https://baileo.us/BaileyScript/BaileyScript.ttf');
 }
 
 body{
     margin: 0;
-    background-color: var(--navbarBgColor);
+    background-color:rgb(0, 0, 0);
     color: white;
     font-family: var(--mainFont);
     font-weight: 400;
@@ -31,34 +33,56 @@ body{
 }
 
 a{
+    text-decoration: none;
     color: inherit;
-    text-decoration: none;
-    cursor: pointer;
 }
 
-a:hover{
-    text-decoration: underline;
+@media screen and (hover: none) {
+    .desktop-navbar{
+        display: none !important;
+    }
+    .mobile-navbar{
+        display: flex;
+    }
 }
 
-.navbar a:hover{
-    text-decoration: none;
+@media screen and (hover: hover) and (min-width: 700px) {
+    .desktop-navbar{
+        display: flex;
+    }
+    .mobile-navbar{
+        display: none !important;
+    }
 }
 
-#gradientWallpaper{
-    height: 100vh;
+@media screen and (hover: hover) and (max-width: 700px) {
+    .desktop-navbar{
+        display: none !important;
+    }
+    .mobile-navbar{
+        display: flex;
+    }
+}
+
+.purple-background{
+    background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%);
+}
+
+.wallpaper{
+    height: 100%;
     width: 100vw;
-    background: linear-gradient(-135deg, rgb(39, 14, 19) 0%, rgb(54, 25, 65) 100%);
     z-index: -1;
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
+    background: linear-gradient(45deg, var(--darkPlum) 0%, var(--burntOrange) 100%);
 }
 
 
 
 
 
-/* Loading Screen */
+/* Loading screen */
 
 
 
@@ -70,10 +94,10 @@ a:hover{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.646);
-    backdrop-filter: blur(10pt);
-    -webkit-backdrop-filter: blur(10pt);
-    z-index: 10;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
 }
 
 #loadingScreen img{
@@ -88,16 +112,58 @@ a:hover{
 
 
 
-/* Navigation bar */
+/* Navbar */
 
 
 
 
+
+.navbar-logo{
+    height: 35pt;
+    padding: 7.5pt;
+    float: left;
+}
+
+.navbar-logo-display{
+    height: 50pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-title{
+    font-size: 18pt;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.side-navbar{
+    height: 50pt;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.left-navbar{
+    left: 0;
+    justify-content: left;
+}
+
+.main-navbar{
+    background-color: rgba(8, 8, 65, 0.5);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
+}
+
+.right-navbar{
+    right: 0;
+    justify-content: right;
+}
 
 .navbar{
     height: 50pt;
     width: auto;
-    background: linear-gradient(45deg, rgba(115, 54, 15, 0.75) 0%, rgba(77, 6, 58, 0.75) 100%);
     backdrop-filter: blur(50pt);
     -webkit-backdrop-filter: blur(50pt);
     position: sticky;
@@ -105,24 +171,9 @@ a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    z-index: 3;
 }
 
-.main-navbar{
-    z-index: 5;
-}
-
-.right-navbar{
-    height: 50pt;
-    width: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-    
 .navbar-link-item{
     height: 15pt;
     margin: 5pt;
@@ -137,23 +188,74 @@ a:hover{
     text-decoration: none;
 }
 
+.navbar-link-item:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
 .active-navbar-link-item{
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+#mobileNavbarDropMenu{
+    height: calc(100vh - 50pt);
+    width: 100vw;
+    position: absolute;
+    top: 50pt;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5pt);
+    -webkit-backdrop-filter: blur(5pt);
+    display: none;
+}
+
+#mobileNavbarDropMenu div{
+    height: auto;
+    width: 100%;
+    background-color: rgb(25, 25, 25);
+}
+
+.mobile-navmenu-link-item{
+    height: 15pt;
+    width: 100%;
+    padding: 15pt 0 15pt 0;
+    color: rgb(216, 216, 216);
+    cursor: pointer;
+    font-size: 13pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-bottom: solid 1pt gray;
+}
+
+.active-mobile-navmenu-link-item{
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+}
+
+.close-menu-clicker{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
 }
 
 
 
 
 
-/* Media slider */
+/* Media Sliders */
 
 
 
 
 
 .media-slider-section{
-    padding-top: 5rem;
+    padding-top: 4rem;
     position: relative;
     top: 0;
     left: 0;
@@ -236,7 +338,7 @@ a:hover{
     top: 0;
     right: 0;
     border-radius: inherit;
-    z-index: 0.5;
+    z-index: 1;
 }
 
 .view-progress-bar{
@@ -250,7 +352,7 @@ a:hover{
 
 
 
-/* Media expand screen */
+/* Media Screen (Watch) */
 
 
 
@@ -265,7 +367,7 @@ a:hover{
     overflow-y: hidden;
     display: none;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 2;
+    z-index: 4;
 }
 
 .expand-screen-contents{
@@ -281,7 +383,7 @@ a:hover{
 .close-screen-clicker{
     height: 100vh;
     width: 100vw;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
 }
@@ -292,8 +394,8 @@ a:hover{
     position: absolute;
     top: 5vh;
     left: 12.5vw;
-    background: linear-gradient(45deg, rgba(115, 54, 15) 0%, rgba(77, 6, 58) 100%);
     overflow-y: scroll;
+    z-index: 5;
 }
 
 .expand-panel-topbar{
@@ -305,13 +407,9 @@ a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-bottom: solid 1pt gray; */
-    backdrop-filter: blur(25pt);
-    -webkit-backdrop-filter: blur(25pt);
-    background-color: rgba(0, 0, 0, 0.25);
-    /* background: linear-gradient(-135deg, rgba(39, 14, 19, 0.5) 0%, rgba(54, 25, 65, 0.5) 100%); */
-    z-index: 1;
     border-bottom: solid 1pt gray;
+    z-index: 7;
+    background-color: var(--darkPlum);
 }
 
 .expand-panel-title{
@@ -351,13 +449,16 @@ a:hover{
 #tvPanelNavbarContents{
     position: sticky;
     top: 50pt;
-    z-index: 1;
-    margin-bottom: 10pt;
     padding: 5pt;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
 }
 
 .expand-panel-impression-image{
-    height: 70vh;
+    height: 60vh;
     width: 100%;
     position: relative;
     background: transparent no-repeat center;
@@ -630,8 +731,8 @@ a:hover{
     bottom: 1vw;
     left: 1vw;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10pt);
-    -webkit-backdrop-filter: blur(10pt);
+    backdrop-filter: blur(20pt);
+    -webkit-backdrop-filter: blur(20pt);
 }
 
 .featured-panel-utility .title{

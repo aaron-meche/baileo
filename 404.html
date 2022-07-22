@@ -2,41 +2,98 @@
 
     <head>
 
-        <title>Baileo - Home</title>
+        <title>Baileo - Error 404: Unknown URL</title>
         <link rel='stylesheet' href='https://baileo.us/shared.css'>
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='https://baileo.us/desktop.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='https://baileo.us/mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <link rel="icon" type="image/x-icon" href="https://baileo.us/icons/webicon.ico">
-        <script>
-            window.addEventListener('load', function () {
-                document.getElementById('fillURL').innerHTML = window.location.href;
-            })
-        </script>
+        <script src='script.js'></script>
 
     </head>
 
     <body id='body'>
 
+        <div class='wallpaper'></div>
 
+        <div class='navbar main-navbar desktop-navbar'>
+            <div class='left-navbar side-navbar'>
+                <a href='https://baileo.us/index.html'>
+                    <div class='navbar-logo-display'>
+                        <img class='navbar-logo' src='https://baileo.us/icons/logo unfilled.png'>
+                        <span class='logo-title'>baileo</span>
+                    </div>
+                </a>
+            </div>
 
-        <div class='navbar main-navbar horizontal-scroll'>
             <a class='navbar-link-item' href='https://baileo.us/index.html'>
                 Home
             </a>
+
             <a class='navbar-link-item' href='https://baileo.us/tv.html'>
-                TV
+                TV Shows
             </a>
+
             <a class='navbar-link-item' href='https://baileo.us/movies.html'>
                 Movies
             </a>
-            <div class='right-navbar'>
-                <a href='https://baileo.us/search.html'><img src='https://baileo.us/icons/search.png' class='navbar-link-item'></a>
-                <a href='https://baileo.us/profile.html'><img src='https://baileo.us/icons/profile-icon.png' class='navbar-link-item'></a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='https://baileo.us/search.html'>
+                    <img class='navbar-link-item' src='https://baileo.us/icons/search.png'>
+                </a>
+                <a href='https://baileo.us/profile.html'>
+                    <img class='navbar-link-item' src='https://baileo.us/icons/profile.png'>
+                </a>
             </div>
         </div>
 
-        <div class='gradient-background' id='gradientWallpaper'></div>
+        <div class='navbar main-navbar mobile-navbar sunset-background'>
+            <div class='left-navbar side-navbar'>
+                <img class='navbar-link-item' id='expandMobileNavmenu' src='https://baileo.us/icons/menu.png' onclick='mobileNavMenu()'>
+                <img class='navbar-link-item' id='closeMobileNavmenu' src='https://baileo.us/icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+            </div>
+
+            <a href='https://baileo.us/index.html'>
+                <div class='navbar-logo-display'>
+                    <img class='navbar-logo' src='https://baileo.us/icons/logo unfilled.png'>
+                    <span class='logo-title'>watch</span>
+                </div>
+            </a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='https://baileo.us/profile.html'>
+                    <img class='navbar-link-item' src='https://baileo.us/icons/profile.png'>
+                </a>
+            </div>
+
+            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
+
+                <div>
+                    <a class='mobile-navmenu-link-item' href='https://baileo.us/index.html'>
+                        Home
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='https://baileo.us/tv.html'>
+                        TV Shows
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='https://baileo.us/movies.html'>
+                        Movies
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='https://baileo.us/search.html'>
+                        Search
+                    </a>
+    
+                    <a class='mobile-navmenu-link-item' href='https://baileo.us/movies.html'>
+                        Movies
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
 

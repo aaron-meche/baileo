@@ -1,0 +1,58 @@
+<html>
+
+    <head>
+
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
+        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
+        <script src='script.js'></script>
+
+    </head>
+
+    <body id='body' onload='loadProfile(), checkForAccount()'>
+
+
+
+        <div class='navbar main-navbar horizontal-scroll'>
+            <a class='navbar-link-item' href='index.html'>
+                Home
+            </a>
+            <a class='navbar-link-item' href='tv.html'>
+                TV
+            </a>
+            <a class='navbar-link-item' href='movies.html'>
+                Movies
+            </a>
+            <div class='right-navbar'>
+                <a href='search.html'><img src='icons/search.png' class='navbar-link-item'></a>
+                <a href='profile.html'><img src='icons/profile-icon.png' class='navbar-link-item active-navbar-link-item'></a>
+            </div>
+        </div>
+
+        <div class='gradient-background' id='gradientWallpaper'></div>
+
+        <div id='loadingScreen'>
+            <img src='icons/loading.gif'>
+        </div>
+
+
+
+        <div class='screen-card-content'>
+            <div class='panel-card'>
+                <div class='title' id='profilePageUsername'>Welcome</div>
+                <!-- <div class='horizontal-screen-button secondary-button' onclick='openPage("change-username.html")'>Change Username</div> -->
+                <div class='horizontal-screen-button secondary-button' onclick='openPage("change-password.html")'>Change Password</div>
+                <!-- <div class='horizontal-screen-button secondary-button' onclick='deleteData()'>Delete All Data</div> -->
+                <div class='horizontal-screen-button secondary-button' onclick='systemLogout()'>Log out of all other devices</div>
+                <div class='horizontal-screen-button primary-button' onclick='logout()'>Log out</div>
+            </div>
+        </div>
+        
+    </body>
+
+</html>
