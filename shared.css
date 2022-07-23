@@ -37,33 +37,6 @@ a{
     color: inherit;
 }
 
-@media screen and (hover: none) {
-    .desktop-navbar{
-        display: none !important;
-    }
-    .mobile-navbar{
-        display: flex;
-    }
-}
-
-@media screen and (min-width: 700px) {
-    .desktop-navbar{
-        display: flex;
-    }
-    .mobile-navbar{
-        display: none !important;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .desktop-navbar{
-        display: none !important;
-    }
-    .mobile-navbar{
-        display: flex;
-    }
-}
-
 .purple-background{
     background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%);
 }
@@ -75,8 +48,8 @@ a{
     position: fixed;
     bottom: 0;
     left: 0;
-    background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%);
-    /* background: linear-gradient(45deg, var(--darkPlum) 0%, var(--burntOrange) 100%); */
+    /* background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%); */
+    background: linear-gradient(150deg, var(--darkPlum) 0%, var(--royalPurple) 40%, var(--burntOrange) 100%);
 }
 
 
@@ -197,65 +170,6 @@ a{
 .active-navbar-link-item{
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-}
-
-#mobileNavbarDropMenu{
-    height: calc(100vh - 50pt);
-    width: 100vw;
-    position: absolute;
-    top: 50pt;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5pt);
-    -webkit-backdrop-filter: blur(5pt);
-    display: none;
-}
-
-#mobileNavbarDropMenu div{
-    height: auto;
-    width: 100%;
-    background-color: lightgray;
-    padding: 10pt 0 10pt 0;
-    border-bottom-left-radius: 2vw;
-    border-bottom-right-radius: 2vw;
-    position: absolute;
-    top: 0;
-}
-
-.mobile-navmenu-link-item{
-    height: 15pt;
-    width: 90%;
-    padding: 10pt 0 10pt 0;
-    margin: 10pt 5% 10pt 5%;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    font-size: 13pt;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 5pt;
-    border: solid 2pt gray;
-}
-
-.mobile-navmenu-link-item:hover{
-    background-color: rgb(87, 87, 87);
-    color: white;
-}
-
-.active-mobile-navmenu-link-item{
-    background-color: var(--darkPlum);
-    color: rgb(255, 255, 255);
-    border-color: var(--darkPlum);
-}
-
-.close-menu-clicker{
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: black;
 }
 
 

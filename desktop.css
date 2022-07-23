@@ -20,7 +20,7 @@
     z-index: 1;
 }
 
-.image-shader img{
+.image-shader-indicator{
     height: 30pt;
     width: 30pt;
     position: absolute;
@@ -29,6 +29,22 @@
     background-color: white;
     border-radius: 100vh;
     transition: left 200ms;
+}
+
+.remove-from-history-icon{
+    height: 15pt;
+    width: 15pt;
+    position: absolute;
+    top: 5pt;
+    left: 5pt;
+    padding: 7pt;
+    border-radius: 100vh;
+    z-index: 3;
+}
+
+.remove-from-history-icon:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2pt rgb(235, 31, 31);
 }
 
 .image-shader:hover{
@@ -55,4 +71,78 @@
 .searchItemChoice:hover{
     border-top: solid 1pt gray;
     border-bottom: solid 1pt gray;
+}
+
+.desktop-navbar{
+    display: flex;
+}
+.mobile-navbar{
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .desktop-navbar{
+        display: none;
+    }
+    .mobile-navbar{
+        display: flex;
+    }
+    #mobileNavbarDropMenu{
+        height: calc(100vh - 50pt);
+        width: 100vw;
+        position: absolute;
+        top: 50pt;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(5pt);
+        -webkit-backdrop-filter: blur(5pt);
+        display: none;
+    }
+
+    #mobileNavbarDropMenu div{
+        height: auto;
+        width: 100%;
+        background-color: lightgray;
+        padding: 10pt 0 10pt 0;
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
+        position: absolute;
+        top: 0;
+    }
+
+    .mobile-navmenu-link-item{
+        height: 15pt;
+        width: 90%;
+        padding: 10pt 0 10pt 0;
+        margin: 10pt 5% 10pt 5%;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        font-size: 13pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 5pt;
+        border: solid 2pt gray;
+    }
+
+    .mobile-navmenu-link-item:hover{
+        background-color: rgb(87, 87, 87);
+        color: white;
+    }
+
+    .active-mobile-navmenu-link-item{
+        background-color: var(--darkPlum);
+        color: rgb(255, 255, 255);
+        border-color: var(--darkPlum);
+    }
+
+    .close-menu-clicker{
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+    }
 }

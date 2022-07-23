@@ -279,7 +279,7 @@ function createLink(type, title, season, episode) {
 
     var generatedLink = receiverPageLink + '?key=' + key;
 
-    console.log(generatedLink);
+    stopLoading();
 
     var interval = setInterval(function(){
         firebase.database().ref('links/' + key).once('value', (snapshot) => {
@@ -700,13 +700,14 @@ function getCurrentlyWatching() {
                 for (var i = 0; i < Object.keys(ordered).length; i++) {
                     var mediaType = eval(unspace(Object.keys(ordered)[i]))['mediaType'];
                     document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
-                    <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-').replace(/'/g, '') + `.jpg')" onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png'>
+                    <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-') + `.jpg')">
+                        <div class='image-shader' onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
+                            <img src='icons/play circle.png' class='image-shader-indicator'>
                         </div>
                         <div class='view-progress-container'>
                             <div style='width: ` + (progressData[mediaType][Object.keys(ordered)[i]] * 100) + `%' class='view-progress-bar'></div>
                         </div>
+                        <img src='icons/close.png' class='remove-from-history-icon' onclick='removeFromWatchHistory("` + Object.keys(ordered)[i] + `")'>
                     </div>`);
                     // console.log(Object.keys(ordered)[i]); 
                 }
@@ -716,6 +717,13 @@ function getCurrentlyWatching() {
         }
     });
         
+}
+
+function removeFromWatchHistory(mediaTitle) {
+    var mediaType = eval(unspace(mediaTitle))['mediaType'];
+    firebase.database().ref('users/' + localStorage['username'] + '/watched/' + mediaType + '/' + mediaTitle).remove();
+    document.getElementById('continueWatchingCarousel').innerHTML = '';
+    getCurrentlyWatching();
 }
 
 function search(string) {

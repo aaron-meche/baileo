@@ -38,7 +38,7 @@ a{
     }
 }
 
-@media screen and (hover: hover) {
+@media screen and (hover: hover) and (pointer: fine) {
     .desktop-navbar{
         display: flex;
     }
