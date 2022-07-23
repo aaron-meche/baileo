@@ -351,13 +351,13 @@ a{
     top: 0;
     right: 0;
     border-radius: inherit;
-    z-index: 1;
+    z-index: 0;
 }
 
 .view-progress-bar{
     height: 100%;
-    /* max-width: calc(100vw - 1vw); */
-    background-color: rgba(127, 127, 127, 0.4);
+    min-width: 5%;
+    background-color: rgba(0, 0, 0, 0.4);
     border-right: solid 3pt rgb(255, 255, 255);
 }
 
