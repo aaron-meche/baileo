@@ -46,7 +46,7 @@ a{
     }
 }
 
-@media screen and (hover: hover) and (min-width: 700px) {
+@media screen and (min-width: 700px) {
     .desktop-navbar{
         display: flex;
     }
@@ -55,7 +55,7 @@ a{
     }
 }
 
-@media screen and (hover: hover) and (max-width: 700px) {
+@media screen and (max-width: 700px) {
     .desktop-navbar{
         display: none !important;
     }
@@ -75,7 +75,8 @@ a{
     position: fixed;
     bottom: 0;
     left: 0;
-    background: linear-gradient(45deg, var(--darkPlum) 0%, var(--burntOrange) 100%);
+    background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%);
+    /* background: linear-gradient(45deg, var(--darkPlum) 0%, var(--burntOrange) 100%); */
 }
 
 
