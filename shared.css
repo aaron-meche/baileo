@@ -44,7 +44,7 @@ a{
 .wallpaper{
     height: 100%;
     width: 100vw;
-    z-index: -1;
+    z-index: -10;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -145,7 +145,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 3;
+    z-index: 80;
 }
 
 .navbar-link-item{
@@ -289,7 +289,6 @@ a{
     top: 0;
     right: 0;
     border-radius: inherit;
-    z-index: 0;
 }
 
 .view-progress-bar{
@@ -318,7 +317,7 @@ a{
     overflow-y: hidden;
     display: none;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 4;
+    z-index: 85;
 }
 
 .expand-screen-contents{
@@ -346,7 +345,7 @@ a{
     top: 5vh;
     left: 12.5vw;
     overflow-y: scroll;
-    z-index: 5;
+    z-index: 90;
 }
 
 .expand-panel-topbar{
@@ -359,7 +358,7 @@ a{
     align-items: center;
     justify-content: center;
     border-bottom: solid 1pt gray;
-    z-index: 7;
+    z-index: 95;
     background-color: var(--darkPlum);
 }
 
@@ -401,7 +400,7 @@ a{
     position: sticky;
     top: 50pt;
     padding: 5pt;
-    z-index: 6;
+    z-index: 95;
     display: flex;
     align-items: center;
     backdrop-filter: blur(25pt);
@@ -575,7 +574,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 50;
+    z-index: 95;
 }
 
 .screen-card-content{

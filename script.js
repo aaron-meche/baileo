@@ -64,7 +64,7 @@ const Sherlock = {
 const FamilyGuy = {
     mediaType: 'tv',
     sTotal: 20,
-    // s10: ['Lottery Fever (X)','Seahorse Seashell Party (X)','Screams of Silence, The Story of Brenda Q','Stewie Goes for a Drive','Back to the Pilot','','','','','','',"Livin' on a Prayer",'','','','','','','','','','',''],
+    s16: ["Emmy-Winning Episode","Foxx in the Men House","Nanny Goats","Follow The Money","Three Doctors","The D in Apartment 23","Petey IV","Crimes and Meg’s Demeanor","Don’t Be a Dickens at Christmas","Boy (Dog) Meets Girl","Dog Bites Bear","Send In Stewie, Please","V Is For Mystery","Veteran Guy","The Woof of Wall Street","Family Guy Through the Years","Switch the Flip","HTTPete","The Unkindest Cut","Are You There God? It’s Me, Peter"],
     s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
     description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane for the Fox Broadcasting Company. The series centers on the Griffins, a family consisting of parents Peter and Lois; their children, Meg, Chris, and Stewie; and their anthropomorphic pet dog, Brian. Set in the fictional city of Quahog, Rhode Island, the show exhibits much of its humor in the form of metafictional cutaway gags that often lampoon American culture.",
     color: "rgba(227, 45, 255, 1)",
@@ -113,6 +113,11 @@ const DespicableMe3 = {
 const DumbandDumber = {
     mediaType: 'movie',
     description: `Dumb and Dumber is a 1994 American buddy comedy film directed by Peter Farrelly, who co-wrote the screenplay with Bobby Farrelly and Bennett Yellin. It is the first installment in the Dumb and Dumber franchise. Starring Jim Carrey and Jeff Daniels, it tells the story of Lloyd Christmas (Carrey) and Harry Dunne (Daniels), two dumb but well-meaning friends from Providence, Rhode Island, who set out on a cross-country trip to Aspen, Colorado, to return a briefcase full of money to its owner, thinking it was abandoned as a mistake though it was actually left as a ransom. Lauren Holly, Karen Duffy, Mike Starr, Charles Rocket, and Teri Garr play supporting roles.`,
+}
+
+const DumbandDumberTo = {
+    mediaType: 'movie',
+    description: `Dumb and Dumber +`,
 }
 
 const Elf = {
@@ -761,4 +766,11 @@ function mobileNavMenu() {
         document.getElementById('closeMobileNavmenu').style.display = 'block';
         mobileNavMenuExpanded = true;
     }
+}
+
+// s1: ["Pilot", "Diversity
+
+function seriesHelper(season, message) {
+    var newText = 's' + season + ': ["' + message.replace(/\n/g, '","') + '"],';
+    console.log(newText);
 }
