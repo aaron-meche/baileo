@@ -63,8 +63,24 @@ const Sherlock = {
 
 const FamilyGuy = {
     mediaType: 'tv',
-    sTotal: 20,
+    sTotal: 18,
+    s1: ["Death Has a Shadow","I Never Met the Dead Man","Chitty Chitty Death Bang","Mind Over Murder","A Hero Sits Next Door","The Son Also Draws","Brian: Portrait of a Dog"],
+    s2: ["Peter, Peter, Caviar Eater","Holy Crap","Da Boom","Brian in Love","Love Thy Trophy","Death Is a Bitch","The King Is Dead","I Am Peter, Hear Me Roar","If I'm Dyin', I'm Lyin","Running Mates","A Picture is Worth 1,000 Bucks","Fifteen Minutes of Shame","Road to Rhode Island","Let's Go to the Hop","Dammit Janet","There's Something About Paulie","He's Too Sexy for His Fat","E. Peterbus Unum","The Story on Page One","Wasted Talent","Fore, Father"],
+    s3: ["The Thin White Line","Brian Does Hollywood","Mr. Griffin Goes to Washington","One If by Clam, Two If by Sea","And the Wiener Is...","Death Lives","Lethal Weapons","The Kiss Seen Around the World","Mr. Saturday Knight","A Fish Out of Water","Emission Impossible","To Love and Die in Dixie","Screwed the Pooch","Peter Griffin: Husband, Father... Brother?","Ready, Willing, and Disabled","A Very Special Family Guy Freakin' Christmas","Brian Wallows and Peter's Swallows","From Method to Madness","Stuck Together, Torn Apart","Road to Europe","Family Guy Viewer Mail #1","When You Wish Upon a Weinstein"],
+    s4: ["North by North Quahog","Fast Times at Buddy Cianci Jr. High","Blind Ambition","Don't Make Me Over","The Cleveland-Loretta Quagmire","Petarded","Brian the Bachelor","8 Simple Rules for Buying My Teenage Daughter","Breaking Out Is Hard to Do","Model Misbehavior","Peter's Got Woods","Perfect Castaway","Jungle Love","PTV","Brian Goes Back to College","The Courtship of Stewie's Father","The Fat Guy Strangler","The Father, the Son, and the Holy Fonz","Brian Sings and Swings","Patriot Games","I Take Thee Quagmire","Sibling Rivalry","Deep Throats","Peterotica","You May Now Kiss the... Uh... Guy Who Receives","Petergeist","The Griffin Family History","Stewie B. Goode","Bang-o Was His Name-o","Stu and Stewie's Excellent Adventure"],
+    s5: ["Stewie Loves Lois","Mother Tucker","Hell Comes to Quahog","Saving Private Brian","Whistle While Your Wife Works","Prick Up Your Ears","Chick Cancer","Barely Legal","Road to Rupert","Peter's Two Dads","The Tan Aquatic with Steve Zissou","Airport '07","Bill & Peter's Bogus Journey","No Meals on Wheels","Boys Do Cry","No Chris Left Behind","It Takes a Village Idiot, and I Married One","Meet the Quagmires"],
+    s6: ["Blue Harvest","Movin' Out (Brian's Song)","Believe It or Not, Joe's Walking on Air","Stewie Kills Lois (Part 1)","Lois Kills Stewie (Part 2)","Padre de Familia","Peter's Daughter","McStroke","Back to the Woods","Play It Again, Brian","The Former Life of Brian","Long John Peter"],
+    s7: ["Love, Blactually","I Dream of Jesus","Road to Germany","Baby Not on Board","The Man with Two Brians","Tales of a Third Grade Nothing","Ocean's Three and a Half","Family Gay","The Juice Is Loose","Fox-y Lady","Not All Dogs Go to Heaven","420","Stew-Roids","We Love You, Conrad","Three Kings","Peter's Progress"],
+    s8: ["Road to the Multiverse","Family Goy","Spies Reminiscent of Us","Brian's Got a Brand New Bag","Hannah Banana","Quagmire's Baby","Jerome Is the New Black","Dog Gone","Business Guy","Big Man on Hippocampus","Dial Meg for Murder","Extra Large Medium","Go, Stewie, Go!","Peter-assment","Brian Griffin's House of Payne","April in Quahog","Brian & Stewie","Quagmire's Dad","The Splendid Source","Something, Something, Something, Dark Side","Partial Terms of Endearment"],
+    s9: ["And Then There Were Fewer","Excellence in Broadcasting","Welcome Back, Carter","Halloween on Spooner Street","Baby, You Knock Me Out","Brian Writes a Bestseller","Road to the North Pole","New Kidney in Town","And I'm Joyce Kinney","Friends of Peter G.","German Guy","The Hand That Rocks the Wheelchair","Trading Places","Tiegs for Two","Brothers & Sisters","The Big Bang Theory","Foreign Affairs","It's a Trap!"],
+    s10: ["Lottery Fever","Seahorse Seashell Party","Screams of Silence: The Story of Brenda Q","Stewie Goes for a Drive","Back to the Pilot","Thanksgiving","Amish Guy","Cool Hand Peter","Grumpy Old Man","Meg and Quagmire","The Blind Side","Livin' on a Prayer","Tom Tucker: The Man and His Dream","Be Careful What You Fish For","Burning Down the Bayit","Killer Queen","Forget-Me-Not","You Can't Do That on Television, Peter","Mr. and Mrs. Stewie","Leggo My Meg-O","Tea Peter","Family Guy Viewer Mail #2","Internal Affairs"],
+    s11: ["Into Fat Air","Ratings Guy","The Old Man and the Big 'C'","Yug Ylimaf","Joe's Revenge","Lois Comes Out of Her Shell","Friends Without Benefits","Jesus, Mary and Joseph!","Space Cadet","Brian's Play","The Giggity Wife","Valentine's Day in Quahog","Chris Cross","Call Girl","Turban Cowboy","12 and a Half Angry Men","Bigfat","Total Recall","Save the Clam","Farmer Guy","Roads to Vegas","No Country Club for Old Men"],
+    s12: ["Finders Keepers","Vestigal Peter","Quagmire's Quagmire","A Fistful of Meg","Boppa-dee Bappa-dee","Life of Brian","Into Harmony's Way","Christmas Guy","Peter Problems","Grimm Job","Brian's a Bad Father","Mom's the Word","3 Acts of God","Fresh Heir","Secondhand Spoke","Herpe the Love Sore","The Most Interesting Man in the World","Baby Got Black","Meg Stinks!","He's Bla-ack!","Chap Stewie"],
+    s13: ["The Simpsons Guy","The Book of Joe","Baking Bad","Brian the Closer","Turkey Guys","The 2000-Year-Old Virgin","Stewie, Chris, & Brian's Excellent Adventure","Our Idiot Brian","This Little Piggy","Quagmire's Mom","Encyclopedia Griffin","Stewie Is Enceinte","Dr. C and the Women","#JOLO","Once Bitten","Roasted Guy","Fighting Irish","Take My Wife"],
+    s14: ["Pilling Them Softly","Papa Has a Rollin' Son","Guy, Robot","Peternormal Activity","Peter, Chris, & Brian","Peter's Sister","Hot Pocket-Dial","Brokeback Swanson","A Shot in the Dark","Candy, Quahog Marshmallow","The Peanut Butter Kid","Scammed Yankees","An App a Day","Underage Peter","A Lot Going on Upstairs","The Heartbreak Dog","Take a Letter","The New Adventures of Old Tom","Run Chris, Run"],
+    s15: ["The Boys in the Band","Bookie of the Year","American Gigg-olo","Inside Family Guy","Chris Has Got a Date, Date, Date, Date, Date","Hot Shots","High School English","Carter and Tricia","How the Griffin Stole Christmas","Passenger Fatty-Seven","Gronkowsbees","Peter's Def Jam","The Finer Strings","The Dating Game","Cop and a Half-wit","Saturated Fat Guy","Peter's Lost Youth","The Peter Principal","Dearly Deported","A House Full of Peters"],
     s16: ["Emmy-Winning Episode","Foxx in the Men House","Nanny Goats","Follow The Money","Three Doctors","The D in Apartment 23","Petey IV","Crimes and Meg’s Demeanor","Don’t Be a Dickens at Christmas","Boy (Dog) Meets Girl","Dog Bites Bear","Send In Stewie, Please","V Is For Mystery","Veteran Guy","The Woof of Wall Street","Family Guy Through the Years","Switch the Flip","HTTPete","The Unkindest Cut","Are You There God? It’s Me, Peter"],
+    s17: ["Married... with Cancer","Dead Dog Walking","Pal Stewie","Big Trouble in Little Quahog","Regarding Carter","Stand by Meg","The Griffin Winter Games","Con Heiress","Pawtucket Pete","Hefty Shades of Gray","Trump Guy","Bri, Robot","Trans-Fat","Family Guy Lite","No Giggity, No Doubt","You Can't Handle the Booth!","Island Adventure","Throw It Away","Girl, Internetted","Adam West High"],
     s18: ['Yacht Rocky','Bri-da','Absolutely Babulous','Disney the Reboot','Cat Fight',"Peter and Lois' Wedding",'Heart Burn','Shanksgiving','Christmas is Coming','Connies Celica','Short Cuts','Undergrounded','Rich Old Stewie','The Movement','Baby Stewie','Start Me Up','Coma Guy','Better Off Meg','Holly Bibble',"Movin in Principal Shepherd's Song"],
     description: "Family Guy is an American adult animated sitcom created by Seth MacFarlane for the Fox Broadcasting Company. The series centers on the Griffins, a family consisting of parents Peter and Lois; their children, Meg, Chris, and Stewie; and their anthropomorphic pet dog, Brian. Set in the fictional city of Quahog, Rhode Island, the show exhibits much of its humor in the form of metafictional cutaway gags that often lampoon American culture.",
     color: "rgba(227, 45, 255, 1)",
@@ -175,6 +191,10 @@ const TheAmazingSpiderMan2 = {
 const TheNotebook = {
     mediaType: 'movie',
     description: `The Notebook is a 2004 American romantic drama film directed by Nick Cassavetes, with a screenplay by Jeremy Leven and Jan Sardi, based on the 1996 novel of the same name by Nicholas Sparks. The film stars Ryan Gosling and Rachel McAdams as a young couple who fall in love in the 1940s. Their story is read from a notebook in the present day by an elderly man (played by James Garner), telling the tale to a fellow nursing home resident (played by Gena Rowlands, the director Cassavetes' mother).`,
+}
+
+const TheWaterboy = {
+    mediaType: 'movie',
 }
 
 const Vacation = {
@@ -491,6 +511,8 @@ function expandTv(mediaTitle) {
             }
             a++;
         }
+
+        tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
     
         var b = 0;
         while (b < (eval(titleUS)['s1']).length) {
@@ -771,6 +793,16 @@ function mobileNavMenu() {
 // s1: ["Pilot", "Diversity
 
 function seriesHelper(season, message) {
-    var newText = 's' + season + ': ["' + message.replace(/\n/g, '","') + '"],';
+    var newText = 's' + season + ': [' + message.replace(/\n/g, ',') + '],';
     console.log(newText);
+}
+
+function connectToSync() {
+    let syncCode = prompt("Please enter the Sync Code (6 Digits)");
+
+    if (syncCode.length == 6) {
+        alert('Sync Code not recognized, please try again later. A possible reason for this error is this feature not being completely functional yet (clearly)');
+    } else {
+        alert('That is an invalid Sync Code');
+    }
 }
