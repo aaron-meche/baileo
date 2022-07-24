@@ -808,8 +808,8 @@ function shortenURL() {
 
 function checkForCustomURL(string) {
     var urlDatabase = '';
-    // var path = window.location.pathname;
-    var path = string.replace('/', '');
+    var path = window.location.pathname;
+    // var path = string.replace('/', '');
 
     firebase.database().ref('quick links').once('value', (snapshot) => {
         urlDatabase = snapshot.val();
