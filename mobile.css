@@ -31,6 +31,7 @@
     backdrop-filter: blur(5pt);
     -webkit-backdrop-filter: blur(5pt);
     display: none;
+    z-index: 90;
 }
 
 #mobileNavbarDropMenu div{
