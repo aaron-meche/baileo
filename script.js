@@ -405,8 +405,7 @@ function useAccountPrompt() {
 
 function checkAccountValidity() {
     firebase.database().ref('users/' + localStorage['username'] + '/key').once('value', (snapshot) => {
-        if (localStorage['ekey'] == snapshot.val()) {
-        } else {
+        if (localStorage['ekey'] !== snapshot.val()) {
             alert('Error: Faulty login credentials. Your authentication key is not valid.');
             logout();
         }
@@ -512,7 +511,7 @@ function expandTv(mediaTitle) {
             a++;
         }
 
-        tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
+        tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>⌽ View Source</div>`);
     
         var b = 0;
         while (b < (eval(titleUS)['s1']).length) {
@@ -797,6 +796,31 @@ function seriesHelper(season, message) {
     console.log(newText);
 }
 
+function shortenURL() {
+    let urlToShorten = prompt("Please enter the URL you would like to shorten");
+    let urlCode = prompt("Please enter the shortcut URL you would like to create (https://baileo.us/[YOUR INPUT]) ... Please note that your custom URL can ONLY contain letters (A-Z) and numbers (0-9).");
+    if(/^[a-zA-Z0-9]+$/.test(urlCode)) {
+        console.log('Yes');
+    } else {
+        alert('Invaid custom URL. Remember, your custom URL can ONLY contain letters (A-Z) and numbers (0-9).')
+    }
+}
+
+function checkForCustomURL(string) {
+    var urlDatabase = '';
+    // var path = window.location.pathname;
+    var path = string.replace('/', '');
+
+    firebase.database().ref('quick links').once('value', (snapshot) => {
+        urlDatabase = snapshot.val();
+        if (urlDatabase[path] !== undefined) {
+            console.log('Page Exists, transferring now...');
+            openPage(urlDatabase[path]['url']);
+        }
+        // processCustomURL()
+    });
+}
+
 function connectToSync() {
     let syncCode = prompt("Please enter the Sync Code (6 Digits)");
 
@@ -804,5 +828,12 @@ function connectToSync() {
         alert('Sync Code not recognized, please try again later. A possible reason for this error is this feature not being completely functional yet (clearly)');
     } else {
         alert('That is an invalid Sync Code');
+    }
+}
+
+function testString(string) {
+    console.log('Testing...');
+    if(/^[a-zA-Z0-9]+$/.test(string)) {
+        console.log('Yes');
     }
 }
