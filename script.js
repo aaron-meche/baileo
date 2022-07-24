@@ -223,6 +223,7 @@ function unspace(string) {
 }
 
 function continueWatching(title) {
+    loading();
     var mediaType = eval(unspace(title))['mediaType'];
     
     if (mediaType == 'tv') {

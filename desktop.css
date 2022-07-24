@@ -7,46 +7,6 @@
     color: white;
 }
 
-.image-shader{
-    height: calc(100% - 6pt);
-    border-radius: 1vw;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: solid 3pt rgb(255, 255, 255);
-    position: relative;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 100ms;
-    z-index: 1;
-}
-
-.image-shader-indicator{
-    height: 30pt;
-    width: 30pt;
-    position: absolute;
-    top: calc(50% - 15pt);
-    left: calc(50% - 15pt);
-    background-color: white;
-    border-radius: 100vh;
-    transition: left 200ms;
-}
-
-.remove-from-history-icon{
-    height: 15pt;
-    width: 15pt;
-    position: absolute;
-    top: 5pt;
-    left: 5pt;
-    padding: 7pt;
-    border-radius: 100vh;
-    z-index: 3;
-}
-
-.remove-from-history-icon:hover{
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 0 2pt rgb(235, 31, 31);
-}
-
 .image-shader:hover{
     opacity: 1;
 }
