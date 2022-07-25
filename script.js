@@ -811,7 +811,7 @@ function checkForCustomURL() {
         console.log(snapshot.val());
         if (snapshot.val()[path] !== undefined) {
             console.log('Page Exists, transferring now...');
-            openPage(snapshot.val()[path]['url']);
+            openPage(snapshot.val()[window.location.pathname.replace('/','')]['url']);
         }
         // processCustomURL()
     });
