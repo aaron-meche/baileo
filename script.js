@@ -806,16 +806,12 @@ function shortenURL() {
     }
 }
 
-function checkForCustomURL(string) {
-    var urlDatabase = '';
-    var path = window.location.pathname;
-    // var path = string.replace('/', '');
-
-    firebase.database().ref('quick links').once('value', (snapshot) => {
-        urlDatabase = snapshot.val();
-        if (urlDatabase[path] !== undefined) {
+function checkForCustomURL() {
+    firebase.database().ref('customURLs').once('value', (snapshot) => {
+        console.log(snapshot.val());
+        if (snapshot.val()[path] !== undefined) {
             console.log('Page Exists, transferring now...');
-            openPage(urlDatabase[path]['url']);
+            openPage(snapshot.val()[path]['url']);
         }
         // processCustomURL()
     });
