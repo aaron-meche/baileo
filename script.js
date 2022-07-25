@@ -798,11 +798,11 @@ function seriesHelper(season, message) {
 
 function shortenURL() {
     let urlToShorten = prompt("Please enter the URL you would like to shorten");
-    let urlCode = prompt("Please enter the shortcut URL you would like to create (https://baileo.us/[YOUR INPUT]) ... Please note that your custom URL can ONLY contain letters (A-Z) and numbers (0-9).");
-    if(/^[a-zA-Z0-9]+$/.test(urlCode)) {
-        console.log('Yes');
+    let urlCode = prompt("Please enter the shortcut URL you would like to create (https://baileo.us/[YOUR INPUT]) ... Please note that your custom URL can ONLY contain letters (A-Z) and numbers (0-9) and must be atleast 5 characters in length.");
+    if ((/^[a-zA-Z0-9]+$/.test(urlCode)) && (urlCode.length >= 5)) {
+        setData('customURLs/' + urlCode + '/url', urlToShorten)
     } else {
-        alert('Invaid custom URL. Remember, your custom URL can ONLY contain letters (A-Z) and numbers (0-9).')
+        alert('Invaid custom URL. Remember, your custom URL can ONLY contain letters (A-Z) and numbers (0-9) and must be atleast 5 characters in length.')
     }
 }
 
@@ -812,6 +812,8 @@ function checkForCustomURL() {
         if (snapshot.val()[window.location.pathname.replace('/','')] !== undefined) {
             console.log('Page Exists, transferring now...');
             openPage(snapshot.val()[window.location.pathname.replace('/','')]['url']);
+        } else {
+            document.getElementById('body').style.display = 'block';
         }
         // processCustomURL()
     });
