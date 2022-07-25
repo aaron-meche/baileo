@@ -809,7 +809,7 @@ function shortenURL() {
 function checkForCustomURL() {
     firebase.database().ref('customURLs').once('value', (snapshot) => {
         console.log(snapshot.val());
-        if (snapshot.val()[path] !== undefined) {
+        if (snapshot.val()[window.location.pathname.replace('/','')] !== undefined) {
             console.log('Page Exists, transferring now...');
             openPage(snapshot.val()[window.location.pathname.replace('/','')]['url']);
         }
