@@ -1,20 +1,28 @@
 <html>
 
     <head>
-
         <title>Baileo - Home</title>
         <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (pointer: coarse)' href='mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <script src='script.js'></script>
+        <!-- <script src='index.js'></script> -->
 
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='index.js'></script>
     </head>
 
-    <body id='body' onload='stopLoading()'>
+    <body id='body'>
 
         <div id='loadingScreen'>
             <img src='icons/loading.gif'>
@@ -22,20 +30,21 @@
 
         <div class='wallpaper'></div>
 
-        <div id='useAccountPrompt' class='screen-card' style='display:flex;'>
+        <div class='screen-card'>
             <div class='panel-card'>
-                <form onsubmit='signup()'>
-                    <div class='title'>Sign Up</div>
-                    <input type='text' id='usernameInput' class='input-field' placeholder="Username">
-                    <input type='password' id='passwordInput' class='input-field' placeholder="Password">
-                    <input type='password' id='confirmPasswordInput' class='input-field' placeholder="Confirm Password">
-                    <input type="submit" class='horizontal-screen-button primary-button' value="Sign Up" onclick='signup()'>
-                    <div class='horizontal-screen-button primary-button' onclick='signup()'>Create Account</div>
-                    <div class='horizontal-screen-button secondary-button' onclick='openPage("login.html")'>Already have an account?</div>
+                <form class='signup-form'>
+                    <div class='title'>Create an Account</div>
+                    <input class='input-field' type="text" name="email" placeholder="Email">
+                    <input class='input-field' type="password" name="password" placeholder="Password">
+                    <input class='input-field' type="password" name="confirmPassword" placeholder="Confirm Password">
+                    <input class='horizontal-screen-button primary-button' type="submit" value="Sign Up">
+                    <div class='horizontal-screen-button secondary-button signin-google-button'><img src='icons/google.png'>Sign up with Google</div>
+                    <div class='horizontal-screen-button secondary-button' onclick='openPage("login.html")'>Login to existing account</div>
                 </form>
             </div>
         </div>
 
+        <script defer src="bundle.js"></script>
     </body>
 
 </html>

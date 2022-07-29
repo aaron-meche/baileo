@@ -20,12 +20,12 @@
 
 @font-face {
     font-family: 'BaileyScript';
-    src: url('https://baileo.us/BaileyScript/BaileyScript.ttf');
+    src: url('BaileyScript/BaileyScript.ttf');
 }
 
 body{
     margin: 0;
-    background-color:rgb(0, 0, 0);
+    background-color:var(--darkPlum);
     color: white;
     font-family: var(--mainFont);
     font-weight: 400;
@@ -48,8 +48,9 @@ a{
     position: fixed;
     bottom: 0;
     left: 0;
-    /* background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%); */
-    background: linear-gradient(150deg, var(--darkPlum) 0%, var(--royalPurple) 40%, var(--burntOrange) 100%);
+    /* background-color: var(--darkPlum); */
+    background: linear-gradient(135deg, rgb(54, 39, 55) 0%, rgb(32, 24, 43)  50%, rgb(27, 27, 58) 100%);
+    /* background: linear-gradient(150deg, var(--darkPlum) 0%, var(--royalPurple) 100%); */
 }
 
 
@@ -70,8 +71,8 @@ a{
     left: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(15pt);
-    -webkit-backdrop-filter: blur(15pt);
+    /* backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt); */
 }
 
 #loadingScreen img{
@@ -125,9 +126,9 @@ a{
 }
 
 .main-navbar{
-    background-color: rgba(71, 71, 162, 0.5);
-    backdrop-filter: blur(15pt);
-    -webkit-backdrop-filter: blur(15pt);
+    background-color: var(--darkPlum);
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50vw);
 }
 
 .right-navbar{
@@ -321,7 +322,7 @@ a{
 
 
 
-/* Media Screen (Watch) */
+/* Media Screen */
 
 
 
@@ -415,15 +416,19 @@ a{
     background-color: red;
 }
 
-#tvPanelNavbarContents{
+#tvPanelNavbar{
     position: sticky;
     top: 50pt;
-    padding: 5pt;
     z-index: 95;
     display: flex;
     align-items: center;
+    justify-content: left;
     backdrop-filter: blur(25pt);
     -webkit-backdrop-filter: blur(25pt);
+}
+
+#tvPanelNavbarContents{
+    padding: 5pt;
 }
 
 .expand-panel-impression-image{
@@ -597,11 +602,15 @@ a{
 }
 
 .screen-card-content{
-    padding: 25pt 0 25pt 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15pt 0 15pt 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.screen-card-content-container{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15pt 0 15pt 0;
 }
 
 .blur-background{
@@ -640,16 +649,29 @@ a{
     padding: 5pt 0 5pt 0;
     cursor: pointer;
     border: solid 1pt var(--lightPistachio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .horizontal-screen-button:hover{
     background-color: var(--darkPlum);
-    transition: letter-spacing 10s;
-    letter-spacing: 1pt;
+    color: white;
+}
+
+.horizontal-screen-button img{
+    height: 15pt;
+    margin-right: 5pt;
 }
 
 .primary-button{
     background-color: var(--silverAqua);
+}
+
+.signin-google-button{
+    background-color: rgb(230, 230, 230);
+    color: black;
+    font-weight: 500;
 }
 
 /* .secondary-button{

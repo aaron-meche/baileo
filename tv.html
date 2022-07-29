@@ -1,20 +1,28 @@
 <html>
 
     <head>
-
-        <title>Baileo - TV Shows</title>
+        <title>Baileo - Home</title>
         <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (pointer: coarse)' href='mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <script src='script.js'></script>
+        <!-- <script src='index.js'></script> -->
 
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='index.js'></script>
     </head>
 
-    <body id='body' onload='checkForAccount()'>
+    <body id='body'>
 
         <div class='wallpaper'></div>
 
@@ -100,36 +108,15 @@
             <img src='icons/loading.gif'>
         </div>
 
-        
-
         <div class='media-slider-section'>
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:tv category:comedy")'>Comedies ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/family-guy.jpg')" onclick='expandTv("Family Guy")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-                    
-                    <div class='media-slider-object' style="background-image: url('thumbnails/parks-and-recreation.jpg')" onclick='expandTv("Parks and Recreation")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-office.jpg')" onclick='expandTv("The Office")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>Family Guy</span>
+                <span class='building-block-media-click-object'>Parks and Recreation</span>
+                <span class='building-block-media-click-object'>The Office</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -137,27 +124,14 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:tv category:drama")'>Dramas ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/sherlock.jpg')" onclick='expandTv("Sherlock")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/squid-game.jpg')" onclick='expandTv("Squid Game")'>
-                        <div class='image-shader'>
-                            <img src='icons/continue circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>Sherlock</span>
+                <span class='building-block-media-click-object'>Squid Game</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
+        <script defer src="bundle.js"></script>
     </body>
 
 </html>

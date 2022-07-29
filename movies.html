@@ -1,20 +1,28 @@
 <html>
 
     <head>
-
-        <title>Baileo - Movies</title>
+        <title>Baileo - Home</title>
         <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (pointer: coarse)' href='mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <script src='script.js'></script>
+        <!-- <script src='index.js'></script> -->
 
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='index.js'></script>
     </head>
 
-    <body id='body' onload='checkForAccount()'>
+    <body id='body'>
 
         <div class='wallpaper'></div>
 
@@ -100,72 +108,21 @@
             <img src='icons/loading.gif'>
         </div>
         
-
-
         <div class='media-slider-section'>
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:comedy")'>Comedies ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/clueless.jpg')" onclick='transporter("movie","Clueless")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/dumb-and-dumber.jpg')" onclick="transporter('movie','Dumb and Dumber')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/dumb-and-dumber-to.jpg')" onclick="transporter('movie','Dumb and Dumber To')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/legally-blonde.jpg')" onclick="transporter('movie','Legally Blonde')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/mean-girls.jpg')" onclick="transporter('movie','Mean Girls')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/mean-girls-2.jpg')" onclick="transporter('movie','Mean Girl 2')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/miss-congeniality.jpg')" onclick="transporter('movie','Miss Congeniality')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-waterboy.jpg')" onclick="transporter('movie','The Waterboy')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/vacation.jpg')" onclick="transporter('movie','Vacation')">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>Clueless</span>
+                <span class='building-block-media-click-object'>Dumb and Dumber</span>
+                <span class='building-block-media-click-object'>Dumb and Dumber To</span>
+                <span class='building-block-media-click-object'>Legally Blonde</span>
+                <span class='building-block-media-click-object'>Mean Girls</span>
+                <span class='building-block-media-click-object'>Mean Girls 2</span>
+                <span class='building-block-media-click-object'>Miss Congeniality</span>
+                <span class='building-block-media-click-object'>The Waterboy</span>
+                <span class='building-block-media-click-object'>Vacation</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -173,60 +130,16 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:animation")'>Animations ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/cars-2.jpg')" onclick='transporter("movie","Cars 2")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/cars-3.jpg')" onclick='transporter("movie","Cars 3")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/coraline.jpg')" onclick='transporter("movie","Coraline")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me.jpg')" onclick='transporter("movie","Despicable Me")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me-2.jpg')" onclick='transporter("movie","Despicable Me 2")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/despicable-me-3.jpg')" onclick='transporter("movie","Despicable Me 3")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/minions.jpg')" onclick='transporter("movie","Minions")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/ratatouille.jpg')" onclick='transporter("movie","Ratatouille")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>Cars 2</span>
+                <span class='building-block-media-click-object'>Cars 3</span>
+                <span class='building-block-media-click-object'>Coraline</span>
+                <span class='building-block-media-click-object'>Despicable Me</span>
+                <span class='building-block-media-click-object'>Despicable Me 2</span>
+                <span class='building-block-media-click-object'>Despicable Me 3</span>
+                <span class='building-block-media-click-object'>Minions</span>
+                <span class='building-block-media-click-object'>Ratatouille</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -234,36 +147,12 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:drama")'>Drama ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/american-psycho.jpg')" onclick='transporter("movie","American Psycho")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/hidden-figures.jpg')" onclick='transporter("movie","Hidden Figures")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/knives-out.jpg')" onclick='transporter("movie","Knives Out")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-notebook.jpg')" onclick='transporter("movie","The Notebook")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>American Psycho</span>
+                <span class='building-block-media-click-object'>Hidden Figures</span>
+                <span class='building-block-media-click-object'>Knives Out</span>
+                <span class='building-block-media-click-object'>The Notebook</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -271,30 +160,11 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:superhero")'>Superhero ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-amazing-spider-man-2.jpg')" onclick='transporter("movie","The Amazing Spider Man 2")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/spider-man-homecoming.jpg')" onclick='transporter("movie","Spider Man: Homecoming")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/spider-man-no-way-home.jpg')" onclick='transporter("movie","Spider Man: No Way Home")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
+                <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
+                <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -302,18 +172,9 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:romcom")'>Romantic Comedies ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-                    
-                    <div class='media-slider-object' style="background-image: url('thumbnails/the-proposal.jpg')" onclick='transporter("movie","The Proposal")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>The Proposal</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -321,27 +182,14 @@
             <div class='media-slider-title-bar clickable-title'>
                 <div class='media-slider-title' onclick='openPage("search.html?search=type:movie category:christmas")'>Christmas Spirit ></div>
             </div>
-            <div class='horizontal-scroll'>
-                <div class='media-slider-carousel'>
-
-                    <div class='media-slider-object' style="background-image: url('thumbnails/daddys-home-2.jpg')" onclick="transporter('movie',`Daddy's Home 2`)">
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-                    
-                    <div class='media-slider-object' style="background-image: url('thumbnails/elf.jpg')" onclick='transporter("movie","Elf")'>
-                        <div class='image-shader'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
-                        </div>
-                    </div>
-
-                    <div class='media-slider-object'>
-                    </div>
-                </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>Daddy's Home 2</span>
+                <span class='building-block-media-click-object'>Elf</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
+        <script defer src="bundle.js"></script>
     </body>
 
 </html>

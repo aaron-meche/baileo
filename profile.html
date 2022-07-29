@@ -1,20 +1,28 @@
 <html>
 
     <head>
-
-        <title>Baileo - Profile</title>
+        <title>Baileo - Home</title>
         <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (pointer: coarse)' href='mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
         <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <script src='script.js'></script>
+        <!-- <script src='index.js'></script> -->
 
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='index.js'></script>
     </head>
 
-    <body id='body' onload='checkForAccount(), loadProfile()'>
+    <body id='body'>
 
         <div class='wallpaper'></div>
 
@@ -102,17 +110,25 @@
 
 
 
-        <div class='screen-card-content'>
-            <div class='panel-card'>
-                <div class='title' id='profilePageUsername'>Welcome</div>
-                <!-- <div class='horizontal-screen-button secondary-button' onclick='openPage("change-username.html")'>Change Username</div> -->
-                <div class='horizontal-screen-button secondary-button' onclick='openPage("change-password.html")'>Change Password</div>
-                <!-- <div class='horizontal-screen-button secondary-button' onclick='deleteData()'>Delete All Data</div> -->
-                <div class='horizontal-screen-button secondary-button' onclick='systemLogout()'>Log out of all other devices</div>
-                <div class='horizontal-screen-button primary-button' onclick='logout()'>Log out</div>
+        <div class='screen-card-content-container'>
+            <!-- <div class='screen-card-content'>
+                <div class='panel-card'>
+                    <div class='title' id='profilePageUsername'>Account Settings</div>
+                    <div class='horizontal-screen-button secondary-button' onclick='openPage("change-password.html")'>Change Password</div>
+                    <div class='horizontal-screen-button primary-button logout-button'>Log out</div>
+                </div>
+            </div> -->
+    
+            <div class='screen-card-content'>
+                <div class='panel-card'>
+                    <div class='title' id='profilePageUsername'>Account Settings</div>
+                    <div class='horizontal-screen-button secondary-button' onclick='openPage("change-password.html")'>Change Password</div>
+                    <div class='horizontal-screen-button primary-button logout-button'>Log out</div>
+                </div>
             </div>
         </div>
         
+        <script defer src="bundle.js"></script>
     </body>
 
 </html>

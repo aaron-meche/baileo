@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet' href='../shared.css'>
+	<title>Welcome to Firebase Hosting</title>
+
+	<!-- update the version number as needed -->
+	<script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+	<!-- include only the Firebase features as you need -->
+	<script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+	<script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+	<!-- 
+	initialize the SDK after all desired features are loaded, set useEmulator to false
+	to avoid connecting the SDK to running emulators.
+	-->
+	<script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+	<body>
+		Hello, working!
+
+		<form class='signin'>
+			<label for="email">Email</label>
+			<input type="text" name="email">
+			<label for="email">Password</label>
+			<input type="password" name="password">
+			<input type="submit" value="Login">
+		</form>
+
+		<button onclick='testFunction()'>Test Functions</button>
+
+		<script defer src="../bundle.js"></script>
+	</body>
+</html>
