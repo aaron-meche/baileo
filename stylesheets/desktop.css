@@ -1,0 +1,40 @@
+.side-navbar{
+    padding: 0 10pt 0 10pt;
+}
+
+.media-slider-object:hover{
+    border-radius: 10pt;
+}
+
+.image-shader:hover{
+    opacity: 1;
+}
+
+.listItemChoice:hover{
+    height: 60pt;
+}
+
+.searchItemChoice:hover .listItemTitle{
+    left: 2%;
+}
+
+.searchItemChoice:hover .listItemTitle .listItemImageFrame{
+    height: 80%;
+    min-width: calc(80pt + 3vw);
+}
+
+.listItemChoice:hover{
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.searchItemChoice:hover{
+    border-top: solid 1pt gray;
+    border-bottom: solid 1pt gray;
+}
+
+.desktop-navbar{
+    display: flex;
+}
+.mobile-navbar{
+    display: none;
+}

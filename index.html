@@ -1,12 +1,13 @@
 <html>
     <head>
         <title>Baileo - Home</title>
-        <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
-        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <link rel='stylesheet' href='stylesheets/shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='stylesheets/desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='stylesheets/mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='stylesheets/mobile.css'>
+        <meta name="viewport" content="initial-scale = 1, user-scalable = no">
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <!-- <script src='index.js'></script> -->
+        <!-- <script src='scripts/index.js'></script> -->
 
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
@@ -18,15 +19,17 @@
         to avoid connecting the SDK to running emulators.
         -->
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-        <script src='index.js'></script>
+        <script src='scripts/index.js'></script>
     </head>
 
     <body id='body'>
 
-        <div class='wallpaper'></div>
-
-        <div class='navbar main-navbar desktop-navbar'>
+        <div class='navbar main-navbar'>
             <div class='left-navbar side-navbar'>
+                <div class='mobile-navbar'>
+                    <img class='navbar-link-item' id='expandMobileNavmenu' src='icons/menu.png' onclick='mobileNavMenu()'>
+                    <img class='navbar-link-item' id='closeMobileNavmenu' src='icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+                </div>
                 <a href='index.html'>
                     <div class='navbar-logo-display'>
                         <img class='navbar-logo' src='icons/logo unfilled.png'>
@@ -35,70 +38,32 @@
                 </a>
             </div>
 
-            <a class='navbar-link-item active-navbar-link-item' href='index.html'>
-                Home
-            </a>
-
-            <a class='navbar-link-item' href='tv.html'>
-                TV Shows
-            </a>
-
-            <a class='navbar-link-item' href='movies.html'>
-                Movies
-            </a>
-
-            <div class='right-navbar side-navbar'>
-                <a href='search.html'>
-                    <img class='navbar-link-item' src='icons/search.png'>
-                </a>
-                <a href='apps.html'>
-                    <img class='navbar-link-item' src='icons/app menu.png'>
-                </a>
-                <a href='profile.html'>
-                    <img class='navbar-link-item' src='icons/profile.png'>
-                </a>
-            </div>
-        </div>
-
-        <div class='navbar main-navbar mobile-navbar'>
-            <div class='left-navbar side-navbar'>
-                <img class='navbar-link-item' id='expandMobileNavmenu' src='icons/menu.png' onclick='mobileNavMenu()'>
-                <img class='navbar-link-item' id='closeMobileNavmenu' src='icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
-                <a href='index.html'>
-                    <div class='navbar-logo-display'>
-                        <img class='navbar-logo' src='icons/logo unfilled.png'>
-                        <span class='logo-title'>home</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class='right-navbar side-navbar'>
-                <a href='search.html'>
-                    <img class='navbar-link-item' src='icons/search.png'>
-                </a>
-                <a href='apps.html'>
-                    <img class='navbar-link-item' src='icons/app menu.png'>
-                </a>
-                <a href='profile.html'>
-                    <img class='navbar-link-item' src='icons/profile.png'>
-                </a>
-            </div>
-
             <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
-
                 <div>
-                    <a class='mobile-navmenu-link-item active-mobile-navmenu-link-item' href='index.html'>
+                    <a class='navbar-link-item active-navbar-link-item' href='index.html'>
                         Home
                     </a>
-        
-                    <a class='mobile-navmenu-link-item' href='tv.html'>
+                    <a class='navbar-link-item' href='tv.html'>
                         TV Shows
                     </a>
-        
-                    <a class='mobile-navmenu-link-item' href='movies.html'>
+                    <a class='navbar-link-item' href='movies.html'>
                         Movies
                     </a>
                 </div>
+            </div>
+
+            <div class='right-navbar side-navbar'>
+                <a href='search.html'>
+                    <img class='navbar-link-item' src='icons/search.png'>
+                </a>
+                <img class='navbar-link-item ui-mode-toggle' id='darkUiButton' src='icons/moon.png'>
+                <img class='navbar-link-item ui-mode-toggle' id='lightUiButton' src='icons/sun.png'>
+                <a href='apps.html'>
+                    <img class='navbar-link-item' src='icons/app menu.png'>
+                </a>
+                <a href='profile.html'>
+                    <img class='navbar-link-item' src='icons/profile.png'>
+                </a>
             </div>
         </div>
 
@@ -107,15 +72,56 @@
         </div>
 
         <div class='featured-panel-container'>
-            <div class='featured-panel-impression-image' style="background-image: url('cover-image/the-office.jpg')">
+            <div class='featured-panel-impression-image' style="background-image: url('cover-image/baileo.png')">
             
             </div>
             <div class='featured-panel-utility'>
-                <div class='title'>The Office</div>
+                <!-- <div class='title'>Introduction</div> -->
                 <div class='action-button-container'>
-                    <div class='activity-button filled-activity-button transport-button' onclick='transporter("tv","The Office",1,0)'>Play</div>
-                    <div class='activity-button tv-expand-link' onclick='expandTv("The Office")'>See More</div>
+                    <div class='activity-button filled-activity-button transport-button' onclick='transport("movie","Welcome to Baileo")'>Watch Introduction</div>
+                    <!-- <div class='activity-button tv-expand-link' onclick='expandTv("The Office")'>See More</div> -->
                 </div>
+            </div>
+        </div>
+
+        <div class='media-slider-section'>
+            <div class='media-slider-title-bar clickable-title'>
+                <div class='media-slider-title' onclick='openPage("search.html")'>All Media ></div>
+            </div>
+            <div class='horizontal-scroll media-slider-carousel'>
+                <span class='building-block-media-click-object'>American Psycho</span>
+                <span class='building-block-media-click-object'>Cars 2</span>
+                <span class='building-block-media-click-object'>Cars 3</span>
+                <span class='building-block-media-click-object'>Clueless</span>
+                <span class='building-block-media-click-object'>Coraline</span>
+                <span class='building-block-media-click-object'>Daddy's Home 2</span>
+                <span class='building-block-media-click-object'>Despicable Me</span>
+                <span class='building-block-media-click-object'>Despicable Me 2</span>
+                <span class='building-block-media-click-object'>Despicable Me 3</span>
+                <span class='building-block-media-click-object'>Dumb and Dumber</span>
+                <span class='building-block-media-click-object'>Dumb and Dumber To</span>
+                <span class='building-block-media-click-object'>Family Guy</span>
+                <span class='building-block-media-click-object'>Elf</span>
+                <span class='building-block-media-click-object'>Hidden Figures</span>
+                <span class='building-block-media-click-object'>Knives Out</span>
+                <span class='building-block-media-click-object'>Legally Blonde</span>
+                <span class='building-block-media-click-object'>Mean Girls</span>
+                <span class='building-block-media-click-object'>Mean Girls 2</span>
+                <span class='building-block-media-click-object'>Minions</span>
+                <span class='building-block-media-click-object'>Miss Congeniality</span>
+                <span class='building-block-media-click-object'>Parks and Recreation</span>
+                <span class='building-block-media-click-object'>Ratatouille</span>
+                <span class='building-block-media-click-object'>Sherlock</span>
+                <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
+                <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
+                <span class='building-block-media-click-object'>Squid Game</span>
+                <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
+                <span class='building-block-media-click-object'>The Notebook</span>
+                <span class='building-block-media-click-object'>The Office</span>
+                <span class='building-block-media-click-object'>The Proposal</span>
+                <span class='building-block-media-click-object'>The Waterboy</span>
+                <span class='building-block-media-click-object'>Vacation</span>
+                <span class='media-slider-object'></span>
             </div>
         </div>
 
@@ -205,7 +211,7 @@
             </div>
         </div>
 
-        <script defer src="bundle.js"></script>
+        <script defer src="scripts/bundle.js"></script>
     </body>
 
 </html>

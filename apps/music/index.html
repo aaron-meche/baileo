@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Baileo - Home</title>
+        <link rel='stylesheet' href='../../stylesheets/shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='../../stylesheets/desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='../../small-stylesheets/desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='../../stylesheets/mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='../../stylesheets/mobile.css'>
+        <meta name="viewport" content="initial-scale = 1, user-scalable = no">
+        <link rel="icon" type="image/x-icon" href="../../icons/webicon.ico">
+        <!-- <script src='scripts/index.js'></script> -->
+
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='../../scripts/index.js'></script>
+    </head>
+
+    <body id='body'>
+
+        <!-- <div class='wallpaper dark-myst-background'></div> -->
+
+        <div class='navbar main-navbar desktop-navbar'>
+            <div class='left-navbar side-navbar'>
+                <a href='index.html'>
+                    <div class='navbar-logo-display'>
+                        <img class='navbar-logo' src='../../icons/logo unfilled.png'>
+                        <span class='logo-title'>baileo</span>
+                    </div>
+                </a>
+            </div>
+
+            <a class='navbar-link-item active-navbar-link-item' href='index.html'>
+                Home
+            </a>
+
+            <a class='navbar-link-item' href='tv.html'>
+                TV Shows
+            </a>
+
+            <a class='navbar-link-item' href='movies.html'>
+                Movies
+            </a>
+
+            <div class='right-navbar side-navbar'>
+                <a href='search.html'>
+                    <img class='navbar-link-item' src='../../icons/search.png'>
+                </a>
+                <a href='apps.html'>
+                    <img class='navbar-link-item' src='../../icons/app menu.png'>
+                </a>
+                <a href='profile.html'>
+                    <img class='navbar-link-item' src='../../icons/profile.png'>
+                </a>
+            </div>
+        </div>
+
+        <div class='navbar main-navbar mobile-navbar'>
+            <div class='left-navbar side-navbar'>
+                <img class='navbar-link-item' id='expandMobileNavmenu' src='../../icons/menu.png' onclick='mobileNavMenu()'>
+                <img class='navbar-link-item' id='closeMobileNavmenu' src='../../icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+                <a href='index.html'>
+                    <div class='navbar-logo-display'>
+                        <img class='navbar-logo' src='icons/logo unfilled.png'>
+                        <span class='logo-title'>home</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class='right-navbar side-navbar'>
+                <a href='search.html'>
+                    <img class='navbar-link-item' src='../../icons/search.png'>
+                </a>
+                <a href='apps.html'>
+                    <img class='navbar-link-item' src='../../icons/app menu.png'>
+                </a>
+                <a href='profile.html'>
+                    <img class='navbar-link-item' src='../../icons/profile.png'>
+                </a>
+            </div>
+
+            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
+
+                <div>
+                    <a class='mobile-navmenu-link-item active-mobile-navmenu-link-item' href='index.html'>
+                        Home
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='tv.html'>
+                        TV Shows
+                    </a>
+        
+                    <a class='mobile-navmenu-link-item' href='movies.html'>
+                        Movies
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id='loadingScreen'>
+            <img src='../../icons/loading.gif'>
+        </div>
+
+        Hello, welcome
+
+        <script defer src="../../scripts/bundle.js"></script>
+    </body>
+
+</html>

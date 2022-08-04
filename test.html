@@ -1,13 +1,14 @@
 <html>
 
     <head>
-        <title>Baileo - Home</title>
-        <link rel='stylesheet' href='shared.css'>
-        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine)' href='desktop.css'>
-        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='mobile.css'>
-        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
+        <title>Baileo - Test</title>
+        <link rel='stylesheet' href='stylesheets/shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='stylesheets/desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='stylesheets/mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='stylesheets/mobile.css'>
+        <meta name="viewport" content="initial-scale = 1, user-scalable = no">
         <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <!-- <script src='index.js'></script> -->
+        <!-- <script src='scripts/index.js'></script> -->
 
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
@@ -19,14 +20,14 @@
         to avoid connecting the SDK to running emulators.
         -->
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-        <script src='index.js'></script>
+        <script src='scripts/index.js'></script>
     </head>
 
     <body id='body'>
 
-        Hello
+        Baileo testing page... you shouldn't bee here! Bzz
 
-        <script defer src="bundle.js"></script>
+        <script defer src="scripts/bundle.js"></script>
     </body>
 
 </html>

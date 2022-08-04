@@ -1,25 +1,36 @@
 <html>
 
     <head>
-
-        <title>Baileo - Error 404: Unknown URL</title>
-        <link rel='stylesheet' href='https://baileo.us/shared.css'>
-        <link rel='stylesheet' media='screen and (pointer: fine)' href='https://baileo.us/desktop.css'>
-        <link rel='stylesheet' media='screen and (pointer: coarse)' href='https://baileo.us/mobile.css'>
-        <meta name="viewport" content="initial-scale = 0.9, user-scalable = no">
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <title>Baileo - Profile</title>
+        <link rel='stylesheet' href='stylesheets/shared.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='https://baileo.us/stylesheets/desktop.css'>
+        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='https://baileo.us/stylesheets/mobile.css'>
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='https://baileo.us/stylesheets/mobile.css'>
+        <meta name="viewport" content="initial-scale = 1, user-scalable = no">
         <link rel="icon" type="image/x-icon" href="https://baileo.us/icons/webicon.ico">
-        <script src='script.js'></script>
+        <!-- <script src='scripts/index.js'></script> -->
 
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src='https://baileo.us/scripts/index.js'></script>
     </head>
 
-    <body id='body' onload='checkForCustomURL()' style='display: none;'>
+    <body id='body'>
 
-        <div class='wallpaper'></div>
-
-        <div class='navbar main-navbar desktop-navbar'>
+        <div class='navbar main-navbar'>
             <div class='left-navbar side-navbar'>
+                <div class='mobile-navbar'>
+                    <img class='navbar-link-item' id='expandMobileNavmenu' src='https://baileo.us/icons/menu.png' onclick='mobileNavMenu()'>
+                    <img class='navbar-link-item' id='closeMobileNavmenu' src='https://baileo.us/icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+                </div>
                 <a href='https://baileo.us/index.html'>
                     <div class='navbar-logo-display'>
                         <img class='navbar-logo' src='https://baileo.us/icons/logo unfilled.png'>
@@ -28,86 +39,45 @@
                 </a>
             </div>
 
-            <a class='navbar-link-item' href='https://baileo.us/index.html'>
-                Home
-            </a>
-
-            <a class='navbar-link-item' href='https://baileo.us/tv.html'>
-                TV Shows
-            </a>
-
-            <a class='navbar-link-item' href='https://baileo.us/movies.html'>
-                Movies
-            </a>
+            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
+                <div>
+                    <a class='navbar-link-item' href='https://baileo.us/index.html'>
+                        Home
+                    </a>
+                    <a class='navbar-link-item' href='https://baileo.us/tv.html'>
+                        TV Shows
+                    </a>
+                    <a class='navbar-link-item' href='https://baileo.us/movies.html'>
+                        Movies
+                    </a>
+                </div>
+            </div>
 
             <div class='right-navbar side-navbar'>
                 <a href='https://baileo.us/search.html'>
                     <img class='navbar-link-item' src='https://baileo.us/icons/search.png'>
                 </a>
+                <img class='navbar-link-item ui-mode-toggle' id='darkUiButton' src='https://baileo.us/icons/moon.png'>
+                <img class='navbar-link-item ui-mode-toggle' id='lightUiButton' src='https://baileo.us/icons/sun.png'>
+                <a href='https://baileo.us/apps.html'>
+                    <img class='navbar-link-item' src='https://baileo.us/icons/app menu.png'>
+                </a>
                 <a href='https://baileo.us/profile.html'>
                     <img class='navbar-link-item' src='https://baileo.us/icons/profile.png'>
                 </a>
             </div>
         </div>
 
-        <div class='navbar main-navbar mobile-navbar sunset-background'>
-            <div class='left-navbar side-navbar'>
-                <img class='navbar-link-item' id='expandMobileNavmenu' src='https://baileo.us/icons/menu.png' onclick='mobileNavMenu()'>
-                <img class='navbar-link-item' id='closeMobileNavmenu' src='https://baileo.us/icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
-            </div>
-
-            <a href='https://baileo.us/index.html'>
-                <div class='navbar-logo-display'>
-                    <img class='navbar-logo' src='https://baileo.us/icons/logo unfilled.png'>
-                    <span class='logo-title'>watch</span>
-                </div>
-            </a>
-
-            <div class='right-navbar side-navbar'>
-                <a href='https://baileo.us/profile.html'>
-                    <img class='navbar-link-item' src='https://baileo.us/icons/profile.png'>
-                </a>
-            </div>
-
-            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
-
-                <div>
-                    <a class='mobile-navmenu-link-item' href='https://baileo.us/index.html'>
-                        Home
-                    </a>
-        
-                    <a class='mobile-navmenu-link-item' href='https://baileo.us/tv.html'>
-                        TV Shows
-                    </a>
-        
-                    <a class='mobile-navmenu-link-item' href='https://baileo.us/movies.html'>
-                        Movies
-                    </a>
-        
-                    <a class='mobile-navmenu-link-item' href='https://baileo.us/search.html'>
-                        Search
-                    </a>
-    
-                    <a class='mobile-navmenu-link-item' href='https://baileo.us/movies.html'>
-                        Movies
-                    </a>
+        <div class='screen-card-content-container'>
+            <div class='screen-card-content'>
+                <div class='panel-card'>
+                    <div class='title' id='profilePageUsername'>404 Error!</div>
+                    <p>The page you are looking for does not exist! Thats a bummer *frowny face*... please make sure the url is correct and try something else (or try again... if you're a psychopath)</p>
                 </div>
             </div>
         </div>
-
-
-
-        <div class='screen-card-content'>
-            <div class='panel-card'>
-                <div class='title' id='profilePageUsername'>That page does not exist!</div>
-                <p>Unfortunately, there was an error while searching for your page. Either this page does not exist, it has been recently removed, or the server is having a bad day (least likely, computers don't have feelings). Some possible solutions include: </p>
-                <ul>
-                    <li>Recheck the url and make sure it is correct</li>
-                    <li>Refresh the page</li>
-                </ul>
-            </div>
-        </div>
         
+        <script defer src="https://baileo.us/scripts/bundle.js"></script>
     </body>
 
 </html>
