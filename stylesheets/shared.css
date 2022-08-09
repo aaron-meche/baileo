@@ -399,11 +399,12 @@ a{
 }
 
 .list{
-    padding-bottom: 25vh;
+    padding-bottom: 50pt;
 }
 
 .listItemChoice{
-    height: 50pt;
+    height: auto;
+    min-height: 25pt;
     position: relative;
     cursor: default;
     padding: 10pt;
@@ -412,8 +413,13 @@ a{
     border-bottom: solid 1pt rgb(45, 45, 45);
 }
 
+.listItemChoice:hover{
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
 .listItemTitle{
     height: 100%;
+    width: 70%;
     position: absolute;
     top: 0;
     left: 5%;
@@ -421,31 +427,30 @@ a{
     align-items: center;
     justify-content: left;
     font-size: 17pt;
-    max-width: 70%;
 }
 
 .listItemLabel{
     height: 100%;
+    width: 20%;
     position: absolute;
     top: 0;
     right: 5%;
     display: flex;
     align-items: center;
     justify-content: right;
-    text-align: right;
-    max-width: 20%;
+    font-size: 12pt;
     font-weight: 300;
+    color: rgb(167, 167, 167);
 }
 
 .listItemImageFrame{
-    height: calc(100% - 20pt);
-    min-width: 80pt;
+    height: calc(100% - 10pt);
+    min-width: 60pt;
     display: inline-block;
     background: transparent no-repeat center;
     background-size: cover;
     margin-right: 10pt;
-    border-radius: 5pt;
-    border: solid 1pt rgb(255, 255, 255);
+    border-radius: 3pt;
 }
 
 .featured-panel-utility .action-button-container{
@@ -518,10 +523,8 @@ a{
     font-size: 20pt;
     font-family: var(--mainFont);
     color: white;
-    border-radius: 15pt;
     border: none;
-    transition: padding-left 300ms, box-shadow 300ms;
-    box-shadow: 0 0 2vh 0 var(--darkPlum);
+    transition: padding-left 300ms;
 }
 
 #searchBar::placeholder{
