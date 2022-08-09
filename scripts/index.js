@@ -263,16 +263,16 @@ function build_mediaClickObjects() {
     
             if (mediaType == 'movie') {
                 mediaClickObjects[i].innerHTML = `
-                <div class='media-slider-object transport-button' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='transport("movie", "` + mediaTitle + `")'>
+                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='transport("movie", "` + mediaTitle + `")'>
                     <div class='image-shader'>
-                        <img src='icons/play circle.png' class='image-shader-indicator'>
+                        <img src='images/play circle.png' class='image-shader-indicator'>
                     </div>
                 </div>`
             } else if (mediaType == 'tv') {
                 mediaClickObjects[i].innerHTML = `
-                <div class='media-slider-object tv-expand-link' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='expandTv("` + mediaTitle + `")'>
+                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='expandTv("` + mediaTitle + `")'>
                     <div class='image-shader'>
-                        <img src='icons/continue circle.png' class='image-shader-indicator'>
+                        <img src='images/continue circle.png' class='image-shader-indicator'>
                     </div>
                 </div>`
             }
@@ -320,7 +320,7 @@ function inject_expandScreen() {
             <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
             <div class='expand-panel dark-purple-background' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
                 <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
-                    <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                    <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
                     <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
                 </div>
                 <div class='expand-panel-impression-image' id="tvPanelCoverImage">
@@ -393,6 +393,16 @@ function expandTv(mediaTitle) {
             </div>`);
         b++;
     }
+
+    if (localStorage['hasWatched_' + title] == undefined) {
+        document.getElementById('startWatchingTvButton').style.display = 'block';
+    } else {
+        document.getElementById('continueWatchingButton').style.display = 'block';
+        document.getElementById('continueWatchingButton').innerHTML = 'Continue - S' +  localStorage[title + '_saved_season'] + ':E' + (Number(localStorage[title + '_saved_episode']) + 1);
+    }
+    
+    tvScreenContents.style.top = '0';
+    tvScreenContents.style.opacity = '1';
 }
 
 function selectSeason(seasonNum) {
@@ -446,18 +456,19 @@ function continueWatching(title) {
     var mediaType = eval(unspace(title))['mediaType'];
     
     if (mediaType == 'tv') {
-        transport('tv',title,sessionStorage['progess.saved.season'],sessionStorage['progess.saved.episode'])
+        transport('tv',title,localStorage[title + '_saved_season'],localStorage[title + '_saved_episode'])
     } else if (mediaType == 'movie') {
         transport('movie',title);
     }
 }
 
 function transport(type, title, season, episode) {
-    console.log('Transporting...')
-    sessionStorage['transport.mediaType'] = type;
-    sessionStorage['transport.mediaTitle'] = title;
-    sessionStorage['transport.mediaSeason'] = season;
-    sessionStorage['transport.mediaEpisode'] = episode;
+    let landing_page = 'receiver.html';
+    if (isMobileDevice()) {
+        landing_page = 'mobile-viewer.html';
+    }
+    let generatedLink = 'player/' + landing_page + '?type=' + type + '&title=' + title + '&season=' + season + '&episode=' + episode;
+    openPage(generatedLink);
 }
 
 function closeTvScreen() {

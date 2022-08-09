@@ -351,7 +351,7 @@ window.addEventListener('load', function () {
         <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
         <div class='expand-panel purple-background' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
             <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
-                <img src="icons/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
                 <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
             </div>
             <div class='expand-panel-impression-image' id="tvPanelCoverImage">
@@ -729,12 +729,12 @@ function getCurrentlyWatching() {
                     document.getElementById('continueWatchingCarousel').insertAdjacentHTML('beforeend',`
                     <div class='media-slider-object' style="background-image: url('` + thumbnailFolder + `/` + Object.keys(ordered)[i].toLowerCase().replace(/\s/g, '-') + `.jpg')">
                         <div class='image-shader' onclick='continueWatching("` + Object.keys(ordered)[i] + `")'>
-                            <img src='icons/play circle.png' class='image-shader-indicator'>
+                            <img src='images/play circle.png' class='image-shader-indicator'>
                         </div>
                         <div class='view-progress-container'>
                             <div style='width: ` + (progressData[mediaType][Object.keys(ordered)[i]] * 100) + `%' class='view-progress-bar'></div>
                         </div>
-                        <img src='icons/close.png' class='remove-from-history-icon' onclick='removeFromWatchHistory("` + Object.keys(ordered)[i] + `")'>
+                        <img src='images/close.png' class='remove-from-history-icon' onclick='removeFromWatchHistory("` + Object.keys(ordered)[i] + `")'>
                     </div>`);
                     // console.log(Object.keys(ordered)[i]); 
                 }

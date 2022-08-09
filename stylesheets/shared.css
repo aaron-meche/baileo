@@ -393,7 +393,7 @@ a{
     border-bottom: solid 1pt gray;
     z-index: 95;
     background-color: var(--darkPlum);
-    background: url('../icons/logo\ filled.png') center;
+    background: url('../images/logo\ filled.png') center;
     background-size: cover;
 }
 

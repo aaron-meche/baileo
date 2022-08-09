@@ -1,5 +1,4 @@
 <html>
-
     <head>
         <title>Baileo - TV Shows</title>
         <link rel='stylesheet' href='stylesheets/shared.css'>
@@ -7,33 +6,20 @@
         <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='stylesheets/mobile.css'>
         <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='stylesheets/mobile.css'>
         <meta name="viewport" content="initial-scale = 1, user-scalable = no">
-        <link rel="icon" type="image/x-icon" href="icons/webicon.ico">
-        <!-- <script src='scripts/index.js'></script> -->
-
-        <!-- update the version number as needed -->
-        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
-        <!-- include only the Firebase features as you need -->
-        <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
-        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
-        <!-- 
-        initialize the SDK after all desired features are loaded, set useEmulator to false
-        to avoid connecting the SDK to running emulators.
-        -->
-        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <link rel="icon" type="image/x-icon" href="images/webicon.ico">
         <script src='scripts/index.js'></script>
     </head>
 
     <body id='body'>
-
         <div class='navbar main-navbar'>
             <div class='left-navbar side-navbar'>
                 <div class='mobile-navbar'>
-                    <img class='navbar-link-item' id='expandMobileNavmenu' src='icons/menu.png' onclick='mobileNavMenu()'>
-                    <img class='navbar-link-item' id='closeMobileNavmenu' src='icons/close.png' onclick='mobileNavMenu()' style='display: none;'>
+                    <img class='navbar-link-item' id='expandMobileNavmenu' src='images/menu.png' onclick='mobileNavMenu()'>
+                    <img class='navbar-link-item' id='closeMobileNavmenu' src='images/close.png' onclick='mobileNavMenu()' style='display: none;'>
                 </div>
                 <a href='index.html'>
                     <div class='navbar-logo-display'>
-                        <img class='navbar-logo' src='icons/logo unfilled.png'>
+                        <img class='navbar-logo' src='images/logo unfilled.png'>
                         <span class='logo-title'>baileo</span>
                     </div>
                 </a>
@@ -55,21 +41,12 @@
 
             <div class='right-navbar side-navbar'>
                 <a href='search.html'>
-                    <img class='navbar-link-item' src='icons/search.png'>
+                    <img class='navbar-link-item' src='images/search.png'>
                 </a>
-                <img class='navbar-link-item ui-mode-toggle' id='darkUiButton' src='icons/moon.png'>
-                <img class='navbar-link-item ui-mode-toggle' id='lightUiButton' src='icons/sun.png'>
                 <a href='apps.html'>
-                    <img class='navbar-link-item' src='icons/app menu.png'>
-                </a>
-                <a href='profile.html'>
-                    <img class='navbar-link-item' src='icons/profile.png'>
+                    <img class='navbar-link-item' src='images/app menu.png'>
                 </a>
             </div>
-        </div>
-
-        <div id='loadingScreen'>
-            <img src='icons/loading.gif'>
         </div>
 
         <div class='media-slider-section'>
@@ -94,8 +71,6 @@
                 <span class='media-slider-object'></span>
             </div>
         </div>
-
-        <script defer src="scripts/bundle.js"></script>
     </body>
 
 </html>

@@ -1,0 +1,55 @@
+video{
+    height: auto;
+    width: 100vw;
+    z-index: 0;
+}
+
+.loading-progress-bar{
+    height: 1vh;
+    width: 75vw;
+    position: absolute;
+    top: 65vh;
+    left: 12.5vw;
+    background-color: white;
+    border-radius: 100vh;
+}
+
+#loadingProgressBarStatus{
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(92, 132, 226);;
+}
+
+.horizontal-scroll{
+    white-space: nowrap;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: hidden;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+#videoTitle{
+    font-size: 30pt;
+    margin-bottom: 5pt;
+    font-weight: 600;
+}
+
+#videoCaption{
+    font-size: 15pt;
+    margin-bottom: 5pt;
+}
+
+#nextEpisodePrompt{
+    width: auto;
+    font-size: 18pt;
+    padding: 10pt;
+    background: linear-gradient(45deg, rgb(113, 8, 29) 0%, rgb(66, 12, 86) 100%);
+    border-radius: 10pt;
+}
