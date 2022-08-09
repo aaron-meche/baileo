@@ -54,8 +54,8 @@ window.addEventListener('load',function () {
         alert('Error! Media type not recognized, please try again')
     }
 
-    dom('video').innerHTML = '<source id="source" src="media/' + videoPath + '.mp4" type="video/mp4"></source>';
-    dom('videoScroll').innerHTML = '<source id="source" src="media/' + videoPath + '.mp4" type="video/mp4"></source>';
+    dom('video').innerHTML = '<source id="source" src="http://50.58.218.209/media/' + videoPath + '.mp4" type="video/mp4"></source>';
+    dom('videoScroll').innerHTML = '<source id="source" src="http://50.58.218.209/media/' + videoPath + '.mp4" type="video/mp4"></source>';
 
     tryVideoLoad();
 })

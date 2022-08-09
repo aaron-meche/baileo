@@ -343,10 +343,6 @@ function inject_expandScreen() {
 }
 
 window.addEventListener('load', function () {
-    if (sessionStorage['unstableWarning22238'] !== undefined) {
-        alert('Unstable!');
-        sessionStorage['unstableWarning22238'] = true;
-    }
     build_mediaClickObjects();
     build_mediaClickListItems();
     inject_expandScreen();
