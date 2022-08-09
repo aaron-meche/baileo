@@ -1,189 +1,188 @@
 <html>
-    <head>
-        <title>Baileo - Home</title>
-        <link rel='stylesheet' href='stylesheets/shared.css'>
-        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='stylesheets/desktop.css'>
-        <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='stylesheets/mobile.css'>
-        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='stylesheets/mobile.css'>
-        <meta name="viewport" content="initial-scale = 1, user-scalable = no">
-        <link rel="icon" type="image/x-icon" href="images/webicon.ico">
-        <script src='scripts/index.js'></script>
-    </head>
+<head>
+    <title>Baileo - Home</title>
+    <link rel='stylesheet' href='stylesheets/shared.css'>
+    <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (min-width: 800px)' href='stylesheets/desktop.css'>
+    <link rel='stylesheet' media='screen and (hover: hover) and (pointer: fine) and (max-width: 800px)' href='stylesheets/mobile.css'>
+    <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse)' href='stylesheets/mobile.css'>
+    <meta name="viewport" content="initial-scale = 1, user-scalable = no">
+    <link rel="icon" type="image/x-icon" href="images/webicon.ico">
+    <script src='scripts/index.js'></script>
+</head>
 
-    <body id='body'>
-        <div class='navbar main-navbar'>
-            <div class='left-navbar side-navbar'>
-                <div class='mobile-navbar'>
-                    <img class='navbar-link-item' id='expandMobileNavmenu' src='images/menu.png' onclick='mobileNavMenu()'>
-                    <img class='navbar-link-item' id='closeMobileNavmenu' src='images/close.png' onclick='mobileNavMenu()' style='display: none;'>
-                </div>
-                <a href='index.html'class='navbar-logo-display'>
-                    <img class='navbar-logo' src='images/logo unfilled.png'>
-                </a>
-                <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
-                    <div>
-                        <a class='navbar-link-item active-navbar-link-item' href='index.html'>
-                            Home
-                        </a>
-                        <a class='navbar-link-item' href='tv.html'>
-                            TV Shows
-                        </a>
-                        <a class='navbar-link-item' href='movies.html'>
-                            Movies
-                        </a>
-                    </div>
-                </div>
+<body id='body'>
+    <div class='navbar main-navbar'>
+        <div class='left-navbar side-navbar'>
+            <div class='mobile-navbar'>
+                <img class='navbar-link-item' id='expandMobileNavmenu' src='images/menu.png' onclick='mobileNavMenu()'>
+                <img class='navbar-link-item' id='closeMobileNavmenu' src='images/close.png' onclick='mobileNavMenu()' style='display: none;'>
             </div>
-
-            <div class='right-navbar side-navbar'>
-                <a href='search.html'>
-                    <img class='navbar-link-item' src='images/search.png'>
-                </a>
-                <a href='apps.html'>
-                    <img class='navbar-link-item' src='images/app menu.png'>
-                </a>
-            </div>
-        </div>
-
-        <div class='featured-panel-container'>
-            <div class='featured-panel-impression-image' style="background-image: url('cover-image/baileo.png')">
-            
-            </div>
-            <div class='featured-panel-utility'>
-                <!-- <div class='title'>Introduction</div> -->
-                <div class='action-button-container'>
-                    <div class='activity-button filled-activity-button transport-button' onclick='transport("movie","Welcome to Baileo")'>Watch Introduction</div>
-                    <!-- <div class='activity-button tv-expand-link' onclick='expandTv("The Office")'>See More</div> -->
+            <a href='index.html'class='navbar-logo-display'>
+                <img class='navbar-logo' src='images/logo unfilled.png'>
+            </a>
+            <div id='mobileNavbarDropMenu' onclick='mobileNavMenu()'>
+                <div>
+                    <a class='navbar-link-item active-navbar-link-item' href='index.html'>
+                        Home
+                    </a>
+                    <a class='navbar-link-item' href='tv.html'>
+                        TV Shows
+                    </a>
+                    <a class='navbar-link-item' href='movies.html'>
+                        Movies
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html")'>All Media ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>American Psycho</span>
-                <span class='building-block-media-click-object'>Cars 2</span>
-                <span class='building-block-media-click-object'>Cars 3</span>
-                <span class='building-block-media-click-object'>Clueless</span>
-                <span class='building-block-media-click-object'>Coraline</span>
-                <span class='building-block-media-click-object'>Daddy's Home 2</span>
-                <span class='building-block-media-click-object'>Despicable Me</span>
-                <span class='building-block-media-click-object'>Despicable Me 2</span>
-                <span class='building-block-media-click-object'>Despicable Me 3</span>
-                <span class='building-block-media-click-object'>Dumb and Dumber</span>
-                <span class='building-block-media-click-object'>Dumb and Dumber To</span>
-                <span class='building-block-media-click-object'>Family Guy</span>
-                <span class='building-block-media-click-object'>Elf</span>
-                <span class='building-block-media-click-object'>Hidden Figures</span>
-                <span class='building-block-media-click-object'>Knives Out</span>
-                <span class='building-block-media-click-object'>Legally Blonde</span>
-                <span class='building-block-media-click-object'>Mean Girls</span>
-                <span class='building-block-media-click-object'>Mean Girls 2</span>
-                <span class='building-block-media-click-object'>Minions</span>
-                <span class='building-block-media-click-object'>Miss Congeniality</span>
-                <span class='building-block-media-click-object'>Parks and Recreation</span>
-                <span class='building-block-media-click-object'>Ratatouille</span>
-                <span class='building-block-media-click-object'>Sherlock</span>
-                <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
-                <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
-                <span class='building-block-media-click-object'>Squid Game</span>
-                <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
-                <span class='building-block-media-click-object'>The Notebook</span>
-                <span class='building-block-media-click-object'>The Office</span>
-                <span class='building-block-media-click-object'>The Proposal</span>
-                <span class='building-block-media-click-object'>The Waterboy</span>
-                <span class='building-block-media-click-object'>Vacation</span>
-                <span class='media-slider-object'></span>
+        <div class='right-navbar side-navbar'>
+            <a href='search.html'>
+                <img class='navbar-link-item' src='images/search.png'>
+            </a>
+            <a href='apps.html'>
+                <img class='navbar-link-item' src='images/app menu.png'>
+            </a>
+        </div>
+    </div>
+
+    <div class='featured-panel-container'>
+        <div class='featured-panel-impression-image' style="background-image: url('cover-image/baileo.png')">
+        
+        </div>
+        <div class='featured-panel-utility'>
+            <!-- <div class='title'>Introduction</div> -->
+            <div class='action-button-container'>
+                <div class='activity-button filled-activity-button transport-button' onclick='transport("movie","Welcome to Baileo")'>Watch Introduction</div>
+                <!-- <div class='activity-button tv-expand-link' onclick='expandTv("The Office")'>See More</div> -->
             </div>
         </div>
+    </div>
 
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:comedy")'>Comedies ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>Clueless</span>
-                <span class='building-block-media-click-object'>Dumb and Dumber</span>
-                <span class='building-block-media-click-object'>Dumb and Dumber To</span>
-                <span class='building-block-media-click-object'>Family Guy</span>
-                <span class='building-block-media-click-object'>Legally Blonde</span>
-                <span class='building-block-media-click-object'>Mean Girls</span>
-                <span class='building-block-media-click-object'>Mean Girls 2</span>
-                <span class='building-block-media-click-object'>Miss Congeniality</span>
-                <span class='building-block-media-click-object'>Parks and Recreation</span>
-                <span class='building-block-media-click-object'>The Office</span>
-                <span class='building-block-media-click-object'>The Waterboy</span>
-                <span class='building-block-media-click-object'>Vacation</span>
-                <span class='media-slider-object'></span>
-            </div>
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>All Media ↑</div>
         </div>
-
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:animation")'>Animations ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>Cars 2</span>
-                <span class='building-block-media-click-object'>Cars 3</span>
-                <span class='building-block-media-click-object'>Coraline</span>
-                <span class='building-block-media-click-object'>Despicable Me</span>
-                <span class='building-block-media-click-object'>Despicable Me 2</span>
-                <span class='building-block-media-click-object'>Despicable Me 3</span>
-                <span class='building-block-media-click-object'>Minions</span>
-                <span class='building-block-media-click-object'>Ratatouille</span>
-                <span class='media-slider-object'></span>
-            </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>American Psycho</span>
+            <span class='building-block-media-click-object'>Cars 2</span>
+            <span class='building-block-media-click-object'>Cars 3</span>
+            <span class='building-block-media-click-object'>Clueless</span>
+            <span class='building-block-media-click-object'>Coraline</span>
+            <span class='building-block-media-click-object'>Daddy's Home 2</span>
+            <span class='building-block-media-click-object'>Despicable Me</span>
+            <span class='building-block-media-click-object'>Despicable Me 2</span>
+            <span class='building-block-media-click-object'>Despicable Me 3</span>
+            <span class='building-block-media-click-object'>Dumb and Dumber</span>
+            <span class='building-block-media-click-object'>Dumb and Dumber To</span>
+            <span class='building-block-media-click-object'>Family Guy</span>
+            <span class='building-block-media-click-object'>Elf</span>
+            <span class='building-block-media-click-object'>Hidden Figures</span>
+            <span class='building-block-media-click-object'>Knives Out</span>
+            <span class='building-block-media-click-object'>Legally Blonde</span>
+            <span class='building-block-media-click-object'>Mean Girls</span>
+            <span class='building-block-media-click-object'>Mean Girls 2</span>
+            <span class='building-block-media-click-object'>Minions</span>
+            <span class='building-block-media-click-object'>Miss Congeniality</span>
+            <span class='building-block-media-click-object'>Parks and Recreation</span>
+            <span class='building-block-media-click-object'>Ratatouille</span>
+            <span class='building-block-media-click-object'>Sherlock</span>
+            <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
+            <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
+            <span class='building-block-media-click-object'>Squid Game</span>
+            <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
+            <span class='building-block-media-click-object'>The Notebook</span>
+            <span class='building-block-media-click-object'>The Office</span>
+            <span class='building-block-media-click-object'>The Proposal</span>
+            <span class='building-block-media-click-object'>The Waterboy</span>
+            <span class='building-block-media-click-object'>Vacation</span>
+            <span class='media-slider-object'></span>
         </div>
+    </div>
 
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:drama")'>Drama ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>American Psycho</span>
-                <span class='building-block-media-click-object'>Hidden Figures</span>
-                <span class='building-block-media-click-object'>Knives Out</span>
-                <span class='building-block-media-click-object'>Sherlock</span>
-                <span class='building-block-media-click-object'>Squid Game</span>
-                <span class='building-block-media-click-object'>The Notebook</span>
-                <span class='media-slider-object'></span>
-            </div>
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Comedies ↑</div>
         </div>
-
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:superhero")'>Superhero ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
-                <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
-                <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
-                <span class='media-slider-object'></span>
-            </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>Clueless</span>
+            <span class='building-block-media-click-object'>Dumb and Dumber</span>
+            <span class='building-block-media-click-object'>Dumb and Dumber To</span>
+            <span class='building-block-media-click-object'>Family Guy</span>
+            <span class='building-block-media-click-object'>Legally Blonde</span>
+            <span class='building-block-media-click-object'>Mean Girls</span>
+            <span class='building-block-media-click-object'>Mean Girls 2</span>
+            <span class='building-block-media-click-object'>Miss Congeniality</span>
+            <span class='building-block-media-click-object'>Parks and Recreation</span>
+            <span class='building-block-media-click-object'>The Office</span>
+            <span class='building-block-media-click-object'>The Waterboy</span>
+            <span class='building-block-media-click-object'>Vacation</span>
+            <span class='media-slider-object'></span>
         </div>
+    </div>
 
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:romcom")'>Romantic Comedies ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>The Proposal</span>
-                <span class='media-slider-object'></span>
-            </div>
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Animations ↑</div>
         </div>
-
-        <div class='media-slider-section'>
-            <div class='media-slider-title-bar clickable-title'>
-                <div class='media-slider-title' onclick='openPage("search.html?search=category:christmas")'>Christmas Spirit ></div>
-            </div>
-            <div class='horizontal-scroll media-slider-carousel'>
-                <span class='building-block-media-click-object'>Daddy's Home 2</span>
-                <span class='building-block-media-click-object'>Elf</span>
-                <span class='media-slider-object'></span>
-            </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>Cars 2</span>
+            <span class='building-block-media-click-object'>Cars 3</span>
+            <span class='building-block-media-click-object'>Coraline</span>
+            <span class='building-block-media-click-object'>Despicable Me</span>
+            <span class='building-block-media-click-object'>Despicable Me 2</span>
+            <span class='building-block-media-click-object'>Despicable Me 3</span>
+            <span class='building-block-media-click-object'>Minions</span>
+            <span class='building-block-media-click-object'>Ratatouille</span>
+            <span class='media-slider-object'></span>
         </div>
-    </body>
+    </div>
 
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Drama ↑</div>
+        </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>American Psycho</span>
+            <span class='building-block-media-click-object'>Hidden Figures</span>
+            <span class='building-block-media-click-object'>Knives Out</span>
+            <span class='building-block-media-click-object'>Sherlock</span>
+            <span class='building-block-media-click-object'>Squid Game</span>
+            <span class='building-block-media-click-object'>The Notebook</span>
+            <span class='media-slider-object'></span>
+        </div>
+    </div>
+
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Superhero ↑</div>
+        </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>The Amazing Spider Man 2</span>
+            <span class='building-block-media-click-object'>Spider Man: Homecoming</span>
+            <span class='building-block-media-click-object'>Spider Man: No Way Home</span>
+            <span class='media-slider-object'></span>
+        </div>
+    </div>
+
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Romantic Comedies ↑</div>
+        </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>The Proposal</span>
+            <span class='media-slider-object'></span>
+        </div>
+    </div>
+
+    <div class='media-slider-section'>
+        <div class='media-slider-title-bar clickable-title'>
+            <div class='media-slider-title' onclick='expandHorizontalList(this)'>Christmas Spirit ↑</div>
+        </div>
+        <div class='horizontal-scroll media-slider-carousel'>
+            <span class='building-block-media-click-object'>Daddy's Home 2</span>
+            <span class='building-block-media-click-object'>Elf</span>
+            <span class='media-slider-object'></span>
+        </div>
+    </div>
+</body>
 </html>

@@ -318,8 +318,8 @@ function inject_expandScreen() {
     <div class='expand-screen' id='tvExpandScreen'>
         <div class='expand-screen-contents' id='tvScreenContents'>
             <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel dark-purple-background' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div class='expand-panel-topbar' id='tvTopbar' onclick='closeTvScreen()'>
+            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+                <div class='expand-panel-topbar center-content' onclick='closeTvScreen()'>
                     <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
                     <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
                 </div>
@@ -353,7 +353,6 @@ function expandTv(mediaTitle) {
     var tvScreen = document.getElementById('tvExpandScreen');
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
     var tvPanelTitle = document.getElementById('tvPanelTitle');
-    var tvTopbar = document.getElementById('tvTopbar');
     var tvPanelEpisodeList = document.getElementById('tvPanelEpisodeList');
     var tvPanelCoverImage = document.getElementById('tvPanelCoverImage');
     var tvPanel = document.getElementById('tvPanel');
@@ -370,7 +369,6 @@ function expandTv(mediaTitle) {
     tvNavbarContent.innerHTML = '';
     tvPanelEpisodeList.innerHTML = '';
     tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
-    tvTopbar.style.backgroundImage = 'url("thumbnails/' + title.replace(/\s/g, '-').toLowerCase() + '.jpg")';
 
     var a = 1;
     while (a <= eval(titleUS)['sTotal']) {
@@ -536,4 +534,14 @@ function readFile() {
         console.log(fr.result);
     }
     fr.readAsText(this.files[0]);
+}
+
+function expandHorizontalList(self) {
+    if (self.parentNode.parentNode.children[1].classList.contains('horizontal-scroll')) {
+        self.parentNode.parentNode.children[1].classList.remove('horizontal-scroll');
+        self.innerText = self.innerText.replace("↑", "↓");
+    } else {
+        self.parentNode.parentNode.children[1].classList.add('horizontal-scroll');
+        self.innerText = self.innerText.replace("↓", "↑");
+    }
 }

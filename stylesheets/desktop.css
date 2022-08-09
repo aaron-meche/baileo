@@ -2,10 +2,6 @@
     margin: 0 15pt 0 15pt;
 }
 
-.media-slider-object:hover{
-    border-radius: 10pt;
-}
-
 .image-shader:hover{
     opacity: 1;
 }
