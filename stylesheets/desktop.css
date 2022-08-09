@@ -1,5 +1,5 @@
 .side-navbar{
-    padding: 0 10pt 0 10pt;
+    margin: 0 15pt 0 15pt;
 }
 
 .media-slider-object:hover{
@@ -35,6 +35,7 @@
 .desktop-navbar{
     display: flex;
 }
+
 .mobile-navbar{
     display: none;
 }

@@ -28,16 +28,15 @@
 body{
     margin: 0;
     background-color:var(--darkAqua);
-    color: white;
     font-family: var(--mainFont);
+    color: white;
     font-weight: 400;
     padding-bottom: 4rem;
-    transition: background-color 400ms;
 }
 
 a{
     text-decoration: none;
-    color: inherit;
+    color: rgb(219, 140, 255);
 }
 
 .dark-myst-background{
@@ -50,15 +49,6 @@ a{
 
 .dark-purple-background{
     background: linear-gradient(180deg, var(--darkAqua) 0%, var(--darkPlum) 100%);
-}
-
-.wallpaper{
-    height: 100%;
-    width: 100vw;
-    z-index: -10;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 }
 
 
@@ -99,9 +89,13 @@ a{
 
 
 .navbar-logo{
-    height: 30pt;
-    padding: 5pt;
+    height: 35pt;
+    padding: 2.5pt;
     float: left;
+}
+
+.navbar-logo:hover{
+    opacity: 0.8;
 }
 
 .navbar-logo-display{
@@ -111,12 +105,8 @@ a{
     justify-content: left;
 }
 
-.logo-title{
-    font-size: 16pt;
-}
-
 .side-navbar{
-    height: 40pt;
+    height: 100%;
     width: fit-content;
     position: absolute;
     top: 0;
@@ -130,10 +120,7 @@ a{
 }
 
 .main-navbar{
-    background-color: var(--darkPlum);
-    backdrop-filter: blur(50pt);
-    -webkit-backdrop-filter: blur(50vw);
-    color: white;
+    background-color: var(--aqua);
 }
 
 .right-navbar{
@@ -161,29 +148,24 @@ a{
 .navbar-link-item{
     height: 12pt;
     padding: 14pt;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     font-size: 12pt;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    border-bottom: solid 1pt rgba(0, 0, 0, 0);
-    transition-duration: 250ms;
 }
 
 .navbar-link-item:hover{
-    border-bottom: solid 3pt white;
-    padding-bottom: 12pt;
-    color: white;
-    /* background-color: rgba(0, 0, 0, 0.25); */
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .active-navbar-link-item{
-    color: white;
+    color: rgb(255, 255, 255);
     padding-bottom: 12pt;
-    border-bottom: solid 3pt white;
+    border-bottom: solid 2pt white;
 }
-
 
 
 
@@ -428,6 +410,7 @@ a{
 
 .expand-panel-navbar{
     position: sticky;
+    height: 40pt;
     top: 50pt;
     z-index: 95;
     display: flex;
