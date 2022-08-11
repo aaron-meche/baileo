@@ -13,15 +13,15 @@ nav-block : class[navbar main-navbar]
 		image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
 		block : id[mobileNavbarDropMenu] onclick[mobileNavMenu()]
 			block 
-				block : onclick[open_page('home')] class[navbar-link-item active-navbar-link-item]
+				item : onclick[open_page('home')] class[navbar-link-item active-navbar-link-item]
 					:: Home
-				/block
-				block : onclick[open_page('tv')] class[navbar-link-item]
+				/item
+				item : onclick[open_page('tv')] class[navbar-link-item]
 					:: TV Shows
-				/block
-				block : onclick[open_page('movies')] class[navbar-link-item]
+				/item
+				item : onclick[open_page('movies')] class[navbar-link-item]
 					:: Movies
-				/block
+				/item
 			/block
 		/block
 	/block

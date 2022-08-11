@@ -27,7 +27,7 @@
     border-bottom-right-radius: 2vw;
 }
 
-#mobileNavbarDropMenu div a{
+#mobileNavbarDropMenu div span{
     height: 15pt;
     width: 90%;
     padding: 5pt 0 5pt 0;
@@ -44,7 +44,7 @@
     float: none;
 }
 
-#mobileNavbarDropMenu div a:hover{
+#mobileNavbarDropMenu div span:hover{
     background-color: rgb(87, 87, 87);
     color: white;
 }
