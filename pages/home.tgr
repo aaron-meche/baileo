@@ -40,7 +40,7 @@ block : class[featured-panel-container]
 		/block
 		block : class[action-button-container]
 			block : class[activity-button filled-activity-button] onclick[transport('movie','Minions - The Rise of Gru')]
-				:: Watch
+				:: Play
 			/block
 		/block
 	/block
