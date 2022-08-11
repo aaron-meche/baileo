@@ -1,0 +1,19 @@
+{
+  "name": "baileo-video-player",
+  "version": "1.0.0",
+  "description": "Home of the Baileo Online Video Player",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaron-meche/baileo-video-player.git"
+  },
+  "author": "Aaron Meche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaron-meche/baileo-video-player/issues"
+  },
+  "homepage": "https://github.com/aaron-meche/baileo-video-player#readme"
+}
