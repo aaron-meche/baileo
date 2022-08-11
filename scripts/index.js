@@ -178,6 +178,11 @@ const MeanGirls2 = {
     description: `Mean Girls 2 is a 2011 American teen comedy television film directed by Melanie Mayron, and serves as a sequel to the 2004 film Mean Girls. The film premiered on ABC Family on January 23, 2011, and released direct-to-video on February 1. It stars Meaghan Martin, Jennifer Stone, Maiara Walsh, Nicole Gale Anderson, Claire Holt, Diego Boneta, and Linden Ashby.`,
 }
 
+const MinionsTheRiseofGru = {
+    mediaType: 'movie',
+    cat: 'animation',
+}
+
 const Minions = {
     mediaType: 'movie',
     cat: 'animation',
@@ -342,11 +347,11 @@ function inject_expandScreen() {
     </div>`);
 }
 
-window.addEventListener('load', function () {
+function bodyOnLoadFunctions() {
     build_mediaClickObjects();
     build_mediaClickListItems();
     inject_expandScreen();
-})
+}
 
 
 function expandTv(mediaTitle) {
@@ -489,13 +494,13 @@ var mobileNavMenuExpanded = false;
 function mobileNavMenu() {
     if (mobileNavMenuExpanded) {
         document.getElementById('mobileNavbarDropMenu').style.display = 'none';
-        document.getElementById('expandMobileNavmenu').style.display = 'block';
-        document.getElementById('closeMobileNavmenu').style.display = 'none';
+        document.getElementById('expandMobileNavMenu').style.display = 'block';
+        document.getElementById('closeMobileNavMenu').style.display = 'none';
         mobileNavMenuExpanded = false;
     } else {
         document.getElementById('mobileNavbarDropMenu').style.display = 'block';
-        document.getElementById('expandMobileNavmenu').style.display = 'none';
-        document.getElementById('closeMobileNavmenu').style.display = 'block';
+        document.getElementById('expandMobileNavMenu').style.display = 'none';
+        document.getElementById('closeMobileNavMenu').style.display = 'block';
         mobileNavMenuExpanded = true;
     }
 }
@@ -537,11 +542,11 @@ function readFile() {
 }
 
 function expandHorizontalList(self) {
-    if (self.parentNode.parentNode.children[1].classList.contains('horizontal-scroll')) {
-        self.parentNode.parentNode.children[1].classList.remove('horizontal-scroll');
+    if (self.parentNode.parentNode.children[1].children[0].classList.contains('horizontal-scroll')) {
+        self.parentNode.parentNode.children[1].children[0].classList.remove('horizontal-scroll');
         self.innerText = self.innerText.replace("↑", "↓");
     } else {
-        self.parentNode.parentNode.children[1].classList.add('horizontal-scroll');
+        self.parentNode.parentNode.children[1].children[0].classList.add('horizontal-scroll');
         self.innerText = self.innerText.replace("↓", "↑");
     }
 }

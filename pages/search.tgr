@@ -1,0 +1,145 @@
+import css : style/shared.css
+import css : style/desktop.css : media[screen and (hover: hover) and (pointer: fine) and (min-width: 800px)]
+import css : style/mobile.css : media[screen and (hover: hover) and (pointer: fine) and (max-width: 800px)]
+import css : style/mobile.css : media[screen and (hover: none) and (pointer: coarse)]
+import meta : name[viewport] content[initial-scale = 1, user-scalable = no]
+
+nav-block : class[navbar main-navbar]
+
+	block : class[left-navbar side-navbar]
+
+		block : class[mobile-navbar]
+			image : images/menu.png : class[navbar-link-item] onclick[mobileNavMenu()] id[expandMobileNavMenu]
+			image : images/close.png : class[navbar-link-item] onclick[mobileNavMenu()] id[closeMobileNavMenu] style[display:none;]
+		/block
+
+image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
+
+		block : id[mobileNavbarDropMenu] onclick[mobileNavMenu()]
+			block 
+				block : onclick[open_page('home')] class[navbar-link-item]
+					:: Home
+				/block
+				block : onclick[open_page('tv')] class[navbar-link-item]
+					:: TV Shows
+				/block
+				block : onclick[open_page('movies')] class[navbar-link-item]
+					:: Movies
+				/block
+			/block
+		/block
+
+	/block
+
+	block : class[right-navbar side-navbar]
+		image : images/search.png : class[navbar-link-item active-navbar-link-item] onclick[open_page('search')]
+		image : images/app menu.png : class[navbar-link-item] onclick[open_page('apps')]
+	/block
+
+/block
+
+
+
+
+
+block : class[list]
+	item : class[building-block-media-click-list-item]
+		:: American Psycho
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Cars 2
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Cars 3
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Clueless
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Coraline
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Daddy's Home 2
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Despicable Me
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Despicable Me 2
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Despicable Me 3
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Dumb and Dumber
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Dumb and Dumber To
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Family Guy
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Elf
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Hidden Figures
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Knives Out
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Legally Blonde
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Mean Girls
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Mean Girls 2
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Minions
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Minions - The Rise of Gru
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Miss Congeniality
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Parks and Recreation
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Ratatouille
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Sherlock
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Spider Man: Homecoming
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Spider Man: No Way Home
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Squid Game
+	/item
+	item : class[building-block-media-click-list-item]
+		:: The Amazing Spider Man 2
+	/item
+	item : class[building-block-media-click-list-item]
+		:: The Notebook
+	/item
+	item : class[building-block-media-click-list-item]
+		:: The Office
+	/item
+	item : class[building-block-media-click-list-item]
+		:: The Proposal
+	/item
+	item : class[building-block-media-click-list-item]
+		:: The Waterboy
+	/item
+	item : class[building-block-media-click-list-item]
+		:: Vacation
+	/item
+/block
