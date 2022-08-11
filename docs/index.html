@@ -1,21 +1,26 @@
 <html>
     <head>
         <!-- This is the .by action code library -->
-        <script src='system/library.js'></script>
+        <script src='https://tiger.baileo.us/1.5.0/library.js'></script>
 
         <!-- This section will be erased after the page is loaded on the client side -->
         <div id='backbone'>
-            <script src='system/compile.js'></script>
-            <script src='system/main.js'></script>
+            <script src='https://tiger.baileo.us/1.5.0/compile.js'></script>
+            <script src='https://tiger.baileo.us/1.5.0/main.js'></script>
         </div>
         
         <!-- Insert your scripts here -->
         <script src='scripts/index.js'></script>
+
+        <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
+        <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     </head>
     <!-- This is the true body of the document, set to display: none so content is only shown when fully converted to HTML -->
     <body id='bodyDOM' style='display:none;'>
         <div id='body'>
             <!-- The body content declared in the .by file will be inserted here -->
         </div>
+        <script defer src='scripts/bundle.js'></script>
     </body>
 </html>
