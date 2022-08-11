@@ -259,7 +259,6 @@ function isMobileDevice(){
 var thumbnailPath = 'thumbnails';
 
 function build_mediaClickObjects() {
-    
     var mediaClickObjects = document.getElementsByClassName('building-block-media-click-object');
     if (mediaClickObjects) { 
         for (var i = 0; i < mediaClickObjects.length; i++) {

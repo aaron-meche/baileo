@@ -15,8 +15,9 @@ function compile(code) {
 
         // Check if just normal test
         if (command.includes('$colon$$colon$')) {
-            let commend_without_starting_colon = command.replace('$colon$$colon$ ','').replace('$colon$',':');
-            content = content + commend_without_starting_colon;
+            let command_without_starting_colon = command.replaceAll('\t','').replace('$colon$$colon$ ','').replace('$colon$',':');
+            content = content + command_without_starting_colon;
+            console.log(command_without_starting_colon);
         } 
         // If not, remove spaces
         else {
