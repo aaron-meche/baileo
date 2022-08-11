@@ -12,7 +12,7 @@ nav-block : class[navbar main-navbar]
 		/block
 		image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
 		block : id[mobileNavbarDropMenu] onclick[mobileNavMenu()]
-			block 
+			block
 				item : onclick[open_page('home')] class[navbar-link-item active-navbar-link-item]
 					:: Home
 				/item
