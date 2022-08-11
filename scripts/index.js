@@ -541,11 +541,11 @@ function readFile() {
 }
 
 function expandHorizontalList(self) {
-    if (self.parentNode.parentNode.children[1].children[0].classList.contains('horizontal-scroll')) {
-        self.parentNode.parentNode.children[1].children[0].classList.remove('horizontal-scroll');
+    if (self.parentNode.parentNode.children[1].classList.contains('horizontal-scroll')) {
+        self.parentNode.parentNode.children[1].classList.remove('horizontal-scroll');
         self.innerText = self.innerText.replace("↑", "↓");
     } else {
-        self.parentNode.parentNode.children[1].children[0].classList.add('horizontal-scroll');
+        self.parentNode.parentNode.children[1].classList.add('horizontal-scroll');
         self.innerText = self.innerText.replace("↓", "↑");
     }
 }
