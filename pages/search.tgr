@@ -41,7 +41,6 @@ image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
 
 
 
-## : <input onkeyup="search(this.value)" id="searchBar" type="text" placeholder="Search">
 
 input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
