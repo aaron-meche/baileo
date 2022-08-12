@@ -13,3 +13,9 @@
 .mobile-navbar{
     display: none;
 }
+
+.clickable-title:hover{
+    cursor: pointer;
+    padding-left: 10pt;
+    text-decoration: underline;
+}

@@ -263,18 +263,18 @@ function build_mediaClickObjects() {
     if (mediaClickObjects) { 
         for (var i = 0; i < mediaClickObjects.length; i++) {
             var mediaTitle = mediaClickObjects[i].innerText
-            var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, ''))['mediaType'];
+            var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['mediaType'];
     
             if (mediaType == 'movie') {
                 mediaClickObjects[i].innerHTML = `
-                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='transport("movie", "` + mediaTitle + `")'>
+                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='transport("movie", "` + mediaTitle + `")'>
                     <div class='image-shader'>
                         <img src='images/play circle.png' class='image-shader-indicator'>
                     </div>
                 </div>`
             } else if (mediaType == 'tv') {
                 mediaClickObjects[i].innerHTML = `
-                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='expandTv("` + mediaTitle + `")'>
+                <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='expandTv("` + mediaTitle + `")'>
                     <div class='image-shader'>
                         <img src='images/continue circle.png' class='image-shader-indicator'>
                     </div>

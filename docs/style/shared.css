@@ -180,7 +180,7 @@ a{
 
 .media-slider-section{
     width: 100vw;
-    padding-top: 4rem;
+    padding-top: 40pt;
 }
 
 .media-slider-title-bar{
@@ -188,11 +188,6 @@ a{
     margin: 5pt 0 10pt 25pt;
     cursor: default;
     transition: padding-left 200ms;
-}
-
-.clickable-title:hover{
-    cursor: pointer;
-    padding-left: 10pt;
 }
 
 .horizontal-scroll{
@@ -208,7 +203,7 @@ a{
 }
 
 .media-slider-carousel{
-    padding-left: 20pt;
+    padding-left: 10pt;
     position: relative;
 }
 
