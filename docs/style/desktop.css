@@ -14,6 +14,10 @@
     display: none;
 }
 
+#mobileNavbarDropMenu{
+    display: block !important;
+}
+
 .clickable-title:hover{
     cursor: pointer;
     padding-left: 10pt;

@@ -198,8 +198,18 @@ a{
     overflow-y: hidden;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-    display: none;
+.horizontal-scroll::-webkit-scrollbar{
+    height: 5pt;
+    border-radius: 100vh;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background: var(--blueRaspberry);
+    border-radius: 100vh;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb:hover{
+    background: var(--grapeTaffy);
 }
 
 .media-slider-carousel{
@@ -229,15 +239,14 @@ a{
 }
 
 .media-slider-object{
-    height: 10.35vw;
-    width: 18.4vw;
+    height: 10vw;
+    width: 18vw;
     border-radius: 5pt;
     margin: 5pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
     position: relative;
-    opacity: 0.8;
 }
 
 @media screen and (max-width: 700px) {

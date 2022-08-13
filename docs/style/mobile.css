@@ -5,6 +5,15 @@
     display: flex;
 }
 
+.media-slider-object {
+    margin: 2.5pt;
+    opacity: 1;
+}
+
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+
 #mobileNavbarDropMenu{
     height: calc(100vh - 40pt);
     width: 100vw;
