@@ -20,7 +20,7 @@ function build_mediaClickObjects() {
     var mediaClickObjects = document.getElementsByClassName('building-block-media-click-object');
     if (mediaClickObjects) { 
         for (var i = 0; i < mediaClickObjects.length; i++) {
-            var mediaTitle = mediaClickObjects[i].innerText
+            var mediaTitle = mediaClickObjects[i].innerHTML;
             var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['mediaType'];
 
             if (mediaType == 'movie') {
@@ -36,7 +36,7 @@ function build_mediaClickObjects() {
                 <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
-                ` + mediaTitle + `
+                <div class='media_clicker_object_title'>` + mediaTitle + `</div>
             </div>`
         }
     }
@@ -265,13 +265,13 @@ function search(string) {
     searchTitleBars(string);
     let input = string;
     input = input.toLowerCase();
-    let x = document.getElementsByClassName('media-slider-object');
+    let x = document.getElementsByClassName('media_clicker_object_title');
     for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display = "none";
+        if (!x[i].innerText.toLowerCase().includes(input)) {
+            x[i].parentNode.style.display = "none";
         }
         else {
-            x[i].style.display = "inline-block";
+            x[i].parentNode.style.display = "inline-block";
         }
     }
 }
@@ -281,7 +281,7 @@ function searchTitleBars(string) {
     input = input.toLowerCase();
     let x = document.getElementsByClassName('media-slider-section');
     for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+        if (!x[i].innerText.toLowerCase().includes(input)) {
             x[i].style.display = "none";
         }
         else {
@@ -320,11 +320,11 @@ function toggleLeftNavbar() {
     let navbar = document.getElementsByClassName('left-navbar')[0];
     let content = document.getElementsByClassName('content')[0];
     console.log(navbar.offsetLeft);
-    if (navbar.offsetLeft > 0) {
-        navbar.style.left = '-280pt';
+    if (navbar.offsetLeft >= 0) {
+        navbar.style.left = '-250pt';
         content.style.left = '0';
     } else {
         navbar.style.left = '0';
-        content.style.left = '280pt';
+        content.style.left = '250pt';
     }
 }

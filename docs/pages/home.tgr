@@ -1,10 +1,13 @@
-import meta : name[viewport] content[initial-scale = 1, user-scalable = no]
-
 nav-block : class[left-navbar]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
+	block : class[logo-display] : onclick[window.location.reload()]
+		image : images/logo unfilled.png
+		item : class[logo-text]
+			:: baileo
+		/item
+	/block
 
-	block : class[item active]
+	block : class[item active] onclick[window.location.reload()]
 		:: All Media
 	/block
 
@@ -22,12 +25,7 @@ nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	block : class[logo-display] : onclick[open_page('home')]
-		image : images/logo unfilled.png
-		item : class[logo-text]
-			:: baileo
-		/item
-	/block
+	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
 /block
 
@@ -218,13 +216,7 @@ block : class[media-slider-section]
 
 
 
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-	/block
+block : class[bottom-padding]
 /block
 
 /block

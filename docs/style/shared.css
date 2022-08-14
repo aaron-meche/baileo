@@ -31,7 +31,7 @@
 
 body{
     margin: 0;
-    background-color: var(--plutoBlue);
+    background-color: var(--spacePurple);
     font-family: var(--mainFont);
     color: white;
     font-weight: 400;
@@ -72,11 +72,11 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--plutoBlue);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: solid 1pt gray;
+    border-bottom: solid 1pt rgb(81, 81, 81);
+    z-index: 50;
 }
 
 .toggle-left-navbar-button{
@@ -94,17 +94,14 @@ a{
 }
 
 .left-navbar{
-    height: calc(100vh - 80pt);
+    height: calc(100vh - 50pt);
     width: 250pt;
-    position: absolute;
+    position: fixed;
     top: 50pt;
     left: 0;
-    margin: 15pt;
     background-color: var(--spacePurple);
-    border-radius: 15pt;
     overflow: scroll;
-    transition: left 500ms;
-    box-shadow: 5pt 5pt 10pt -5pt black;
+    transition: left 300ms;
 }
 
 .left-navbar .item {
@@ -130,6 +127,7 @@ a{
     width: fit-content;
     display: flex;
     align-items: center;
+    padding: 10pt;
 }
 
 .logo-display:hover{
@@ -150,12 +148,13 @@ a{
 .content{
     height: calc(100vh - 50pt);
     width: 100vw;
-    position: absolute;
+    position: fixed;
     top: 50pt;
-    left: 280pt;
-    overflow: scroll;
-    transition: left 500ms;
+    left: 250pt;
+    overflow-y: scroll;
+    transition: left 300ms;
     padding-bottom: 50vh;
+    background-color: var(--plutoBlue);
 }
 
 
@@ -192,29 +191,8 @@ a{
 
 .media-slider-carousel{
     padding-left: 20pt;
-    padding-right: 300pt;
+    padding-right: 280pt;
     position: relative;
-}
-
-.media-slider-carousel .direction-scroll-button{
-    height: 30pt;
-    position: absolute;
-    top: calc(50% - 15pt);
-    background-color: white;
-    border-radius: 100%;
-    z-index: 50; 
-}
-
-.media-slider-carousel .direction-scroll-button:hover{
-    background-color: rgb(195, 195, 195);
-}
-
-.media-slider-carousel .left-click-button{
-    left: 10pt;
-}
-
-.media-slider-carousel .right-click-button{
-    right: 10pt;
 }
 
 .media-slider-object{
@@ -510,6 +488,11 @@ a{
     bottom: 0;
 }
 
+.bottom-padding{
+    height: 50vh;
+    width: 50pt;
+}
+
 
 
 
@@ -521,17 +504,18 @@ a{
 
 
 #searchBar{
-    width: calc(100% - 40pt);
-    margin: 20pt;
-    background-color: rgb(27, 27, 27);
-    padding: 7pt 7pt 7pt 15pt;
+    min-width: 200pt;
+    width: 25vw;
+    max-width: 300pt;
+    background-color: rgb(0, 0, 0);
+    padding: 7pt;
+    padding-left: 10pt;
     outline: none;
     font-size: 15pt;
     font-family: var(--mainFont);
     color: white;
     border: none;
-    border-radius: 5pt;
-    box-shadow: 0 0 0 1pt rgb(69, 69, 69);
+    border-radius: 0;
 }
 
 #searchBar::placeholder{
@@ -540,7 +524,7 @@ a{
 }
 
 #searchBar:focus{
-   box-shadow: 0 0 0 2pt var(--grapeTaffy);
+   outline: solid 2pt var(--grapeTaffy);
 }
 
 
