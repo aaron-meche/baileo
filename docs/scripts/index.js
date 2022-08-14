@@ -1,9 +1,5 @@
 // Reference Functions
 
-function openPage(location) {
-    window.open(location, "_self");
-}
-
 function unspace(string) {
     return string.replace(/\s/g, '');
 }
@@ -13,100 +9,6 @@ function isMobileDevice(){
 }
 
 // Functions
-
-var thumbnailPath = 'thumbnails';
-
-function build_mediaClickObjects() {
-    var mediaClickObjects = document.getElementsByClassName('building-block-media-click-object');
-    if (mediaClickObjects) { 
-        for (var i = 0; i < mediaClickObjects.length; i++) {
-            var mediaTitle = mediaClickObjects[i].innerHTML;
-            var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['mediaType'];
-            var mediaCat = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['cat'];
-
-            if (mediaType == 'movie') {
-                media_button_display = 'play';
-                media_transport = 'transport("movie","' + mediaTitle + '")';
-            } else if (mediaType == 'tv') {
-                media_button_display = 'continue';
-                media_transport = 'expandTv("' + mediaTitle + '")';
-            }
-
-            mediaClickObjects[i].innerHTML = `
-            <div class='media-slider-object media_` + mediaType + `' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='` + media_transport + `'>
-                <div class='image-shader'>
-                    <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
-                </div>
-                <div class='media_click_object_metadata'>
-                    <div class='media_clicker_object_title'>` + mediaTitle + `</div>
-                    <div class='media_clicker_object_category'>` + mediaCat + `</div>
-                </div>
-            </div>`
-        }
-    }
-}
-
-function build_mediaClickListItems() {
-    var mediaClickListItems = document.getElementsByClassName('building-block-media-click-list-item');
-    if (mediaClickListItems) {
-        for (var i = 0; i < mediaClickListItems.length; i++) {
-            var mediaTitle = mediaClickListItems[i].innerText;
-            var mediaCat = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['cat'];
-            var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['mediaType'];
-    
-            if (mediaType == 'movie') {
-                mediaClickListItems[i].innerHTML = `
-                <div class='listItemChoice searchItemChoice transport-button' onclick='transport("movie", "` + mediaTitle + `")'>
-                    <div class='listItemTitle'>
-                        <div class="listItemImageFrame" style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"></div>
-                        ` + mediaTitle + `
-                    </div>
-                    <div class='listItemLabel'>Movie</div>
-                    <div style='display: none'>type:movie category:` + mediaCat + `</div>
-                </div>`
-            } else if (mediaType == 'tv') {
-                mediaClickListItems[i].innerHTML = `
-                <div class='listItemChoice searchItemChoice tv-expand-link' onclick="expandTv('` + mediaTitle + `')">
-                    <div class='listItemTitle'>
-                        <div class="listItemImageFrame" style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"></div>
-                        ` + mediaTitle + `
-                    </div>
-                    <div class='listItemLabel'>TV Show</div>
-                    <div style='display: none'>type:tv category:` + mediaCat + `</div>
-                </div>`
-            }
-        }
-    }
-}
-
-function inject_expandScreen() {
-    document.getElementById('body').insertAdjacentHTML('beforeend',`
-    <div class='expand-screen' id='tvExpandScreen'>
-        <div class='expand-screen-contents' id='tvScreenContents'>
-            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
-                <div class='expand-panel-topbar center-content' onclick='closeTvScreen()'>
-                    <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
-                </div>
-                <div class='expand-panel-impression-image' id="tvPanelCoverImage">
-                    <div class='action-button-container absolute bottom'>
-                        <div class='activity-button filled-activity-button transport-button' id='startWatchingTvButton' style='display:none' onclick='transport("tv",sessionStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button transport-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(sessionStorage["expandPanelTitle"])'>Continue</div>
-                        <div class='activity-button transport-button' onclick='randomizeTv()'>Random Episode</div>
-                    </div>
-                </div>
-                <div class='expand-panel-contents'>
-                    <div class='expand-panel-navbar' id='tvPanelNavbar'>
-                        <div id='tvPanelNavbarContents' class='expand-panel-navbar-contents horizontal-scroll'></div>
-                    </div>
-                    <div id='tvPanelEpisodeList' class='list'>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`);
-}
 
 function bodyOnLoadFunctions() {
     build_mediaClickObjects();
@@ -151,7 +53,7 @@ function expandTv(mediaTitle) {
     while (b < (eval(titleUS)['s1']).length) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
             <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","1","` + b + `")'>
-                <div class='listItemTitle'>` + (eval(titleUS)['s1'])[b] + `</div>
+                <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[b] + `</div>
                 <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
             </div>`);
         b++;
@@ -269,7 +171,7 @@ function search(string) {
     searchTitleBars(string);
     let input = string;
     input = input.toLowerCase();
-    let x = document.getElementsByClassName('media_clicker_object_metadata');
+    let x = document.getElementsByClassName('media_click_object_metadata');
     for (i = 0; i < x.length; i++) {
         if (!x[i].innerText.toLowerCase().includes(input)) {
             x[i].parentNode.style.display = "none";
