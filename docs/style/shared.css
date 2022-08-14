@@ -198,7 +198,7 @@ a{
     overflow-y: hidden;
 }
 
-.horizontal-scroll::-webkit-scrollbar{
+/* .horizontal-scroll::-webkit-scrollbar{
     height: 5pt;
     border-radius: 100vh;
 }
@@ -210,7 +210,7 @@ a{
 
 .horizontal-scroll::-webkit-scrollbar-thumb:hover{
     background: var(--grapeTaffy);
-}
+} */
 
 .media-slider-carousel{
     padding-left: 10pt;
@@ -271,14 +271,14 @@ a{
 }
 
 .image-shader{
-    height: calc(100% - 6pt);
+    height: 100%;
     border-radius: inherit;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: solid 3pt var(--vanillaCream);
     position: relative;
     opacity: 0;
     transition: opacity 100ms;
     z-index: 1;
+    box-shadow: 0 0 0 3pt white;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .image-shader-indicator{
@@ -434,7 +434,7 @@ a{
     min-height: 25pt;
     position: relative;
     cursor: default;
-    padding: 10pt;
+    padding: 15pt;
     cursor: pointer;
     transition: height 300ms;
     border-bottom: solid 1pt rgb(45, 45, 45);
