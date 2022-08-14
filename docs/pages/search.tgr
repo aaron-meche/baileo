@@ -13,7 +13,7 @@ nav-block : class[navbar main-navbar]
 			image : images/close.png : class[navbar-link-item] onclick[mobileNavMenu()] id[closeMobileNavMenu] style[display:none;]
 		/block
 
-image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
+image : images/logo unfilled.png : onclick[open_page('home')] : class[navbar-logo] onclick[open_page('home')]
 
 		block : id[mobileNavbarDropMenu] onclick[mobileNavMenu()]
 			block 

@@ -1,39 +1,32 @@
-import css : style/shared.css
-import css : style/desktop.css : media[screen and (hover: hover) and (pointer: fine) and (min-width: 800px)]
-import css : style/mobile.css : media[screen and (hover: hover) and (pointer: fine) and (max-width: 800px)]
-import css : style/mobile.css : media[screen and (hover: none) and (pointer: coarse)]
 import meta : name[viewport] content[initial-scale = 1, user-scalable = no]
 
-nav-block : class[navbar main-navbar]
+nav-block : class[left-navbar]
 
-	block : class[left-navbar side-navbar]
+	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
-		block : class[mobile-navbar]
-			image : images/menu.png : class[navbar-link-item] onclick[mobileNavMenu()] id[expandMobileNavMenu]
-			image : images/close.png : class[navbar-link-item] onclick[mobileNavMenu()] id[closeMobileNavMenu] style[display:none;]
-		/block
-
-image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
-
-		block : id[mobileNavbarDropMenu] onclick[mobileNavMenu()]
-			block 
-				block : onclick[open_page('home')] class[navbar-link-item]
-					:: Home
-				/block
-				block : onclick[open_page('tv')] class[navbar-link-item active-navbar-link-item]
-					:: TV Shows
-				/block
-				block : onclick[open_page('movies')] class[navbar-link-item]
-					:: Movies
-				/block
-			/block
-		/block
-
+	block : class[item] onclick[open_page('home')]
+		:: All Media
 	/block
 
-	block : class[right-navbar side-navbar]
-		image : images/search.png : class[navbar-link-item] onclick[open_page('search')]
-		image : images/app menu.png : class[navbar-link-item] onclick[open_page('apps')]
+	block : class[item active]
+		:: TV Shows
+	/block
+
+	block : class[item] onclick[open_page('movies')]
+		:: Movies
+	/block
+
+/block
+
+nav-block : class[top-navbar]
+
+	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
+
+	block : class[logo-display] : onclick[open_page('home')]
+		image : images/logo unfilled.png
+		item : class[logo-text]
+			:: baileo
+		/item
 	/block
 
 /block
@@ -42,10 +35,13 @@ image : images/logo unfilled.png : class[navbar-logo] onclick[open_page('home')]
 
 
 
+
+block : class[content]
+
 block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title] onclick[expandHorizontalList(this)]
-			:: Comedies ↑
+		block : class[media-slider-title]
+			:: Comedies
 		/block
 	/block
 	block : class[horizontal-scroll media-slider-carousel]
@@ -58,7 +54,25 @@ block : class[media-slider-section]
 		item : class[building-block-media-click-object]
 			:: The Office
 		/item
-		item : class[media-slider-object]
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Dramas
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: Sherlock
+		/item
+		item : class[building-block-media-click-object]
+			:: Squid Game
 		/item
 	/block
 /block
@@ -69,18 +83,11 @@ block : class[media-slider-section]
 
 block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title] onclick[expandHorizontalList(this)]
-			:: Dramas ↑
+		block : class[media-slider-title]
 		/block
 	/block
 	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Sherlock
-		/item
-		item : class[building-block-media-click-object]
-			:: Squid Game
-		/item
-		item : class[media-slider-object]
-		/item
 	/block
+/block
+
 /block
