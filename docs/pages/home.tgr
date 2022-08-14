@@ -1,6 +1,6 @@
 nav-block : class[left-navbar]
 
-	block : class[logo-display] : onclick[window.location.reload()]
+	block : class[logo-display]
 		image : images/logo unfilled.png
 		item : class[logo-text]
 			:: baileo
@@ -19,6 +19,37 @@ nav-block : class[left-navbar]
 		:: Movies
 	/block
 
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_page('account')]
+		block : class[account-pfp-wrapper account-initials]
+			:: AM
+		/block
+		item
+			:: Aaron Meche
+		/item
+	/block
+
+	block : class[item] onclick[open_page('continue watching')]
+		:: Continue Watching
+	/block
+
+	block : class[item] onclick[logout()]
+		:: Log Out
+	/block
+
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_panel('categories')]
+		:: Categories
+	/block
+
+	block : class[item] onclick[open_panel('random_picker')]
+		:: Pick Something for Me
+	/block
+
 /block
 
 nav-block : class[top-navbar]
@@ -27,6 +58,12 @@ nav-block : class[top-navbar]
 
 	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
+/block
+
+block : class[panel-wrapper]
+	block : class[panel]
+	
+	/block
 /block
 
 

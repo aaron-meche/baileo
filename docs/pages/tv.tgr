@@ -1,6 +1,6 @@
 nav-block : class[left-navbar]
 
-	block : class[logo-display] : onclick[window.location.reload()]
+	block : class[logo-display]
 		image : images/logo unfilled.png
 		item : class[logo-text]
 			:: baileo

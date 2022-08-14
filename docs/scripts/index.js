@@ -22,6 +22,7 @@ function build_mediaClickObjects() {
         for (var i = 0; i < mediaClickObjects.length; i++) {
             var mediaTitle = mediaClickObjects[i].innerHTML;
             var mediaType = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['mediaType'];
+            var mediaCat = eval(unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, ''))['cat'];
 
             if (mediaType == 'movie') {
                 media_button_display = 'play';
@@ -36,7 +37,10 @@ function build_mediaClickObjects() {
                 <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
-                <div class='media_clicker_object_title'>` + mediaTitle + `</div>
+                <div class='media_click_object_metadata'>
+                    <div class='media_clicker_object_title'>` + mediaTitle + `</div>
+                    <div class='media_clicker_object_category'>` + mediaCat + `</div>
+                </div>
             </div>`
         }
     }
@@ -265,7 +269,7 @@ function search(string) {
     searchTitleBars(string);
     let input = string;
     input = input.toLowerCase();
-    let x = document.getElementsByClassName('media_clicker_object_title');
+    let x = document.getElementsByClassName('media_clicker_object_metadata');
     for (i = 0; i < x.length; i++) {
         if (!x[i].innerText.toLowerCase().includes(input)) {
             x[i].parentNode.style.display = "none";
