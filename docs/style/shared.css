@@ -105,8 +105,12 @@ a{
     top: 50pt;
     left: 0;
     background-color: var(--spacePurple);
-    overflow: scroll;
+    overflow: auto;
     transition: left 300ms;
+}
+
+.left-navbar::-webkit-scrollbar{
+    display: none;
 }
 
 .left-navbar .item {
