@@ -79,6 +79,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--spacePurple);
     border-bottom: solid 1pt rgb(81, 81, 81);
     z-index: 50;
 }
