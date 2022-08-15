@@ -1,4 +1,4 @@
-import meta : name[viewport] content[initial-scale = 1, user-scalable = no]
+title : Baileo - Movies
 
 nav-block : class[left-navbar]
 

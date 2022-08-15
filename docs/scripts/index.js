@@ -228,8 +228,10 @@ function toggleLeftNavbar() {
     if (navbar.offsetLeft >= 0) {
         navbar.style.left = '-250pt';
         content.style.left = '0';
+        content.style.width = '100vw';
     } else {
         navbar.style.left = '0';
         content.style.left = '250pt';
+        content.style.width = 'calc(100vw - 250pt)';
     }
 }

@@ -154,12 +154,12 @@ a{
 
 .content{
     height: calc(100vh - 50pt);
-    width: 100vw;
+    width: calc(100vw - 250pt);
     position: fixed;
     top: 50pt;
     left: 250pt;
     overflow-y: scroll;
-    transition: left 300ms;
+    transition: left 300ms, width 300ms;
     padding-bottom: 50vh;
     background-color: var(--plutoBlue);
 }
@@ -222,7 +222,7 @@ a{
 }
 
 .media-slider-carousel{
-    padding-left: 20pt;
+    padding-left: 10pt;
     padding-right: 280pt;
     position: relative;
 }
@@ -231,7 +231,7 @@ a{
     height: 100pt;
     width: 180pt;
     border-radius: 5pt;
-    margin: 5pt;
+    margin: 3pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;

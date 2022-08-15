@@ -1,3 +1,5 @@
+title : Baileo - Home
+
 nav-block : class[left-navbar]
 
 	block : class[logo-display]
