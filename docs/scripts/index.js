@@ -15,6 +15,13 @@ function bodyOnLoadFunctions() {
     inject_expandScreen();
 }
 
+function displayVersionInfo() {
+    console.log('o');
+    let version = '5.0.0 U';
+    let release = 'Epsilon'
+    alert('Version: ' + release + ' ' + version);
+}
+
 function expandTv(mediaTitle) {
     var tvScreen = document.getElementById('tvExpandScreen');
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');

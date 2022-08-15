@@ -74,5 +74,5 @@ block : class[panel-wrapper]
 
 
 block : class[content]
-	h : Account Page : style[text-align: center]
+	h : Your Account : style[text-align: center]
 /block

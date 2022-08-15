@@ -255,7 +255,7 @@ block : class[media-slider-section]
 
 
 
-block : class[bottom-padding]
+block : class[bottom-padding] ondblclick[displayVersionInfo()]
 /block
 
 /block

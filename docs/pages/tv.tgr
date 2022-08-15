@@ -112,13 +112,7 @@ block : class[media-slider-section]
 
 
 
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-	/block
+block : class[bottom-padding] ondblclick[displayVersionInfo()]
 /block
 
 /block
