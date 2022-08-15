@@ -36,26 +36,22 @@ function expandTv(mediaTitle) {
     tvPanelEpisodeList.innerHTML = '';
     tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + '.jpg")';
 
-    var a = 1;
-    while (a <= eval(titleUS)['sTotal']) {
-        if (a == sessionStorage['activeSeasonTab']) {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`);
+    for (let i = 0; i < media_data[titleUS]['sTotal']; i++) {
+        if (i == sessionStorage['activeSeasonTab']) {
+            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + (i + 1) + `</div>`);
         } else {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item new-season-button' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`);
+            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item new-season-button' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`);
         }
-        a++;
     }
 
     tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
 
-    var b = 0;
-    while (b < (eval(titleUS)['s1']).length) {
+    for (let i = 0; i < media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
-            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","1","` + b + `")'>
-                <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[b] + `</div>
-                <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
+            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","1","` + i + `")'>
+                <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[i] + `</div>
+                <div class='listItemLabel'>Episode ` + (i + 1) + `</div>
             </div>`);
-        b++;
     }
 
     if (localStorage['hasWatched_' + title] == undefined) {
@@ -80,25 +76,22 @@ function selectSeason(seasonNum) {
     tvPanelEpisodeList.innerHTML = '';
     tvNavbarContent.innerHTML = '';
 
-    var a = 1;
-    while (a <= eval(titleUS)['sTotal']) {
-        if (a == sessionStorage['activeSeasonTab']) {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item active-navbar-link-item'>Season ` + a + `</div>`
+    for (let i = 0; i < media_data[titleUS]['sTotal']; i++) {
+        if (i == sessionStorage['activeSeasonTab']) {
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + (i + 1) + `</div>`
         } else {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='navbar-link-item new-season-button' onclick='selectSeason("` + a + `")'>Season ` + a + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`
         }
-        a++;
     }
-
+    
     tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
 
-    var b = 0;
-    while (b < (eval(titleUS)['s' + seasonNum]).length) {
+    for (let i = 0; i < media_data[titleUS]['s' + seasonNum].length; i++) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
-            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","` + seasonNum + `","` + b + `")'>
-                <div class='listItemTitle'>` + (eval(titleUS)['s' + seasonNum])[b] + `</div>
-                <div class='listItemLabel'>Episode ` + (b + 1) + `</div>
-            </div>`;b++;
+            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","` + seasonNum + `","` + i + `")'>
+                <div class='listItemTitle'>` + media_data[titleUS]['s' + seasonNum][i] + `</div>
+                <div class='listItemLabel'>Episode ` + (i + 1) + `</div>
+            </div>`;
     }
 }
 
@@ -117,7 +110,7 @@ function tvExpandPanelScrolled() {
 }
 
 function continueWatching(title) {
-    var mediaType = eval(unspace(title))['mediaType'];
+    var mediaType = media_data[unspace(title)]['mediaType'];
     
     if (mediaType == 'tv') {
         transport('tv',title,localStorage[title + '_saved_season'],localStorage[title + '_saved_episode'])
@@ -203,22 +196,10 @@ function readSearchUrl() {
 
 function randomizeTv() {
     var title = sessionStorage['expandPanelTitle'];
-    var sTotal = eval(unspace(title))['sTotal'];
+    var sTotal = media_data[unspace(title)]['sTotal'];
     var randomSeason = Math.floor(Math.random() * sTotal) + 1;
-    var randomEpisode = Math.floor(Math.random() * (eval(unspace(title))['s' + randomSeason]).length);
+    var randomEpisode = Math.floor(Math.random() * (media_data[unspace(title)]['s' + randomSeason]).length);
     transport('tv',sessionStorage['expandPanelTitle'],randomSeason,randomEpisode);
-}
-
-function readFile() {
-    var fr=new FileReader();
-    fr.onload=function(){
-        console.log(fr.result);
-    }
-    fr.readAsText(this.files[0]);
-}
-
-function dom(id) {
-    return document.getElementById(id);
 }
 
 function toggleLeftNavbar() {
