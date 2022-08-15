@@ -1,0 +1,76 @@
+nav-block : class[left-navbar]
+
+	block : class[logo-display]
+		image : images/logo unfilled.png
+		item : class[logo-text]
+			:: baileo
+		/item
+	/block
+
+	block : class[item] onclick[open_page('home')]
+		:: All Media
+	/block
+
+	block : class[item] onclick[open_page('tv')]
+		:: TV Shows
+	/block
+
+	block : class[item] onclick[open_page('movies')]
+		:: Movies
+	/block
+
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_page('account')]
+		block : class[account-pfp-wrapper] id[accountDisplayInitials]
+			:: ??
+		/block
+		item : id[accountDisplayName]
+			:: No Account
+		/item
+	/block
+
+	block : class[item active] onclick[window.location.reload()]
+		:: Continue Watching
+	/block
+
+	block : class[item] onclick[logout()]
+		:: Log Out
+	/block
+
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_panel('categories')]
+		:: Categories
+	/block
+
+	block : class[item] onclick[open_panel('random_picker')]
+		:: Pick Something for Me
+	/block
+
+/block
+
+nav-block : class[top-navbar]
+
+	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
+
+	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
+
+/block
+
+block : class[panel-wrapper]
+	block : class[panel]
+	
+	/block
+/block
+
+
+
+
+
+
+block : class[content]
+	:: Hello
+/block

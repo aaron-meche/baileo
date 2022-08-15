@@ -1,3 +1,5 @@
+import meta : name[viewport] content[initial-scale = 1, user-scalable = no]
+
 nav-block : class[left-navbar]
 
 	block : class[logo-display]
@@ -15,8 +17,39 @@ nav-block : class[left-navbar]
 		:: TV Shows
 	/block
 
-	block : class[item active] onclick[window.location.reload()]
+	block : class[item active]
 		:: Movies
+	/block
+
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_page('account')]
+		block : class[account-pfp-wrapper] id[accountDisplayInitials]
+			:: ??
+		/block
+		item : id[accountDisplayName]
+			:: No Account
+		/item
+	/block
+
+	block : class[item] onclick[open_page('continue watching')]
+		:: Continue Watching
+	/block
+
+	block : class[item] onclick[logout()]
+		:: Log Out
+	/block
+
+	block : class[section-divider]
+	/block
+
+	block : class[item] onclick[open_panel('categories')]
+		:: Categories
+	/block
+
+	block : class[item] onclick[open_panel('random_picker')]
+		:: Pick Something for Me
 	/block
 
 /block
@@ -28,7 +61,6 @@ nav-block : class[top-navbar]
 	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
 /block
-
 
 
 

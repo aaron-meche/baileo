@@ -29,6 +29,10 @@
     src: url('BaileyScript/BaileyScript.ttf');
 }
 
+html{
+    background-color: var(--spacePurple);
+}
+
 body{
     margin: 0;
     background-color: var(--spacePurple);

@@ -23,11 +23,11 @@ nav-block : class[left-navbar]
 	/block
 
 	block : class[item] onclick[open_page('account')]
-		block : class[account-pfp-wrapper account-initials]
-			:: AM
+		block : class[account-pfp-wrapper] id[accountDisplayInitials]
+			:: ??
 		/block
-		item
-			:: Aaron Meche
+		item : id[accountDisplayName]
+			:: No Account
 		/item
 	/block
 

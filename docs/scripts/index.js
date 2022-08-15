@@ -12,7 +12,6 @@ function isMobileDevice(){
 
 function bodyOnLoadFunctions() {
     build_mediaClickObjects();
-    build_mediaClickListItems();
     inject_expandScreen();
 }
 
