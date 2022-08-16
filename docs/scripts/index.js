@@ -18,7 +18,7 @@ function bodyOnLoadFunctions() {
 function displayVersionInfo() {
     console.log('o');
     let version = '5.0.0 U';
-    let release = 'Epsilon'
+    let release = 'Epsilon';
     alert('Version: ' + release + ' ' + version);
 }
 
@@ -45,13 +45,13 @@ function expandTv(mediaTitle) {
 
     for (let i = 0; i < media_data[titleUS]['sTotal']; i++) {
         if (i == sessionStorage['activeSeasonTab']) {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item active-navbar-link-item'>Season ` + (i + 1) + `</div>`);
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + (i + 1) + `</div>`
         } else {
-            tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item new-season-button' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`);
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`
         }
     }
 
-    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
+    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
 
     for (let i = 0; i < media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`

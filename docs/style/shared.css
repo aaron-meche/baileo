@@ -20,6 +20,15 @@
     --grapeTaffy: #5E468B;
     --spacePurple: rgb(38, 25, 56);
     --plutoBlue: rgb(33, 35, 52);
+    --charcoal: #40434E;
+    --lavendarBlush: #EEE5E9;
+    --grannySmithApple: #9CD08F;
+    --asparagus: #87A461;
+    --raisinBlack: #2E2836;
+    --tumbleweed: #F4B393;
+    --lightSalmon: #FDA579;
+    --teaGreen: #C5DBBC;
+    --olivine: #92BA78;
 
     --mainFont: BaileyScript;
 }
@@ -166,7 +175,7 @@ a{
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
     padding-bottom: 50vh;
-    background-color: var(--plutoBlue);
+    background-color: var(--charcoal);
 }
 
 .section-divider{
@@ -192,6 +201,21 @@ a{
 .left-navbar .item span{
     margin-left: 10pt;
     font-size: 15pt;
+}
+
+.horizontal-navbar{
+    height: 100%;
+    width: 100%;
+    padding: 0 10pt 0 10pt;
+    border-bottom: solid 1pt gray;
+}
+
+.horizontal-navbar .item{
+    height: 40pt;
+    margin: 0 10pt 0 10pt;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 

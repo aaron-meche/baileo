@@ -31,7 +31,7 @@ function build_mediaClickObjects() {
 }
 
 function inject_expandScreen() {
-    document.getElementById('body').insertAdjacentHTML('beforeend',`
+    document.body.insertAdjacentHTML('beforeend',`
     <div class='expand-screen' id='tvExpandScreen'>
         <div class='expand-screen-contents' id='tvScreenContents'>
             <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
@@ -49,7 +49,7 @@ function inject_expandScreen() {
                 </div>
                 <div class='expand-panel-contents'>
                     <div class='expand-panel-navbar' id='tvPanelNavbar'>
-                        <div id='tvPanelNavbarContents' class='expand-panel-navbar-contents horizontal-scroll'></div>
+                        <div id='tvPanelNavbarContents' class='horizontal-scroll horizontal-navbar'></div>
                     </div>
                     <div id='tvPanelEpisodeList' class='list'>
                     </div>

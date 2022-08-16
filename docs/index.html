@@ -1,9 +1,6 @@
 <html>
     <head>
-        <!-- This section will be erased after the page is loaded on the client side -->
-        <div id='backbone'>
-            <script src='https://tiger.baileo.us/1.5.5/compile.js'></script>
-        </div>
+        <script src='https://tiger.baileo.us/1.6/compile.js'></script>
         
         <!-- Insert your scripts here -->
         <script src='scripts/index.js'></script>
@@ -21,14 +18,9 @@
         <link rel='stylesheet' href='style/mobile.css' media='screen and (hover: none) and (pointer: coarse)'>
         <meta name='viewport' content='initial-scale = 0.85, user-scalable = no'>
         <link rel="shortcut icon" type="image/jpg" href="images/webicon.png"/>
-
-        <meta name="html_page_identifier">
+        <script defer src='scripts/bundle.js'></script>
     </head>
     <!-- This is the true body of the document, set to display: none so content is only shown when fully converted to HTML -->
-    <body id='bodyDOM' style='display: none;'>
-        <div id='body'>
-            <!-- The body content declared in the .by file will be inserted here -->
-        </div>
-        <script defer src='scripts/bundle.js'></script>
+    <body style='display: none;'>
     </body>
 </html>
