@@ -10,7 +10,8 @@ function bodyOnLoadFunctions() {
 
 function displayCorrentAccountWrapper() {
     if (isLoggedIn()) {
-        uid = sessionStorage['uid'];
+        uid = localStorage['uid'];
+        updateAccountPreviewInformation();
         if (dom('accountDetectedWrapper')) {
             dom('accountDetectedWrapper').style.display = 'block';
         }
@@ -19,6 +20,23 @@ function displayCorrentAccountWrapper() {
 		    dom('noAccountDetectedWrapper').style.display = 'block';
         }
 	}
+}
+
+function updateAccountPreviewInformation() {
+    dom('accountDisplayName').innerHTML = localStorage['display name'];
+
+    let name = localStorage['display name'];
+    name = name.split(' ');
+    let firstInitial = name[0][0];
+    let lastInitial = name[1][0];
+    let initals = firstInitial + lastInitial;
+
+    dom('accountDisplayInitials').innerHTML = initals;
+    if (localStorage['pfp url']) {
+        dom('accountDisplayInitials').innerHTML = '';
+        dom('accountDisplayInitials').style.background = 'url("' + localStorage['pfp url'] + '") center center no-repeat';
+        dom('accountDisplayInitials').style.backgroundSize = 'cover';
+    }
 }
 
 function displayVersionInfo() {
@@ -61,7 +79,7 @@ function expandTv(mediaTitle) {
 
     for (let i = 1; i <= media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
-            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","1","` + i + `")'>
+            <div class='listItemChoice' onclick='transport("tv","` + title + `","1","` + i + `")'>
                 <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[i] + `</div>
                 <div class='listItemLabel'>Episode ` + i + `</div>
             </div>`);
@@ -101,7 +119,7 @@ function selectSeason(seasonNum) {
 
     for (let i = 1; i <= media_data[titleUS]['s' + seasonNum].length; i++) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
-            <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","` + seasonNum + `","` + i + `")'>
+            <div class='listItemChoice' onclick='transport("tv","` + title + `","` + seasonNum + `","` + i + `")'>
                 <div class='listItemTitle'>` + media_data[titleUS]['s' + seasonNum][i] + `</div>
                 <div class='listItemLabel'>Episode ` + i + `</div>
             </div>`;
@@ -133,12 +151,21 @@ function continueWatching(title) {
 }
 
 function transport(type, title, season, episode) {
-    let landing_page = 'receiver.html';
-    if (isMobileDevice()) {
-        landing_page = 'mobile-viewer.html';
+    let baseLink = 'http://50.58.218.209/media/';
+    let newTitle = title.trim();
+    if (type == 'tv') {
+        let generatedLink = baseLink + newTitle + '/' + 'Season ' + season + '/' + media_data[unspace(title)]['s' + season][episode] + '.mp4';
+        open_url(generatedLink);
+    } else if (type == 'movie') {
+        let generatedLink = baseLink + newTitle + '.mp4';
+        open_url(generatedLink);
     }
-    let generatedLink = 'player/' + landing_page + '?type=' + type + '&title=' + title + '&season=' + season + '&episode=' + episode;
-    openPage(generatedLink);
+    // let landing_page = 'receiver.html';
+    // if (isMobileDevice()) {
+    //     landing_page = 'mobile-viewer.html';
+    // }
+    // let generatedLink = 'player/' + landing_page + '?type=' + type + '&title=' + title + '&season=' + season + '&episode=' + episode;
+    // open_url(generatedLink);
 }
 
 function closeTvScreen() {

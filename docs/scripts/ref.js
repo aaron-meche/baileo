@@ -11,7 +11,7 @@ function isMobileDevice(){
 }
 
 function isLoggedIn() {
-    if (uid == undefined) {
+    if (localStorage['uid'] == undefined) {
         return false;
     } else {
         return true;

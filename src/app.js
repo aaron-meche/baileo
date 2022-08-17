@@ -44,14 +44,21 @@ function dom(id) {
 // Functions
 
 var uid;
+var displayName;
+var pfpUrl;
 let urlParams = new URLSearchParams(document.location.search);
 let urlPagePush = urlParams.get('p');
 
 onAuthStateChanged(auth, (userCredential) => {
-	uid = sessionStorage['uid'];
+	uid = localStorage['uid'];
 
     if (userCredential) {
         uid = userCredential.uid;
+		displayName = userCredential.displayName;
+		pfpUrl = userCredential.photoURL
+		localStorage['uid'] = uid;
+		localStorage['display name'] = displayName;
+		localStorage['pfp url'] = pfpUrl;
 		if (dom('accountDetectedWrapper')) {
 			dom('accountDetectedWrapper').style.display = 'block';
 		}
@@ -63,59 +70,33 @@ onAuthStateChanged(auth, (userCredential) => {
 	}
 })
 
-const signInGoogle = document.getElementById('signInGoogleButton');
-if (signInGoogle) {
-    signInGoogle.addEventListener('click', function () {
-		console.log('google');
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            writeUserData('/email','N/A: Google');
-            openPage('index.html');
-            // ...
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-            alert(error.message);
-        });
-    })
-}
-
-// window.addEventListener('load',function () {
-// 	if (uid == undefined) {
-// 		// useAccountPrompt();
-// 		console.log('no account')
-// 		// window.open('https://account.baileo.us/index.html?' + urlParams, '_self');
-// 	} else {
-// 		onValue(ref(database, 'login requests/' + urlLoginRequest), (snapshot) => {
-// 			loginRequestData = snapshot.val();
-	
-// 			localStorage['loginKey'] = loginRequestData['loginKey'];
-// 			localStorage['encryptionKey'] = loginRequestData['encryptionKey'];
-// 			localStorage['userKey'] = loginRequestData['userKey'];
-// 		}, {
-// 			onlyOnce: true
-// 		});
-// 	}
-
-// 	set(ref(database, 'last visit'), {
-// 		time: new Date().getTime(),
-// 		date: new Date().getDate(),
-// 		month: new Date().getMonth(),
-// 		day: new Date().getDay(),
-// 		uid: uid,
-// 	});
-// 	console.log('Session Logged');
-// })
+window.addEventListener('load', function () {
+	if (sessionStorage['activePage'] == 'login') {
+		setTimeout(function() {
+			document.getElementById('signInGoogleButton').addEventListener('click', function () {
+				console.log('google');
+				const provider = new GoogleAuthProvider();
+				signInWithPopup(auth, provider)
+				.then((result) => {
+					// This gives you a Google Access Token. You can use it to access the Google API.
+					const credential = GoogleAuthProvider.credentialFromResult(result);
+					const token = credential.accessToken;
+					// The signed-in user info.
+					const user = result.user;
+					window.open('index.html?p=home','_self');
+				})
+				.catch((error) => {
+					// Handle Errors here.
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// The email of the user's account used.
+					const email = error.customData.email;
+					// The AuthCredential type that was used.
+					const credential = GoogleAuthProvider.credentialFromError(error);
+					// ...
+					alert(error.message);
+				});
+			})
+		}, 1000);
+	}
+})

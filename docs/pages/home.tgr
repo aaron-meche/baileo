@@ -31,7 +31,7 @@ nav-block : class[left-navbar]
 
 
 			block : class[item] onclick[open_page('account')]
-				block : class[account-pfp-wrapper] id[accountDisplayInitials]
+				block : class[account-pfp-wrapper] id[accountDisplayInitials] style[background: center center fixed; background-size: cover;]
 					:: ??
 				/block
 				item : id[accountDisplayName]
