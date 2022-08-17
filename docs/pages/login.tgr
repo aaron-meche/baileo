@@ -12,7 +12,7 @@ nav-block : class[top-navbar]
 /block
 
 block : class[form]
-	block : class[sign-in-google button] style[background-color: white; color: black;]
+	block : class[button] id[signInGoogleButton] style[background-color: white; color: black;]
 		image : images/google.png
 		:: Sign in with Google
 	/block

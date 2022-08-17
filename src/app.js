@@ -63,9 +63,9 @@ onAuthStateChanged(auth, (userCredential) => {
 	}
 })
 
-const signInGoogle = document.querySelector('.sign-in-google');
+const signInGoogle = document.getElementById('signInGoogleButton');
 if (signInGoogle) {
-    signInGoogle.addEventListener('click', (e) => {
+    signInGoogle.addEventListener('click', function () {
 		console.log('google');
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
