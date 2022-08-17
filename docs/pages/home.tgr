@@ -9,28 +9,30 @@ nav-block : class[left-navbar]
 		/item
 	/block
 
-	block : class[item active] onclick[window.location.reload()]
-		:: All Media
-	/block
+	item : id[media_filter]
+					block : class[item active] onclick[filterMedia(this, 'media_search_query')] id[allMediaFilter]
+						:: All Media
+					/block
 
-	block : class[item] onclick[open_page('tv')]
-		:: TV Shows
-	/block
+					block : class[item] onclick[filterMedia(this, 'media_search_query_tv')]
+						:: TV Shows
+					/block
 
-	block : class[item] onclick[open_page('movies')]
-		:: Movies
-	/block
+					block : class[item] onclick[filterMedia(this, 'media_search_query_movie')]
+						:: Movies
+					/block
+	/item
 
 
 
-			item : id[accountDetectedWrapper] style[display: none;]
+			item : id[accountDetectedWrapper]
 
 			block : class[section-divider]
 			/block
 
 
 
-			block : class[item] onclick[open_page('account')]
+			block : class[item]
 				block : class[account-pfp-wrapper] id[accountDisplayInitials] style[background: center center fixed; background-size: cover;]
 					:: ??
 				/block
@@ -39,11 +41,11 @@ nav-block : class[left-navbar]
 				/item
 			/block
 
-			block : class[item] onclick[open_page('continue watching')]
+			block : class[item] onclick[open_panel('continue watching')]
 				:: Continue Watching
 			/block
 
-			block : class[item] onclick[logout()]
+			block : class[item] id[logoutButton]
 				:: Log Out
 			/block
 
@@ -58,7 +60,7 @@ nav-block : class[left-navbar]
 
 
 
-					block : class[item] onclick[open_url('index.html?p=login')]
+					block : class[item] id[signInGoogleButton]
 						:: Sign in to an account
 					/block
 
@@ -81,13 +83,21 @@ nav-block : class[left-navbar]
 
 /block
 
+
+
+
 nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'media_search_query'), clearMediaFilter()]
 
 /block
+
+
+
+
+
 
 
 
@@ -278,5 +288,12 @@ block : class[media-slider-section]
 
 block : class[bottom-padding] ondblclick[displayVersionInfo()]
 /block
+
+/block
+
+
+
+
+block : class[panel] id[panel]
 
 /block

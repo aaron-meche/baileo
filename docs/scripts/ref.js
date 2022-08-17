@@ -13,3 +13,7 @@ function isMobileDevice(){
 function open_page(page) {
     window.open(page + '.html','_self')
 }
+
+function open_url(page) {
+    window.open(page,'_self')
+}

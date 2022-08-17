@@ -37,7 +37,7 @@ function inject_expandScreen() {
     <div class='expand-screen' id='tvExpandScreen'>
         <div class='expand-screen-contents' id='tvScreenContents'>
             <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel' id='tvPanel' onscroll='tvExpandPanelScrolled()'>
+            <div class='expand-panel' id='tvPanel'>
                 <div class='expand-panel-topbar center-content' onclick='closeTvScreen()'>
                     <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
                     <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>

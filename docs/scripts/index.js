@@ -2,10 +2,10 @@
 
 var uid;
 
-window.addEventListener('load',function () {
+function bodyOnLoadFunctions () {
     build_mediaClickObjects();
     inject_expandScreen();
-})
+}
 
 function updateAccountPreviewInformation() {
     dom('accountDisplayName').innerHTML = localStorage['display name'];
@@ -111,20 +111,6 @@ function selectSeason(seasonNum) {
     }
 }
 
-sessionStorage['savedScrollLocation22838'] = 0;
-
-function tvExpandPanelScrolled() {
-    var scrollTop = document.getElementById('tvPanelNavbar').getBoundingClientRect().top;
-    if (scrollTop == sessionStorage['savedScrollLocation22838']) {
-        // document.getElementById('tvPanelNavbar').style.backgroundColor = 'var(--royalPurple)';
-        document.getElementById('tvPanelNavbar').style.borderBottom = 'solid 1pt gray';
-    } else {
-        sessionStorage['savedScrollLocation22838'] = scrollTop;
-        // document.getElementById('tvPanelNavbar').style.background = 'none';
-        document.getElementById('tvPanelNavbar').style.borderBottom = 'none';
-    }
-}
-
 function continueWatching(title) {
     var mediaType = media_data[unspace(title)]['mediaType'];
     
@@ -189,7 +175,14 @@ function filterMedia(self, string) {
     for (let i = 0; i < self.parentNode.childElementCount; i++) {
         self.parentNode.children[i].classList.remove("active");
     }
-    self.classList.add("active")
+    self.classList.add("active");
+}
+
+function clearMediaFilter() {
+    for (let i = 0; i < dom('media_filter').childElementCount; i++) {
+        dom('media_filter').children[i].classList.remove("active");
+    }
+    dom('allMediaFilter').classList.add("active");
 }
 
 function search(string) {
