@@ -1,18 +1,24 @@
-// Reference Functions
-
-function unspace(string) {
-    return string.replace(/\s/g, '');
-}
-
-function isMobileDevice(){
-    return window.matchMedia('(hover: none)').matches;
-}
-
 // Functions
+
+var uid;
 
 function bodyOnLoadFunctions() {
     build_mediaClickObjects();
     inject_expandScreen();
+    displayCorrentAccountWrapper();
+}
+
+function displayCorrentAccountWrapper() {
+    if (isLoggedIn()) {
+        uid = sessionStorage['uid'];
+        if (dom('accountDetectedWrapper')) {
+            dom('accountDetectedWrapper').style.display = 'block';
+        }
+    } else {
+        if (dom('noAccountDetectedWrapper')) {
+		    dom('noAccountDetectedWrapper').style.display = 'block';
+        }
+	}
 }
 
 function displayVersionInfo() {
@@ -43,21 +49,21 @@ function expandTv(mediaTitle) {
     tvPanelEpisodeList.innerHTML = '';
     tvPanelCoverImage.style.backgroundImage = 'url("cover-image/' + title.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + '.jpg")';
 
-    for (let i = 0; i < media_data[titleUS]['sTotal']; i++) {
+    for (let i = 1; i <= media_data[titleUS]['sTotal']; i++) {
         if (i == sessionStorage['activeSeasonTab']) {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + (i + 1) + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + i + `</div>`
         } else {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + i + `")'>Season ` + i + `</div>`
         }
     }
 
     tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
 
-    for (let i = 0; i < media_data[titleUS]['s1'].length; i++) {
+    for (let i = 1; i <= media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
             <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","1","` + i + `")'>
                 <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[i] + `</div>
-                <div class='listItemLabel'>Episode ` + (i + 1) + `</div>
+                <div class='listItemLabel'>Episode ` + i + `</div>
             </div>`);
     }
 
@@ -83,21 +89,21 @@ function selectSeason(seasonNum) {
     tvPanelEpisodeList.innerHTML = '';
     tvNavbarContent.innerHTML = '';
 
-    for (let i = 0; i < media_data[titleUS]['sTotal']; i++) {
+    for (let i = 1; i <= media_data[titleUS]['sTotal']; i++) {
         if (i == sessionStorage['activeSeasonTab']) {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + (i + 1) + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item active'>Season ` + i + `</div>`
         } else {
-            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + (i + 1) + `")'>Season ` + (i + 1) + `</div>`
+            tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + i + `")'>Season ` + i + `</div>`
         }
     }
     
     tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
 
-    for (let i = 0; i < media_data[titleUS]['s' + seasonNum].length; i++) {
+    for (let i = 1; i <= media_data[titleUS]['s' + seasonNum].length; i++) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
             <div class='listItemChoice transport-button' onclick='transport("tv","` + title + `","` + seasonNum + `","` + i + `")'>
                 <div class='listItemTitle'>` + media_data[titleUS]['s' + seasonNum][i] + `</div>
-                <div class='listItemLabel'>Episode ` + (i + 1) + `</div>
+                <div class='listItemLabel'>Episode ` + i + `</div>
             </div>`;
     }
 }

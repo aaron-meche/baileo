@@ -1,0 +1,27 @@
+title : Baileo - Login
+
+nav-block : class[top-navbar]
+
+	block : class[logo-display]
+		image : images/logo unfilled.png
+		item : class[logo-text]
+			:: baileo
+		/item
+	/block
+
+/block
+
+block : class[form]
+	block : class[sign-in-google button] style[background-color: white; color: black;]
+		image : images/google.png
+		:: Sign in with Google
+	/block
+	## : block : class[sign-in-github button] style[background-color: white; color: black;]
+	## : 	image : images/github.png
+	## : 	:: Sign in with Github
+	## : /block
+	## : block : class[sign-in-microsoft button] style[background-color: white; color: black;]
+	## : 	image : images/microsoft.png
+	## : 	:: Sign in with Microsoft
+	## : /block
+/block

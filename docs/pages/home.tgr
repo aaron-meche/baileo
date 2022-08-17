@@ -21,28 +21,55 @@ nav-block : class[left-navbar]
 		:: Movies
 	/block
 
+
+
+			item : id[accountDetectedWrapper] style[display: none;]
+
+			block : class[section-divider]
+			/block
+
+
+
+			block : class[item] onclick[open_page('account')]
+				block : class[account-pfp-wrapper] id[accountDisplayInitials]
+					:: ??
+				/block
+				item : id[accountDisplayName]
+					:: No Account
+				/item
+			/block
+
+			block : class[item] onclick[open_page('continue watching')]
+				:: Continue Watching
+			/block
+
+			block : class[item] onclick[logout()]
+				:: Log Out
+			/block
+
+			/item
+
+
+
+					item : id[noAccountDetectedWrapper] style[display: none;]
+					
+					block : class[section-divider]
+					/block
+
+
+
+					block : class[item] onclick[open_url('index.html?p=login')]
+						:: Sign in to an account
+					/block
+
+					/item
+
+
+
 	block : class[section-divider]
 	/block
 
-	block : class[item] onclick[open_page('account')]
-		block : class[account-pfp-wrapper] id[accountDisplayInitials]
-			:: ??
-		/block
-		item : id[accountDisplayName]
-			:: No Account
-		/item
-	/block
 
-	block : class[item] onclick[open_page('continue watching')]
-		:: Continue Watching
-	/block
-
-	block : class[item] onclick[logout()]
-		:: Log Out
-	/block
-
-	block : class[section-divider]
-	/block
 
 	block : class[item] onclick[open_panel('categories')]
 		:: Categories
@@ -60,12 +87,6 @@ nav-block : class[top-navbar]
 
 	input : id[searchBar] type[text] placeholder[Search] onkeyup[search(this.value)]
 
-/block
-
-block : class[panel-wrapper]
-	block : class[panel]
-	
-	/block
 /block
 
 

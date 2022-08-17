@@ -29,6 +29,11 @@
     --lightSalmon: #FDA579;
     --teaGreen: #C5DBBC;
     --olivine: #92BA78;
+    --boldOlivine: #71905c;
+    --darkOlivine: #4f5f44;
+    --onyx: #23242A;
+
+    --popBorder: var(--teaGreen);
 
     --mainFont: BaileyScript;
 }
@@ -38,16 +43,12 @@
     src: url('BaileyScript/BaileyScript.ttf');
 }
 
-html{
-    background-color: var(--spacePurple);
-}
-
 body{
     margin: 0;
-    background-color: var(--spacePurple);
+    background-color: var(--raisinBlack);
     font-family: var(--mainFont);
     color: white;
-    font-weight: 400;
+    font-weight: 500;
     padding-bottom: 4rem;
     overflow: hidden;
 }
@@ -80,7 +81,7 @@ a{
 
 
 .top-navbar{
-    height: 50pt;
+    height: 40pt;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -88,8 +89,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--spacePurple);
-    border-bottom: solid 1pt rgb(81, 81, 81);
+    background-color: var(--asparagus);
     z-index: 50;
 }
 
@@ -99,7 +99,7 @@ a{
     left: 0;
     height: 15pt;
     padding: 10pt;
-    margin: 7.5pt;
+    margin: 2.5pt;
     border-radius: 10pt;
 }
 
@@ -111,9 +111,9 @@ a{
     height: calc(100vh - 50pt);
     width: 250pt;
     position: fixed;
-    top: 50pt;
+    top: 40pt;
     left: 0;
-    background-color: var(--spacePurple);
+    background-color: var(--onyx);
     overflow: auto;
     transition: left 300ms;
 }
@@ -132,15 +132,15 @@ a{
 }
 
 .left-navbar .active {
-    background-color: var(--grapeTaffy);
+    background-color: var(--boldOlivine);
 }
 
 .left-navbar .item:hover {
-    background-color: rgb(53, 52, 75);
+    background-color: #c5dbbc4b;
 }
 
 .left-navbar .active:hover {
-    background-color: var(--grapeTaffy);
+    background-color: var(--boldOlivine);
 }
 
 .logo-display{
@@ -151,14 +151,9 @@ a{
     cursor: default;
 }
 
-.logo-display:hover img{
-    transform: rotate(calc(360deg * 15));
-}
-
 .logo-display img{
     height: 40pt;
     margin-right: 5pt;
-    transition: transform 50s;
 }
 
 .logo-display span{
@@ -167,22 +162,22 @@ a{
 }
 
 .content{
-    height: calc(100vh - 50pt);
+    height: calc(100vh - 40pt);
     width: calc(100vw - 250pt);
     position: fixed;
-    top: 50pt;
+    top: 40pt;
     left: 250pt;
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
     padding-bottom: 50vh;
-    background-color: var(--charcoal);
+    background-color: var(--onyx);
 }
 
 .section-divider{
     height: 1pt;
     width: calc(100% - 20pt);
     margin: 10pt;
-    background-color: gray;
+    background-color: var(--popBorder);
 }
 
 .account-pfp-wrapper{
@@ -203,19 +198,36 @@ a{
     font-size: 15pt;
 }
 
+.left-navbar .item img {
+    height: 15pt;
+    margin-right: 5pt;
+}
+
 .horizontal-navbar{
     height: 100%;
     width: 100%;
-    padding: 0 10pt 0 10pt;
+    padding: 0 15pt 0 15pt;
     border-bottom: solid 1pt gray;
 }
 
 .horizontal-navbar .item{
-    height: 40pt;
-    margin: 0 10pt 0 10pt;
+    height: 100%;
+    padding: 0 15pt 0 15pt;
+    font-size: 15pt;
     display: inline-flex;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.horizontal-navbar .item:hover{
+    color: white;
+}
+
+.horizontal-navbar .active{
+    color: white;
+    height: calc(100% - 3pt);
+    border-bottom: solid 3pt var(--teaGreen);
 }
 
 
@@ -296,7 +308,7 @@ a{
     opacity: 0;
     transition: opacity 100ms;
     z-index: 1;
-    box-shadow: 0 0 0 3pt white;
+    box-shadow: 0 0 0 3pt var(--teaGreen);
     background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -393,7 +405,7 @@ a{
     left: 15vw;
     overflow-y: scroll;
     z-index: 90;
-    background-color: var(--darkAqua);
+    background-color: var(--onyx);
 }
 
 .expand-panel-topbar{
@@ -402,7 +414,7 @@ a{
     position: sticky;
     top: 0;
     z-index: 95;
-    background-color: var(--blueRaspberry);
+    background-color: var(--asparagus);
     font-size: 14pt;
 }
 
@@ -422,8 +434,9 @@ a{
 
 .expand-panel-navbar{
     position: sticky;
-    height: 40pt;
+    height: 50pt;
     top: 40pt;
+    margin-bottom: 15pt;
     z-index: 95;
     display: flex;
     align-items: center;
@@ -565,18 +578,16 @@ a{
 
 
 #searchBar{
-    min-width: 200pt;
-    width: 25vw;
-    max-width: 300pt;
-    background-color: rgb(0, 0, 0);
-    padding: 7pt;
+    height: 70%;
+    width: 60vw;
+    max-width: 400pt;
+    background: var(--charcoal);
     padding-left: 10pt;
     outline: none;
-    font-size: 15pt;
+    font-size: 13pt;
     font-family: var(--mainFont);
     color: white;
     border: none;
-    border-radius: 0;
 }
 
 #searchBar::placeholder{
@@ -585,7 +596,7 @@ a{
 }
 
 #searchBar:focus{
-   outline: solid 2pt var(--grapeTaffy);
+    outline: solid 2pt var(--teaGreen);
 }
 
 
@@ -803,4 +814,36 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.form {
+    width: 350pt;
+    max-width: 75vw;
+    background-color: rgb(216, 216, 216);
+    border: solid 1pt gray;
+    color: black;
+    padding: 25pt;
+    border-radius: 10pt;
+    margin: 60pt auto auto auto
+}
+
+.form .button{
+    padding: 10pt;
+    margin: 10pt 0 10pt 0;
+    background-color: var(--spruceLeaves);
+    color: white;
+    border-radius: 5pt;
+    box-shadow : 0 0 5pt 0 rgba(0, 0, 0, 0.143);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form .button:hover{
+    outline: solid 2pt black;
+}
+
+.form .button img {
+    height: 15pt;
+    margin-right: 5pt;
 }
