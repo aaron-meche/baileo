@@ -24,10 +24,12 @@ function build_mediaClickObjects() {
                 <div class='media_click_object_metadata'>
                     <div class='media_clicker_object_title'>` + mediaTitle + `</div>
                     <div class='media_clicker_object_category'>` + mediaCat + `</div>
+                    <div class='media_clicker_object_type'>media_search_query_` + mediaType + `</div>
                 </div>
             </div>`
         }
     }
+    document.body.style.display = 'block';
 }
 
 function inject_expandScreen() {

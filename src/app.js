@@ -56,47 +56,51 @@ onAuthStateChanged(auth, (userCredential) => {
         uid = userCredential.uid;
 		displayName = userCredential.displayName;
 		pfpUrl = userCredential.photoURL
-		localStorage['uid'] = uid;
-		localStorage['display name'] = displayName;
-		localStorage['pfp url'] = pfpUrl;
-		if (dom('accountDetectedWrapper')) {
-			dom('accountDetectedWrapper').style.display = 'block';
-		}
+		updateAccountPreviewInformation();
     } else {
-		console.log('No Account Detected');
-		if (dom('noAccountDetectedWrapper')) {
-			dom('noAccountDetectedWrapper').style.display = 'block';
-		}
+		dom('accountDetectedWrapper').style.display = 'none';
+		dom('noAccountDetectedWrapper').style.display = 'block';
 	}
 })
 
-window.addEventListener('load', function () {
-	if (sessionStorage['activePage'] == 'login') {
-		setTimeout(function() {
-			document.getElementById('signInGoogleButton').addEventListener('click', function () {
-				console.log('google');
-				const provider = new GoogleAuthProvider();
-				signInWithPopup(auth, provider)
-				.then((result) => {
-					// This gives you a Google Access Token. You can use it to access the Google API.
-					const credential = GoogleAuthProvider.credentialFromResult(result);
-					const token = credential.accessToken;
-					// The signed-in user info.
-					const user = result.user;
-					window.open('index.html?p=home','_self');
-				})
-				.catch((error) => {
-					// Handle Errors here.
-					const errorCode = error.code;
-					const errorMessage = error.message;
-					// The email of the user's account used.
-					const email = error.customData.email;
-					// The AuthCredential type that was used.
-					const credential = GoogleAuthProvider.credentialFromError(error);
-					// ...
-					alert(error.message);
-				});
-			})
-		}, 1000);
-	}
+function updateAccountPreviewInformation() {
+    dom('accountDisplayName').innerHTML = displayName;
+
+    let name = displayName;
+    name = name.split(' ');
+    let firstInitial = name[0][0];
+    let lastInitial = name[1][0];
+    let initals = firstInitial + lastInitial;
+
+    dom('accountDisplayInitials').innerHTML = initals;
+    if (pfpUrl) {
+        dom('accountDisplayInitials').innerHTML = '';
+        dom('accountDisplayInitials').style.background = 'url("' + pfpUrl + '") center center no-repeat';
+        dom('accountDisplayInitials').style.backgroundSize = 'cover';
+    }
+}
+
+document.getElementById('signInGoogleButton').addEventListener('click', function () {
+	console.log('google');
+	const provider = new GoogleAuthProvider();
+	signInWithPopup(auth, provider)
+	.then((result) => {
+		// This gives you a Google Access Token. You can use it to access the Google API.
+		const credential = GoogleAuthProvider.credentialFromResult(result);
+		const token = credential.accessToken;
+		// The signed-in user info.
+		const user = result.user;
+		window.open('index.html?p=home','_self');
+	})
+	.catch((error) => {
+		// Handle Errors here.
+		const errorCode = error.code;
+		const errorMessage = error.message;
+		// The email of the user's account used.
+		const email = error.customData.email;
+		// The AuthCredential type that was used.
+		const credential = GoogleAuthProvider.credentialFromError(error);
+		// ...
+		alert(error.message);
+	});
 })

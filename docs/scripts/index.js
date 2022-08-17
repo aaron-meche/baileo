@@ -2,25 +2,10 @@
 
 var uid;
 
-function bodyOnLoadFunctions() {
+window.addEventListener('load',function () {
     build_mediaClickObjects();
     inject_expandScreen();
-    displayCorrentAccountWrapper();
-}
-
-function displayCorrentAccountWrapper() {
-    if (isLoggedIn()) {
-        uid = localStorage['uid'];
-        updateAccountPreviewInformation();
-        if (dom('accountDetectedWrapper')) {
-            dom('accountDetectedWrapper').style.display = 'block';
-        }
-    } else {
-        if (dom('noAccountDetectedWrapper')) {
-		    dom('noAccountDetectedWrapper').style.display = 'block';
-        }
-	}
-}
+})
 
 function updateAccountPreviewInformation() {
     dom('accountDisplayName').innerHTML = localStorage['display name'];
@@ -199,13 +184,24 @@ function mobileNavMenu() {
     }
 }
 
+function filterMedia(self, string) {
+    search(string);
+    for (let i = 0; i < self.parentNode.childElementCount; i++) {
+        self.parentNode.children[i].classList.remove("active");
+    }
+    self.classList.add("active")
+}
+
 function search(string) {
-    searchTitleBars(string);
-    let input = string;
-    input = input.toLowerCase();
+    let newString = string.toLowerCase();
+    searchMediaObjects(newString);
+    searchTitleBars(newString);
+}
+
+function searchMediaObjects(string) {
     let x = document.getElementsByClassName('media_click_object_metadata');
     for (i = 0; i < x.length; i++) {
-        if (!x[i].innerText.toLowerCase().includes(input)) {
+        if (!x[i].innerText.toLowerCase().includes(string)) {
             x[i].parentNode.style.display = "none";
         }
         else {
@@ -215,15 +211,13 @@ function search(string) {
 }
 
 function searchTitleBars(string) {
-    let input = string;
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('media-slider-section');
+    let x = document.getElementsByClassName('media-slider-carousel');
     for (i = 0; i < x.length; i++) {
-        if (!x[i].innerText.toLowerCase().includes(input)) {
-            x[i].style.display = "none";
+        if (x[i].innerText.toLowerCase().includes(string)) {
+            x[i].parentNode.style.display = "block";
         }
         else {
-            x[i].style.display = "block";
+            x[i].parentNode.style.display = "none";
         }
     }
 }

@@ -10,10 +10,6 @@ function isMobileDevice(){
     return window.matchMedia('(hover: none)').matches;
 }
 
-function isLoggedIn() {
-    if (localStorage['uid'] == undefined) {
-        return false;
-    } else {
-        return true;
-    }
+function open_page(page) {
+    window.open(page + '.html','_self')
 }
