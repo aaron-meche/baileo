@@ -14,7 +14,7 @@
     --darkPlum: #24105C;
     --royalPurple: #51284a;
     --spruceLeaves: #2C494B;
-    --toyPurple: rgb(137, 61, 246);
+    --toyPurple: rgb(178, 129, 246);
     --lilyBlue: rgb(197, 171, 254);
     --blueRaspberry: #20427A;
     --grapeTaffy: #5E468B;
@@ -24,7 +24,7 @@
     --lavendarBlush: #EEE5E9;
     --grannySmithApple: #9CD08F;
     --asparagus: #87A461;
-    --raisinBlack: #2E2836;
+    --raisinBlack: #443a51;
     --tumbleweed: #F4B393;
     --lightSalmon: #FDA579;
     --teaGreen: #C5DBBC;
@@ -33,7 +33,8 @@
     --darkOlivine: #4f5f44;
     --onyx: #23242A;
 
-    --popBorder: var(--teaGreen);
+    --accentColor: var(--grapeTaffy);
+    --popBorder: var(--toyPurple);
 
     --mainFont: BaileyScript;
 }
@@ -45,7 +46,7 @@
 
 body{
     margin: 0;
-    background-color: var(--raisinBlack);
+    background-color: var(--accentColor);
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
@@ -89,7 +90,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--asparagus);
+    background-color: var(--accentColor);
     z-index: 50;
 }
 
@@ -124,23 +125,26 @@ a{
 
 .left-navbar .item {
     padding: 10pt;
+    padding-left: 15pt;
     margin: 0 10pt 0 10pt;
-    border-radius: 5pt;
+    /* border-top-right-radius: 10pt; */
+    /* border-bottom-right-radius: 10pt; */
+    border-radius: 15pt;
     cursor: default;
     display: flex;
     align-items: center;
 }
 
 .left-navbar .active {
-    background-color: var(--boldOlivine);
+    background-color: var(--accentColor);
 }
 
 .left-navbar .item:hover {
-    background-color: #c5dbbc4b;
+    background-color: var(--raisinBlack);
 }
 
 .left-navbar .active:hover {
-    background-color: var(--boldOlivine);
+    background-color: var(--accentColor);
 }
 
 .logo-display{
@@ -175,8 +179,7 @@ a{
 
 .section-divider{
     height: 1pt;
-    width: calc(100% - 20pt);
-    margin: 10pt;
+    margin: 15pt;
     background-color: var(--popBorder);
 }
 
@@ -190,7 +193,7 @@ a{
     justify-content: center;
     font-size: 15pt;
     font-weight: 300;
-    border: solid 1pt var(--popBorder);
+    border: solid 2pt var(--popBorder);
 }
 
 .left-navbar .item span{
@@ -206,7 +209,6 @@ a{
 .horizontal-navbar{
     height: 100%;
     width: 100%;
-    padding: 0 15pt 0 15pt;
     border-bottom: solid 1pt gray;
 }
 
@@ -227,7 +229,7 @@ a{
 .horizontal-navbar .active{
     color: white;
     height: calc(100% - 3pt);
-    border-bottom: solid 3pt var(--teaGreen);
+    border-bottom: solid 3pt var(--popBorder);
 }
 
 
@@ -308,7 +310,7 @@ a{
     opacity: 0;
     transition: opacity 100ms;
     z-index: 1;
-    box-shadow: 0 0 0 3pt var(--teaGreen);
+    box-shadow: 0 0 0 3pt var(--popBorder);
     background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -414,7 +416,7 @@ a{
     position: sticky;
     top: 0;
     z-index: 95;
-    background-color: var(--asparagus);
+    background-color: var(--accentColor);
     font-size: 14pt;
 }
 
@@ -596,7 +598,7 @@ a{
 }
 
 #searchBar:focus{
-    outline: solid 2pt var(--teaGreen);
+    outline: solid 2pt var(--popBorder);
 }
 
 

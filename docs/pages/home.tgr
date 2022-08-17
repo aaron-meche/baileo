@@ -3,7 +3,7 @@ title : Baileo - Home
 nav-block : class[left-navbar]
 
 	block : class[logo-display]
-		image : images/logo unfilled.png
+		image : images/logo.png
 		item : class[logo-text]
 			:: baileo
 		/item
@@ -27,27 +27,27 @@ nav-block : class[left-navbar]
 
 			item : id[accountDetectedWrapper]
 
-			block : class[section-divider]
-			/block
-
-
-
-			block : class[item]
-				block : class[account-pfp-wrapper] id[accountDisplayInitials] style[background: center center fixed; background-size: cover;]
-					:: ??
+				block : class[section-divider]
 				/block
-				item : id[accountDisplayName]
-					:: No Account
-				/item
-			/block
 
-			block : class[item] onclick[open_panel('continue watching')]
-				:: Continue Watching
-			/block
 
-			block : class[item] id[logoutButton]
-				:: Log Out
-			/block
+
+				block : class[item]
+					block : class[account-pfp-wrapper] id[accountDisplayInitials] style[background: center center fixed; background-size: cover;]
+
+					/block
+					item : id[accountDisplayName]
+					:: _
+					/item
+				/block
+
+				block : class[item] onclick[open_panel('continue watching')]
+					:: Continue Watching
+				/block
+
+				block : class[item] id[logoutButton]
+					:: Log Out
+				/block
 
 			/item
 
@@ -55,14 +55,14 @@ nav-block : class[left-navbar]
 
 					item : id[noAccountDetectedWrapper] style[display: none;]
 					
-					block : class[section-divider]
-					/block
+						block : class[section-divider]
+						/block
 
 
 
-					block : class[item] id[signInGoogleButton]
-						:: Sign in to an account
-					/block
+						block : class[item] id[signInGoogleButton]
+							:: Sign in to an account
+						/block
 
 					/item
 
@@ -294,6 +294,6 @@ block : class[bottom-padding] ondblclick[displayVersionInfo()]
 
 
 
-block : class[panel] id[panel]
-
+block : class[panel] id[account_panel]
+	h : Your Account
 /block

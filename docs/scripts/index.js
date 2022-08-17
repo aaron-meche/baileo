@@ -5,24 +5,25 @@ var uid;
 function bodyOnLoadFunctions () {
     build_mediaClickObjects();
     inject_expandScreen();
+    // updateAccountPreviewInformation();
 }
 
-function updateAccountPreviewInformation() {
-    dom('accountDisplayName').innerHTML = localStorage['display name'];
+// function updateAccountPreviewInformation() {
+//     dom('accountDisplayName').innerHTML = localStorage['display name'];
 
-    let name = localStorage['display name'];
-    name = name.split(' ');
-    let firstInitial = name[0][0];
-    let lastInitial = name[1][0];
-    let initals = firstInitial + lastInitial;
+//     let name = localStorage['display name'];
+//     name = name.split(' ');
+//     let firstInitial = name[0][0];
+//     let lastInitial = name[1][0];
+//     let initals = firstInitial + lastInitial;
 
-    dom('accountDisplayInitials').innerHTML = initals;
-    if (localStorage['pfp url']) {
-        dom('accountDisplayInitials').innerHTML = '';
-        dom('accountDisplayInitials').style.background = 'url("' + localStorage['pfp url'] + '") center center no-repeat';
-        dom('accountDisplayInitials').style.backgroundSize = 'cover';
-    }
-}
+//     dom('accountDisplayInitials').innerHTML = initals;
+//     if (localStorage['pfp url']) {
+//         dom('accountDisplayInitials').innerHTML = '';
+//         dom('accountDisplayInitials').style.background = 'url("' + localStorage['pfp url'] + '") center center no-repeat';
+//         dom('accountDisplayInitials').style.backgroundSize = 'cover';
+//     }
+// }
 
 function displayVersionInfo() {
     console.log('o');
