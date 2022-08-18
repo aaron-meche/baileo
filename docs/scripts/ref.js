@@ -9,3 +9,7 @@ function unspace(string) {
 function isMobileDevice(){
     return window.matchMedia('(hover: none)').matches;
 }
+
+function removeThorns(string) {
+    return string.replace(': ',' - ').replace("'",'');_
+}

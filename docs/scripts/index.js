@@ -123,13 +123,13 @@ function continueWatching(title) {
 }
 
 function transport(type, title, season, episode) {
-    let baseLink = 'http://50.58.218.209/media/';
+    let baseLink = 'https://50.58.218.209/media/';
     let newTitle = title.trim();
     if (type == 'tv') {
-        let generatedLink = baseLink + newTitle + '/' + 'Season ' + season + '/' + media_data[unspace(title)]['s' + season][episode] + '.mp4';
+        let generatedLink = baseLink + newTitle + '/' + 'Season ' + season + '/' + removeThorns(media_data[unspace(title)]['s' + season][episode]) + '.mp4';
         open_url(generatedLink);
     } else if (type == 'movie') {
-        let generatedLink = baseLink + newTitle + '.mp4';
+        let generatedLink = baseLink + '/' + removeThorns(newTitle) + '.mp4';
         open_url(generatedLink);
     }
     // let landing_page = 'receiver.html';
@@ -173,7 +173,6 @@ function mobileNavMenu() {
 
 function filterMedia(self, string) {
     search(string);
-    dom('searchBar').value = string;
     for (let i = 0; i < self.parentNode.childElementCount; i++) {
         self.parentNode.children[i].classList.remove("active");
     }

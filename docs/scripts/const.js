@@ -73,6 +73,11 @@ const media_data = {
         color: "rgba(227, 45, 255, 1)",
     },
 
+    AvengersENDGAME: {
+        mediaType: 'movie',
+        cat: 'marvel',
+    },
+
     AmericanPsycho: {
         mediaType: 'movie',
         cat: 'drama',
@@ -178,19 +183,29 @@ const media_data = {
         cat: 'animation',
     },
 
+    SpiderManFarFromHome: {
+        mediaType: 'movie',
+        cat: 'marvel',
+    },
+
     SpiderManHomecoming: {
         mediaType: 'movie',
-        cat: 'superhero',
+        cat: 'marvel',
     },
 
     SpiderManNoWayHome: {
         mediaType: 'movie',
-        cat: 'superhero',
+        cat: 'marvel',
     },
 
     TheAmazingSpiderMan2: {
         mediaType: 'movie',
-        cat: 'superhero',
+        cat: 'marvel',
+    },
+
+    TheIncredibleHulk: {
+        mediaType: 'movie',
+        cat: 'marvel',
     },
 
     TheNotebook: {
