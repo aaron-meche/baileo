@@ -173,6 +173,7 @@ function mobileNavMenu() {
 
 function filterMedia(self, string) {
     search(string);
+    dom('searchBar').value = string;
     for (let i = 0; i < self.parentNode.childElementCount; i++) {
         self.parentNode.children[i].classList.remove("active");
     }
@@ -184,34 +185,28 @@ function clearMediaFilter() {
         dom('media_filter').children[i].classList.remove("active");
     }
     dom('allMediaFilter').classList.add("active");
+    dom('searchBar').value = '';
 }
 
 function search(string) {
     let newString = string.toLowerCase();
+    let y = document.getElementsByClassName('media-slider-section');
+    for (i = 0; i < y.length; i++) {
+        y[i].style.display = "none";
+    }
     searchMediaObjects(newString);
-    searchTitleBars(newString);
 }
 
 function searchMediaObjects(string) {
-    let x = document.getElementsByClassName('media_click_object_metadata');
+    let x = document.getElementsByClassName('building-block-media-click-object');
+    console.log(x.length);
     for (i = 0; i < x.length; i++) {
-        if (!x[i].innerText.toLowerCase().includes(string)) {
-            x[i].parentNode.style.display = "none";
+        if (!x[i].innerHTML.toLowerCase().includes(string)) {
+            x[i].style.display = "none";
         }
         else {
-            x[i].parentNode.style.display = "inline-block";
-        }
-    }
-}
-
-function searchTitleBars(string) {
-    let x = document.getElementsByClassName('media-slider-carousel');
-    for (i = 0; i < x.length; i++) {
-        if (x[i].innerText.toLowerCase().includes(string)) {
-            x[i].parentNode.style.display = "block";
-        }
-        else {
-            x[i].parentNode.style.display = "none";
+            x[i].parentNode.parentNode.style.display = "block";
+            x[i].style.display = "inline-block";
         }
     }
 }

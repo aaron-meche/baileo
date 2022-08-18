@@ -10,15 +10,15 @@ nav-block : class[left-navbar]
 	/block
 
 	item : id[media_filter]
-					block : class[item active] onclick[filterMedia(this, 'media_search_query')] id[allMediaFilter]
+					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
 						:: All Media
 					/block
 
-					block : class[item] onclick[filterMedia(this, 'media_search_query_tv')]
+					block : class[item] onclick[filterMedia(this, 'TV Show')]
 						:: TV Shows
 					/block
 
-					block : class[item] onclick[filterMedia(this, 'media_search_query_movie')]
+					block : class[item] onclick[filterMedia(this, 'Movie')]
 						:: Movies
 					/block
 	/item
@@ -61,7 +61,8 @@ nav-block : class[left-navbar]
 
 
 						block : class[item] id[signInGoogleButton]
-							:: Sign in to an account
+							image : images/google.png
+							:: Sign in with Google
 						/block
 
 					/item
@@ -90,7 +91,7 @@ nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'media_search_query'), clearMediaFilter()]
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
 
 /block
 

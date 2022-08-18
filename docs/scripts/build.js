@@ -7,24 +7,27 @@ function build_mediaClickObjects() {
             var mediaTitle = mediaClickObjects[i].innerHTML;
             var mediaType = media_data[unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, '')]['mediaType'];
             var mediaCat = media_data[unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, '')]['cat'];
+            var mediaTypeDescrip;
 
             if (mediaType == 'movie') {
                 media_button_display = 'play';
                 media_transport = 'transport("movie","' + mediaTitle + '")';
+                mediaTypeDescrip = 'Movie';
             } else if (mediaType == 'tv') {
                 media_button_display = 'continue';
                 media_transport = 'expandTv("' + mediaTitle + '")';
+                mediaTypeDescrip = 'TV Show';
             }
 
             mediaClickObjects[i].innerHTML = `
-            <div class='media-slider-object media_` + mediaType + `' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='` + media_transport + `'>
+            <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')" onclick='` + media_transport + `'>
                 <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
                 <div class='media_click_object_metadata'>
                     <div class='media_clicker_object_title'>` + mediaTitle + `</div>
                     <div class='media_clicker_object_category'>` + mediaCat + `</div>
-                    <div class='media_clicker_object_type'>media_search_query_` + mediaType + `</div>
+                    <div class='media_clicker_object_type'>Media ` + mediaTypeDescrip + `</div>
                 </div>
             </div>`
         }

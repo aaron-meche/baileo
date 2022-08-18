@@ -109,7 +109,7 @@ a{
 }
 
 .left-navbar{
-    height: calc(100vh - 50pt);
+    height: calc(100vh - 40pt);
     width: 250pt;
     position: fixed;
     top: 40pt;
@@ -268,13 +268,14 @@ a{
     padding-left: 10pt;
     padding-right: 280pt;
     position: relative;
+    font-size: 0;
 }
 
 .media-slider-object{
     height: 100pt;
     width: 180pt;
     border-radius: 5pt;
-    margin: 3pt;
+    margin: 5pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
