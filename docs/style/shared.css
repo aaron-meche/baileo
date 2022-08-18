@@ -257,7 +257,6 @@ a{
     overflow-x: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    overflow-y: hidden;
 }
 
 .horizontal-scroll::-webkit-scrollbar{
@@ -266,7 +265,7 @@ a{
 
 .media-slider-carousel{
     padding-left: 10pt;
-    padding-right: 280pt;
+    padding-right: 100pt;
     position: relative;
     font-size: 0;
 }
@@ -281,7 +280,9 @@ a{
     display: inline-block;
     position: relative;
     font-size: 0;
+    transition: margin 1s, width 500ms;
 }
+
 /* 
 @media screen and (max-width: 700px) {
     .media-slider-object {

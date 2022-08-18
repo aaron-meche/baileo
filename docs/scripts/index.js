@@ -61,7 +61,7 @@ function expandTv(mediaTitle) {
         }
     }
 
-    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
+    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='open_url("https://50.58.218.209/media")'>View Source</div>`);
 
     for (let i = 1; i <= media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
@@ -100,8 +100,8 @@ function selectSeason(seasonNum) {
             tvNavbarContent.innerHTML = tvNavbarContent.innerHTML + `<div class='item' onclick='selectSeason("` + i + `")'>Season ` + i + `</div>`
         }
     }
-    
-    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='navbar-link-item' onclick='openPage("http://50.58.218.209/media/` + title + `")'>View Source</div>`);
+
+    tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='open_url("https://50.58.218.209/media")'>View Source</div>`);
 
     for (let i = 1; i <= media_data[titleUS]['s' + seasonNum].length; i++) {
         tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
