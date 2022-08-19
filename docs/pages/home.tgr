@@ -25,50 +25,6 @@ nav-block : class[left-navbar]
 
 
 
-			## : item : id[accountDetectedWrapper]
-
-			## : 	block : class[section-divider]
-			## : 	/block
-
-
-
-			## : 	block : class[item]
-			## : 		block : class[account-pfp-wrapper] id[accountDisplayInitials] style[background: center center fixed; background-size: cover;]
-
-			## : 		/block
-			## : 		item : id[accountDisplayName]
-			## : 		:: _
-			## : 		/item
-			## : 	/block
-
-			## : 	block : class[item] onclick[open_panel('continue watching')]
-			## : 		:: Continue Watching
-			## : 	/block
-
-			## : 	block : class[item] id[logoutButton]
-			## : 		:: Log Out
-			## : 	/block
-
-			## : /item
-
-
-
-			## : 		item : id[noAccountDetectedWrapper] style[display: none;]
-					
-			## : 			block : class[section-divider]
-			## : 			/block
-
-
-
-			## : 			block : class[item] id[signInGoogleButton]
-			## : 				image : images/google.png
-			## : 				:: Sign in with Google
-			## : 			/block
-
-			## : 		/item
-
-
-
 	block : class[section-divider]
 	/block
 
@@ -290,13 +246,6 @@ block : class[media-slider-section]
 			:: Elf
 		/item
 	/block
-/block
-
-
-
-
-
-block : class[bottom-padding] ondblclick[displayVersionInfo()]
 /block
 
 /block

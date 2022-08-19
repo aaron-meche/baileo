@@ -1,35 +1,8 @@
 // Functions
 
-var uid;
-
 function bodyOnLoadFunctions () {
     build_mediaClickObjects();
     inject_expandScreen();
-    // updateAccountPreviewInformation();
-}
-
-// function updateAccountPreviewInformation() {
-//     dom('accountDisplayName').innerHTML = localStorage['display name'];
-
-//     let name = localStorage['display name'];
-//     name = name.split(' ');
-//     let firstInitial = name[0][0];
-//     let lastInitial = name[1][0];
-//     let initals = firstInitial + lastInitial;
-
-//     dom('accountDisplayInitials').innerHTML = initals;
-//     if (localStorage['pfp url']) {
-//         dom('accountDisplayInitials').innerHTML = '';
-//         dom('accountDisplayInitials').style.background = 'url("' + localStorage['pfp url'] + '") center center no-repeat';
-//         dom('accountDisplayInitials').style.backgroundSize = 'cover';
-//     }
-// }
-
-function displayVersionInfo() {
-    console.log('o');
-    let version = '5.0.0 U';
-    let release = 'Epsilon';
-    alert('Version: ' + release + ' ' + version);
 }
 
 function expandTv(mediaTitle) {
@@ -153,22 +126,6 @@ function closeTvScreen() {
 
     document.getElementById('continueWatchingButton').style.display = 'none';
     document.getElementById('startWatchingTvButton').style.display = 'none';
-}
-
-var mobileNavMenuExpanded = false;
-
-function mobileNavMenu() {
-    if (mobileNavMenuExpanded) {
-        document.getElementById('mobileNavbarDropMenu').style.display = 'none';
-        document.getElementById('expandMobileNavMenu').style.display = 'block';
-        document.getElementById('closeMobileNavMenu').style.display = 'none';
-        mobileNavMenuExpanded = false;
-    } else {
-        document.getElementById('mobileNavbarDropMenu').style.display = 'block';
-        document.getElementById('expandMobileNavMenu').style.display = 'none';
-        document.getElementById('closeMobileNavMenu').style.display = 'block';
-        mobileNavMenuExpanded = true;
-    }
 }
 
 function filterMedia(self, string) {

@@ -62,4 +62,25 @@ function inject_expandScreen() {
             </div>
         </div>
     </div>`);
+
+    dom('tvPanelNavbar').addEventListener('mousemove',function(event){
+        var pos = dom('tvPanelNavbar').getBoundingClientRect();
+        let width = dom('tvPanelNavbar').clientWidth;
+        let mouseX = event.clientX;
+
+        let boundLeft = pos.left;
+        let boundRight = pos.left + width;
+
+        let boundZone = 150;
+        let zoneLeftBound = pos.left + boundZone;
+        let zoneRightBound = boundRight - boundZone;
+
+        if (mouseX < zoneLeftBound) {
+            dom('tvPanelNavbarContents').scrollLeft = dom('tvPanelNavbarContents').scrollLeft - 2;
+            toggleScroll();
+        } else if (mouseX > zoneRightBound) {
+            dom('tvPanelNavbarContents').scrollLeft = dom('tvPanelNavbarContents').scrollLeft + 2;
+            toggleScroll()
+        }
+    })
 }
