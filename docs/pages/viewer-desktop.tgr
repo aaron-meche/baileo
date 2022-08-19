@@ -1,0 +1,46 @@
+block : class[viewer-background]
+/block
+
+import css : style/desktop-video-player.css
+
+block : id[videoPlayerUi]
+
+    block : class[top-section]
+    
+    
+    
+    
+    /block
+
+
+
+    block : class[bottom-section]
+    
+        block : class[progress-bar-wrapper]
+            block : class[wrapper]
+
+                block : class[progress-bar]
+                    block : class[progress-current]
+                
+                    /block
+                    block : class[progress-scrub]
+                
+                    /block
+                /block
+
+                block : class[progress-data]
+                    block : class[progress-watched]
+                        :: 0:00
+                    /block
+
+                    block : class[progress-total]
+                        :: 10:00
+                    /block
+                /block
+
+            /block
+        /block
+    
+    /block
+
+/block

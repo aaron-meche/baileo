@@ -47,7 +47,10 @@ nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
+	block : class[search-bar-wrapper]
+		input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
+		image : images/close.png : onclick[filterMedia(this, 'Media'), clearMediaFilter()]
+	/block
 
 /block
 

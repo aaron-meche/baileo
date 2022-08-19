@@ -71,7 +71,7 @@ function inject_expandScreen() {
         let boundLeft = pos.left;
         let boundRight = pos.left + width;
 
-        let boundZone = 150;
+        let boundZone = 250;
         let zoneLeftBound = pos.left + boundZone;
         let zoneRightBound = boundRight - boundZone;
 

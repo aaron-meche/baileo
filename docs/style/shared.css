@@ -46,7 +46,7 @@
 
 body{
     margin: 0;
-    background-color: var(--accentColor);
+    background-color: var(--onyx);
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
@@ -90,8 +90,15 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--accentColor);
+    background-color: var(--onyx);
+    border-bottom: solid 3pt var(--accentColor);
     z-index: 50;
+    transition: background-color 500ms, border-bottom 500ms;
+}
+
+.top-navbar:hover{
+    background-color: var(--accentColor);
+    border-bottom: solid 0 var(--accentColor);
 }
 
 .toggle-left-navbar-button{
@@ -99,8 +106,17 @@ a{
     top: 0;
     left: 0;
     height: 15pt;
+    width: 15pt;
     padding: 10pt;
     margin: 2.5pt;
+    border-radius: 10pt;
+    transition: height 200ms, margin 200ms;
+}
+
+.toggle-left-navbar-button:hover{
+    height: 20pt;
+    padding: 10pt;
+    margin: 0 2.5pt 0 2.5pt;
     border-radius: 10pt;
 }
 
@@ -581,10 +597,32 @@ a{
 
 
 
-#searchBar{
-    height: 70%;
+.search-bar-wrapper{
+    height: 25pt;
     width: 60vw;
     max-width: 400pt;
+    position: relative;
+}
+
+.search-bar-wrapper img{
+    height: 10pt;
+    position: absolute;
+    padding: 3.75pt;
+    margin: 3.75pt;
+    top: 0;
+    right: 0;;
+    opacity: 0.7;
+    border-radius: 10pt;
+}
+
+.search-bar-wrapper img:hover{
+    opacity: 1;
+    background-color: rgb(200, 52, 52);
+}
+
+#searchBar{
+    height: 100%;
+    width: 100%;
     background: var(--charcoal);
     padding-left: 10pt;
     outline: none;
@@ -592,6 +630,7 @@ a{
     font-family: var(--mainFont);
     color: white;
     border: none;
+    border-radius: 10pt;
 }
 
 #searchBar::placeholder{
@@ -601,6 +640,7 @@ a{
 
 #searchBar:focus{
     outline: solid 2pt var(--popBorder);
+    border-radius: 0;
 }
 
 

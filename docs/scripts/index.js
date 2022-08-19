@@ -1,9 +1,33 @@
-// Functions
+// ----- Onloads, Event listners, and basic functions
 
 function bodyOnLoadFunctions () {
-    build_mediaClickObjects();
-    inject_expandScreen();
+    if (document.getElementsByClassName('building-block-media-click-object')[0]) {
+        build_mediaClickObjects();
+        inject_expandScreen();
+    }
+    if (sessionStorage['activePage'] == 'viewer-desktop') {
+        addEventListenersToViewer();
+    }
 }
+
+function toggleLeftNavbar() {
+    let navbar = document.getElementsByClassName('left-navbar')[0];
+    let content = document.getElementsByClassName('content')[0];
+    console.log(navbar.offsetLeft);
+    if (navbar.offsetLeft >= 0) {
+        navbar.style.left = '-250pt';
+        content.style.left = '0';
+        content.style.width = '100vw';
+    } else {
+        navbar.style.left = '0';
+        content.style.left = '250pt';
+        content.style.width = 'calc(100vw - 250pt)';
+    }
+}
+
+
+// ----- Expand panel
+
 
 function expandTv(mediaTitle) {
     var tvScreen = document.getElementById('tvExpandScreen');
@@ -85,34 +109,6 @@ function selectSeason(seasonNum) {
     }
 }
 
-function continueWatching(title) {
-    var mediaType = media_data[unspace(title)]['mediaType'];
-    
-    if (mediaType == 'tv') {
-        transport('tv',title,localStorage[title + '_saved_season'],localStorage[title + '_saved_episode'])
-    } else if (mediaType == 'movie') {
-        transport('movie',title);
-    }
-}
-
-function transport(type, title, season, episode) {
-    let baseLink = 'https://50.58.218.209/media/';
-    let newTitle = title.trim();
-    if (type == 'tv') {
-        let generatedLink = baseLink + newTitle + '/' + 'Season ' + season + '/' + removeThorns(media_data[unspace(title)]['s' + season][episode]) + '.mp4';
-        open_url(generatedLink);
-    } else if (type == 'movie') {
-        let generatedLink = baseLink + '/' + removeThorns(newTitle) + '.mp4';
-        open_url(generatedLink);
-    }
-    // let landing_page = 'receiver.html';
-    // if (isMobileDevice()) {
-    //     landing_page = 'mobile-viewer.html';
-    // }
-    // let generatedLink = 'player/' + landing_page + '?type=' + type + '&title=' + title + '&season=' + season + '&episode=' + episode;
-    // open_url(generatedLink);
-}
-
 function closeTvScreen() {
     var tvExpandScreen = document.getElementById('tvExpandScreen');
     var tvScreenContents = document.getElementById('tvScreenContents');
@@ -127,6 +123,37 @@ function closeTvScreen() {
     document.getElementById('continueWatchingButton').style.display = 'none';
     document.getElementById('startWatchingTvButton').style.display = 'none';
 }
+
+
+// ----- Transportation to watch media
+
+
+function transport(type, title, season, episode) {
+    localStorage['transport_type'] = type;
+    localStorage['transport_title'] = title;
+    localStorage['transport_season'] = season;
+    localStorage['transport_episode'] = episode;
+
+    let transportPage = 'viewer-mobile';
+
+    if (!isMobileDevice()) {
+        transportPage = 'viewer-desktop'
+    }
+
+    open_page(transportPage);
+}
+
+function randomizeTv() {
+    var title = sessionStorage['expandPanelTitle'];
+    var sTotal = media_data[unspace(title)]['sTotal'];
+    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
+    var randomEpisode = Math.floor(Math.random() * (media_data[unspace(title)]['s' + randomSeason]).length);
+    transport('tv',sessionStorage['expandPanelTitle'],randomSeason,randomEpisode);
+}
+
+
+// -----
+
 
 function filterMedia(self, string) {
     search(string);
@@ -167,31 +194,8 @@ function searchMediaObjects(string) {
     }
 }
 
-function readSearchUrl() {
-    var urlParams = new URLSearchParams(document.location.search);
-    search(urlParams.get('search').replace(/%20/g, ' '));
-    document.getElementById('searchBar').value = urlParams.get('search').replace(/%20/g, ' ');
-}
 
-function randomizeTv() {
-    var title = sessionStorage['expandPanelTitle'];
-    var sTotal = media_data[unspace(title)]['sTotal'];
-    var randomSeason = Math.floor(Math.random() * sTotal) + 1;
-    var randomEpisode = Math.floor(Math.random() * (media_data[unspace(title)]['s' + randomSeason]).length);
-    transport('tv',sessionStorage['expandPanelTitle'],randomSeason,randomEpisode);
-}
+// -----
 
-function toggleLeftNavbar() {
-    let navbar = document.getElementsByClassName('left-navbar')[0];
-    let content = document.getElementsByClassName('content')[0];
-    console.log(navbar.offsetLeft);
-    if (navbar.offsetLeft >= 0) {
-        navbar.style.left = '-250pt';
-        content.style.left = '0';
-        content.style.width = '100vw';
-    } else {
-        navbar.style.left = '0';
-        content.style.left = '250pt';
-        content.style.width = 'calc(100vw - 250pt)';
-    }
-}
+
+// Code
