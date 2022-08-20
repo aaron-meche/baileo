@@ -8,12 +8,12 @@ if (localStorage['savedProgress_' + localStorage['transport_title'].trim()]) {
 function launchDesktopViewer() {
     let source = localStorage['transport_title'];
     if (localStorage['transport_type'] == 'tv') {
-        source = localStorage['transport_title'] + '/Season ' + localStorage['transport_season'] + '/' + media_data[unspace(localStorage['transport_title'])]['s' + localStorage['transport_season']][localStorage['transport_episode']] + '.mp4';
+        source = localStorage['transport_title'] + '/Season ' + localStorage['transport_season'] + '/' + media_data[unspace(localStorage['transport_title'])]['s' + localStorage['transport_season']][localStorage['transport_episode']];
     }
     source = source.trim();
     let baseLink = 'https://50.58.218.209/media/';
     source = baseLink + source;
-    dom('video').innerHTML = '<source src="' + source + '">';
+    dom('video').innerHTML = '<source src="' + source + '.mp4">';
 
     var interval = setInterval(function(){
         var countForVideo = document.getElementById('video').readyState;
