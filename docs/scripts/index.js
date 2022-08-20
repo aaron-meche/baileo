@@ -6,7 +6,7 @@ function bodyOnLoadFunctions () {
         inject_expandScreen();
     }
     if (sessionStorage['activePage'] == 'viewer-desktop') {
-        addEventListenersToViewer();
+        launchDesktopViewer();
     }
 }
 

@@ -5,7 +5,22 @@
     top: 0;
     left: 0;
     z-index: -10;
-    background-color: black;
+    background-color: var(--darkAqua);
+    transition: background-color 500ms;
+}
+
+#video{
+    height: 80vh;
+    width: 80vw;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    transition-duration: 500ms;
+}
+
+#videoPlayerUi{
+    opacity: 0;
+    transition: opacity 500ms;
 }
 
 .top-section{
@@ -14,7 +29,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--charcoal)
 }
 
 .bottom-section{
@@ -23,7 +37,7 @@
     position: absolute;
     top: 50vh;
     left: 0;
-    background-color: var(--onyx)
+    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 50%);
 }
 
 .progress-bar-wrapper{
@@ -41,9 +55,9 @@
 }
 
 .progress-bar{
-    height: 15%;
+    height: 1vh;
     width: 100%;
-    background-color: lightgray;
+    background-color: rgb(255, 255, 255);
     transition: height 200ms;
     position: relative;
     margin-bottom: 5pt;
@@ -52,7 +66,7 @@
 }
 
 .progress-bar-wrapper:hover .progress-bar{
-    height: 30%;
+    height: 2vh;
 }
 
 .progress-bar-wrapper:hover .progress-current{
@@ -60,7 +74,7 @@
 }
 
 .progress-bar-wrapper:hover .progress-scrub{
-    opacity: 0;
+    background-color: var(--popBorder);
 }
 
 .progress-current{
@@ -68,7 +82,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 70%;
+    width: 0;
     background-color: var(--popBorder);
 }
 
@@ -77,8 +91,16 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 50%;
-    background-color: var(--accentColor);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.progress-scrub-data{
+    height: auto;
+    width: 15vw;
+    position: absolute;
+    bottom: 12vh;
+    left: 50vw;
+    text-align: center;
     visibility: hidden;
 }
 
@@ -101,4 +123,13 @@
     right: 0;
     width: 50%;
     text-align: right;
+}
+
+#pauseIcon{
+    height: 10vh;
+    width: 10vh;
+    position: absolute;
+    top: 45vh;
+    left: calc(50vw - 5vh);
+    z-index: 10;
 }

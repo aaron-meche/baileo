@@ -3,16 +3,15 @@ block : class[viewer-background]
 
 import css : style/desktop-video-player.css
 
-block : id[videoPlayerUi]
+videoskin : id[video]
+/videoskin
+
+image : images/pause.png : id[pauseIcon] style[display: none]
+
+block : id[videoPlayerUi] onclick[togglePlay()]
 
     block : class[top-section]
-    
-    
-    
-    
     /block
-
-
 
     block : class[bottom-section]
     
@@ -20,10 +19,10 @@ block : id[videoPlayerUi]
             block : class[wrapper]
 
                 block : class[progress-bar]
-                    block : class[progress-current]
-                
-                    /block
                     block : class[progress-scrub]
+
+                    /block
+                    block : class[progress-current]
                 
                     /block
                 /block
@@ -38,6 +37,12 @@ block : id[videoPlayerUi]
                     /block
                 /block
 
+            /block
+        /block
+
+        block : class[progress-scrub-data]
+            block : class[progress-scrub-time]
+                :: 0:00
             /block
         /block
     
