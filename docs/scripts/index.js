@@ -63,7 +63,7 @@ function expandTv(mediaTitle) {
     for (let i = 1; i <= media_data[titleUS]['s1'].length; i++) {
         tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
             <div class='listItemChoice' onclick='transport("tv","` + title + `","1","` + i + `")'>
-                <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[i] + `</div>
+                <div class='listItemTitle'>` + (media_data[titleUS]['s1'])[i - 1] + `</div>
                 <div class='listItemLabel'>Episode ` + i + `</div>
             </div>`);
     }
@@ -101,11 +101,11 @@ function selectSeason(seasonNum) {
     tvNavbarContent.insertAdjacentHTML('beforeend',`<div class='item' onclick='open_url("https://50.58.218.209/media")'>View Source</div>`);
 
     for (let i = 1; i <= media_data[titleUS]['s' + seasonNum].length; i++) {
-        tvPanelEpisodeList.innerHTML = tvPanelEpisodeList.innerHTML + `
+        tvPanelEpisodeList.insertAdjacentHTML('beforeend',`
             <div class='listItemChoice' onclick='transport("tv","` + title + `","` + seasonNum + `","` + i + `")'>
-                <div class='listItemTitle'>` + media_data[titleUS]['s' + seasonNum][i] + `</div>
+                <div class='listItemTitle'>` + (media_data[titleUS]['s' + seasonNum])[i - 1] + `</div>
                 <div class='listItemLabel'>Episode ` + i + `</div>
-            </div>`;
+            </div>`);
     }
 }
 

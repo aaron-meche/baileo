@@ -47,10 +47,7 @@ nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	block : class[search-bar-wrapper]
-		input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
-		image : images/close.png : onclick[filterMedia(this, 'Media'), clearMediaFilter()]
-	/block
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
 
 /block
 
@@ -251,11 +248,4 @@ block : class[media-slider-section]
 	/block
 /block
 
-/block
-
-
-
-
-block : class[panel] id[account_panel]
-	h : Your Account
 /block

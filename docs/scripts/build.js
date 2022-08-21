@@ -77,10 +77,8 @@ function inject_expandScreen() {
 
         if (mouseX < zoneLeftBound) {
             dom('tvPanelNavbarContents').scrollLeft = dom('tvPanelNavbarContents').scrollLeft - 2;
-            toggleScroll();
         } else if (mouseX > zoneRightBound) {
             dom('tvPanelNavbarContents').scrollLeft = dom('tvPanelNavbarContents').scrollLeft + 2;
-            toggleScroll()
         }
     })
 }

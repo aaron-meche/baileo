@@ -7,6 +7,19 @@
     left: 0;
 }
 
+.media-slider-object{
+    height: 85pt;
+    width: 150pt;
+    border-radius: 5pt;
+    margin: 3pt;
+    background: transparent no-repeat center;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+    transition: margin 1s, width 500ms;
+}
+
 .image-shader{
     display: none;
 }
@@ -20,11 +33,17 @@
 }
 
 .expand-panel-topbar{
-    justify-content: right;
     height: 50pt;
-    width: calc(100% - 15pt);
-    justify-content: right;
-    padding-right: 15pt;
+}
+
+.expand-panel-navbar{
+    top: 50pt;
+}
+
+.close-panel-icon{
+    height: 15pt;
+    padding: 7.5pt;
+    margin: 10pt;
 }
 
 .panel-card{

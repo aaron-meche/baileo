@@ -82,7 +82,7 @@ a{
 
 
 .top-navbar{
-    height: 40pt;
+    height: 50pt;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -108,15 +108,14 @@ a{
     height: 15pt;
     width: 15pt;
     padding: 10pt;
-    margin: 2.5pt;
+    margin: 7.5pt;
     border-radius: 10pt;
     transition: height 200ms, margin 200ms;
 }
 
 .toggle-left-navbar-button:hover{
     height: 20pt;
-    padding: 10pt;
-    margin: 0 2.5pt 0 2.5pt;
+    margin: 5pt 7.5pt 5pt 7.5pt;
     border-radius: 10pt;
 }
 
@@ -125,10 +124,10 @@ a{
 }
 
 .left-navbar{
-    height: calc(100vh - 40pt);
+    height: calc(100vh - 50pt);
     width: 250pt;
     position: fixed;
-    top: 40pt;
+    top: 50pt;
     left: 0;
     background-color: var(--onyx);
     overflow: auto;
@@ -182,10 +181,10 @@ a{
 }
 
 .content{
-    height: calc(100vh - 40pt);
+    height: calc(100vh - 50pt);
     width: calc(100vw - 250pt);
     position: fixed;
-    top: 40pt;
+    top: 50pt;
     left: 250pt;
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
@@ -271,6 +270,7 @@ a{
 .horizontal-scroll{
     white-space: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -298,28 +298,6 @@ a{
     font-size: 0;
     transition: margin 1s, width 500ms;
 }
-
-/* 
-@media screen and (max-width: 700px) {
-    .media-slider-object {
-        height: 22.5vw;
-        width: 40vw;
-    }
-}
-
-@media screen and (min-width: 700px) and (max-width: 900px) {
-    .media-slider-object {
-        height: 17.6249998125vw;
-        width: 31.3333333333vw;
-    }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1200px) {
-    .media-slider-object {
-        height: 13.078125vw;
-        width: 23.25vw;
-    }
-} */
 
 .image-shader{
     height: 100%;
@@ -478,7 +456,7 @@ a{
 }
 
 .list{
-    padding-bottom: 50pt;
+    padding-bottom: 50vh;
 }
 
 .listItemChoice{
@@ -597,32 +575,11 @@ a{
 
 
 
-.search-bar-wrapper{
+
+#searchBar{
     height: 25pt;
     width: 60vw;
     max-width: 400pt;
-    position: relative;
-}
-
-.search-bar-wrapper img{
-    height: 10pt;
-    position: absolute;
-    padding: 3.75pt;
-    margin: 3.75pt;
-    top: 0;
-    right: 0;;
-    opacity: 0.7;
-    border-radius: 10pt;
-}
-
-.search-bar-wrapper img:hover{
-    opacity: 1;
-    background-color: rgb(200, 52, 52);
-}
-
-#searchBar{
-    height: 100%;
-    width: 100%;
     background: var(--charcoal);
     padding-left: 10pt;
     outline: none;
@@ -630,7 +587,6 @@ a{
     font-family: var(--mainFont);
     color: white;
     border: none;
-    border-radius: 10pt;
 }
 
 #searchBar::placeholder{
@@ -640,7 +596,6 @@ a{
 
 #searchBar:focus{
     outline: solid 2pt var(--popBorder);
-    border-radius: 0;
 }
 
 
