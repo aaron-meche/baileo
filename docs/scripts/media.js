@@ -12,19 +12,13 @@ if (localStorage['savedProgress_' + localStorage['transport_title'].trim()]) {
 function launchDesktopViewer() {
     let source = localStorage['transport_title'];
     if (localStorage['transport_type'] == 'tv') {
-        source = localStorage['transport_title'] + '/Season ' + localStorage['transport_season'] + '/' + media_data[unspace(localStorage['transport_title'])]['s' + localStorage['transport_season']][localStorage['transport_episode']] + '.mp4';
-
-        localStorage['progress_season_' + localStorage['transport_title']] = localStorage['transport_season'];
-        localStorage['progress_episode_' + localStorage['transport_title']] = localStorage['transport_episode'];
-        document.getElementsByClassName('media-caption')[0].innerHTML = 'S' + localStorage['transport_season'] + ' E' + localStorage['transport_episode'] + ' - ' + media_data[unspace(localStorage['transport_title'])]['s' + localStorage['transport_season']][localStorage['transport_episode']];
+        source = localStorage['transport_title'] + '/Season ' + localStorage['transport_season'] + '/' + media_data[unspace(localStorage['transport_title'])]['s' + localStorage['transport_season']][localStorage['transport_episode']];
     }
 
     source = source.trim();
     let baseLink = 'https://50.58.218.209/media/';
     source = baseLink + source;
-    dom('video').innerHTML = '<source src="' + source + '">';
-    dom('videoScrub').innerHTML = '<source src="' + source + '">';
-    document.getElementsByClassName('media-title')[0].innerHTML = localStorage['transport_title'];
+    dom('video').innerHTML = '<source src="' + source + '.mp4">';
 
     var interval = setInterval(function(){
         var countForVideo = document.getElementById('video').readyState;
