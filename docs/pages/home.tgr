@@ -248,4 +248,7 @@ block : class[media-slider-section]
 	/block
 /block
 
+block : class[bottom-padding]
+/block
+
 /block

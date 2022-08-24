@@ -188,7 +188,6 @@ a{
     left: 250pt;
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
-    padding-bottom: 50vh;
     background-color: var(--onyx);
 }
 
