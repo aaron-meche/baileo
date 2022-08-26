@@ -31,7 +31,9 @@
     --olivine: #92BA78;
     --boldOlivine: #71905c;
     --darkOlivine: #4f5f44;
-    --onyx: #23242A;
+    /* --onyx: rgb(2, 28, 28); */
+    --onyx: #202124;
+    /* --onyx: #18181b; */
 
     --accentColor: var(--grapeTaffy);
     --popBorder: var(--toyPurple);
@@ -44,14 +46,43 @@
     src: url('BaileyScript/BaileyScript.ttf');
 }
 
+@font-face {
+    font-family: 'BaileyInter';
+    src: url('BaileyScript/Inter.ttf');
+}
+
 body{
     margin: 0;
-    background-color: var(--onyx);
+    /* background-color: var(--onyx); */
+    /* background: linear-gradient(45deg, blue, red); */
+    /* background: linear-gradient(200deg, rgb(37, 28, 38) 0%, rgb(38, 26, 54)  50%, rgb(22, 22, 46) 100%); */
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
     padding-bottom: 4rem;
     overflow: hidden;
+    background-color: black;
+}
+
+#wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background: linear-gradient(30deg, rgb(22, 15, 31) 0%, rgb(32, 23, 37) 50%, rgb(17, 16, 17) 100%); */
+    background: linear-gradient(30deg, rgb(31, 21, 43) 0%, rgb(41, 30, 47) 50%, rgb(22, 21, 22) 100%);
+    z-index: -100;
+}
+
+#wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50pt);
 }
 
 a{
@@ -75,14 +106,14 @@ a{
 
 
 
-/* Navbar */
+/* Top Navbar */
 
 
 
 
 
 .top-navbar{
-    height: 50pt;
+    height: 40pt;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -90,15 +121,14 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--onyx);
-    border-bottom: solid 3pt var(--accentColor);
+    border-bottom: solid 1px var(--accentColor);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 50;
-    transition: background-color 500ms, border-bottom 500ms;
+    transition: background-color 300ms;
 }
 
 .top-navbar:hover{
-    background-color: var(--accentColor);
-    border-bottom: solid 0 var(--accentColor);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .toggle-left-navbar-button{
@@ -108,30 +138,30 @@ a{
     height: 15pt;
     width: 15pt;
     padding: 10pt;
-    margin: 7.5pt;
+    margin: 2.5pt;
     border-radius: 10pt;
     transition: height 200ms, margin 200ms;
 }
 
-.toggle-left-navbar-button:hover{
-    height: 20pt;
-    margin: 5pt 7.5pt 5pt 7.5pt;
-    border-radius: 10pt;
-}
 
-.toggle-left-navbar-button:hover{
-    opacity: 0.7;
-}
+
+
+
+/* Left Navbar */
+
+
+
+
 
 .left-navbar{
-    height: calc(100vh - 50pt);
-    width: 250pt;
+    height: calc(100vh - 40pt);
+    width: 200pt;
     position: fixed;
-    top: 50pt;
+    top: 40pt;
     left: 0;
-    background-color: var(--onyx);
     overflow: auto;
     transition: left 300ms;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .left-navbar::-webkit-scrollbar{
@@ -139,62 +169,67 @@ a{
 }
 
 .left-navbar .item {
-    padding: 10pt;
-    padding-left: 15pt;
+    padding: 7pt;
+    padding-left: 10pt;
     margin: 0 10pt 0 10pt;
     /* border-top-right-radius: 10pt; */
     /* border-bottom-right-radius: 10pt; */
-    border-radius: 15pt;
+    border-radius: 5pt;
     cursor: default;
     display: flex;
     align-items: center;
+    color: rgb(151, 151, 151);
+    transition: background-color 200ms, color 200ms;
 }
 
 .left-navbar .active {
-    background-color: var(--accentColor);
+    background-color: rgba(148, 52, 232, 0.25);
+    /* color: var(--popBorder) */;
+    color: white;
 }
 
 .left-navbar .item:hover {
-    background-color: var(--raisinBlack);
+    background-color: rgb(65, 65, 65);
+    color: white;
 }
 
 .left-navbar .active:hover {
-    background-color: var(--accentColor);
+    background-color: rgba(148, 52, 232, 0.5);
 }
 
 .logo-display{
     width: fit-content;
     display: flex;
     align-items: center;
-    padding: 10pt;
+    padding: 15pt 10pt 15pt 10pt;
     cursor: default;
 }
 
 .logo-display img{
-    height: 40pt;
+    height: 30pt;
     margin-right: 5pt;
 }
 
 .logo-display span{
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: 300;
 }
 
 .content{
-    height: calc(100vh - 50pt);
-    width: calc(100vw - 250pt);
+    height: calc(100vh - 40pt);
+    width: calc(100vw - 200pt);
     position: fixed;
-    top: 50pt;
-    left: 250pt;
+    top: 40pt;
+    left: 200pt;
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
-    background-color: var(--onyx);
+    /* background-color: var(--onyx); */
 }
 
 .section-divider{
     height: 1pt;
     margin: 15pt;
-    background-color: var(--popBorder);
+    background-color: var(--accentColor);
 }
 
 .account-pfp-wrapper{
@@ -263,7 +298,6 @@ a{
     font-size: 14pt;
     margin: 5pt 0 10pt 25pt;
     cursor: default;
-    transition: padding-left 200ms;
 }
 
 .horizontal-scroll{
@@ -279,7 +313,7 @@ a{
 }
 
 .media-slider-carousel{
-    padding-left: 10pt;
+    padding-left: 12pt;
     padding-right: 100pt;
     position: relative;
     font-size: 0;
@@ -295,7 +329,7 @@ a{
     display: inline-block;
     position: relative;
     font-size: 0;
-    transition: margin 1s, width 500ms;
+    transition: margin 600ms, width 800ms;
 }
 
 .image-shader{
@@ -303,7 +337,7 @@ a{
     border-radius: inherit;
     position: relative;
     opacity: 0;
-    transition: opacity 100ms;
+    transition: opacity 300ms;
     z-index: 1;
     box-shadow: 0 0 0 3pt var(--popBorder);
     background-color: rgba(0, 0, 0, 0.3);
@@ -576,16 +610,17 @@ a{
 
 
 #searchBar{
-    height: 25pt;
+    height: 60%;
     width: 60vw;
     max-width: 400pt;
-    background: var(--charcoal);
+    background: rgb(51, 51, 51);
     padding-left: 10pt;
     outline: none;
     font-size: 13pt;
     font-family: var(--mainFont);
     color: white;
     border: none;
+    /* outline: solid 1pt rgb(81, 81, 81); */
 }
 
 #searchBar::placeholder{
@@ -594,7 +629,9 @@ a{
 }
 
 #searchBar:focus{
-    outline: solid 2pt var(--popBorder);
+    outline: solid 1pt var(--popBorder);
+    border-radius: 0;
+    height: 70%;
 }
 
 

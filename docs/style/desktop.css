@@ -4,6 +4,13 @@
 
 .media-slider-object:hover{
     width: 190pt;
-    /* margin: 0 10pt 0 10pt; */
+    margin: 0 7pt 0 7pt;
     z-index: 1000;
+}
+
+.toggle-left-navbar-button:hover{
+    height: 20pt;
+    margin: 0pt 2.5pt 0pt 2.5pt;
+    border-radius: 10pt;
+    opacity: 0.7;
 }

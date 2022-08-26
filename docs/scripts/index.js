@@ -15,13 +15,13 @@ function toggleLeftNavbar() {
     let content = document.getElementsByClassName('content')[0];
     console.log(navbar.offsetLeft);
     if (navbar.offsetLeft >= 0) {
-        navbar.style.left = '-250pt';
+        navbar.style.left = '-200pt';
         content.style.left = '0';
         content.style.width = '100vw';
     } else {
         navbar.style.left = '0';
-        content.style.left = '250pt';
-        content.style.width = 'calc(100vw - 250pt)';
+        content.style.left = '200pt';
+        content.style.width = 'calc(100vw - 200pt)';
     }
 }
 
@@ -157,7 +157,7 @@ function randomizeTv() {
 }
 
 
-// -----
+// ----- Media Filter
 
 
 function filterMedia(self, string) {

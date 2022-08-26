@@ -1,5 +1,11 @@
 title : Baileo - Home
 
+block : id[wallpaper]
+/block
+
+block : id[wallpaper-blur]
+/block
+
 nav-block : class[left-navbar]
 
 	block : class[logo-display]
