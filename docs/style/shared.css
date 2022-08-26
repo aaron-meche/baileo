@@ -20,7 +20,7 @@
     --grapeTaffy: #5E468B;
     --spacePurple: rgb(38, 25, 56);
     --plutoBlue: rgb(33, 35, 52);
-    --charcoal: #40434E;
+    --charcoal: #353240;
     --lavendarBlush: #EEE5E9;
     --grannySmithApple: #9CD08F;
     --asparagus: #87A461;
@@ -189,7 +189,7 @@ a{
 }
 
 .left-navbar .item:hover {
-    background-color: rgb(65, 65, 65);
+    background-color: rgb(45, 45, 45);
     color: white;
 }
 
@@ -215,7 +215,7 @@ a{
     font-weight: 300;
 }
 
-.content{
+.main-content{
     height: calc(100vh - 40pt);
     width: calc(100vw - 200pt);
     position: fixed;
@@ -558,7 +558,7 @@ a{
 .activity-button{
     width: fit-content;
     color: white;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(25pt);
     -webkit-backdrop-filter: blur(25pt);
     font-size: 15pt;
@@ -567,18 +567,19 @@ a{
     cursor: pointer;
     border-radius: 5pt;
     margin: 10pt;
+    transition-duration: 350ms;
 }
 
 .filled-activity-button{
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.6);
     border: solid 1.5pt rgba(255, 255, 255, 0);
     color: black;
 }
 
 .activity-button:hover{
-    background-color: var(--violetBlue);
+    background-color: var(--accentColor);
     color: white;
-    border: solid 1.5pt white;
+    border: solid 1.5pt var(--popBorder);
 }
 
 .absolute{
@@ -881,4 +882,68 @@ a{
 .form .button img {
     height: 15pt;
     margin-right: 5pt;
+}
+
+
+
+
+
+/* Panel */
+
+
+
+
+
+
+#panel-wrapper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.panel{
+    height: auto;
+    width: fit-content;
+    max-width: 95vw;
+    background-color: var(--charcoal);
+    padding: 15pt;
+    border-radius: 10pt;
+    box-shadow: 0 0 20pt 0 rgba(0, 0, 0, 0.225);
+}
+
+.panel .title{
+    font-size: 25pt;
+    font-weight: 500;
+    padding-bottom: 7pt;
+    border-bottom: solid 1pt var(--popBorder);
+}
+
+.panel .content{
+    padding-top: 15pt;
+}
+
+.panel .content .tag{
+    width: fit-content;
+    padding: 5pt;
+    font-size: 15pt;
+    cursor: pointer;
+    background-color: rgb(77, 77, 77);
+    border-radius: 5pt;
+    display: inline-block;
+    margin: 5pt;
+}
+
+.panel .content .tag:hover{
+    width: fit-content;
+    padding: 5pt;
+    background-color: var(--accentColor);
+    box-shadow: 0 0 0 3pt var(--popBorder);
 }

@@ -36,13 +36,13 @@ nav-block : class[left-navbar]
 
 
 
-	block : class[item] onclick[open_panel('categories')]
+	block : class[item] onclick[dom('panel-wrapper').style.display = 'flex'; dom('category-panel').style.display = 'block';]
 		:: Categories
 	/block
 
-	block : class[item] onclick[open_panel('random_picker')]
-		:: Pick Something for Me
-	/block
+	## : block : class[item] onclick[open_panel('random_picker')]
+	## : 	:: Pick Something for Me
+	## : /block
 
 /block
 
@@ -53,7 +53,7 @@ nav-block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter(), ]
 
 /block
 
@@ -67,7 +67,7 @@ nav-block : class[top-navbar]
 
 
 
-block : class[content]
+block : class[main-content]
 
 block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
@@ -241,7 +241,7 @@ block : class[media-slider-section]
 block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
-			:: Christmas Spirit
+			:: Christmas Movies
 		/block
 	/block
 	block : class[horizontal-scroll media-slider-carousel]
@@ -257,4 +257,40 @@ block : class[media-slider-section]
 block : class[bottom-padding]
 /block
 
+/block
+
+
+
+
+
+
+block : id[panel-wrapper] onclick[this.style.display = 'none';]
+	block : class[panel] id[category-panel]
+		block : class[title]
+			:: Categories
+		/block
+		block : class[content]
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Comedy
+			/block
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Animation
+			/block
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Drama
+			/block
+
+			break
+
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Marvel
+			/block
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Romcom
+			/block
+			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
+				:: Christmas
+			/block
+		/block
+	/block
 /block

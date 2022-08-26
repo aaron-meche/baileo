@@ -1,8 +1,8 @@
 .left-navbar{
-    left: -250pt;
+    left: -200pt;
 }
 
-.content{
+.main-content{
     width: 100vw;
     left: 0;
 }
@@ -18,10 +18,6 @@
     position: relative;
     font-size: 0;
     transition: margin 1s, width 500ms;
-}
-
-.image-shader{
-    display: none;
 }
 
 .expand-panel{

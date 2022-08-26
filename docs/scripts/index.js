@@ -12,7 +12,7 @@ function bodyOnLoadFunctions () {
 
 function toggleLeftNavbar() {
     let navbar = document.getElementsByClassName('left-navbar')[0];
-    let content = document.getElementsByClassName('content')[0];
+    let content = document.getElementsByClassName('main-content')[0];
     console.log(navbar.offsetLeft);
     if (navbar.offsetLeft >= 0) {
         navbar.style.left = '-200pt';
@@ -138,7 +138,7 @@ function transport(type, title, season, episode) {
     if (isMobileDevice()) {
         let videoPath = title;
         if (type == 'tv') {
-            videoPath = title + '/Season ' + season + '/' + media_data[unspace(title)]['s' + season][episode];
+            videoPath = title.trim() + '/Season ' + season + '/' + media_data[unspace(title)]['s' + season][episode];
         }
         open_url('https://50.58.218.209/media/' + videoPath + '.mp4');
     } else {
@@ -166,6 +166,9 @@ function filterMedia(self, string) {
         self.parentNode.children[i].classList.remove("active");
     }
     self.classList.add("active");
+    if (isMobileDevice()) {
+        toggleLeftNavbar();
+    }
 }
 
 function clearMediaFilter() {
