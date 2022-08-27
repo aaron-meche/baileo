@@ -20,8 +20,8 @@ function build_mediaClickObjects() {
             }
 
             mediaClickObjects[i].innerHTML = `
-            <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')">
-                <div class='image-shader' onclick='` + media_transport + `'>
+            <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"  onclick='` + media_transport + `' ontouchstart="this.style.opacity = '0.5'" ontouchend="this.style.opacity = '1'">
+                <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
                 <div class='media_click_object_metadata'>

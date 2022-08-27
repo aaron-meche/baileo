@@ -1,0 +1,10 @@
+#wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background: linear-gradient(30deg, rgb(22, 15, 31) 0%, rgb(32, 23, 37) 50%, rgb(17, 16, 17) 100%); */
+    background: linear-gradient(30deg, rgb(43, 21, 21) 0%, rgb(47, 30, 30) 50%, rgb(22, 21, 21) 100%);
+    z-index: -100;
+}

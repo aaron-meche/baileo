@@ -1,0 +1,67 @@
+title : Baileo - Home
+import css : style/admin.css
+
+block : id[wallpaper]
+/block
+
+block : id[wallpaper-blur]
+/block
+
+nav-block : class[left-navbar]
+
+	block : class[logo-display]
+		image : images/logo.png
+		item : class[logo-text]
+			:: baileo admin
+		/item
+	/block
+
+	item : id[media_filter]
+					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
+						:: Admin Portal
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'TV Show')]
+						:: Github Repository
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'Movie')]
+						:: Server Files
+					/block
+	/item
+
+
+
+	## : block : class[section-divider]
+	## : /block
+
+
+
+	## : block : class[item] onclick[dom('panel-wrapper').style.display = 'flex'; dom('category-panel').style.display = 'block';]
+	## : 	:: Categories
+	## : /block
+
+/block
+
+
+
+
+nav-block : class[top-navbar]
+
+	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
+
+/block
+
+
+
+
+
+
+
+
+
+
+
+block : class[main-content]
+    :: Welcome to the Admin Page
+/block

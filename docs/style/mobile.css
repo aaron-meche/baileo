@@ -8,10 +8,10 @@
 }
 
 .media-slider-object{
-    height: 85pt;
-    width: 150pt;
-    border-radius: 5pt;
-    margin: 3pt;
+    height: 75pt;
+    width: 130pt;
+    border-radius: 3pt;
+    margin: 4pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
