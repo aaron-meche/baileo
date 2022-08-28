@@ -123,7 +123,6 @@ a{
     justify-content: center;
     border-bottom: solid 1px var(--accentColor);
     background-color: rgba(0, 0, 0, 0.2);
-    z-index: 50;
     transition: background-color 300ms;
 }
 
