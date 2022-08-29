@@ -1,5 +1,6 @@
 title : Baileo - Home
 import css : style/admin.css
+import tigerUI
 
 block : id[wallpaper]
 /block
@@ -12,20 +13,20 @@ nav-block : class[left-navbar]
 	block : class[logo-display]
 		image : images/logo.png
 		item : class[logo-text]
-			:: baileo admin
+			:: experiment
 		/item
 	/block
 
 	item : id[media_filter]
-					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
-						:: Admin Portal
+					block : class[item active]
+						:: Cursors
 					/block
 
-					block : class[item] onclick[filterMedia(this, 'TV Show')]
+					block : class[item]
 						:: Github Repository
 					/block
 
-					block : class[item] onclick[filterMedia(this, 'Movie')]
+					block : class[item]
 						:: Server Files
 					/block
 	/item
@@ -63,5 +64,22 @@ nav-block : class[top-navbar]
 
 
 block : class[main-content]
-    :: Welcome to the Admin Page
+
+
+
+
+
+
+
+block : class[right-click-menu]
+
+/block
+
+
+
+
+
+
+
+
 /block

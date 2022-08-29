@@ -30,7 +30,7 @@ function toggleLeftNavbar() {
 
 
 function expandTv(mediaTitle) {
-    var tvScreen = document.getElementById('tvExpandScreen');
+    var tvScreen = document.getElementById('expandScreen');
     var tvNavbarContent = document.getElementById('tvPanelNavbarContents');
     var tvPanelTitle = document.getElementById('tvPanelTitle');
     var tvPanelEpisodeList = document.getElementById('tvPanelEpisodeList');
@@ -42,7 +42,7 @@ function expandTv(mediaTitle) {
     sessionStorage['expandPanelTitle'] = title;
     sessionStorage['activeSeasonTab'] = 1;
 
-    tvScreen.style.display = 'block';
+    tvScreen.style.top = '0';
     tvPanel.scrollTop = '0';
     tvNavbarContent.scrollLeft = '0';
     tvPanelTitle.innerHTML = title;

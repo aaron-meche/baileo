@@ -20,7 +20,7 @@ function build_mediaClickObjects() {
             }
 
             mediaClickObjects[i].innerHTML = `
-            <div class='media-slider-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"  onclick='` + media_transport + `' ontouchstart="this.style.opacity = '0.5'" ontouchend="this.style.opacity = '1'">
+            <div class='media-slider-object clickable' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"  onclick='` + media_transport + `' ontouchstart="this.style.opacity = '0.5'" ontouchend="this.style.opacity = '1'">
                 <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
@@ -37,27 +37,25 @@ function build_mediaClickObjects() {
 
 function inject_expandScreen() {
     document.body.insertAdjacentHTML('beforeend',`
-    <div class='expand-screen' id='tvExpandScreen'>
-        <div class='expand-screen-contents' id='tvScreenContents'>
-            <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
-            <div class='expand-panel' id='tvPanel'>
-                <div class='expand-panel-topbar center-content' onclick='closeTvScreen()'>
-                    <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
-                    <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
+    <div class='expand-screen-wrapper' id='expandScreen'>
+        <div class='close-screen-clicker' onclick='closeTvScreen()'></div>
+        <div class='expand-panel' id='tvPanel'>
+            <div class='expand-panel-topbar center-content pull-down-tab'>
+                <img src="images/close.png" class='close-panel-icon' onclick='closeTvScreen()'>
+                <span class='expand-panel-title' id='tvPanelTitle'>Tv Title</span>
+            </div>
+            <div class='expand-panel-impression-image' id="tvPanelCoverImage">
+                <div class='action-button-container absolute bottom'>
+                    <div class='activity-button filled-activity-button transport-button' id='startWatchingTvButton' style='display:none' onclick='transport("tv",sessionStorage["expandPanelTitle"],1,0)'>Start Watching</div>
+                    <div class='activity-button filled-activity-button transport-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(sessionStorage["expandPanelTitle"])'>Continue</div>
+                    <div class='activity-button transport-button' onclick='randomizeTv()'>Random Episode</div>
                 </div>
-                <div class='expand-panel-impression-image' id="tvPanelCoverImage">
-                    <div class='action-button-container absolute bottom'>
-                        <div class='activity-button filled-activity-button transport-button' id='startWatchingTvButton' style='display:none' onclick='transport("tv",sessionStorage["expandPanelTitle"],1,0)'>Start Watching</div>
-                        <div class='activity-button filled-activity-button transport-button' id='continueWatchingButton' style='display:none' onclick='continueWatching(sessionStorage["expandPanelTitle"])'>Continue</div>
-                        <div class='activity-button transport-button' onclick='randomizeTv()'>Random Episode</div>
-                    </div>
+            </div>
+            <div class='expand-panel-contents'>
+                <div class='expand-panel-navbar' id='tvPanelNavbar'>
+                    <div id='tvPanelNavbarContents' class='horizontal-scroll horizontal-navbar'></div>
                 </div>
-                <div class='expand-panel-contents'>
-                    <div class='expand-panel-navbar' id='tvPanelNavbar'>
-                        <div id='tvPanelNavbarContents' class='horizontal-scroll horizontal-navbar'></div>
-                    </div>
-                    <div id='tvPanelEpisodeList' class='list'>
-                    </div>
+                <div id='tvPanelEpisodeList' class='list'>
                 </div>
             </div>
         </div>
