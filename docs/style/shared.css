@@ -127,9 +127,9 @@ a{
     transition: background-color 300ms;
 }
 
-.top-navbar:hover{
+/* .top-navbar:hover{
     background-color: rgba(0, 0, 0, 0.5);
-}
+} */
 
 .toggle-left-navbar-button{
     position: absolute;
@@ -161,7 +161,7 @@ a{
     left: 0;
     overflow: auto;
     transition: left 300ms;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
 .left-navbar::-webkit-scrollbar{
@@ -179,18 +179,18 @@ a{
     display: flex;
     align-items: center;
     color: rgb(151, 151, 151);
-    transition: background-color 200ms, color 200ms;
+    transition: background-color 150ms, color 150ms;
 }
 
 .left-navbar .active {
     background-color: rgba(148, 52, 232, 0.25);
-    /* color: var(--popBorder) */;
     color: white;
 }
 
 .left-navbar .item:hover {
     background-color: rgb(45, 45, 45);
-    color: white;
+    color: var(--popBorder);
+    /* color: white; */
 }
 
 .left-navbar .active:hover {
@@ -405,10 +405,14 @@ a{
     top: 100vh;
     left: 0;
     overflow-y: hidden;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(25pt);
+    -webkit-backdrop-filter: blur(25pt);
     z-index: 85;
     color: white;
-    transition-duration: 300ms;
+    transition-duration: 600ms;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .close-screen-clicker{
@@ -420,14 +424,16 @@ a{
 }
 
 .expand-panel{
-    height: 95vh;
-    width: 70vw;
+    height: 90vh;
+    width: 80vw;
     position: absolute;
     top: 5vh;
-    left: 15vw;
+    left: 10vw;
     overflow-y: scroll;
     z-index: 90;
     background-color: var(--onyx);
+    border-radius: 15pt;
+    box-shadow: 0 0 5vh 0 rgba(0, 0, 0, 0.5);
 }
 
 .expand-panel-topbar{
@@ -481,7 +487,7 @@ a{
 }
 
 .list{
-    padding-bottom: 50vh;
+    padding-bottom: 25vh;
 }
 
 .listItemChoice{
@@ -545,6 +551,9 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .activity-button{
@@ -572,18 +581,6 @@ a{
     background-color: var(--accentColor);
     color: white;
     border: solid 1.5pt var(--popBorder);
-}
-
-.absolute{
-    position: absolute;
-}
-
-.top{
-    top: 0;
-}
-
-.bottom{
-    bottom: 0;
 }
 
 .bottom-padding{

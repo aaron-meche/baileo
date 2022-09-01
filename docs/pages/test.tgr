@@ -1,4 +1,4 @@
-title : Baileo - Home
+import tigerUI
 
 block : id[wallpaper]
 /block
@@ -11,7 +11,7 @@ nav-block : class[left-navbar]
 	block : class[logo-display]
 		image : images/logo.png
 		item : class[logo-text]
-			:: baileo
+			:: baileo lab
 		/item
 	/block
 
