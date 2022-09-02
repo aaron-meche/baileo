@@ -6,50 +6,54 @@ block : id[wallpaper]
 block : id[wallpaper-blur]
 /block
 
-## : nav-block : class[left-navbar]
+nav-block : class[left-navbar]
+
+	block : class[logo-display]
+		image : images/logo.png
+		item : class[logo-text]
+			:: baileo lab
+		/item
+	/block
+
+	item : id[media_filter]
+					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
+						:: All Media
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'TV Show')]
+						:: TV Shows
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'Movie')]
+						:: Movies
+					/block
+	/item
 
 
 
-## : 	block : class[section-divider]
-## : 	/block
+	block : class[section-divider]
+	/block
 
 
 
-## : 	block : class[item] onclick[dom('panel-wrapper').style.display = 'flex'; dom('category-panel').style.display = 'block';]
-## : 		:: Categories
-## : 	/block
+	block : class[item] onclick[dom('panel-wrapper').style.display = 'flex'; dom('category-panel').style.display = 'block';]
+		:: Categories
+	/block
 
-## : 	## : block : class[item] onclick[open_panel('random_picker')]
-## : 	## : 	:: Pick Something for Me
-## : 	## : /block
+	## : block : class[item] onclick[open_panel('random_picker')]
+	## : 	:: Pick Something for Me
+	## : /block
 
-## : /block
+/block
 
 
 
 
 nav-block : class[top-navbar]
 
-	block : class[inner-navbar left-side]
-		block : class[logo-display]
-			image : images/logo.png
-			item : class[logo-text]
-				:: baileo
-			/item
-		/block
+	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
-		block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
-			:: All Media
-		/block
-
-		block : class[item] onclick[filterMedia(this, 'TV Show')]
-			:: TV Shows
-		/block
-
-		block : class[item] onclick[filterMedia(this, 'Movie')]
-			:: Movies
-		/block
-	/block
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter(), ]
 
 /block
 
@@ -65,42 +69,13 @@ nav-block : class[top-navbar]
 
 block : class[main-content]
 
-block : class[media-category]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Laughtastic Classics
-		/block
-	/block
-	block : class[media-buttons-wrapper horizontal-scroll]
-		item : class[building-block-media-click-object]
-			:: Dumb and Dumber
-		/item
-		item : class[building-block-media-click-object]
-			:: Family Guy
-		/item
-		item : class[building-block-media-click-object]
-			:: Mean Girls
-		/item
-		item : class[building-block-media-click-object]
-			:: The Office
-		/item
-		item : class[building-block-media-click-object]
-			:: Vacation
-		/item
-	/block
-/block
-
-
-
-
-
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Comedies
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: Clueless
 		/item
@@ -144,13 +119,13 @@ block : class[media-category]
 
 
 
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Animations
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: Cars 2
 		/item
@@ -182,13 +157,13 @@ block : class[media-category]
 
 
 
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Dramas
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: American Psycho
 		/item
@@ -214,13 +189,13 @@ block : class[media-category]
 
 
 
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Marvel
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: Avengers: ENDGAME
 		/item
@@ -246,13 +221,13 @@ block : class[media-category]
 
 
 
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Romantic Comedies
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: The Proposal
 		/item
@@ -263,13 +238,13 @@ block : class[media-category]
 
 
 
-block : class[media-category]
+block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
 			:: Christmas Movies
 		/block
 	/block
-	block : class[media-buttons-wrapper]
+	block : class[horizontal-scroll media-slider-carousel]
 		item : class[building-block-media-click-object]
 			:: Daddy's Home 2
 		/item

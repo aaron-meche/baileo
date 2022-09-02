@@ -10,19 +10,6 @@ function bodyOnLoadFunctions () {
     }
 }
 
-window.addEventListener('scroll', function () {
-    let topNav = dom_c('top-navbar')[0];
-    if (topNav) {
-        if (window.scrollY > 0) {
-            topNav.style.backgroundColor = 'rgba(0,0,0,0.5)';
-            topNav.style.height = '40pt';
-        } else {
-            topNav.style.background = 'none';
-            topNav.style.height = '50pt';
-        }
-    }
-})
-
 function toggleLeftNavbar() {
     let navbar = document.getElementsByClassName('left-navbar')[0];
     let content = document.getElementsByClassName('main-content')[0];
@@ -87,6 +74,9 @@ function expandTv(mediaTitle) {
         document.getElementById('continueWatchingButton').style.display = 'block';
         document.getElementById('continueWatchingButton').innerHTML = 'Continue - S' +  localStorage[title + '_saved_season'] + ':E' + (Number(localStorage[title + '_saved_episode']) + 1);
     }
+    
+    tvScreenContents.style.top = '0';
+    tvScreenContents.style.opacity = '1';
 }
 
 function selectSeason(seasonNum) {
@@ -120,9 +110,14 @@ function selectSeason(seasonNum) {
 }
 
 function closeTvScreen() {
-    var tvExpandScreen = dom('expandScreen');
+    var tvExpandScreen = document.getElementById('tvExpandScreen');
+    var tvScreenContents = document.getElementById('tvScreenContents');
 
-    tvExpandScreen.style.top = '100vh';
+    tvScreenContents.style.top = '100vh';
+    tvScreenContents.style.opacity = '0';
+    setTimeout(function() {
+        tvExpandScreen.style.display = 'none';
+    }, 100);
 
 
     document.getElementById('continueWatchingButton').style.display = 'none';

@@ -46,11 +46,21 @@
     src: url('BaileyScript/BaileyScript.ttf');
 }
 
+@font-face {
+    font-family: 'BaileyInter';
+    src: url('BaileyScript/Inter.ttf');
+}
+
 body{
     margin: 0;
+    /* background-color: var(--onyx); */
+    /* background: linear-gradient(45deg, blue, red); */
+    /* background: linear-gradient(200deg, rgb(37, 28, 38) 0%, rgb(38, 26, 54)  50%, rgb(22, 22, 46) 100%); */
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
+    padding-bottom: 4rem;
+    overflow: hidden;
     background-color: black;
 }
 
@@ -60,106 +70,162 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    background: linear-gradient(150deg, rgb(38, 26, 53) 0%, rgb(32, 23, 36) 50%, rgb(29, 10, 29) 100%);
+    /* background: linear-gradient(30deg, rgb(22, 15, 31) 0%, rgb(32, 23, 37) 50%, rgb(17, 16, 17) 100%); */
+    background: linear-gradient(30deg, rgb(31, 21, 43) 0%, rgb(41, 30, 47) 50%, rgb(22, 21, 22) 100%);
     z-index: -100;
+}
+
+#wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(50pt);
+    -webkit-backdrop-filter: blur(50pt);
+}
+
+a{
+    text-decoration: none;
+    color: rgb(219, 140, 255);
+}
+
+.dark-myst-background{
+    background: linear-gradient(135deg, rgb(65, 43, 67) 0%, rgb(38, 26, 54)  50%, rgb(28, 28, 67) 100%);
+}
+
+.purple-background{
+    background: linear-gradient(45deg, var(--violetBlue) 0%, var(--darkPlum) 100%);
+}
+
+.dark-purple-background{
+    background: linear-gradient(180deg, var(--darkAqua) 0%, var(--darkPlum) 100%);
 }
 
 
 
 
 
-/* Navbars */
+/* Top Navbar */
 
 
 
 
 
 .top-navbar{
-    height: 50pt;
+    height: 40pt;
     width: 100vw;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
-    /* border-bottom: solid 1px var(--accentColor); */
-    overflow: hidden;
-    backdrop-filter: blur(100pt);
-    -webkit-backdrop-filter: blur(100pt);
-    -moz-backdrop-filter: blur(100pt);
-    transition: height 200ms, background-color 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px var(--accentColor);
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color 300ms;
 }
 
-.inner-navbar{
-    height: 100%;
+/* .top-navbar:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+} */
+
+.toggle-left-navbar-button{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15pt;
+    width: 15pt;
+    padding: 10pt;
+    margin: 2.5pt;
+    border-radius: 10pt;
+    transition: height 200ms, margin 200ms;
+}
+
+
+
+
+
+/* Left Navbar */
+
+
+
+
+
+.left-navbar{
+    height: calc(100vh - 40pt);
+    width: 200pt;
+    position: fixed;
+    top: 40pt;
+    left: 0;
+    overflow: auto;
+    transition: left 300ms;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.left-navbar::-webkit-scrollbar{
+    display: none;
+}
+
+.left-navbar .item {
+    padding: 7pt;
+    padding-left: 10pt;
+    margin: 0 10pt 0 10pt;
+    /* border-top-right-radius: 10pt; */
+    /* border-bottom-right-radius: 10pt; */
+    border-radius: 5pt;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    color: rgb(151, 151, 151);
+    transition: background-color 150ms, color 150ms;
+}
+
+.left-navbar .active {
+    background-color: rgba(148, 52, 232, 0.25);
+    color: white;
+}
+
+.left-navbar .item:hover {
+    background-color: rgb(45, 45, 45);
+    color: var(--popBorder);
+    /* color: white; */
+}
+
+.left-navbar .active:hover {
+    background-color: rgba(148, 52, 232, 0.5);
+}
+
+.logo-display{
     width: fit-content;
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 0;
-}
-
-.left-side{
-    left: 0;
-}
-
-/* Navbar Items */
-
-.top-navbar .item {
-    padding: 7pt;
-    width: fit-content;
-    border-radius: 5pt;
+    padding: 15pt 10pt 15pt 10pt;
     cursor: default;
-    display: inline-flex;
-    align-items: center;
-    color: rgb(171, 171, 171);
-    font-size: 11pt;
-    font-weight: 400;
-    transition: background-color 150ms, color 150ms;
-    margin: 10px 5px 10px 5px;
-}
-
-.top-navbar .active {
-    color: white;
-    font-weight: 500;
-}
-
-.top-navbar .item:hover {
-    color: var(--popBorder);
-}
-
-/* Logo Display */
-
-.logo-display{
-    width: max-content;
-    display: inline-flex;
-    align-items: center;
-    cursor: default;
-    margin: 0 25px 0 25px;
-}
-
-.logo-display:hover{
-    color: var(--popBorder);
 }
 
 .logo-display img{
-    height: 25pt;
+    height: 30pt;
     margin-right: 5pt;
 }
 
 .logo-display span{
-    font-size: 15pt;
+    font-size: 16pt;
     font-weight: 300;
 }
 
-
-
-
-
-/* Main Content */
-
-
-
-
+.main-content{
+    height: calc(100vh - 40pt);
+    width: calc(100vw - 200pt);
+    position: fixed;
+    top: 40pt;
+    left: 200pt;
+    overflow-y: scroll;
+    transition: left 300ms, width 300ms;
+    z-index: 5;
+    /* background-color: var(--onyx); */
+}
 
 .section-divider{
     height: 1pt;
@@ -225,14 +291,13 @@ body{
 
 
 
-.media-category{
+.media-slider-section{
     padding-top: 40pt;
 }
 
 .media-slider-title-bar{
-    font-size: 15pt;
-    font-weight: 400;
-    margin: 5pt 0 10pt 30pt;
+    font-size: 13pt;
+    margin: 5pt 0 10pt 25pt;
     cursor: default;
 }
 
@@ -248,34 +313,24 @@ body{
     display: none;
 }
 
-.building-block-media-click-object{
-    display: inline-block;
+.media-slider-carousel{
+    padding-left: 12pt;
+    padding-right: 100pt;
+    position: relative;
+    font-size: 0;
 }
 
-.media-buttons-wrapper{
-    padding: 15pt;
-    padding-top: 0;
-}
-
-.media-button-panel{
-    width: fit-content;
-    padding: 7pt;
-}
-
-.media-button-panel:hover{
-    background-color: black;
-}
-
-.media-button-object{
-    width: 170pt;
-    aspect-ratio: 16 / 9;
+.media-slider-object{
+    height: 100pt;
+    width: 180pt;
     border-radius: 5pt;
+    margin: 5pt;
     background: transparent no-repeat center;
     background-size: cover;
+    display: inline-block;
     position: relative;
     font-size: 0;
     transition: margin 600ms, width 800ms;
-    opacity: 0.9;
 }
 
 .image-shader{

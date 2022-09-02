@@ -1,3 +1,12 @@
+.left-navbar{
+    left: -200pt;
+}
+
+.main-content{
+    width: 100vw;
+    left: 0;
+}
+
 .media-slider-object{
     height: 75pt;
     width: 130pt;
@@ -17,7 +26,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 0;
 }
 
 .expand-panel-topbar{

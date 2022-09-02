@@ -72,45 +72,6 @@ block : class[main-content]
 block : class[media-slider-section]
 	block : class[media-slider-title-bar clickable-title]
 		block : class[media-slider-title]
-			:: Laughtastic Classics
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Cars 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Cars 3
-		/item
-		item : class[building-block-media-click-object]
-			:: Coraline
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me 3
-		/item
-		item : class[building-block-media-click-object]
-			:: Minions
-		/item
-		item : class[building-block-media-click-object]
-			:: Ratatouille
-		/item
-	/block
-/block
-
-
-
-
-
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
 			:: Comedies
 		/block
 	/block
