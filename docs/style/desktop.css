@@ -3,13 +3,14 @@
 }
 
 .media-slider-object:hover{
-    width: 190pt;
-    z-index: 1000;
+    position: relative;
+    top: -5pt;
+    opacity: 1;
+    outline: solid 3pt var(--popBorder);
 }
 
 .toggle-left-navbar-button:hover{
-    height: 20pt;
-    margin: 0pt 2.5pt 0pt 2.5pt;
-    border-radius: 10pt;
-    opacity: 0.7;
+    /* height: 15pt; */
+    /* margin: 2.5pt 5pt 2.5pt 5pt; */
+    opacity: 1;
 }

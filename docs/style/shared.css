@@ -20,7 +20,7 @@
     --grapeTaffy: #5E468B;
     --spacePurple: rgb(38, 25, 56);
     --plutoBlue: rgb(33, 35, 52);
-    --charcoal: #353240;
+    --charcoal: rgb(21,21,23);
     --lavendarBlush: #EEE5E9;
     --grannySmithApple: #9CD08F;
     --asparagus: #87A461;
@@ -32,13 +32,15 @@
     --boldOlivine: #71905c;
     --darkOlivine: #4f5f44;
     /* --onyx: rgb(2, 28, 28); */
-    --onyx: #202124;
+    --onyx: rgb(32,32,33);
     /* --onyx: #18181b; */
 
     --accentColor: var(--grapeTaffy);
     --popBorder: var(--toyPurple);
 
     --mainFont: BaileyScript;
+
+    --top-navbar-height: 45pt;
 }
 
 @font-face {
@@ -53,7 +55,7 @@
 
 body{
     margin: 0;
-    /* background-color: var(--onyx); */
+    background-color: var(--onyx);
     /* background: linear-gradient(45deg, blue, red); */
     /* background: linear-gradient(200deg, rgb(37, 28, 38) 0%, rgb(38, 26, 54)  50%, rgb(22, 22, 46) 100%); */
     font-family: var(--mainFont);
@@ -61,7 +63,7 @@ body{
     font-weight: 500;
     padding-bottom: 4rem;
     overflow: hidden;
-    background-color: black;
+    /* background-color: black; */
 }
 
 #wallpaper{
@@ -113,7 +115,7 @@ a{
 
 
 .top-navbar{
-    height: 40pt;
+    height: var(--top-navbar-height);
     width: 100vw;
     position: fixed;
     top: 0;
@@ -123,7 +125,7 @@ a{
     align-items: center;
     justify-content: center;
     border-bottom: solid 1px var(--accentColor);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--onyx);
     transition: background-color 300ms;
 }
 
@@ -138,8 +140,8 @@ a{
     height: 15pt;
     width: 15pt;
     padding: 10pt;
-    margin: 2.5pt;
-    border-radius: 10pt;
+    margin: 5pt;
+    opacity: 0.7;
     transition: height 200ms, margin 200ms;
 }
 
@@ -154,14 +156,14 @@ a{
 
 
 .left-navbar{
-    height: calc(100vh - 40pt);
+    height: calc(100vh - var(--top-navbar-height));
     width: 200pt;
     position: fixed;
-    top: 40pt;
+    top: var(--top-navbar-height);
     left: 0;
     overflow: auto;
     transition: left 300ms;
-    /* background-color: rgba(0, 0, 0, 0.2); */
+    background-color: var(--onyx);
 }
 
 .left-navbar::-webkit-scrollbar{
@@ -169,17 +171,21 @@ a{
 }
 
 .left-navbar .item {
-    padding: 7pt;
-    padding-left: 10pt;
-    margin: 0 10pt 0 10pt;
-    /* border-top-right-radius: 10pt; */
-    /* border-bottom-right-radius: 10pt; */
-    border-radius: 5pt;
+    padding: 10pt;
+    padding-left: 20pt;
+    /* margin: 0 10pt 0 10pt; */
+    /* border-radius: 5pt; */
     cursor: default;
     display: flex;
     align-items: center;
     color: rgb(151, 151, 151);
     transition: background-color 150ms, color 150ms;
+}
+
+.left-navbar .item .icon{
+    height: 15pt;
+    width: 15pt;
+    margin-right: 8pt;
 }
 
 .left-navbar .active {
@@ -195,6 +201,10 @@ a{
 
 .left-navbar .active:hover {
     background-color: rgba(148, 52, 232, 0.5);
+}
+
+.left-navbar .active:hover .icon{
+    opacity: 0.7;
 }
 
 .logo-display{
@@ -216,15 +226,15 @@ a{
 }
 
 .main-content{
-    height: calc(100vh - 40pt);
+    height: calc(100vh - var(--top-navbar-height));
     width: calc(100vw - 200pt);
     position: fixed;
-    top: 40pt;
+    top: var(--top-navbar-height);
     left: 200pt;
     overflow-y: scroll;
     transition: left 300ms, width 300ms;
     z-index: 5;
-    /* background-color: var(--onyx); */
+    background-color: var(--charcoal);
 }
 
 .section-divider{
@@ -292,13 +302,14 @@ a{
 
 
 .media-slider-section{
-    padding-top: 40pt;
+    padding-top: 20pt;
 }
 
 .media-slider-title-bar{
     font-size: 13pt;
-    margin: 5pt 0 10pt 25pt;
+    margin-left: 20pt;
     cursor: default;
+    font-weight: 400;
 }
 
 .horizontal-scroll{
@@ -314,34 +325,57 @@ a{
 }
 
 .media-slider-carousel{
-    padding-left: 12pt;
-    padding-right: 100pt;
+    padding: 10pt 100pt 30pt 10pt;
     position: relative;
     font-size: 0;
 }
 
 .media-slider-object{
-    height: 100pt;
-    width: 180pt;
-    border-radius: 5pt;
-    margin: 5pt;
+    height: 120pt;
+    aspect-ratio: 16 / 9;
+    margin: 7pt;
     background: transparent no-repeat center;
     background-size: cover;
     display: inline-block;
     position: relative;
+    top: 0;
     font-size: 0;
-    transition: margin 600ms, width 800ms;
+    opacity: 0.8;
+    transition: top 500ms, opacity 500ms;
 }
+
+.media-object .data{
+    height: 100%;
+    width: calc(100% - 10pt);
+    padding: 5pt;
+    overflow: hidden;
+}
+
+.media-object .title{
+    font-size: 15pt;
+    font-weight: 500;
+}
+
+.media-object .type{
+    font-size: 12pt;
+    font-weight: 400;
+    color: rgb(168, 168, 168);
+}
+
+/* .media-slider-object .category{
+    font-size: 10pt;
+    font-weight: 200;
+    color: rgb(168, 168, 168);
+} */
 
 .image-shader{
     height: 100%;
     border-radius: inherit;
     position: relative;
     opacity: 0;
-    transition: opacity 300ms;
+    transition: opacity 220ms;
     z-index: 1;
-    box-shadow: 0 0 0 3pt var(--popBorder);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .image-shader-indicator{
@@ -410,7 +444,7 @@ a{
     -webkit-backdrop-filter: blur(25pt);
     z-index: 85;
     color: white;
-    transition-duration: 600ms;
+    transition-duration: 300ms;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -600,17 +634,23 @@ a{
 
 
 #searchBar{
-    height: 60%;
+    height: 50%;
     width: 60vw;
     max-width: 400pt;
-    background: rgb(51, 51, 51);
-    padding-left: 10pt;
+    background-color: var(--charcoal);
+    padding-left: 15pt;
     outline: none;
-    font-size: 13pt;
+    font-size: 12pt;
     font-family: var(--mainFont);
     color: white;
     border: none;
+    border-radius: 100vh;
     /* outline: solid 1pt rgb(81, 81, 81); */
+    box-shadow: 0 0 10pt 0 rgba(82, 82, 82, 0.33);
+}
+
+#searchBar:hover{
+    box-shadow: 0 0 10pt 0 rgba(128, 128, 128, 0.5);
 }
 
 #searchBar::placeholder{
@@ -619,9 +659,8 @@ a{
 }
 
 #searchBar:focus{
-    outline: solid 1pt var(--popBorder);
-    border-radius: 0;
-    height: 70%;
+    /* outline: solid 1pt var(--popBorder); */
+    box-shadow: 0 0 10pt 0 rgba(128, 128, 128, 0.5);
 }
 
 

@@ -1,12 +1,6 @@
 import tigerUI
 
-block : id[wallpaper]
-/block
-
-block : id[wallpaper-blur]
-/block
-
-nav-block : class[left-navbar]
+block : class[left-navbar]
 
 	block : class[logo-display]
 		image : images/logo.png
@@ -17,14 +11,17 @@ nav-block : class[left-navbar]
 
 	item : id[media_filter]
 					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
-						:: All Media
+						image : images/home.png : class[icon]
+						:: Home
 					/block
 
 					block : class[item] onclick[filterMedia(this, 'TV Show')]
+						image : images/tv show.png : class[icon]
 						:: TV Shows
 					/block
 
 					block : class[item] onclick[filterMedia(this, 'Movie')]
+						image : images/movie.png : class[icon]
 						:: Movies
 					/block
 	/item
@@ -49,7 +46,7 @@ nav-block : class[left-navbar]
 
 
 
-nav-block : class[top-navbar]
+block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
@@ -213,6 +210,9 @@ block : class[media-slider-section]
 		/item
 		item : class[building-block-media-click-object]
 			:: The Incredible Hulk
+		/item
+		item : class[building-block-media-click-object]
+			:: WandaVision
 		/item
 	/block
 /block

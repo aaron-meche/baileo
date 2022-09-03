@@ -16,18 +16,22 @@ function build_mediaClickObjects() {
             } else if (mediaType == 'tv') {
                 media_button_display = 'continue';
                 media_transport = 'expandTv("' + mediaTitle + '")';
-                mediaTypeDescrip = 'TV Show';
+                if (media_data[unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, '')]['sTotal'] > 1) {
+                    mediaTypeDescrip = 'TV Show ● ' + media_data[unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, '')]['sTotal'] + ' Seasons';
+                } else {
+                    mediaTypeDescrip = 'TV Show ● ' + media_data[unspace(mediaTitle).replace(/'/g, '').replace(/:/g, '').replace(/-/g, '')]['sTotal'] + ' Season';
+                }
             }
 
             mediaClickObjects[i].innerHTML = `
-            <div class='media-slider-object clickable' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"  onclick='` + media_transport + `' ontouchstart="this.style.opacity = '0.5'" ontouchend="this.style.opacity = '1'">
+            <div class='media-slider-object clickable media-object' style="background-image: url('` + thumbnailPath + `/` + mediaTitle.replace(/-/g, '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '').toLowerCase() + `.jpg')"  onclick='` + media_transport + `' ontouchstart="this.style.opacity = '0.5'" ontouchend="this.style.opacity = '1'">
                 <div class='image-shader'>
                     <img src='images/` + media_button_display + ` circle.png' class='image-shader-indicator'>
                 </div>
-                <div class='media_click_object_metadata'>
-                    <div class='media_clicker_object_title'>` + mediaTitle + `</div>
-                    <div class='media_clicker_object_category'>` + mediaCat + `</div>
-                    <div class='media_clicker_object_type'>Media ` + mediaTypeDescrip + `</div>
+                <div class='data'>
+                    <div class='title'>` + mediaTitle + `</div>
+                    <div class='type'>` + mediaTypeDescrip + `</div>
+                    <div class='category'>` + mediaCat[0].toUpperCase() + mediaCat.substring(1) + `</div>
                 </div>
             </div>`
         }

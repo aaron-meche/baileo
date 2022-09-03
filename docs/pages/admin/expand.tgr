@@ -2,13 +2,7 @@ title : Baileo - Home
 import css : style/admin.css
 import tigerUI
 
-block : id[wallpaper]
-/block
-
-block : id[wallpaper-blur]
-/block
-
-nav-block : class[left-navbar]
+block : class[left-navbar]
 
 	block : class[logo-display]
 		image : images/logo.png
@@ -22,7 +16,7 @@ nav-block : class[left-navbar]
 						:: Expand Panel Testing
 					/block
 
-					block : class[item]
+					block : class[item] onclick[open_page('admin/repository')]
 						:: Github Repository
 					/block
 
@@ -46,8 +40,7 @@ nav-block : class[left-navbar]
 
 
 
-
-nav-block : class[top-navbar]
+block : class[top-navbar]
 
 	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
 
@@ -66,46 +59,7 @@ nav-block : class[top-navbar]
 block : class[main-content]
 
 
-
-
-
-
-
-
-
-block : class[expand-panel-wrapper]
-
-	block : class[backdrop-clicker] onclick[closeExpandPanel[this.parentNode]]
-	/block
-
-	block : class[expand-panel]
-	
-		block : class[top-bar pull-down-tab]
-			image : images/close.png : class[close-icon] onclick[closeExpandPanel(this.parentNode.parentNode.parentNode)]
-			block : id[expandPanelTitle]
-				:: Media Title
-			/block
-			block : class[season-display]
-				:: Season 12
-			/block
-		/block
-
-		block : class[contents]
-			## : block : class[action-utilities]
-			## : 	block : class[button]
-			## : 		:: Start Watching
-			## : 	/block
-			## : 	block : class[button]
-			## : 		:: Shuffle Episodes
-			## : 	/block
-			## : /block
-		/block
-
-	/block
-
-/block
-
-
+:: HEllo
 
 
 

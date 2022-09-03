@@ -8,16 +8,7 @@
 }
 
 .media-slider-object{
-    height: 75pt;
-    width: 130pt;
-    border-radius: 3pt;
-    margin: 4pt;
-    background: transparent no-repeat center;
-    background-size: cover;
-    display: inline-block;
-    position: relative;
-    font-size: 0;
-    transition: margin 1s, width 500ms;
+    height: 100pt;
 }
 
 .expand-panel{

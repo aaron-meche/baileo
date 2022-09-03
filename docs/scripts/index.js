@@ -143,7 +143,7 @@ function transport(type, title, season, episode) {
         open_url('https://50.58.218.209/media/' + videoPath + '.mp4');
     } else {
         let transportPage = 'viewer-desktop';
-        open_url(transportPage);
+        open_page(transportPage);
     }
 
 }
