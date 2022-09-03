@@ -135,16 +135,16 @@ function transport(type, title, season, episode) {
     localStorage['transport_episode'] = episode;
 
     
-    if (isMobileDevice()) {
+    // if (isMobileDevice()) {
         let videoPath = title;
         if (type == 'tv') {
             videoPath = title.trim() + '/Season ' + season + '/' + media_data[unspace(title)]['s' + season][episode];
         }
         open_url('https://50.58.218.209/media/' + videoPath + '.mp4');
-    } else {
-        let transportPage = 'viewer-desktop';
-        open_page(transportPage);
-    }
+    // } else {
+        // let transportPage = 'viewer-desktop';
+        // open_page(transportPage);
+    // }
 
 }
 
