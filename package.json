@@ -1,36 +1,16 @@
 {
-  "name": "baileo-video-player",
+  "name": "firebase-format",
   "version": "1.0.0",
-  "description": "Baileo Video Player, https://baileo.us",
+  "description": "",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aaron-meche/baileo-video-player.git"
-  },
-  "keywords": [
-    "baileo",
-    "video",
-    "player",
-    "watch",
-    "free",
-    "no",
-    "ads"
-  ],
-  "author": "Aaron Meche",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aaron-meche/baileo-video-player/issues"
-  },
-  "homepage": "https://github.com/aaron-meche/baileo-video-player#readme",
   "dependencies": {
-    "firebase": "^9.9.3",
-    "firebase-cli": "^1.2.0",
+    "firebase": "^9.9.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }

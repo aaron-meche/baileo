@@ -1,5 +1,4 @@
 {
-    "liveServer.settings.port": 5502,
-    "synthwave84.disableGlow": true,
-    "synthwave84.brightness": 0.8
+    "liveServer.settings.port": 5501,
+    "git.ignoreLimitWarning": true
 }
