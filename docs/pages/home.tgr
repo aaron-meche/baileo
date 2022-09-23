@@ -1,296 +1,76 @@
 import tigerUI
 
-block : class[left-navbar]
-
-	block : class[logo-display]
-		image : images/logo.png
-		item : class[logo-text]
-			:: baileo
-		/item
-	/block
-
-	item : id[media_filter]
-					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
-						image : images/home.png : class[icon]
-						:: Home
-					/block
-
-					block : class[item] onclick[filterMedia(this, 'TV Show')]
-						image : images/tv show.png : class[icon]
-						:: TV Shows
-					/block
-
-					block : class[item] onclick[filterMedia(this, 'Movie')]
-						image : images/movie.png : class[icon]
-						:: Movies
-					/block
-	/item
-
-
-
-	block : class[section-divider]
-	/block
-
-
-
-	block : class[item] onclick[dom('panel-wrapper').style.display = 'flex'; dom('category-panel').style.display = 'block';]
-		:: Categories
-	/block
-
-	## : block : class[item] onclick[open_panel('random_picker')]
-	## : 	:: Pick Something for Me
-	## : /block
-
-/block
-
-
-
-
 block : class[top-navbar]
+    image : images/logo.png : class[logo left-info]
+    lnb : class[logo-title left-info] : baileo
 
-	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
+    block : class[center-piece]
 
-	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter(), ]
+        block : class[item active]
+            image : images/icons/explore-active.png : class[icon]
+            lnb : class[text] : Explore
+        /block
 
+        block : class[item]
+            image : images/icons/tv.png : class[icon]
+            lnb : class[text] : TV Shows
+        /block
+
+        block : class[item]
+            image : images/icons/movie.png : class[icon]
+            lnb : class[text] : Movies
+        /block
+
+        block : class[item]
+            image : images/icons/apps.png : class[icon]
+            lnb : class[text] : Apps
+        /block
+
+        block : class[item]
+            image : images/icons/search.png : class[icon]
+            lnb : class[text] : Search
+        /block
+
+    /block
 /block
 
-
-
-
-
-
-
-
-
-
-
-block : class[main-content]
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Comedies
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Clueless
-		/item
-		item : class[building-block-media-click-object]
-			:: Dumb and Dumber
-		/item
-		item : class[building-block-media-click-object]
-			:: Dumb and Dumber To
-		/item
-		item : class[building-block-media-click-object]
-			:: Family Guy
-		/item
-		item : class[building-block-media-click-object]
-			:: Legally Blonde
-		/item
-		item : class[building-block-media-click-object]
-			:: Mean Girls
-		/item
-		item : class[building-block-media-click-object]
-			:: Mean Girls 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Miss Congeniality
-		/item
-		item : class[building-block-media-click-object]
-			:: Parks and Recreation
-		/item
-		item : class[building-block-media-click-object]
-			:: The Office
-		/item
-		item : class[building-block-media-click-object]
-			:: The Waterboy
-		/item
-		item : class[building-block-media-click-object]
-			:: Vacation
-		/item
-	/block
+block : id[mediaSelectorWrapper]
+    ## : <div class='media-category horizontal-scroll' id='` + categoryRef + `'></div>
+    block : class[media-category horizontal-scroll] id[comedy_category]
+    /block
+    block : class[media-category horizontal-scroll] id[drama_category]
+    /block
+    block : class[media-category horizontal-scroll] id[animation_category]
+    /block
 /block
 
+block : id[expandScreen] style[display: none;]
+    block : id[expandPanel]
 
+        block : class[display-bar]
+            image : images/icons/close.png : class[close-expand-panel]
+            lnb : id[expandPanelTitle] : Title
+        /block
 
+        block : class[display-variant] id[tvDisplay] style[display: block]
+            block : class[season-selector]
+                lnb : class[item] : Season 1
+                lnb : class[item] : Season 2
+                lnb : class[item] : Season 3
+                lnb : class[item] : Season 4
+                lnb : class[item] : Season 5
+                lnb : class[item] : Season 6
+                lnb : class[item] : Season 7
+                lnb : class[item] : Season 8
+                lnb : class[item] : Season 9
+            /block
+            block : class[episode-display]
+            
+            /block
+        /block
 
+        block : class[display-variant] id[movieDisplay] style[display: none]
+        /block 
 
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Animations
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Cars 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Cars 3
-		/item
-		item : class[building-block-media-click-object]
-			:: Coraline
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Despicable Me 3
-		/item
-		item : class[building-block-media-click-object]
-			:: Minions
-		/item
-		item : class[building-block-media-click-object]
-			:: Ratatouille
-		/item
-	/block
-/block
-
-
-
-
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Dramas
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: American Psycho
-		/item
-		item : class[building-block-media-click-object]
-			:: Hidden Figures
-		/item
-		item : class[building-block-media-click-object]
-			:: Knives Out
-		/item
-		item : class[building-block-media-click-object]
-			:: Sherlock
-		/item
-		item : class[building-block-media-click-object]
-			:: Squid Game
-		/item
-		item : class[building-block-media-click-object]
-			:: The Notebook
-		/item
-	/block
-/block
-
-
-
-
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Marvel
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Avengers: ENDGAME
-		/item
-		item : class[building-block-media-click-object]
-			:: Spider Man: Far From Home
-		/item
-		item : class[building-block-media-click-object]
-			:: Spider Man: Homecoming
-		/item
-		item : class[building-block-media-click-object]
-			:: Spider Man: No Way Home
-		/item
-		item : class[building-block-media-click-object]
-			:: The Amazing Spider Man 2
-		/item
-		item : class[building-block-media-click-object]
-			:: The Incredible Hulk
-		/item
-		item : class[building-block-media-click-object]
-			:: WandaVision
-		/item
-	/block
-/block
-
-
-
-
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Romantic Comedies
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: The Proposal
-		/item
-	/block
-/block
-
-
-
-
-
-block : class[media-slider-section]
-	block : class[media-slider-title-bar clickable-title]
-		block : class[media-slider-title]
-			:: Christmas Movies
-		/block
-	/block
-	block : class[horizontal-scroll media-slider-carousel]
-		item : class[building-block-media-click-object]
-			:: Daddy's Home 2
-		/item
-		item : class[building-block-media-click-object]
-			:: Elf
-		/item
-	/block
-/block
-
-block : class[bottom-padding]
-/block
-
-/block
-
-
-
-
-
-
-block : id[panel-wrapper] onclick[this.style.display = 'none';]
-	block : class[panel] id[category-panel]
-		block : class[title]
-			:: Categories
-		/block
-		block : class[content]
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Comedy
-			/block
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Animation
-			/block
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Drama
-			/block
-
-			break
-
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Marvel
-			/block
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Romcom
-			/block
-			block : class[tag] onclick[filterMedia(this, 'Media'), clearMediaFilter(), search(this.innerText)]
-				:: Christmas
-			/block
-		/block
-	/block
+    /block
 /block
