@@ -209,17 +209,12 @@ a{
     padding-right: 15pt;
 }
 
-.media-display-object:hover .image{
-    opacity: 1;
-}
-
 .media-display-object .image{
     width: 100%;
     aspect-ratio: 16 / 9;
     background: url('../images/thumbnails/americanpsycho.jpg') center center no-repeat;
     background-size: cover;
     border-radius: inherit;
-    opacity: 0.8;
     transition: opacity 200ms;
 }
 
