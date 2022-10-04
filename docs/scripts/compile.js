@@ -64,7 +64,7 @@ function buildPage(code) {
         };
     }
     // console.log(convertedCode);
-    document.body.style.display = 'block';
+    document.body.style.visibility = 'visible';
     bodyOnLoadFunctions();
     if (convertedCode.includes("<meta name='tiger-ui'>")) {
         initiateUI();

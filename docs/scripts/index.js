@@ -240,7 +240,87 @@ const mediaLibrary = {
 // Reference Functions
 
 function closePanel() {
-    expandScreen.style.display = 'none';
+    dom('expandScreen').style.display = 'none';
+}
+
+function insertMediaObjects() {
+    let medlib = Object.keys(mediaLibrary);
+    for (let i = 0; i < Object.keys(mediaLibrary).length; i++) {
+        let displayTitle = medlib[i].replaceAll('_',' ');
+        let data = mediaLibrary[medlib[i]];
+        let category = data['cat'];
+        let categoryRef = category + '_category';
+        let type = data['mediaType'];
+    
+        var moreInfo;
+        if (type == 'movie') moreInfo = 'Movie';
+        if (data['mediaType'] == 'tv') {
+            let seasonPural = 'Seasons';
+            if (data['sTotal'] == 1) seasonPural = 'Season';
+            moreInfo = 'TV Show ⏺ ' + data['sTotal'] + ' ' + seasonPural;
+        }
+    
+        function newCategory() {
+            dom('mediaSelectorWrapper').innerHTML += `
+            <div class='media-category horizontal-scroll' id='` + categoryRef + `'></div>
+            `;
+        }
+    
+        function newObject() {
+            dom('mediaSelectorWrapper').innerHTML += `
+            <div class='media-display-object' onclick='expandPanel("` + displayTitle + `")'>
+                <div class='image' style='background-image: url("images/thumbnails/` + displayTitle.replaceAll(' ','').toLowerCase() + `.jpg")'></div>
+                <div class='data'>
+                    <div class='title'>` + displayTitle + `</div>
+                    <div class='caption'>` + moreInfo + `</div>
+                </div>
+            </div>
+            `;
+        }
+    
+        // if (!dom(categoryRef)) newCategory(category);
+        newObject();
+    }
+}
+
+var mediaTitle;
+var mediaRef;
+var mediaType;
+var seasonTotal;
+
+function expandPanel(title) {
+    mediaTitle = title;
+    mediaRef = mediaLibrary[mediaTitle.replaceAll(' ','_')];
+    mediaType = mediaRef['mediaType'];
+    seasonTotal = mediaRef['sTotal'];
+
+    var screen = dom('expandScreen');
+    var displayTitle = dom('expandPanelTitle');
+    var seasonsList = dom_c('season-selector')[0];
+    var episodesList = document.getElementsByClassName('episode-display')[0];
+
+    screen.style.display = 'flex';
+    displayTitle.innerHTML = title;
+    buildSeason(1);
+
+    function clearEpisodes() {
+        episodes.innerHTML = ``;
+    }
+
+    function insertEpisode(title, number) {
+        episodes.innerHTML += `
+        <div class='item'>
+            <div class='title'>` + title + `</div>
+            <div class='label'>Episode ` + number + `</div>
+        </div>
+        `
+    }
+}
+
+function buildSeason(season) {
+    clearEpisodes();
+    let seasonData = mediaLibrary[displayTitle]['s' + season];
+    alert(seasonData);
 }
 
 // On Load
@@ -248,96 +328,6 @@ function closePanel() {
 function bodyOnLoadFunctions() {
     // If Media Objects will be present
     if (dom('mediaSelectorWrapper')) {
-        let medlib = Object.keys(mediaLibrary);
-        for (let i = 0; i < Object.keys(mediaLibrary).length; i++) {
-            let displayTitle = medlib[i].replaceAll('_',' ');
-            let data = mediaLibrary[medlib[i]];
-            let category = data['cat'];
-            let categoryRef = category + '_category';
-            let type = data['mediaType'];
-        
-            var moreInfo;
-            if (type == 'movie') moreInfo = 'Movie';
-            if (data['mediaType'] == 'tv') {
-                let seasonPural = 'Seasons';
-                if (data['sTotal'] == 1) seasonPural = 'Season';
-                moreInfo = 'TV Show ⏺ ' + data['sTotal'] + ' ' + seasonPural;
-            }
-        
-            function newCategory() {
-                dom('mediaSelectorWrapper').innerHTML += `
-                <div class='media-category horizontal-scroll' id='` + categoryRef + `'></div>
-                `;
-            }
-        
-            function newObject() {
-                dom(categoryRef).innerHTML += `
-                <div class='media-display-object'>
-                    <div class='image' style='background-image: url("images/thumbnails/` + displayTitle.replaceAll(' ','').toLowerCase() + `.jpg")'></div>
-                    <div class='data'>
-                        <div class='title'>` + displayTitle + `</div>
-                        <div class='caption'>` + moreInfo + `</div>
-                    </div>
-                </div>
-                `;
-            }
-        
-            if (!dom(categoryRef)) newCategory(category);
-            newObject();
-        }
-
-        let mediaObjects = document.getElementsByClassName('media-display-object');
-        for (let i = 0; i < mediaObjects.length; i++) {
-            mediaObjects[i].addEventListener('click', function() {
-                let mediaTitle = mediaObjects[i].children[1].children[0].innerHTML;
-                    let mediaRef = mediaLibrary[mediaTitle.replaceAll(' ','_')];
-                let mediaType = mediaRef['mediaType'];
-                let seasonTotal = mediaRef['sTotal'];
-
-                let screen = dom('expandScreen');
-                let displayTitle = dom('expandPanelTitle');
-                let episodes = document.getElementsByClassName('episode-display')[0];
-                expandPanel(mediaTitle, mediaType);
-
-                function expandPanel(title, type) {
-                    screen.style.display = 'flex';
-                    displayTitle.innerHTML = title;
-                    buildSeason(1);
-                }
-
-                function buildSeason(season) {
-                    clearEpisodes();
-                    let seasonData = mediaLibrary[displayTitle]['s' + season];
-                    alert(seasonData);
-                }
-        
-                function clearEpisodes() {
-                    episodes.innerHTML = ``;
-                }
-
-                function insertEpisode(title, number) {
-                    episodes.innerHTML += `
-                    <div class='item'>
-                        <div class='title'>` + title + `</div>
-                        <div class='label'>Episode ` + number + `</div>
-                    </div>
-                    `
-                }
-            })
-        }
-
-        let closeIcons = document.getElementsByClassName('close-expand-panel');
-        for (let i = 0; i < closeIcons.length; i++) {
-            let screen = dom('expandScreen');
-
-            function closePanel() {
-                screen.style.display = 'none';
-            }
-
-            closeIcons[i].addEventListener('click', function() {
-                closePanel();
-            })
-        }
-
+        insertMediaObjects();
     }
 }

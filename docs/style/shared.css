@@ -40,7 +40,8 @@
 
     --mainFont: BaileyScript;
 
-    --top-navbar-height: 45pt;
+    --left: 175pt;
+    --top: 50pt;
 }
 
 @font-face {
@@ -59,32 +60,16 @@ body{
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
+    visibility: hidden;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: var(--left) calc(100vw - var(--left));
+    grid-template-rows: var(--top) calc(100vh - var(--top));
 }
 
-#wallpaper{
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    /* background: linear-gradient(30deg, rgb(22, 15, 31) 0%, rgb(32, 23, 37) 50%, rgb(17, 16, 17) 100%); */
-    background: linear-gradient(30deg, rgb(31, 21, 43) 0%, rgb(41, 30, 47) 50%, rgb(22, 21, 22) 100%);
-    z-index: -100;
-}
-
-#wallpaper{
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(50pt);
-    -webkit-backdrop-filter: blur(50pt);
-}
-
-a{
-    text-decoration: none;
-    color: rgb(219, 140, 255);
+.module{
+    display: inline-block;
 }
 
 .horizontal-scroll{
@@ -107,115 +92,125 @@ a{
 
 
 
-.top-navbar{
-    height: 40pt;
-
+.module.top{
     position: sticky;
     top: 0;
 
+    grid-column-start: 1;
+    grid-column-end: 3;
+
     background-color: var(--charcoal);
+    box-shadow: 0 0 10pt 0 var(--onyx);
     z-index: 10;
-
     display: flex;
     align-items: center;
+    padding: 5pt;
 }
 
-.top-navbar .logo{
-    height: 35pt;
+.top.module .logo{
+    height: 30pt;
 }
 
-.top-navbar .logo-title{
-    font-size: 15pt;
+.top.module .logo-title{
+    font-size: 17pt;
     padding-left: 5pt;
-    color: var(--toyPurple);
-}
-
-.center-piece{
-    height: 100%;
-    width: 100%;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.center-piece .item{
-    height: 75%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 12pt 0 15pt;
-    cursor: default;
-    border-radius: 5pt;
-    transition: background-color 250ms;
-}
-
-.center-piece .item .text{
-    font-size: 0;
-    opacity: 0;
-    transition: font-size 200ms, opacity 100ms ease-in-out 100ms;
-}
-
-.center-piece .item .text:before{
-    content: 'W';
     color: rgba(0,0,0,0);
-}
 
-.center-piece .item .icon{
-    height: 20pt;
-}
-
-.center-piece .item:hover{
-    background-color: rgb(78, 78, 78);
-}
-
-.center-piece .item:hover .text{
-    font-size: 11pt;
-    opacity: 1;
-}
-
-.center-piece .item.active{
-    color: var(--toyPurple);
+    background: linear-gradient(-45deg, rgb(192, 64, 192), var(--toyPurple));
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 
 
 
-/* Handling Media */
-.media-category{
-    width: calc(100vw - 20pt);
-    display: inline-block;
-    font-size: 0;
+/* Left Navbar */
+
+
+
+
+.module.left{
+    background-color: var(--charcoal);
     padding: 10pt;
 }
 
+.module.left .item{
+    padding: 10pt;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    border-radius: 5pt;
+}
+
+.module.left .item.active{
+    color: var(--toyPurple);
+}
+
+.module.left .item:hover{
+    background-color: var(--onyx);
+}
+
+.module.left .icon{
+    height: 18pt;
+    width: 18pt;
+    margin-right: 10pt;
+}
+
+.module.left .section-title{
+    padding: 10pt;
+    cursor: default;
+    color: gray;
+    text-align: center;
+}
+
+
+
+
+/* Main Content */
+
+
+
+
+.module.right{
+    overflow: scroll;
+}
+
+#mediaSelectorWrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200pt, 1fr));
+    padding: 15pt;
+    gap: 5pt;
+}
+
 .media-display-object{
-    height: 100%;
-    width: 180pt;
     display: inline-block;
     font-size: 12pt;
-    padding: 12pt 8pt 30pt 8pt;
-    transition: padding 200ms;
+    padding: 15pt;
     border-radius: 5pt;
+    opacity: 0.9;
 }
 
 .media-display-object:hover{
     background-color: var(--charcoal);
-    padding-left: 15pt;
-    padding-right: 15pt;
+    opacity: 1;
+    z-index: 100;
+    transition: box-shadow 500ms ease 2s, outline 0ms ease 2s, border-radius 0ms ease 2s;
+    box-shadow: 0 0 1000pt 500pt black;
+    outline: solid 1pt gray;
+    border-radius: 0;
+}
+
+.media-display-object:hover .image{
+    box-shadow: 0 0 15pt 0 var(--onyx);
 }
 
 .media-display-object .image{
-    width: 100%;
     aspect-ratio: 16 / 9;
     background: url('../images/thumbnails/americanpsycho.jpg') center center no-repeat;
     background-size: cover;
     border-radius: inherit;
-    transition: opacity 200ms;
+    transition: box-shadow 200ms;
+    box-shadow: 0 0 0pt 0 var(--onyx);
 }
 
 .media-display-object .data{
@@ -263,18 +258,21 @@ a{
     box-shadow: 0 0 5vh 0 black;
     border-radius: 10pt;
     overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 150pt calc(100% - 150pt);
+    grid-template-rows: 40pt calc(100% - 40pt);
 }
 
 #expandPanel .display-bar{
-    height: 40pt;
-    width: 100%;
     background-color: var(--charcoal);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
-    top: 0;
-    border-bottom: solid 1pt gray
+    border-bottom: solid 1pt gray;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: relative;
 }
 
 .close-expand-panel{
@@ -292,18 +290,7 @@ a{
     background-color: var(--royalPurple);
 }
 
-#expandPanel .display-variant{
-    height: calc(100% - 40pt);
-    width: 100%;
-    position: relative;
-}
-
 #expandPanel .season-selector{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 15%;
     text-align: center;
     background: var(--charcoal);
     overflow: auto;
@@ -314,16 +301,15 @@ a{
     cursor: default;
 }
 
+#expandPanel .season-selector .item.active{
+    color: var(--toyPurple);
+}
+
 #expandPanel .season-selector .item:hover{
     background-color: var(--onyx);
 }
 
 #expandPanel .episode-display{
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 85%;
     overflow: auto;
 }
 
