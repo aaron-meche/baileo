@@ -31,17 +31,17 @@
     --olivine: #92BA78;
     --boldOlivine: #71905c;
     --darkOlivine: #4f5f44;
-    /* --onyx: rgb(2, 28, 28); */
     --onyx: rgb(32,32,33);
-    /* --onyx: #18181b; */
 
     --accentColor: var(--grapeTaffy);
     --popBorder: var(--toyPurple);
 
-    --mainFont: BaileyScript;
+    --mainColor: rgb(21, 10, 40);
+    --secondColor: rgb(29, 13, 52);
 
-    --left: 175pt;
-    --top: 50pt;
+    --mainFont: BaileyScript;
+    --top-navbar-height: 50pt;
+    --left-navbar-width: 120pt;
 }
 
 @font-face {
@@ -56,16 +56,11 @@
 
 body{
     margin: 0;
-    background-color: var(--onyx);
+    background-color: var(--mainColor);
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
-    visibility: hidden;
     overflow: hidden;
-
-    display: grid;
-    grid-template-columns: var(--left) calc(100vw - var(--left));
-    grid-template-rows: var(--top) calc(100vh - var(--top));
 }
 
 .module{
@@ -93,25 +88,25 @@ body{
 
 
 .module.top{
-    position: sticky;
+    position: fixed;
     top: 0;
 
-    grid-column-start: 1;
-    grid-column-end: 3;
+    height: var(--top-navbar-height);
+    width: 100vw;
 
-    background-color: var(--charcoal);
-    box-shadow: 0 0 10pt 0 var(--onyx);
+    background-color: var(--secondColor);
+    box-shadow: 0 0 10pt 5pt var(--mainColor);
     z-index: 10;
     display: flex;
     align-items: center;
-    padding: 5pt;
+    padding: 0 10pt;
 }
 
-.top.module .logo{
+.module.top .logo{
     height: 30pt;
 }
 
-.top.module .logo-title{
+.module.top .logo-title{
     font-size: 17pt;
     padding-left: 5pt;
     color: rgba(0,0,0,0);
@@ -130,7 +125,14 @@ body{
 
 
 .module.left{
-    background-color: var(--charcoal);
+    position: fixed;
+    top: var(--top-navbar-height);
+    left: 0;
+
+    height: calc(100vh - var(--top-navbar-height));
+    width: var(--left-navbar-width);
+
+    background-color: var(--secondColor);
     padding: 10pt;
 }
 
@@ -147,7 +149,7 @@ body{
 }
 
 .module.left .item:hover{
-    background-color: var(--onyx);
+    background-color: var(--mainColor);
 }
 
 .module.left .icon{
@@ -157,7 +159,7 @@ body{
 }
 
 .module.left .section-title{
-    padding: 10pt;
+    padding: 15pt 10pt 5pt 10pt;
     cursor: default;
     color: gray;
     text-align: center;
@@ -172,13 +174,34 @@ body{
 
 
 .module.right{
+    position: fixed;
+    top: var(--top-navbar-height);
+    right: 0;
+
+    height: calc(100vh - var(--top-navbar-height));
+    width: calc(100vw - var(--left-navbar-width) - 20pt);
+
     overflow: scroll;
+}
+
+.module.right .featured-panel{
+    height: 80%;
+    width: 100%;
+    background-color: black;
+    position: relative;
+}
+
+.module.right .featured-panel .image{
+    height: 100%;
+    width: 100%;
+    background: url('../images/cover-image/Minions\ the\ Rise\ of\ Gru.jpeg') center center no-repeat;
+    background-size: cover;
 }
 
 #mediaSelectorWrapper{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200pt, 1fr));
-    padding: 15pt;
+    padding: 10pt;
     gap: 5pt;
 }
 
@@ -191,17 +214,12 @@ body{
 }
 
 .media-display-object:hover{
-    background-color: var(--charcoal);
+    background-color: var(--secondColor);
     opacity: 1;
-    z-index: 100;
-    transition: box-shadow 500ms ease 2s, outline 0ms ease 2s, border-radius 0ms ease 2s;
-    box-shadow: 0 0 1000pt 500pt black;
-    outline: solid 1pt gray;
-    border-radius: 0;
 }
 
 .media-display-object:hover .image{
-    box-shadow: 0 0 15pt 0 var(--onyx);
+    box-shadow: 0 0 15pt 0 var(--mainColor);
 }
 
 .media-display-object .image{
@@ -210,7 +228,7 @@ body{
     background-size: cover;
     border-radius: inherit;
     transition: box-shadow 200ms;
-    box-shadow: 0 0 0pt 0 var(--onyx);
+    box-shadow: 0 0 0pt 0 var(--mainColor);
 }
 
 .media-display-object .data{
@@ -247,32 +265,35 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
 }
 
 #expandPanel{
-    height: 80%;
-    width: 80%;
+    height: 90%;
+    width: 90%;
     background-color: rgba(32,32,33, 0.75);
     backdrop-filter: blur(15pt);
     -webkit-backdrop-filter: blur(15pt);
     box-shadow: 0 0 5vh 0 black;
     border-radius: 10pt;
-    overflow: hidden;
+    overflow: scroll;
+    scroll-behavior: smooth;
 
-    display: grid;
-    grid-template-columns: 150pt calc(100% - 150pt);
-    grid-template-rows: 40pt calc(100% - 40pt);
+    transition: top 400ms;
+    position: relative;
+    top: 100vh;
 }
 
 #expandPanel .display-bar{
-    background-color: var(--charcoal);
+    height: 40pt;
+    background-color: rgba(32,32,33, 0.75);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: solid 1pt gray;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    position: relative;
+    position: sticky;
+    top: 0;
 }
 
 .close-expand-panel{
@@ -291,14 +312,22 @@ body{
 }
 
 #expandPanel .season-selector{
-    text-align: center;
-    background: var(--charcoal);
-    overflow: auto;
+    background-color: var(--secondColor);
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1pt gray;
+    padding: 5pt;
+    position: sticky;
+    top: 40pt;
 }
 
 #expandPanel .season-selector .item{
-    padding: 10pt;
     cursor: default;
+    display: inline-block;
+    padding: 10pt;
+    border-radius: 5pt;
+    color: lightgray;
+    font-weight: 400;
 }
 
 #expandPanel .season-selector .item.active{
@@ -306,10 +335,25 @@ body{
 }
 
 #expandPanel .season-selector .item:hover{
-    background-color: var(--onyx);
+    background-color: var(--mainColor);
+}
+
+#expandPanel .image-showcase-wrapper{
+    height: 65vh;
+    width: 100%;
+    transition: height 1s;
+}
+
+#expandPanel .image-showcase{
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    background: inherit;
+    box-shadow: 0 0 20vw 10vw black;
 }
 
 #expandPanel .episode-display{
+    width: 100%;
     overflow: auto;
 }
 
@@ -322,20 +366,68 @@ body{
 }
 
 #expandPanel .episode-display .item:hover{
-    background-color: var(--charcoal);
+    background-color: var(--secondColor);
 }
 
 #expandPanel .episode-display .item .title{
-    width: 80%;
+    width: calc(80% - 20pt);
     font-size: 15pt;
     text-align: left;
-    padding-left: 2.5%;
+    padding-left: 20pt;
 }
 
 #expandPanel .episode-display .item .label{
-    width: 15%;
+    width: calc(20% - 20pt);
     font-size: 10pt;
     text-align: right;
-    padding-right: 2.5%;
+    padding-right: 20pt;
     color: rgb(172, 172, 172);
+}
+
+
+
+/* Expand Click Menu */
+#expandClickMenuWrapper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+#expandClickMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    background-color: rgba(32,32,33, 0.75);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
+    box-shadow: 0 0 50pt 0 black;
+    border-radius: 5pt;
+
+    transition: opacity 300ms, padding 300ms, filter 300ms;
+    opacity: 0;
+    filter: blur(5pt);
+}
+
+#expandClickMenu .title{
+    font-size: 15pt;
+    font-weight: 600;
+    padding: 7pt;
+    margin-bottom: 7pt;
+    border-bottom: solid 1pt gray;
+}
+
+#expandClickMenu .button{
+    padding: 7pt;
+    cursor: pointer;
+    border-radius: inherit;
+    color: lightgray;
+}
+
+#expandClickMenu .button:hover{
+    background-color: var(--secondColor);
+    color: white;
 }

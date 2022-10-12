@@ -237,11 +237,76 @@ const mediaLibrary = {
     },
 }
 
-// Reference Functions
 
-function closePanel() {
-    dom('expandScreen').style.display = 'none';
+// On Load
+
+
+function main() {
+    // If Media Objects are present
+    if (dom('mediaSelectorWrapper')) {
+        insertMediaObjects();
+    }
 }
+
+
+// References
+
+
+function wipeFallback() {
+    let response = prompt('Error: 922\nFatal Error... ALL DATA will be erased\n\nTO DELETE DATA:\nType "wipe" in the box below\n\nTO CANCEL:\nType "cancel" in the box below');
+    if (response.toLowerCase() == 'cancel') {
+        alert('Data had not been erased');
+    } else if (response.toLowerCase() == 'wipe') {
+        localStorage.clear();
+        sessionStorage.clear();
+        setTimeout(function () {
+            alert('ALL Data has been wiped');
+        }, 500);
+    } else {
+        alert('Invalid response')
+        wipeFallback();
+    }
+}
+
+
+function isMobileDevice(){
+    return window.matchMedia('(hover: none)').matches;
+}
+
+
+function numToCode(number) {
+    let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    let library = ['z','k','g','t','i','u','s','y','q','a'];
+    let spiltnum = Math.floor(number).toString().split('');
+    let collection = '';
+    for (let i = 0; i < spiltnum.length; i++) {
+        collection += library[spiltnum[i]];
+    }
+    return collection;
+}
+
+
+function codeToNum(code) {
+    let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    let library = ['z','k','g','t','i','u','s','y','q','a'];
+    let spiltcode = code.split('');
+    let collection = '';
+    for (let i = 0; i < spiltcode.length; i++) {
+        collection += library.indexOf(spiltcode[i]);
+    }
+    return collection;
+}
+
+
+function interpTimeSpan(number, extra) {
+    let start = numToCode(number);
+    let until = numToCode(extra);
+    return start + 'b' + until;
+}
+
+
+// Base UI Building
+
 
 function insertMediaObjects() {
     let medlib = Object.keys(mediaLibrary);
@@ -249,44 +314,57 @@ function insertMediaObjects() {
         let displayTitle = medlib[i].replaceAll('_',' ');
         let data = mediaLibrary[medlib[i]];
         let category = data['cat'];
-        let categoryRef = category + '_category';
         let type = data['mediaType'];
     
         var moreInfo;
-        if (type == 'movie') moreInfo = 'Movie';
-        if (data['mediaType'] == 'tv') {
+        if (type == 'movie') {
+            moreInfo = 'Movie';
+        } 
+        else if (data['mediaType'] == 'tv') {
             let seasonPural = 'Seasons';
-            if (data['sTotal'] == 1) seasonPural = 'Season';
+            if (data['sTotal'] == 1) {
+                seasonPural = 'Season';
+            }
             moreInfo = 'TV Show ⏺ ' + data['sTotal'] + ' ' + seasonPural;
         }
     
-        function newCategory() {
-            dom('mediaSelectorWrapper').innerHTML += `
-            <div class='media-category horizontal-scroll' id='` + categoryRef + `'></div>
-            `;
-        }
-    
         function newObject() {
-            dom('mediaSelectorWrapper').innerHTML += `
-            <div class='media-display-object' onclick='expandPanel("` + displayTitle + `")'>
-                <div class='image' style='background-image: url("images/thumbnails/` + displayTitle.replaceAll(' ','').toLowerCase() + `.jpg")'></div>
-                <div class='data'>
-                    <div class='title'>` + displayTitle + `</div>
-                    <div class='caption'>` + moreInfo + `</div>
+            if (type == 'tv') {
+                dom('mediaSelectorWrapper').innerHTML += `
+                <div class='media-display-object' onclick='expandPanel("` + displayTitle + `")'>
+                    <div class='image' style='background-image: url("images/thumbnails/` + displayTitle.replaceAll(' ','').toLowerCase() + `.jpeg")'></div>
+                    <div class='data'>
+                        <div class='title'>` + displayTitle + `</div>
+                        <div class='caption'>` + moreInfo + `</div>
+                    </div>
                 </div>
-            </div>
-            `;
+                `;
+            } else if (type == 'movie') {
+                dom('mediaSelectorWrapper').innerHTML += `
+                <div class='media-display-object' onclick='expandClick("` + displayTitle + `", event)'>
+                    <div class='image' style='background-image: url("images/thumbnails/` + displayTitle.replaceAll(' ','').toLowerCase() + `.jpeg")'></div>
+                    <div class='data'>
+                        <div class='title'>` + displayTitle + `</div>
+                        <div class='caption'>` + moreInfo + `</div>
+                    </div>
+                </div>
+                `;
+            }
         }
-    
-        // if (!dom(categoryRef)) newCategory(category);
+
         newObject();
     }
 }
+
+
+// Media Panel
+
 
 var mediaTitle;
 var mediaRef;
 var mediaType;
 var seasonTotal;
+
 
 function expandPanel(title) {
     mediaTitle = title;
@@ -294,40 +372,139 @@ function expandPanel(title) {
     mediaType = mediaRef['mediaType'];
     seasonTotal = mediaRef['sTotal'];
 
-    var screen = dom('expandScreen');
-    var displayTitle = dom('expandPanelTitle');
-    var seasonsList = dom_c('season-selector')[0];
-    var episodesList = document.getElementsByClassName('episode-display')[0];
+    let screen = dom('expandScreen');
+    let panel = dom('expandPanel');
+    let displayTitle = dom('expandPanelTitle');
+    let displayImage = document.getElementsByClassName('image-showcase-wrapper')[0];
+    let seasonBar = document.getElementsByClassName('season-selector')[0];
 
-    screen.style.display = 'flex';
+    screen.style.visibility = 'visible';
+    panel.style.top = '0';
     displayTitle.innerHTML = title;
+    displayImage.style.background = "url('../images/cover-image/" + mediaTitle + ".jpeg') center center no-repeat";
+    displayImage.style.backgroundSize = "cover";
+    displayImage.style.height = "50vh";
     buildSeason(1);
+}
 
-    function clearEpisodes() {
-        episodes.innerHTML = ``;
+
+function buildSeason(season) {
+    // Side Season Selector Bar
+    let seasonsList = dom_c('season-selector')[0];
+    let seasonTotal = mediaRef['sTotal'];
+
+    seasonsList.innerHTML = '';
+    for (let i = 0; i < seasonTotal; i++) {
+        if ((season - 1) == i) {
+            seasonsList.innerHTML += `
+            <div class='item active'>
+                Season ` + (i + 1) + `
+            </div>`
+        } else {
+            seasonsList.innerHTML += `
+            <div class='item' onclick='buildSeason(` + (i + 1) + `)'>
+                Season ` + (i + 1) + `
+            </div>`
+        }
     }
 
-    function insertEpisode(title, number) {
-        episodes.innerHTML += `
+    // Episode List
+    let episodesList = document.getElementsByClassName('episode-display')[0];
+    let seasonData = mediaRef['s' + season];
+
+    episodesList.innerHTML = ``;
+    for (let i = 0; i < seasonData.length; i++) {
+        episodesList.innerHTML += `
         <div class='item'>
-            <div class='title'>` + title + `</div>
-            <div class='label'>Episode ` + number + `</div>
+            <div class='title'>` + seasonData[i] + `</div>
+            <div class='label'>Episode ` + (i + 1) + `</div>
         </div>
         `
     }
 }
 
-function buildSeason(season) {
-    clearEpisodes();
-    let seasonData = mediaLibrary[displayTitle]['s' + season];
-    alert(seasonData);
+
+function closePanel() {
+    dom('expandScreen').style.visibility = 'hidden';
+    dom('expandPanel').style.top = '100vh';
+    dom('expandPanel').scrollTop = '0';
+    document.getElementsByClassName('image-showcase-wrapper')[0].style.height = '65vh';
 }
 
-// On Load
 
-function bodyOnLoadFunctions() {
-    // If Media Objects will be present
-    if (dom('mediaSelectorWrapper')) {
-        insertMediaObjects();
+// Expand Click
+
+
+function expandClick(title, e) {
+    mediaTitle = title;
+    mediaRef = mediaLibrary[mediaTitle.replaceAll(' ','_')];
+    mediaType = mediaRef['mediaType'];
+
+    let menuWrapper = dom('expandClickMenuWrapper');
+    let menu = dom('expandClickMenu');
+
+    menuWrapper.style.visibility = 'visible';
+    menu.style.opacity = '1';
+    menu.style.padding = '5pt';
+    menu.style.filter = 'blur(0)';
+
+    menu.children[0].innerHTML = title;
+
+    // Fixes left-right
+    if ((e.clientX + menu.offsetWidth) > window.innerWidth) {
+        menu.style.left = (e.clientX - menu.offsetWidth) + 'px';
+    } else {
+        menu.style.left = e.clientX + 'px';
     }
+
+    // Fixed top-bottom
+    if ((e.clientY + menu.offsetHeight) > window.innerHeight) {
+        menu.style.top = (e.clientY - menu.offsetHeight) + 'px';
+    } else {
+        menu.style.top = e.clientY + 'px';
+    }
+}
+
+
+function hideExpandClickMenu() {
+    let menuWrapper = dom('expandClickMenuWrapper');
+    let menu = dom('expandClickMenu');
+
+    menuWrapper.style.visibility = 'hidden';
+    menu.style.opacity = '0';
+    menu.style.padding = '0';
+    menu.style.filter = 'blur(5pt)';
+}
+
+
+function toViewer() {
+    if (isMobileDevice()) {
+        open_page('mobile');
+    } else {
+        open_page('desktop');
+    }
+}
+
+
+function continueWatching() {
+    localStorage['current: title'] = mediaTitle;
+    localStorage['current: type'] = mediaType;
+    if (!localStorage['progress: ' + mediaTitle]) { 
+        wipeFallback();
+    } else {
+        toViewer();
+    }
+}
+
+
+function playFromBeginning() {
+    localStorage['current: title'] = mediaTitle;
+    localStorage['current: type'] = mediaType;
+    localStorage['progress: ' + mediaTitle] = 0;
+    toViewer();
+}
+
+
+function learnMore() {
+    window.open('https://en.wikipedia.org/wiki/' + mediaTitle.replaceAll(' ','_'), '_blank');
 }

@@ -1,107 +1,119 @@
-import tigerUI
+elem > .[module top]
+    img > images/logo.png > .[logo left-info]
+    elt > .[logo-title left-info] > baileo
+</>
 
-block : class[module top]
-    image : images/logo.png : class[logo left-info]
-    lnb : class[logo-title left-info] : baileo
-/block
-
-block : class[module left]
+elem > .[module left]
 
 
 
-    lnb : class[section-title] : Media Type
+    elt > .[section-title] > Media Type
 
-    block : class[item active] onclick[filterMedia('type',this)]
-        image : images/icons/explore-active.png : class[icon]
-        lnb : class[text] : Explore All
-    /block
+    elem > .[item active] $[filterMedia('type',this)]
+        img > images/icons/explore-active.png > .[icon]
+        elt > .[text] > Explore All
+    </>
 
-    block : class[item] onclick[filterMedia('type',this)]
-        image : images/icons/tv.png : class[icon]
-        lnb : class[text] : TV Shows
-    /block
+    elem > .[item] $[filterMedia('type',this)]
+        img > images/icons/tv.png > .[icon]
+        elt > .[text] > TV Shows
+    </>
 
-    block : class[item] onclick[filterMedia('type',this)]
-        image : images/icons/movie.png : class[icon]
-        lnb : class[text] : Movies
-    /block
-
-
-
-    lnb : class[section-title] : Category
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/comedy.png : class[icon]
-        lnb : class[text] : Comedy
-    /block
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/drama.png : class[icon]
-        lnb : class[text] : Drama
-    /block
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/animation.png : class[icon]
-        lnb : class[text] : Animation
-    /block
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/superhero.png : class[icon]
-        lnb : class[text] : Superhero
-    /block
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/christmas.png : class[icon]
-        lnb : class[text] : Christmas
-    /block
-
-    block : class[item] onclick[filterMedia('category',this)]
-        image : images/icons/romcom.png : class[icon]
-        lnb : class[text] : Romcom
-    /block
+    elem > .[item] $[filterMedia('type',this)]
+        img > images/icons/movie.png > .[icon]
+        elt > .[text] > Movies
+    </>
 
 
 
-    lnb : class[section-title] : Other Services
+    elt > .[section-title] > Category
 
-    block : class[item] onclick[window.open('https://color.baileo.us','_self')]
-        image : images/icons/apps.png : class[icon]
-        lnb : class[text] : All Apps
-    /block
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/comedy.png > .[icon]
+        elt > .[text] > Comedy
+    </>
+
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/drama.png > .[icon]
+        elt > .[text] > Drama
+    </>
+
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/animation.png > .[icon]
+        elt > .[text] > Animation
+    </>
+
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/superhero.png > .[icon]
+        elt > .[text] > Superhero
+    </>
+
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/christmas.png > .[icon]
+        elt > .[text] > Christmas
+    </>
+
+    elem > .[item] $[filterMedia('category',this)]
+        img > images/icons/romcom.png > .[icon]
+        elt > .[text] > Romcom
+    </>
 
 
 
-/block
+    elt > .[section-title] > Other Services
 
-block : class[module right]
-    block : id[mediaSelectorWrapper]
+    elem > .[item] $[window.open('https://color.baileo.us','_self')]
+        img > images/icons/apps.png > .[icon]
+        elt > .[text] > All Apps
+    </>
 
-    /block
-/block
 
-## : block : id[expandScreen] onclick[closePanel()]
-block : id[expandScreen] style[display: none;]
-    block : id[expandPanel]
 
-        block : class[display-bar module]
-            image : images/icons/close.png : class[close-expand-panel] onclick[closePanel()]
-            lnb : id[expandPanelTitle] : Title
-        /block
+</>
 
-        block : class[season-selector module]
-            lnb : class[item] : Season 1
-            lnb : class[item] : Season 2
-            lnb : class[item] : Season 3
-            lnb : class[item] : Season 4
-            lnb : class[item] : Season 5
-            lnb : class[item] : Season 6
-            lnb : class[item] : Season 7
-            lnb : class[item] : Season 8
-            lnb : class[item] : Season 9
-        /block
-        block : class[episode-display module]
-        
-        /block
+elem > .[module right]
 
-    /block
-/block
+    elem > .[featured-panel]
+        elt > class[image] > 
+    </>
+
+    elem > #[mediaSelectorWrapper]
+
+    </>
+
+</>
+
+elem > #[expandScreen]
+    elem > #[expandPanel]
+
+        elem > .[display-bar]
+            img > images/icons/close.png > .[close-expand-panel] $[closePanel()]
+            elt > #[expandPanelTitle] > Title
+        </>
+
+        elem > .[image-showcase-wrapper]
+            elem > .[image-showcase]
+                ~  Empty
+            </>
+        </>
+
+        elem > .[season-selector horizontal-scroll]
+            ~  Empty
+        </>
+
+        elem > .[episode-display]
+            ~  Empty
+        </>
+
+    </>
+</>
+
+elem > #[expandClickMenuWrapper] $[hideExpandClickMenu()]
+    elem > #[expandClickMenu]
+        elt > class[title] > Movie Title
+        elt > class[button] $[continueWatching()] > Continue Watching
+        elt > class[button] $[playFromBeginning()] > Play from Beginning
+        elt > class[button] $[playFromBeginning()] > Iconic Moments
+        elt > class[button] $[learnMore()] > Learn More
+    </>
+</>
