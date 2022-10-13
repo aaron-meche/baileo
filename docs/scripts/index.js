@@ -238,6 +238,8 @@ const mediaLibrary = {
 }
 
 
+
+
 // On Load
 
 
@@ -247,6 +249,8 @@ function main() {
         insertMediaObjects();
     }
 }
+
+
 
 
 // References
@@ -268,11 +272,9 @@ function wipeFallback() {
     }
 }
 
-
 function isMobileDevice(){
     return window.matchMedia('(hover: none)').matches;
 }
-
 
 function numToCode(number) {
     let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -285,7 +287,6 @@ function numToCode(number) {
     return collection;
 }
 
-
 function codeToNum(code) {
     let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     let library = ['z','k','g','t','i','u','s','y','q','a'];
@@ -297,12 +298,55 @@ function codeToNum(code) {
     return collection;
 }
 
-
 function interpTimeSpan(number, extra) {
     let start = numToCode(number);
     let until = numToCode(extra);
     return start + 'b' + until;
 }
+
+function toggleSearch() {
+    let object = dom_c('search-bar')[0];
+
+    if (object.style.display == 'block') {
+        object.style.display = 'none';
+    } else {
+        object.style.display = 'block';
+        object.focus();
+    }
+}
+
+function search(query) {
+    query = query.toLowerCase();
+    let objects = dom_c('media-display-object');
+    
+    if (query == '') {
+        dom_c('featured-panel')[0].style.display = 'block';
+        for (let i = 0; i < objects.length; i++) {
+            objects[i].style.display = 'inline-block';
+        }
+    } else {
+        dom_c('featured-panel')[0].style.display = 'none';
+        for (let i = 0; i < objects.length; i++) {
+            let contents = objects[i].innerText.toLowerCase();
+            if (contents.includes(query)) {
+                objects[i].style.display = 'inline-block';
+            } else {
+                objects[i].style.display = 'none';
+            }
+        }
+    }
+}
+
+function filterMedia(query, self) {
+    search(query);
+    let objects = dom_c('mediaFilterCard');
+    for (let i = 0; i < objects.length; i++) {
+        objects[i].classList.remove('active');
+    }
+    self.classList.add('active');
+}
+
+
 
 
 // Base UI Building
@@ -325,7 +369,7 @@ function insertMediaObjects() {
             if (data['sTotal'] == 1) {
                 seasonPural = 'Season';
             }
-            moreInfo = 'TV Show ⏺ ' + data['sTotal'] + ' ' + seasonPural;
+            moreInfo = 'TV Show - ' + data['sTotal'] + ' ' + seasonPural;
         }
     
         function newObject() {
@@ -336,6 +380,7 @@ function insertMediaObjects() {
                     <div class='data'>
                         <div class='title'>` + displayTitle + `</div>
                         <div class='caption'>` + moreInfo + `</div>
+                        <div style='color:rgba(0,0,0,0)'>` + category + `</div>
                     </div>
                 </div>
                 `;
@@ -346,15 +391,17 @@ function insertMediaObjects() {
                     <div class='data'>
                         <div class='title'>` + displayTitle + `</div>
                         <div class='caption'>` + moreInfo + `</div>
+                        <div style='color:rgba(0,0,0,0)'>` + category + `</div>
                     </div>
                 </div>
                 `;
             }
         }
-
         newObject();
     }
 }
+
+
 
 
 // Media Panel
@@ -383,10 +430,8 @@ function expandPanel(title) {
     displayTitle.innerHTML = title;
     displayImage.style.background = "url('../images/cover-image/" + mediaTitle + ".jpeg') center center no-repeat";
     displayImage.style.backgroundSize = "cover";
-    displayImage.style.height = "50vh";
     buildSeason(1);
 }
-
 
 function buildSeason(season) {
     // Side Season Selector Bar
@@ -407,7 +452,6 @@ function buildSeason(season) {
             </div>`
         }
     }
-
     // Episode List
     let episodesList = document.getElementsByClassName('episode-display')[0];
     let seasonData = mediaRef['s' + season];
@@ -423,13 +467,13 @@ function buildSeason(season) {
     }
 }
 
-
 function closePanel() {
     dom('expandScreen').style.visibility = 'hidden';
     dom('expandPanel').style.top = '100vh';
     dom('expandPanel').scrollTop = '0';
-    document.getElementsByClassName('image-showcase-wrapper')[0].style.height = '65vh';
 }
+
+
 
 
 // Expand Click
@@ -456,7 +500,6 @@ function expandClick(title, e) {
     } else {
         menu.style.left = e.clientX + 'px';
     }
-
     // Fixed top-bottom
     if ((e.clientY + menu.offsetHeight) > window.innerHeight) {
         menu.style.top = (e.clientY - menu.offsetHeight) + 'px';
@@ -464,7 +507,6 @@ function expandClick(title, e) {
         menu.style.top = e.clientY + 'px';
     }
 }
-
 
 function hideExpandClickMenu() {
     let menuWrapper = dom('expandClickMenuWrapper');
@@ -476,7 +518,6 @@ function hideExpandClickMenu() {
     menu.style.filter = 'blur(5pt)';
 }
 
-
 function toViewer() {
     if (isMobileDevice()) {
         open_page('mobile');
@@ -484,7 +525,6 @@ function toViewer() {
         open_page('desktop');
     }
 }
-
 
 function continueWatching() {
     localStorage['current: title'] = mediaTitle;
@@ -496,14 +536,12 @@ function continueWatching() {
     }
 }
 
-
 function playFromBeginning() {
     localStorage['current: title'] = mediaTitle;
     localStorage['current: type'] = mediaType;
     localStorage['progress: ' + mediaTitle] = 0;
     toViewer();
 }
-
 
 function learnMore() {
     window.open('https://en.wikipedia.org/wiki/' + mediaTitle.replaceAll(' ','_'), '_blank');

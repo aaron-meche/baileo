@@ -36,23 +36,20 @@
     --accentColor: var(--grapeTaffy);
     --popBorder: var(--toyPurple);
 
-    --mainColor: rgb(21, 10, 40);
-    --secondColor: rgb(29, 13, 52);
+    --mainColor: rgb(15, 4, 36);
+    --secondColor: rgb(36, 18, 61);
 
     --mainFont: BaileyScript;
     --top-navbar-height: 50pt;
     --left-navbar-width: 150pt;
 }
 
+
 @font-face {
     font-family: 'BaileyScript';
     src: url('BaileyScript/BaileyScript.ttf');
 }
 
-@font-face {
-    font-family: 'BaileyInter';
-    src: url('BaileyScript/Inter.ttf');
-}
 
 body{
     margin: 0;
@@ -60,17 +57,12 @@ body{
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
-    overflow: hidden;
 }
 
-.module{
-    display: inline-block;
-}
 
 .horizontal-scroll{
     white-space: nowrap;
     overflow-x: scroll;
-    padding-left: 0.5vw;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
@@ -80,34 +72,35 @@ body{
 
 
 
-
-/* Top Navbar */
-
+/* Navbar */
 
 
 
-
-.module.top{
-    position: fixed;
+.navbar{
+    position: sticky;
     top: 0;
 
-    height: var(--top-navbar-height);
-    width: 100vw;
-
-    background-color: var(--secondColor);
-    box-shadow: 0 0 10pt 5pt var(--mainColor);
     z-index: 10;
+}
+
+
+/* Top */
+
+.navbar .top{
+    height: 40pt;
+    width: calc(100vw - 20pt);
+    background-color: var(--secondColor);
+    padding: 0 10pt;
     display: flex;
     align-items: center;
-    padding: 0 10pt;
 }
 
-.module.top .logo{
-    height: 30pt;
+.navbar .top .logo{
+    height: 25pt;
 }
 
-.module.top .logo-title{
-    font-size: 17pt;
+.navbar .top .logo-title{
+    font-size: 14pt;
     padding-left: 5pt;
     color: rgba(0,0,0,0);
 
@@ -116,53 +109,63 @@ body{
     -webkit-background-clip: text;
 }
 
-
-
-
-/* Left Navbar */
-
-
-
-
-.module.left{
-    position: fixed;
-    top: var(--top-navbar-height);
-    left: 0;
-
-    height: calc(100vh - var(--top-navbar-height));
-    width: var(--left-navbar-width);
-
-    background-color: var(--secondColor);
-    padding: 10pt;
+.navbar .top.right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    justify-content: right;
+    background: none;
 }
 
-.module.left .item{
-    padding: 10pt;
-    display: flex;
-    align-items: center;
-    cursor: default;
+.navbar .top.right .icon{
+    height: 20pt;
+    padding: 5pt;
+    margin: 2pt;
     border-radius: 5pt;
 }
 
-.module.left .item.active{
-    color: var(--toyPurple);
+.navbar .top.right .search-bar{
+    width: 20vw;
+    max-width: 50vw;
+    padding: 7pt;
+    margin: 2pt;
+    color: white;
+    background-color: black;
+    outline: none;
+    border: none;
+    border-radius: 5pt;
+    display: none;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
-.module.left .item:hover{
+/* Cards */
+
+.navbar .cards{
+    font-size: 10pt;
+    padding: 7pt;
     background-color: var(--mainColor);
+    position: relative;
 }
 
-.module.left .icon{
-    height: 18pt;
-    width: 18pt;
-    margin-right: 10pt;
+.navbar .cards div{
+    display: inline-block;
 }
 
-.module.left .section-title{
-    padding: 15pt 10pt 5pt 10pt;
+.navbar .cards .item{
+    padding: 8pt;
+    margin: 0 2pt;
     cursor: default;
-    color: gray;
-    text-align: center;
+    border-radius: 100vh;
+    color: rgb(164, 164, 164);
+}
+
+.navbar .cards .item.active{
+    background-color: var(--grapeTaffy);
+    color: white;
 }
 
 
@@ -172,37 +175,31 @@ body{
 
 
 
-
-.module.right{
-    position: fixed;
-    top: var(--top-navbar-height);
-    right: 0;
-
-    height: calc(100vh - var(--top-navbar-height));
-    width: calc(100vw - var(--left-navbar-width) - 20pt);
-
+.content{
     overflow: scroll;
 }
 
-.module.right .featured-panel{
-    height: 80%;
+
+.content .featured-panel{
+    height: 70vh;
     width: 100%;
     background-color: black;
     position: relative;
 }
 
-.module.right .featured-panel .image{
+.featured-panel .image{
     height: 100%;
     width: 100%;
     background: url('../images/cover-image/Minions\ the\ Rise\ of\ Gru.jpeg') center center no-repeat;
     background-size: cover;
 }
 
+
 #mediaSelectorWrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200pt, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(175pt, 1fr));
+    
     padding: 10pt;
-    gap: 5pt;
 }
 
 .media-display-object{
@@ -211,15 +208,6 @@ body{
     padding: 15pt;
     border-radius: 5pt;
     opacity: 0.9;
-}
-
-.media-display-object:hover{
-    background-color: var(--secondColor);
-    opacity: 1;
-}
-
-.media-display-object:hover .image{
-    box-shadow: 0 0 15pt 0 var(--mainColor);
 }
 
 .media-display-object .image{
@@ -253,7 +241,11 @@ body{
 
 
 
+
 /* Expand Panel */
+
+
+
 #expandScreen{
     height: 100vh;
     width: 100vw;
@@ -307,10 +299,6 @@ body{
     cursor: default;
 }
 
-.close-expand-panel:hover{
-    background-color: var(--royalPurple);
-}
-
 #expandPanel .season-selector{
     background-color: var(--secondColor);
     display: flex;
@@ -334,12 +322,8 @@ body{
     color: var(--toyPurple);
 }
 
-#expandPanel .season-selector .item:hover{
-    background-color: var(--mainColor);
-}
-
 #expandPanel .image-showcase-wrapper{
-    height: 65vh;
+    height: 60vh;
     width: 100%;
     transition: height 1s;
 }
@@ -365,10 +349,6 @@ body{
     cursor: default;
 }
 
-#expandPanel .episode-display .item:hover{
-    background-color: var(--secondColor);
-}
-
 #expandPanel .episode-display .item .title{
     width: calc(80% - 20pt);
     font-size: 15pt;
@@ -386,7 +366,11 @@ body{
 
 
 
+
 /* Expand Click Menu */
+
+
+
 #expandClickMenuWrapper{
     height: 100vh;
     width: 100vw;
@@ -425,9 +409,4 @@ body{
     cursor: pointer;
     border-radius: inherit;
     color: lightgray;
-}
-
-#expandClickMenu .button:hover{
-    background-color: var(--secondColor);
-    color: white;
 }

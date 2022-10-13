@@ -1,77 +1,26 @@
-elem > .[module top]
-    img > images/logo.png > .[logo left-info]
-    elt > .[logo-title left-info] > baileo
-</>
-
-elem > .[module left]
-
-
-
-    elt > .[section-title] > Media Type
-
-    elem > .[item active] $[filterMedia('type',this)]
-        img > images/icons/explore-active.png > .[icon]
-        elt > .[text] > Explore All
+elem > .[navbar]
+    elem > .[top left]
+        img > images/logo.png > .[logo left-info]
+        elt > .[logo-title left-info] > baileo
     </>
-
-    elem > .[item] $[filterMedia('type',this)]
-        img > images/icons/tv.png > .[icon]
-        elt > .[text] > TV Shows
-    </>
-
-    elem > .[item] $[filterMedia('type',this)]
-        img > images/icons/movie.png > .[icon]
-        elt > .[text] > Movies
-    </>
-
-
-
-    elt > .[section-title] > Category
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/comedy.png > .[icon]
-        elt > .[text] > Comedy
-    </>
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/drama.png > .[icon]
-        elt > .[text] > Drama
-    </>
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/animation.png > .[icon]
-        elt > .[text] > Animation
-    </>
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/superhero.png > .[icon]
-        elt > .[text] > Superhero
-    </>
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/christmas.png > .[icon]
-        elt > .[text] > Christmas
-    </>
-
-    elem > .[item] $[filterMedia('category',this)]
-        img > images/icons/romcom.png > .[icon]
-        elt > .[text] > Romcom
-    </>
-
-
-
-    elt > .[section-title] > Other Services
-
-    elem > .[item] $[window.open('https://color.baileo.us','_self')]
+    elem > .[top right]
+        img > images/icons/search.png > .[icon] $[toggleSearch()]
+        input > type[text] .[search-bar] onkeyup[search(this.value)] placeholder[Search] ondblclick[this.value = '', search('')]
         img > images/icons/apps.png > .[icon]
-        elt > .[text] > All Apps
     </>
-
-
-
+    elem > .[cards horizontal-scroll]
+        elt > .[item active mediaFilterCard] $[filterMedia('', this)] > All Media
+        elt > .[item mediaFilterCard] $[filterMedia('TV Show', this)] > TV Shows
+        elt > .[item mediaFilterCard] $[filterMedia('Movie', this)] > Movies
+        elt > .[item mediaFilterCard] $[filterMedia('Comedy', this)] > Comedy
+        elt > .[item mediaFilterCard] $[filterMedia('Animation', this)] > Animation
+        elt > .[item mediaFilterCard] $[filterMedia('Drama', this)] > Drama
+        elt > .[item mediaFilterCard] $[filterMedia('Marvel', this)] > Marvel
+        elt > .[item mediaFilterCard] $[filterMedia('Romcom, this')] > Romantic Comedies
+    </>
 </>
 
-elem > .[module right]
+elem > .[content]
 
     elem > .[featured-panel]
         elt > class[image] > 

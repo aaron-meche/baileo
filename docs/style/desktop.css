@@ -1,0 +1,37 @@
+.media-display-object{
+    max-width: 200pt;
+}
+
+.navbar .top.right .icon:hover{
+    background-color: var(--mainColor);
+}
+
+.navbar .cards .item:hover{
+    color: white;
+}
+
+.media-display-object:hover{
+    background-color: var(--secondColor);
+    opacity: 1;
+}
+
+.media-display-object:hover .image{
+    box-shadow: 0 0 10pt 5pt var(--mainColor);
+}
+
+.close-expand-panel:hover{
+    background-color: var(--royalPurple);
+}
+
+#expandPanel .season-selector .item:hover{
+    background-color: var(--mainColor);
+}
+
+#expandPanel .episode-display .item:hover{
+    background-color: var(--secondColor);
+}
+
+#expandClickMenu .button:hover{
+    background-color: var(--secondColor);
+    color: white;
+}
