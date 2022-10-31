@@ -1,0 +1,290 @@
+:root{
+    --seafoam: #80DCB7;
+    --aqua: #13335c;
+    --darkAqua: rgb(18, 18, 47);
+    --silverAqua: rgb(40, 55, 93);
+    --princeton: #FF8F00;
+    --honey: #F6AE2D;
+    --violetBlue: rgb(54, 54, 105);
+    --lightPistachio: #9AB9AC;
+    --vanillaCream: #E5D9BE;
+    --softLightBlue: #91A7CF;
+    --burntOrange: #BC6039;
+    --silkyPurple: #7B6380;
+    --darkPlum: #24105C;
+    --royalPurple: #51284a;
+    --spruceLeaves: #2C494B;
+    --toyPurple: rgb(178, 129, 246);
+    --lilyBlue: rgb(197, 171, 254);
+    --blueRaspberry: #20427A;
+    --grapeTaffy: #5E468B;
+    --spacePurple: rgb(38, 25, 56);
+    --plutoBlue: rgb(33, 35, 52);
+    --charcoal: rgb(21,21,23);
+    --glass-charcoal: rgba(21, 21, 23, 0.7);
+    --lavendarBlush: #EEE5E9;
+    --grannySmithApple: #9CD08F;
+    --asparagus: #87A461;
+    --raisinBlack: #443a51;
+    --tumbleweed: #F4B393;
+    --lightSalmon: #FDA579;
+    --teaGreen: #C5DBBC;
+    --olivine: #92BA78;
+    --boldOlivine: #71905c;
+    --darkOlivine: rgb(79, 95, 68);
+    --onyx: rgb(32,32,33);
+
+    --mainFont: BaileyScript;
+}
+
+@font-face {
+    font-family: 'BaileyScript';
+    src: url('BaileyScript/BaileyScript.ttf');
+}
+
+body{
+    margin: 0;
+    background-color: var(--charcoal);
+    font-family: var(--mainFont);
+    color: white;
+    font-weight: 500;
+}
+
+.x-scroll{
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.x-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar{
+    background-color: var(--charcoal);
+    border-bottom: solid 2pt var(--grapeTaffy);
+    padding: 5pt;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.navbar .master-display{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar .master-display:hover{
+    opacity: 0.8;
+}
+
+.navbar .master-display .logo{
+    height: 40pt;
+    margin-right: 5pt;
+}
+
+.navbar .master-display .title{
+    font-size: 15pt;
+    font-weight: 600;
+    background: linear-gradient(to right, var(--toyPurple), rgb(225, 135, 225));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section{
+    padding: 20pt 0;
+}
+
+.section-title{
+    padding: 10pt 15pt;
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.display-scroll.x-scroll{
+    font-size: 0;
+    padding: 0 15pt;
+}
+
+.display-scroll.x-scroll .item{
+    display: inline-block;
+    width: min-content;
+    font-size: 12pt;
+    position: relative;
+    padding: 15pt;
+    border-radius: 5pt;
+}
+
+.display-scroll.x-scroll .item .image{
+    height: 100pt;
+    margin: auto;
+    border-radius: inherit;
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+}
+
+.image.circle{
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+}
+
+.image.landscape{
+    width: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.display-scroll.x-scroll .item .title{
+    overflow: hidden;
+    text-align: center;
+    padding-top: 15pt;
+    font-size: 15pt;
+    font-weight: 600;
+}
+
+.display-scroll.x-scroll .item .caption{
+    text-align: center;
+    padding-top: 3pt;
+    font-size: 12pt;
+    color: lightgray;
+    font-weight: 400;
+}
+
+.panel{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    visibility: hidden;
+    overflow: auto;
+    z-index: 50;
+
+    background-color: rgb(0,0,0,0.5);
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
+    -moz-backdrop-filter: blur(15pt);
+
+    transition: left 400ms;
+}
+
+.panel .close{
+    height: 25pt;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10pt;
+    margin: 15pt;
+    background-color: var(--charcoal);
+    border-radius: 100%;
+    transition: padding 200ms, margin 200ms;
+}
+
+.panel .close:hover{
+    background-color: var(--onyx);
+    padding: 15pt;
+    margin: 10pt;
+}
+
+.image-showcase{
+    height: 60vh;
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.data.overlay{    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgb(0,0,0,0.7), rgb(0,0,0,0))
+}
+
+.data{
+    width: calc(100% - 60pt);
+    padding: 30pt;
+}
+
+.data .title{
+    font-size: 50pt;
+    font-weight: 600;
+}
+
+.data .description{
+    font-size: 15pt;
+    font-weight: 500;
+    margin-top: 10pt;
+}
+
+.panel .seasons{
+    padding: 5pt;
+    position: sticky;
+    top: 0;
+    z-index: 55;
+    background: rgb(0,0,0,0.5);    
+    backdrop-filter: blur(15pt);
+    -webkit-backdrop-filter: blur(15pt);
+    -moz-backdrop-filter: blur(15pt);
+}
+
+.panel .seasons .item{
+    display: inline-block;
+    padding: 10pt;
+    border-radius: 7pt;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.panel .seasons .item:hover{
+    background: var(--onyx);
+}
+
+.panel .seasons .item.active{
+    color: var(--toyPurple);
+}
+
+.panel .episodes{
+    padding-bottom: 50pt;
+}
+
+.panel .episodes .item{
+    padding: 15pt;
+    position: relative;
+}
+
+.panel .episodes .item:hover{
+    background: rgb(25,25,25,0.75);
+}
+
+.panel .episodes .item .left{
+    width: 70%;
+    font-size: 15pt;
+    font-weight: 500;
+}
+
+.panel .episodes .item .right{
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: inherit;
+    font-weight: 400;
+    color: lightgray;
+}
+
+#video{
+    height: 80vh;
+    width: 100vw;
+    margin: auto;
+    background: black;
+    box-shadow: 0 0 150pt 0 var(--onyx);
+}

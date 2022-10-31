@@ -1,0 +1,39 @@
+elem > .[navbar]
+    elem > .[master-display] $[window.location.reload()]
+        img > images/logo.png > .[logo]
+        elt > .[title] > baileo
+    </>
+</>
+
+elem > #[mediaImportSection]
+
+</>
+
+elem > .[panel] #[expand_tv_panel]
+    img > images/icons/right.png > .[close] $[close_panel(this.parentNode)]
+    elem > .[image-showcase] #[expandTvPanelImage]
+        elem > .[data overlay]
+            elt > .[title] #[expandTvPanelTitle] > Title
+            elt > .[description] #[expandTvPanelDescription] > Description
+        </>
+    </>
+
+    elem > .[seasons x-scroll] #[expandTvPanelNavbar]
+    </>
+
+    elem > .[episodes] #[expandTvPanelEpisodes]
+    </>
+
+</>
+
+elem > .[panel] #[watch_panel]
+    img > images/icons/right.png > .[close] $[close_panel(this.parentNode)]
+
+    videoskin > #[video] autoplay controls
+    /videoskin
+
+    elem > .[data]
+        elt > .[title] #[watchMediaTitle] > Title
+        elt > .[description] #[watchMediaDescription] > Description
+    </>
+</>

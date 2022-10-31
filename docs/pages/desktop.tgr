@@ -1,6 +1,0 @@
-elem > .[module top]
-    img > images/logo.png > .[logo left-info]
-    elt > .[logo-title left-info] > baileo 
-</>
-
-: Hello
