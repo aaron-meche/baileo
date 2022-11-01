@@ -1,6 +1,6 @@
-elem > .[navbar]
-    elem > .[master-display] $[window.location.reload()]
-        img > images/logo.png > .[logo]
+elem > .[nav-island]
+    elem > .[master-display]
+        img > images/icon.png > .[logo]
         elt > .[title] > baileo
     </>
 </>

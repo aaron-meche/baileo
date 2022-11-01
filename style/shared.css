@@ -48,6 +48,7 @@ body{
     font-family: var(--mainFont);
     color: white;
     font-weight: 500;
+    padding-top: 60pt;
 }
 
 .x-scroll{
@@ -59,33 +60,41 @@ body{
     display: none;
 }
 
-.navbar{
-    background-color: var(--charcoal);
-    border-bottom: solid 2pt var(--grapeTaffy);
-    padding: 5pt;
-    position: sticky;
-    top: 0;
+.nav-island{
+    height: 30pt;
+    width: 150pt;
+    background-color: var(--onyx);
+    border-top: solid 3pt var(--grapeTaffy);
+    border-bottom: solid 3pt var(--grapeTaffy);
+    box-shadow: 0 0 15pt 0 black;
+    border-radius: 10pt;
+    position: fixed;
+    top: 10pt;
+    left: 50vw;
+    transform: translate(-50%, 0);
     z-index: 5;
+    transition: height 350ms, width 500ms;
+    transition-timing-function: cubic-bezier(.47,.87,.79,.98);
 }
 
-.navbar .master-display{
-    width: fit-content;
+
+.nav-island .master-display{
+    height: 30pt;
+    width: 150pt;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin: auto;
     cursor: pointer;
 }
 
-.navbar .master-display:hover{
-    opacity: 0.8;
-}
-
-.navbar .master-display .logo{
-    height: 40pt;
+.nav-island .master-display .logo{
+    height: 15pt;
     margin-right: 5pt;
 }
 
-.navbar .master-display .title{
-    font-size: 15pt;
+.nav-island .master-display .title{
+    font-size: 13pt;
     font-weight: 600;
     background: linear-gradient(to right, var(--toyPurple), rgb(225, 135, 225));
     background-clip: text;
@@ -94,12 +103,12 @@ body{
 }
 
 .section{
-    padding: 20pt 0;
+    padding-bottom: 15pt;
 }
 
 .section-title{
-    padding: 10pt 15pt;
-    font-size: 18pt;
+    padding: 5pt 15pt;
+    font-size: 15pt;
     font-weight: 600;
 }
 
@@ -111,9 +120,8 @@ body{
 .display-scroll.x-scroll .item{
     display: inline-block;
     width: min-content;
-    font-size: 12pt;
     position: relative;
-    padding: 15pt;
+    padding: 10pt;
     border-radius: 5pt;
 }
 
@@ -175,7 +183,7 @@ body{
     aspect-ratio: 1 / 1;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 100;
     padding: 10pt;
     margin: 15pt;
@@ -184,14 +192,8 @@ body{
     transition: padding 200ms, margin 200ms;
 }
 
-.panel .close:hover{
-    background-color: var(--onyx);
-    padding: 15pt;
-    margin: 10pt;
-}
-
 .image-showcase{
-    height: 60vh;
+    height: 70vh;
     background-size: cover; 
     background-position: center center;
     background-repeat: no-repeat;
@@ -211,7 +213,7 @@ body{
 }
 
 .data .title{
-    font-size: 50pt;
+    font-size: 40pt;
     font-weight: 600;
 }
 
@@ -249,7 +251,7 @@ body{
 }
 
 .panel .episodes{
-    padding-bottom: 50pt;
+    padding-bottom: 50vh;
 }
 
 .panel .episodes .item{
