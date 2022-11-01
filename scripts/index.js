@@ -2,6 +2,15 @@ function main() {
     if (sessionStorage['activePage'] == 'home') {
         buildMediaSelectView();
     }
+
+    let url = new URLSearchParams(document.location.search);
+    let bool_securityConfirm = url.get('security');
+    if (bool_securityConfirm == 'confirm') {
+        localStorage['securityConfirm'] = 'true';
+    } else if (bool_securityConfirm) {
+        alert('Security Confirmation Unsuccessful');
+    }
+
 }
 
 
@@ -82,27 +91,32 @@ function buildSeason(num, title, seasons) {
 }
 
 function watch(title, season, episode) {
-    let display = {
-        title: dom('watchMediaTitle'),
-        description: dom('watchMediaDescription'),
-        video: dom('video'),
+    if (localStorage['securityConfirm'] == 'true') {
+        let display = {
+            title: dom('watchMediaTitle'),
+            description: dom('watchMediaDescription'),
+            video: dom('video'),
+        }
+    
+        let episodeTitle = '';
+        let path = title;
+        let description = '';
+    
+        if (mediaData[title.replaceAll(' ', '_')]['mediaType'] == 'tv') {
+            episodeTitle = mediaData[title.replaceAll(' ', '_')]['s' + season][episode];
+            path = `${title}/Season ${season}/${episodeTitle}`;
+            description = `${episodeTitle} - S${season} E${episode + 1}`;
+        }
+    
+        display.title.innerHTML = title;
+        display.description.innerHTML = description;
+    
+        video.innerHTML = `<source src="https://209.163.185.11/media/${path}.mp4" type="video/mp4">`
+        open_panel('watch');
+    } else {
+        alert("You must give permission to the file server to allow media to be shared over HTTP. You are about to be redirected, accept the security policy to allow viewing on Baileo.");
+        open_url('https://209.163.185.11/redirect.html');
     }
-
-    let episodeTitle = '';
-    let path = title;
-    let description = '';
-
-    if (mediaData[title.replaceAll(' ', '_')]['mediaType'] == 'tv') {
-        episodeTitle = mediaData[title.replaceAll(' ', '_')]['s' + season][episode];
-        path = `${title}/Season ${season}/${episodeTitle}`;
-        description = `${episodeTitle} - S${season} E${episode + 1}`;
-    }
-
-    display.title.innerHTML = title;
-    display.description.innerHTML = description;
-
-    video.innerHTML = `<source src="https://209.163.185.11/media/${path}.mp4" type="video/mp4">`
-    open_panel('watch');
 }
 
 function buildMediaSelectView() {

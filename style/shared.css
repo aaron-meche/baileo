@@ -74,18 +74,17 @@ body{
     transform: translate(-50%, 0);
     z-index: 5;
     transition: height 400ms, width 400ms;
-    transition-timing-function: cubic-bezier(.15,.86,.78,1.01);
+    transition-timing-function: cubic-bezier(.16,.55,.52,.86);
     overflow: hidden;
 }
 
 .nav-island:hover{
     height: 60vh;
-    overflow: auto;
+    overflow-y: auto;
     box-shadow: 0 0 100vh 100vh rgb(0,0,0,0.5);
 }
 
 .nav-island:hover .below-content{
-    visibility: visible;
     opacity: 1;
 }
 
@@ -100,6 +99,7 @@ body{
     cursor: pointer;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 .master-display .logo{
@@ -117,9 +117,10 @@ body{
 }
 
 .below-content{
-    visibility: hidden;
     opacity: 0;
-    padding: 0 30pt;
+    padding: 0;
+    transition: opacity 200ms ease 200ms;
+    z-index: -1;
 }
 
 .below-content .search-bar{
