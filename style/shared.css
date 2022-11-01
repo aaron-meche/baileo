@@ -63,43 +63,81 @@ body{
 .nav-island{
     height: 30pt;
     width: 150pt;
-    background-color: var(--onyx);
+    background-color: var(--charcoal);
     border-top: solid 3pt var(--grapeTaffy);
     border-bottom: solid 3pt var(--grapeTaffy);
-    box-shadow: 0 0 15pt 0 black;
+    box-shadow: 0 0 15pt 5pt black;
     border-radius: 10pt;
     position: fixed;
     top: 10pt;
     left: 50vw;
     transform: translate(-50%, 0);
     z-index: 5;
-    transition: height 350ms, width 500ms;
-    transition-timing-function: cubic-bezier(.47,.87,.79,.98);
+    transition: height 400ms, width 400ms;
+    transition-timing-function: cubic-bezier(.15,.86,.78,1.01);
+    overflow: hidden;
 }
 
+.nav-island:hover{
+    height: 60vh;
+    overflow: auto;
+    box-shadow: 0 0 100vh 100vh rgb(0,0,0,0.5);
+}
 
-.nav-island .master-display{
+.nav-island:hover .below-content{
+    visibility: visible;
+    opacity: 1;
+}
+
+.master-display{
     height: 30pt;
-    width: 150pt;
+    width: 100%;
+    background: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
     cursor: pointer;
+    position: sticky;
+    top: 0;
 }
 
-.nav-island .master-display .logo{
+.master-display .logo{
     height: 15pt;
     margin-right: 5pt;
 }
 
-.nav-island .master-display .title{
+.master-display .title{
     font-size: 13pt;
     font-weight: 600;
     background: linear-gradient(to right, var(--toyPurple), rgb(225, 135, 225));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.below-content{
+    visibility: hidden;
+    opacity: 0;
+    padding: 0 30pt;
+}
+
+.below-content .search-bar{
+    width: calc(100% - 24pt - 30pt);
+    background: var(--onyx);
+    color: white;
+    border: solid 2pt rgb(100,100,100);
+    border-radius: 100vh;
+    outline: none;
+    padding: 12pt;
+    margin: 5pt 15pt;
+    font-family: var(--mainFont);
+    font-size: 15pt;
+}
+
+.below-content .search-bar:focus{
+    border-color: rgb(150,150,150);
+    background: var(--charcoal);
 }
 
 .section{
