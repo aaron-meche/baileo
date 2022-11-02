@@ -17,6 +17,7 @@ function main() {
 
 
 
+
 function open_panel(name) {
     let panel = dom(name + '_panel');
     panel.style.visibility = 'visible';
