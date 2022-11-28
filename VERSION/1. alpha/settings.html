@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <title>Baileo - Settings</title>
+        <link rel='stylesheet' href='desktop.css' />
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse) and (orientation: portrait)' href='mobile.css' />
+        <link rel='stylesheet' media='screen and (hover: none) and (pointer: coarse) and (orientation: landscape)' href='desktop.css' />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
+        <script src='main.js'></script>
+        <link rel="icon" type="image/x-icon" href="images/icon.ico">
+    </head>
+    <body onload='loadSettings(), loadSetPreferences()' id='body'>
+
+        <!-- Navbar -->
+
+        <div class='navbar'>
+            <a href='index.html' class='navbar-item'>
+                Home
+            </a>
+            <a href='media.html' class='navbar-item'>
+                Media
+            </a>
+            <a href='settings.html' class='active-navbar-item'>
+                Settings
+            </a>
+        </div>
+
+        <!-- Content -->
+
+        <div class='panel-row'>
+
+            <div class='panel'>
+                <div class='panel-title'>
+                    Background Color
+                </div>
+                <div class='caption'>
+                    Choose your preferred background color for all pages of the website
+                </div>
+                <div class='settings-button' id='bgColorrgba(207,82,82,1)' onclick='selectSetting("bgColor","rgba(207,82,82,1)")'>
+                    Red
+                </div>
+                <div class='settings-button' id='bgColorrgba(215,133,66,1)' onclick='selectSetting("bgColor","rgba(215,133,66,1)")'>
+                    Orange
+                </div>
+                <div class='settings-button' id='bgColorrgba(218,203,106,1)' onclick='selectSetting("bgColor","rgba(218,203,106,1)")'>
+                    Yellow
+                </div>
+                <div class='settings-button' id='bgColorrgba(107,180,89,1)' onclick='selectSetting("bgColor","rgba(107,180,89,1)")'>
+                    Green
+                </div>
+                <div class='settings-button' id='bgColorrgba(65,102,152,1)' onclick='selectSetting("bgColor","rgba(65,102,152,1)")'>
+                    Blue
+                </div>
+                <div class='settings-button' id='bgColorrgb(87,6,140)' onclick='selectSetting("bgColor","rgb(87,6,140)")'>
+                    Purple
+                </div>
+                <div class='settings-button' id='bgColorBlack' onclick='selectSetting("bgColor","Black")'>
+                    Black
+                </div>
+            </div>
+
+            <div class='panel'>
+                <div class='panel-title'>
+                    TV Series Progress
+                </div>
+                <div class='caption'>
+                    How far do you want the video player to go back when you continue from where you left off?
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime0' onclick='selectSetting("tvPlaybackBackTime",0)'>
+                    0 Seconds
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime5' onclick='selectSetting("tvPlaybackBackTime",5)'>
+                    5 Seconds
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime10' onclick='selectSetting("tvPlaybackBackTime",10)'>
+                    10 Seconds
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime15' onclick='selectSetting("tvPlaybackBackTime",15)'>
+                    15 Seconds
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime20' onclick='selectSetting("tvPlaybackBackTime",20)'>
+                    20 Seconds
+                </div>
+                <div class='settings-button' id='tvPlaybackBackTime30' onclick='selectSetting("tvPlaybackBackTime",30)'>
+                    30 Seconds
+                </div>
+            </div>
+
+            <div class='panel'>
+                <div class='panel-title'>
+                    Movie Progress
+                </div>
+                <div class='caption'>
+                    How far do you want the video player to go back when you continue from where you left off?
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime0' onclick='selectSetting("moviePlaybackBackTime",0)'>
+                    0 Seconds
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime5' onclick='selectSetting("moviePlaybackBackTime",5)'>
+                    5 Seconds
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime10' onclick='selectSetting("moviePlaybackBackTime",10)'>
+                    10 Seconds
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime15' onclick='selectSetting("moviePlaybackBackTime",15)'>
+                    15 Seconds
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime20' onclick='selectSetting("moviePlaybackBackTime",20)'>
+                    20 Seconds
+                </div>
+                <div class='settings-button' id='moviePlaybackBackTime30' onclick='selectSetting("moviePlaybackBackTime",30)'>
+                    30 Seconds
+                </div>
+            </div>
+
+            <div class='panel desktop'>
+                <div class='panel-title'>
+                    Video Player Ending Time
+                </div>
+                <div class='caption'>
+                    When watching a video, do you want the time on the right to show total time or time remaining?
+                </div>
+                <div class='settings-button' id='videoUIRightTimeTotal' onclick='selectSetting("videoUIRightTime","Total")'>
+                    Total Time
+                </div>
+                <div class='settings-button' id='videoUIRightTimeLeft' onclick='selectSetting("videoUIRightTime","Left")'>
+                    Time Remaining
+                </div>
+            </div>
+
+        </div>
+
+        <div class='panel-row'>
+
+            <div class='panel desktop'>
+                <div class='panel-title'>
+                    Video Player Scrolling Time
+                </div>
+                <div class='caption'>
+                    When watching a video, do you want the time when scrolling to show watched time or time remaining?
+                </div>
+                <div class='settings-button' id='videoUIScrollTimeWatched' onclick='selectSetting("videoUIScrollTime","Watched")'>
+                    Watched Time
+                </div>
+                <div class='settings-button' id='videoUIScrollTimeLeft' onclick='selectSetting("videoUIScrollTime","Left")'>
+                    Time Remaining
+                </div>
+            </div>
+
+            <div class='panel desktop'>
+                <div class='panel-title'>
+                    More Info Video UI
+                </div>
+                <div class='caption'>
+                    When watching a video, do you want the more information page to be visible?
+                </div>
+                <div class='settings-button' id='moreInfoVideoUIYes' onclick='selectSetting("moreInfoVideoUI","Yes")'>
+                    Yes
+                </div>
+                <div class='settings-button' id='moreInfoVideoUINo' onclick='selectSetting("moreInfoVideoUI","No")'>
+                    No
+                </div>
+            </div>
+
+            <div class='panel'>
+                <div class='panel-title'>
+                    Delete Data
+                </div>
+                <div class='caption'>
+                    You currently have <span id='localStorageItemsCount'>0</span> data items
+                </div>
+                <div class='settings-button' onclick='deleteAllData()' id='deleteAllDataPrompt' style='color:lightcoral;'>
+                    Delete all saved data
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

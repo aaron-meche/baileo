@@ -1,0 +1,254 @@
+title : Baileo - Home
+
+nav-block : class[left-navbar]
+
+	block : class[logo-display]
+		image : images/logo.png
+		item : class[logo-text]
+			:: baileo
+		/item
+	/block
+
+	item : id[media_filter]
+					block : class[item active] onclick[filterMedia(this, '')] id[allMediaFilter]
+						:: All Media
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'TV Show')]
+						:: TV Shows
+					/block
+
+					block : class[item] onclick[filterMedia(this, 'Movie')]
+						:: Movies
+					/block
+	/item
+
+
+
+	block : class[section-divider]
+	/block
+
+
+
+	block : class[item] onclick[open_panel('categories')]
+		:: Categories
+	/block
+
+	block : class[item] onclick[open_panel('random_picker')]
+		:: Pick Something for Me
+	/block
+
+/block
+
+
+
+
+nav-block : class[top-navbar]
+
+	image : images/menu.png : class[toggle-left-navbar-button] onclick[toggleLeftNavbar()]
+
+	input : id[searchBar] type[text] placeholder[Search] onkeydown[search(this.value)] onfocus[filterMedia(this, 'Media'), clearMediaFilter()]
+
+/block
+
+
+
+
+
+
+
+
+
+
+
+block : class[content]
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Comedies
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: Clueless
+		/item
+		item : class[building-block-media-click-object]
+			:: Dumb and Dumber
+		/item
+		item : class[building-block-media-click-object]
+			:: Dumb and Dumber To
+		/item
+		item : class[building-block-media-click-object]
+			:: Family Guy
+		/item
+		item : class[building-block-media-click-object]
+			:: Legally Blonde
+		/item
+		item : class[building-block-media-click-object]
+			:: Mean Girls
+		/item
+		item : class[building-block-media-click-object]
+			:: Mean Girls 2
+		/item
+		item : class[building-block-media-click-object]
+			:: Miss Congeniality
+		/item
+		item : class[building-block-media-click-object]
+			:: Parks and Recreation
+		/item
+		item : class[building-block-media-click-object]
+			:: The Office
+		/item
+		item : class[building-block-media-click-object]
+			:: The Waterboy
+		/item
+		item : class[building-block-media-click-object]
+			:: Vacation
+		/item
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Animations
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: Cars 2
+		/item
+		item : class[building-block-media-click-object]
+			:: Cars 3
+		/item
+		item : class[building-block-media-click-object]
+			:: Coraline
+		/item
+		item : class[building-block-media-click-object]
+			:: Despicable Me
+		/item
+		item : class[building-block-media-click-object]
+			:: Despicable Me 2
+		/item
+		item : class[building-block-media-click-object]
+			:: Despicable Me 3
+		/item
+		item : class[building-block-media-click-object]
+			:: Minions
+		/item
+		item : class[building-block-media-click-object]
+			:: Ratatouille
+		/item
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Dramas
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: American Psycho
+		/item
+		item : class[building-block-media-click-object]
+			:: Hidden Figures
+		/item
+		item : class[building-block-media-click-object]
+			:: Knives Out
+		/item
+		item : class[building-block-media-click-object]
+			:: Sherlock
+		/item
+		item : class[building-block-media-click-object]
+			:: Squid Game
+		/item
+		item : class[building-block-media-click-object]
+			:: The Notebook
+		/item
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Marvel
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: Avengers: ENDGAME
+		/item
+		item : class[building-block-media-click-object]
+			:: Spider Man: Far From Home
+		/item
+		item : class[building-block-media-click-object]
+			:: Spider Man: Homecoming
+		/item
+		item : class[building-block-media-click-object]
+			:: Spider Man: No Way Home
+		/item
+		item : class[building-block-media-click-object]
+			:: The Amazing Spider Man 2
+		/item
+		item : class[building-block-media-click-object]
+			:: The Incredible Hulk
+		/item
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Romantic Comedies
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: The Proposal
+		/item
+	/block
+/block
+
+
+
+
+
+block : class[media-slider-section]
+	block : class[media-slider-title-bar clickable-title]
+		block : class[media-slider-title]
+			:: Christmas Spirit
+		/block
+	/block
+	block : class[horizontal-scroll media-slider-carousel]
+		item : class[building-block-media-click-object]
+			:: Daddy's Home 2
+		/item
+		item : class[building-block-media-click-object]
+			:: Elf
+		/item
+	/block
+/block
+
+block : class[bottom-padding]
+/block
+
+/block

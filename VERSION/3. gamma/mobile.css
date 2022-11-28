@@ -1,0 +1,41 @@
+.navbar{
+    justify-content: left;
+}
+
+.main-navbar{
+    padding-right: 110pt;
+}
+
+.right-navbar{
+    padding-right: 10pt;
+    width: 100pt;
+}
+
+
+
+
+/* Media slider */
+
+
+
+
+
+.media-slider-title-bar{
+    margin-left: 5vw;
+}
+
+.media-slider-carousel{
+    font-size: 0;
+    padding-left: 5vw;
+}
+
+.media-slider-object{
+    height: 50vw;
+    width: 35vw;
+    border-radius: 3vw;
+    margin-right: 3vw;
+}
+
+.image-shader{
+    display: none;
+}
