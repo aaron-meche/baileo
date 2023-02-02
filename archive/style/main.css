@@ -1,0 +1,105 @@
+@font-face {
+    font-family: BaileyScript;
+    src: url('BaileyScript/BaileyScript.ttf');
+}
+
+:root{
+    --font: BaileyScript;
+
+    /* Color Theme */
+    --background: rgb(15 15 15);
+    --accent: rgb(178, 141, 233);
+    --vibe-gradient: linear-gradient(135deg, rgb(30 15 30) 0%, rgb(45 30 45) 50%, rgb(55 40 55) 100%);
+}
+
+html{
+    background: rgb(45 30 40);
+}
+
+body{
+    margin: 0;
+    font-family: var(--font);
+    color: white;
+}
+
+#wallpaper{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--vibe-gradient);
+    z-index: -100;
+}
+
+/* X Scroll Section */
+.x-scroll-section{
+    padding: 25pt 0;
+}
+
+.x-scroll-section > .title{
+    padding: 15pt 25pt;
+    font-size: 15pt;
+    font-weight: 500;
+}
+
+.x-scroll{
+    white-space: nowrap;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: hidden;
+    font-size: 0;
+    padding: 0 15pt;
+}
+
+.x-scroll::-webkit-scrollbar{
+    display: none;
+}
+
+.x-scroll > div{
+    display: inline-block;
+    font-size: 15pt;
+}
+
+
+/* Media Item */
+.x-scroll > .media-item{
+    margin: 10pt;
+    transition: top 200ms;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+}
+
+.x-scroll > .media-item:hover{
+    top: -7pt;
+    color: var(--accent)
+}
+
+.x-scroll > .media-item > img{
+    width: 200pt;
+    border-radius: inherit;
+}
+
+.x-scroll > .media-item:hover > img{
+    box-shadow: 0 0 0 3pt var(--accent);
+}
+
+.x-scroll > .media-item > .data{
+    padding-top: 5pt;
+}
+
+.x-scroll > .media-item > .data > .title{
+    font-size: 15pt;
+    font-weight: 500;
+    max-width: 175pt;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.x-scroll > .media-item > .data > .information{
+    font-size: 12pt;
+    color: gray;
+}
