@@ -5,6 +5,7 @@
 const assert = require('assert')
 const net = require('net')
 const util = require('./core/util')
+const timers = require('./timers')
 const Request = require('./core/request')
 const DispatcherBase = require('./dispatcher-base')
 const {
@@ -65,6 +66,7 @@ const {
   kLocalAddress,
   kMaxResponseSize
 } = require('./core/symbols')
+const FastBuffer = Buffer[Symbol.species]
 
 const kClosedResolve = Symbol('kClosedResolve')
 
@@ -107,7 +109,9 @@ class Client extends DispatcherBase {
     connect,
     maxRequestsPerClient,
     localAddress,
-    maxResponseSize
+    maxResponseSize,
+    autoSelectFamily,
+    autoSelectFamilyAttemptTimeout
   } = {}) {
     super()
 
@@ -183,12 +187,20 @@ class Client extends DispatcherBase {
       throw new InvalidArgumentError('maxResponseSize must be a positive number')
     }
 
+    if (
+      autoSelectFamilyAttemptTimeout != null &&
+      (!Number.isInteger(autoSelectFamilyAttemptTimeout) || autoSelectFamilyAttemptTimeout < -1)
+    ) {
+      throw new InvalidArgumentError('autoSelectFamilyAttemptTimeout must be a positive number')
+    }
+
     if (typeof connect !== 'function') {
       connect = buildConnector({
         ...tls,
         maxCachedSessions,
         socketPath,
         timeout: connectTimeout,
+        ...(util.nodeHasAutoSelectFamily && autoSelectFamily ? { autoSelectFamily, autoSelectFamilyAttemptTimeout } : undefined),
         ...connect
       })
     }
@@ -210,8 +222,8 @@ class Client extends DispatcherBase {
     this[kResuming] = 0 // 0, idle, 1, scheduled, 2 resuming
     this[kNeedDrain] = 0 // 0, idle, 1, scheduled, 2 resuming
     this[kHostHeader] = `host: ${this[kUrl].hostname}${this[kUrl].port ? `:${this[kUrl].port}` : ''}\r\n`
-    this[kBodyTimeout] = bodyTimeout != null ? bodyTimeout : 30e3
-    this[kHeadersTimeout] = headersTimeout != null ? headersTimeout : 30e3
+    this[kBodyTimeout] = bodyTimeout != null ? bodyTimeout : 300e3
+    this[kHeadersTimeout] = headersTimeout != null ? headersTimeout : 300e3
     this[kStrictContentLength] = strictContentLength == null ? true : strictContentLength
     this[kMaxRedirections] = maxRedirections
     this[kMaxRequests] = maxRequestsPerClient
@@ -362,9 +374,8 @@ async function lazyllhttp () {
       },
       wasm_on_status: (p, at, len) => {
         assert.strictEqual(currentParser.ptr, p)
-        const start = at - currentBufferPtr
-        const end = start + len
-        return currentParser.onStatus(currentBufferRef.slice(start, end)) || 0
+        const start = at - currentBufferPtr + currentBufferRef.byteOffset
+        return currentParser.onStatus(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_message_begin: (p) => {
         assert.strictEqual(currentParser.ptr, p)
@@ -372,15 +383,13 @@ async function lazyllhttp () {
       },
       wasm_on_header_field: (p, at, len) => {
         assert.strictEqual(currentParser.ptr, p)
-        const start = at - currentBufferPtr
-        const end = start + len
-        return currentParser.onHeaderField(currentBufferRef.slice(start, end)) || 0
+        const start = at - currentBufferPtr + currentBufferRef.byteOffset
+        return currentParser.onHeaderField(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_header_value: (p, at, len) => {
         assert.strictEqual(currentParser.ptr, p)
-        const start = at - currentBufferPtr
-        const end = start + len
-        return currentParser.onHeaderValue(currentBufferRef.slice(start, end)) || 0
+        const start = at - currentBufferPtr + currentBufferRef.byteOffset
+        return currentParser.onHeaderValue(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_headers_complete: (p, statusCode, upgrade, shouldKeepAlive) => {
         assert.strictEqual(currentParser.ptr, p)
@@ -388,9 +397,8 @@ async function lazyllhttp () {
       },
       wasm_on_body: (p, at, len) => {
         assert.strictEqual(currentParser.ptr, p)
-        const start = at - currentBufferPtr
-        const end = start + len
-        return currentParser.onBody(currentBufferRef.slice(start, end)) || 0
+        const start = at - currentBufferPtr + currentBufferRef.byteOffset
+        return currentParser.onBody(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_message_complete: (p) => {
         assert.strictEqual(currentParser.ptr, p)
@@ -447,9 +455,9 @@ class Parser {
   setTimeout (value, type) {
     this.timeoutType = type
     if (value !== this.timeoutValue) {
-      clearTimeout(this.timeout)
+      timers.clearTimeout(this.timeout)
       if (value) {
-        this.timeout = setTimeout(onParserTimeout, value, this)
+        this.timeout = timers.setTimeout(onParserTimeout, value, this)
         // istanbul ignore else: only for jest
         if (this.timeout.unref) {
           this.timeout.unref()
@@ -565,7 +573,7 @@ class Parser {
     this.llhttp.llhttp_free(this.ptr)
     this.ptr = null
 
-    clearTimeout(this.timeout)
+    timers.clearTimeout(this.timeout)
     this.timeout = null
     this.timeoutValue = null
     this.timeoutType = null

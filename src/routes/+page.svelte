@@ -1,26 +1,90 @@
 <script>
-	import {
-		media_info
-	} from '../data'
+	import {media_info} from '$lib/data'
+	const listOf_mediaTitles = Object.keys(media_info)
+	
+	import MediaItem from '$lib/components/Media Item.svelte'
 
-	let media_titles = Object.keys(media_info)
+	function handleMediaItemClick(title, type) {
+		if (type == 'TV Show') alert('Media Type Not Supported')
+		else alert('Media Type Not Supported')
+	}
+
+	function openTvPanel(title) {
+		activeTvShow = title
+		document.querySelector('#tvPanel').style.display = 'block'
+		// document.querySelector('#tvPanel .top-bar').innerHTML = title
+	}
 </script>
 
 <!--  -->
 
 <svelte:head>
-	<title>Baileo - Home</title>
-	<meta name="description" content="Baileo V.Omega"/>
+	<title>Home</title>
 </svelte:head>
 
+<!--  -->
+
 <section>
-    <h1>All Media</h1>
-	<div class="list">
-		{#each media_titles as title}
-			<div class="item">
-				<span class="title">{title.replaceAll('_', ' ')}</span>
-				<span class="type">{media_info[title]['mediaType'].replace('tv', 'TV Series').replace('movie', 'Movie')}</span>
-			</div>
+	<div class="section-title">Comedies</div>
+	<div class="horizontal-scroll section">
+		{#each listOf_mediaTitles as elem}
+			{#if media_info[elem]['cat'] == 'comedy'}
+				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
+					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+				</button>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<section>
+	<div class="section-title">Dramas</div>
+	<div class="horizontal-scroll section">
+		{#each listOf_mediaTitles as elem}
+			{#if media_info[elem]['cat'] == 'drama'}
+				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
+					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+				</button>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<section>
+	<div class="section-title">Animations</div>
+	<div class="horizontal-scroll section">
+		{#each listOf_mediaTitles as elem}
+			{#if media_info[elem]['cat'] == 'animation'}
+				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
+					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+				</button>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<section>
+	<div class="section-title">TV Shows</div>
+	<div class="horizontal-scroll section">
+		{#each listOf_mediaTitles as elem}
+			{#if media_info[elem]['mediaType'] == 'TV Show'}
+				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
+					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+				</button>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<section>
+	<div class="section-title">Movies</div>
+	<div class="horizontal-scroll section">
+		{#each listOf_mediaTitles as elem}
+			{#if media_info[elem]['mediaType'] == 'Movie'}
+				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
+					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+				</button>
+			{/if}
 		{/each}
 	</div>
 </section>
@@ -28,24 +92,27 @@
 <!--  -->
 
 <style>
-	.list{
-		outline: solid 1pt gray;
-		padding: 10pt;
-		margin: 25pt;
+	button{
+        all: unset;
+    }
+
+	section{
+		padding: 20pt 0;
 	}
 
-	.list .item{
-		background: rgb(25 25 25);
-		padding: 10pt;
-		margin: 5pt;
+	.section-title{
+		font-size: 15pt;
+		padding: 15pt;
 	}
 
-	.list .item:hover{
-		background: rgb(40 40 40);
+	.horizontal-scroll{
+		overflow-x: scroll;
+		overflow-y: hidden;
+		white-space: nowrap;
+		padding: 0 10pt;
 	}
 
-	.list .item .type{
-		color: gray;
-		font-weight: 300;
+	.horizontal-scroll::-webkit-scrollbar{
+		display: none;
 	}
 </style>

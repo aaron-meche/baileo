@@ -10,6 +10,8 @@ const { Blob } = require('buffer')
 const nodeUtil = require('util')
 const { stringify } = require('querystring')
 
+const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(v => Number(v))
+
 function nop () {}
 
 function isStream (obj) {
@@ -213,25 +215,42 @@ function parseHeaders (headers, obj = {}) {
   for (let i = 0; i < headers.length; i += 2) {
     const key = headers[i].toString().toLowerCase()
     let val = obj[key]
+
+    const encoding = key.length === 19 && key === 'content-disposition'
+      ? 'latin1'
+      : 'utf8'
+
     if (!val) {
       if (Array.isArray(headers[i + 1])) {
         obj[key] = headers[i + 1]
       } else {
-        obj[key] = headers[i + 1].toString()
+        obj[key] = headers[i + 1].toString(encoding)
       }
     } else {
       if (!Array.isArray(val)) {
         val = [val]
         obj[key] = val
       }
-      val.push(headers[i + 1].toString())
+      val.push(headers[i + 1].toString(encoding))
     }
   }
   return obj
 }
 
 function parseRawHeaders (headers) {
-  return headers.map(header => header.toString())
+  const ret = []
+  for (let n = 0; n < headers.length; n += 2) {
+    const key = headers[n + 0].toString()
+
+    const encoding = key.length === 19 && key.toLowerCase() === 'content-disposition'
+      ? 'latin1'
+      : 'utf8'
+
+    const val = headers[n + 1].toString(encoding)
+
+    ret.push(key, val)
+  }
+  return ret
 }
 
 function isBuffer (buffer) {
@@ -403,5 +422,8 @@ module.exports = {
   validateHandler,
   getSocketInfo,
   isFormDataLike,
-  buildURL
+  buildURL,
+  nodeMajor,
+  nodeMinor,
+  nodeHasAutoSelectFamily: nodeMajor > 18 || (nodeMajor === 18 && nodeMinor >= 13)
 }

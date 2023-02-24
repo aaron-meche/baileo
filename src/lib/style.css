@@ -1,0 +1,21 @@
+:root{
+    --darker-bg: rgb(25 25 25);
+    --lighter-bg: rgb(35 35 35);
+    --hover-bg: rgb(50 50 50);
+    --accent: rgb(140, 0, 255);
+    --dark-accent: rgb(16, 2, 25);
+}
+
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/Readex_Pro/ReadexPro-VariableFont_HEXP,wght.ttf');
+}
+
+body{
+    margin: 0;
+    background: var(--lighter-bg);
+    color: white;
+    font-family: BaileyScript;
+    font-weight: 400;
+    overflow: hidden;
+}
