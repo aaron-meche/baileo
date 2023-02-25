@@ -25,7 +25,7 @@
 <!--  -->
 
 <section>
-	<div class="section-title">Comedies</div>
+	<div class="section-title">Comedies (Laugh)</div>
 	<div class="horizontal-scroll section">
 		{#each listOf_mediaTitles as elem}
 			{#if media_info[elem]['cat'] == 'comedy'}
