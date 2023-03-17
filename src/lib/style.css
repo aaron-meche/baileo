@@ -1,21 +1,37 @@
-:root{
-    --darker-bg: rgb(25 25 25);
-    --lighter-bg: rgb(35 35 35);
-    --hover-bg: rgb(50 50 50);
-    --accent: rgb(140, 0, 255);
-    --dark-accent: rgb(16, 2, 25);
-}
-
 @font-face {
     font-family: BaileyScript;
-    src: url('$lib/Readex_Pro/ReadexPro-VariableFont_HEXP,wght.ttf');
+    src: url('Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+:root{
+    --neu-rest: 
+        inset 1px 1px 2px rgba(255, 255, 255, 0.2),
+        inset -2px -2px 4px rgba(0, 0, 0);
+    --neu-active: 
+        inset -1px -1px 2px rgba(255, 255, 255, 0.4),
+        inset 4px 4px 4px rgba(0, 0, 0);
+
+    --accent: rgb(131, 67, 150);
 }
 
 body{
     margin: 0;
-    background: var(--lighter-bg);
+    background: black;
     color: white;
     font-family: BaileyScript;
-    font-weight: 400;
-    overflow: hidden;
+    font-size: 12pt;
+}
+
+.horizontal-scroll{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.horizontal-scroll > *{
+    display: inline-block;
+}
+
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
 }

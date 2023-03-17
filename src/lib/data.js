@@ -1,6 +1,22 @@
-export const media_info = {
+export const storage = {
+    set: function (location, value) {
+        if (typeof window == 'undefined') return
+        localStorage[location] = value
+    },
+    get: function (location) {
+		if (typeof window == 'undefined') return
+		return localStorage[location]
+	},
+    exists: function (location) {
+		if (typeof window == 'undefined') return
+		if (localStorage[location]) return true
+		else return false
+	},
+}
+
+export const mediaDB = {
     "Family Guy": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'comedy',
         sTotal: 18,
         s1: ["Death Has a Shadow","I Never Met the Dead Man","Chitty Chitty Death Bang","Mind Over Murder","A Hero Sits Next Door","The Son Also Draws","Brian - Portrait of a Dog"],
@@ -25,7 +41,7 @@ export const media_info = {
     },
 
     "Parks and Recreation": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'comedy',
         sTotal: 7,
         s1: ["Pilot", "Canvassing", "The Reporter", "Boys' Club", "The Banquet", "Rock Show"],
@@ -39,7 +55,7 @@ export const media_info = {
     },
 
     "Squid Game": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'drama',
         sTotal: 1,
         s1: ['Red Light', "Green Light", "Hell", "The Man with the Umbrella", "Stick to the Team", "A Fair World", "Gganbu", "VIPS", "Front Man", "One Lucky Day"],
@@ -47,7 +63,7 @@ export const media_info = {
     },
 
     "Sherlock": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'drama',
         sTotal: 4,
         s1: ["A Study in Pink", "The Blind Banker", "The Great Game"],
@@ -58,7 +74,7 @@ export const media_info = {
     },
 
     "The Office": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'comedy',
         sTotal: 9,
         s1: ["Pilot", "Diversity Day", "Health Care", "The Alliance", "Basketball", "Hot Girl"],
@@ -74,7 +90,7 @@ export const media_info = {
     },
 
     "Wanda Vision": {
-        mediaType: 'TV Show',
+        type: 'TV Show',
         cat: 'marvel',
         sTotal: 1,
         s1: ["Filmed Before a Live Studio Audience","Don't Touch That Dial","Now In Color","We Interrupt This Program","On a Very Special Episode...","All-New Holloween Spectacular","Breaking the Fourth Wall","Previously On","The Series Finale"],
@@ -82,157 +98,157 @@ export const media_info = {
     },
 
     "Avengers ENDGAME": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "American Psycho": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'drama',
     },
 
     "Cars 2": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Cars 3": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Clueless": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Coraline": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Daddys Home 2": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'christmas',
     },
 
     "Despicable Me": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Despicable Me 2": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Despicable Me 3": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Dumb and Dumber": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Dumb and Dumber To": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Elf": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'christmas',
     },
 
     "Hidden Figures": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'drama',
     },
 
     "Knives Out": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'drama',
     },
 
     "Legally Blonde": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Mean Girls": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Mean Girls 2": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Minions The Rise of Gru": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Minions": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Miss Congeniality": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Ratatouille": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'animation',
     },
 
     "Spider Man Far From Home": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "Spider Man Homecoming": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "Spider Man No Way Home": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "The Amazing Spider Man 2": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "The Incredible Hulk": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'marvel',
     },
 
     "The Notebook": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'drama',
     },
 
     "The Proposal": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'romcom',
     },
 
     "The Waterboy": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 
     "Vacation": {
-        mediaType: 'Movie',
+        type: 'Movie',
         cat: 'comedy',
     },
 }
@@ -253,4 +269,4 @@ function shuffle(array) {
     return array;
 }
 
-export const shuffled_media_titles = shuffle(Object.keys(media_info))
+export const shuffled_media_titles = shuffle(Object.keys(mediaDB))

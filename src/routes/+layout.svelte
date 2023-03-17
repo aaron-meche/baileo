@@ -1,5 +1,5 @@
 <script>
-    import Navbar from '$lib/components/Navbar.svelte'
+    import TopNavbar from '$lib/components/Top Navbar.svelte'
     import '$lib/style.css'
 </script>
 
@@ -7,38 +7,38 @@
 
 <div class="app">
 
-    <div class="left hemisphere">   <Navbar/>   </div>
-    <div class="right hemisphere">   <slot/>   </div>
+    <div class="wallpaper"></div>
+    <div class="wallpaper-filter"></div>
+
+    <div class="top-navbar">   <TopNavbar/>   </div>
+    <div class="app">   <slot/>   </div>
 
 </div>
 
 <!--  -->
 
 <style>
-    .app{
+    .wallpaper{
         height: 100vh;
         width: 100vw;
-        font-size: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -100;
+        background: url('new purple.jpg') center center no-repeat fixed;
+        background-size: fixed;
     }
 
-    .hemisphere{
+    .wallpaper-filter{
         height: 100vh;
-        float: left;
-        font-size: 12pt;
-        overflow: auto;
-    }
-
-    :root{
-        --navbar-width: 50pt;
-    }
-
-    .left{
-        width: var(--navbar-width);
-    }
-
-    .right{
-        width: calc(100vw - var(--navbar-width));
-        background: var(--darker-bg);
-        /* background: linear-gradient(160deg, var(--darker-bg) 10%, var(--dark-accent) 100%); */
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -90;
+        backdrop-filter: blur(100px);
+        -webkit-backdrop-filter: blur(100px);
+        -moz-backdrop-filter: blur(100px);
+        background: rgba(0, 0, 0, 0.75);
     }
 </style>

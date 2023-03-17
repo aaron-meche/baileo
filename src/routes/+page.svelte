@@ -1,18 +1,12 @@
 <script>
-	import {media_info} from '$lib/data'
-	const listOf_mediaTitles = Object.keys(media_info)
-	
+	import { mediaDB, storage } from '$lib/data'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
-	function handleMediaItemClick(title, type) {
-		if (type == 'TV Show') alert('Media Type Not Supported')
-		else alert('Media Type Not Supported')
-	}
+	const listOf_mediaTitles = Object.keys(mediaDB)
 
-	function openTvPanel(title) {
-		activeTvShow = title
-		document.querySelector('#tvPanel').style.display = 'block'
-		// document.querySelector('#tvPanel .top-bar').innerHTML = title
+	function handleMediaItemClick(title, type) {
+		storage.set('watching title', title)
+		window.open('/watch/', '_self')
 	}
 </script>
 
@@ -25,12 +19,12 @@
 <!--  -->
 
 <section>
-	<div class="section-title">Comedies (Laugh)</div>
-	<div class="horizontal-scroll section">
+	<div class="title">Comedies</div>
+	<div class="horizontal-scroll">
 		{#each listOf_mediaTitles as elem}
-			{#if media_info[elem]['cat'] == 'comedy'}
-				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
-					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+			{#if mediaDB[elem]['cat'] == 'comedy'}
+				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
 		{/each}
@@ -38,12 +32,12 @@
 </section>
 
 <section>
-	<div class="section-title">Dramas</div>
-	<div class="horizontal-scroll section">
+	<div class="title">Dramas</div>
+	<div class="horizontal-scroll">
 		{#each listOf_mediaTitles as elem}
-			{#if media_info[elem]['cat'] == 'drama'}
-				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
-					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+			{#if mediaDB[elem]['cat'] == 'drama'}
+				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
 		{/each}
@@ -51,12 +45,12 @@
 </section>
 
 <section>
-	<div class="section-title">Animations</div>
-	<div class="horizontal-scroll section">
+	<div class="title">Animations</div>
+	<div class="horizontal-scroll">
 		{#each listOf_mediaTitles as elem}
-			{#if media_info[elem]['cat'] == 'animation'}
-				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
-					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+			{#if mediaDB[elem]['cat'] == 'animation'}
+				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
 		{/each}
@@ -64,12 +58,12 @@
 </section>
 
 <section>
-	<div class="section-title">TV Shows</div>
-	<div class="horizontal-scroll section">
+	<div class="title">TV Shows</div>
+	<div class="horizontal-scroll">
 		{#each listOf_mediaTitles as elem}
-			{#if media_info[elem]['mediaType'] == 'TV Show'}
-				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
-					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+			{#if mediaDB[elem]['type'] == 'TV Show'}
+				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
 		{/each}
@@ -77,12 +71,12 @@
 </section>
 
 <section>
-	<div class="section-title">Movies</div>
-	<div class="horizontal-scroll section">
+	<div class="title">Movies</div>
+	<div class="horizontal-scroll">
 		{#each listOf_mediaTitles as elem}
-			{#if media_info[elem]['mediaType'] == 'Movie'}
-				<button on:click={() => handleMediaItemClick(elem, media_info[elem]['mediaType'])}>
-					<MediaItem title={elem} type={media_info[elem]['mediaType']}/>
+			{#if mediaDB[elem]['type'] == 'Movie'}
+				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
 		{/each}
@@ -100,19 +94,15 @@
 		padding: 20pt 0;
 	}
 
-	.section-title{
+	section >  .title{
 		font-size: 15pt;
-		padding: 15pt;
+		font-weight: 500;
+		padding: 10pt;
+		padding-left: 25pt;
 	}
 
-	.horizontal-scroll{
-		overflow-x: scroll;
-		overflow-y: hidden;
-		white-space: nowrap;
-		padding: 0 10pt;
-	}
-
-	.horizontal-scroll::-webkit-scrollbar{
-		display: none;
+	section > .horizontal-scroll{
+		column-gap: 15pt;
+		padding-left: 25pt;
 	}
 </style>

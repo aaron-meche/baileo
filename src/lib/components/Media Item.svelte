@@ -1,14 +1,14 @@
 <script>
     export let title, type
 
-    const imgUrl = new URL(`../thumbnails/${title}.png`, import.meta.url).href
+    let source = `thumbnails/${title}.png`
 </script>
 
 <!--  -->
 
 <div class="item">
-    <img src='{imgUrl}' alt="Media Thumbnail">
-    <div class="information">
+    <img src={source} alt="Media Thumbnail">
+    <div class="info">
         <div class="title">{title}</div>
         <div class="type">{type}</div>
     </div>
@@ -18,32 +18,39 @@
 
 <style>
     .item{
-        width: 180pt;
+        position: relative;
+        top: 0;
+        width: 170pt;
         padding: 10pt;
+        margin-right: 5pt;
         cursor: default;
-        border-radius: 5pt;
-		background: rgb(25, 25, 25, 0);
-        box-shadow: inset 0 0 0 0 var(--accent);
-        transition: background 100ms;
-        display: inline-block;
+        border-bottom: solid 2pt rgb(0, 0, 0, 0);
+        transition: top 200ms;
 	}
 
 	.item:hover{
-		background: var(--hover-bg);
-        box-shadow: inset 0 -1pt 0 0 var(--accent);
+        position: relative;
+        top: -10pt;
+        border-color: var(--accent);
 	}
 
     img{
         width: 100%;
-        border-radius: inherit;
+        border-radius: 5pt;
+    }
+
+    .info{
+        padding-top: 5pt;
     }
 
     .title{
+        font-size: 12pt;
         font-weight: 500;
     }
 
 	.type{
+        font-size: 10pt;
+		font-weight: 400;
 		color: gray;
-		font-weight: 300;
 	}
 </style>
