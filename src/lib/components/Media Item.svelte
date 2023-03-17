@@ -21,10 +21,10 @@
         position: relative;
         top: 0;
         width: 170pt;
-        padding: 10pt;
-        margin-right: 5pt;
+        padding-bottom: 10pt;
+        margin: 10pt;
         cursor: default;
-        border-bottom: solid 2pt rgb(0, 0, 0, 0);
+        border-bottom: solid 3pt rgb(0, 0, 0, 0);
         transition: top 200ms;
 	}
 

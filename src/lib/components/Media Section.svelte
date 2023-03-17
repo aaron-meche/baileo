@@ -2,9 +2,9 @@
 	import { mediaDB, storage } from '$lib/data'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
-	const listOf_mediaTitles = Object.keys(mediaDB)
+    export let title, query, condition
 
-	function handleMediaItemClick(title, type) {
+    function handleMediaItemClick(title, type) {
 		storage.set('watching title', title)
 		window.open('/watch/', '_self')
 	}
@@ -12,30 +12,11 @@
 
 <!--  -->
 
-<svelte:head>
-	<title>Search</title>
-</svelte:head>
-
-<!--  -->
-
 <section>
-	<div class="title">TV Shows</div>
+	<div class="title">{title}</div>
 	<div class="horizontal-scroll">
-		{#each listOf_mediaTitles as elem}
-			{#if mediaDB[elem]['type'] == 'TV Show'}
-				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
-					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
-				</button>
-			{/if}
-		{/each}
-	</div>
-</section>
-
-<section>
-	<div class="title">Movies</div>
-	<div class="horizontal-scroll">
-		{#each listOf_mediaTitles as elem}
-			{#if mediaDB[elem]['type'] == 'Movie'}
+		{#each Object.keys(mediaDB) as elem}
+			{#if mediaDB[elem][query] == condition}
 				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
 					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
@@ -47,7 +28,7 @@
 <!--  -->
 
 <style>
-	button{
+    button{
         all: unset;
     }
 

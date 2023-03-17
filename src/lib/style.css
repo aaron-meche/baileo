@@ -1,6 +1,6 @@
 @font-face {
     font-family: BaileyScript;
-    src: url('Montserrat/Montserrat-VariableFont_wght.ttf');
+    src: url('$lib/assets/Montserrat/Montserrat-VariableFont_wght.ttf');
 }
 
 :root{

@@ -19,7 +19,7 @@
         </button>
 
         <button on:click={() => openPage('/')} class='logo {$page.url.pathname === '/' ? 'active' : ''}'>
-            <img src="icons/infinity.svg" alt="Icon">
+            <img src="icons/camera.svg" alt="Icon">
             baileo
         </button>
     </div>

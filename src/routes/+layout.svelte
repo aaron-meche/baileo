@@ -25,7 +25,7 @@
         top: 0;
         left: 0;
         z-index: -100;
-        background: url('new purple.jpg') center center no-repeat fixed;
+        background: url('$lib/assets/new purple.jpg') center center no-repeat fixed;
         background-size: fixed;
     }
 
