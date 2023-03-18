@@ -80,7 +80,7 @@
 		storage.set(`${media.title} season`, randomSeason)
 		storage.set(`${media.title} episode`, randomEpisode)
         storage.set(`${media.title} progress`, 0)
-		window.open('/watch', '_self')
+		window.location.reload()
 	}
 
 	function nextEpisode() {
@@ -99,12 +99,12 @@
 			else {
 				storage.set(`${media.title} season`, Number(media.season) + 1)
 				storage.set(`${media.title} episode`, 1)
-				window.open('/watch', '_self')
+				window.location.reload()
 			}
 		}
 		else {
 			storage.set(`${media.title} episode`, Number(media.episode) + 1)
-			window.open('/watch', '_self')
+			window.location.reload()
 		}
 	}
 
@@ -144,11 +144,8 @@
 {#if typeof window !== 'undefined'}
 <div class="app">
 	<div class="side content">
-		<!-- Video -->
-		<div class="video-shell">
-			<!-- svelte-ignore a11y-media-has-caption -->
-			<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
-		</div>
+		<!-- svelte-ignore a11y-media-has-caption -->
+		<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -174,13 +171,13 @@
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
-			<button on:click={toggleShuffle}>
+			<button on:click={toggleShuffle} class="{shuffleStatus == 'On' ? 'active' : ''}">
 				<img src="icons/shuffle.svg" alt="Icon">
-				Shuffle: {shuffleStatus}
+				Shuffle
 			</button>
-			<button on:click={toggleAutoplay}>
+			<button on:click={toggleAutoplay} class="{autoplayStatus == 'On' ? 'active' : ''}">
 				<img src="icons/infinity.svg" alt="Icon">
-				Autoplay: {autoplayStatus}
+				Autoplay
 			</button>
 			<!-- <button on:click={saveAsClip}>
 				<img src="icons/camera.svg" alt="Icon">
@@ -190,7 +187,7 @@
 	</div>
 
 	<div class="side modules">
-		<div class="module tv-episode-module" style='max-height: 70vh;'>
+		<div class="module tv-episode-module">
 			<TvModule title={media.title}/>
 		</div>
 	</div>
@@ -231,22 +228,18 @@
 	}
 
 	.module{
+		height: 50vh;
 		min-height: 25vh;
-		background: rgb(0, 0, 0, 0.1);
-		box-shadow: inset -1px -1px 2px var(--accent), inset 1px 1px 5px rgb(0, 0, 0);
+		max-height: 50vh;
+		background: rgb(25, 0, 25, 0.25);
+		border: solid 1pt rgb(70, 0, 80);
 		padding: 15pt;
-		border-radius: 10pt;
+		border-radius: 15pt;
 		overflow: auto;
 	}
 
-	.video-shell{
-		position: relative;
-		overflow: hidden;
-		border-radius: 10pt;
-		box-shadow: -5px -5px 50px rgba(34, 54, 242, 0.5), 5px 5px 50px rgba(255, 0, 64, 0.5);
-	}
 	video{
-		display: block;
+		box-shadow: -5px -5px 50px rgba(34, 54, 242, 0.5), 5px 5px 50px rgba(255, 0, 64, 0.5);
 		width: 100%;
 	}
 
@@ -273,16 +266,19 @@
 		display: inline-flex;
 		align-items: center;
 		padding: 10pt 15pt;
+		background: rgb(0, 0, 0, 0.25);
 		border-radius: 10pt;
-		box-shadow: inset 1px 1px 3px rgb(150 100 150), inset -2px -2px 5px rgb(0 0 0);
 		margin-right: 10pt;
 	}
 	.action-buttons button img{
 		height: 15pt;
 		margin-right: 5pt;
 	}
-	.action-buttons button:hover{
-		box-shadow: inset -1px -1px 3px rgb(150 100 150), inset 2px 2px 5px rgb(0 0 0);
+	.action-buttons button.active {
+		font-weight: 600;
+	}
+	.action-buttons button.active, .action-buttons button:hover {
+		box-shadow: inset 0 -32pt 0 -30pt var(--accent);
 	}
 	button{
 		all: unset;

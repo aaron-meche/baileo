@@ -29,6 +29,16 @@
         background-size: fixed;
     }
 
+    /* .wallpaper{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -100;
+        background: rgb(20 0 30);
+    } */
+
     .wallpaper-filter{
         height: 100vh;
         width: 100vw;
@@ -39,6 +49,6 @@
         backdrop-filter: blur(100px);
         -webkit-backdrop-filter: blur(100px);
         -moz-backdrop-filter: blur(100px);
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.75);
     }
 </style>

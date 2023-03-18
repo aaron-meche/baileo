@@ -18,7 +18,6 @@
 		padding: 10pt;
 		border-radius: 100vh;
         background: linear-gradient(45deg, rgb(209, 35, 110), var(--accent));
-        /* background: var(--accent); */
         font-weight: 500;
 		cursor: pointer;
         display: inline-flex;
