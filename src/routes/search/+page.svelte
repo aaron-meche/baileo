@@ -1,12 +1,25 @@
 <script>
 	import { mediaDB, storage } from '$lib/data'
-	import MediaItem from '$lib/components/Media Item.svelte'
+	import MediaSection from '$lib/components/Media Section.svelte'
 
 	const listOf_mediaTitles = Object.keys(mediaDB)
 
 	function handleMediaItemClick(title, type) {
 		storage.set('watching title', title)
 		window.open('/watch/', '_self')
+	}
+
+	function search(value) {
+		let string = document.querySelector('input').value.toLowerCase().replaceAll(' ', '')
+		document.querySelectorAll('[type="media-item"]').forEach((elem) => {
+			let content = elem.innerText.toLowerCase().replaceAll(' ', '')
+			if (content.includes(string)) {
+				elem.style.display = 'inline-block'
+			}
+			else {
+				elem.style.display = 'none'
+			}
+		})
 	}
 </script>
 
@@ -18,51 +31,38 @@
 
 <!--  -->
 
-<section>
-	<div class="title">TV Shows</div>
-	<div class="horizontal-scroll">
-		{#each listOf_mediaTitles as elem}
-			{#if mediaDB[elem]['type'] == 'TV Show'}
-				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
-					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
-				</button>
-			{/if}
-		{/each}
-	</div>
-</section>
+<div class="search-wrapper">
+	<img src="icons/search.svg" alt="">
+	<input type="text" on:keyup={search}>
+</div>
 
-<section>
-	<div class="title">Movies</div>
-	<div class="horizontal-scroll">
-		{#each listOf_mediaTitles as elem}
-			{#if mediaDB[elem]['type'] == 'Movie'}
-				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
-					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
-				</button>
-			{/if}
-		{/each}
-	</div>
-</section>
+<MediaSection title='TV Shows' query='type' condition='TV Show'/>
+<MediaSection title='Movies' query='type' condition='Movie'/>
 
 <!--  -->
 
 <style>
-	button{
-        all: unset;
-    }
-
-	section{
-		padding: 20pt 0;
+	.search-wrapper{
+		width: fit-content;
+		background: rgb(0, 0, 0, 0.25);
+		box-shadow: inset -1px -1pt 5px rgb(150, 150, 150, 0.5), inset 2px 2pt 5px rgb(0, 0, 0);
+		border-radius: 10pt;
+		margin: 5pt auto;
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
 	}
 
-	section >  .title{
-		font-size: 15pt;
-		font-weight: 500;
-		padding: 10pt;
-		padding-left: 25pt;
+	img{
+		height: 15pt;
+		display: inline-block;
+		margin: 10pt;
 	}
 
-	section > .horizontal-scroll{
-		padding-left: 25pt;
+	input{
+		all: unset;
+		height: 100%;
+		width: clamp(25vw, 250pt, 75vw);
+		display: inline-block;
 	}
 </style>

@@ -1,4 +1,5 @@
 <script>
+    import { mediaDB } from '$lib/data'
     export let title, type
 
     let source = `thumbnails/${title}.png`
@@ -6,7 +7,7 @@
 
 <!--  -->
 
-<div class="item">
+<div class="item" type='media-item'>
     <img src={source} alt="Media Thumbnail">
     <div class="info">
         <div class="title">{title}</div>
@@ -53,4 +54,8 @@
 		font-weight: 400;
 		color: gray;
 	}
+
+    .hidden{
+        display: none;
+    }
 </style>
