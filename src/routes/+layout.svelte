@@ -39,6 +39,6 @@
         backdrop-filter: blur(100px);
         -webkit-backdrop-filter: blur(100px);
         -moz-backdrop-filter: blur(100px);
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.7);
     }
 </style>

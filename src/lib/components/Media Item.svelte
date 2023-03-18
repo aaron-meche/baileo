@@ -22,13 +22,13 @@
         position: relative;
         top: 0;
         width: 170pt;
-        padding-bottom: 10pt;
         margin: 10pt;
+        padding-bottom: 10pt;
         cursor: default;
         border-bottom: solid 3pt rgb(0, 0, 0, 0);
         transition: top 200ms;
 	}
-
+    
 	.item:hover{
         position: relative;
         top: -10pt;
@@ -54,8 +54,4 @@
 		font-weight: 400;
 		color: gray;
 	}
-
-    .hidden{
-        display: none;
-    }
 </style>

@@ -44,6 +44,6 @@
 	}
 
 	section > .horizontal-scroll{
-		padding-left: 25pt;
+		padding: 0 25pt;
 	}
 </style>

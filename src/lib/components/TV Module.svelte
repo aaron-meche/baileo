@@ -39,7 +39,6 @@
 <style>
     .season{
         margin-bottom: 15pt;
-        background: linear-gradient(to top, rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0));
     }
 
     .season-title{
@@ -54,7 +53,7 @@
         width: calc(100% - 20pt);
         padding: 10pt;
         margin: 2pt 0;
-        border-radius: 5pt;
+        border-radius: 10pt;
         cursor: pointer;
     }
     
@@ -63,7 +62,7 @@
     }
 
     .item.active-episode{
-        background: linear-gradient(to right, var(--accent), rgba(214, 23, 221, 0.4), rgba(255, 0, 93, 0.2));
+        background: linear-gradient(to right, var(--accent), rgb(180, 17, 185), rgb(126, 13, 54));
     }
 
     .title{

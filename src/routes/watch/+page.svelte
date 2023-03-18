@@ -35,6 +35,7 @@
 			storage.set(`${media.title} progress`, 0)
 		}
 
+		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
 			media.path = `${media.title}/Season ${media.season}/${mediaDB[media.title]['s' + media.season][media.episode - 1]}.mp4`
 			media.description = `S${media.season}, E${media.episode} - ${mediaDB[media.title]['s' + media.season][media.episode - 1]}`
@@ -44,23 +45,42 @@
 			media.description = 'Movie'
 		}
 
+		if (!storage.exists('shuffle')) {
+			storage.set('shuffle', 'Off')
+		}
+		if (!storage.exists('autoplay')) {
+			storage.set('autoplay', 'On')
+		}
+
+		// Keep saving progress...
 		setInterval(() => {
 			if (document.querySelector('video')) {
 				let currentTime = document.querySelector('video').currentTime
 				let maxTime = document.querySelector('video').duration
 				storage.set(`${media.title} progress`, currentTime)
-				if (currentTime > (maxTime - 30)) autoplay()
+
+				if ((currentTime > (maxTime - 30)) && (storage.get('autoplay') == 'On')) continueWatching()
 			}
 		}, 750)
 	}
 
-	function autoplay() {
+	function continueWatching() {
 		if (media.type == 'TV Show') {
-			nextEpisode()
+			if (storage.get('shuffle') == 'On') nextShuffleEpisode()
+			else nextEpisode()
 		}
 		else {
 			window.open('/', '_self')
 		}
+	}
+
+	function nextShuffleEpisode() {
+		let randomSeason = Math.floor(Math.random() * mediaDB[media.title]['sTotal']) + 1
+		let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
+		storage.set(`${media.title} season`, randomSeason)
+		storage.set(`${media.title} episode`, randomEpisode)
+        storage.set(`${media.title} progress`, 0)
+		window.open('/watch', '_self')
 	}
 
 	function nextEpisode() {
@@ -87,6 +107,32 @@
 			window.open('/watch', '_self')
 		}
 	}
+
+	let shuffleStatus = storage.get('shuffle')
+	function toggleShuffle() {
+		let current = storage.get('shuffle')
+		if (current == 'Off') {
+			storage.set('shuffle', 'On')
+			shuffleStatus = 'On'
+		}
+		else {
+			storage.set('shuffle', 'Off')
+			shuffleStatus = 'Off'
+		}
+	}
+
+	let autoplayStatus = storage.get('autoplay')
+	function toggleAutoplay() {		
+		let current = storage.get('autoplay')
+		if (current == 'Off') {
+			storage.set('autoplay', 'On')
+			autoplayStatus = 'On'
+		}
+		else {
+			storage.set('autoplay', 'Off')
+			autoplayStatus = 'Off'
+		}
+	}
 </script>
 
 <!--  -->
@@ -96,37 +142,59 @@
 </svelte:head>
 
 {#if typeof window !== 'undefined'}
-	<div class="app">
-		<div class="side content">
-			<div class="video-shell">
-				<!-- svelte-ignore a11y-media-has-caption -->
-				<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+<div class="app">
+	<div class="side content">
+		<!-- Video -->
+		<div class="video-shell">
+			<!-- svelte-ignore a11y-media-has-caption -->
+			<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		</div>
+
+		<!-- Description Belt -->
+		<div class="more-menu">
+			<!-- Watching Information -->
+			<div class="info">
+				<div class="title">{media.title}</div>
+				<div class="description">{media.description}</div>
 			</div>
-	
-			<div class="more-menu">
-				<!-- Watching Information -->
-				<div class="info">
-					<div class="title">{media.title}</div>
-					<div class="description">{media.description}</div>
-				</div>
-	
-				<!-- Next Episode Button -->
-				<div class="bold-button-section">
-					{#if media.type == 'TV Show'}
-						<button on:click={nextEpisode}>
-							<BoldButton icon='next' text='Next Episode'/>
-						</button>
-					{/if}
-				</div>
+
+			<!-- Next Episode Button -->
+			<div class="bold-button-section" style='text-align: right;'>
+				{#if media.type == 'TV Show'}
+					<button on:click={continueWatching}>
+						<BoldButton icon='next' text='Next Episode'/>
+					</button>
+				{/if}
 			</div>
 		</div>
-	
-		<div class="side modules">
-			<div class="module tv-episode-module">
-				<TvModule title={media.title}/>
-			</div>
+
+		<!-- Action Button Belt -->
+		<div class="action-buttons horizontal-scroll">
+			<button>
+				<img src="icons/download.svg" alt="Icon">
+				Download
+			</button>
+			<button on:click={toggleShuffle}>
+				<img src="icons/shuffle.svg" alt="Icon">
+				Shuffle: {shuffleStatus}
+			</button>
+			<button on:click={toggleAutoplay}>
+				<img src="icons/infinity.svg" alt="Icon">
+				Autoplay: {autoplayStatus}
+			</button>
+			<!-- <button on:click={saveAsClip}>
+				<img src="icons/camera.svg" alt="Icon">
+				Save as Clip
+			</button> -->
 		</div>
 	</div>
+
+	<div class="side modules">
+		<div class="module tv-episode-module" style='max-height: 70vh;'>
+			<TvModule title={media.title}/>
+		</div>
+	</div>
+</div>
 {/if}
 
 <!--  -->
@@ -135,8 +203,8 @@
 	.app{
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		padding: 25pt;
-		column-gap: 25pt;
+		padding: 20pt;
+		column-gap: 20pt;
 	}
 
 	@media screen and (min-width: 1000px) {
@@ -156,26 +224,26 @@
 		}
 	}
 
-	.side.modules{
+	.side{
 		display: grid;
-		row-gap: 15pt;
+		row-gap: 20pt;
+		padding-bottom: 20pt;
 	}
+
 	.module{
 		min-height: 25vh;
 		background: rgb(0, 0, 0, 0.1);
-		box-shadow: inset -1px -1pt 5px rgb(150, 150, 150, 0.5), inset 2px 2pt 5px rgb(0, 0, 0);
+		box-shadow: inset -1px -1px 2px var(--accent), inset 1px 1px 5px rgb(0, 0, 0);
 		padding: 15pt;
 		border-radius: 10pt;
 		overflow: auto;
-	}
-	.tv-episode-module{
-		max-height: 70vh;
 	}
 
 	.video-shell{
 		position: relative;
 		overflow: hidden;
 		border-radius: 10pt;
+		box-shadow: -5px -5px 50px rgba(34, 54, 242, 0.5), 5px 5px 50px rgba(255, 0, 64, 0.5);
 	}
 	video{
 		display: block;
@@ -186,12 +254,8 @@
 		display: grid;
 		align-items: center;
 		grid-template-columns: repeat(2, 1fr);
-		padding: 15pt 0;
 	}
 
-	.info{
-		font-weight: 400;
-	}
 	.title{
 		font-size: 18pt;
 		font-weight: 600;
@@ -202,9 +266,23 @@
 		color: gray;
 	}
 
-	.bold-button-section{
-		text-align: right;
-		width: 100%;
+	.action-buttons{
+		cursor: default;
+	}
+	.action-buttons button{
+		display: inline-flex;
+		align-items: center;
+		padding: 10pt 15pt;
+		border-radius: 10pt;
+		box-shadow: inset 1px 1px 3px rgb(150 100 150), inset -2px -2px 5px rgb(0 0 0);
+		margin-right: 10pt;
+	}
+	.action-buttons button img{
+		height: 15pt;
+		margin-right: 5pt;
+	}
+	.action-buttons button:hover{
+		box-shadow: inset -1px -1px 3px rgb(150 100 150), inset 2px 2px 5px rgb(0 0 0);
 	}
 	button{
 		all: unset;
