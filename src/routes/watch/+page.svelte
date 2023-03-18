@@ -46,15 +46,27 @@
 
 		setInterval(() => {
 			if (document.querySelector('video')) {
-				storage.set(`${media.title} progress`, document.querySelector('video').currentTime)
+				let currentTime = document.querySelector('video').currentTime
+				let maxTime = document.querySelector('video').duration
+				storage.set(`${media.title} progress`, currentTime)
+				if (currentTime > (maxTime - 30)) autoplay()
 			}
 		}, 750)
+	}
+
+	function autoplay() {
+		if (media.type == 'TV Show') {
+			nextEpisode()
+		}
+		else {
+			window.open('/', '_self')
+		}
 	}
 
 	function nextEpisode() {
 		let seasonLength = mediaDB[media.title]['s' + media.season].length
 		let seasonMax = mediaDB[media.title]['sTotal']
-        storage.set(`${title} progress`, 0)
+        storage.set(`${media.title} progress`, 0)
 
 		if (media.episode == seasonLength) {
 			if (media.season == seasonMax) {
@@ -75,21 +87,6 @@
 			window.open('/watch', '_self')
 		}
 	}
-
-	function shuffle() {
-		console.log('okk')
-	}
-
-	function infinity() {
-		console.log('okkk')
-	}
-
-	function download() {
-		var link = document.createElement("a")
-		link.download = `S${media.season}, E${media.episode + 1} - ${mediaDB[media.title]['s' + media.season][media.episode]}.mp4`
-		link.href = `http://192.168.1.19:5501/${media.path}`
-		link.click()
-	}
 </script>
 
 <!--  -->
@@ -103,16 +100,18 @@
 		<div class="side content">
 			<div class="video-shell">
 				<!-- svelte-ignore a11y-media-has-caption -->
-				<video src='http://192.168.1.19:5501/{media.path}' controls autoplay></video>
+				<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 			</div>
 	
 			<div class="more-menu">
+				<!-- Watching Information -->
 				<div class="info">
 					<div class="title">{media.title}</div>
 					<div class="description">{media.description}</div>
 				</div>
 	
-				<div class="button-belt horizontal-scroll">
+				<!-- Next Episode Button -->
+				<div class="bold-button-section">
 					{#if media.type == 'TV Show'}
 						<button on:click={nextEpisode}>
 							<BoldButton icon='next' text='Next Episode'/>
@@ -156,6 +155,7 @@
 			grid-column: 1 / 4;
 		}
 	}
+
 	.side.modules{
 		display: grid;
 		row-gap: 15pt;
@@ -171,16 +171,16 @@
 	.tv-episode-module{
 		max-height: 70vh;
 	}
-		
+
 	.video-shell{
 		position: relative;
 		overflow: hidden;
-		border-radius: 15pt;
+		border-radius: 10pt;
 	}
-		video{
-			display: block;
-			width: 100%;
-		}
+	video{
+		display: block;
+		width: 100%;
+	}
 
 	.more-menu{
 		display: grid;
@@ -192,22 +192,21 @@
 	.info{
 		font-weight: 400;
 	}
-		.title{
-			font-size: 18pt;
-			font-weight: 600;
-		}
-		.description{
-			font-size: 14pt;
-			font-weight: 500;
-			color: gray;
-		}
+	.title{
+		font-size: 18pt;
+		font-weight: 600;
+	}
+	.description{
+		font-size: 14pt;
+		font-weight: 500;
+		color: gray;
+	}
 
-	.button-belt{
+	.bold-button-section{
 		text-align: right;
 		width: 100%;
 	}
-		button{
-			all: unset;
-			margin-right: 5pt;
-		}
+	button{
+		all: unset;
+	}
 </style>

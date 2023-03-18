@@ -14,28 +14,28 @@
 
 <div class="navbar">
     <div class="logo-display section">
-        <button on:click={toggleMenu}>
+        <!-- <button on:click={toggleMenu}>
             <img src="icons/menu.svg" alt="Icon">
-        </button>
+        </button> -->
 
         <button on:click={() => openPage('/')} class='logo {$page.url.pathname === '/' ? 'active' : ''}'>
-            <img src="icons/camera.svg" alt="Icon">
+            <img src="logo.png" alt="Icon">
             baileo
         </button>
     </div>
     
     <div class="actions section">
-        <button on:click={() => openPage('/search')} class='{$page.url.pathname === '/search' ? 'active' : ''}'>
+        <!-- <button on:click={() => openPage('/search')} class='{$page.url.pathname === '/search' ? 'active' : ''}'>
             <img src="icons/search.svg" alt="Icon">
-        </button>
+        </button> -->
 
         <button on:click={() => openPage('/watch')} class='{$page.url.pathname === '/watch' ? 'active' : ''}'>
             <img src="icons/play.svg" alt="Icon">
         </button>
 
-        <button on:click={() => openPage('/settings')} class='{$page.url.pathname === '/settings' ? 'active' : ''}'>
+        <!-- <button on:click={() => openPage('/settings')} class='{$page.url.pathname === '/settings' ? 'active' : ''}'>
             <img src="icons/settings.svg" alt="Icon">
-        </button>
+        </button> -->
     </div>
 
 </div>
@@ -82,6 +82,7 @@
     .logo{
         font-size: 15pt;
         opacity: 1;
+        color: var(--accent);
     }
         .logo img{
             margin-right: 5pt;
