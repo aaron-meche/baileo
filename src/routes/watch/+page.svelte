@@ -15,7 +15,7 @@
 			media.season = storage.get(`${media.title} season`)
 			media.episode = storage.get(`${media.title} episode`)
 			media.episodeTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1] : ''
-			media.episodeDisplayTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-s', "'s") : ''
+			media.episodeDisplayTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-', "'") : ''
 			media.progress = storage.get(`${media.title} progress`)
 			console.log('gpr')
 
