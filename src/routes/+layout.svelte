@@ -1,6 +1,17 @@
 <script>
+	import { storage } from '$lib/data'
     import TopNavbar from '$lib/components/Top Navbar.svelte'
     import '$lib/style.css'
+
+    if (!storage.exists('shuffle')) {
+		storage.set('shuffle', 'Off')
+	}
+    if (!storage.exists('autoplay')) {
+        storage.set('autoplay', 'On')
+    }
+    if (!storage.exists('glow')) {
+        storage.set('glow', 'On')
+    }
 </script>
 
 <!--  -->

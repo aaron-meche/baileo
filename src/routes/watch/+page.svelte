@@ -11,15 +11,15 @@
 		media.type = mediaDB[media.title]['type']
 
 		// Progress
-		if (storage.exists(`${media.title} progress`)) {
-			media.season = storage.get(`${media.title} season`)
-			media.episode = storage.get(`${media.title} episode`)
-			media.episodeTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1] : ''
-			media.episodeDisplayTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-', "'") : ''
+		if (storage.exists(`${media.title} progress`)) { // YES watch progress
 			media.progress = storage.get(`${media.title} progress`)
-			console.log('gpr')
 
-			let interval = setInterval(() => {
+			if (media.type == 'TV Show') {
+				media.season = storage.get(`${media.title} season`)
+				media.episode = storage.get(`${media.title} episode`)
+			}
+
+			let interval = setInterval(() => { // Load progress
 				if (document.querySelector('video')) {
 					document.querySelector('video').currentTime = media.progress
 					document.querySelector(`.active-episode`).scrollIntoView()
@@ -28,30 +28,28 @@
 				}
 			}, 750)
 		}
-		else {
-			media.season = 1
-			media.episode = 1
+		else { // NO watch progress
 			media.progress = 0
-			storage.set(`${media.title} season`, 1)
-			storage.set(`${media.title} episode`, 1)
-			storage.set(`${media.title} progress`, 0)
+
+			if (media.type == 'TV Show') {
+				media.season = 1
+				media.episode = 1
+				storage.set(`${media.title} season`, 1)
+				storage.set(`${media.title} episode`, 1)
+			}
 		}
 
 		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
+			media.episodeTitle = mediaDB[media.title]['s' + media.season][media.episode - 1]
+			media.episodeDisplayTitle = mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-', "'")
+			
 			media.path = `${media.title}/Season ${media.season}/${media.episodeTitle}.mp4`
 			media.description = `S${media.season}, E${media.episode} - ${media.episodeDisplayTitle}`
 		}
 		else {
 			media.path = `${media.title}.mp4`
 			media.description = 'Movie'
-		}
-
-		if (!storage.exists('shuffle')) {
-			storage.set('shuffle', 'Off')
-		}
-		if (!storage.exists('autoplay')) {
-			storage.set('autoplay', 'On')
 		}
 
 		// Keep saving progress...
@@ -135,6 +133,19 @@
 			autoplayStatus = 'Off'
 		}
 	}
+
+	let glowStatus = storage.get('glow')
+	function toggleGlow() {		
+		let current = storage.get('glow')
+		if (current == 'Off') {
+			storage.set('glow', 'On')
+			glowStatus = 'On'
+		}
+		else {
+			storage.set('glow', 'Off')
+			glowStatus = 'Off'
+		}
+	}
 </script>
 
 <!--  -->
@@ -147,7 +158,7 @@
 <div class="app">
 	<div class="side content">
 		<!-- svelte-ignore a11y-media-has-caption -->
-		<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		<video class='{glowStatus == 'On' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -173,6 +184,7 @@
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
+
 			<button on:click={toggleShuffle}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Shuffle
@@ -180,6 +192,7 @@
 					<div class="coin"></div>
 				</div>
 			</button>
+
 			<button on:click={toggleAutoplay}>
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
@@ -187,6 +200,15 @@
 					<div class="coin"></div>
 				</div>
 			</button>
+
+			<button on:click={toggleGlow}>
+				<img src="icons/light.svg" alt="Icon">
+				Video Glow
+				<div class="toggle {glowStatus == 'On' ? 'active' : ''}">
+					<div class="coin"></div>
+				</div>
+			</button>
+			
 			<!-- <button on:click={saveAsClip}>
 				<img src="icons/camera.svg" alt="Icon">
 				Save as Clip
@@ -247,8 +269,10 @@
 	}
 
 	video{
-		box-shadow: -1px -1px 50px -25px var(--accent), 1px 1px 50px -25px var(--compliment);
 		width: 100%;
+	}
+	video.glow{
+		box-shadow: -1px -1px 50px -20px var(--accent), 1px 1px 50px -20px var(--compliment);
 	}
 
 	.more-menu{
@@ -274,9 +298,15 @@
 		display: inline-flex;
 		align-items: center;
 		padding: 10pt 15pt;
-		background: rgb(0, 0, 0, 0.5);
+		background: rgb(0 0 0);
 		border-radius: 10pt;
 		margin-right: 10pt;
+		transition: box-shadow 200ms;
+	}
+	.action-buttons button:hover {
+		text-decoration: underline;
+		text-decoration-color: var(--accent);
+		text-underline-offset: 5pt;
 	}
 	.action-buttons img{
 		height: 15pt;
@@ -286,12 +316,12 @@
 		margin-left: 5pt;
 		padding: 2pt;
 		border-radius: 100vh;
-		background: rgb(255, 255, 255, 0.15);
+		background: rgb(50 50 50);
 	}
 	.action-buttons .toggle .coin{
 		padding: 5pt;
 		border-radius: inherit;
-		transition: margin 500ms;
+		transition: margin 200ms, background 200ms;
 		background: gray;
 		margin-left: 0;
 		margin-right: 10pt;
@@ -300,9 +330,6 @@
 		background: var(--accent);
 		margin-left: 10pt;
 		margin-right: 0;
-	}
-	.action-buttons button:hover {
-		box-shadow: inset 0 -32pt 0 -30pt var(--accent);
 	}
 	button{
 		all: unset;
