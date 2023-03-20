@@ -108,42 +108,32 @@
 		}
 	}
 
-	let shuffleStatus = storage.get('shuffle')
-	function toggleShuffle() {
-		let current = storage.get('shuffle')
-		if (current == 'false') {
-			storage.set('shuffle', 'true')
-			shuffleStatus = 'true'
-		}
-		else {
-			storage.set('shuffle', 'false')
-			shuffleStatus = 'false'
-		}
+	function download() {
+		var link = document.createElement("a")
+		link.download = 'Baileo Download'
+		link.href = `https://209.163.185.11/videos/${media.path}`
+		link.click()
 	}
 
-	let autoplayStatus = storage.get('autoplay')
-	function toggleAutoplay() {		
-		let current = storage.get('autoplay')
-		if (current == 'false') {
-			storage.set('autoplay', 'true')
-			autoplayStatus = 'true'
-		}
-		else {
-			storage.set('autoplay', 'false')
-			autoplayStatus = 'false'
-		}
+	let statePref = {}
+
+	function createStatePref(title) {
+		statePref[title] = storage.get(title)
 	}
 
-	let glowStatus = storage.get('glow')
-	function toggleGlow() {		
-		let current = storage.get('glow')
+	createStatePref('shuffle')
+	createStatePref('autoplay')
+	createStatePref('glow')
+
+	function toggleStatePref(title) {
+		let current = storage.get(title)
 		if (current == 'false') {
-			storage.set('glow', 'true')
-			glowStatus = 'true'
+			storage.set(title, 'true')
+			statePref[title] = 'true'
 		}
 		else {
-			storage.set('glow', 'false')
-			glowStatus = 'false'
+			storage.set(title, 'false')
+			statePref[title] = 'false'
 		}
 	}
 </script>
@@ -158,7 +148,7 @@
 <div class="app">
 	<div class="side content">
 		<!-- svelte-ignore a11y-media-has-caption -->
-		<video class='{glowStatus == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		<video class='{statePref['glow'] == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -180,31 +170,31 @@
 
 		<!-- Action Button Belt -->
 		<div class="action-buttons horizontal-scroll">
-			<button>
+			<button on:click={download}>
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
 
-			<button on:click={toggleShuffle}>
+			<button on:click={() => toggleStatePref('shuffle')}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Shuffle
-				<div class="toggle {shuffleStatus == 'true' ? 'active' : ''}">
+				<div class="toggle {statePref['shuffle'] == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
 
-			<button on:click={toggleAutoplay}>
+			<button on:click={() => toggleStatePref('autoplay')}>
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
-				<div class="toggle {autoplayStatus == 'true' ? 'active' : ''}">
+				<div class="toggle {statePref['autoplay'] == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
 
-			<button on:click={toggleGlow}>
+			<button on:click={() => toggleStatePref('glow')}>
 				<img src="icons/light.svg" alt="Icon">
 				Video Glow
-				<div class="toggle {glowStatus == 'true' ? 'active' : ''}">
+				<div class="toggle {statePref['glow'] == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
