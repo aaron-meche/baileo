@@ -26,7 +26,7 @@
             {#each mediaDB[title]['s' + (s + 1)] as episode, e}
                 <button class="item {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
                     <div class="title">
-                        <span class="count">S{s + 1}, E{e + 1}</span> {episode}
+                        <span class="count">S{s + 1}, E{e + 1}</span> {episode.replaceAll('-s', "'s")}
                     </div>
                 </button>
             {/each}
@@ -62,7 +62,7 @@
     }
 
     .item.active-episode{
-        background: linear-gradient(to right, var(--accent), rgb(180, 17, 185), rgb(126, 13, 54));
+        background: linear-gradient(to bottom right, var(--accent), var(--compliment));
     }
 
     .title{

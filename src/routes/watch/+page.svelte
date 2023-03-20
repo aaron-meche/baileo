@@ -14,6 +14,8 @@
 		if (storage.exists(`${media.title} progress`)) {
 			media.season = storage.get(`${media.title} season`)
 			media.episode = storage.get(`${media.title} episode`)
+			media.episodeTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1] : ''
+			media.episodeDisplayTitle = media.type == 'TV Show' ? mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-s', "'s") : ''
 			media.progress = storage.get(`${media.title} progress`)
 			console.log('gpr')
 
@@ -37,8 +39,8 @@
 
 		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
-			media.path = `${media.title}/Season ${media.season}/${mediaDB[media.title]['s' + media.season][media.episode - 1]}.mp4`
-			media.description = `S${media.season}, E${media.episode} - ${mediaDB[media.title]['s' + media.season][media.episode - 1]}`
+			media.path = `${media.title}/Season ${media.season}/${media.episodeTitle}.mp4`
+			media.description = `S${media.season}, E${media.episode} - ${media.episodeDisplayTitle}`
 		}
 		else {
 			media.path = `${media.title}.mp4`
@@ -171,13 +173,19 @@
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
-			<button on:click={toggleShuffle} class="{shuffleStatus == 'On' ? 'active' : ''}">
+			<button on:click={toggleShuffle}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Shuffle
+				<div class="toggle {shuffleStatus == 'On' ? 'active' : ''}">
+					<div class="coin"></div>
+				</div>
 			</button>
-			<button on:click={toggleAutoplay} class="{autoplayStatus == 'On' ? 'active' : ''}">
+			<button on:click={toggleAutoplay}>
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
+				<div class="toggle {autoplayStatus == 'On' ? 'active' : ''}">
+					<div class="coin"></div>
+				</div>
 			</button>
 			<!-- <button on:click={saveAsClip}>
 				<img src="icons/camera.svg" alt="Icon">
@@ -231,15 +239,15 @@
 		height: 50vh;
 		min-height: 25vh;
 		max-height: 50vh;
-		background: rgb(25, 0, 25, 0.25);
-		border: solid 1pt rgb(70, 0, 80);
+		background: rgb(0, 0, 25, 0.25);
+		border: solid 1pt rgb(50, 50, 100);
 		padding: 15pt;
 		border-radius: 15pt;
 		overflow: auto;
 	}
 
 	video{
-		box-shadow: -5px -5px 50px rgba(34, 54, 242, 0.5), 5px 5px 50px rgba(255, 0, 64, 0.5);
+		box-shadow: -1px -1px 50px -25px var(--accent), 1px 1px 50px -25px var(--compliment);
 		width: 100%;
 	}
 
@@ -266,18 +274,34 @@
 		display: inline-flex;
 		align-items: center;
 		padding: 10pt 15pt;
-		background: rgb(0, 0, 0, 0.25);
+		background: rgb(0, 0, 0, 0.5);
 		border-radius: 10pt;
 		margin-right: 10pt;
 	}
-	.action-buttons button img{
+	.action-buttons img{
 		height: 15pt;
 		margin-right: 5pt;
 	}
-	.action-buttons button.active {
-		font-weight: 600;
+	.action-buttons .toggle{
+		margin-left: 5pt;
+		padding: 2pt;
+		border-radius: 100vh;
+		background: rgb(255, 255, 255, 0.15);
 	}
-	.action-buttons button.active, .action-buttons button:hover {
+	.action-buttons .toggle .coin{
+		padding: 5pt;
+		border-radius: inherit;
+		transition: margin 500ms;
+		background: gray;
+		margin-left: 0;
+		margin-right: 10pt;
+	}
+	.action-buttons .toggle.active .coin{
+		background: var(--accent);
+		margin-left: 10pt;
+		margin-right: 0;
+	}
+	.action-buttons button:hover {
 		box-shadow: inset 0 -32pt 0 -30pt var(--accent);
 	}
 	button{

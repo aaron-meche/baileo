@@ -11,12 +11,12 @@
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent: rgb(179, 61, 243);
+    --accent: rgb(69, 83, 239);
+    --compliment: rgb(151, 69, 239);
 }
 
 body{
     margin: 0;
-    background: black;
     color: white;
     font-family: BaileyScript;
     font-size: 12pt;
