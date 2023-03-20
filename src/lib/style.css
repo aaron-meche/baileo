@@ -13,11 +13,13 @@
 
     --accent: rgb(69, 83, 239);
     --compliment: rgb(151, 69, 239);
+    --background: rgb(20 20 35);
 }
 
 body{
     margin: 0;
     color: white;
+    background: var(--background);
     font-family: BaileyScript;
     font-size: 12pt;
 }

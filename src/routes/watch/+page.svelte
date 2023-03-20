@@ -13,12 +13,7 @@
 		// Progress
 		if (storage.exists(`${media.title} progress`)) { // YES watch progress
 			media.progress = storage.get(`${media.title} progress`)
-
-			if (media.type == 'TV Show') {
-				media.season = storage.get(`${media.title} season`)
-				media.episode = storage.get(`${media.title} episode`)
-			}
-
+			
 			let interval = setInterval(() => { // Load progress
 				if (document.querySelector('video')) {
 					document.querySelector('video').currentTime = media.progress
@@ -27,6 +22,11 @@
 					clearInterval(interval)
 				}
 			}, 750)
+
+			if (media.type == 'TV Show') {
+				media.season = storage.get(`${media.title} season`)
+				media.episode = storage.get(`${media.title} episode`)
+			}
 		}
 		else { // NO watch progress
 			media.progress = 0
@@ -59,14 +59,14 @@
 				let maxTime = document.querySelector('video').duration
 				storage.set(`${media.title} progress`, currentTime)
 
-				if ((currentTime > (maxTime - 30)) && (storage.get('autoplay') == 'On')) continueWatching()
+				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) continueWatching()
 			}
 		}, 750)
 	}
 
 	function continueWatching() {
 		if (media.type == 'TV Show') {
-			if (storage.get('shuffle') == 'On') nextShuffleEpisode()
+			if (storage.get('shuffle') == 'true') nextShuffleEpisode()
 			else nextEpisode()
 		}
 		else {
@@ -111,39 +111,39 @@
 	let shuffleStatus = storage.get('shuffle')
 	function toggleShuffle() {
 		let current = storage.get('shuffle')
-		if (current == 'Off') {
-			storage.set('shuffle', 'On')
-			shuffleStatus = 'On'
+		if (current == 'false') {
+			storage.set('shuffle', 'true')
+			shuffleStatus = 'true'
 		}
 		else {
-			storage.set('shuffle', 'Off')
-			shuffleStatus = 'Off'
+			storage.set('shuffle', 'false')
+			shuffleStatus = 'false'
 		}
 	}
 
 	let autoplayStatus = storage.get('autoplay')
 	function toggleAutoplay() {		
 		let current = storage.get('autoplay')
-		if (current == 'Off') {
-			storage.set('autoplay', 'On')
-			autoplayStatus = 'On'
+		if (current == 'false') {
+			storage.set('autoplay', 'true')
+			autoplayStatus = 'true'
 		}
 		else {
-			storage.set('autoplay', 'Off')
-			autoplayStatus = 'Off'
+			storage.set('autoplay', 'false')
+			autoplayStatus = 'false'
 		}
 	}
 
 	let glowStatus = storage.get('glow')
 	function toggleGlow() {		
 		let current = storage.get('glow')
-		if (current == 'Off') {
-			storage.set('glow', 'On')
-			glowStatus = 'On'
+		if (current == 'false') {
+			storage.set('glow', 'true')
+			glowStatus = 'true'
 		}
 		else {
-			storage.set('glow', 'Off')
-			glowStatus = 'Off'
+			storage.set('glow', 'false')
+			glowStatus = 'false'
 		}
 	}
 </script>
@@ -158,7 +158,7 @@
 <div class="app">
 	<div class="side content">
 		<!-- svelte-ignore a11y-media-has-caption -->
-		<video class='{glowStatus == 'On' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		<video class='{glowStatus == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -188,7 +188,7 @@
 			<button on:click={toggleShuffle}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Shuffle
-				<div class="toggle {shuffleStatus == 'On' ? 'active' : ''}">
+				<div class="toggle {shuffleStatus == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
@@ -196,7 +196,7 @@
 			<button on:click={toggleAutoplay}>
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
-				<div class="toggle {autoplayStatus == 'On' ? 'active' : ''}">
+				<div class="toggle {autoplayStatus == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
@@ -204,22 +204,19 @@
 			<button on:click={toggleGlow}>
 				<img src="icons/light.svg" alt="Icon">
 				Video Glow
-				<div class="toggle {glowStatus == 'On' ? 'active' : ''}">
+				<div class="toggle {glowStatus == 'true' ? 'active' : ''}">
 					<div class="coin"></div>
 				</div>
 			</button>
-			
-			<!-- <button on:click={saveAsClip}>
-				<img src="icons/camera.svg" alt="Icon">
-				Save as Clip
-			</button> -->
 		</div>
 	</div>
 
 	<div class="side modules">
-		<div class="module tv-episode-module">
-			<TvModule title={media.title}/>
-		</div>
+		{#if media.type == 'TV Show'}
+			<div class="module tv-episode-module">
+				<TvModule title={media.title}/>
+			</div>
+		{/if}
 	</div>
 </div>
 {/if}

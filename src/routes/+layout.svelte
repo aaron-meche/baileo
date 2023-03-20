@@ -3,22 +3,24 @@
     import TopNavbar from '$lib/components/Top Navbar.svelte'
     import '$lib/style.css'
 
-    if (!storage.exists('shuffle')) {
-		storage.set('shuffle', 'Off')
-	}
-    if (!storage.exists('autoplay')) {
-        storage.set('autoplay', 'On')
+    function protectStoragePref(attr, val) {
+        if (!storage.exists(attr)) {
+            storage.set(attr, val)
+        }
     }
-    if (!storage.exists('glow')) {
-        storage.set('glow', 'On')
-    }
+
+    protectStoragePref('watching title', 'Parks and Recreation')
+    protectStoragePref('shuffle', 'false')
+    protectStoragePref('autoplay', 'false')
+    protectStoragePref('glow', 'false')
+    protectStoragePref('autoplay buffer', 30)
 </script>
 
 <!--  -->
 
 <div class="app">
 
-    <div class="wallpaper"></div>
+    <!-- <div class="wallpaper"></div> -->
     <!-- <div class="wallpaper-filter"></div> -->
 
     <div class="top-navbar">   <TopNavbar/>   </div>
@@ -40,7 +42,7 @@
         background-size: fixed;
     } */
 
-    .wallpaper{
+    /* .wallpaper{
         height: 100vh;
         width: 100vw;
         position: fixed;
@@ -48,7 +50,7 @@
         left: 0;
         z-index: -100;
         background: linear-gradient(to bottom right, rgb(10 10 30), rgb(20 20 60))
-    }
+    } */
 
     /* .wallpaper-filter{
         height: 100vh;

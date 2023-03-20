@@ -1,9 +1,6 @@
 <script>
-	import { mediaDB, storage } from '$lib/data'
-	import MediaItem from '$lib/components/Media Item.svelte'
+	import { storage } from '$lib/data'
 	import MediaSection from '$lib/components/Media Section.svelte'
-
-	const listOf_mediaTitles = Object.keys(mediaDB)
 </script>
 
 <!--  -->
