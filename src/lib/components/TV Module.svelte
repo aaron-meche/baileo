@@ -61,7 +61,7 @@
     }
 
     .item.active-episode{
-        background: linear-gradient(to bottom right, var(--accent), var(--compliment));
+        background: var(--bold-gradient);
     }
 
     .title{

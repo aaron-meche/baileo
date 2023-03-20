@@ -13,6 +13,7 @@
 
     --accent: rgb(69, 83, 239);
     --compliment: rgb(143, 69, 239);
+    --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
     --accent-shadow: -5px -5px 50px rgb(39, 28, 230, 0.5), 5px 5px 50px rgb(233, 60, 54, 0.5);
     --background: rgb(20 20 35);
 }
@@ -37,4 +38,8 @@ body{
 
 .horizontal-scroll::-webkit-scrollbar{
     display: none;
+}
+
+button{
+    all: unset;
 }

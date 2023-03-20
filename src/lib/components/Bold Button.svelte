@@ -17,7 +17,7 @@
 	.button{
 		padding: 10pt;
 		border-radius: 100vh;
-        background: linear-gradient(to bottom right, var(--accent), var(--compliment));
+        background: var(--bold-gradient);
         margin: 1pt;
         font-weight: 500;
 		cursor: pointer;
