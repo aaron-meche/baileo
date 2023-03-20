@@ -2,6 +2,7 @@
 	import { mediaDB, storage } from '$lib/data'
 	import BoldButton from '$lib/components/Bold Button.svelte'
 	import TvModule from '$lib/components/TV Module.svelte'
+	import Toggle from '$lib/components/Toggle.svelte'
 
 	let media = {}
 
@@ -178,25 +179,19 @@
 			<button on:click={() => toggleStatePref('shuffle')}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Shuffle
-				<div class="toggle {statePref['shuffle'] == 'true' ? 'active' : ''}">
-					<div class="coin"></div>
-				</div>
+				<Toggle active={statePref['shuffle']}/>
 			</button>
 
 			<button on:click={() => toggleStatePref('autoplay')}>
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
-				<div class="toggle {statePref['autoplay'] == 'true' ? 'active' : ''}">
-					<div class="coin"></div>
-				</div>
+				<Toggle active={statePref['autoplay']}/>
 			</button>
 
 			<button on:click={() => toggleStatePref('glow')}>
 				<img src="icons/light.svg" alt="Icon">
 				Video Glow
-				<div class="toggle {statePref['glow'] == 'true' ? 'active' : ''}">
-					<div class="coin"></div>
-				</div>
+				<Toggle active={statePref['glow']}/>
 			</button>
 		</div>
 	</div>
@@ -259,7 +254,7 @@
 		width: 100%;
 	}
 	video.glow{
-		box-shadow: -1px -1px 50px -20px var(--accent), 1px 1px 50px -20px var(--compliment);
+		box-shadow: var(--accent-shadow);
 	}
 
 	.more-menu{
