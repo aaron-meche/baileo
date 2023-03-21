@@ -22,8 +22,8 @@
         position: relative;
         top: 0;
         width: 170pt;
-        /* margin: 10pt; */
-        padding: 10pt;
+        margin: 10pt;
+        /* padding: 10pt; */
         padding-bottom: 10pt;
         cursor: default;
         border-bottom: solid 3pt rgb(0, 0, 0, 0);

@@ -1,12 +1,20 @@
 <script>
-	import { storage } from '$lib/data'
+	import { storage, isServerConnected } from '$lib/data'
     import TopNavbar from '$lib/components/Top Navbar.svelte'
+    import ServerError from '$lib/components/Server Error.svelte'
     import '$lib/style.css'
 
     function protectStoragePref(attr, val) {
         if (!storage.exists(attr)) {
             storage.set(attr, val)
         }
+    }
+
+    if (!isServerConnected('https://209.163.185.11/test.jpg')) {
+        console.log('Server not connected')
+        setTimeout(() => {
+            if (typeof window !== 'undefined') window.open('https://209.163.185.11/confirm.html', '_self')
+        }, 1000);
     }
 
     protectStoragePref('watching title', 'Parks and Recreation')
@@ -23,6 +31,10 @@
     <!-- <div class="wallpaper"></div> -->
     <!-- <div class="wallpaper-filter"></div> -->
 
+    <!-- <div id="serverError" style='opacity: {isServerConnected('https://209.163.185.11/test.jpg') ? 0 : 1}'>
+        <ServerError/>
+    </div> -->
+
     <div class="top-navbar">   <TopNavbar/>   </div>
     <div class="app">   <slot/>   </div>
 
@@ -31,37 +43,4 @@
 <!--  -->
 
 <style>
-    /* .wallpaper{
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -100;
-        background: url('$lib/assets/aqua.jpg') center center no-repeat;
-        background-size: fixed;
-    } */
-
-    /* .wallpaper{
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -100;
-        background: linear-gradient(to bottom right, rgb(10 10 30), rgb(20 20 60))
-    } */
-
-    /* .wallpaper-filter{
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -90;
-        backdrop-filter: blur(100px);
-        -webkit-backdrop-filter: blur(100px);
-        -moz-backdrop-filter: blur(100px);
-        background: rgba(0, 0, 0, 0.75);
-    } */
 </style>

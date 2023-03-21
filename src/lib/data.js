@@ -14,6 +14,14 @@ export const storage = {
 	},
 }
 
+export function isServerConnected(url) {
+    if (typeof window !== 'undefined') {
+        var img = new Image();
+        img.src = url;
+        return img.height != 0;
+    }
+}
+
 export const mediaDB = {
     "Family Guy": {
         type:"TV Show", 
