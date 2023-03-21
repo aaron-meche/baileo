@@ -11,7 +11,7 @@
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent: rgb(69, 83, 239);
+    --accent: rgb(61, 103, 244);
     --compliment: rgb(143, 69, 239);
     --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
     --accent-shadow: -5px -5px 50px rgb(39, 28, 230, 0.5), 5px 5px 50px rgb(233, 60, 54, 0.5);
