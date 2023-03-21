@@ -279,13 +279,18 @@
 	.action-buttons button{
 		display: inline-flex;
 		align-items: center;
-		padding: 10pt 15pt;
+		/* padding: 10pt 15pt; */
 		font-size: 10pt;
 		text-transform: uppercase;
-		background: rgb(5, 5, 20);
+		/* background: rgb(5, 5, 20); */
 		border-radius: 10pt;
-		margin-right: 10pt;
+		margin-right: 25pt;
 		transition: box-shadow 200ms;
+	}
+	.action-buttons button:hover{
+		text-decoration: underline;
+		text-decoration-color: var(--accent);
+		text-underline-offset: 5pt;
 	}
 	.action-buttons img{
 		height: 15pt;
