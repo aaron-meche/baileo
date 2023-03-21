@@ -20,7 +20,7 @@
                 <div class="bar"></div>
             </div>
             <div class="time-wrapper">
-                <div class="past">10:00</div>
+                <div class="past">9:26</div>
                 <div class="future" style="text-align: right;">23:49</div>
             </div>
         </div>
@@ -56,22 +56,23 @@
     }
 
     .information{
-        margin-bottom: 10pt;
+        margin-bottom: 15pt;
     }
     
     .title{
         font-size: 15pt;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .caption{
-        font-size: 10pt;
-        font-weight: 300;
+        font-size: 11pt;
+        font-weight: 500;
+        color: gray;
     }
     
     .progress-wrapper{
         display: grid;
-        row-gap: 2pt;
+        row-gap: 1pt;
     }
 
     .bar-wrapper{
@@ -89,5 +90,7 @@
     .time-wrapper{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        font-size: 10pt;
+        color: lightgray;
     }
 </style>

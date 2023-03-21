@@ -13,7 +13,11 @@
     if (!isServerConnected('https://209.163.185.11/test.jpg')) {
         console.log('Server not connected')
         setTimeout(() => {
-            if (typeof window !== 'undefined') window.open('https://209.163.185.11/confirm.html', '_self')
+            if (typeof window !== 'undefined') {
+                if (!isServerConnected('https://209.163.185.11/test.jpg')) {
+                    window.open('https://209.163.185.11/confirm.html', '_self')
+                }
+            }
         }, 1000);
     }
 
