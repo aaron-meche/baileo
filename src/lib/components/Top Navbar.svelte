@@ -25,17 +25,17 @@
     </div>
     
     <div class="actions section">
-        <button on:click={() => openPage('/search')} class='{$page.url.pathname === '/search' ? 'active' : ''}'>
-            <img src="icons/search.svg" alt="Icon">
-        </button>
-
         <button on:click={() => openPage('/watch')} class='{$page.url.pathname === '/watch' ? 'active' : ''}'>
             <img src="icons/play.svg" alt="Icon">
         </button>
 
-        <button on:click={() => openPage('/settings')} class='{$page.url.pathname === '/settings' ? 'active' : ''}'>
-            <img src="icons/settings.svg" alt="Icon">
+        <button on:click={() => openPage('/search')} class='{$page.url.pathname === '/search' ? 'active' : ''}'>
+            <img src="icons/search.svg" alt="Icon">
         </button>
+
+        <!-- <button on:click={() => openPage('/settings')} class='{$page.url.pathname === '/settings' ? 'active' : ''}'>
+            <img src="icons/settings.svg" alt="Icon">
+        </button> -->
     </div>
 
 </div>
