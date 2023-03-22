@@ -18,17 +18,19 @@
 		background: rgb(50 50 60);
 	}
 	.toggle .coin{
-		padding: 4pt;
-		border-radius: inherit;
-		transition: margin 200ms, background 200ms, padding 200ms;
-		background: gray;
+		height: 8pt;
+		width: 8pt;
 		margin-left: 0;
-		margin-right: 12pt;
+		margin-right: 13pt;
+		border-radius: inherit;
+		transition: margin 200ms, background 200ms, width 200ms;
+		background: gray;
 	}
 	.toggle.active .coin{
-		padding: 4pt 6pt;
-		background: var(--accent);
+		height: 8pt;
+		width: 13pt;
 		margin-left: 8pt;
 		margin-right: 0;
+		background: var(--accent);
 	}
 </style>
