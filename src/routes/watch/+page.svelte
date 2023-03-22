@@ -279,10 +279,9 @@
 	.action-buttons button{
 		display: inline-flex;
 		align-items: center;
-		/* padding: 10pt 15pt; */
 		font-size: 10pt;
+		font-weight: 500;
 		text-transform: uppercase;
-		/* background: rgb(5, 5, 20); */
 		border-radius: 10pt;
 		margin-right: 25pt;
 		transition: box-shadow 200ms;
