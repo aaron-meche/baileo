@@ -1,7 +1,8 @@
 <script>
 	import { mediaDB, storage } from '$lib/data'
 	import BoldButton from '$lib/components/Bold Button.svelte'
-	import TvModule from '$lib/components/TV Module.svelte'
+	import TvModule from '$lib/modules/TV Panel.svelte'
+	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
 	import Toggle from '$lib/components/Toggle.svelte'
 
 	let media = {}
@@ -18,8 +19,10 @@
 			let interval = setInterval(() => { // Load progress
 				if (document.querySelector('video')) {
 					document.querySelector('video').currentTime = media.progress
-					document.querySelector(`.active-episode`).scrollIntoView()
-					document.querySelector(`.tv-episode-module`).scrollTop -= 100
+					if (media.type == 'TV Show') {
+						document.querySelector(`.active-episode`).scrollIntoView()
+						document.querySelector(`.tv-episode-module`).scrollTop -= 100
+					}
 					clearInterval(interval)
 				}
 			}, 750)
@@ -198,10 +201,13 @@
 
 	<div class="side modules">
 		{#if media.type == 'TV Show'}
-			<div class="module tv-episode-module">
+			<div class="module tv-episode-module" style='height: 350pt;'>
 				<TvModule title={media.title}/>
 			</div>
 		{/if}
+		<div class="module">
+			<MoreToWatchModule title={media.title}/>
+		</div>
 	</div>
 </div>
 {/if}
@@ -230,6 +236,7 @@
 		}
 		.side.modules{
 			grid-column: 1 / 4;
+			padding: 0 20pt;
 		}
 	}
 
@@ -238,12 +245,14 @@
 		row-gap: 20pt;
 		padding-bottom: 20pt;
 	}
+	.side.content{
+		height: min-content;
+	}
 
 	.module{
-		height: 50vh;
-		min-height: 25vh;
-		max-height: 50vh;
-		background: rgb(0, 0, 25, 0.25);
+		height: min-content;
+		max-height: 100vh;
+		background: rgb(0, 0, 25, 0.1);
 		border: solid 1pt rgb(50, 50, 100);
 		padding: 15pt;
 		border-radius: 15pt;
@@ -262,7 +271,6 @@
 		align-items: center;
 		grid-template-columns: repeat(2, 1fr);
 	}
-
 	.title{
 		font-size: 18pt;
 		font-weight: 600;

@@ -14,6 +14,7 @@
     --accent: rgb(61, 103, 244);
     --compliment: rgb(143, 69, 239);
     --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
+    --light-gradient: linear-gradient(to bottom right, rgb(61, 103, 244, 0.25), rgb(143, 69, 239, 0.25));
     --accent-shadow: -10px -10px 100px rgba(4, 0, 255, 0.25), 10px 10px 100px rgba(132, 0, 255, 0.25);
     --background: rgb(20 20 35);
 }
@@ -24,6 +25,14 @@ body{
     background: var(--background);
     font-family: BaileyScript;
     font-size: 12pt;
+}
+
+.module-title{
+    font-size: 12pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10pt;
 }
 
 .horizontal-scroll{

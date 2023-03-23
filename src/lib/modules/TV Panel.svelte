@@ -18,7 +18,7 @@
 <div class="list">
     {#each {length: mediaDB[title]['sTotal']} as _, s}
         <div class="season">
-            <div class='season-title s{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
+            <div class='module-title s{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
                 Season {s + 1}
             </div>
         
@@ -37,27 +37,22 @@
 
 <style>
     .season{
-        margin-bottom: 15pt;
-    }
-
-    .season-title{
-        font-size: 15pt;
-        font-weight: 500;
-        text-align: center;
-        padding: 10pt;
+        display: grid;
+        row-gap: 2pt;
+        padding-bottom: 15pt;
     }
 
     button{
         all: unset;
         width: calc(100% - 20pt);
         padding: 10pt;
-        margin: 2pt 0;
         border-radius: 10pt;
         cursor: pointer;
     }
     
     .item:hover{
-        background: rgb(50, 50, 50, 0.5);
+        /* background: rgb(50, 50, 50, 0.5); */
+        background: var(--light-gradient);
     }
 
     .item.active-episode{

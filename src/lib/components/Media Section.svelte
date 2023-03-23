@@ -1,13 +1,8 @@
 <script>
-	import { mediaDB, storage } from '$lib/data'
+	import { mediaDB, handleMediaItemClick } from '$lib/data'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
     export let title, query, condition
-
-    function handleMediaItemClick(title, type) {
-		storage.set('watching title', title)
-		window.open('/watch/', '_self')
-	}
 </script>
 
 <!--  -->
@@ -17,7 +12,7 @@
 	<div class="horizontal-scroll">
 		{#each Object.keys(mediaDB) as elem}
 			{#if mediaDB[elem][query] == condition}
-				<button on:click={() => handleMediaItemClick(elem, mediaDB[elem]['type'])}>
+				<button on:click={() => handleMediaItemClick(elem)}>
 					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}

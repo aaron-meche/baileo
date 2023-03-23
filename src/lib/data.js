@@ -22,6 +22,11 @@ export function isServerConnected(url) {
     }
 }
 
+export function handleMediaItemClick(title) {
+    storage.set('watching title', title)
+    window.open('/watch/', '_self')
+}
+
 export const mediaDB = {
     "Family Guy": {
         type:"TV Show", 

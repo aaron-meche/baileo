@@ -1,14 +1,12 @@
 <script>
     import { mediaDB } from '$lib/data'
     export let title, type
-
-    let source = `thumbnails/${title}.png`
 </script>
 
 <!--  -->
 
 <div class="item" type='media-item'>
-    <img src={source} alt="Media Thumbnail">
+    <img src='thumbnails/{title}.png' alt="Media Thumbnail">
     <div class="info">
         <div class="title">{title}</div>
         <div class="type">{type}</div>
