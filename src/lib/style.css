@@ -14,7 +14,7 @@
     --accent: rgb(61, 103, 244);
     --compliment: rgb(143, 69, 239);
     --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
-    --accent-shadow: -5px -5px 50px rgb(39, 28, 230, 0.5), 5px 5px 50px rgb(233, 60, 54, 0.5);
+    --accent-shadow: -10px -10px 100px rgba(4, 0, 255, 0.25), 10px 10px 100px rgba(132, 0, 255, 0.25);
     --background: rgb(20 20 35);
 }
 

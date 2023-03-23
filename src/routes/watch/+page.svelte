@@ -111,7 +111,7 @@
 
 	function download() {
 		var link = document.createElement("a")
-		link.download = 'Baileo Download'
+		link.download = media.description
 		link.href = `https://209.163.185.11/videos/${media.path}`
 		link.click()
 	}
@@ -160,7 +160,7 @@
 			</div>
 
 			<!-- Next Episode Button -->
-			<div class="bold-button-section" style='text-align: right;'>
+			<div style='text-align: right;'>
 				{#if media.type == 'TV Show'}
 					<button on:click={continueWatching}>
 						<BoldButton icon='next' text='Next Episode'/>
@@ -282,14 +282,13 @@
 		font-size: 10pt;
 		font-weight: 500;
 		text-transform: uppercase;
-		border-radius: 10pt;
 		margin-right: 25pt;
 		transition: box-shadow 200ms;
 	}
 	.action-buttons button:hover{
 		text-decoration: underline;
 		text-decoration-color: var(--accent);
-		text-underline-offset: 5pt;
+		text-underline-offset: 3pt;
 	}
 	.action-buttons img{
 		height: 15pt;

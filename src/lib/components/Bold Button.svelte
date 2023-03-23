@@ -15,22 +15,23 @@
 
 <style>
 	.button{
-		padding: 10pt;
-		border-radius: 100vh;
+		display: inline-flex;
+		align-items: center;
+		font-size: 10pt;
+		font-weight: 500;
+		text-transform: uppercase;
+		transition: box-shadow 200ms;
+        padding: 5pt 10pt;
+        border-radius: 5pt;
         background: var(--bold-gradient);
-        margin: 1pt;
-        font-weight: 500;
-		cursor: pointer;
-        display: inline-flex;
-        align-items: center;
 	}
-
-    .button:hover{
-        opacity: 0.9;
-    }
-
+	.button:hover{
+		text-decoration: underline;
+		text-decoration-color: white;
+		text-underline-offset: 3pt;
+	}
 	img{
 		height: 15pt;
-        margin-right: 5pt;
+		margin-right: 5pt;
 	}
 </style>
