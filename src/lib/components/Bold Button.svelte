@@ -23,7 +23,7 @@
 		transition: box-shadow 200ms;
         padding: 5pt 10pt;
         border-radius: 5pt;
-        background: var(--bold-gradient);
+		background: var(--bold-gradient);
 	}
 	.button:hover{
 		text-decoration: underline;

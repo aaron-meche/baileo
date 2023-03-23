@@ -38,7 +38,7 @@
 <style>
     .season{
         display: grid;
-        row-gap: 2pt;
+        /* row-gap: 5pt; */
         padding-bottom: 15pt;
     }
 
@@ -46,12 +46,11 @@
         all: unset;
         width: calc(100% - 20pt);
         padding: 10pt;
-        border-radius: 10pt;
+        border-radius: 5pt;
         cursor: pointer;
     }
     
     .item:hover{
-        /* background: rgb(50, 50, 50, 0.5); */
         background: var(--light-gradient);
     }
 

@@ -47,4 +47,13 @@
 <!--  -->
 
 <style>
+    .top-navbar{
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--navbar-background);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        -moz-backdrop-filter: blur(25px);
+    }
 </style>
