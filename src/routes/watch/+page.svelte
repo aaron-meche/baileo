@@ -20,8 +20,12 @@
 				if (document.querySelector('video')) {
 					document.querySelector('video').currentTime = media.progress
 					if (media.type == 'TV Show') {
-						document.querySelector(`.active-episode`).scrollIntoView()
-						document.querySelector(`.tv-episode-module`).scrollTop -= 100
+						document.querySelector(`.tv-episode-module`).scroll({
+							// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
+							top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
+							left: 0, 
+							behavior: 'smooth' 
+						});
 					}
 					clearInterval(interval)
 				}
