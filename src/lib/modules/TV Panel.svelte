@@ -15,20 +15,20 @@
 
 <!--  -->
 
-<div class="list">
+<div class="content">
     {#each {length: mediaDB[title]['sTotal']} as _, s}
-        <div class="season">
-            <div class='module-title s{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
-                Season {s + 1}
-            </div>
+        <div class='module-title season-title season-{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
+            Season {s + 1}
+        </div>
         
-            {#each mediaDB[title]['s' + (s + 1)] as episode, e}
-                <button class="item {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
-                    <div class="title">
+        <div class="season">
+            <div class="list">
+                {#each mediaDB[title]['s' + (s + 1)] as episode, e}
+                    <button class="episode-button {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
                         <span class="count">S{s + 1}, E{e + 1}</span> {episode.replaceAll('-', "'")}
-                    </div>
-                </button>
-            {/each}
+                    </button>
+                {/each}
+            </div>
         </div>
     {/each}
 </div>
@@ -36,35 +36,57 @@
 <!--  -->
 
 <style>
-    .season{
-        display: grid;
-        /* row-gap: 5pt; */
-        padding-bottom: 15pt;
+    .content{
+        padding-bottom: 50pt;
+        border-radius: inherit;
     }
 
-    button{
-        all: unset;
+    .season{
+        display: grid;
+        background: linear-gradient(to bottom, var(--navbar-background), rgb(0, 0, 0, 0.25));
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+        margin-bottom: 15pt;
+    }
+
+    .season-title{
+        position: sticky;
+        top: 0;
+        background: var(--navbar-background);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        -moz-backdrop-filter: blur(15px);
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+
+    .list{
+        padding: 15pt;
+        padding-top: 0;
+    }
+
+    .episode-button{
         width: calc(100% - 20pt);
         padding: 10pt;
         border-radius: 5pt;
         cursor: pointer;
+        font-weight: 500;
     }
     
-    .item:hover{
+    .episode-button:hover{
         background: var(--light-gradient);
     }
 
-    .item.active-episode{
+    .episode-button.active-episode{
         background: var(--bold-gradient);
-    }
-
-    .title{
-        font-weight: 500;
     }
 
     .count{
         font-weight: 300;
-        /* color: gray; */
         padding-right: 5pt;
+    }
+
+    .align-button:hover{
+        text-decoration: underline;
     }
 </style>

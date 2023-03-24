@@ -4,6 +4,7 @@
 	import TvModule from '$lib/modules/TV Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
 	import Toggle from '$lib/components/Toggle.svelte'
+    import VideoPlayer from '$lib/components/Video Player.svelte';
 
 	let media = {}
 
@@ -155,8 +156,12 @@
 {#if typeof window !== 'undefined'}
 <div class="app">
 	<div class="side content">
-		<!-- svelte-ignore a11y-media-has-caption -->
-		<video class='{statePref['glow'] == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		<!-- {#if storage.get('is touch screen') == 'true'} -->
+			<!-- svelte-ignore a11y-media-has-caption -->
+			<video class='{statePref['glow'] == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+		<!-- {:else} -->
+			<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}'/> -->
+		<!-- {/if} -->
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -256,9 +261,7 @@
 	.module{
 		height: min-content;
 		max-height: 100vh;
-		background: rgb(0, 0, 25, 0.1);
 		border: solid 1pt rgb(50, 50, 100);
-		padding: 15pt;
 		border-radius: 15pt;
 		overflow: auto;
 	}

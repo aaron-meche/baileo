@@ -5,6 +5,14 @@
 		<link rel="icon" href="%sveltekit.assets%/lib/logo.png?v=1" />
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
+		<script>
+			if (window.matchMedia("(pointer: coarse)").matches) {
+				localStorage['is touch screen'] = 'true'
+			}
+			else {
+				localStorage['is touch screen'] = 'false'
+			}
+		</script>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>

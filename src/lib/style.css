@@ -17,7 +17,7 @@
     --light-gradient: linear-gradient(to bottom right, rgb(61, 103, 244, 0.25), rgb(143, 69, 239, 0.25));
     --accent-shadow: -5px -5px 75px rgba(0, 0, 255, 0.25), 5px 5px 75px rgba(255, 0, 255, 0.25);
     --background: rgb(20 20 35);
-    --navbar-background: rgb(20, 20, 35, 0.8);
+    --navbar-background: rgb(20, 20, 35, 0.75);
 }
 
 body{
@@ -33,7 +33,7 @@ body{
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
-    padding: 10pt;
+    padding: 15pt;
 }
 
 .horizontal-scroll{

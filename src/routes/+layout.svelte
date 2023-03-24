@@ -10,6 +10,12 @@
         }
     }
 
+    protectStoragePref('watching title', 'The Office')
+    protectStoragePref('shuffle', 'false')
+    protectStoragePref('autoplay', 'true')
+    protectStoragePref('glow', 'true')
+    protectStoragePref('autoplay buffer', 30)
+
     if (!isServerConnected('https://209.163.185.11/test.jpg')) {
         console.log('Server not connected')
         setTimeout(() => {
@@ -20,12 +26,6 @@
             }
         }, 1000);
     }
-
-    protectStoragePref('watching title', 'Parks and Recreation')
-    protectStoragePref('shuffle', 'false')
-    protectStoragePref('autoplay', 'false')
-    protectStoragePref('glow', 'false')
-    protectStoragePref('autoplay buffer', 30)
 </script>
 
 <!--  -->

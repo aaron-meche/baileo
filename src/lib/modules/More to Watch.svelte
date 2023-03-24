@@ -59,6 +59,14 @@
 <!--  -->
 
 <style>
+    .module-title{
+        padding: 15pt;
+    }
+
+    .list{
+        padding: 15pt;
+        padding-top: 0;
+    }
 
     .media-item{
         display: grid;
