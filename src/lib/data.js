@@ -29,8 +29,8 @@ export function handleMediaItemClick(title) {
 
 export const mediaDB = {
     "Family Guy": {
-        type:"TV Show", 
-        cat:"comedy", 
+        type: "TV Show", 
+        cat: "comedy", 
         sTotal: 18,
         s1: ["Death Has a Shadow", "I Never Met the Dead Man", "Chitty Chitty Death Bang", "Mind Over Murder", "A Hero Sits Next Door", "The Son Also Draws", "Brian - Portrait of a Dog"],
         s2: ["Peter, Peter, Caviar Eater", "Holy Crap", "Da Boom", "Brian in Love", "Love Thy Trophy", "Death Is a Bitch", "The King Is Dead", "I Am Peter, Hear Me Roar", "If I-m Dyin", "I-m Lyin", "Running Mates", "A Picture is Worth 1,000 Bucks", "Fifteen Minutes of Shame", "Road to Rhode Island", "Let-s Go to the Hop", "Dammit Janet", "There-s Something About Paulie", "He-s Too Sexy for His Fat", "E. Peterbus Unum", "The Story on Page One", "Wasted Talent", "Fore, Father"],
@@ -54,8 +54,8 @@ export const mediaDB = {
     },
 
     "Parks and Recreation": {
-        type:"TV Show", 
-        cat:"comedy", 
+        type: "TV Show", 
+        cat: "comedy", 
         sTotal: 7,
         s1: ["Pilot", "Canvassing", "The Reporter", "Boys- Club", "The Banquet", "Rock Show"],
         s2: ["Pawnee Zoo", "The Stakeout", "Beauty Pageant", "Practice Date", "Sister City", "Kaboom", "Greg Pitkins", "Ron and Tammy", "The Camel", "Hunting Trip", "Tom-s Divorce", "Christmas Scandal", "The Set Up", "Leslie-s House", "Sweetums", "Galentine-s Day", "Woman of the Year", "The Possum", "Park Safety", "Summer Catalog", "94 Meetings", "Telethon", "The Master Plan", "Freddy Spaghetti"],
@@ -64,20 +64,20 @@ export const mediaDB = {
         s5: ["Ms. Knope Goes to Washington", "Soda Tax", "How a Bill Becomes a Law", "Sex Education", "Halloween Suprise", "Ben-s Parents", "Leslie v April", "Pawnee Commons", "Ron and Diane", "Two Parties", "Women in Garbage", "Ann-s Decision", "Emergency Response", "Leslie and Ben", "Correspondent-s Lunch", "Bailout", "Partridge", "Animal Control", "Article Two", "Jerry-s Retirement", "Swing Vote", "Are You Better Off"],
         s6: ["London", "The Pawnee-Eagleton Tip Off Classic", "Doppelgängers", "Gin it Up!", "Filibuster", "Recall Vote", "Fluoride", "The Cones of Dunshire", "Second Chunce", "New Beginnings", "Farmers Market", "Ann and Chris", "Anniversaries", "The Wall", "New Slogan", "Galentine-s Day", "Prom", "Flu Season 2", "One in 8,000", "Moving Up"],
         s7: ["2017", "Ron and Jammy", "William Henry Harrison", "Leslie and Ron", "Gryzzlbox", "Save JJ-s", "Donna and Joe", "Ms. Ludgate-Dwyer Goes to Washington", "Pie-Mary", "The Johnny Karate Super Awesome Musical Explosion Show", "Two Funerals", "One Last Ride"],
-        color:"rgba(188, 230, 149, 1)", 
+        color: "rgba(188, 230, 149, 1)", 
     },
 
     "Squid Game": {
-        type:"TV Show", 
-        cat:"drama", 
+        type: "TV Show", 
+        cat: "drama", 
         sTotal: 1,
         s1: ["Red Light", "Green Light", "Hell", "The Man with the Umbrella", "Stick to the Team", "A Fair World", "Gganbu", "VIPS", "Front Man", "One Lucky Day"],
-        color:"rgba(164, 79, 255, 1)", 
+        color: "rgba(164, 79, 255, 1)", 
     },
 
     "Sherlock": {
-        type:"TV Show", 
-        cat:"drama", 
+        type: "TV Show", 
+        cat: "drama", 
         sTotal: 4,
         s1: ["A Study in Pink", "The Blind Banker", "The Great Game"],
         s2: ["A Scandal in Belgravia", "The Hounds of Baskerville", "The Reichenbach Fall"],
@@ -87,8 +87,8 @@ export const mediaDB = {
     },
 
     "The Office": {
-        type:"TV Show", 
-        cat:"comedy", 
+        type: "TV Show", 
+        cat: "comedy", 
         sTotal: 9,
         s1: ["Pilot", "Diversity Day", "Health Care", "The Alliance", "Basketball", "Hot Girl"],
         s2: ["The Dundies", "Sexual Harassment", "Office Olympics", "The Fire", "Halloween", "The Fight", "The Client", "Performance Review", "Email Surveillance", "Christmas Party", "Booze Cruise", "The Injury", "The Secret", "The Carpet", "Boys and Girls", "Valentine-s Day", "Dwight-s Speech", "Take Your Daughter to Work Day", "Michael-s Birthday", "Drug Testing", "Conflict Resolution", "Casino Night"],
@@ -99,170 +99,175 @@ export const mediaDB = {
         s7: ["Nepotism", "Counseling", "Andy-s Play", "Sex Ed", "The Sting", "Costume Contest", "Christening", "Viewing Party", "WUPHF.com", "China", "Classy Christmas", "Ultimatum", "The Seminar", "The Search", "PDA", "Threat Level Midnight", "Todd Packer", "Garage Sale", "Training Day", "Michael-s Last Dundies", "Goodbye, Michael", "The Inner Circle", "Dwight K. Schrute, (Acting) Manager", "Search Committee"],
         s8: ["The List", "The Incentive", "Lotto", "Garden Party", "Spooked", "Doomsday", "Pam-s Replacement", "Gettysburg", "Mrs. California", "Christmas Wishes", "Trivia", "Pool Party", "Jury Duty", "Special Project", "Tallahassee", "After Hours", "Test the Store", "Last Day in Florida", "Get the Girl", "Welcome Party", "Angry Andy", "Fundraiser", "Turf War", "Free Family Portrait Studio"],
         s9: ["New Guys", "Roy-s Wedding", "Andy-s Ancestry", "Work Bus", "Here Comes Treble", "The Boat", "The Whale", "The Target", "Dwight Christmas", "Lice", "Suit Warehouse", "Customer Loyalty", "Junior Salesman", "Vandalism", "Couples Discount", "Moving On", "The Farm", "Promos", "Stairmageddon", "Paper Airplane", "Livin- The Dream", "AARM", "Finale"],
-        color:"rgba(0, 51, 255)", 
+        color: "rgba(0, 51, 255)", 
     },
 
     "Wanda Vision": {
-        type:"TV Show", 
-        cat:"marvel", 
+        type: "TV Show", 
+        cat: "marvel", 
         sTotal: 1,
         s1: ["Filmed Before a Live Studio Audience", "Don-t Touch That Dial", "Now In Color", "We Interrupt This Program", "On a Very Special Episode...", "All-New Holloween Spectacular", "Breaking the Fourth Wall", "Previously On", "The Series Finale"],
-        color:"rgba(0, 51, 255)", 
+        color: "rgba(0, 51, 255)", 
     },
 
     "Avengers ENDGAME": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "American Psycho": {
-        type:"Movie", 
-        cat:"drama", 
+        type: "Movie", 
+        cat: "drama", 
     },
 
     "Cars 2": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Cars 3": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Clueless": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Coraline": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Daddys Home 2": {
-        type:"Movie", 
-        cat:"christmas", 
+        type: "Movie", 
+        cat: "christmas", 
     },
 
     "Despicable Me": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Despicable Me 2": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Despicable Me 3": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Dumb and Dumber": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Dumb and Dumber To": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Elf": {
-        type:"Movie", 
-        cat:"christmas", 
+        type: "Movie", 
+        cat: "christmas", 
     },
 
     "Hidden Figures": {
-        type:"Movie", 
-        cat:"drama", 
+        type: "Movie", 
+        cat: "drama", 
     },
 
     "Knives Out": {
-        type:"Movie", 
-        cat:"drama", 
+        type: "Movie", 
+        cat: "drama", 
     },
 
     "Legally Blonde": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Mean Girls": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Mean Girls 2": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Minions The Rise of Gru": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Minions": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Miss Congeniality": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
+    },
+
+    "Movie 43": {
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Ratatouille": {
-        type:"Movie", 
-        cat:"animation", 
+        type: "Movie", 
+        cat: "animation", 
     },
 
     "Spider Man Far From Home": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "Spider Man Homecoming": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "Spider Man No Way Home": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "The Amazing Spider Man 2": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "The Incredible Hulk": {
-        type:"Movie", 
-        cat:"marvel", 
+        type: "Movie", 
+        cat: "marvel", 
     },
 
     "The Notebook": {
-        type:"Movie", 
-        cat:"drama", 
+        type: "Movie", 
+        cat: "drama", 
     },
 
     "The Proposal": {
-        type:"Movie", 
-        cat:"romcom", 
+        type: "Movie", 
+        cat: "romcom", 
     },
 
     "The Waterboy": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 
     "Vacation": {
-        type:"Movie", 
-        cat:"comedy", 
+        type: "Movie", 
+        cat: "comedy", 
     },
 }
 

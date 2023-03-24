@@ -44,7 +44,7 @@
 
 <style>
     .navbar{
-        padding: 10pt 25pt;
+        padding: 10pt 20pt;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -67,16 +67,13 @@
         display: inline-flex;
         align-items: center;
         padding: 5pt;
-        border-bottom: solid 2pt rgb(0, 0, 0, 0);
-        opacity: 0.75;
-        transition: opacity 200ms;
+        border-bottom: solid 1pt rgb(0, 0, 0, 0);
     }
         button.active, button:hover{
             border-color: var(--accent);
-            opacity: 1;
         }
         button img{
-            height: 20pt;
+            height: 17.5pt;
         }
 
     .logo{
