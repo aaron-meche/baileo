@@ -1,7 +1,6 @@
 <script>
 	import { storage, isServerConnected } from '$lib/data'
     import TopNavbar from '$lib/components/Top Navbar.svelte'
-    import ServerError from '$lib/components/Server Error.svelte'
     import '$lib/style.css'
 
     function protectStoragePref(attr, val) {

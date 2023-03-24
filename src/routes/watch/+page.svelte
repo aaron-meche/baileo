@@ -160,7 +160,7 @@
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video class='{statePref['glow'] == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 		<!-- {:else} -->
-			<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}'/> -->
+			<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}' glow={statePref['glow']}/> -->
 		<!-- {/if} -->
 
 		<!-- Description Belt -->
@@ -269,7 +269,7 @@
 	video{
 		width: 100%;
 	}
-	video.glow{
+	video[active='glow']{
 		box-shadow: var(--accent-shadow);
 	}
 

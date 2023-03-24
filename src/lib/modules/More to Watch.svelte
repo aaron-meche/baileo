@@ -26,7 +26,6 @@
             }
             concentratePool.push(ranItem)
         }
-        console.log(concentratePool)
     }
 
     function generateCaption(title) {
