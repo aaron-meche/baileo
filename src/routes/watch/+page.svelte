@@ -269,7 +269,7 @@
 	video{
 		width: 100%;
 	}
-	video[active='glow']{
+	video.glow{
 		box-shadow: var(--accent-shadow);
 	}
 
