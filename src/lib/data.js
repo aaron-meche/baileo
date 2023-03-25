@@ -53,6 +53,14 @@ export const mediaDB = {
         color: "rgba(227, 45, 255, 1)", 
     },
 
+    "Frenemies": {
+        type: "TV Show", 
+        cat: "comedy", 
+        sTotal: 1,
+        s1: ["Trisha-s New Boyfriend Is Hila-s Brother", "Trisha-s Obsession With Jewish People", "Possible Our Last Episode", "Is Trisha Smarter Than A 5th Grader?", "Trisha & Ethan Have a Huge Fight & She Storms Out", "Trisha & Ethan Reconcile...Kind of", "Couples Therapy With Dr. Drew", "Trisha & Ethan Fight About The Election", "Cheese Mukbang Disaster", "Trisha vs Charli vs Dixie D-Amelio", "Trisha & Ethan Do Goat Yoga & Carpool Karaoke", "Trisha Was Kidnapped At Gunpoint", "Trisha Quits the Podcast & Storms Out", "The Fate Of Frenemies With Dr. Drew", "We Made The Only Honest Award Show", "Frenemies Is Under Attack", "Pop Culture Trivia War & Friendship With Shane Is Over", "The David Dobrik & Jason Nath Episodes", "Newlywed Game (Trish & Moses vs Ethan & Hill)", "Erased David Dobrik Footage Proves Trisha Was Right All Along", "Ethan & Trisha Do An Athletics Competition", "David Dobrik & James Charles Drama Apocalypse", "Jewish Trivia Contest, David Dobrik & Scotty Sire", "David Dobrik-s Lawyers Go After Trisha & Cooking", "Responding To Jeff Wittek & New David Dobrik Footage", "Jeff Wittek Interview Fallout", "Responding To David Dobrik-s Apology", "Trisha-s Epic Passover Dinner At Ethan-s", "Trisha & Ethan Do Oddly Satisfying Trends", "Khloe Kardashian Photo Drama & Pizza Eating Contest", "James Charles Entire Channel Demonetized by YouTube", "Jeff Wittek, David Dobrik, & TRIVIA!", "Trisha-s Birthday Celebration", "[VLOG 1] Trisha & Ethan Go To Disneyland For Her Birthday", "Ethan Embarrassed Himself In Front Of Trisha-s Family", "Trisha & Ethan Got Bullied & Are Fighting Back", "Taking Trisha To Meme School", "[VLOG 2] Trisha & Ethan Hijack A Hollywood Tour Bus", "PREGNANCY ANNOUNCEMENT!", "Talking About Gabbie Hanna"],
+        color: "rgba(200, 0 225, 1)", 
+    },
+
     "Parks and Recreation": {
         type: "TV Show", 
         cat: "comedy", 
@@ -180,6 +188,16 @@ export const mediaDB = {
         cat: "drama", 
     },
 
+    "Just Friends": {
+        type: "Movie", 
+        cat: "romcom", 
+    },
+
+    "Just Married": {
+        type: "Movie", 
+        cat: "romcom", 
+    },
+
     "Knives Out": {
         type: "Movie", 
         cat: "drama", 
@@ -220,6 +238,11 @@ export const mediaDB = {
         cat: "comedy", 
     },
 
+    "Pitch Perfect": {
+        type: "Movie", 
+        cat: "comedy", 
+    },
+
     "Ratatouille": {
         type: "Movie", 
         cat: "animation", 
@@ -240,9 +263,24 @@ export const mediaDB = {
         cat: "marvel", 
     },
 
+    "Step Brothers": {
+        type: "Movie", 
+        cat: "comedy", 
+    },
+
     "The Amazing Spider Man 2": {
         type: "Movie", 
         cat: "marvel", 
+    },
+
+    "The Devil Wears Prada": {
+        type: "Movie", 
+        cat: "drama", 
+    },
+
+    "The Holiday": {
+        type: "Movie", 
+        cat: "romcom", 
     },
 
     "The Incredible Hulk": {
@@ -263,6 +301,11 @@ export const mediaDB = {
     "The Waterboy": {
         type: "Movie", 
         cat: "comedy", 
+    },
+
+    "The Wedding Planner": {
+        type: "Movie", 
+        cat: "drama", 
     },
 
     "Vacation": {

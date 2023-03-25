@@ -16,8 +16,8 @@
     --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
     --light-gradient: linear-gradient(to bottom right, rgb(61, 103, 244, 0.25), rgb(143, 69, 239, 0.25));
     --accent-shadow: -5px -5px 75px rgba(0, 0, 255, 0.25), 5px 5px 75px rgba(255, 0, 255, 0.25);
-    --background: rgb(20 20 35);
-    --navbar-background: rgb(20, 20, 35, 0.75);
+    --background: rgb(25 20 40);
+    --navbar-background: rgb(25, 20, 40, 0.75);
 }
 
 body{
