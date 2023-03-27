@@ -43,7 +43,7 @@
 
     .season{
         display: grid;
-        background: linear-gradient(to bottom, var(--navbar-background), rgb(0, 0, 0, 0.25));
+        background: linear-gradient(to bottom, var(--background), rgb(0, 0, 0, 0.25));
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
         margin-bottom: 15pt;
@@ -52,7 +52,7 @@
     .season-title{
         position: sticky;
         top: 0;
-        background: var(--navbar-background);
+        background: var(--background);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -moz-backdrop-filter: blur(15px);

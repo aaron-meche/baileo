@@ -1,29 +1,34 @@
 <script>
-	import { mediaDB, handleMediaItemClick } from '$lib/data'
-	import MediaItem from '$lib/components/Media Item.svelte'
+	import { mediaDB, handleMediaItemClick, storage } from '$lib/data'
+	import LargeMediaItem from '$lib/components/Large Media Item.svelte'
 
-    export let title, query, condition
+    let progressList = storage.search('progress')
+    for (let i = 0; i < progressList.length; i++) {
+        progressList[i] = progressList[i].replace(' progress', '')
+    }
+    console.log(progressList)
 </script>
 
 <!--  -->
 
 <section>
-	<div class="title">{title}</div>
+	<div class="title">Continue Watching</div>
 	<div class="horizontal-scroll">
-		{#each Object.keys(mediaDB) as elem}
+		<!-- {#each Object.keys(mediaDB) as elem}
 			{#if mediaDB[elem][query] == condition}
 				<button on:click={() => handleMediaItemClick(elem)}>
-					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
+					<LargeMediaItem title={elem} type={mediaDB[elem]['type']}/>
 				</button>
 			{/if}
-		{/each}
+		{/each} -->
+        hello
 	</div>
 </section>
 
 <!--  -->
 
 <style>
-    button{
+    /* button{
         all: unset;
     }
 
@@ -44,5 +49,5 @@
 		padding-left: 20px;
 		padding-right: 20px;
 		align-items: first baseline;
-	}
+	} */
 </style>
