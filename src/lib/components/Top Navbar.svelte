@@ -19,7 +19,7 @@
         </button>
 
         <button on:click={() => openPage('/')} class='logo {$page.url.pathname === '/' ? 'active' : ''}'>
-            <img src="logo.png" alt="Icon">
+            <img src="logo.svg" alt="Icon">
             baileo
         </button>
     </div>
@@ -44,7 +44,7 @@
 
 <style>
     .navbar{
-        padding: 10px 20px;
+        padding: 12.5px 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -53,7 +53,7 @@
         display: grid;
         align-items: center;
         grid-auto-flow: column;
-        column-gap: 10pt;
+        column-gap: 10px;
     }
         .logo-display{
             justify-content: left;
@@ -66,22 +66,23 @@
         all: unset;
         display: inline-flex;
         align-items: center;
-        padding: 5pt;
-        border-bottom: solid 1pt rgb(0, 0, 0, 0);
+        padding: 5px;
     }
         button.active, button:hover{
-            border-color: var(--accent);
+            box-shadow:  0 1px var(--accent);
         }
         button img{
-            height: 17.5pt;
+            height: 22.5px;
         }
 
     .logo{
-        font-size: 15pt;
+        font-size: 12pt;
+        font-weight: 600;
+        text-transform: uppercase;
         opacity: 1;
         color: var(--accent);
     }
         .logo img{
-            margin-right: 5pt;
+            margin-right: 7.5px;
         }
 </style>

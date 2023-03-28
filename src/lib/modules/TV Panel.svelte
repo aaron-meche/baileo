@@ -46,7 +46,6 @@
         background: linear-gradient(to bottom, var(--background), rgb(0, 0, 0, 0.25));
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
-        margin-bottom: 15pt;
     }
 
     .season-title{
