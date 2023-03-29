@@ -21,28 +21,28 @@
         top: 0;
         width: clamp(185px, 20vw, 220px);
         padding-top: 10px;
-        padding-bottom: 15px;
+        margin-right: 20px;
         cursor: default;
-        border-bottom: solid 3px rgb(0, 0, 0, 0);
-        transition: top 200ms;
+        transition: top 300ms, box-shadow 150ms;
+        box-shadow: 0 0 var(--accent);
 	}
 
     @media screen and (hover: hover) {
         .item:hover{
             position: relative;
             top: -10px;
-            border-color: var(--accent);
+            box-shadow: 0 3px var(--accent);
         }
     }
     
-
     img{
         width: 100%;
         border-radius: 5px;
     }
 
     .info{
-        margin-top: 10px;
+        display: grid;
+        padding: 10px 0;
     }
 
     .title{

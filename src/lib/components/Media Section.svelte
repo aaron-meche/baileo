@@ -28,7 +28,7 @@
     }
 
 	section{
-		margin-top: 50px;
+		padding-top: 50px;
 	}
 
 	section > .title{
@@ -40,9 +40,7 @@
 	}
 	
 	section > .horizontal-scroll{
-		column-gap: 20px;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: 25px;
 		align-items: first baseline;
 	}
 </style>

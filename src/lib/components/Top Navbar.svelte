@@ -69,7 +69,7 @@
         padding: 5px;
     }
         button.active, button:hover{
-            box-shadow:  0 1px var(--accent);
+            box-shadow: 0 1px var(--accent);
         }
         button img{
             height: 22.5px;
