@@ -15,16 +15,16 @@
     protectStoragePref('glow', 'true')
     protectStoragePref('autoplay buffer', 30)
 
-    if (!isServerConnected('https://209.163.185.11/test.jpg')) {
-        console.log('Server not connected')
-        setTimeout(() => {
-            if (typeof window !== 'undefined') {
-                if (!isServerConnected('https://209.163.185.11/test.jpg')) {
-                    window.open('https://209.163.185.11/confirm.html', '_self')
-                }
-            }
-        }, 1000);
-    }
+    // if (!isServerConnected('https://209.163.185.11/test.jpg')) {
+    //     console.log('Server not connected')
+    //     setTimeout(() => {
+    //         if (typeof window !== 'undefined') {
+    //             if (!isServerConnected('https://209.163.185.11/test.jpg')) {
+    //                 window.open('https://209.163.185.11/confirm.html', '_self')
+    //             }
+    //         }
+    //     }, 1000);
+    // }
 </script>
 
 <!--  -->

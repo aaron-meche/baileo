@@ -63,7 +63,6 @@
         }
 
     button{
-        all: unset;
         display: inline-flex;
         align-items: center;
         padding: 5px;
@@ -78,7 +77,6 @@
     .logo{
         font-size: 12pt;
         font-weight: 600;
-        text-transform: uppercase;
         opacity: 1;
         color: var(--accent);
     }

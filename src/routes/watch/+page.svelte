@@ -261,7 +261,7 @@
 	.module{
 		height: min-content;
 		max-height: 100vh;
-		border: solid 1pt rgb(50, 50, 100);
+		border: solid 1pt rgb(61.25, 51.25, 15);
 		border-radius: 15pt;
 		overflow: auto;
 	}

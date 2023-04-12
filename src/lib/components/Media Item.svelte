@@ -21,17 +21,26 @@
         top: 0;
         width: clamp(185px, 20vw, 220px);
         padding-top: 10px;
+        padding-bottom: 10px;
         margin-right: 20px;
         cursor: default;
-        transition: top 300ms, box-shadow 150ms;
-        box-shadow: 0 0 var(--accent);
+        transition: top 300ms;
 	}
 
     @media screen and (hover: hover) {
         .item:hover{
             position: relative;
             top: -10px;
-            box-shadow: 0 3px var(--accent);
+        }
+        .item:hover:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 100%; 
+            background: var(--accent);
+            border-radius: 100vh;
         }
     }
     
@@ -43,6 +52,7 @@
     .info{
         display: grid;
         padding: 10px 0;
+
     }
 
     .title{

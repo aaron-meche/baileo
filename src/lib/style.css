@@ -1,6 +1,6 @@
 @font-face {
     font-family: BaileyScript;
-    src: url('$lib/assets/Montserrat/Montserrat-VariableFont_wght.ttf');
+    src: url('$lib/assets/Readex_Pro/ReadexPro-VariableFont_HEXP,wght.ttf');
 }
 
 :root{
@@ -11,12 +11,12 @@
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent: rgb(60, 100, 245);
-    --compliment: rgb(143, 69, 239);
+    --accent: rgb(245, 205, 60);
+    --compliment: rgb(249, 40, 40);
     --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
-    --light-gradient: linear-gradient(to bottom right, rgb(61, 103, 244, 0.25), rgb(143, 69, 239, 0.25));
-    --accent-shadow: -5px -5px 75px rgba(0, 68, 255, 0.25), 5px 5px 75px rgba(255, 0, 225, 0.25);
-    --background: rgb(20, 20, 40);
+    --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(245, 65, 65, 0.25));
+    --accent-shadow: -10px -10px 75px rgb(245, 205, 60, 0.25), 10px 10px 75px rgb(245, 65, 65, 0.25);
+    --background: rgb(20 20 20);
 }
 
 body{
