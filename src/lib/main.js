@@ -15,7 +15,7 @@ export const storage = {
         if (localStorage[location]) return true
 		else return false
 	},
-    search: function(query) {
+    search: function (query) {
         if (typeof window =="undefined") return
         // 
         let keys = Object.keys(localStorage)
@@ -30,6 +30,12 @@ export const storage = {
         // 
         localStorage.clear()
         return 'done'
+    },
+    delete: function (location) {
+        if (typeof window =="undefined") return
+        // 
+        if (this.exists(location)) localStorage.removeItem(location)
+        // return 'done'
     }
 }
 

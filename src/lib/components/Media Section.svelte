@@ -2,9 +2,15 @@
 	import { mediaDB, handleMediaItemClick, uniqueID } from '$lib/main'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
-    export let title, query, condition
+    export let title, items
 
 	let ranId = uniqueID()
+
+	let scrollFromLeft = 0
+
+	function updateScroll() {
+		scrollFromLeft = document.querySelector('.horizontal-scroll.' + ranId).scrollLeft
+	}
 
 	function scrollLeft() {
 		document.querySelector('.horizontal-scroll.' + ranId).scroll({
@@ -30,18 +36,21 @@
 		<div class="title">{title}</div>
 
 		<div class="navigation">
-			<button on:click={scrollLeft} class="left"><img src="icons/left.svg" alt="Icon"></button>
+			{#if scrollFromLeft > 0}
+				<button on:click={scrollLeft} class="left"><img src="icons/left.svg" alt="Icon"></button>
+			{:else}
+				<button class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
+			{/if}
+
 			<button on:click={scrollRight} class="right"><img src="icons/right.svg" alt="Icon"></button>
 		</div>
 	</div>
 
-	<div class="horizontal-scroll {ranId}">
-		{#each Object.keys(mediaDB) as elem}
-			{#if mediaDB[elem][query] == condition}
-				<button on:click={() => handleMediaItemClick(elem)}>
-					<MediaItem title={elem} type={mediaDB[elem]['type']}/>
-				</button>
-			{/if}
+	<div class="horizontal-scroll {ranId}" on:scroll={updateScroll}>
+		{#each items as elem}
+			<button on:click={() => handleMediaItemClick(elem)}>
+				<MediaItem title={elem} type={mediaDB[elem]['type']}/>
+			</button>
 		{/each}
 	</div>
 </section>
@@ -81,6 +90,9 @@
 		background: var(--foreground);
 		border-radius: 100vh;
 		cursor: pointer;
+	}
+	.navigation button.inactive{
+		opacity: 0.25;
 	}
 
 	.navigation img{

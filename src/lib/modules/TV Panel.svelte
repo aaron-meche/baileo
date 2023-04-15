@@ -130,8 +130,9 @@
     } */
 
     .episode-list .item:hover{
-        text-decoration: underline;
-        text-underline-offset: 5px;
+        /* text-decoration: underline; */
+        /* text-underline-offset: 5px; */
+        background: var(--foreground);
     }
 
     .episode-list .item.active{

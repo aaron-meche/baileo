@@ -44,7 +44,10 @@ body{
     display: none;
 }
 
+img{
+    display: block;
+}
+
 button{
     all: unset;
-    width: auto;
 }

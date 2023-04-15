@@ -13,60 +13,33 @@
 		media.title = storage.get('watching title')
 		media.type = mediaDB[media.title]['type']
 
-		media.season = storage.exists(`${media.title} season`) ? Number(storage.get(`${media.title} season`)) : 1
-		media.episode = storage.exists(`${media.title} episode`) ? Number(storage.get(`${media.title} episode`)) : 1
+		if (storage.exists(`${media.title} progress`)) {
+			media.progress = Number(storage.get(`${media.title} progress`))
 
-		media.progress = storage.exists(`${media.title} progress`) ? Number(storage.get(`${media.title} progress`)) : 0
+			if (media.type == 'TV Show') {
+				media.season = Number(storage.get(`${media.title} season`))
+				media.episode = Number(storage.get(`${media.title} episode`))
+			}
+		}
+		else {
+			media.progress = 0
+			storage.set(`${media.title} progress`, 0)
+
+			if (media.type == 'TV Show') {
+				media.season = 1
+				storage.set(`${media.title} season`, 1)
+	
+				media.episode = 1
+				storage.set(`${media.title} episode`, 1)
+			}
+		}
 
 		let interval = setInterval(() => { // Load progress
-			if (document.querySelector('video')) {
-				// if (media.type == 'TV Show') {
-					// 	document.querySelector(`.tv-episode-module`).scroll({
-						// 		// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
-						// 		top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
-						// 		left: 0, 
-						// 		behavior: 'smooth' 
-						// 	});
-						// }
-				document.querySelector('video').currentTime = media.progress
+			if (document.querySelector('video').readyState == 4) {
+				document.querySelector('video').currentTime = media.progress * document.querySelector('video').duration
 				clearInterval(interval)
 			}
-		}, 750)
-
-		// // Progress
-		// if (storage.exists(`${media.title} progress`)) { // YES watch progress
-		// 	media.progress = storage.get(`${media.title} progress`)
-			
-		// 	let interval = setInterval(() => { // Load progress
-		// 		if (document.querySelector('video')) {
-		// 			document.querySelector('video').currentTime = media.progress
-		// 			// if (media.type == 'TV Show') {
-		// 			// 	document.querySelector(`.tv-episode-module`).scroll({
-		// 			// 		// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
-		// 			// 		top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
-		// 			// 		left: 0, 
-		// 			// 		behavior: 'smooth' 
-		// 			// 	});
-		// 			// }
-		// 			clearInterval(interval)
-		// 		}
-		// 	}, 750)
-
-		// 	if (media.type == 'TV Show') {
-		// 		media.season = storage.get(`${media.title} season`)
-		// 		media.episode = storage.get(`${media.title} episode`)
-		// 	}
-		// }
-		// else { // NO watch progress
-		// 	media.progress = 0
-
-		// 	if (media.type == 'TV Show') {
-		// 		media.season = 1
-		// 		media.episode = 1
-		// 		storage.set(`${media.title} season`, 1)
-		// 		storage.set(`${media.title} episode`, 1)
-		// 	}
-		// }
+		}, 250)
 
 		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
@@ -83,10 +56,11 @@
 
 		// Keep saving progress...
 		setInterval(() => {
-			if (document.querySelector('video')) {
+			if (document.querySelector('video').readyState == 4) {
 				let currentTime = document.querySelector('video').currentTime
 				let maxTime = document.querySelector('video').duration
-				storage.set(`${media.title} progress`, currentTime)
+				storage.set(`${media.title} progress`, currentTime / maxTime)
+				console.log('progress', currentTime / maxTime)
 
 				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) {
 					continueWatching()
@@ -166,6 +140,13 @@
 			statePref[title] = 'false'
 		}
 	}
+
+	function deleteProgress() {
+		storage.delete(media.title + ' progress')
+		storage.delete(media.title + ' season')
+		storage.delete(media.title + ' episode')
+		window.open('/', '_self')
+	}
 </script>
 
 <!--  -->
@@ -173,6 +154,8 @@
 <svelte:head>
 	<title>{media.episodeDisplayTitle}</title>
 </svelte:head>
+
+<!--  -->
 
 {#if typeof window !== 'undefined'}
 <div class="app">
@@ -220,6 +203,11 @@
 				<img src="icons/infinity.svg" alt="Icon">
 				Autoplay
 				<Toggle active={statePref['autoplay']}/>
+			</button>
+
+			<button on:click={deleteProgress}>
+				<img src="icons/close.svg" alt="Icon">
+				Mark as Watched
 			</button>
 		</div>
 	</div>
@@ -320,21 +308,19 @@
 		cursor: default;
 	}
 	.action-buttons button{
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		font-size: 10pt;
 		font-weight: 500;
 		text-transform: uppercase;
 		margin-right: 25px;
-		transition: box-shadow 200ms;
 	}
 	.action-buttons button:hover{
-		text-decoration: underline;
-		text-decoration-color: var(--accent);
-		text-underline-offset: 5px;
+		box-shadow: inset 0 -1px var(--accent);
 	}
 	.action-buttons img{
-		height: 15pt;
+		height: 20px;
 		margin-right: 5px;
 	}
 </style>

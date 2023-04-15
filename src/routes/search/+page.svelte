@@ -2,14 +2,7 @@
 	import { mediaDB, storage } from '$lib/main'
 	import MediaSection from '$lib/components/Media Section.svelte'
 
-	const listOf_mediaTitles = Object.keys(mediaDB)
-
-	function handleMediaItemClick(title, type) {
-		storage.set('watching title', title)
-		window.open('/watch/', '_self')
-	}
-
-	function search(value) {
+	function search() {
 		let string = document.querySelector('input').value.toLowerCase().replaceAll(' ', '')
 		document.querySelectorAll('[type="media-item"]').forEach((elem) => {
 			let content = elem.innerText.toLowerCase().replaceAll(' ', '')
@@ -20,6 +13,10 @@
 				elem.style.display = 'none'
 			}
 		})
+	}
+
+	function clearSearch() {
+		document.querySelector('input').value = ''
 	}
 </script>
 
@@ -32,8 +29,10 @@
 <!--  -->
 
 <div class="search-wrapper">
-	<img src="icons/search.svg" alt="">
-	<input type="text" on:keyup={search}>
+	<img src="icons/search.svg" alt="Icon">
+	<input type="text" on:keyup={search} placeholder="Search">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<img class='clear-button' on:click={clearSearch} src="icons/close.svg" alt="Icon">
 </div>
 
 <MediaSection title='TV Shows' query='type' condition='TV Show'/>
@@ -44,8 +43,7 @@
 <style>
 	.search-wrapper{
 		width: fit-content;
-		background: rgb(0, 0, 0, 0.25);
-		box-shadow: inset -1px -1pt 5px rgb(150, 150, 150, 0.5), inset 2px 2pt 5px rgb(0, 0, 0);
+		box-shadow: var(--neu-rest);
 		border-radius: 10pt;
 		margin: 5pt auto;
 		display: grid;
@@ -57,6 +55,7 @@
 		height: 15pt;
 		display: inline-block;
 		margin: 10pt;
+		cursor: default;
 	}
 
 	input{
@@ -64,5 +63,9 @@
 		height: 100%;
 		width: clamp(25vw, 250pt, 75vw);
 		display: inline-block;
+	}
+
+	.clear-button{
+		cursor: pointer;
 	}
 </style>

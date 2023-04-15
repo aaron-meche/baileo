@@ -1,27 +1,47 @@
 <script>
-	import { storage } from '$lib/main'
+	import { mediaDB, storage } from '$lib/main'
 	import MediaSection from '$lib/components/Media Section.svelte'
-	import ContinueSection from '$lib/components/Continue Section.svelte'
+
+	function searchMedia(attr, val) {
+		let collection = []
+		for (let i = 0; i < Object.keys(mediaDB).length; i++) {
+			if (mediaDB[Object.keys(mediaDB)[i]][attr] == val) collection.push(Object.keys(mediaDB)[i])
+		}
+		return collection
+	}
+
+	let progressList = []
+
+	if (typeof window !== "undefined") {
+		progressList = storage.search('progress')
+
+		for (let i = 0; i < progressList.length; i++) {
+			progressList[i] = progressList[i].replace(' progress', '')
+		}
+	}
 </script>
 
 <!--  -->
 
 <svelte:head>
-	<title>Home</title>
+	<title>Baileo - Home</title>
 </svelte:head>
 
 <!--  -->
 
 <div class="media-selection-pool">
-	<!-- <ContinueSection/> -->
-	<MediaSection title='Comedies' query='cat' condition='comedy'/>
-	<MediaSection title='Animations' query='cat' condition='animation'/>
-	<MediaSection title='Dramas' query='cat' condition='drama'/>
-	<MediaSection title='Marvel' query='cat' condition='marvel'/>
-	<MediaSection title='Romantic Comedies' query='cat' condition='romcom'/>
-	<MediaSection title='Christmas' query='cat' condition='christmas'/>
-	<MediaSection title='TV Shows' query='type' condition='TV Show'/>
-	<MediaSection title='Movies' query='type' condition='Movie'/>
+	{#if progressList.length !== 0}
+		<MediaSection title='Continue Watching' items={progressList}/>
+	{/if}
+
+	<MediaSection title='Comedies' items={searchMedia('cat', 'comedy')}/>
+	<MediaSection title='Animations' items={searchMedia('cat', 'animation')}/>
+	<MediaSection title='Dramas' items={searchMedia('cat', 'drama')}/>
+	<MediaSection title='Marvel' items={searchMedia('cat', 'marvel')}/>
+	<MediaSection title='Romantic Comedies' items={searchMedia('cat', 'romcom')}/>
+	<MediaSection title='Christmas' items={searchMedia('cat', 'christmas')}/>
+	<MediaSection title='TV Shows' items={searchMedia('type', 'TV Show')}/>
+	<MediaSection title='Movies' items={searchMedia('type', 'Movie')}/>
 </div>
 
 <!--  -->

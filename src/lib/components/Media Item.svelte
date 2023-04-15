@@ -1,12 +1,19 @@
 <script>
-    import { mediaDB } from '$lib/main'
+    import { mediaDB, storage } from '$lib/main'
     export let title, type
+
+    let progress = 0
+
+    if (storage.exists(title + ' progress')) {
+        progress = storage.get(title + ' progress') * 100
+    }
 </script>
 
 <!--  -->
 
 <div class="item" type='media-item'>
     <img src='thumbnails/{title}.png' alt="Media Thumbnail">
+    <div class="progress" style='width: {progress}%'></div>
     <div class="info">
         <div class="title">{title}</div>
         <div class="type">{type}</div>
@@ -39,7 +46,7 @@
             left: 0;
             height: 3px;
             width: 100%; 
-            background: var(--accent);
+            background: var(--bold-gradient);
             border-radius: 100vh;
         }
     }
@@ -47,6 +54,13 @@
     img{
         width: 100%;
         border-radius: 5px;
+    }
+
+    .progress{
+        height: 3px;
+        width: 0%;
+        border-radius: 100vh;
+        background: var(--accent);
     }
 
     .info{
