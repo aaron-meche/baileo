@@ -1,21 +1,23 @@
 <script>
-	import { mediaDB, handleMediaItemClick } from '$lib/data'
+	import { mediaDB, handleMediaItemClick, uniqueID } from '$lib/main'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
     export let title, query, condition
 
+	let ranId = uniqueID()
+
 	function scrollLeft() {
-		document.querySelector('.horizontal-scroll').scroll({
+		document.querySelector('.horizontal-scroll.' + ranId).scroll({
 			top: 0, 
-			left: document.querySelector('.horizontal-scroll').scrollLeft - (screen.width * 0.9), 
+			left: document.querySelector('.horizontal-scroll.' + ranId).scrollLeft - (screen.width * 0.9), 
 			behavior: 'smooth' 
 		})
 	}
 
 	function scrollRight() {
-		document.querySelector('.horizontal-scroll').scroll({
+		document.querySelector('.horizontal-scroll.' + ranId).scroll({
 			top: 0, 
-			left: document.querySelector('.horizontal-scroll').scrollLeft + (screen.width * 0.9), 
+			left: document.querySelector('.horizontal-scroll.' + ranId).scrollLeft + (screen.width * 0.9), 
 			behavior: 'smooth' 
 		})
 	}
@@ -33,7 +35,7 @@
 		</div>
 	</div>
 
-	<div class="horizontal-scroll">
+	<div class="horizontal-scroll {ranId}">
 		{#each Object.keys(mediaDB) as elem}
 			{#if mediaDB[elem][query] == condition}
 				<button on:click={() => handleMediaItemClick(elem)}>
@@ -53,11 +55,10 @@
 	}
 
 	.top-bar{
-		height: 25px;
 		display: grid;
 		grid-template-columns: auto min-content;
 		align-items: end;
-		margin: 0 25px;
+		margin: 0 20px;
 		margin-bottom: 10px;
 	}
 
@@ -74,18 +75,21 @@
 	}
 
 	.navigation button{
-		height: 25px;
-		padding: 0 10px;
-		border-bottom: solid 1pt var(--accent);
-		text-align: center;
+		height: 20px;
+		padding: 5px;
+		aspect-ratio: 1 / 1;
+		background: var(--foreground);
+		border-radius: 100vh;
+		cursor: pointer;
 	}
 
 	.navigation img{
-		height: 80%;
+		height: 100%;
+		display: block;
 	}
 
 	.horizontal-scroll{
-		padding-left: 25px;
+		padding-left: 20px;
 		align-items: first baseline;
 	}
 </style>

@@ -1,5 +1,5 @@
 <script>
-	import { mediaDB, handleMediaItemClick, storage } from '$lib/data'
+	import { mediaDB, handleMediaItemClick, storage } from '$lib/main'
 	import MediaItem from '$lib/components/Media Item.svelte'
 
 	let progressList = storage.search('progress')

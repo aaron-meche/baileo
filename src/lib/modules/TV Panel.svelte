@@ -1,13 +1,29 @@
 <script>
-    import { mediaDB, storage } from '$lib/data'
-    export let title
+    import { mediaDB, storage } from '$lib/main'
+    export let title, media
 
-    let season = storage.get(title + ' season')
-    let episode = storage.get(title + ' episode')
+    let season = media.season
+    let episode = media.episode
 
-    function openEpisode(season, episode) {
-        storage.set(`${title} season`, season)
+    let maxSeason = mediaDB[media.title]['sTotal']
+
+    function openEpisode(episode) {
+        storage.set(`${title} season`, media.season)
         storage.set(`${title} episode`, episode)
+        storage.set(`${title} progress`, 0)
+        window.open('/watch', '_self')
+    }
+
+    function previousSeason() {
+        storage.set(`${title} season`, Number(media.season) - 1)
+        storage.set(`${title} episode`, 1)
+        storage.set(`${title} progress`, 0)
+        window.open('/watch', '_self')
+    }
+
+    function nextSeason() {
+        storage.set(`${title} season`, Number(media.season) + 1)
+        storage.set(`${title} episode`, 1)
         storage.set(`${title} progress`, 0)
         window.open('/watch', '_self')
     }
@@ -15,77 +31,120 @@
 
 <!--  -->
 
-<div class="content">
-    {#each {length: mediaDB[title]['sTotal']} as _, s}
-        <div class='module-title season-title season-{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
-            Season {s + 1}
-        </div>
-        
-        <div class="season">
-            <div class="list">
-                {#each mediaDB[title]['s' + (s + 1)] as episode, e}
-                    <button class="episode-button {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
-                        <span class="count">S{s + 1}, E{e + 1}</span> {episode.replaceAll('-', "'")}
-                    </button>
-                {/each}
-            </div>
-        </div>
+<div class="top-bar">
+    <div class="title">Season {media.season} <span style='font-size: 10pt; font-weight: 300; color: lightgray;'>of {maxSeason}</span></div>
+
+    <div class="navigation">
+        {#if media.season !== 1}
+            <button on:click={previousSeason} class="left"><img src="icons/left.svg" alt="Icon"></button>
+        {:else}
+            <button class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
+        {/if}
+
+        {#if media.season !== maxSeason}
+            <button on:click={nextSeason} class="right"><img src="icons/right.svg" alt="Icon"></button>
+        {:else}
+            <button class="right inactive"><img src="icons/right.svg" alt="Icon"></button>
+        {/if}
+    </div>
+</div>
+
+<div class="episode-list">
+    {#each mediaDB[title]['s' + media.season] as episode, e}
+        <button class="item {e + 1 == media.episode ? 'active' : ''}" on:click={() => openEpisode(e + 1)}>
+            <div class="title">{episode.replaceAll('-', "'")}</div>
+            <div class="count">E{e + 1}</div>
+        </button>
     {/each}
 </div>
+
+<!-- {#each {length: mediaDB[title]['sTotal']} as _, s}
+    <div class='module-title season-title season-{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
+        Season {s + 1}
+    </div>
+    
+    <div class="season">
+        <div class="list">
+            {#each mediaDB[title]['s' + (s + 1)] as episode, e}
+                <button class="episode-button {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
+                    <span class="count">S{s + 1}, E{e + 1}</span> {episode.replaceAll('-', "'")}
+                </button>
+            {/each}
+        </div>
+    </div>
+{/each} -->
 
 <!--  -->
 
 <style>
-    .content{
-        padding-bottom: 50pt;
-        border-radius: inherit;
-    }
+	.top-bar{
+		display: grid;
+		grid-template-columns: auto min-content;
+		align-items: center;
+        margin-bottom: 15px;
+	}
 
-    .season{
+	.top-bar .title{
+		font-size: 15pt;
+		font-weight: 500;
+	}
+	
+	.navigation{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 10px;
+	}
+
+	.navigation button{
+		height: 20px;
+		padding: 5px;
+		aspect-ratio: 1 / 1;
+		background: var(--foreground);
+		border-radius: 100vh;
+		cursor: pointer;
+	}
+
+	.navigation button.inactive{
+		opacity: 0.25;
+        cursor: default;
+	}
+
+	.navigation img{
+		height: 100%;
+		display: block;
+	}
+
+    .episode-list .item{
+        position: relative;
         display: grid;
-        background: linear-gradient(to bottom, var(--background), rgb(0, 0, 0, 0.25));
-        border-bottom-left-radius: inherit;
-        border-bottom-right-radius: inherit;
+        grid-template-columns: auto min-content;
+        align-items: center;
+        column-gap: 20px;
+        width: calc(100% - 20px);
+        padding: 10px;
+        border-radius: 10px;
     }
 
-    .season-title{
-        position: sticky;
-        top: 0;
-        background: var(--background);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        -moz-backdrop-filter: blur(15px);
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
+    /* .episode-list .item:hover{
+        box-shadow: inset 0 -2px var(--accent);
+    } */
+
+    .episode-list .item:hover{
+        text-decoration: underline;
+        text-underline-offset: 5px;
     }
 
-    .list{
-        padding: 15pt;
-        padding-top: 0;
-    }
-
-    .episode-button{
-        width: calc(100% - 20pt);
-        padding: 10pt;
-        border-radius: 5pt;
-        cursor: pointer;
-        font-weight: 500;
-    }
-    
-    .episode-button:hover{
+    .episode-list .item.active{
         background: var(--light-gradient);
     }
 
-    .episode-button.active-episode{
-        background: var(--bold-gradient);
+    .episode-list .title{
+        font-weight: 400;
     }
 
-    .count{
+    .episode-list .count{
+        font-size: 10pt;
         font-weight: 300;
-        padding-right: 5pt;
-    }
-
-    .align-button:hover{
-        text-decoration: underline;
+        text-align: right;
     }
 </style>

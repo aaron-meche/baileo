@@ -1,5 +1,5 @@
 <script>
-	import { mediaDB, storage } from '$lib/data'
+	import { mediaDB, storage } from '$lib/main'
 	import BoldButton from '$lib/components/Bold Button.svelte'
 	import TvModule from '$lib/modules/TV Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
@@ -13,40 +13,60 @@
 		media.title = storage.get('watching title')
 		media.type = mediaDB[media.title]['type']
 
-		// Progress
-		if (storage.exists(`${media.title} progress`)) { // YES watch progress
-			media.progress = storage.get(`${media.title} progress`)
+		media.season = storage.exists(`${media.title} season`) ? Number(storage.get(`${media.title} season`)) : 1
+		media.episode = storage.exists(`${media.title} episode`) ? Number(storage.get(`${media.title} episode`)) : 1
+
+		media.progress = storage.exists(`${media.title} progress`) ? Number(storage.get(`${media.title} progress`)) : 0
+
+		let interval = setInterval(() => { // Load progress
+			if (document.querySelector('video')) {
+				// if (media.type == 'TV Show') {
+					// 	document.querySelector(`.tv-episode-module`).scroll({
+						// 		// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
+						// 		top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
+						// 		left: 0, 
+						// 		behavior: 'smooth' 
+						// 	});
+						// }
+				document.querySelector('video').currentTime = media.progress
+				clearInterval(interval)
+			}
+		}, 750)
+
+		// // Progress
+		// if (storage.exists(`${media.title} progress`)) { // YES watch progress
+		// 	media.progress = storage.get(`${media.title} progress`)
 			
-			let interval = setInterval(() => { // Load progress
-				if (document.querySelector('video')) {
-					document.querySelector('video').currentTime = media.progress
-					if (media.type == 'TV Show') {
-						document.querySelector(`.tv-episode-module`).scroll({
-							// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
-							top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
-							left: 0, 
-							behavior: 'smooth' 
-						});
-					}
-					clearInterval(interval)
-				}
-			}, 750)
+		// 	let interval = setInterval(() => { // Load progress
+		// 		if (document.querySelector('video')) {
+		// 			document.querySelector('video').currentTime = media.progress
+		// 			// if (media.type == 'TV Show') {
+		// 			// 	document.querySelector(`.tv-episode-module`).scroll({
+		// 			// 		// top: document.querySelector(`.active-episode`).offsetTop - (5 * document.querySelector(`.active-episode`).offsetHeight), 
+		// 			// 		top: document.querySelector(`.active-episode`).offsetTop - (document.querySelector(`.tv-episode-module`).offsetHeight / 2), 
+		// 			// 		left: 0, 
+		// 			// 		behavior: 'smooth' 
+		// 			// 	});
+		// 			// }
+		// 			clearInterval(interval)
+		// 		}
+		// 	}, 750)
 
-			if (media.type == 'TV Show') {
-				media.season = storage.get(`${media.title} season`)
-				media.episode = storage.get(`${media.title} episode`)
-			}
-		}
-		else { // NO watch progress
-			media.progress = 0
+		// 	if (media.type == 'TV Show') {
+		// 		media.season = storage.get(`${media.title} season`)
+		// 		media.episode = storage.get(`${media.title} episode`)
+		// 	}
+		// }
+		// else { // NO watch progress
+		// 	media.progress = 0
 
-			if (media.type == 'TV Show') {
-				media.season = 1
-				media.episode = 1
-				storage.set(`${media.title} season`, 1)
-				storage.set(`${media.title} episode`, 1)
-			}
-		}
+		// 	if (media.type == 'TV Show') {
+		// 		media.season = 1
+		// 		media.episode = 1
+		// 		storage.set(`${media.title} season`, 1)
+		// 		storage.set(`${media.title} episode`, 1)
+		// 	}
+		// }
 
 		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
@@ -68,7 +88,9 @@
 				let maxTime = document.querySelector('video').duration
 				storage.set(`${media.title} progress`, currentTime)
 
-				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) continueWatching()
+				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) {
+					continueWatching()
+				}
 			}
 		}, 750)
 	}
@@ -132,7 +154,6 @@
 
 	createStatePref('shuffle')
 	createStatePref('autoplay')
-	createStatePref('glow')
 
 	function toggleStatePref(title) {
 		let current = storage.get(title)
@@ -150,11 +171,12 @@
 <!--  -->
 
 <svelte:head>
-	<title>{storage.get('watching title')}</title>
+	<title>{media.episodeDisplayTitle}</title>
 </svelte:head>
 
 {#if typeof window !== 'undefined'}
 <div class="app">
+
 	<div class="side content">
 		<!-- {#if storage.get('is touch screen') == 'true'} -->
 			<!-- svelte-ignore a11y-media-has-caption -->
@@ -171,14 +193,14 @@
 				<div class="description">{media.description}</div>
 			</div>
 
-			<!-- Next Episode Button -->
-			<div style='text-align: right;'>
-				{#if media.type == 'TV Show'}
+			{#if media.type == 'TV Show'}
+				<!-- Next Episode Button -->
+				<div style='text-align: right'>
 					<button on:click={continueWatching}>
 						<BoldButton icon='next' text='Next Episode'/>
 					</button>
-				{/if}
-			</div>
+				</div>
+			{/if}
 		</div>
 
 		<!-- Action Button Belt -->
@@ -199,25 +221,23 @@
 				Autoplay
 				<Toggle active={statePref['autoplay']}/>
 			</button>
-
-			<button on:click={() => toggleStatePref('glow')}>
-				<img src="icons/light.svg" alt="Icon">
-				Glow
-				<Toggle active={statePref['glow']}/>
-			</button>
 		</div>
 	</div>
 
+
+
 	<div class="side modules">
 		{#if media.type == 'TV Show'}
-			<div class="module tv-episode-module" style='height: 350pt;'>
-				<TvModule title={media.title}/>
+			<div class="module tv-episode-module">
+				<TvModule title={media.title} media={media}/>
 			</div>
 		{/if}
+
 		<div class="module">
 			<MoreToWatchModule title={media.title}/>
 		</div>
 	</div>
+
 </div>
 {/if}
 
@@ -227,64 +247,72 @@
 	.app{
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		padding: 20pt;
-		column-gap: 20pt;
+		margin: 25px;
+		column-gap: 25px;
+	}
+	
+	.side.content{
+		grid-column: 1 / 3;
+	}
+	.side.modules{
+		grid-column: 3 / 4;
 	}
 
-	@media screen and (min-width: 1000px) {
-		.side.content{
-			grid-column: 1 / 3;
-		}
-		.side.modules{
-			grid-column: 3 / 4;
-		}
-	}
 	@media screen and (max-width: 1000px) {
+		.app{
+			margin: 0;
+		}
+		.more-menu{
+			margin: 0 25px;
+		}
+		.horizontal-scroll{
+			padding-left: 25px;
+		}
+
 		.side.content{
 			grid-column: 1 / 4;
 		}
 		.side.modules{
 			grid-column: 1 / 4;
-			padding: 0 20pt;
+			margin: 0 25px;
 		}
 	}
 
 	.side{
-		display: grid;
-		row-gap: 20pt;
-		padding-bottom: 20pt;
-	}
-	.side.content{
 		height: min-content;
+		display: grid;
+		row-gap: 25px;
+		padding-bottom: 25px;
 	}
 
 	.module{
 		height: min-content;
-		max-height: 100vh;
-		border: solid 1pt rgb(61.25, 51.25, 15);
-		border-radius: 15pt;
-		overflow: auto;
+		overflow: hidden;
+		/* background: var(--foreground); */
+		box-shadow: var(--neu-rest);
+		border-radius: 25px;
+		padding: 25px;
 	}
 
 	video{
 		width: 100%;
-	}
-	video.glow{
-		box-shadow: var(--accent-shadow);
+		display: block;
+		background: black;
 	}
 
 	.more-menu{
 		display: grid;
 		align-items: center;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr 1fr;
+		column-gap: 10px;
 	}
 	.title{
-		font-size: 18pt;
-		font-weight: 600;
+		font-size: 15pt;
+		font-weight: 500;
 	}
 	.description{
-		font-size: 14pt;
-		font-weight: 500;
+		font-size: 13pt;
+		font-weight: 400;
 		color: gray;
 	}
 
@@ -297,16 +325,16 @@
 		font-size: 10pt;
 		font-weight: 500;
 		text-transform: uppercase;
-		margin-right: 25pt;
+		margin-right: 25px;
 		transition: box-shadow 200ms;
 	}
 	.action-buttons button:hover{
 		text-decoration: underline;
 		text-decoration-color: var(--accent);
-		text-underline-offset: 3pt;
+		text-underline-offset: 5px;
 	}
 	.action-buttons img{
 		height: 15pt;
-		margin-right: 5pt;
+		margin-right: 5px;
 	}
 </style>

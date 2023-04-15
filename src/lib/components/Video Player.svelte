@@ -1,5 +1,5 @@
 <script>
-	import { storage, mediaDB } from '$lib/data'
+	import { storage, mediaDB } from '$lib/main'
     export let source, glow
 
 	const restTime = 2

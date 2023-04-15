@@ -13,10 +13,11 @@
 
     --accent: rgb(245, 205, 60);
     --compliment: rgb(249, 40, 40);
-    --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
+    --bold-gradient: linear-gradient(to bottom right, var(--accent), rgb(255, 111, 0), var(--compliment));
     --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(245, 65, 65, 0.25));
-    --accent-shadow: -10px -10px 75px rgb(245, 205, 60, 0.25), 10px 10px 75px rgb(245, 65, 65, 0.25);
+    --accent-shadow: -5px -5px 15px rgb(245, 205, 60, 0.25), 5px 5px 15px rgb(245, 65, 65, 0.25);
     --background: rgb(20 20 20);
+    --foreground: rgb(50 50 50);
 }
 
 body{
@@ -25,23 +26,18 @@ body{
     background: var(--background);
     font-family: BaileyScript;
     font-size: 12pt;
-}
-
-.module-title{
-    font-size: 12pt;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 15pt;
+    font-weight: 400;
 }
 
 .horizontal-scroll{
     overflow-x: scroll;
     white-space: nowrap;
+    font-size: 0;
 }
 
 .horizontal-scroll > *{
     display: inline-block;
+    font-size: 12pt;
 }
 
 .horizontal-scroll::-webkit-scrollbar{
@@ -50,4 +46,5 @@ body{
 
 button{
     all: unset;
+    width: auto;
 }

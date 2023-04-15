@@ -1,5 +1,5 @@
 <script>
-    import { mediaDB } from '$lib/data'
+    import { mediaDB } from '$lib/main'
     export let title, type
 </script>
 
@@ -19,7 +19,7 @@
     .item{
         position: relative;
         top: 0;
-        width: clamp(185px, 20vw, 220px);
+        width: clamp(200px, 20vw, 250px);
         padding-top: 10px;
         padding-bottom: 10px;
         margin-right: 20px;
@@ -37,7 +37,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 5px;
+            height: 3px;
             width: 100%; 
             background: var(--accent);
             border-radius: 100vh;
@@ -56,13 +56,13 @@
     }
 
     .title{
-        font-size: 11pt;
+        font-size: 12pt;
         font-weight: 500;
     }
 
 	.type{
         font-size: 10pt;
-		font-weight: 400;
+		font-weight: 300;
 		color: gray;
 	}
 </style>

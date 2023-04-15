@@ -1,5 +1,5 @@
 <script>
-    import { mediaDB, storage, handleMediaItemClick } from '$lib/data'
+    import { mediaDB, storage, handleMediaItemClick } from '$lib/main'
     export let title
 
     let category = mediaDB[title]['cat']
@@ -59,21 +59,19 @@
 
 <style>
     .module-title{
-        padding: 15pt;
-    }
-
-    .list{
-        padding: 15pt;
-        padding-top: 0;
+        text-align: center;
+        font-size: 15pt;
+        font-weight: 500;
+        margin-bottom: 15px;
     }
 
     .media-item{
         display: grid;
-        grid-template-columns: 1fr 2fr;
-        column-gap: 10pt;
+        grid-template-columns: 2fr 3fr;
+        column-gap: 20px;
         align-items: center;
-        padding: 10pt;
-        border-radius: 5pt;
+        padding: 10px;
+        border-radius: 5px;
     }
 
     .media-item:hover{

@@ -1,5 +1,5 @@
 <script>
-	import { storage, isServerConnected } from '$lib/data'
+	import { storage, isServerConnected } from '$lib/main'
     import TopNavbar from '$lib/components/Top Navbar.svelte'
     import '$lib/style.css'
 
@@ -12,7 +12,6 @@
     protectStoragePref('watching title', 'The Office')
     protectStoragePref('shuffle', 'false')
     protectStoragePref('autoplay', 'true')
-    protectStoragePref('glow', 'true')
     protectStoragePref('autoplay buffer', 30)
 
     // if (!isServerConnected('https://209.163.185.11/test.jpg')) {

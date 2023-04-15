@@ -25,6 +25,12 @@ export const storage = {
         }
         return set
     },
+    reset: function() {
+        if (typeof window =="undefined") return
+        // 
+        localStorage.clear()
+        return 'done'
+    }
 }
 
 export function isServerConnected(url) {
@@ -38,6 +44,15 @@ export function isServerConnected(url) {
 export function handleMediaItemClick(title) {
     storage.set('watching title', title)
     window.open('/watch/', '_self')
+}
+
+export function uniqueID() {
+    let lib = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9']
+    let id = 'unique-id_'
+    for (let i = 0; i < 10; i++) {
+        id += lib[Math.floor(Math.random() * lib.length)]
+    }
+    return id
 }
 
 export const mediaDB = {

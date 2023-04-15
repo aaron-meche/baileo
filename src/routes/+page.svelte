@@ -1,5 +1,5 @@
 <script>
-	import { storage } from '$lib/data'
+	import { storage } from '$lib/main'
 	import MediaSection from '$lib/components/Media Section.svelte'
 	import ContinueSection from '$lib/components/Continue Section.svelte'
 </script>
