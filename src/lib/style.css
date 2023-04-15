@@ -17,7 +17,8 @@
     --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(245, 65, 65, 0.25));
     --accent-shadow: -5px -5px 15px rgb(245, 205, 60, 0.25), 5px 5px 15px rgb(245, 65, 65, 0.25);
     --background: rgb(20 20 20);
-    --foreground: rgb(45 45 45);
+    --foreground: rgb(40 40 40);
+    --extra-foreground: rgb(60 60 60);
 }
 
 body{

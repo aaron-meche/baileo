@@ -1,5 +1,6 @@
 <script>
-    import { page } from '$app/stores';
+    import { page } from '$app/stores'
+    import { storage } from '$lib/main'
 
     function toggleMenu() {
         alert('Menu')
@@ -7,6 +8,10 @@
 
     function openPage(page) {
         window.open(page, '_self')
+    }
+
+    function clearAllData() {
+        storage.clear()
     }
 </script>
 
@@ -32,19 +37,20 @@
         <button on:click={() => openPage('/search')} class='{$page.url.pathname === '/search' ? 'active' : ''}'>
             <img src="icons/search.svg" alt="Icon">
         </button>
-
-        <!-- <button on:click={() => openPage('/settings')} class='{$page.url.pathname === '/settings' ? 'active' : ''}'>
-            <img src="icons/settings.svg" alt="Icon">
-        </button> -->
     </div>
-
 </div>
+
+<!-- <div class="menu">
+    <button on:click={clearAllData}>Clear All Data</button>
+    <div class="space"></div>
+    <button on:click={clearAllData} style='color: coral'>Clear All Data</button>
+</div> -->
 
 <!--  -->
 
 <style>
     .navbar{
-        padding: 12.5px 20px;
+        padding: 15px 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -62,15 +68,15 @@
             justify-content: right;
         }
 
-    button{
+    .navbar button{
         display: inline-flex;
         align-items: center;
         padding: 5px;
     }
-        button.active, button:hover{
+        .navbar button.active, .navbar button:hover{
             box-shadow: 0 1px var(--accent);
         }
-        button img{
+        .navbar button img{
             height: 22.5px;
         }
 
@@ -83,4 +89,31 @@
         .logo img{
             margin-right: 7.5px;
         }
+
+    .menu{
+        position: absolute;
+        top: 100%;
+        left: 20px;
+        max-width: 75vw;
+        display: grid;
+        border-radius: 5px;
+        background: var(--foreground);
+    }
+
+    .menu .space{
+        /* height: 1px; */
+        margin: 5px 0;
+        background: var(--extra-foreground);
+    }
+
+    .menu button{
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 10pt;
+        font-weight: 400;
+    }
+
+    .menu button:hover{
+        background: var(--extra-foreground);
+    }
 </style>

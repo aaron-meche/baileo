@@ -178,7 +178,7 @@
 
 			{#if media.type == 'TV Show'}
 				<!-- Next Episode Button -->
-				<div style='text-align: right'>
+				<div style='text-align: right;'>
 					<button on:click={continueWatching}>
 						<BoldButton icon='next' text='Next Episode'/>
 					</button>
@@ -235,8 +235,8 @@
 	.app{
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		margin: 25px;
-		column-gap: 25px;
+		margin: 20px;
+		column-gap: 20px;
 	}
 	
 	.side.content{
@@ -251,10 +251,10 @@
 			margin: 0;
 		}
 		.more-menu{
-			margin: 0 25px;
+			margin: 0 20px;
 		}
 		.horizontal-scroll{
-			padding-left: 25px;
+			padding-left: 20px;
 		}
 
 		.side.content{
@@ -262,7 +262,7 @@
 		}
 		.side.modules{
 			grid-column: 1 / 4;
-			margin: 0 25px;
+			margin: 0 20px;
 		}
 	}
 
@@ -278,8 +278,8 @@
 		overflow: hidden;
 		/* background: var(--foreground); */
 		box-shadow: var(--neu-rest);
-		border-radius: 25px;
-		padding: 25px;
+		border-radius: 20px;
+		padding: 20px;
 	}
 
 	video{

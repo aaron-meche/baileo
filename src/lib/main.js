@@ -29,13 +29,16 @@ export const storage = {
         if (typeof window =="undefined") return
         // 
         localStorage.clear()
-        return 'done'
     },
     delete: function (location) {
         if (typeof window =="undefined") return
         // 
         if (this.exists(location)) localStorage.removeItem(location)
-        // return 'done'
+    },
+    clear: function() {
+        if (typeof window =="undefined") return
+        // 
+        localStorage.clear()
     }
 }
 
