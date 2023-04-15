@@ -130,9 +130,7 @@
     } */
 
     .episode-list .item:hover{
-        /* text-decoration: underline; */
-        /* text-underline-offset: 5px; */
-        background: var(--foreground);
+        background: linear-gradient(to bottom right, var(--foreground), rgb(0, 0, 0, 0))
     }
 
     .episode-list .item.active{

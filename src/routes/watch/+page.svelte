@@ -206,8 +206,8 @@
 			</button>
 
 			<button on:click={deleteProgress}>
-				<img src="icons/close.svg" alt="Icon">
-				Mark as Watched
+				<img src="icons/complete.svg" alt="Icon">
+				Mark as Complete
 			</button>
 		</div>
 	</div>
