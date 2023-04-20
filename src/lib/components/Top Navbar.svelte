@@ -4,19 +4,30 @@
     } from '$app/stores'
 
     import { 
-        storage 
+        storage
     } from '$lib/main'
-
-    function toggleMenu() {
-        alert('Menu')
-    }
 
     function openPage(page) {
         window.open(page, '_self')
     }
 
-    function clearAllData() {
-        storage.clear()
+    const menu = {
+        open: function() {
+            document.querySelector('.menu-wrapper').style.display = 'block'
+        },
+        close: function() {
+            document.querySelector('.menu-wrapper').style.display = 'none'
+        },
+        startPomodoro: function() {
+            alert('Feature Inactive')
+        },
+        action: function() {
+            alert('inactive')
+        },
+        clearData: function() {
+            storage.clear()
+            window.open('/', '_self')
+        },
     }
 </script>
 
@@ -24,12 +35,12 @@
 
 <div class="navbar">
     <div class="logo-display section">
-        <button on:click={toggleMenu}>
+        <button on:click={menu.open}>
             <img src="icons/menu.svg" alt="Icon">
         </button>
 
         <button on:click={() => openPage('/')} class='logo {$page.url.pathname === '/' ? 'active' : ''}'>
-            <img src="logo.svg" alt="Icon">
+            <img src="logo.png" alt="Icon">
             baileo
         </button>
     </div>
@@ -45,11 +56,24 @@
     </div>
 </div>
 
-<!-- <div class="menu">
-    <button on:click={clearAllData}>Clear All Data</button>
-    <div class="space"></div>
-    <button on:click={clearAllData} style='color: coral'>Clear All Data</button>
-</div> -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="menu-wrapper" on:click={menu.close}>
+    <div class="menu">
+        <button on:click={() => openPage('/')} class='logo'>
+            <img src="logo.png" alt="Icon">
+            baileo
+        </button>
+
+        <div class="space"></div>
+
+        <button on:click={menu.startPomodoro}>Pomodoro Timer</button>
+        <!-- <button on:click={menu.action}>Pomodoro Timer</button> -->
+
+        <div class="space"></div>
+
+        <button on:click={menu.clearData} style='color: coral'>Clear All Data</button>
+    </div>
+</div>
 
 <!--  -->
 
@@ -92,33 +116,47 @@
         color: var(--accent);
     }
         .logo img{
-            margin-right: 7.5px;
+            height: 100%;
+            margin-right: 5px;
+            float: left;
         }
 
+    
+    .menu-wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: rgb(0, 0, 0, 0.5);
+        display: none;
+    }
+
     .menu{
-        position: absolute;
-        top: 100%;
-        left: 20px;
+        min-height: calc(100vh - 50px);
+        width: fit-content;
         max-width: 75vw;
-        display: grid;
-        border-radius: 5px;
-        background: var(--foreground);
+        padding: 25px;
+        background: var(--background);
+        box-shadow: 0 0 100px black;
     }
 
     .menu .space{
-        /* height: 1px; */
-        margin: 5px 0;
-        background: var(--extra-foreground);
+        height: 1px;
+        background: var(--foreground);
+        margin: 10px 0;
     }
 
     .menu button{
+        height: 25px;
+        width: calc(100% - 30px);
         padding: 10px 15px;
         border-radius: 5px;
-        font-size: 10pt;
-        font-weight: 400;
+        display: flex;
+        align-items: center;
     }
 
     .menu button:hover{
-        background: var(--extra-foreground);
+        background: var(--foreground);
     }
 </style>

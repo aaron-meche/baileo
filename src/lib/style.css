@@ -12,9 +12,9 @@
         inset 4px 4px 4px rgba(0, 0, 0);
 
     --accent: rgb(245, 205, 60);
-    --compliment: rgb(249, 40, 40);
-    --bold-gradient: linear-gradient(to bottom right, var(--accent), rgb(255, 111, 0), var(--compliment));
-    --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(245, 65, 65, 0.25));
+    --compliment: rgb(250, 40, 40);
+    --bold-gradient: linear-gradient(to bottom right, var(--accent), rgb(255, 100, 0), var(--compliment));
+    --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(255, 100, 0, 0.25), rgb(245, 40, 40, 0.25));
     --accent-shadow: -5px -5px 15px rgb(245, 205, 60, 0.25), 5px 5px 15px rgb(245, 65, 65, 0.25);
     --background: rgb(25 25 25);
     --foreground: rgb(50 50 50);

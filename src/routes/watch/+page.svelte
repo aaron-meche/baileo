@@ -5,10 +5,10 @@
 		storage
 	} from '$lib/main'
 
-	import BoldButton from '$lib/components/Bold Button.svelte'
 	import TvModule from '$lib/modules/TV Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
-	import Toggle from '$lib/components/Toggle.svelte'
+	import BoldButton from '$lib/partials/Bold Button.svelte'
+	import Toggle from '$lib/partials/Toggle.svelte'
     import VideoPlayer from '$lib/components/Video Player.svelte';
 
 	let media = {}
