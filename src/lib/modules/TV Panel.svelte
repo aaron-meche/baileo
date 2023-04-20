@@ -1,5 +1,9 @@
 <script>
-    import { mediaDB, storage } from '$lib/main'
+    import { 
+        mediaDB, 
+        serverTypeConversion,
+        storage 
+    } from '$lib/main'
     export let title, media
 
     let season = media.season
@@ -52,27 +56,11 @@
 <div class="episode-list">
     {#each mediaDB[title]['s' + media.season] as episode, e}
         <button class="item {e + 1 == media.episode ? 'active' : ''}" on:click={() => openEpisode(e + 1)}>
-            <div class="title">{episode.replaceAll('-', "'")}</div>
+            <div class="title">{serverTypeConversion(episode)}</div>
             <div class="count">E{e + 1}</div>
         </button>
     {/each}
 </div>
-
-<!-- {#each {length: mediaDB[title]['sTotal']} as _, s}
-    <div class='module-title season-title season-{s + 1} {s + 1 == storage.get(title + ' season') ? 'active-season-title' : ''}'>
-        Season {s + 1}
-    </div>
-    
-    <div class="season">
-        <div class="list">
-            {#each mediaDB[title]['s' + (s + 1)] as episode, e}
-                <button class="episode-button {(s + 1 == storage.get(title + ' season') && (e + 1 == storage.get(title + ' episode'))) ? 'active-episode' : ''}" on:click={() => openEpisode(s + 1, e + 1)}>
-                    <span class="count">S{s + 1}, E{e + 1}</span> {episode.replaceAll('-', "'")}
-                </button>
-            {/each}
-        </div>
-    </div>
-{/each} -->
 
 <!--  -->
 
