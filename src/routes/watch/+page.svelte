@@ -9,6 +9,7 @@
 	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
 	import BoldButton from '$lib/partials/Bold Button.svelte'
 	import Toggle from '$lib/partials/Toggle.svelte'
+	// import ToggleCarousel from '$lib/partials/Toggle Carousel.svelte'
     import VideoPlayer from '$lib/components/Video Player.svelte';
 
 	let media = {}
@@ -65,64 +66,12 @@
 				let currentTime = document.querySelector('video').currentTime
 				let maxTime = document.querySelector('video').duration
 				storage.set(`${media.title} progress`, currentTime / maxTime)
-				console.log('progress', currentTime / maxTime)
 
 				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) {
 					continueWatching()
 				}
 			}
 		}, 750)
-	}
-
-	function continueWatching() {
-		if (media.type == 'TV Show') {
-			if (storage.get('shuffle') == 'true') nextShuffleEpisode()
-			else nextEpisode()
-		}
-		else {
-			window.open('/', '_self')
-		}
-	}
-
-	function nextShuffleEpisode() {
-		let randomSeason = Math.floor(Math.random() * mediaDB[media.title]['sTotal']) + 1
-		let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
-		storage.set(`${media.title} season`, randomSeason)
-		storage.set(`${media.title} episode`, randomEpisode)
-        storage.set(`${media.title} progress`, 0)
-		window.location.reload()
-	}
-
-	function nextEpisode() {
-		let seasonLength = mediaDB[media.title]['s' + media.season].length
-		let seasonMax = mediaDB[media.title]['sTotal']
-        storage.set(`${media.title} progress`, 0)
-
-		if (media.episode == seasonLength) {
-			if (media.season == seasonMax) {
-				alert('TV Show Complete!')
-				storage.set(`${media.title} season`, 1)
-				storage.set(`${media.title} episode`, 1)
-				storage.set(`${media.title} completed`, 1)
-				window.open('/', '_self')
-			}
-			else {
-				storage.set(`${media.title} season`, Number(media.season) + 1)
-				storage.set(`${media.title} episode`, 1)
-				window.location.reload()
-			}
-		}
-		else {
-			storage.set(`${media.title} episode`, Number(media.episode) + 1)
-			window.location.reload()
-		}
-	}
-
-	function download() {
-		var link = document.createElement("a")
-		link.download = media.description
-		link.href = `https://209.163.185.11/videos/${media.path}`
-		link.click()
 	}
 
 	let statePref = {}
@@ -133,6 +82,7 @@
 
 	createStatePref('shuffle')
 	createStatePref('autoplay')
+	createStatePref('autoplay buffer')
 
 	function toggleStatePref(title) {
 		let current = storage.get(title)
@@ -146,11 +96,54 @@
 		}
 	}
 
-	function deleteProgress() {
-		storage.delete(media.title + ' progress')
-		storage.delete(media.title + ' season')
-		storage.delete(media.title + ' episode')
-		window.open('/', '_self')
+	const actions = {
+		continueWatching: function() {
+			if (media.type == 'TV Show') {
+				if (statePref['shuffle'] == 'true') actions.nextShuffleEpisode()
+				else actions.nextEpisode()
+			}
+			else window.open('/', '_self')
+		},
+		nextEpisode: function() {
+			let seasonLength = mediaDB[media.title]['s' + media.season].length
+			let seasonMax = mediaDB[media.title]['sTotal']
+			storage.set(`${media.title} progress`, 0)
+
+			if (media.episode == seasonLength) {
+				if (media.season == seasonMax) {
+					actions.markAsWatched()
+				}
+				else {
+					storage.set(`${media.title} season`, Number(media.season) + 1)
+					storage.set(`${media.title} episode`, 1)
+					window.location.reload()
+				}
+			}
+			else {
+				storage.set(`${media.title} episode`, Number(media.episode) + 1)
+				window.location.reload()
+			}
+		},
+		nextShuffleEpisode: function() {
+			let randomSeason = Math.floor(Math.random() * mediaDB[media.title]['sTotal']) + 1
+			let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
+			storage.set(`${media.title} season`, randomSeason)
+			storage.set(`${media.title} episode`, randomEpisode)
+			storage.set(`${media.title} progress`, 0)
+			window.location.reload()
+		},
+		download: function() {
+			var link = document.createElement("a")
+			link.download = media.description
+			link.href = `https://209.163.185.11/videos/${media.path}`
+			link.click()
+		},
+		markAsWatched: function() {
+			storage.delete(media.title + ' progress')
+			storage.delete(media.title + ' season')
+			storage.delete(media.title + ' episode')
+			window.open('/', '_self')
+		}
 	}
 </script>
 
@@ -184,7 +177,7 @@
 			{#if media.type == 'TV Show'}
 				<!-- Next Episode Button -->
 				<div style='text-align: right;'>
-					<button on:click={continueWatching}>
+					<button on:click={actions.continueWatching}>
 						<BoldButton icon='next' text='Next Episode'/>
 					</button>
 				</div>
@@ -193,7 +186,7 @@
 
 		<!-- Action Button Belt -->
 		<div class="action-buttons horizontal-scroll">
-			<button on:click={download}>
+			<button on:click={actions.download}>
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
@@ -210,7 +203,13 @@
 				<Toggle active={statePref['autoplay']}/>
 			</button>
 
-			<button on:click={deleteProgress}>
+			<!-- <button on:click={() => carouselStatePref('autoplay buffer')}>
+				<img src="icons/infinity.svg" alt="Icon">
+				Autoplay Buffer
+				<ToggleCarousel active={statePref['autoplay']}/>
+			</button> -->
+
+			<button on:click={actions.markAsWatched}>
 				<img src="icons/complete.svg" alt="Icon">
 				Mark as Complete
 			</button>
