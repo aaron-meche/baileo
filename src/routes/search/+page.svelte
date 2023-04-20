@@ -1,5 +1,9 @@
 <script>
-	import { mediaDB, storage } from '$lib/main'
+	import { 
+		mediaDB, 
+		storage 
+	} from '$lib/main'
+	
 	import MediaSection from '$lib/components/Media Section.svelte'
 
 	function search() {

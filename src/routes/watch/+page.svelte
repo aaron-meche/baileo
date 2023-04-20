@@ -1,5 +1,10 @@
 <script>
-	import { mediaDB, storage } from '$lib/main'
+	import { 
+		mediaDB, 
+		serverTypeConversion,
+		storage
+	} from '$lib/main'
+
 	import BoldButton from '$lib/components/Bold Button.svelte'
 	import TvModule from '$lib/modules/TV Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
@@ -44,7 +49,7 @@
 		// Media Path + Descriptions
 		if (media.type == 'TV Show') {
 			media.episodeTitle = mediaDB[media.title]['s' + media.season][media.episode - 1]
-			media.episodeDisplayTitle = mediaDB[media.title]['s' + media.season][media.episode - 1].replaceAll('-', "'")
+			media.episodeDisplayTitle = serverTypeConversion(mediaDB[media.title]['s' + media.season][media.episode - 1])
 			
 			media.path = `${media.title}/Season ${media.season}/${media.episodeTitle}.mp4`
 			media.description = `S${media.season}, E${media.episode} - ${media.episodeDisplayTitle}`

@@ -64,6 +64,13 @@ export function uniqueID() {
     return id
 }
 
+export function serverTypeConversion(string) {
+    string = string.replaceAll('-', "'")
+    string = string.replaceAll('()', "?")
+
+    return string
+}
+
 export const mediaDB = {
     "Family Guy": {
         type: "TV Show", 
@@ -71,7 +78,7 @@ export const mediaDB = {
         sTotal: 18,
         s1: ["Death Has a Shadow", "I Never Met the Dead Man", "Chitty Chitty Death Bang", "Mind Over Murder", "A Hero Sits Next Door", "The Son Also Draws", "Brian - Portrait of a Dog"],
         s2: ["Peter, Peter, Caviar Eater", "Holy Crap", "Da Boom", "Brian in Love", "Love Thy Trophy", "Death Is a Bitch", "The King Is Dead", "I Am Peter, Hear Me Roar", "If I-m Dyin", "I-m Lyin", "Running Mates", "A Picture is Worth 1,000 Bucks", "Fifteen Minutes of Shame", "Road to Rhode Island", "Let-s Go to the Hop", "Dammit Janet", "There-s Something About Paulie", "He-s Too Sexy for His Fat", "E. Peterbus Unum", "The Story on Page One", "Wasted Talent", "Fore, Father"],
-        s3: ["The Thin White Line", "Brian Does Hollywood", "Mr. Griffin Goes to Washington", "One If by Clam, Two If by Sea", "And the Wiener Is...", "Death Lives", "Lethal Weapons", "The Kiss Seen Around the World", "Mr. Saturday Knight", "A Fish Out of Water", "Emission Impossible", "To Love and Die in Dixie", "Screwed the Pooch", "Peter Griffin: Husband, Father... Brother?", "Ready, Willing, and Disabled", "A Very Special Family Guy Freakin- Christmas", "Brian Wallows and Peter-s Swallows", "From Method to Madness", "Stuck Together, Torn Apart", "Road to Europe", "Family Guy Viewer Mail #1", "When You Wish Upon a Weinstein"],
+        s3: ["The Thin White Line", "Brian Does Hollywood", "Mr. Griffin Goes to Washington", "One If by Clam, Two If by Sea", "And the Wiener Is...", "Death Lives", "Lethal Weapons", "The Kiss Seen Around the World", "Mr. Saturday Knight", "A Fish Out of Water", "Emission Impossible", "To Love and Die in Dixie", "Screwed the Pooch", "Peter Griffin: Husband, Father... Brother()", "Ready, Willing, and Disabled", "A Very Special Family Guy Freakin- Christmas", "Brian Wallows and Peter-s Swallows", "From Method to Madness", "Stuck Together, Torn Apart", "Road to Europe", "Family Guy Viewer Mail #1", "When You Wish Upon a Weinstein"],
         s4: ["North by North Quahog", "Fast Times at Buddy Cianci Jr. High", "Blind Ambition", "Don-t Make Me Over", "The Cleveland-Loretta Quagmire", "Petarded", "Brian the Bachelor", "8 Simple Rules for Buying My Teenage Daughter", "Breaking Out Is Hard to Do", "Model Misbehavior", "Peter-s Got Woods", "Perfect Castaway", "Jungle Love", "PTV Show", "Brian Goes Back to College", "The Courtship of Stewie-s Father", "The Fat Guy Strangler", "The Father, the Son, and the Holy Fonz", "Brian Sings and Swings", "Patriot Games", "I Take Thee Quagmire", "Sibling Rivalry", "Deep Throats", "Peterotica", "You May Now Kiss the... Uh... Guy Who Receives", "Petergeist", "The Griffin Family History", "Stewie B. Goode", "Bang-o Was His Name-o", "Stu and Stewie-s Excellent Adventure"],
         s5: ["Stewie Loves Lois", "Mother Tucker", "Hell Comes to Quahog", "Saving Private Brian", "Whistle While Your Wife Works", "Prick Up Your Ears", "Chick Cancer", "Barely Legal", "Road to Rupert", "Peter-s Two Dads", "The Tan Aquatic with Steve Zissou", "Airport -07", "Bill & Peter-s Bogus Journey", "No Meals on Wheels", "Boys Do Cry", "No Chris Left Behind", "It Takes a Village Idiot, and I Married One", "Meet the Quagmires"],
         s6: ["Blue Harvest", "Movin- Out (Brian-s Song)", "Believe It or Not, Joe-s Walking on Air", "Stewie Kills Lois (Part 1)", "Lois Kills Stewie (Part 2)", "Padre de Familia", "Peter-s Daughter", "McStroke", "Back to the Woods", "Play It Again, Brian", "The Former Life of Brian", "Long John Peter"],
@@ -84,7 +91,7 @@ export const mediaDB = {
         s13: ["The Simpsons Guy", "The Book of Joe", "Baking Bad", "Brian the Closer", "Turkey Guys", "The 2000-Year-Old Virgin", "Stewie, Chris, & Brian-s Excellent Adventure", "Our Idiot Brian", "This Little Piggy", "Quagmire-s Mom", "Encyclopedia Griffin", "Stewie Is Enceinte", "Dr. C and the Women", "#JOLO", "Once Bitten", "Roasted Guy", "Fighting Irish", "Take My Wife"],
         s14: ["Pilling Them Softly", "Papa Has a Rollin- Son", "Guy, Robot", "Peternormal Activity", "Peter, Chris, & Brian", "Peter-s Sister", "Hot Pocket-Dial", "Brokeback Swanson", "A Shot in the Dark", "Candy, Quahog Marshmallow", "The Peanut Butter Kid", "Scammed Yankees", "An App a Day", "Underage Peter", "A Lot Going on Upstairs", "The Heartbreak Dog", "Take a Letter", "The New Adventures of Old Tom", "Run Chris, Run"],
         s15: ["The Boys in the Band", "Bookie of the Year", "American Gigg-olo", "Inside Family Guy", "Chris Has Got a Date, Date, Date, Date, Date", "Hot Shots", "High School English", "Carter and Tricia", "How the Griffin Stole Christmas", "Passenger Fatty-Seven", "Gronkowsbees", "Peter-s Def Jam", "The Finer Strings", "The Dating Game", "Cop and a Half-wit", "Saturated Fat Guy", "Peter-s Lost Youth", "The Peter Principal", "Dearly Deported", "A House Full of Peters"],
-        s16: ["Emmy-Winning Episode", "Foxx in the Men House", "Nanny Goats", "Follow The Money", "Three Doctors", "The D in Apartment 23", "Petey IV", "Crimes and Meg-s Demeanor", "Don-t Be a Dickens at Christmas", "Boy (Dog) Meets Girl", "Dog Bites Bear", "Send In Stewie, Please", "V Is For Mystery", "Veteran Guy", "The Woof of Wall Street", "Family Guy Through the Years", "Switch the Flip", "HTTPete", "The Unkindest Cut", "Are You There God? It-s Me, Peter"],
+        s16: ["Emmy-Winning Episode", "Foxx in the Men House", "Nanny Goats", "Follow The Money", "Three Doctors", "The D in Apartment 23", "Petey IV", "Crimes and Meg-s Demeanor", "Don-t Be a Dickens at Christmas", "Boy (Dog) Meets Girl", "Dog Bites Bear", "Send In Stewie, Please", "V Is For Mystery", "Veteran Guy", "The Woof of Wall Street", "Family Guy Through the Years", "Switch the Flip", "HTTPete", "The Unkindest Cut", "Are You There God() It-s Me, Peter"],
         s17: ["Married... with Cancer", "Dead Dog Walking", "Pal Stewie", "Big Trouble in Little Quahog", "Regarding Carter", "Stand by Meg", "The Griffin Winter Games", "Con Heiress", "Pawtucket Pete", "Hefty Shades of Gray", "Trump Guy", "Bri, Robot", "Trans-Fat", "Family Guy Lite", "No Giggity, No Doubt", "You Can-t Handle the Booth!", "Island Adventure", "Throw It Away", "Girl, Internetted", "Adam West High"],
         s18: ["Yacht Rocky", "Bri-da", "Absolutely Babulous", "Disney the Reboot", "Cat Fight", "Peter and Lois- Wedding", "Heart Burn", "Shanksgiving", "Christmas is Coming", "Connies Celica", "Short Cuts", "Undergrounded", "Rich Old Stewie", "The Movement", "Baby Stewie", "Start Me Up", "Coma Guy", "Better Off Meg", "Holly Bibble", "Movin in Principal Shepherd-s Song"],
         color: "rgba(227, 45, 255, 1)", 
@@ -94,7 +101,7 @@ export const mediaDB = {
         type: "TV Show", 
         cat: "comedy", 
         sTotal: 1,
-        s1: ["Trisha-s New Boyfriend Is Hila-s Brother", "Trisha-s Obsession With Jewish People", "Possible Our Last Episode", "Is Trisha Smarter Than A 5th Grader?", "Trisha & Ethan Have a Huge Fight & She Storms Out", "Trisha & Ethan Reconcile...Kind of", "Couples Therapy With Dr. Drew", "Trisha & Ethan Fight About The Election", "Cheese Mukbang Disaster", "Trisha vs Charli vs Dixie D-Amelio", "Trisha & Ethan Do Goat Yoga & Carpool Karaoke", "Trisha Was Kidnapped At Gunpoint", "Trisha Quits the Podcast & Storms Out", "The Fate Of Frenemies With Dr. Drew", "We Made The Only Honest Award Show", "Frenemies Is Under Attack", "Pop Culture Trivia War & Friendship With Shane Is Over", "The David Dobrik & Jason Nath Episodes", "Newlywed Game (Trish & Moses vs Ethan & Hill)", "Erased David Dobrik Footage Proves Trisha Was Right All Along", "Ethan & Trisha Do An Athletics Competition", "David Dobrik & James Charles Drama Apocalypse", "Jewish Trivia Contest, David Dobrik & Scotty Sire", "David Dobrik-s Lawyers Go After Trisha & Cooking", "Responding To Jeff Wittek & New David Dobrik Footage", "Jeff Wittek Interview Fallout", "Responding To David Dobrik-s Apology", "Trisha-s Epic Passover Dinner At Ethan-s", "Trisha & Ethan Do Oddly Satisfying Trends", "Khloe Kardashian Photo Drama & Pizza Eating Contest", "James Charles Entire Channel Demonetized by YouTube", "Jeff Wittek, David Dobrik, & TRIVIA!", "Trisha-s Birthday Celebration", "[VLOG 1] Trisha & Ethan Go To Disneyland For Her Birthday", "Ethan Embarrassed Himself In Front Of Trisha-s Family", "Trisha & Ethan Got Bullied & Are Fighting Back", "Taking Trisha To Meme School", "[VLOG 2] Trisha & Ethan Hijack A Hollywood Tour Bus", "PREGNANCY ANNOUNCEMENT!", "Talking About Gabbie Hanna"],
+        s1: ["Trisha-s New Boyfriend Is Hila-s Brother", "Trisha-s Obsession With Jewish People", "Possible Our Last Episode", "Is Trisha Smarter Than A 5th Grader()", "Trisha & Ethan Have a Huge Fight & She Storms Out", "Trisha & Ethan Reconcile...Kind of", "Couples Therapy With Dr. Drew", "Trisha & Ethan Fight About The Election", "Cheese Mukbang Disaster", "Trisha vs Charli vs Dixie D-Amelio", "Trisha & Ethan Do Goat Yoga & Carpool Karaoke", "Trisha Was Kidnapped At Gunpoint", "Trisha Quits the Podcast & Storms Out", "The Fate Of Frenemies With Dr. Drew", "We Made The Only Honest Award Show", "Frenemies Is Under Attack", "Pop Culture Trivia War & Friendship With Shane Is Over", "The David Dobrik & Jason Nath Episodes", "Newlywed Game (Trish & Moses vs Ethan & Hill)", "Erased David Dobrik Footage Proves Trisha Was Right All Along", "Ethan & Trisha Do An Athletics Competition", "David Dobrik & James Charles Drama Apocalypse", "Jewish Trivia Contest, David Dobrik & Scotty Sire", "David Dobrik-s Lawyers Go After Trisha & Cooking", "Responding To Jeff Wittek & New David Dobrik Footage", "Jeff Wittek Interview Fallout", "Responding To David Dobrik-s Apology", "Trisha-s Epic Passover Dinner At Ethan-s", "Trisha & Ethan Do Oddly Satisfying Trends", "Khloe Kardashian Photo Drama & Pizza Eating Contest", "James Charles Entire Channel Demonetized by YouTube", "Jeff Wittek, David Dobrik, & TRIVIA!", "Trisha-s Birthday Celebration", "[VLOG 1] Trisha & Ethan Go To Disneyland For Her Birthday", "Ethan Embarrassed Himself In Front Of Trisha-s Family", "Trisha & Ethan Got Bullied & Are Fighting Back", "Taking Trisha To Meme School", "[VLOG 2] Trisha & Ethan Hijack A Hollywood Tour Bus", "PREGNANCY ANNOUNCEMENT!", "Talking About Gabbie Hanna"],
         color: "rgba(200, 0 225, 1)", 
     },
 
@@ -350,21 +357,3 @@ export const mediaDB = {
         cat: "comedy", 
     },
 }
-
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-    
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
-}
-
-export const shuffled_media_titles = shuffle(Object.keys(mediaDB))
