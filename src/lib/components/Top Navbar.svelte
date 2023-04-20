@@ -79,7 +79,7 @@
 
 <style>
     .navbar{
-        padding: 15px 20px;
+        padding: 10px 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
