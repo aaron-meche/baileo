@@ -118,19 +118,15 @@
         position: relative;
         display: grid;
         grid-template-columns: auto min-content;
-        align-items: center;
         column-gap: 20px;
+        align-items: center;
         width: calc(100% - 20px);
         padding: 10px;
         border-radius: 10px;
     }
 
-    /* .episode-list .item:hover{
-        box-shadow: inset 0 -2px var(--accent);
-    } */
-
     .episode-list .item:hover{
-        background: linear-gradient(to bottom right, var(--foreground), rgb(0, 0, 0, 0))
+        background: var(--foreground);
     }
 
     .episode-list .item.active{
@@ -138,12 +134,22 @@
     }
 
     .episode-list .title{
-        font-weight: 400;
+        color: lightgray;
+        font-weight: 300;
+    }
+
+    .episode-list .active .title{
+        color: white;
+        font-weight: 500;
     }
 
     .episode-list .count{
         font-size: 10pt;
-        font-weight: 300;
+        font-weight: 200;
         text-align: right;
+        padding: 1px 4px;
+        background: var(--background);
+        border: solid 1px var(--extra-foreground);
+        border-radius: 5px;
     }
 </style>

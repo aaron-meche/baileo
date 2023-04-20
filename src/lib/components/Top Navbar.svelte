@@ -1,6 +1,11 @@
 <script>
-    import { page } from '$app/stores'
-    import { storage } from '$lib/main'
+    import { 
+        page 
+    } from '$app/stores'
+
+    import { 
+        storage 
+    } from '$lib/main'
 
     function toggleMenu() {
         alert('Menu')

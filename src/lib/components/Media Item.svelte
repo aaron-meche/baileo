@@ -1,6 +1,15 @@
 <script>
-    import { mediaDB, storage } from '$lib/main'
-    export let title, type
+    export let title
+
+    import { 
+        mediaDB, 
+        storage 
+    } from '$lib/main'
+    
+    let type = mediaDB[title]['type']
+    
+    let caption = type
+
 
     let progress = 0
 
@@ -16,7 +25,7 @@
     <div class="progress" style='width: {progress}%'></div>
     <div class="info">
         <div class="title">{title}</div>
-        <div class="type">{type}</div>
+        <div class="type">{caption}</div>
     </div>
 </div>
 

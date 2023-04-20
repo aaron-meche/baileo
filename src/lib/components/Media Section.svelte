@@ -1,8 +1,13 @@
 <script>
-	import { mediaDB, handleMediaItemClick, uniqueID } from '$lib/main'
-	import MediaItem from '$lib/components/Media Item.svelte'
+	export let title, items
 
-    export let title, items
+	import { 
+		mediaDB, 
+		handleMediaItemClick,
+		uniqueID 
+	} from '$lib/main'
+
+	import MediaItem from '$lib/components/Media Item.svelte'
 
 	let ranId = uniqueID()
 
@@ -49,7 +54,7 @@
 	<div class="horizontal-scroll {ranId}" on:scroll={updateScroll}>
 		{#each items as elem}
 			<button on:click={() => handleMediaItemClick(elem)}>
-				<MediaItem title={elem} type={mediaDB[elem]['type']}/>
+				<MediaItem title={elem}/>
 			</button>
 		{/each}
 	</div>
