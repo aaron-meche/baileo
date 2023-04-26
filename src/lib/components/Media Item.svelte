@@ -10,7 +10,6 @@
     
     let caption = type
 
-
     let progress = 0
 
     if (storage.exists(title + ' progress')) {
