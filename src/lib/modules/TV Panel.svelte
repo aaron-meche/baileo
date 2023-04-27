@@ -12,24 +12,24 @@
     let maxSeason = mediaDB[media.title]['sTotal']
 
     function openEpisode(episode) {
+        storage.set(`${title} progress`, 0)
         storage.set(`${title} season`, media.season)
         storage.set(`${title} episode`, episode)
-        storage.set(`${title} progress`, 0)
-        window.open('/watch', '_self')
+        window.location.reload()
     }
 
     function previousSeason() {
+        storage.set(`${title} progress`, 0)
         storage.set(`${title} season`, Number(media.season) - 1)
         storage.set(`${title} episode`, 1)
-        storage.set(`${title} progress`, 0)
-        window.open('/watch', '_self')
+        window.location.reload()
     }
 
     function nextSeason() {
+        storage.set(`${title} progress`, 0)
         storage.set(`${title} season`, Number(media.season) + 1)
         storage.set(`${title} episode`, 1)
-        storage.set(`${title} progress`, 0)
-        window.open('/watch', '_self')
+        window.location.reload()
     }
 </script>
 
