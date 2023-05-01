@@ -20,11 +20,17 @@
 <!--  -->
 
 <div class="item" type='media-item'>
-    <img src='thumbnails/{title}.png' alt="Media Thumbnail">
-    <div class="progress" style='width: {progress}%'></div>
-    <div class="info">
-        <div class="title">{title}</div>
-        <div class="type">{caption}</div>
+    <div class="image" style='background-image: url("thumbnails/{title}.png")'>
+
+        <div class="overlay"></div>
+
+        <div class="info">
+            <div class="title">{title}</div>
+            <div class="type">{caption}</div>
+        </div>
+        
+        <div class="progress" style='width: {progress}%'></div>
+
     </div>
 </div>
 
@@ -32,49 +38,47 @@
 
 <style>
     .item{
+        width: clamp(225px, 25vw, 275px);
         position: relative;
         top: 0;
-        width: clamp(200px, 20vw, 250px);
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-right: 20px;
+        margin-right: 10px;
+        border: solid 3px rgb(0, 0, 0, 0);
+        border-radius: 10px;
+        overflow: hidden;
         cursor: default;
-        transition: top 300ms;
 	}
 
     @media screen and (hover: hover) {
         .item:hover{
-            position: relative;
-            top: -10px;
+            border-color: var(--accent);
         }
-        .item:hover:after{
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            width: 100%; 
-            background: var(--bold-gradient);
-            border-radius: 100vh;
-        }
-    }
-    
-    img{
-        width: 100%;
-        border-radius: 5px;
     }
 
-    .progress{
-        height: 3px;
-        width: 0%;
-        border-radius: 100vh;
-        background: var(--accent);
+    .image{
+        width: 100%;
+        aspect-ratio: 15 / 9;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .overlay{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to top, rgb(10, 10, 10, 0.75), rgb(15, 15, 15, 0) 75%);
     }
 
     .info{
-        display: grid;
-        padding: 10px 0;
-
+        position: absolute;
+        bottom: 0;
+        left: 5%;
+        width: 90%;
+        padding-bottom: 10px;
+        color: white;
     }
 
     .title{
@@ -85,6 +89,15 @@
 	.type{
         font-size: 10pt;
 		font-weight: 300;
-		color: gray;
+        color: lightgray;
 	}
+
+    .progress{
+        height: 5px;
+        width: 0%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: var(--bold-gradient);
+    }
 </style>
