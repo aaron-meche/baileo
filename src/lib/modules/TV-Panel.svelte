@@ -6,7 +6,7 @@
         media_controls,
         serverTypeConversion,
         storage 
-    } from '$lib/main'
+    } from '$lib/assets/main'
     
     let season = media.season
     let episode = media.episode
@@ -122,11 +122,11 @@
     }
 
     .episode-list .item:hover{
-        background: var(--foreground);
+        background: var(--light-gradient);
     }
 
     .episode-list .item.active{
-        background: var(--light-gradient);
+        background: var(--bold-gradient);
     }
 
     .episode-list .title{
@@ -140,11 +140,9 @@
 
     .episode-list .count{
         font-size: 10pt;
-        font-weight: 200;
-        text-align: right;
-        padding: 1px 4px;
-        background: var(--background);
-        border: solid 1px var(--extra-foreground);
-        border-radius: 5px;
+        font-weight: 400;
+        padding-left: 5px;
+        color: lightgray;
+        border-left: solid 2px lightgray;
     }
 </style>

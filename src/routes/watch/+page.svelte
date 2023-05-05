@@ -4,7 +4,7 @@
 		media_controls,
 		serverTypeConversion,
 		storage
-	} from '$lib/main'
+	} from '$lib/assets/main'
 
 	import TvModule from '$lib/modules/TV-Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
@@ -246,16 +246,7 @@
 <style>
 	.app{
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		margin: 20px;
-		column-gap: 20px;
-	}
-	
-	.side.content{
-		grid-column: 1 / 3;
-	}
-	.side.modules{
-		grid-column: 3 / 4;
+		margin: 25px;
 	}
 
 	@media screen and (max-width: 1000px) {
@@ -268,12 +259,7 @@
 		.horizontal-scroll{
 			padding-left: 20px;
 		}
-
-		.side.content{
-			grid-column: 1 / 4;
-		}
 		.side.modules{
-			grid-column: 1 / 4;
 			margin: 0 20px;
 		}
 	}
@@ -288,18 +274,18 @@
 	.module{
 		height: min-content;
 		overflow: hidden;
-		/* background: var(--foreground); */
-		box-shadow: inset 0 0 0 3px var(--foreground);
-
-		/* box-shadow: var(--neu-rest); */
+		background: var(--light-foreground);
 		border-radius: 10px;
 		padding: 20px;
 	}
 
 	video{
+		max-height: 75vh;
 		width: 100%;
 		display: block;
 		background: black;
+		box-shadow: var(--accent-shadow);
+		border-radius: 15px;
 	}
 
 	.more-menu{

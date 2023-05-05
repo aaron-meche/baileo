@@ -5,7 +5,7 @@
 
     import { 
         storage
-    } from '$lib/main'
+    } from '$lib/assets/main'
 
     function openPage(page) {
         window.open(page, '_self')

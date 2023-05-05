@@ -1,10 +1,18 @@
 <script>
-	import { 
+		import { 
 		mediaDB, 
-		storage 
-	} from '$lib/main'
+		storage
+	} from '$lib/assets/main'
 	
 	import MediaSection from '$lib/components/Media-Section.svelte'
+
+	function searchMedia(attr, val) {
+		let collection = []
+		for (let i = 0; i < Object.keys(mediaDB).length; i++) {
+			if (mediaDB[Object.keys(mediaDB)[i]][attr] == val) collection.push(Object.keys(mediaDB)[i])
+		}
+		return collection
+	}
 
 	function search() {
 		let string = document.querySelector('input').value.toLowerCase().replaceAll(' ', '')
@@ -21,6 +29,7 @@
 
 	function clearSearch() {
 		document.querySelector('input').value = ''
+		search()
 	}
 </script>
 
@@ -39,17 +48,19 @@
 	<img class='clear-button' on:click={clearSearch} src="icons/close.svg" alt="Icon">
 </div>
 
-<MediaSection title='TV Shows' query='type' condition='TV Show'/>
-<MediaSection title='Movies' query='type' condition='Movie'/>
+<div class="media-selection-pool">
+	<MediaSection title='TV Shows' items={searchMedia('type', 'TV Show')}/>
+	<MediaSection title='Movies' items={searchMedia('type', 'Movie')}/>
+</div>
 
 <!--  -->
 
 <style>
 	.search-wrapper{
 		width: fit-content;
-		box-shadow: var(--neu-rest);
-		border-radius: 10pt;
-		margin: 5pt auto;
+		border-bottom: solid 1px gray;
+		margin: auto;
+		margin-top: 25px;
 		display: grid;
 		grid-auto-flow: column;
 		align-items: center;

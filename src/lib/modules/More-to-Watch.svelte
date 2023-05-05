@@ -5,7 +5,7 @@
         mediaDB, 
         storage, 
         handleMediaItemClick 
-    } from '$lib/main'
+    } from '$lib/assets/main'
 
     let category = mediaDB[title]['cat']
     let pool = []

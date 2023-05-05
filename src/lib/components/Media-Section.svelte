@@ -4,14 +4,16 @@
 	import { 
 		mediaDB, 
 		handleMediaItemClick,
-		uniqueID 
-	} from '$lib/main'
+		uniqueID,
+		shuffle
+	} from '$lib/assets/main'
 
 	import MediaItem from '$lib/components/Media-Item.svelte'
 
 	let ranId = uniqueID()
-
 	let scrollFromLeft = 0
+
+	items = shuffle(items)
 
 	function updateScroll() {
 		scrollFromLeft = document.querySelector('.horizontal-scroll.' + ranId).scrollLeft
@@ -65,7 +67,7 @@
 <style>
 	section{
 		position: relative;
-		margin-top: 50px;
+		margin-top: 60px;
 	}
 
 	.top-bar{
@@ -107,6 +109,7 @@
 
 	.horizontal-scroll{
 		padding-left: 20px;
+		padding-right: 50px;
 		align-items: first baseline;
 	}
 </style>

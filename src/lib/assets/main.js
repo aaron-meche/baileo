@@ -99,6 +99,24 @@ export function serverTypeConversion(string) {
     return string
 }
 
+export function shuffle(array) {
+    let currentIndex = array.length,  randomIndex
+    
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+    
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex--
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]]
+    }
+    
+    return array;
+}
+
 export const mediaDB = {
     "Family Guy": {
         type: "TV Show", 
@@ -180,6 +198,7 @@ export const mediaDB = {
         s8: ["The List", "The Incentive", "Lotto", "Garden Party", "Spooked", "Doomsday", "Pam-s Replacement", "Gettysburg", "Mrs. California", "Christmas Wishes", "Trivia", "Pool Party", "Jury Duty", "Special Project", "Tallahassee", "After Hours", "Test the Store", "Last Day in Florida", "Get the Girl", "Welcome Party", "Angry Andy", "Fundraiser", "Turf War", "Free Family Portrait Studio"],
         s9: ["New Guys", "Roy-s Wedding", "Andy-s Ancestry", "Work Bus", "Here Comes Treble", "The Boat", "The Whale", "The Target", "Dwight Christmas", "Lice", "Suit Warehouse", "Customer Loyalty", "Junior Salesman", "Vandalism", "Couples Discount", "Moving On", "The Farm", "Promos", "Stairmageddon", "Paper Airplane", "Livin- The Dream", "AARM", "Finale"],
         color: "rgba(0, 51, 255)", 
+        "featured_favorites": "true"
     },
 
     "Wanda Vision": {
@@ -198,6 +217,7 @@ export const mediaDB = {
     "American Psycho": {
         type: "Movie", 
         cat: "drama", 
+        "featured_favorites": "true",
     },
 
     "Cars 2": {
@@ -218,6 +238,7 @@ export const mediaDB = {
     "Coraline": {
         type: "Movie", 
         cat: "animation", 
+        "featured_favorites": "true"
     },
 
     "Daddys Home 2": {
@@ -258,6 +279,7 @@ export const mediaDB = {
     "Hidden Figures": {
         type: "Movie", 
         cat: "drama", 
+        "featured_favorites": "true"
     },
 
     "Just Friends": {
@@ -378,6 +400,11 @@ export const mediaDB = {
     "The Wedding Planner": {
         type: "Movie", 
         cat: "drama", 
+    },
+
+    "Trick r Treat": {
+        type: "Movie",
+        cat: "drama",
     },
 
     "Vacation": {

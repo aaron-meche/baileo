@@ -2,7 +2,7 @@
 	import { 
 		mediaDB, 
 		storage
-	} from '$lib/main'
+	} from '$lib/assets/main'
 	
 	import MediaSection from '$lib/components/Media-Section.svelte'
 
@@ -38,6 +38,7 @@
 		<MediaSection title='Continue Watching' items={progressList}/>
 	{/if}
 
+	<!-- <MediaSection title='Featured Favorites' items={searchMedia('featured_favorites', 'true')}/> -->
 	<MediaSection title='Comedies' items={searchMedia('cat', 'comedy')}/>
 	<MediaSection title='Animations' items={searchMedia('cat', 'animation')}/>
 	<MediaSection title='Dramas' items={searchMedia('cat', 'drama')}/>

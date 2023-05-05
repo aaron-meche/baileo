@@ -11,14 +11,16 @@
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent: rgb(245, 205, 60);
-    --compliment: rgb(250, 40, 40);
-    --bold-gradient: linear-gradient(to bottom right, var(--accent), rgb(255, 100, 0), var(--compliment));
-    --light-gradient: linear-gradient(to bottom right, rgb(245, 205, 60, 0.25), rgb(255, 100, 0, 0.25), rgb(245, 40, 40, 0.25));
-    --accent-shadow: -5px -5px 15px rgb(245, 205, 60, 0.25), 5px 5px 15px rgb(245, 65, 65, 0.25);
-    --background: rgb(20, 20, 20);
-    --foreground: rgb(40, 40, 40);
-    --extra-foreground: rgb(75 75 75);
+    --accent: rgb(105, 90, 255);
+    --compliment: rgb(190, 0, 255);
+    --light-accent: rgb(76, 60, 255, 0.1);
+    --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
+    --light-gradient: linear-gradient(to bottom right, rgb(92, 28, 255, 0.25), rgb(155, 40, 250, 0.25));
+    --accent-shadow: -10px -10px 50px rgb(92, 28, 255, 0.15), 10px 10px 50px rgb(155, 40, 250, 0.15);
+    --background: rgb(17, 17, 25);
+    --light-foreground: rgb(22, 22, 30);
+    --foreground: rgb(27, 27, 35);
+    --extra-foreground: rgb(37 37 45);
 }
 
 body{

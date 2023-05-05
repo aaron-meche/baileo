@@ -4,16 +4,19 @@
     import { 
         mediaDB, 
         storage 
-    } from '$lib/main'
+    } from '$lib/assets/main'
     
     let type = mediaDB[title]['type']
-    
     let caption = type
-
     let progress = 0
+    let progress_label = ''
 
     if (storage.exists(title + ' progress')) {
         progress = storage.get(title + ' progress') * 100
+
+        if (type == 'TV Show') {
+            progress_label = ` - S${storage.get(title + ' season')}, E${storage.get(title + ' episode')}`
+        }
     }
 </script>
 
@@ -26,7 +29,7 @@
 
         <div class="info">
             <div class="title">{title}</div>
-            <div class="type">{caption}</div>
+            <div class="type">{caption} {progress_label}</div>
         </div>
         
         <div class="progress" style='width: {progress}%'></div>
@@ -88,7 +91,7 @@
 
 	.type{
         font-size: 10pt;
-		font-weight: 300;
+		font-weight: 400;
         color: lightgray;
 	}
 
