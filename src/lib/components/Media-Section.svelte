@@ -7,7 +7,7 @@
 		uniqueID 
 	} from '$lib/main'
 
-	import MediaItem from '$lib/components/Media Item.svelte'
+	import MediaItem from '$lib/components/Media-Item.svelte'
 
 	let ranId = uniqueID()
 

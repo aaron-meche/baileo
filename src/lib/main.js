@@ -1,23 +1,28 @@
+// Local storage data access
 export const storage = {
     set: function (location, value) {
         if (typeof window =="undefined") return
-        // 
+
         localStorage[location] = value
     },
     get: function (location) {
 		if (typeof window =="undefined") return
-        // 
+
 		return localStorage[location]
 	},
     exists: function (location) {
 		if (typeof window =="undefined") return
-        // 
+
         if (localStorage[location]) return true
 		else return false
 	},
+    confirm: function(location, value, callback) {
+        if (localStorage[location] == value) callback()
+        else alert('storage.confirm[val] error... reset ∞ loop detected')
+    },
     search: function (query) {
         if (typeof window =="undefined") return
-        // 
+
         let keys = Object.keys(localStorage)
         let set = []
         for (let i = 0; i < keys.length; i++) {
@@ -25,23 +30,19 @@ export const storage = {
         }
         return set
     },
-    reset: function() {
-        if (typeof window =="undefined") return
-        // 
-        localStorage.clear()
-    },
     delete: function (location) {
         if (typeof window =="undefined") return
-        // 
+
         if (this.exists(location)) localStorage.removeItem(location)
     },
     clear: function() {
         if (typeof window =="undefined") return
-        // 
+
         localStorage.clear()
     }
 }
 
+// Test if file server is allowed for connection through browser
 export function isServerConnected(url) {
     if (typeof window !== 'undefined') {
         var img = new Image();
@@ -50,11 +51,13 @@ export function isServerConnected(url) {
     }
 }
 
+// On home page, handle onclick for media item with title
 export function handleMediaItemClick(title) {
     storage.set('watching title', title)
     window.open('/watch/', '_self')
 }
 
+// Generate a uniqueID for class references
 export function uniqueID() {
     let lib = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9']
     let id = 'unique-id_'
@@ -64,6 +67,31 @@ export function uniqueID() {
     return id
 }
 
+// Control media (next/previous episode & season, etc...)
+export const media_controls = {
+    next_episode: function() {
+        let seasonLength = mediaDB[media.title]['s' + media.season].length
+        let seasonMax = mediaDB[media.title]['sTotal']
+        storage.set(`${media.title} progress`, 0)
+
+        if (media.episode == seasonLength) {
+            if (media.season == seasonMax) {
+                actions.markAsWatched()
+            }
+            else {
+                storage.set(`${media.title} season`, Number(media.season) + 1)
+                storage.set(`${media.title} episode`, 1)
+                window.location.reload()
+            }
+        }
+        else {
+            storage.set(`${media.title} episode`, Number(media.episode) + 1)
+            window.location.reload()
+        }
+    }
+}
+
+// Converts special characters to universal characters to communicate to file server
 export function serverTypeConversion(string) {
     string = string.replaceAll('-', "'")
     string = string.replaceAll('()', "?")

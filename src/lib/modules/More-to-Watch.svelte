@@ -1,6 +1,11 @@
 <script>
-    import { mediaDB, storage, handleMediaItemClick } from '$lib/main'
     export let title
+
+    import { 
+        mediaDB, 
+        storage, 
+        handleMediaItemClick 
+    } from '$lib/main'
 
     let category = mediaDB[title]['cat']
     let pool = []

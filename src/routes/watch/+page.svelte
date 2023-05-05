@@ -1,16 +1,17 @@
 <script>
 	import { 
 		mediaDB, 
+		media_controls,
 		serverTypeConversion,
 		storage
 	} from '$lib/main'
 
-	import TvModule from '$lib/modules/TV Panel.svelte'
-	import MoreToWatchModule from '$lib/modules/More to Watch.svelte'
-	import BoldButton from '$lib/partials/Bold Button.svelte'
-	import Toggle from '$lib/partials/Toggle.svelte'
+	import TvModule from '$lib/modules/TV-Panel.svelte'
+	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
+	import BoldButton from '$lib/components/Bold-Button.svelte'
+	import Toggle from '$lib/components/Toggle.svelte'
 	// import ToggleCarousel from '$lib/partials/Toggle Carousel.svelte'
-    import VideoPlayer from '$lib/components/Video Player.svelte';
+    import VideoPlayer from '$lib/components/Video-Player.svelte';
 
 	let media = {}
 
@@ -107,7 +108,7 @@
 		nextEpisode: function() {
 			let seasonLength = mediaDB[media.title]['s' + media.season].length
 			let seasonMax = mediaDB[media.title]['sTotal']
-			storage.set(`${media.title} progress`, 0)
+			storage.set(`${media.title} progress`, '0')
 
 			if (media.episode == seasonLength) {
 				if (media.season == seasonMax) {
@@ -115,13 +116,18 @@
 				}
 				else {
 					storage.set(`${media.title} season`, Number(media.season) + 1)
-					storage.set(`${media.title} episode`, 1)
+					storage.set(`${media.title} episode`, '1')
+					storage.confirm(`${media.title} progress`, '0', () => {
+						window.location.reload()
+					})
 					window.location.reload()
 				}
 			}
 			else {
 				storage.set(`${media.title} episode`, Number(media.episode) + 1)
-				window.location.reload()
+				storage.confirm(`${media.title} progress`, '0', () => {
+					window.location.reload()
+				})
 			}
 		},
 		nextShuffleEpisode: function() {
@@ -129,8 +135,10 @@
 			let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
 			storage.set(`${media.title} season`, randomSeason)
 			storage.set(`${media.title} episode`, randomEpisode)
-			storage.set(`${media.title} progress`, 0)
-			window.location.reload()
+			storage.set(`${media.title} progress`, '0')
+			storage.confirm(`${media.title} progress`, '0', () => {
+				window.location.reload()
+			})
 		},
 		download: function() {
 			var link = document.createElement("a")
@@ -281,8 +289,10 @@
 		height: min-content;
 		overflow: hidden;
 		/* background: var(--foreground); */
-		box-shadow: var(--neu-rest);
-		border-radius: 20px;
+		box-shadow: inset 0 0 0 3px var(--foreground);
+
+		/* box-shadow: var(--neu-rest); */
+		border-radius: 10px;
 		padding: 20px;
 	}
 

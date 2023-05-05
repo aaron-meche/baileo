@@ -6,7 +6,7 @@
         isServerConnected 
     } from '$lib/main'
 
-    import TopNavbar from '$lib/components/Top Navbar.svelte'
+    import TopNavbar from '$lib/components/Top-Navbar.svelte'
 
     function protectStoragePref(attr, val) {
         if (!storage.exists(attr)) {

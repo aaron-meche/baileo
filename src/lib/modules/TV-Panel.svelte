@@ -1,42 +1,50 @@
 <script>
+    export let title, media
+
     import { 
         mediaDB, 
+        media_controls,
         serverTypeConversion,
         storage 
     } from '$lib/main'
-    export let title, media
-
+    
     let season = media.season
     let episode = media.episode
 
     let maxSeason = mediaDB[media.title]['sTotal']
 
     function openEpisode(episode) {
-        storage.set(`${title} progress`, 0)
+        storage.set(`${title} progress`, '0')
         storage.set(`${title} season`, media.season)
         storage.set(`${title} episode`, episode)
-        window.location.reload()
+        storage.confirm(`${media.title} progress`, '0', () => {
+			window.location.reload()
+		})
     }
 
     function previousSeason() {
-        storage.set(`${title} progress`, 0)
+        storage.set(`${title} progress`, '0')
         storage.set(`${title} season`, Number(media.season) - 1)
-        storage.set(`${title} episode`, 1)
-        window.location.reload()
+        storage.set(`${title} episode`, '1')
+        storage.confirm(`${media.title} progress`, '0', () => {
+			window.location.reload()
+		})
     }
 
     function nextSeason() {
-        storage.set(`${title} progress`, 0)
+        storage.set(`${title} progress`, '0')
         storage.set(`${title} season`, Number(media.season) + 1)
-        storage.set(`${title} episode`, 1)
-        window.location.reload()
+        storage.set(`${title} episode`, '1')
+        storage.confirm(`${media.title} progress`, '0', () => {
+			window.location.reload()
+		})
     }
 </script>
 
 <!--  -->
 
 <div class="top-bar">
-    <div class="title">Season {media.season} <span style='font-size: 10pt; font-weight: 300; color: lightgray;'>of {maxSeason}</span></div>
+    <div class="title">Season {media.season} <span style='font-size: 10pt; color: gray;'>of {maxSeason}</span></div>
 
     <div class="navigation">
         {#if media.season !== 1}
@@ -123,12 +131,11 @@
 
     .episode-list .title{
         color: lightgray;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     .episode-list .active .title{
         color: white;
-        font-weight: 500;
     }
 
     .episode-list .count{

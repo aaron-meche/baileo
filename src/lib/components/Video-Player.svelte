@@ -1,6 +1,10 @@
 <script>
-	import { storage, mediaDB } from '$lib/main'
     export let source, glow
+
+	import { 
+		storage, 
+		mediaDB 
+	} from '$lib/main'
 
 	const restTime = 2
 	let clock = restTime

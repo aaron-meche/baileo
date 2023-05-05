@@ -4,7 +4,7 @@
 		storage
 	} from '$lib/main'
 	
-	import MediaSection from '$lib/components/Media Section.svelte'
+	import MediaSection from '$lib/components/Media-Section.svelte'
 
 	function searchMedia(attr, val) {
 		let collection = []
