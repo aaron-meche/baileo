@@ -45,7 +45,7 @@
         position: relative;
         top: 0;
         margin-right: 10px;
-        border: solid 3px rgb(0, 0, 0, 0);
+        border: solid 4px rgb(0, 0, 0, 0);
         border-radius: 10px;
         overflow: hidden;
         cursor: default;
@@ -96,7 +96,7 @@
 	}
 
     .progress{
-        height: 5px;
+        height: 4px;
         width: 0%;
         position: absolute;
         bottom: 0;

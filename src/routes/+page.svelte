@@ -5,6 +5,7 @@
 	} from '$lib/assets/main'
 	
 	import MediaSection from '$lib/components/Media-Section.svelte'
+	import Footer from '$lib/components/Footer.svelte';
 
 	function searchMedia(attr, val) {
 		let collection = []
@@ -48,6 +49,8 @@
 	<MediaSection title='TV Shows' items={searchMedia('type', 'TV Show')}/>
 	<MediaSection title='Movies' items={searchMedia('type', 'Movie')}/>
 </div>
+
+<Footer/>
 
 <!--  -->
 

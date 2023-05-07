@@ -167,12 +167,14 @@
 <div class="app">
 
 	<div class="side content">
-		<!-- {#if storage.get('is touch screen') == 'true'} -->
-			<!-- svelte-ignore a11y-media-has-caption -->
-			<video class='{statePref['glow'] == 'true' ? 'glow' : ''}' src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
-		<!-- {:else} -->
-			<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}' glow={statePref['glow']}/> -->
-		<!-- {/if} -->
+		<div class="video-wrapper">
+			<!-- {#if storage.get('is touch screen') == 'true'} -->
+				<!-- svelte-ignore a11y-media-has-caption -->
+				<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+			<!-- {:else} -->
+				<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}'/> -->
+			<!-- {/if} -->
+		</div>
 
 		<!-- Description Belt -->
 		<div class="more-menu">
@@ -279,13 +281,18 @@
 		padding: 20px;
 	}
 
-	video{
+	.video-wrapper{
 		max-height: 75vh;
+		box-shadow: var(--accent-shadow);
+		background: black;
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	video{
+		height: 100%;
 		width: 100%;
 		display: block;
-		background: black;
-		box-shadow: var(--accent-shadow);
-		border-radius: 15px;
 	}
 
 	.more-menu{

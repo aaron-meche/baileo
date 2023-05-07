@@ -10,34 +10,15 @@
     function openPage(page) {
         window.open(page, '_self')
     }
-
-    const menu = {
-        open: function() {
-            document.querySelector('.menu-wrapper').style.display = 'block'
-        },
-        close: function() {
-            document.querySelector('.menu-wrapper').style.display = 'none'
-        },
-        startPomodoro: function() {
-            alert('Feature Inactive')
-        },
-        action: function() {
-            alert('inactive')
-        },
-        clearData: function() {
-            storage.clear()
-            window.open('/', '_self')
-        },
-    }
 </script>
 
 <!--  -->
 
 <div class='wrapper'>
-    <button on:click={() => openPage('/')} class="item logo">
+    <!-- <button on:click={() => openPage('/')} class="item logo">
         <img src="logo.png" alt="Icon">
         baileo
-    </button>
+    </button> -->
 
     <button on:click={() => openPage('/')} class="item {$page.url.pathname === '/' ? 'active' : ''}">
         <img src="icons/home.svg" alt="Icon">

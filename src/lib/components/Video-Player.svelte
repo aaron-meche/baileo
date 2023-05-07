@@ -1,5 +1,5 @@
 <script>
-    export let source, glow
+    export let source
 
 	import { 
 		storage, 
@@ -11,7 +11,7 @@
 
 	setInterval(() => {
 		if (clock <= 0) {
-			document.querySelector('.overlay').style.opacity = '0'
+			// document.querySelector('.overlay').style.opacity = '0'
 			document.querySelector('.overlay').style.cursor = 'none'
 		}
 		else {
@@ -66,18 +66,16 @@
 
 <!--  -->
 
-<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-<!-- <div class="player"> -->
-<div class="player" on:mousemove={mouseMove} on:mouseout={mouseOut} on:dblclick={toggleFullScreen}>
-	<!-- svelte-ignore a11y-media-has-caption -->
-	<video class='{glow == 'true' ? 'glow' : ''}' src={source} autoplay></video>
+<!-- svelte-ignore a11y-media-has-caption -->
+<video src={source} autoplay></video>
 
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="overlay" on:click={togglePlay}>
-		<div class="information">
-			<div class="title">{media.title}</div>
-			<div class="caption">{media.description}</div>
-		</div>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<!-- <div class="overlay" on:click={togglePlay} on:mousemove={mouseMove} on:mouseout={mouseOut} on:dblclick={toggleFullScreen}>
+	<div class="information">
+
+		<div class="title">{media.title}</div>
+		<div class="caption">{media.description}</div>
 
 		<div class="progress">
 			<div class="bar">
@@ -88,45 +86,33 @@
 				<div class="future">10:00</div>
 			</div>
 		</div>
+
 	</div>
-</div>
+</div> -->
 
 <!--  -->
 
 <style>
-	.player{
+	.wrapper{
 		position: relative;
-		background: black;
-	}
-
-	video{
-		height: 100%;
-		width: 100%;
-		display: block;
-		z-index: 5;
-	}
-	video.glow{
-		box-shadow: var(--accent-shadow);
 	}
 
 	.overlay{
-		height: calc(100% - 50px);
-		width: calc(100% - 50px);
+		height: 100%;
+		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
 		transition: opacity 500ms;
 		background: linear-gradient(to top, rgb(0, 0, 0, 0.75), rgb(0, 0, 0, 0));
 		z-index: 10;
-		display: grid;
-		grid-template-rows: auto min-content;
-		row-gap: 15px;
-		align-items: end;
-		padding: 25px;
 	}
 
 	.information{
-		opacity: 0;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: red;
 		transition: opacity 250ms ease-in-out 250ms;
 	}
 	
