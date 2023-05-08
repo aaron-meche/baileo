@@ -28,7 +28,7 @@
         /* row-gap: 10px; */
 		padding: 25px;
 		margin-top: 100px;
-        background: linear-gradient(to bottom, var(--foreground), rgb(0, 0, 0, 0));
+        background: linear-gradient(to bottom, var(--fg), rgb(0, 0, 0, 0));
         color: lightgray;
 	}
 
@@ -58,7 +58,7 @@
     }
 
     button:hover{
-        background: var(--bold-gradient);
+        background: var(--b-gradient);
         color: white;
     }
 </style>

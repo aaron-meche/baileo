@@ -101,6 +101,6 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        background: var(--bold-gradient);
+        background: var(--b-gradient);
     }
 </style>

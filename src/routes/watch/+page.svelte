@@ -170,7 +170,7 @@
 {#if typeof window !== 'undefined'}
 <div class="app">
 
-	<div class="side content">
+	<!-- <div class="side content"> -->
 		<div class="video-wrapper">
 			<!-- {#if storage.get('is touch screen') == 'true'} -->
 				<!-- svelte-ignore a11y-media-has-caption -->
@@ -222,11 +222,11 @@
 				Mark as Complete
 			</button>
 		</div>
-	</div>
+	<!-- </div> -->
 
 
 
-	<div class="side modules">
+	<!-- <div class="side modules"> -->
 		{#if media.type == 'TV Show'}
 			<div class="module tv-episode-module">
 				<TvModule title={media.title} media={media}/>
@@ -236,7 +236,7 @@
 		<div class="module">
 			<MoreToWatchModule title={media.title}/>
 		</div>
-	</div>
+	<!-- </div> -->
 
 </div>
 {/if}
@@ -248,6 +248,7 @@
 		display: grid;
 		width: clamp(500px, 75vw, 100vw);
 		margin: 25px auto;
+		row-gap: 25px;
 	}
 
 	@media screen and (max-width: 1000px) {
@@ -255,28 +256,18 @@
 			width: 100%;
 			margin: 0;
 		}
-		.more-menu{
+		.app > *{
 			margin: 0 20px;
 		}
-		.horizontal-scroll{
-			padding-left: 20px;
+		.app > .video-wrapper{
+			margin: 0;
 		}
-		.side.modules{
-			margin: 0 20px;
-		}
-	}
-
-	.side{
-		height: min-content;
-		display: grid;
-		row-gap: 25px;
-		padding-bottom: 25px;
 	}
 
 	.module{
 		height: min-content;
 		overflow: hidden;
-		background: var(--light-foreground);
+		background: var(--fg);
 		border-radius: 10px;
 		padding: 20px;
 	}
@@ -284,7 +275,8 @@
 	.video-wrapper{
 		max-height: 70vh;
 		background: black;
-		box-shadow: var(--accent-shadow);
+		box-shadow: var(--l-shadow);
+		border-radius: 10px;
 		overflow: hidden;
 	}
 
@@ -300,12 +292,14 @@
 		grid-template-columns: 1fr 1fr;
 		column-gap: 10px;
 	}
+
 	.title{
 		font-size: 15pt;
 		font-weight: 500;
 	}
+	
 	.description{
-		font-size: 13pt;
+		font-size: 12pt;
 		font-weight: 400;
 		color: gray;
 	}
@@ -320,10 +314,12 @@
 		font-size: 10pt;
 		font-weight: 500;
 		text-transform: uppercase;
-		margin-right: 25px;
+		padding: 5px 10px;
+		margin-right: 10px;
+		border-radius: 5px;
 	}
 	.action-buttons button:hover{
-		box-shadow: inset 0 -1px var(--accent);
+		background: var(--l-gradient);
 	}
 	.action-buttons img{
 		height: 20px;

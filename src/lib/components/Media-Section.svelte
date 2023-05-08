@@ -94,7 +94,7 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: var(--foreground);
+		background: var(--fg);
 		border-radius: 100vh;
 		cursor: pointer;
 	}

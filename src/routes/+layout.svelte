@@ -27,6 +27,7 @@
         let backdrop = document.querySelector('.backdrop')
 
         side_menu.style.transform = 'translate(100%, 0)'
+        side_menu.style.opacity = '1'
         backdrop.style.display = 'block'
     }
 
@@ -36,6 +37,7 @@
         let backdrop = document.querySelector('.backdrop')
 
         side_menu.style.transform = 'translate(0, 0)'
+        side_menu.style.opacity = '0'
         backdrop.style.display = 'none'
     }
 
@@ -97,22 +99,26 @@
         width: 300px;
         max-width: 90vw;
         z-index: 10;
-        background: var(--transparent-foreground);
+        background: var(--transparent-fg);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -moz-backdrop-filter: blur(15px);
-        box-shadow: 0 0 25px var(--foreground);
-        transition: transform 300ms;
+        box-shadow: 0 0 25px var(--fg);
+        opacity: 0;
+        transition: transform 300ms, opacity 300ms;
     }
 
     .top-bar{
+        position: sticky;
+        top: 0;
         display: grid;
         grid-template-columns: min-content min-content;
         column-gap: 5px;
         padding: 10px 25px;
-        background: var(--foreground);
+        background: var(--fg);
         box-shadow: 0 0 25px black;
         font-size: 0;
+        z-index: 8;
     }
 
     .top-bar > *{
@@ -121,7 +127,7 @@
     }
 
     .top-bar > *:hover{
-        background: var(--light-gradient);
+        background: var(--l-gradient);
     }
 
     .top-bar img{

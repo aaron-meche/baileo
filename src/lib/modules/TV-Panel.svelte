@@ -95,7 +95,7 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: var(--foreground);
+		background: var(--fg);
 		border-radius: 100vh;
 		cursor: pointer;
 	}
@@ -122,11 +122,11 @@
     }
 
     .episode-list .item:hover{
-        background: var(--light-gradient);
+        background: var(--l-gradient);
     }
 
     .episode-list .item.active{
-        background: var(--bold-gradient);
+        background: var(--b-gradient);
     }
 
     .episode-list .title{

@@ -137,13 +137,13 @@
         width: fit-content;
         max-width: 75vw;
         padding: 25px;
-        background: var(--background);
+        background: var(--bg);
         box-shadow: 0 0 100px black;
     }
 
     .menu .space{
         height: 1px;
-        background: var(--foreground);
+        background: var(--fg);
         margin: 10px 0;
     }
 
@@ -157,6 +157,6 @@
     }
 
     .menu button:hover{
-        background: var(--foreground);
+        background: var(--fg);
     }
 </style>

@@ -11,23 +11,32 @@
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent: rgb(105, 90, 255);
-    --compliment: rgb(190, 0, 255);
-    --light-accent: rgb(76, 60, 255, 0.1);
-    --light-gradient: linear-gradient(to bottom right, rgb(92, 28, 255, 0.25), rgb(155, 40, 250, 0.25));
-    --bold-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
-    --accent-shadow: -10px -10px 50px rgb(92, 28, 255, 0.25), 10px 10px 50px rgb(155, 40, 250, 0.25);
-    --background: rgb(17, 17, 25);
-    --light-foreground: rgb(22, 22, 30);
-    --foreground: rgb(27, 27, 35);
-    --transparent-foreground: rgb(27, 27, 35, 0.9);
-    --extra-foreground: rgb(37 37 45);
+    --accent-rgb: 105, 90, 255;
+    --compliment-rgb: 155, 40, 250;
+
+    --accent: rgb(var(--accent-rgb));
+    --l-accent: rgb(var(--accent-rgb), 0.1);
+
+    --compliment: rgb(var(--compliment-rgb));
+    --l-compliment: rgb(var(--compliment-rgb), 0.1);
+
+    --l-gradient: linear-gradient(to bottom right, rgb(var(--accent-rgb), 0.25), rgb(var(--compliment-rgb), 0.25));
+    --b-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
+
+    --l-shadow: 0 0 50px rgb(var(--compliment-rgb), 0.25);
+    --b-shadow: -5px -5px 50px rgb(var(--compliment-rgb), 0.5), 5px 5px 50px rgb(var(--accent-rgb), 0.5);
+
+    --bg: rgb(25, 20, 35);
+
+    --fg: rgb(35, 30, 45);
+    --transparent-fg: rgb(35, 30, 45, 0.9);
+    --extra-fg: rgb(45, 40, 55);
 }
 
 body{
     margin: 0;
     color: white;
-    background: var(--background);
+    background: var(--bg);
     font-family: BaileyScript;
     font-size: 12pt;
     font-weight: 400;

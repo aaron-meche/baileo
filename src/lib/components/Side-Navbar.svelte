@@ -15,11 +15,6 @@
 <!--  -->
 
 <div class='wrapper'>
-    <!-- <button on:click={() => openPage('/')} class="item logo">
-        <img src="logo.png" alt="Icon">
-        baileo
-    </button> -->
-
     <button on:click={() => openPage('/')} class="item {$page.url.pathname === '/' ? 'active' : ''}">
         <img src="icons/home.svg" alt="Icon">
         Home
@@ -41,6 +36,7 @@
 <style>
     .wrapper{
         display: grid;
+        row-gap: 5px;
         padding: 25px;
     }
 
@@ -57,15 +53,16 @@
     }
 
     .item:hover{
-        background: var(--light-gradient);
+        background: var(--l-gradient);
     }
 
     .item.active{
-        background: var(--bold-gradient);
+        background: var(--b-gradient);
+        font-weight: 500;
     }
 
     .item.active:hover{
-        background: var(--bold-gradient);
+        background: var(--b-gradient);
     }
 
     .item img{

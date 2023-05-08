@@ -65,7 +65,7 @@
 <style>
     .list{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
 
     .module-title{
@@ -80,13 +80,12 @@
         grid-template-columns: 1fr 2fr;
         column-gap: 20px;
         align-items: center;
-        padding: 10px;
-        border-radius: 5px;
-        outline: solid 1pt lime;
+        padding: 15px;
+        border-radius: 10px;
     }
 
     .media-item:hover{
-        background: var(--light-gradient);
+        background: var(--l-gradient);
     }
 
     .title{
