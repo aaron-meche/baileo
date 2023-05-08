@@ -20,6 +20,7 @@
     --background: rgb(17, 17, 25);
     --light-foreground: rgb(22, 22, 30);
     --foreground: rgb(27, 27, 35);
+    --transparent-foreground: rgb(27, 27, 35, 0.9);
     --extra-foreground: rgb(37 37 45);
 }
 

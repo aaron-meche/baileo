@@ -158,7 +158,11 @@
 <!--  -->
 
 <svelte:head>
-	<title>{media.episodeDisplayTitle}</title>
+	{#if media.type == 'TV Show'}
+		<title>{media.episodeDisplayTitle}</title>
+	{:else}
+		<title>{media.title}</title>
+	{/if}
 </svelte:head>
 
 <!--  -->
@@ -213,12 +217,6 @@
 				<Toggle active={statePref['autoplay']}/>
 			</button>
 
-			<!-- <button on:click={() => carouselStatePref('autoplay buffer')}>
-				<img src="icons/infinity.svg" alt="Icon">
-				Autoplay Buffer
-				<ToggleCarousel active={statePref['autoplay']}/>
-			</button> -->
-
 			<button on:click={actions.markAsWatched}>
 				<img src="icons/complete.svg" alt="Icon">
 				Mark as Complete
@@ -248,11 +246,13 @@
 <style>
 	.app{
 		display: grid;
-		margin: 25px;
+		width: clamp(500px, 75vw, 100vw);
+		margin: 25px auto;
 	}
 
 	@media screen and (max-width: 1000px) {
 		.app{
+			width: 100%;
 			margin: 0;
 		}
 		.more-menu{
@@ -282,10 +282,9 @@
 	}
 
 	.video-wrapper{
-		max-height: 75vh;
-		box-shadow: var(--accent-shadow);
+		max-height: 70vh;
 		background: black;
-		border-radius: 10px;
+		box-shadow: var(--accent-shadow);
 		overflow: hidden;
 	}
 

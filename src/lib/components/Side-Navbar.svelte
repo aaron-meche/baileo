@@ -42,7 +42,6 @@
     .wrapper{
         display: grid;
         padding: 25px;
-        row-gap: 5px;
     }
 
     .item{
@@ -50,11 +49,15 @@
         align-items: center;
         grid-template-columns: min-content auto;
         column-gap: 10px;
-        padding: 10px 25px;
+        padding: 10px 20px;
         border-radius: 10px;
         font-size: 12pt;
-        font-weight: 500;
+        font-weight: 400;
         cursor: pointer;
+    }
+
+    .item:hover{
+        background: var(--light-gradient);
     }
 
     .item.active{
@@ -65,25 +68,8 @@
         background: var(--bold-gradient);
     }
 
-    .item:hover{
-        background: var(--light-gradient);
-    }
-
     .item img{
         height: 25px;
         display: inline-block;
-    }
-
-    .logo{
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-        color: var(--accent);
-        font-weight: 600;
-        border-radius: 0;
-        border-bottom: solid 1px gray;
-    }
-
-    .logo:hover{
-        background: none;
     }
 </style>

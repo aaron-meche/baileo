@@ -21,22 +21,22 @@
     default_storage_value('autoplay buffer', 30)
     default_storage_value('menu status', 'true')
 
-    function toggle_menu() {
+    function open_menu() {
         let app = document.querySelector('.app')
         let side_menu = document.querySelector('.side-bar')
+        let backdrop = document.querySelector('.backdrop')
 
-        if (storage.get('menu status') == 'true') {
-            app.style.gridTemplateColumns = '0 100vw'
-            side_menu.style.visibility = 'hidden'
-            storage.set('menu status', 'false')
-        }
-        else {
-            app.style.gridTemplateColumns = '300px calc(100vw - 300px)'
-            setTimeout(() => {
-                side_menu.style.visibility = 'visible'
-            }, 400);
-            storage.set('menu status', 'true')
-        }
+        side_menu.style.transform = 'translate(100%, 0)'
+        backdrop.style.display = 'block'
+    }
+
+    function close_menu() {
+        let app = document.querySelector('.app')
+        let side_menu = document.querySelector('.side-bar')
+        let backdrop = document.querySelector('.backdrop')
+
+        side_menu.style.transform = 'translate(0, 0)'
+        backdrop.style.display = 'none'
     }
 
     function open_page(page) {
@@ -49,13 +49,15 @@
 <!-- <div class="top-navbar">   <TopNavbar/>   </div> -->
 
 <div class="app">  
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="backdrop" on:click={close_menu}></div>
     <div class="side-bar">
         <SideNavbar/>
     </div> 
     
     <div class="content">
         <div class="top-bar">
-            <button on:click={toggle_menu}>
+            <button on:click={open_menu}>
                 <img src="icons/menu.svg" alt="Icon">
             </button>
 
@@ -74,30 +76,33 @@
 <style>
     .app{
         position: relative;
-        display: grid;
-        grid-template-columns: 300px calc(100vw - 300px);
-        transition: grid-template-columns 400ms;
+    }
+
+    .backdrop{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 9;
+        background: rgb(0, 0, 0, 0.5);
+        display: none;
     }
 
     .side-bar{
-        position: sticky;
+        position: fixed;
         top: 0;
+        right: 100vw;
         height: 100vh;
-        width: 100%;
-        background: var(--foreground);
-        box-shadow: 0 0 25px black;
-    }
-
-    @media screen and (max-width: 1000px) {
-        .app{
-            grid-template-columns: 100vw;
-        }
-
-        .side-bar{
-            position: fixed;
-            top: 0;
-            left: -100vw;
-        }
+        width: 300px;
+        max-width: 90vw;
+        z-index: 10;
+        background: var(--transparent-foreground);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        -moz-backdrop-filter: blur(15px);
+        box-shadow: 0 0 25px var(--foreground);
+        transition: transform 300ms;
     }
 
     .top-bar{

@@ -19,7 +19,7 @@
 
     if (pool.length < 3) concentratePool = pool
     else {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < pool.length - 1; i++) {
             let ranItem = pool[Math.floor(Math.random() * pool.length)]
             if (concentratePool.includes(ranItem)) {
                 i--
@@ -63,6 +63,11 @@
 <!--  -->
 
 <style>
+    .list{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    }
+
     .module-title{
         text-align: center;
         font-size: 15pt;
@@ -72,11 +77,12 @@
 
     .media-item{
         display: grid;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: 1fr 2fr;
         column-gap: 20px;
         align-items: center;
         padding: 10px;
         border-radius: 5px;
+        outline: solid 1pt lime;
     }
 
     .media-item:hover{
