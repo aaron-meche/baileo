@@ -108,7 +108,7 @@
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -moz-backdrop-filter: blur(15px);
-        box-shadow: 0 0 25px var(--fg);
+        box-shadow: 0 0 25px black;
         opacity: 0;
         transition: transform 300ms, opacity 300ms;
     }
@@ -122,7 +122,7 @@
         padding: 10px 20px;
         background: var(--fg);
         z-index: 8;
-        box-shadow: 0 0 25px var(--fg);
+        box-shadow: 0 0 25px black;
         font-size: 0;
     }
 
