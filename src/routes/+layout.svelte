@@ -8,6 +8,7 @@
 
     import TopNavbar from '$lib/components/Top-Navbar.svelte'
     import SideNavbar from '$lib/components/Side-Navbar.svelte'
+    import Pomodoro from '$lib/components/Pomodoro.svelte'
 
     function default_storage_value(attr, val) {
         if (!storage.exists(attr)) {
@@ -71,6 +72,10 @@
 
         <slot/>
     </div>
+
+    <!-- <div class="pomodoro">
+        <Pomodoro/>
+    </div> -->
 </div>
 
 <!--  -->
@@ -98,8 +103,8 @@
         height: 100vh;
         width: 300px;
         max-width: 90vw;
-        z-index: 10;
         background: var(--transparent-fg);
+        z-index: 10;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -moz-backdrop-filter: blur(15px);
@@ -114,11 +119,11 @@
         display: grid;
         grid-template-columns: min-content min-content;
         column-gap: 5px;
-        padding: 10px 25px;
+        padding: 10px 20px;
         background: var(--fg);
-        box-shadow: 0 0 25px black;
-        font-size: 0;
         z-index: 8;
+        box-shadow: 0 0 25px var(--fg);
+        font-size: 0;
     }
 
     .top-bar > *{
@@ -142,5 +147,15 @@
         color: var(--accent);
         font-size: 12pt;
         font-weight: 500;
+    }
+
+    .pomodoro{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 10;
+        background: rgb(0, 0, 0, 0.5);
     }
 </style>
