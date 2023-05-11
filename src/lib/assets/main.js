@@ -1,15 +1,15 @@
 // Local storage data access
 export const storage = {
+    get: function (location) {
+        if (typeof window =="undefined") return
+
+        return localStorage[location]
+    },
     set: function (location, value) {
         if (typeof window =="undefined") return
 
         localStorage[location] = value
     },
-    get: function (location) {
-		if (typeof window =="undefined") return
-
-		return localStorage[location]
-	},
     exists: function (location) {
 		if (typeof window =="undefined") return
 
@@ -39,6 +39,24 @@ export const storage = {
         if (typeof window =="undefined") return
 
         localStorage.clear()
+    },
+    session: {
+        get: function (location) {
+            if (typeof window =="undefined") return
+    
+            return sessionStorage[location]
+        },
+        set: function (location, value) {
+            if (typeof window =="undefined") return
+    
+            sessionStorage[location] = value
+        },
+        exists: function (location) {
+            if (typeof window =="undefined") return
+    
+            if (sessionStorage[location]) return true
+            else return false
+        },
     }
 }
 
