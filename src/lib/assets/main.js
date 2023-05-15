@@ -5,21 +5,25 @@ export const storage = {
 
         return localStorage[location]
     },
+
     set: function (location, value) {
         if (typeof window =="undefined") return
 
         localStorage[location] = value
     },
+
     exists: function (location) {
 		if (typeof window =="undefined") return
 
         if (localStorage[location]) return true
 		else return false
 	},
+
     confirm: function(location, value, callback) {
         if (localStorage[location] == value) callback()
         else alert('storage.confirm[val] error... reset ∞ loop detected')
     },
+
     search: function (query) {
         if (typeof window =="undefined") return
 
@@ -30,27 +34,32 @@ export const storage = {
         }
         return set
     },
+
     delete: function (location) {
         if (typeof window =="undefined") return
 
         if (this.exists(location)) localStorage.removeItem(location)
     },
+
     clear: function() {
         if (typeof window =="undefined") return
 
         localStorage.clear()
     },
+
     session: {
         get: function (location) {
             if (typeof window =="undefined") return
     
             return sessionStorage[location]
         },
+
         set: function (location, value) {
             if (typeof window =="undefined") return
     
             sessionStorage[location] = value
         },
+        
         exists: function (location) {
             if (typeof window =="undefined") return
     
@@ -113,6 +122,7 @@ export const media_controls = {
 export function serverTypeConversion(string) {
     string = string.replaceAll('-', "'")
     string = string.replaceAll('()', "?")
+    string = string.replaceAll('_', ".")
 
     return string
 }
@@ -200,6 +210,18 @@ export const mediaDB = {
         s3: ["The Empty Hearse", "The Sign of Three", "His Last Vow"],
         s4: ["The Six Thatchers", "The Lying Detective", "The Final Problem"],
         color: "rgba(255, 49, 49, 1)", 
+    },
+
+    "Superstore": {
+        type: "TV Show",
+        cat: "comedy",
+        sTotal: 6,
+        s1: ["Pilot","Magazine Profile","Shots and Salsa","Mannequin","Shoplifter","Secret Shopper","Color Wars","Wedding Day Sale","All-Nighter","Demotion","Labor"],
+        s2: ["Olympics","Strike","Back to Work","Guns, Pills and Birds","Spokesman Scandal","Dog Adoption Day","Halloween Theft","Election Day","Seasonal Help","Black Friday","Lost and Found","Rebranding","Ladies- Lunch","Valentine-s Day","Super Hot Store","Wellness Fair","Integrity Award","Mateo-s Last Day","Glenn-s Kids","Spring Cleaning","Cheyenne-s Wedding","Tornado"],
+        s3: ["Grand Re-Opening","Brett-s Dead","Part-Time Hires","Workplace Bullying","Sal-s Dead","Health Fund","Christmas Eve","Viral Video","Golden Globes Party","High Volume Store","Angels and Mermaids","Groundhog Day","Video Game Release","Safety Training","Amnesty","Target","District Manager","Local Vendors Day","Lottery","Gender Reveal","Aftermath","Town Hall"],
+        s4: ["Back to School","Baby Shower","Toxic Workplace","Costume Competition","Delivery Day","Maternity Leave","New Initiative","Managers- Conference","Shadowing Glenn","Cloud 9 Academy","Steps Challenge","Blizzard","Love Birds","Minor Crimes","Salary","Easter","Quincea\u00f1era","Cloud Green","Scanners","#Cloud9Fail","Sandra-s Fight","Employee Appreciation Day"],
+        s5: ["Cloud 9.0","Testimonials","Forced Hire","Mall Closing","Self-Care","Trick-or-Treat","Shoplifter Rehab","Toy Drive","Curbside Pickup","Negotiations","Lady Boss","Myrtle","Favoritism","Sandra-s Wedding","Cereal Bar","Employee App","Zephra Cares","Playdate","Carol-s Back","Customer Safari","California (Part 1)"],
+        s6: ["Essential","California (Part 2)","Floor Supervisor","Prize Wheel","Hair Care Products","Biscuit","The Trough","Ground Rules","Conspiracy","Depositions","Deep Cleaning","Customer Satisfaction","Lowell Anderson","Perfect Store","All Sales Final"],
     },
 
     "The Office": {
