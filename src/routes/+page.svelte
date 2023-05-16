@@ -1,7 +1,8 @@
 <script>
 	import { 
 		mediaDB, 
-		storage
+		storage,
+		db
 	} from '$lib/assets/main'
 	
 	import MediaSection from '$lib/components/Media-Section.svelte'
@@ -23,6 +24,10 @@
 			progressList[i] = progressList[i].replace(' progress', '')
 		}
 	}
+
+	db.listen('data', val => {
+		console.log(val)
+	})
 </script>
 
 <!--  -->

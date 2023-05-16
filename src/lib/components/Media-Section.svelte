@@ -39,21 +39,9 @@
 <!--  -->
 
 <section>
-	<div class="top-bar">
-		<div class="title">{title}</div>
+	<div class="title">{title}</div>
 
-		<div class="navigation">
-			{#if scrollFromLeft > 0}
-				<button on:click={scrollLeft} class="left"><img src="icons/left.svg" alt="Icon"></button>
-			{:else}
-				<button class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
-			{/if}
-
-			<button on:click={scrollRight} class="right"><img src="icons/right.svg" alt="Icon"></button>
-		</div>
-	</div>
-
-	<div class="horizontal-scroll {ranId}" on:scroll={updateScroll}>
+	<div class="media-grid" on:scroll={updateScroll}>
 		{#each items as elem}
 			<button on:click={() => handleMediaItemClick(elem)}>
 				<MediaItem title={elem}/>
@@ -66,51 +54,26 @@
 
 <style>
 	section{
-		position: relative;
-		margin-top: 50px;
-		border-radius: 10px;
-	}
-
-	.top-bar{
 		display: grid;
-		grid-template-columns: auto min-content;
-		align-items: end;
-		margin: 0 20px;
-		margin-bottom: 10px;
+		row-gap: 20px;
+		padding: 20px;
+		margin: 20px;
+		border-radius: 10px;
+		margin-bottom: 75px;
+		box-shadow: var(--neu-rest);
 	}
 
 	.title{
+		width: fit-content;
 		font-size: 12pt;
 		font-weight: 700;
 		text-transform: uppercase;
+		color: var(--accent);
 	}
-	
-	.navigation{
+
+	.media-grid{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		column-gap: 10px;
-	}
-
-	.navigation button{
-		height: 20px;
-		padding: 5px;
-		aspect-ratio: 1 / 1;
-		background: var(--fg);
-		border-radius: 100vh;
-		cursor: pointer;
-	}
-	.navigation button.inactive{
-		opacity: 0.25;
-	}
-
-	.navigation img{
-		height: 100%;
-		display: block;
-	}
-
-	.horizontal-scroll{
-		padding-left: 20px;
-		padding-right: 50px;
-		align-items: first baseline;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: 40px 20px;
 	}
 </style>

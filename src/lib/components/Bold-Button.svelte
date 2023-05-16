@@ -21,15 +21,14 @@
 		font-weight: 500;
 		text-transform: uppercase;
 		transition: box-shadow 200ms;
-        padding: 5pt 10pt;
-        border-radius: 5pt;
-		background: var(--b-gradient);
+        padding: 10px;
+        border-radius: 5px;
+		background: var(--fg);
 	}
 	.button:hover{
-		text-decoration: underline;
-		text-decoration-color: white;
-		text-underline-offset: 3pt;
+		color: var(--accent);
 	}
+
 	img{
 		height: 15pt;
 		margin-right: 5pt;

@@ -5,32 +5,17 @@
 
 :root{
     --neu-rest: 
-        inset 1px 1px 2px rgba(255, 255, 255, 0.2),
-        inset -2px -2px 4px rgba(0, 0, 0);
+        -4px -4px 12px rgba(255, 255, 255, 0.1),
+        4px 4px 12px rgba(0, 0, 0);
     --neu-active: 
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
         inset 4px 4px 4px rgba(0, 0, 0);
 
-    --accent-rgb: 105, 90, 255;
-    --compliment-rgb: 155, 40, 250;
+    --bg: #191822;
+    --fg: #282530;
 
-    --accent: rgb(var(--accent-rgb));
-    --l-accent: rgb(var(--accent-rgb), 0.1);
-
-    --compliment: rgb(var(--compliment-rgb));
-    --l-compliment: rgb(var(--compliment-rgb), 0.1);
-
-    --l-gradient: linear-gradient(to bottom right, rgb(var(--accent-rgb), 0.25), rgb(var(--compliment-rgb), 0.25));
-    --b-gradient: linear-gradient(to bottom right, var(--accent), var(--compliment));
-
-    --l-shadow: 0 0 50px rgb(var(--compliment-rgb), 0.25);
-    --b-shadow: -5px -5px 50px rgb(var(--compliment-rgb), 0.5), 5px 5px 50px rgb(var(--accent-rgb), 0.5);
-
-    --bg: rgb(25, 20, 35);
-
-    --fg: rgb(35, 30, 45);
-    --transparent-fg: rgb(35, 30, 45, 0.9);
-    --extra-fg: rgb(45, 40, 55);
+    --accent: #f9da51;
+    --compliment: #bf432a;
 }
 
 body{
