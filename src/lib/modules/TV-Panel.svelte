@@ -118,14 +118,16 @@
         align-items: center;
         width: calc(100% - 20px);
         padding: 10px;
+        border-radius: 5px;
     }
 
     .episode-list .item:hover{
-        box-shadow: inset 2px 0 var(--accent);
+        background: var(--fg);
     }
-
-    .episode-list .item.active, .episode-list .item:hover{
-        color: var(--accent)
+    
+    .episode-list .item.active{
+        background: var(--fg);
+        color: var(--accent);
     }
 
     .episode-list .title{

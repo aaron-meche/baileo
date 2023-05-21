@@ -66,11 +66,11 @@
 
     .list .item:hover{
         background: var(--fg);
-        color: var(--accent);
     }
-
+    
     .list .item.active{
         background: var(--fg);
+        color: var(--accent);
     }
 
     .list .item img{

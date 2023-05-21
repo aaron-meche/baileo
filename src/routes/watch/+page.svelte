@@ -271,7 +271,8 @@
 	}
 
 	.module{
-		background: var(--fg);
+		/* background: var(--fg); */
+		border: solid 5px var(--fg);
 		border-radius: 10px;
 		padding: 20px;
 	}
