@@ -65,7 +65,7 @@
 <style>
     .list{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        row-gap: 5px;
     }
 
     .module-title{
@@ -81,11 +81,16 @@
         column-gap: 20px;
         align-items: center;
         padding: 15px;
-        border-radius: 10px;
     }
 
     .media-item:hover{
-        background: var(--l-gradient);
+        box-shadow: inset 2px 0 var(--accent);
+        color: var(--accent);
+    }
+
+    img{
+        width: 100%;
+        border-radius: 5px;
     }
 
     .title{
@@ -97,10 +102,5 @@
         font-size: 10pt;
 		font-weight: 400;
 		color: gray;
-    }
-    
-    img{
-        width: 100%;
-        border-radius: inherit;
     }
 </style>

@@ -95,7 +95,7 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: var(--fg);
+		background: rgb(75 75 75);
 		border-radius: 100vh;
 		cursor: pointer;
 	}
@@ -118,24 +118,18 @@
         align-items: center;
         width: calc(100% - 20px);
         padding: 10px;
-        border-radius: 10px;
     }
 
     .episode-list .item:hover{
-        background: var(--l-gradient);
+        box-shadow: inset 2px 0 var(--accent);
     }
 
-    .episode-list .item.active{
-        background: var(--b-gradient);
+    .episode-list .item.active, .episode-list .item:hover{
+        color: var(--accent)
     }
 
     .episode-list .title{
-        color: lightgray;
         font-weight: 400;
-    }
-
-    .episode-list .active .title{
-        color: white;
     }
 
     .episode-list .count{

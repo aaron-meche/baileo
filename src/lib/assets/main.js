@@ -45,14 +45,23 @@ export const db = {
 
         set(ref(database, location), value)
     },
-    listen: (location, callback) => {
+    listen: (location) => {
         const database = getDatabase()
 
         onValue(ref(database, location), (snapshot) => {
             callback(snapshot.val())
-        }, (error) => {
-            console.error(error)
-        })
+        }, error => console.error(error))
+    },
+    exists: async (location) => {
+        const database = getDatabase()
+
+        try {
+            const snapshot = await get(ref(database, location));
+            return snapshot.exists()
+        } catch (error) {
+            console.error('Error checking location existence:', error)
+            return false
+        }
     },
 }
 
@@ -140,16 +149,6 @@ export function isServerConnected(url) {
 export function handleMediaItemClick(title) {
     storage.set('watching title', title)
     window.open('/watch/', '_self')
-}
-
-// Generate a uniqueID for class references
-export function uniqueID() {
-    let lib = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9']
-    let id = 'unique-id_'
-    for (let i = 0; i < 10; i++) {
-        id += lib[Math.floor(Math.random() * lib.length)]
-    }
-    return id
 }
 
 // Control media (next/previous episode & season, etc...)
@@ -335,13 +334,13 @@ export const mediaDB = {
 
     "Coraline": {
         type: "Movie", 
-        cat: "animation", 
+        cat: "animation horror", 
         "featured_favorites": "true"
     },
 
     "Daddys Home 2": {
         type: "Movie", 
-        cat: "christmas", 
+        cat: "christmas comedy", 
     },
 
     "Despicable Me": {
@@ -371,13 +370,17 @@ export const mediaDB = {
 
     "Elf": {
         type: "Movie", 
-        cat: "christmas", 
+        cat: "christmas comedy", 
     },
 
     "Hidden Figures": {
         type: "Movie", 
-        cat: "drama", 
-        "featured_favorites": "true"
+        cat: "drama",
+    },
+
+    "It": {
+        type: "Movie",
+        cat: "horror"
     },
 
     "Just Friends": {
@@ -478,6 +481,11 @@ export const mediaDB = {
     "The Incredible Hulk": {
         type: "Movie", 
         cat: "marvel", 
+    },
+
+    "The Intern": {
+        type: "Movie",
+        cat: "drama"
     },
 
     "The Notebook": {

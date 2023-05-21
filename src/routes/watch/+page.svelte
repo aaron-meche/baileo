@@ -8,10 +8,9 @@
 
 	import TvModule from '$lib/modules/TV-Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
-	import BoldButton from '$lib/components/Bold-Button.svelte'
-	import Toggle from '$lib/components/Toggle.svelte'
-	// import ToggleCarousel from '$lib/partials/Toggle Carousel.svelte'
-    import VideoPlayer from '$lib/components/Video-Player.svelte';
+	import BoldButton from '$lib/trinkets/Bold-Button.svelte'
+	import Toggle from '$lib/trinkets/Toggle.svelte'
+    import VideoPlayer from '$lib/components/Video-Player.svelte'
 
 	let media = {}
 
@@ -170,7 +169,7 @@
 {#if typeof window !== 'undefined'}
 <div class="app">
 
-	<!-- <div class="side content"> -->
+	<div class="side content">
 		<div class="video-wrapper">
 			<!-- {#if storage.get('is touch screen') == 'true'} -->
 				<!-- svelte-ignore a11y-media-has-caption -->
@@ -222,11 +221,11 @@
 				Mark as Complete
 			</button>
 		</div>
-	<!-- </div> -->
+	</div>
 
 
 
-	<!-- <div class="side modules"> -->
+	<div class="side modules">
 		{#if media.type == 'TV Show'}
 			<div class="module tv-episode-module">
 				<TvModule title={media.title} media={media}/>
@@ -236,7 +235,7 @@
 		<div class="module">
 			<MoreToWatchModule title={media.title}/>
 		</div>
-	<!-- </div> -->
+	</div>
 
 </div>
 {/if}
@@ -246,42 +245,45 @@
 <style>
 	.app{
 		display: grid;
-		width: clamp(500px, 75vw, 100vw);
-		margin: 25px auto;
-		row-gap: 25px;
+		grid-template-columns: 2fr 1fr;
+		gap: 20px;
+		padding: 20px;
+	}
+
+	.side{
+		height: fit-content;
+	}
+
+	.side.content{
+		display: grid;
+		row-gap: 20px;
+	}
+
+	.side.modules{
+		display: grid;
+		row-gap: 20px;
 	}
 
 	@media screen and (max-width: 1000px) {
 		.app{
-			width: 100%;
-			margin: 0;
-		}
-		.app > *{
-			margin: 0 20px;
-		}
-		.app > .video-wrapper{
-			margin: 0;
+			grid-template-columns: 1fr;
 		}
 	}
 
 	.module{
-		height: min-content;
-		overflow: hidden;
 		background: var(--fg);
 		border-radius: 10px;
 		padding: 20px;
 	}
 
 	.video-wrapper{
-		max-height: 70vh;
-		background: black;
-		box-shadow: var(--l-shadow);
+		position: relative;
+		height: fit-content;
 		border-radius: 10px;
 		overflow: hidden;
 	}
 
 	video{
-		height: 100%;
 		width: 100%;
 		display: block;
 	}
@@ -307,20 +309,20 @@
 	.action-buttons{
 		cursor: default;
 	}
+	
 	.action-buttons button{
-		position: relative;
 		display: inline-flex;
 		align-items: center;
 		font-size: 10pt;
 		font-weight: 500;
 		text-transform: uppercase;
-		padding: 5px 10px;
-		margin-right: 10px;
-		border-radius: 5px;
+		margin-right: 30px;
 	}
+
 	.action-buttons button:hover{
-		background: var(--l-gradient);
+		color: var(--accent);
 	}
+
 	.action-buttons img{
 		height: 20px;
 		margin-right: 5px;

@@ -5,7 +5,7 @@
 
 :root{
     --neu-rest: 
-        -4px -4px 12px rgba(255, 255, 255, 0.1),
+        -4px -4px 12px rgba(255, 255, 255, 0.2),
         4px 4px 12px rgba(0, 0, 0);
     --neu-active: 
         inset -1px -1px 2px rgba(255, 255, 255, 0.4),
@@ -13,6 +13,7 @@
 
     --bg: #191822;
     --fg: #282530;
+    --e-fg: #302d3a;
 
     --accent: #f9da51;
     --compliment: #bf432a;
@@ -47,5 +48,9 @@ img{
 }
 
 button{
+    all: unset;
+}
+
+input{
     all: unset;
 }

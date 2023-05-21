@@ -1,0 +1,17 @@
+{
+  "name": "baileo",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "firebase": "^9.22.0",
+    "@sveltejs/kit": "^1.5.0",
+    "firebase-frameworks": "^0.10.1",
+    "firebase-functions": "^4.3.0",
+    "firebase-admin": "^11.0.1"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "18"
+  }
+}

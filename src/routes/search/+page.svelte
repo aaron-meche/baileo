@@ -19,7 +19,7 @@
 		document.querySelectorAll('[type="media-item"]').forEach((elem) => {
 			let content = elem.innerText.toLowerCase().replaceAll(' ', '')
 			if (content.includes(string)) {
-				elem.style.display = 'inline-block'
+				elem.style.display = 'grid'
 			}
 			else {
 				elem.style.display = 'none'
@@ -58,18 +58,19 @@
 <style>
 	.search-wrapper{
 		width: fit-content;
-		border-bottom: solid 1px gray;
+		background: var(--fg);
+		border-radius: 10px;
 		margin: auto;
-		margin-top: 25px;
+		margin-top: 20px;
 		display: grid;
 		grid-auto-flow: column;
 		align-items: center;
 	}
 
 	img{
-		height: 15pt;
+		height: 20px;
 		display: inline-block;
-		margin: 10pt;
+		margin: 15px;
 		cursor: default;
 	}
 

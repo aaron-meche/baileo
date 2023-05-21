@@ -5,13 +5,16 @@
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"push": "vite build && firebase deploy"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-node": "^1.2.4",
+		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.5.0",
 		"svelte": "^3.54.0",
-		"vite": "^4.2.0"
+		"vite": "^4.3.0"
 	},
 	"type": "module",
 	"dependencies": {
