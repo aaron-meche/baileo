@@ -15,66 +15,54 @@
 <!--  -->
 
 <div class="wrapper">
-    <div class="title">Page Navigation</div>
-    <div class="list">
-        <button class="item {$page.url.pathname === '/' ? 'active' : ''}" on:click={() => open_page('/')}><img src="icons/home.svg" alt="Icon"> Home</button>
-        <button class="item {$page.url.pathname === '/search' ? 'active' : ''}" on:click={() => open_page('/search')}><img src="icons/search.svg" alt="Icon"> Search</button>
-        <button class="item {$page.url.pathname === '/watch' ? 'active' : ''}" on:click={() => open_page('/watch')}><img src="icons/play.svg" alt="Icon"> Watch</button>
-    </div>
+    <button class="item {$page.url.pathname === '/' ? 'active' : ''}" on:click={() => open_page('/')}><img src="icons/home.svg" alt="Icon"> Home</button>
+    <button class="item {$page.url.pathname === '/search' ? 'active' : ''}" on:click={() => open_page('/search')}><img src="icons/search.svg" alt="Icon"> Search</button>
+    <button class="item {$page.url.pathname === '/watch' ? 'active' : ''}" on:click={() => open_page('/watch')}><img src="icons/play.svg" alt="Icon"> Watch</button>
 
-    <div class="title">Quick Actions</div>
-    <div class="list">
-        <button class="item {$page.url.pathname === '/data-link' ? 'active' : ''}" on:click={() => open_page('/data-link')}><img src="icons/link.svg" alt="Icon"> Data Link</button>
-        <!-- <button class="item {$page.url.pathname === '/apps/notes' ? 'active' : ''}" on:click={() => open_page('/apps/notes')}><img src="icons/note.svg" alt="Icon"> Notes</button> -->
-    </div>
+    {#if storage.read('user_id') !== undefined}
+        <button class="item" on:click={() => auth.logallout()}><img src="icons/trash.svg" alt="Icon">Clear All Logins</button>
+        <button class="item" on:click={() => auth.logout()}><img src="icons/close.svg" alt="Icon">Log Out</button>
+    {/if}
 </div>
 
 <!--  -->
 
 <style>
     .wrapper{
-        max-height: calc(100vh - 40px);
-        width: clamp(25vw, 400px, calc(100vw - 40px));
-        padding: 20px;
+        height: 100%;
         margin: auto;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        background: var(--bg);
+        background: var(--e-fg);
+        border-radius: 5px;
         overflow: auto;
         cursor: default;
-    }
-
-    .title{
-        font-size: 10pt;
-        font-weight: 500;
-        text-align: center;
-        color: var(--accent);
-        padding: 10px;
+        box-shadow: 0 5px 20px black;
     }
 
     .list{
         display: grid;
     }
 
-    .list .item{
+    .item{
         display: flex;
         align-items: center;
+        width: 100%;
         padding: 10px;
-        border-radius: 5px;
         cursor: pointer;
     }
 
-    .list .item:hover{
-        background: var(--fg);
-    }
-    
-    .list .item.active{
-        background: var(--fg);
+    .item:hover{
         color: var(--accent);
     }
 
-    .list .item img{
+    .item img{
         height: 20px;
         margin-right: 10px;
     }
+
+    /* .divider{
+        height: 2px;
+        width: 100%;
+        margin: 5px auto;
+        background: var(--bg);
+    } */
 </style>

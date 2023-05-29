@@ -1,72 +1,87 @@
 import { 
-    getDatabase,
-    ref,
-    set,
-    onValue,
-    get,
-} from "firebase/database"
+    initializeApp 
+} from 'firebase/app';
 
 import { 
-    getAuth, 
-    signInWithRedirect,
-    GoogleAuthProvider 
-} from "firebase/auth"
+    getDatabase, 
+    ref,
+    onValue, 
+    set 
+} from 'firebase/database';
 
-export const auth = {
-    google: () => {
-        const provider = new GoogleAuthProvider()
-        const auth = getAuth()
+const firebaseConfig = {
+  apiKey: "AIzaSyDDSQmLL5A756k_vWlc4Zk_ysZ5hd8cB-k",
+  authDomain: "baileo-4009d.firebaseapp.com",
+  databaseURL: "https://baileo-4009d-default-rtdb.firebaseio.com",
+  projectId: "baileo-4009d",
+  storageBucket: "baileo-4009d.appspot.com",
+  messagingSenderId: "308681359309",
+  appId: "1:308681359309:web:b57d82dc080ba772af4e84"
+}
 
-        signInWithRedirect(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
+const app = initializeApp(firebaseConfig)
+const database = getDatabase()
+
+
+
+// (NEW) Firebase Database
+export const db = {
+    read: (path, callback) => {
+        const dbRef = ref(database, path)
+        
+        onValue(dbRef, (snapshot) => {
+            const value = snapshot.val()
+            callback(value)
+        }, {
+            onlyOnce: true
+        })
+    },
+    write: (path, data, callback) => {
+        const dbRef = ref(database, path)
+
+        set(dbRef, data)
+            .then(() => {
+                if (callback) {
+                callback();
+                }
+            })
+            .catch((error) => {
+                console.error('Error writing to the database:', error);
             });
     }
 }
 
-export const db = {
-    write: (location, value) => {
-        const database = getDatabase()
 
-        set(ref(database, location), value)
-    },
-    listen: (location) => {
-        const database = getDatabase()
-
-        onValue(ref(database, location), (snapshot) => {
-            callback(snapshot.val())
-        }, error => console.error(error))
-    },
-    exists: async (location) => {
-        const database = getDatabase()
-
-        try {
-            const snapshot = await get(ref(database, location));
-            return snapshot.exists()
-        } catch (error) {
-            console.error('Error checking location existence:', error)
-            return false
-        }
-    },
-}
 
 // Local storage data access
 export const storage = {
+    read: function (location) {
+        if (typeof window =="undefined") return
+
+        if (localStorage[location] !== undefined) {
+            return localStorage[location]
+        } else {
+            return false
+        }
+
+
+    },
+
+    write: function (location, value) {
+        if (typeof window =="undefined") return
+
+        localStorage[location] = value
+    },
+
+    clear: function() {
+        if (typeof window =="undefined") return
+
+        localStorage.clear()
+    },
+
+
+
+    // OLD: OUTDATED
     get: function (location) {
         if (typeof window =="undefined") return
 
@@ -108,12 +123,6 @@ export const storage = {
         if (this.exists(location)) localStorage.removeItem(location)
     },
 
-    clear: function() {
-        if (typeof window =="undefined") return
-
-        localStorage.clear()
-    },
-
     session: {
         get: function (location) {
             if (typeof window =="undefined") return
@@ -136,6 +145,8 @@ export const storage = {
     }
 }
 
+
+
 // Test if file server is allowed for connection through browser
 export function isServerConnected(url) {
     if (typeof window !== 'undefined') {
@@ -145,11 +156,18 @@ export function isServerConnected(url) {
     }
 }
 
+
+
 // On home page, handle onclick for media item with title
 export function handleMediaItemClick(title) {
-    storage.set('watching title', title)
-    window.open('/watch/', '_self')
+    storage.write('watching title', title)
+    
+    db.write(`users/${storage.read('username')}/data/watching`, title, () => {
+        window.open('/watch', '_self')
+    })
 }
+
+
 
 // Control media (next/previous episode & season, etc...)
 export const media_controls = {
@@ -175,6 +193,8 @@ export const media_controls = {
     }
 }
 
+
+
 // Converts special characters to universal characters to communicate to file server
 export function serverTypeConversion(string) {
     string = string.replaceAll('-', "'")
@@ -184,24 +204,34 @@ export function serverTypeConversion(string) {
     return string
 }
 
+
+
+// Shuffle Array
 export function shuffle(array) {
-    let currentIndex = array.length,  randomIndex
-    
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-    
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex)
-        currentIndex--
-    
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]]
+    let length = array.length
+    let canvas = array
+
+    const genRanNum = (max_num) => {
+        return Math.floor(Math.random() * max_num)
     }
-    
-    return array;
+
+    for (let i = 0; i < length; i++) {
+        let rannum = genRanNum(length),
+            currentItem = canvas[i],
+            randomItem  = canvas[rannum]
+
+        if (currentItem == randomItem) continue
+
+        canvas[i] = randomItem
+        canvas[rannum] = currentItem
+    }
+
+    return canvas
 }
 
+
+
+// Media JSON Database
 export const mediaDB = {
     "Family Guy": {
         type: "TV Show", 
@@ -225,7 +255,6 @@ export const mediaDB = {
         s16: ["Emmy-Winning Episode", "Foxx in the Men House", "Nanny Goats", "Follow The Money", "Three Doctors", "The D in Apartment 23", "Petey IV", "Crimes and Meg-s Demeanor", "Don-t Be a Dickens at Christmas", "Boy (Dog) Meets Girl", "Dog Bites Bear", "Send In Stewie, Please", "V Is For Mystery", "Veteran Guy", "The Woof of Wall Street", "Family Guy Through the Years", "Switch the Flip", "HTTPete", "The Unkindest Cut", "Are You There God() It-s Me, Peter"],
         s17: ["Married... with Cancer", "Dead Dog Walking", "Pal Stewie", "Big Trouble in Little Quahog", "Regarding Carter", "Stand by Meg", "The Griffin Winter Games", "Con Heiress", "Pawtucket Pete", "Hefty Shades of Gray", "Trump Guy", "Bri, Robot", "Trans-Fat", "Family Guy Lite", "No Giggity, No Doubt", "You Can-t Handle the Booth!", "Island Adventure", "Throw It Away", "Girl, Internetted", "Adam West High"],
         s18: ["Yacht Rocky", "Bri-da", "Absolutely Babulous", "Disney the Reboot", "Cat Fight", "Peter and Lois- Wedding", "Heart Burn", "Shanksgiving", "Christmas is Coming", "Connies Celica", "Short Cuts", "Undergrounded", "Rich Old Stewie", "The Movement", "Baby Stewie", "Start Me Up", "Coma Guy", "Better Off Meg", "Holly Bibble", "Movin in Principal Shepherd-s Song"],
-        color: "rgba(227, 45, 255, 1)", 
     },
 
     "Frenemies": {
@@ -233,7 +262,6 @@ export const mediaDB = {
         cat: "comedy", 
         sTotal: 1,
         s1: ["Trisha-s New Boyfriend Is Hila-s Brother", "Trisha-s Obsession With Jewish People", "Possible Our Last Episode", "Is Trisha Smarter Than A 5th Grader()", "Trisha & Ethan Have a Huge Fight & She Storms Out", "Trisha & Ethan Reconcile... Kind of", "Couples Therapy With Dr. Drew", "Trisha & Ethan Fight About The Election", "Cheese Mukbang Disaster", "Trisha vs Charli & Dixie D-Amelio", "Trisha & Ethan Do Goat Yoga & Carpool Karaoke", "Trisha Was Kidnapped At Gunpoint", "Trisha Quits the Podcast & Storms Out", "The Fate Of Frenemies With Dr. Drew", "We Made The Only Honest Award Show - Introducing The Steamies", "Frenemies Is Under Attack", "Trisha Was Bullied and It-s NOT Okay!", "Pop Culture Trivia War & Friendship With Shane Is Over", "The David Dobrik & Jason Nash Episodes", "Newlywed Game (Trish & Moses vs Ethan & Hila)", "Erased David Dobrik Footage Proves Trisha Was Right All Along", "Ethan & Trisha Do An Athletics Competition", "David Dobrik & James Charles Drama Apocalypse", "Jewish Trivia Contest, David Dobrik & Scotty Sire", "David Dobrik-s Lawyers Go After Trisha & Cooking Competiton", "Responding To Jeff Wittek & New David Dobrik Footage", "Jeff Wittek Interview Fallout", "Responding To David Dobrik-s Apology", "Trisha-s Epic Passover Dinner At Ethan-s", "Trisha & Ethan Do Oddly Satisfying Trends", "Khloe Kardashian Photo Drama & Pizza Eating Contest", "James Charles Entire Channel Demonetized by YouTube", "Jeff Wittek, David Dobrik, & TRIVIA!", "Trisha-s Birthday Celebration", "[VLOG 1] Trisha & Ethan Go To Disneyland For Her Birthday", "Ethan Embarrassed Himself In Front Of Trisha-s Family", "Trisha & Ethan Got Bullied & Are Fighting Back", "Taking Trisha To Meme School", "[VLOG 2] Trisha & Ethan Hijack A Hollywood Tour Bus", "PREGNANCY ANNOUNCEMENT!", "Talking About Gabbie Hanna"],
-        color: "rgba(200, 0 225, 1)", 
     },
 
     "Parks and Recreation": {
@@ -247,7 +275,6 @@ export const mediaDB = {
         s5: ["Ms. Knope Goes to Washington", "Soda Tax", "How a Bill Becomes a Law", "Sex Education", "Halloween Suprise", "Ben-s Parents", "Leslie v April", "Pawnee Commons", "Ron and Diane", "Two Parties", "Women in Garbage", "Ann-s Decision", "Emergency Response", "Leslie and Ben", "Correspondent-s Lunch", "Bailout", "Partridge", "Animal Control", "Article Two", "Jerry-s Retirement", "Swing Vote", "Are You Better Off"],
         s6: ["London", "The Pawnee-Eagleton Tip Off Classic", "Doppelgängers", "Gin it Up!", "Filibuster", "Recall Vote", "Fluoride", "The Cones of Dunshire", "Second Chunce", "New Beginnings", "Farmers Market", "Ann and Chris", "Anniversaries", "The Wall", "New Slogan", "Galentine-s Day", "Prom", "Flu Season 2", "One in 8,000", "Moving Up"],
         s7: ["2017", "Ron and Jammy", "William Henry Harrison", "Leslie and Ron", "Gryzzlbox", "Save JJ-s", "Donna and Joe", "Ms. Ludgate-Dwyer Goes to Washington", "Pie-Mary", "The Johnny Karate Super Awesome Musical Explosion Show", "Two Funerals", "One Last Ride"],
-        color: "rgba(188, 230, 149, 1)", 
     },
 
     "Squid Game": {
@@ -255,7 +282,6 @@ export const mediaDB = {
         cat: "drama", 
         sTotal: 1,
         s1: ["Red Light", "Green Light", "Hell", "The Man with the Umbrella", "Stick to the Team", "A Fair World", "Gganbu", "VIPS", "Front Man", "One Lucky Day"],
-        color: "rgba(164, 79, 255, 1)", 
     },
 
     "Sherlock": {
@@ -266,20 +292,19 @@ export const mediaDB = {
         s2: ["A Scandal in Belgravia", "The Hounds of Baskerville", "The Reichenbach Fall"],
         s3: ["The Empty Hearse", "The Sign of Three", "His Last Vow"],
         s4: ["The Six Thatchers", "The Lying Detective", "The Final Problem"],
-        color: "rgba(255, 49, 49, 1)", 
     },
 
-    "Superstore": {
-        type: "TV Show",
-        cat: "comedy",
-        sTotal: 6,
-        s1: ["Pilot","Magazine Profile","Shots and Salsa","Mannequin","Shoplifter","Secret Shopper","Color Wars","Wedding Day Sale","All-Nighter","Demotion","Labor"],
-        s2: ["Olympics","Strike","Back to Work","Guns, Pills and Birds","Spokesman Scandal","Dog Adoption Day","Halloween Theft","Election Day","Seasonal Help","Black Friday","Lost and Found","Rebranding","Ladies- Lunch","Valentine-s Day","Super Hot Store","Wellness Fair","Integrity Award","Mateo-s Last Day","Glenn-s Kids","Spring Cleaning","Cheyenne-s Wedding","Tornado"],
-        s3: ["Grand Re-Opening","Brett-s Dead","Part-Time Hires","Workplace Bullying","Sal-s Dead","Health Fund","Christmas Eve","Viral Video","Golden Globes Party","High Volume Store","Angels and Mermaids","Groundhog Day","Video Game Release","Safety Training","Amnesty","Target","District Manager","Local Vendors Day","Lottery","Gender Reveal","Aftermath","Town Hall"],
-        s4: ["Back to School","Baby Shower","Toxic Workplace","Costume Competition","Delivery Day","Maternity Leave","New Initiative","Managers- Conference","Shadowing Glenn","Cloud 9 Academy","Steps Challenge","Blizzard","Love Birds","Minor Crimes","Salary","Easter","Quincea\u00f1era","Cloud Green","Scanners","#Cloud9Fail","Sandra-s Fight","Employee Appreciation Day"],
-        s5: ["Cloud 9.0","Testimonials","Forced Hire","Mall Closing","Self-Care","Trick-or-Treat","Shoplifter Rehab","Toy Drive","Curbside Pickup","Negotiations","Lady Boss","Myrtle","Favoritism","Sandra-s Wedding","Cereal Bar","Employee App","Zephra Cares","Playdate","Carol-s Back","Customer Safari","California (Part 1)"],
-        s6: ["Essential","California (Part 2)","Floor Supervisor","Prize Wheel","Hair Care Products","Biscuit","The Trough","Ground Rules","Conspiracy","Depositions","Deep Cleaning","Customer Satisfaction","Lowell Anderson","Perfect Store","All Sales Final"],
-    },
+    // "Superstore": {
+    //     type: "TV Show",
+    //     cat: "comedy",
+    //     sTotal: 6,
+    //     s1: ["Pilot","Magazine Profile","Shots and Salsa","Mannequin","Shoplifter","Secret Shopper","Color Wars","Wedding Day Sale","All-Nighter","Demotion","Labor"],
+    //     s2: ["Olympics","Strike","Back to Work","Guns, Pills and Birds","Spokesman Scandal","Dog Adoption Day","Halloween Theft","Election Day","Seasonal Help","Black Friday","Lost and Found","Rebranding","Ladies- Lunch","Valentine-s Day","Super Hot Store","Wellness Fair","Integrity Award","Mateo-s Last Day","Glenn-s Kids","Spring Cleaning","Cheyenne-s Wedding","Tornado"],
+    //     s3: ["Grand Re-Opening","Brett-s Dead","Part-Time Hires","Workplace Bullying","Sal-s Dead","Health Fund","Christmas Eve","Viral Video","Golden Globes Party","High Volume Store","Angels and Mermaids","Groundhog Day","Video Game Release","Safety Training","Amnesty","Target","District Manager","Local Vendors Day","Lottery","Gender Reveal","Aftermath","Town Hall"],
+    //     s4: ["Back to School","Baby Shower","Toxic Workplace","Costume Competition","Delivery Day","Maternity Leave","New Initiative","Managers- Conference","Shadowing Glenn","Cloud 9 Academy","Steps Challenge","Blizzard","Love Birds","Minor Crimes","Salary","Easter","Quincea\u00f1era","Cloud Green","Scanners","#Cloud9Fail","Sandra-s Fight","Employee Appreciation Day"],
+    //     s5: ["Cloud 9.0","Testimonials","Forced Hire","Mall Closing","Self-Care","Trick-or-Treat","Shoplifter Rehab","Toy Drive","Curbside Pickup","Negotiations","Lady Boss","Myrtle","Favoritism","Sandra-s Wedding","Cereal Bar","Employee App","Zephra Cares","Playdate","Carol-s Back","Customer Safari","California (Part 1)"],
+    //     s6: ["Essential","California (Part 2)","Floor Supervisor","Prize Wheel","Hair Care Products","Biscuit","The Trough","Ground Rules","Conspiracy","Depositions","Deep Cleaning","Customer Satisfaction","Lowell Anderson","Perfect Store","All Sales Final"],
+    // },
 
     "The Office": {
         type: "TV Show", 
@@ -294,27 +319,38 @@ export const mediaDB = {
         s7: ["Nepotism", "Counseling", "Andy-s Play", "Sex Ed", "The Sting", "Costume Contest", "Christening", "Viewing Party", "WUPHF.com", "China", "Classy Christmas", "Ultimatum", "The Seminar", "The Search", "PDA", "Threat Level Midnight", "Todd Packer", "Garage Sale", "Training Day", "Michael-s Last Dundies", "Goodbye, Michael", "The Inner Circle", "Dwight K. Schrute, (Acting) Manager", "Search Committee"],
         s8: ["The List", "The Incentive", "Lotto", "Garden Party", "Spooked", "Doomsday", "Pam-s Replacement", "Gettysburg", "Mrs. California", "Christmas Wishes", "Trivia", "Pool Party", "Jury Duty", "Special Project", "Tallahassee", "After Hours", "Test the Store", "Last Day in Florida", "Get the Girl", "Welcome Party", "Angry Andy", "Fundraiser", "Turf War", "Free Family Portrait Studio"],
         s9: ["New Guys", "Roy-s Wedding", "Andy-s Ancestry", "Work Bus", "Here Comes Treble", "The Boat", "The Whale", "The Target", "Dwight Christmas", "Lice", "Suit Warehouse", "Customer Loyalty", "Junior Salesman", "Vandalism", "Couples Discount", "Moving On", "The Farm", "Promos", "Stairmageddon", "Paper Airplane", "Livin- The Dream", "AARM", "Finale"],
-        color: "rgba(0, 51, 255)", 
-        "featured_favorites": "true"
     },
 
-    "Wanda Vision": {
-        type: "TV Show", 
-        cat: "marvel", 
-        sTotal: 1,
-        s1: ["Filmed Before a Live Studio Audience", "Don-t Touch That Dial", "Now In Color", "We Interrupt This Program", "On a Very Special Episode...", "All-New Holloween Spectacular", "Breaking the Fourth Wall", "Previously On", "The Series Finale"],
-        color: "rgba(0, 51, 255)", 
-    },
+    // "Wanda Vision": {
+    //     type: "TV Show", 
+    //     cat: "marvel", 
+    //     sTotal: 1,
+    //     s1: ["Filmed Before a Live Studio Audience", "Don-t Touch That Dial", "Now In Color", "We Interrupt This Program", "On a Very Special Episode...", "All-New Holloween Spectacular", "Breaking the Fourth Wall", "Previously On", "The Series Finale"],
+    // },
 
-    "Avengers ENDGAME": {
-        type: "Movie", 
-        cat: "marvel", 
+    "A Quiet Place": {
+        type: "Movie",
+        cat: "horror"
     },
 
     "American Psycho": {
         type: "Movie", 
-        cat: "drama", 
-        "featured_favorites": "true",
+        cat: "drama horror",
+    },
+
+    "Avengers ENDGAME": {
+        type: "Movie",
+        cat: "marvel",
+    },
+
+    "Bird Box": {
+        type: "Movie",
+        cat: "horror",
+    },
+
+    "Black Panther": {
+        type: "Movie",
+        cat: "marvel",
     },
 
     "Cars 2": {
@@ -335,7 +371,6 @@ export const mediaDB = {
     "Coraline": {
         type: "Movie", 
         cat: "animation horror", 
-        "featured_favorites": "true"
     },
 
     "Daddys Home 2": {
@@ -375,10 +410,15 @@ export const mediaDB = {
 
     "Hidden Figures": {
         type: "Movie", 
-        cat: "drama",
+        cat: "drama historical",
     },
 
     "It": {
+        type: "Movie",
+        cat: "horror"
+    },
+
+    "It - Chapter 2": {
         type: "Movie",
         cat: "horror"
     },
@@ -428,11 +468,6 @@ export const mediaDB = {
         cat: "comedy", 
     },
 
-    "Movie 43": {
-        type: "Movie", 
-        cat: "comedy", 
-    },
-
     "Pitch Perfect": {
         type: "Movie", 
         cat: "comedy", 
@@ -463,9 +498,29 @@ export const mediaDB = {
         cat: "comedy", 
     },
 
+    "Ted": {
+        type: "Movie", 
+        cat: "comedy", 
+    },
+
+    "Ted 2": {
+        type: "Movie", 
+        cat: "comedy", 
+    },
+
+    "Texas Chainsaw Massacre": {
+        type: "Movie",
+        cat: "horror",
+    },
+
     "The Amazing Spider Man 2": {
         type: "Movie", 
         cat: "marvel", 
+    },
+
+    "The Conjuring": {
+        type: "Movie",
+        cat: "horror",
     },
 
     "The Devil Wears Prada": {
@@ -473,9 +528,14 @@ export const mediaDB = {
         cat: "drama", 
     },
 
+    "The Exorcist": {
+        type: "Movie",
+        cat: "horror",
+    },
+
     "The Holiday": {
         type: "Movie", 
-        cat: "romcom", 
+        cat: "romcom christmas", 
     },
 
     "The Incredible Hulk": {
@@ -510,11 +570,16 @@ export const mediaDB = {
 
     "Trick r Treat": {
         type: "Movie",
-        cat: "drama",
+        cat: "horror",
     },
 
     "Vacation": {
         type: "Movie", 
         cat: "comedy", 
+    },
+
+    "Venom": {
+        type: "Movie",
+        cat: 'marvel'
     },
 }

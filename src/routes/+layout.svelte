@@ -1,30 +1,40 @@
 <script>
     import '$lib/assets/style.css'
     import TopNavbar from '$lib/components/Top-Navbar.svelte'
-    // import SideNavbar from '$lib/components/Side-Navbar.svelte'
 
-	import { storage } from '$lib/assets/main'
-    import { page } from '$app/stores'
-    import { initializeApp } from "firebase/app"
+	import { 
+        db,
+        storage
+    } from '$lib/assets/main'
+
+    import { 
+        page 
+    } from '$app/stores'
 
 
-
-    // Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyDDSQmLL5A756k_vWlc4Zk_ysZ5hd8cB-k",
-        authDomain: "baileo-4009d.firebaseapp.com",
-        projectId: "baileo-4009d",
-        storageBucket: "baileo-4009d.appspot.com",
-        messagingSenderId: "308681359309",
-        appId: "1:308681359309:web:b57d82dc080ba772af4e84"
+    if (typeof window !== 'undefined') {
+        // If logged in, check uid and key authenticity
+        if (storage.read('username').length > 0) {
+            db.read('users/' + storage.read('username'), val => {
+                if (storage.read('uid') !== val.uid || storage.read('auth_key') !== val.auth_key) {
+                    console.warn('fatal! authentication error, key/uid false')
+                }
+            })
+        }
     }
-    const app = initializeApp(firebaseConfig);
 
-
-
-    // // Go to login page if not logged in
-    // if (!storage.exists('is logged in') && $page.url.pathname !== '/login') {
-    //     open_page('login')
+    // Go to login page if not logged in
+    // if (storage.read('user_id') == undefined) { // if no id
+    //     if (typeof window !== 'undefined' && $page.url.pathname !== '/account') {
+    //         window.open('/account', '_self')
+    //     }
+    // } else { // verify id and key
+    //     db.user.read((user) => {
+    //         if (storage.read('user_key') !== user.key) {
+    //             alert('Account Lockout: Client key invalid')
+    //             auth.logout()
+    //         }
+    //     })
     // }
 
 

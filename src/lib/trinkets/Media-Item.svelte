@@ -23,55 +23,74 @@
 <!--  -->
 
 <div class="item" type='media-item'>
-    <div class="image">
-        <img src="thumbnails/{title}.png" alt="Thumbnail" loading="lazy">
-        <div class="progress" style='width: {progress}%'></div>
+    <div class="img-wrapper">
+        <img src="thumbnails/{title}.jpeg" alt="Thumbnail" loading="lazy">
+        <div class="progress">
+            <div class="label">82% Watched</div>
+            <div class="bar" style='width: {progress}%'></div>
+        </div>
     </div>
-    <!-- <div class="image" style='background-image: url("thumbnails/{title}.png")'> -->
-        <!-- <div class="overlay"></div> -->
-    <!-- </div> -->
 
     <div class="info">
         <div class="title">{title}</div>
         <div class="type">{caption} {progress_label}</div>
     </div>
-
-    <div class="active-hover"></div>
 </div>
 
 <!--  -->
 
 <style>
     .item{
-        display: grid;
-        row-gap: 10px;
         position: relative;
         top: 0;
         border-radius: 5px;
-        transition: top 200ms;
+        padding: 5px;
         cursor: default;
+        opacity: 80%;
+        box-shadow: 0 5px 0px rgb(0, 0, 0, 0);
+        transition: opacity 200ms, box-shadow 200ms;
 	}
 
-    @media screen and (hover: hover) {
-        .item:hover .active-hover{
-            opacity: 1;
-        }
-        .item:hover{
-            position: relative;
-            top: -10px;
-        }
+    .item:hover{
+        color: var(--accent);
+        opacity: 1;
+        z-index: 1;
+        box-shadow: 0 5px 25px black;
+    }
+
+    .img-wrapper{
+        position: relative;
+        border-radius: inherit;
     }
 
     img{
         width: 100%;
-        border-radius: 5px;
+        aspect-ratio: 16 / 9;
+        border-radius: inherit;
+        object-fit: cover;
     }
 
     .progress{
-        height: 4px;
-        width: 0%;
-        border-radius: 100vh;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .label{
+        font-size: 8px;
+        opacity: 0;
+        transition: opacity 200ms;
+    }
+
+    .bar{
+        height: 5px;
         background: var(--accent);
+        border-radius: 2px;
+    }
+
+    .info{
+        border-radius: inherit;
+        padding: 10px 0;
     }
 
     .title{
@@ -80,16 +99,7 @@
     }
 
 	.type{
-        font-size: 10pt;
-		font-weight: 400;
-        color: lightgray;
+        font-size: 10px;
+        color: gray;
 	}
-
-    .active-hover{
-        height: 4px;
-        width: 100%;
-        background: var(--accent);
-        border-radius: 100vh;
-        opacity: 0;
-    }
 </style>

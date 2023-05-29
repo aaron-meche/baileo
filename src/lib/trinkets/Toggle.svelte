@@ -12,10 +12,10 @@
 
 <style>
 	.toggle{
-		margin-left: 5px;
+		margin-left: 10px;
 		padding: 2px;
 		border-radius: 100vh;
-		background: rgb(50 50 50);
+		background: rgb(75 75 75);
 	}
 
 	.toggle .coin{
@@ -23,7 +23,7 @@
 		width: 10px;
 		margin-left: 0;
 		margin-right: 15px;
-		background: gray;
+		background: rgb(150 150 150);
 		border-radius: inherit;
 		transition: margin 200ms, background 200ms, width 200ms;
 	}

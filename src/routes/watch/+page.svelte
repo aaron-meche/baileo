@@ -1,5 +1,6 @@
 <script>
 	import { 
+		db,
 		mediaDB, 
 		media_controls,
 		serverTypeConversion,
@@ -8,11 +9,43 @@
 
 	import TvModule from '$lib/modules/TV-Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
-	import BoldButton from '$lib/trinkets/Bold-Button.svelte'
-	import Toggle from '$lib/trinkets/Toggle.svelte'
-    import VideoPlayer from '$lib/components/Video-Player.svelte'
 
 	let media = {}
+
+
+	if (typeof window !== 'undefined') {
+		db.read(`users/${storage.read('username')}/data`, data => {
+			console.log(data)
+			if (data['library'][data.watching]['progress']) {
+				console.log('watch progress: found')
+			}
+			else {
+				// console.log()
+				console.log('watch progress: not found')
+			}
+		})
+	}
+
+
+
+
+
+	// Keyboard Controls
+	if (typeof window !== 'undefined') {
+		window.addEventListener('keydown', (e) => {
+			const video = document.querySelector('video')
+
+			if (e.code == 'ArrowLeft') {
+				video.currentTime = video.currentTime - 10
+			}
+
+			if (e.code == 'ArrowRight') {
+				video.currentTime = video.currentTime + 10
+			}
+		})
+	}
+
+
 
 	// Get Media Information
 	if (typeof window !== 'undefined') {
@@ -129,7 +162,7 @@
 				})
 			}
 		},
-		nextShuffleEpisode: function() {
+		randomEpisode: function() {
 			let randomSeason = Math.floor(Math.random() * mediaDB[media.title]['sTotal']) + 1
 			let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
 			storage.set(`${media.title} season`, randomSeason)
@@ -171,49 +204,31 @@
 
 	<div class="side content">
 		<div class="video-wrapper">
-			<!-- {#if storage.get('is touch screen') == 'true'} -->
-				<!-- svelte-ignore a11y-media-has-caption -->
-				<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
-			<!-- {:else} -->
-				<!-- <VideoPlayer source='https://209.163.185.11/videos/{media.path}'/> -->
-			<!-- {/if} -->
+			<!-- svelte-ignore a11y-media-has-caption -->
+			<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
 		</div>
 
-		<!-- Description Belt -->
-		<div class="more-menu">
-			<!-- Watching Information -->
-			<div class="info">
-				<div class="title">{media.title}</div>
-				<div class="description">{media.description}</div>
-			</div>
-
-			{#if media.type == 'TV Show'}
-				<!-- Next Episode Button -->
-				<div style='text-align: right;'>
-					<button on:click={actions.continueWatching}>
-						<BoldButton icon='next' text='Next Episode'/>
-					</button>
-				</div>
-			{/if}
+		<div class="info">
+			<div class="title">{media.title}</div>
+			<div class="description">{media.description}</div>
 		</div>
 
-		<!-- Action Button Belt -->
 		<div class="action-buttons horizontal-scroll">
+			{#if media.type == 'TV Show'}
+				<button on:click={actions.nextEpisode}>
+					<img src="icons/next.svg" alt="Icon">
+					Next Episode
+				</button>
+			{/if}
+
 			<button on:click={actions.download}>
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
 
-			<button on:click={() => toggleStatePref('shuffle')}>
+			<button on:click={actions.randomEpisode}>
 				<img src="icons/shuffle.svg" alt="Icon">
-				Shuffle
-				<Toggle active={statePref['shuffle']}/>
-			</button>
-
-			<button on:click={() => toggleStatePref('autoplay')}>
-				<img src="icons/infinity.svg" alt="Icon">
-				Autoplay
-				<Toggle active={statePref['autoplay']}/>
+				Random Episode
 			</button>
 
 			<button on:click={actions.markAsWatched}>
@@ -264,23 +279,22 @@
 		row-gap: 20px;
 	}
 
-	@media screen and (max-width: 1000px) {
+	@media screen and (orientation: portrait) {
 		.app{
 			grid-template-columns: 1fr;
 		}
 	}
 
 	.module{
-		/* background: var(--fg); */
-		border: solid 5px var(--fg);
-		border-radius: 10px;
+		border: solid 2px var(--e-fg);
+		border-radius: 5px;
 		padding: 20px;
 	}
 
 	.video-wrapper{
 		position: relative;
 		height: fit-content;
-		border-radius: 10px;
+		border-radius: 5px;
 		overflow: hidden;
 	}
 
@@ -289,21 +303,14 @@
 		display: block;
 	}
 
-	.more-menu{
-		display: grid;
-		align-items: center;
-		grid-template-columns: 1fr 1fr;
-		column-gap: 10px;
-	}
-
 	.title{
 		font-size: 15pt;
-		font-weight: 500;
+		font-weight: 600;
 	}
 	
 	.description{
 		font-size: 12pt;
-		font-weight: 400;
+		font-weight: 500;
 		color: gray;
 	}
 
@@ -314,10 +321,12 @@
 	.action-buttons button{
 		display: inline-flex;
 		align-items: center;
+		padding: 10px;
+		margin-right: 20px;
 		font-size: 10pt;
 		font-weight: 500;
-		text-transform: uppercase;
-		margin-right: 30px;
+		border-radius: 5px;
+		background: var(--fg);
 	}
 
 	.action-buttons button:hover{
@@ -325,7 +334,7 @@
 	}
 
 	.action-buttons img{
-		height: 20px;
-		margin-right: 5px;
+		height: 15px;
+		margin-right: 10px;
 	}
 </style>

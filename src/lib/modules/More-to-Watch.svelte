@@ -12,7 +12,7 @@
     let concentratePool = []
 
     for (let i = 0; i < Object.keys(mediaDB).length; i++) {
-        if (mediaDB[Object.keys(mediaDB)[i]]['cat'] == category) {
+        if (mediaDB[Object.keys(mediaDB)[i]]['cat'].includes(category)) {
             pool.push(Object.keys(mediaDB)[i])
         }
     }
@@ -47,11 +47,11 @@
 
 <!--  -->
 
-<div class="module-title">More {category.charAt(0).toUpperCase() + category.slice(1)}...</div>
+<div class="module-title">Similar Media</div>
 <div class="list">
     {#each concentratePool as title}
         <button on:click={() => handleMediaItemClick(title)} class="media-item">
-            <img src='thumbnails/{title}.png' alt="Media Thumbnail">
+            <img src='thumbnails/{title}.jpeg' alt="Media Thumbnail">
             <div class="info">
                 <div class="title">{title}</div>
                 <div class="caption">{generateCaption(title)}</div>
@@ -77,15 +77,15 @@
 
     .media-item{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
         column-gap: 20px;
         align-items: center;
-        padding: 15px;
+        padding: 10px;
+        border-radius: 5px;
     }
 
     .media-item:hover{
-        box-shadow: inset 2px 0 var(--accent);
-        color: var(--accent);
+        background: var(--fg);
     }
 
     img{
