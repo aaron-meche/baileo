@@ -150,10 +150,12 @@
 				Download
 			</button>
 
-			<button on:click={media_controls.random_episode(media.title)}>
-				<img src="icons/shuffle.svg" alt="Icon">
-				Random Episode
-			</button>
+			{#if media.type == 'TV Show'}
+				<button on:click={media_controls.random_episode(media.title)}>
+					<img src="icons/shuffle.svg" alt="Icon">
+					Random Episode
+				</button>
+			{/if}
 
 			<button on:click={media_controls.remove_from_library(media.title)}>
 				<img src="icons/trash.svg" alt="Icon">

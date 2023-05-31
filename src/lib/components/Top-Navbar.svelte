@@ -1,6 +1,11 @@
 <script>
     import Menu from '$lib/components/Menu.svelte'
 
+    import {
+        mediaDB,
+        handleMediaItemClick
+    } from '$lib/assets/main'
+
     function open_menu() {
         alert('Menu Unavailable')
     }
@@ -29,6 +34,19 @@
         search.style.visibility = 'hidden'
         button.style.display = 'block'
         input.value = ''
+        result = []
+    }
+
+    let results = []
+    function search() {
+        let input = document.querySelector('.search-bar-wrapper input').value.toLowerCase()
+        results = []
+        
+        for (let i = 0; i < Object.keys(mediaDB).length; i++) {
+            if (Object.keys(mediaDB)[i].toLowerCase().includes(input)) {
+                results.push(Object.keys(mediaDB)[i])
+            }
+        }
     }
 </script>
 
@@ -49,10 +67,22 @@
     <div class='search-section'>
         <div class="search-bar-wrapper">
             <img src="icons/search.svg" alt="Icon">
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search" on:keyup={search}>
             <button on:click={close_search}>
                 <img src="icons/close.svg" alt="Icon">
             </button>
+
+            <div class="search-window">
+                {#each results as result}
+                    <button class="item" on:click={() => handleMediaItemClick(result)}>
+                        <img src="thumbnails/{result}.jpeg" alt="Thumbnail">
+                        <div class="info">
+                            <div class="title">{result}</div>
+                            <div class="description">{mediaDB[result]['type']}</div>
+                        </div>
+                    </button>
+                {/each}
+            </div>
         </div>
 
         <button class='open-search-button' on:click={open_search}>
@@ -60,13 +90,6 @@
         </button>
     </div>
 </div>
-
-<!-- <div class="menu-wrapper">
-    <button class="overlay" on:click={close_menu}></button>
-    <div class="menu">
-        <Menu/>
-    </div>
-</div> -->
 
 <!--  -->
 
@@ -125,6 +148,7 @@
     }
 
     .search-section{
+        position: relative;
         justify-content: right;
     }
 
@@ -136,5 +160,47 @@
         background: var(--fg);
         position: absolute;
         visibility: hidden;
+    }
+
+    .search-window{
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+        max-height: 50vh;
+        width: 100%;
+        background: var(--fg);
+        border-radius: 5px;
+        overflow: auto;
+    }
+
+    .search-window .item{
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        align-items: center;
+        gap: 15px;
+        padding: 5px;
+    }
+
+    .search-window .item:hover{
+        background: var(--e-fg);
+    }
+
+    .search-window .item .title{
+        font-size: 12pt;
+        font-weight: 600;
+    }
+
+    .search-window .item .description{
+        font-size: 10pt;
+        font-weight: 500;
+        color: gray;
+    }
+
+    .search-window img{
+        height: auto; 
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 5px;
+        object-fit: cover;
     }
 </style>
