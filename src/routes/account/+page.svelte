@@ -1,5 +1,6 @@
 <script>
     import {
+        auth,
         db,
         storage
     } from '$lib/assets/main'
@@ -12,36 +13,26 @@
         const in_pass = document.querySelector('[password_input]').value
         const form_error = document.querySelector('[form_error]')
 
-
-
         function throw_form_error(value) {
             form_error.style.display = 'block'
             form_error.innerHTML = value
         }
-
-
-
-        // Get User Data
-        // db.read('users', 'username', in_user, (user) => { // YES ExistingAccount --> Log in user
-        //     if (user.password == in_pass) {
-        //         auth.login(user)
-        //     } else {
-        //         throw_form_error('Incorrect Password')
-        //     }
-        // }, () => { // NO ExistingAccount --> Create new user
-        //     if (in_pass.length > 5) {
-        //         db.create('users', { // Write new user data
-        //             username: in_user,
-        //             password: in_pass,
-        //         }, () => { // Log in user
-        //             db.read('users', 'username', in_user, (user) => {
-        //                 auth.login(user)
-        //             })
-        //         })
-        //     } else {
-        //         throw_form_error('Password must be longer than 5 characters')
-        //     }
-        // })
+        
+        db.read('users/' + in_user, (user) => {
+            if (user) {
+                if (user.password == in_pass) {
+                    auth.login(in_user, in_pass, () => {
+                        window.open('/', '_self')
+                    })
+                } else {
+                    throw_form_error('Incorrect Password')
+                }
+            } else {
+                auth.register(in_user, in_pass, () => {
+                    window.open('/', '_self')
+                })
+            }
+        })
     }
 </script>
 
@@ -50,7 +41,7 @@
 <form class='card'>
     <div class="title">Login or Create Account</div>
 
-    <div class="caption">If you already have an account, login below. If you do not have an account, you can still "login" and an account will automatically be created for you.</div>
+    <div class="caption">If you already have an account, login below. If you do not have an account, enter credentials below and an account will be created.</div>
 
     <div form_error class="caption error"></div>
 

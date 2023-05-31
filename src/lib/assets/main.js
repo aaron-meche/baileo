@@ -6,7 +6,8 @@ import {
     getDatabase, 
     ref,
     onValue, 
-    set 
+    set,
+    remove
 } from 'firebase/database';
 
 const firebaseConfig = {
@@ -30,9 +31,9 @@ export const auth = {
             if (password == user.password) {
                 storage.write('username', username)
                 storage.write('auth_key', user.auth_key)
-                callback(true)
+                callback()
             } else {
-                callback(false)
+                console.error('Login error: incorrect credentials')
             }
         })
     },
@@ -52,7 +53,7 @@ export const auth = {
             ['users/' + username + '/password', password],
             ['users/' + username + '/auth_key', key_generator(50)],
         ], () => {
-            callback()
+            auth.login(username, password, callback())
         })
     },
 }
@@ -94,6 +95,15 @@ export const db = {
             })
             .catch((error) => {
                 console.error(error)
+            })
+    },
+    delete: (path, callback) => {
+        remove(ref(database, path))
+            .then(() => {
+                if (callback) callback()
+            })
+            .catch((error) => {
+                console.error(error);
             })
     }
 }
@@ -230,8 +240,10 @@ export const media_controls = {
         let randomEpisode = Math.floor(Math.random() * mediaDB[title].seasons[randomSeason].length)
         media_controls.open_episode(title, randomSeason, randomEpisode)
     },
-    remove_from_library: (title) => {
-        alert('Error')
+    remove_from_library: (title, callback) => {
+        db.delete('users/' + storage.read('username') + '/library/' + title, () => {
+            window.open('/', '_self')
+        })
     }
 }
 
@@ -248,10 +260,7 @@ export function isServerConnected(url) {
 
 // On home page, handle onclick for media item with title
 export function handleMediaItemClick(title) {
-    storage.write('watching title', title)
-    let user_path = `users/${storage.read('username')}`
-    
-    db.write(user_path + '/watching', title, () => {
+    db.write(`users/${storage.read('username')}/watching`, title, () => {
         window.open('/watch', '_self')
     })
 }

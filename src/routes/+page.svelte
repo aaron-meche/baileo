@@ -17,13 +17,13 @@
 	}
 
 	// Get Currently Watching
-	let progressList = []
+	let continue_watching = []
 	if (typeof window !== "undefined") {
-		progressList = storage.search('progress')
-
-		for (let i = 0; i < progressList.length; i++) {
-			progressList[i] = progressList[i].replace(' progress', '')
-		}
+		db.read('users/' + storage.read('username'), (user) => {
+			if (user.library) {
+				continue_watching = Object.keys(user.library)
+			}
+		})
 	}
 </script>
 
@@ -38,9 +38,9 @@
 <AccountStatusBar/>
 
 <div class="media-selection-pool">
-	<!-- {#if progressList.length !== 0}
-		<MediaSection title='Continue Watching' items={progressList}/>
-	{/if} -->
+	{#if continue_watching.length > 0}
+		<MediaSection title='Continue Watching' items={continue_watching}/>
+	{/if}
 
 	<MediaSection title='Comedies' items={searchMedia('cat', 'comedy')}/>
 	<MediaSection title='Animations' items={searchMedia('cat', 'animation')}/>

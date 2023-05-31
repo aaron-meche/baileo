@@ -13,7 +13,6 @@
 
 	let media = {
 		title: "Loading...",
-		description: "Loading...",
 	}
 
 
@@ -132,7 +131,10 @@
 
 		<div class="info">
 			<div class="title">{media.title}</div>
-			<div class="description">{media.description}</div>
+
+			{#if media.type == 'TV Show'}
+				<div class="description">{media.description}</div>
+			{/if}
 		</div>
 
 		<div class="action-buttons horizontal-scroll">
@@ -153,10 +155,10 @@
 				Random Episode
 			</button>
 
-			<!-- <button on:click={media_controls.remove_from_library(media.title)}>
+			<button on:click={media_controls.remove_from_library(media.title)}>
 				<img src="icons/trash.svg" alt="Icon">
 				Remove from Library
-			</button> -->
+			</button>
 		</div>
 	</div>
 
@@ -214,10 +216,11 @@
 	}
 
 	.video-wrapper{
-		position: relative;
 		height: fit-content;
 		border-radius: 5px;
 		overflow: hidden;
+		background: black;
+		box-shadow: 0 5px 25px black;
 	}
 
 	video{

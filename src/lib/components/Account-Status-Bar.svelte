@@ -2,7 +2,8 @@
     import {
         auth,
         db,
-        storage
+        storage,
+        mediaDB
     } from '$lib/assets/main'
 
     let username = storage.exists('username') ? storage.read('username') : 'guest'
@@ -10,9 +11,19 @@
         username = 'Guest'
     }
 
+    let last_watched = {}
+    if (typeof window !== 'undefined') {
+        db.read('users/' + storage.read('username'), (user) => {
+            if (user.watching && user.library?.[user.watching]) {
+                last_watched.title = user.watching
+                last_watched.progress = Math.floor(user.library[user.watching].progress * 100)
+            }
+        })
+    }
+
     const account_prompt = {
         yes: () => {
-            alert('Login unavailable')
+            window.open('/account', '_self')
         },
         no: () => {
             const key_generator = (length) => {
@@ -33,16 +44,20 @@
         }
     }
 
-    function continue_watching() {
-        alert('Continue Watching')
-    }
-
-    function watch_history() {
-        alert('Watch History')
+    function resume_watching() {
+        window.open('/watch', '_self')
     }
 
     function random_watch() {
-        alert('Random Watch')
+        let rannum = Math.floor(Math.random() * Object.keys(mediaDB).length)
+        let random_title = Object.keys(mediaDB)[rannum]
+        db.write('users/' + storage.read('username') + '/watching', random_title, () => {
+            window.open('/watch', '_self')
+        })
+    }
+
+    function utility() {
+        alert('Utility Unavailable')
     }
 
     function your_account() {
@@ -57,40 +72,46 @@
     {#if storage.exists('username')}
         <div class="title">Welcome back, {username}</div>
         <div class="section">
-            <button on:click={continue_watching}>
-                <img src="icons/play.svg" alt="Icon">
-                Continue Watching
-            </button>
+            {#if last_watched.title}
+                <button on:click={resume_watching}>
+                    <img src="icons/play.svg" alt="Icon">
+                    Resume Watching
+                    <div class="caption">{last_watched.title} ({last_watched.progress}%)</div>
+                </button>
+            {/if}
             
-            <button on:click={watch_history}>
-                <img src="icons/history.svg" alt="Icon">
-                Watch History
-            </button>
-
             <button on:click={random_watch}>
                 <img src="icons/shuffle.svg" alt="Icon">
                 Random Watch
+                <div class="caption">Pick something random to watch</div>
             </button>
             
+            <button on:click={utility}>
+                <img src="icons/utility.svg" alt="Icon">
+                Utility
+                <div class="caption">Embedded convenience features</div>
+            </button>
+
             <button on:click={your_account}>
                 <img src="icons/profile.svg" alt="Icon">
                 Your Account
+                <div class="caption">Account preferences</div>
             </button>
         </div>
     {:else}
-        <div class="title">Want to link an account?</div>
+        <div class="title">Want to use a login?</div>
 
         <div class="section">
             <button on:click={account_prompt.yes}>
                 <img src="icons/complete.svg" alt="Icon">
                 Yes
-                <div class="caption">Your watch data will synced between devices</div>
+                <div class="caption">Online account</div>
             </button>
             
             <button on:click={account_prompt.no}>
                 <img src="icons/close.svg" alt="Icon">
                 No
-                <div class="caption">Your watch data will not be saved</div>
+                <div class="caption">Local account</div>
             </button>
         </div>
     {/if}
@@ -124,7 +145,7 @@
         border: solid 1px var(--e-fg);
         border-bottom-color: var(--accent) !important;
         border-radius: 10px;
-        font-size: 10pt;
+        font-size: 12pt;
         font-weight: 400;
         text-align: center;
     }
@@ -141,33 +162,7 @@
     }
 
     button .caption{
-        font-weight: 300;
-        color: gray;
-    }
-
-    form{
-        /* grid-template-columns: 1fr !important; */
-    }
-
-    .label{
         font-size: 10pt;
-    }
-
-    input{
-        width: 100%;
-        padding: 5px 0;
-        border-bottom: solid 2px white;
-        color: white;
-        font-size: 12pt;
-        font-weight: 500;
-    }
-
-    input:focus{
-        border-color: var(--accent);
-    }
-
-    .submit{
-        justify-content: center;
-        font-weight: bold;
+        color: gray;
     }
 </style>

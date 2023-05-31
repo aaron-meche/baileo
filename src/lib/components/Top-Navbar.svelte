@@ -133,7 +133,7 @@
         align-items: center;
         grid-template-columns: min-content 1fr min-content;
         border-radius: 5px;
-        background: var(--e-fg);
+        background: var(--fg);
         position: absolute;
         visibility: hidden;
     }
