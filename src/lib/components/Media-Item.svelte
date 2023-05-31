@@ -48,7 +48,7 @@
         cursor: default;
         opacity: 80%;
         box-shadow: 0 5px 0px rgb(0, 0, 0, 0);
-        transition: opacity 200ms, box-shadow 200ms;
+        transition: opacity 0.25s, box-shadow 0.25s;
 	}
 
     .item:hover{
@@ -77,7 +77,7 @@
     }
 
     .label{
-        font-size: 8px;
+        font-size: 8pt;
         opacity: 0;
         transition: opacity 200ms;
     }
@@ -99,7 +99,7 @@
     }
 
 	.type{
-        font-size: 10px;
+        font-size: 10pt;
         color: gray;
 	}
 </style>

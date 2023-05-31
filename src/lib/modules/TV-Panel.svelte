@@ -1,5 +1,5 @@
 <script>
-    export let title, media
+    export let media
 
     import { 
         mediaDB, 
@@ -7,53 +7,29 @@
         serverTypeConversion,
         storage 
     } from '$lib/assets/main'
-    
-    let season = media.season
-    let episode = media.episode
-
-    let maxSeason = mediaDB[media.title]['sTotal']
-
-    function openEpisode(episode) {
-        storage.set(`${title} progress`, '0')
-        storage.set(`${title} season`, media.season)
-        storage.set(`${title} episode`, episode)
-        storage.confirm(`${media.title} progress`, '0', () => {
-			window.location.reload()
-		})
-    }
 
     function previousSeason() {
-        storage.set(`${title} progress`, '0')
-        storage.set(`${title} season`, Number(media.season) - 1)
-        storage.set(`${title} episode`, '1')
-        storage.confirm(`${media.title} progress`, '0', () => {
-			window.location.reload()
-		})
+        media_controls.open_episode(media.title, media.season - 1, 0)
     }
 
     function nextSeason() {
-        storage.set(`${title} progress`, '0')
-        storage.set(`${title} season`, Number(media.season) + 1)
-        storage.set(`${title} episode`, '1')
-        storage.confirm(`${media.title} progress`, '0', () => {
-			window.location.reload()
-		})
+        media_controls.open_episode(media.title, media.season + 1, 0)
     }
 </script>
 
 <!--  -->
 
 <div class="top-bar">
-    <div class="title">Season {media.season} <span style='font-size: 10pt; color: gray;'>of {maxSeason}</span></div>
+    <div class="title">Season {media.season + 1} <span style='font-size: 10pt; color: gray;'>of {mediaDB[media.title].seasons.length}</span></div>
 
     <div class="navigation">
-        {#if media.season !== 1}
+        {#if media.season !== 0}
             <button on:click={previousSeason} class="left"><img src="icons/left.svg" alt="Icon"></button>
         {:else}
             <button class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
         {/if}
 
-        {#if media.season !== maxSeason}
+        {#if media.season + 1 !== mediaDB[media.title].seasons.length}
             <button on:click={nextSeason} class="right"><img src="icons/right.svg" alt="Icon"></button>
         {:else}
             <button class="right inactive"><img src="icons/right.svg" alt="Icon"></button>
@@ -62,8 +38,8 @@
 </div>
 
 <div class="episode-list">
-    {#each mediaDB[title]['s' + media.season] as episode, e}
-        <button class="item {e + 1 == media.episode ? 'active' : ''}" on:click={() => openEpisode(e + 1)}>
+    {#each mediaDB[media.title]['seasons'][media.season] as episode, e}
+        <button class="item {e == media.episode ? 'active' : ''}" on:click={() => media_controls.open_episode(media.title, media.season, e)}>
             <div class="title">{serverTypeConversion(episode)}</div>
             <div class="count">E{e + 1}</div>
         </button>
@@ -111,10 +87,9 @@
 	}
 
     .episode-list .item{
-        position: relative;
         display: grid;
         grid-template-columns: auto min-content;
-        column-gap: 20px;
+        column-gap: 10px;
         align-items: center;
         width: calc(100% - 20px);
         padding: 10px;
@@ -127,18 +102,20 @@
     
     .episode-list .item.active{
         background: var(--fg);
-        color: var(--accent);
+        color: var(--accent) !important;
+        font-weight: 600;
     }
 
     .episode-list .title{
         font-weight: 400;
+        color: lightgray;
     }
 
     .episode-list .count{
         font-size: 10pt;
         font-weight: 400;
         padding-left: 5px;
-        color: lightgray;
-        border-left: solid 2px lightgray;
+        color: gray;
+        border-left: solid 2px gray;
     }
 </style>

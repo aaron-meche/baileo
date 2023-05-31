@@ -35,7 +35,7 @@
 
 <!--  -->
 
-<AccountStatusBar username={storage.read('username')}/>
+<AccountStatusBar/>
 
 <div class="media-selection-pool">
 	<!-- {#if progressList.length !== 0}
@@ -56,5 +56,5 @@
 <!--  -->
 
 <style>
-	
+
 </style>

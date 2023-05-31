@@ -10,191 +10,113 @@
 	import TvModule from '$lib/modules/TV-Panel.svelte'
 	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
 
-	let media = {}
+
+	let media = {
+		title: "Loading...",
+		description: "Loading...",
+	}
 
 
-	if (typeof window !== 'undefined') {
-		db.read(`users/${storage.read('username')}/data`, data => {
-			console.log(data)
-			if (data['library'][data.watching]['progress']) {
-				console.log('watch progress: found')
+	const find_watchProgress = (user) => {
+		if (user?.library?.[media.title]?.progress >= 0) {
+			media.progress = user.library[media.title].progress
+
+			if (media.type == 'TV Show') {
+				media.season = user.library[media.title].season
+				media.episode = user.library[media.title].episode
 			}
-			else {
-				// console.log()
-				console.log('watch progress: not found')
+		}
+		else {
+			let library_path = 'users/' + storage.read('username') + '/library'
+			let write_collection = []
+			
+			media.progress = 0
+			write_collection.push([`${library_path}/${media.title}/progress`, 0])
+
+			if (media.type == 'TV Show') {
+				media.season = 0
+				write_collection.push([`${library_path}/${media.title}/season`, 0])
+
+				media.episode = 0
+				write_collection.push([`${library_path}/${media.title}/episode`, 0])
 			}
+
+			db.writeAll(write_collection)
+		}
+	}
+
+
+	const find_mediaPath = () => {
+		if (media.type == 'TV Show') { 
+			media.path = `https://209.163.185.11/videos/${media.title}/Season ${media.season + 1}/${mediaDB[media.title].seasons[media.season][media.episode]}.mp4`
+		} 
+		else {
+			media.path = `https://209.163.185.11/videos/${media.title}.mp4`
+		}
+	}
+
+
+	const find_mediaDescription = () => {
+		if (media.type == 'TV Show') {
+			media.description = `S${media.season + 1}, E${media.episode + 1} - ${serverTypeConversion(mediaDB[media.title].seasons[media.season][media.episode])}`
+		}
+	}
+
+
+	const load_watchProgress = () => {
+		const video = document.querySelector('video')
+
+		video.addEventListener('durationchange', () => {
+			video.currentTime = media.progress * video.duration
 		})
 	}
 
 
+	const update_watchProgress = () => {
+		const video = document.querySelector('video')
+		
+		setInterval(() => {
+			if (video.duration > 0) {
+				db.write(
+					`users/${storage.read('username')}/library/${media.title}/progress`,
+					video.currentTime / video.duration
+				)
+			}
+		}, 500);
+	}
+	
 
-
-
-	// Keyboard Controls
 	if (typeof window !== 'undefined') {
 		window.addEventListener('keydown', (e) => {
 			const video = document.querySelector('video')
-
+			
 			if (e.code == 'ArrowLeft') {
 				video.currentTime = video.currentTime - 10
 			}
-
+			
 			if (e.code == 'ArrowRight') {
 				video.currentTime = video.currentTime + 10
 			}
 		})
-	}
 
-
-
-	// Get Media Information
-	if (typeof window !== 'undefined') {
-		media.title = storage.get('watching title')
-		media.type = mediaDB[media.title]['type']
-
-		if (storage.exists(`${media.title} progress`)) {
-			media.progress = Number(storage.get(`${media.title} progress`))
-
-			if (media.type == 'TV Show') {
-				media.season = Number(storage.get(`${media.title} season`))
-				media.episode = Number(storage.get(`${media.title} episode`))
-			}
-		}
-		else {
-			media.progress = 0
-			storage.set(`${media.title} progress`, 0)
-
-			if (media.type == 'TV Show') {
-				media.season = 1
-				storage.set(`${media.title} season`, 1)
-	
-				media.episode = 1
-				storage.set(`${media.title} episode`, 1)
-			}
-		}
-
-		let interval = setInterval(() => { // Load progress
-			if (document.querySelector('video').readyState == 4) {
-				document.querySelector('video').currentTime = media.progress * document.querySelector('video').duration
-				clearInterval(interval)
-			}
-		}, 250)
-
-		// Media Path + Descriptions
-		if (media.type == 'TV Show') {
-			media.episodeTitle = mediaDB[media.title]['s' + media.season][media.episode - 1]
-			media.episodeDisplayTitle = serverTypeConversion(mediaDB[media.title]['s' + media.season][media.episode - 1])
-			
-			media.path = `${media.title}/Season ${media.season}/${media.episodeTitle}.mp4`
-			media.description = `S${media.season}, E${media.episode} - ${media.episodeDisplayTitle}`
-		}
-		else {
-			media.path = `${media.title}.mp4`
-			media.description = 'Movie'
-		}
-
-		// Keep saving progress...
-		setInterval(() => {
-			if (document.querySelector('video').readyState == 4) {
-				let currentTime = document.querySelector('video').currentTime
-				let maxTime = document.querySelector('video').duration
-				storage.set(`${media.title} progress`, currentTime / maxTime)
-
-				if ((currentTime > (maxTime - storage.get('autoplay buffer'))) && (storage.get('autoplay') == 'true')) {
-					continueWatching()
-				}
-			}
-		}, 750)
-	}
-
-	let statePref = {}
-
-	function createStatePref(title) {
-		statePref[title] = storage.get(title)
-	}
-
-	createStatePref('shuffle')
-	createStatePref('autoplay')
-	createStatePref('autoplay buffer')
-
-	function toggleStatePref(title) {
-		let current = storage.get(title)
-		if (current == 'false') {
-			storage.set(title, 'true')
-			statePref[title] = 'true'
-		}
-		else {
-			storage.set(title, 'false')
-			statePref[title] = 'false'
-		}
-	}
-
-	const actions = {
-		continueWatching: function() {
-			if (media.type == 'TV Show') {
-				if (statePref['shuffle'] == 'true') actions.nextShuffleEpisode()
-				else actions.nextEpisode()
-			}
-			else window.open('/', '_self')
-		},
-		nextEpisode: function() {
-			let seasonLength = mediaDB[media.title]['s' + media.season].length
-			let seasonMax = mediaDB[media.title]['sTotal']
-			storage.set(`${media.title} progress`, '0')
-
-			if (media.episode == seasonLength) {
-				if (media.season == seasonMax) {
-					actions.markAsWatched()
-				}
-				else {
-					storage.set(`${media.title} season`, Number(media.season) + 1)
-					storage.set(`${media.title} episode`, '1')
-					storage.confirm(`${media.title} progress`, '0', () => {
-						window.location.reload()
-					})
-					window.location.reload()
-				}
-			}
-			else {
-				storage.set(`${media.title} episode`, Number(media.episode) + 1)
-				storage.confirm(`${media.title} progress`, '0', () => {
-					window.location.reload()
-				})
-			}
-		},
-		randomEpisode: function() {
-			let randomSeason = Math.floor(Math.random() * mediaDB[media.title]['sTotal']) + 1
-			let randomEpisode = Math.floor(Math.random() * mediaDB[media.title]['s' + randomSeason].length) + 1
-			storage.set(`${media.title} season`, randomSeason)
-			storage.set(`${media.title} episode`, randomEpisode)
-			storage.set(`${media.title} progress`, '0')
-			storage.confirm(`${media.title} progress`, '0', () => {
-				window.location.reload()
-			})
-		},
-		download: function() {
-			var link = document.createElement("a")
-			link.download = media.description
-			link.href = `https://209.163.185.11/videos/${media.path}`
-			link.click()
-		},
-		markAsWatched: function() {
-			storage.delete(media.title + ' progress')
-			storage.delete(media.title + ' season')
-			storage.delete(media.title + ' episode')
-			window.open('/', '_self')
-		}
+		db.read('users/' + storage.read('username'), (user) => {
+			media.title = user['watching']
+			media.type = mediaDB[media.title]['type']
+			media.category = mediaDB[media.title]['cat']
+		
+			find_watchProgress(user)
+			find_mediaPath()
+			find_mediaDescription()
+			load_watchProgress()
+		    update_watchProgress()
+		})
 	}
 </script>
 
 <!--  -->
 
 <svelte:head>
-	{#if media.type == 'TV Show'}
-		<title>{media.episodeDisplayTitle}</title>
-	{:else}
-		<title>{media.title}</title>
-	{/if}
+	<title>{media.title}</title>
 </svelte:head>
 
 <!--  -->
@@ -205,7 +127,7 @@
 	<div class="side content">
 		<div class="video-wrapper">
 			<!-- svelte-ignore a11y-media-has-caption -->
-			<video src='https://209.163.185.11/videos/{media.path}' controls autoplay></video>
+			<video src={media.path} controls autoplay></video>
 		</div>
 
 		<div class="info">
@@ -215,26 +137,26 @@
 
 		<div class="action-buttons horizontal-scroll">
 			{#if media.type == 'TV Show'}
-				<button on:click={actions.nextEpisode}>
+				<button on:click={media_controls.next_episode(media)}>
 					<img src="icons/next.svg" alt="Icon">
 					Next Episode
 				</button>
 			{/if}
 
-			<button on:click={actions.download}>
+			<button on:click={media_controls.download(media)}>
 				<img src="icons/download.svg" alt="Icon">
 				Download
 			</button>
 
-			<button on:click={actions.randomEpisode}>
+			<button on:click={media_controls.random_episode(media.title)}>
 				<img src="icons/shuffle.svg" alt="Icon">
 				Random Episode
 			</button>
 
-			<button on:click={actions.markAsWatched}>
-				<img src="icons/complete.svg" alt="Icon">
-				Mark as Complete
-			</button>
+			<!-- <button on:click={media_controls.remove_from_library(media.title)}>
+				<img src="icons/trash.svg" alt="Icon">
+				Remove from Library
+			</button> -->
 		</div>
 	</div>
 
@@ -242,14 +164,14 @@
 
 	<div class="side modules">
 		{#if media.type == 'TV Show'}
-			<div class="module tv-episode-module">
-				<TvModule title={media.title} media={media}/>
+			<div class="module">
+				<TvModule media={media}/>
 			</div>
 		{/if}
 
-		<div class="module">
-			<MoreToWatchModule title={media.title}/>
-		</div>
+		<!-- <div class="module"> -->
+			<!-- <MoreToWatchModule title={media.title}/> -->
+		<!-- </div> -->
 	</div>
 
 </div>
@@ -326,11 +248,13 @@
 		font-size: 10pt;
 		font-weight: 500;
 		border-radius: 5px;
-		background: var(--fg);
+		border: solid 1px var(--e-fg);
+		border-bottom-color: var(--accent) !important;
 	}
 
 	.action-buttons button:hover{
-		color: var(--accent);
+		border-color: gray;
+		background: var(--fg);
 	}
 
 	.action-buttons img{

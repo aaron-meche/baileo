@@ -7,7 +7,7 @@
 		shuffle
 	} from '$lib/assets/main'
 
-	import MediaItem from '$lib/trinkets/Media-Item.svelte'
+	import MediaItem from '$lib/components/Media-Item.svelte'
 
 	items = shuffle(items)
 </script>
@@ -32,13 +32,14 @@
 	section{
 		display: grid;
 		row-gap: 10px;
-		padding: 30px 10px;
+		padding: 15px 10px;
+		border-radius: 15px;
 	}
 
 	.title{
-		padding-left: 15px;
+		padding-left: 5px;
 		font-size: 15pt;
-		font-weight: bold;
+		font-weight: 600;
 		color: var(--accent);
 	}
 

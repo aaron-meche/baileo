@@ -1,65 +1,100 @@
 <script>
-    export let username
-
     import {
+        auth,
         db,
         storage
     } from '$lib/assets/main'
 
-    // if (typeof window !== 'undefined') {
-    //     // If logged in, check uid and key authenticity
-    //     if (storage.read('username').length > 0) {
+    let username = storage.exists('username') ? storage.read('username') : 'guest'
+    if (username.includes('guest')) {
+        username = 'Guest'
+    }
 
-    //     }
-    // }
+    const account_prompt = {
+        yes: () => {
+            alert('Login unavailable')
+        },
+        no: () => {
+            const key_generator = (length) => {
+                let canvas = ''
+                let lib = ['a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+                for (let i = 0; i < length; i++) {
+                    canvas += lib[Math.floor(Math.random() * lib.length)]
+                }
+                return canvas
+            }
+            let username = 'guest_' + key_generator(50)
+
+            auth.register(username, 'guest', () => {
+                auth.login(username, 'guest', () => {
+                    window.location.reload()
+                })
+            })
+        }
+    }
+
+    function continue_watching() {
+        alert('Continue Watching')
+    }
+
+    function watch_history() {
+        alert('Watch History')
+    }
+
+    function random_watch() {
+        alert('Random Watch')
+    }
+
+    function your_account() {
+        alert('Your Account')
+    }
 </script>
 
 <!--  -->
 
-{#if username}
-    <div class="wrapper">
-        <div class="title">Welcome, {username.charAt(0).toUpperCase() + username.slice(1)}</div>
+
+<div class="wrapper">
+    {#if storage.exists('username')}
+        <div class="title">Welcome back, {username}</div>
         <div class="section">
-            <button>
+            <button on:click={continue_watching}>
                 <img src="icons/play.svg" alt="Icon">
                 Continue Watching
             </button>
             
-            <button>
+            <button on:click={watch_history}>
                 <img src="icons/history.svg" alt="Icon">
                 Watch History
             </button>
 
-            <button>
+            <button on:click={random_watch}>
                 <img src="icons/shuffle.svg" alt="Icon">
-                Watch Something Random
+                Random Watch
             </button>
             
-            <button>
+            <button on:click={your_account}>
                 <img src="icons/profile.svg" alt="Icon">
                 Your Account
             </button>
         </div>
-    </div>
-{:else}
-    <div class="wrapper">
-        <div class="title">Login or Register</div>
+    {:else}
+        <div class="title">Want to link an account?</div>
 
-        <form class='section' action="submit">
-            <div>
-                <div class="label">Username</div>
-                <input type="text">
-            </div>
-
-            <div>
-                <div class="label">Password</div>
-                <input type="password">
-            </div>
-        </form>
-
-        <button class='submit'>Submit</button>
-    </div>
-{/if}
+        <div class="section">
+            <button on:click={account_prompt.yes}>
+                <img src="icons/complete.svg" alt="Icon">
+                Yes
+                <div class="caption">Your watch data will synced between devices</div>
+            </button>
+            
+            <button on:click={account_prompt.no}>
+                <img src="icons/close.svg" alt="Icon">
+                No
+                <div class="caption">Your watch data will not be saved</div>
+            </button>
+        </div>
+    {/if}
+</div>
 
 <!--  -->
 
@@ -67,42 +102,47 @@
 	.wrapper{
         position: relative;
         display: grid;
-        row-gap: 10px;
-		padding: 25px;
-		margin: 15px;
-		border-radius: 15px;
-        background: url('gradient.jpeg') center center no-repeat;
-        background-size: cover;
+        gap: 15px;
+		padding: 30px 15px;
 	}
 
     .title{
         font-size: 20pt;
-        font-weight: bold;
+        font-weight: 600;
     }
 
     .section{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 5px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
     }
 
     button{
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        background: rgb(0, 0, 0, 0.5);
+        display: grid;
+        row-gap: 5px;
+        padding: 15px;
+        border: solid 1px var(--e-fg);
+        border-bottom-color: var(--accent) !important;
         border-radius: 10px;
-        font-size: 12pt;
-        font-weight: 500;
+        font-size: 10pt;
+        font-weight: 400;
+        text-align: center;
     }
 
     button:hover{
-        color: var(--accent);
+        background: var(--fg);
+        border-color: gray;
     }
 
     button img{
-        height: 20px;
-        margin-right: 5px;
+        height: 25px;
+        margin: auto;
+        display: block;
+    }
+
+    button .caption{
+        font-weight: 300;
+        color: gray;
     }
 
     form{
