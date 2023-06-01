@@ -1,6 +1,6 @@
 @font-face {
     font-family: BaileyFont;
-    src: url('$lib/assets/Wix_Madefor_Display/WixMadeforDisplay-VariableFont_wght.ttf');
+    src: url('$lib/assets/Geologica/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf');
 }
 
 :root{
@@ -16,7 +16,6 @@
     --e-fg: #353535;
 
     --accent: #f9da51;
-    --compliment: #bf432a;
 }
 
 body{
@@ -52,7 +51,45 @@ button{
     cursor: pointer;
 }
 
+button img[icon]{
+    height: 25px;
+}
+
 input{
     all: unset;
     cursor: text;
+}
+
+h1{
+    all: unset;
+    display: block;
+
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+h2{
+    all: unset;
+    display: block;
+
+    font-size: 15pt;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+h3{
+    all: unset;
+    display: block;
+
+    font-size: 12pt;
+    font-weight: 500;
+}
+
+h4{
+    all: unset;
+    display: block;
+
+    font-size: 10pt;
+    font-weight: 400;
+    color: gray;
 }

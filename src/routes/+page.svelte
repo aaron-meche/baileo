@@ -35,9 +35,10 @@
 
 <!--  -->
 
-<AccountStatusBar/>
 
-<div class="media-selection-pool">
+<div class="content">
+	<AccountStatusBar/>
+
 	{#if continue_watching.length > 0}
 		<MediaSection title='Continue Watching' items={continue_watching}/>
 	{/if}
@@ -56,5 +57,9 @@
 <!--  -->
 
 <style>
-
+	.content{
+		display: grid;
+		row-gap: 60px;
+		padding: 45px 0;
+	}
 </style>

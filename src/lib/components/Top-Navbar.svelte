@@ -102,7 +102,6 @@
         padding: 10px;
         background: var(--bg);
         box-shadow: 0 5px 25px black;
-        border-bottom: solid 1px var(--e-fg);
     }
 
     .wrapper > * {

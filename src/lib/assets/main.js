@@ -27,6 +27,8 @@ const database = getDatabase()
 // Authentication
 export const auth = {
     login: (username, password, callback) => {
+        username = username.toLowerCase()
+        
         db.read('users/' + username, user => {
             if (password == user.password) {
                 storage.write('username', username)
@@ -38,6 +40,8 @@ export const auth = {
         })
     },
     register: (username, password, callback) => {
+        username = username.toLowerCase()
+
         const key_generator = (length) => {
             let canvas = ''
             let lib = ['a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']

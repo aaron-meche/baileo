@@ -15,7 +15,7 @@
 <!--  -->
 
 <section>
-	<div class="title">{title}</div>
+	<h2>{title}</h2>
 
 	<div class="media-grid">
 		{#each items as elem}
@@ -32,22 +32,14 @@
 	section{
 		display: grid;
 		row-gap: 10px;
-		padding: 15px 10px;
-		border-radius: 15px;
-	}
-
-	.title{
-		padding-left: 5px;
-		font-size: 15pt;
-		font-weight: 600;
-		color: var(--accent);
+		padding: 0 10px;
 	}
 
 	.media-grid{
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		align-items: flex-start;
-		row-gap: 20px;
+		row-gap: 15px;
 	}
 
 	@media screen and (orientation: portrait) {

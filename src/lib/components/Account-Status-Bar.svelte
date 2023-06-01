@@ -8,8 +8,9 @@
 
     let username = storage.exists('username') ? storage.read('username') : 'guest'
     if (username.includes('guest')) {
-        username = 'Guest'
+        username = 'guest'
     }
+    username = username.charAt(0).toUpperCase() + username.slice(1)
 
     let last_watched = {}
     if (typeof window !== 'undefined') {
@@ -70,48 +71,61 @@
 
 <div class="wrapper">
     {#if storage.exists('username')}
-        <div class="title">Welcome back, {username}</div>
+        <h1>Welcome back, {username}</h1>
+        
         <div class="section">
             {#if last_watched.title}
                 <button on:click={resume_watching}>
-                    <img src="icons/play.svg" alt="Icon">
-                    Resume Watching
-                    <div class="caption">{last_watched.title} ({last_watched.progress}%)</div>
+                    <img icon src="icons/play.svg" alt="Icon">
+                    <div>
+                        <h3>Resume Watching</h3>
+                        <h4>{last_watched.title} ({last_watched.progress}%)</h4>
+                    </div>
                 </button>
             {/if}
             
             <button on:click={random_watch}>
-                <img src="icons/shuffle.svg" alt="Icon">
-                Random Watch
-                <div class="caption">Pick something random to watch</div>
+                <img icon src="icons/shuffle.svg" alt="Icon">
+                <div>
+                    <h3>Random Watch</h3>
+                    <h4>Pick something random to watch</h4>
+                </div>
             </button>
             
             <button on:click={utility}>
-                <img src="icons/utility.svg" alt="Icon">
-                Utility
-                <div class="caption">Embedded convenience features</div>
+                <img icon src="icons/utility.svg" alt="Icon">
+                <div>
+                    <h3>Utility</h3>
+                    <h4>Embedded convenience features</h4>
+                </div>
             </button>
 
             <button on:click={your_account}>
-                <img src="icons/profile.svg" alt="Icon">
-                Your Account
-                <div class="caption">Account preferences</div>
+                <img icon src="icons/profile.svg" alt="Icon">
+                <div>
+                    <h3>Your Account</h3>
+                    <h4>Account preferences</h4>
+                </div>
             </button>
         </div>
     {:else}
-        <div class="title">Want to use a login?</div>
+        <h1>Want to use a login?</h1>
 
         <div class="section">
             <button on:click={account_prompt.yes}>
-                <img src="icons/complete.svg" alt="Icon">
-                Yes
-                <div class="caption">Online account</div>
+                <img icon src="icons/complete.svg" alt="Icon">
+                <div>
+                    <h3>Yes</h3>
+                    <h4>Online account</h4>
+                </div>
             </button>
             
             <button on:click={account_prompt.no}>
-                <img src="icons/close.svg" alt="Icon">
-                No
-                <div class="caption">Local account</div>
+                <img icon src="icons/close.svg" alt="Icon">
+                <div>
+                    <h3>No</h3>
+                    <h4>Local account</h4>
+                </div>
             </button>
         </div>
     {/if}
@@ -124,17 +138,12 @@
         position: relative;
         display: grid;
         gap: 15px;
-		padding: 30px 15px;
+		padding: 0 10px;
 	}
-
-    .title{
-        font-size: 20pt;
-        font-weight: 600;
-    }
 
     .section{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 10px;
     }
 
@@ -142,10 +151,10 @@
         display: grid;
         row-gap: 5px;
         padding: 15px;
-        border: solid 1px var(--e-fg);
+        border: solid 2px var(--e-fg);
         border-bottom-color: var(--accent) !important;
         border-radius: 10px;
-        font-size: 12pt;
+        font-size: 10pt;
         font-weight: 400;
         text-align: center;
     }
@@ -156,13 +165,6 @@
     }
 
     button img{
-        height: 25px;
         margin: auto;
-        display: block;
-    }
-
-    button .caption{
-        font-size: 10pt;
-        color: gray;
     }
 </style>

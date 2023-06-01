@@ -77,7 +77,7 @@
 <style>
     .app{
         opacity: 0;
-        transition: opacity 1s;
+        transition: opacity 0.5s;
     }
 
     .top-bar{

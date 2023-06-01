@@ -25,15 +25,11 @@
 <div class="item" type='media-item'>
     <div class="img-wrapper">
         <img src="thumbnails/{title}.jpeg" alt="Thumbnail" loading="lazy">
-        <div class="progress">
-            <div class="label">82% Watched</div>
-            <div class="bar" style='width: {progress}%'></div>
-        </div>
     </div>
 
     <div class="info">
-        <div class="title">{title}</div>
-        <div class="type">{caption} {progress_label}</div>
+        <h3>{title}</h3>
+        <h4>{caption} {progress_label}</h4>
     </div>
 </div>
 
@@ -47,13 +43,12 @@
         padding: 5px;
         cursor: default;
         opacity: 80%;
-        box-shadow: 0 5px 0px rgb(0, 0, 0, 0);
         transition: opacity 0.25s, box-shadow 0.25s;
 	}
 
     .item:hover{
         color: var(--accent);
-        opacity: 1;
+        opacity: 100%;
         z-index: 1;
         box-shadow: 0 5px 25px black;
     }
@@ -70,36 +65,7 @@
         object-fit: cover;
     }
 
-    .progress{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .label{
-        font-size: 8pt;
-        opacity: 0;
-        transition: opacity 200ms;
-    }
-
-    .bar{
-        height: 5px;
-        background: var(--accent);
-        border-radius: 2px;
-    }
-
     .info{
-        border-radius: inherit;
         padding: 10px 0;
     }
-
-    .title{
-        font-size: 12pt;
-        font-weight: 500;
-    }
-
-	.type{
-        font-size: 10pt;
-        color: gray;
-	}
 </style>

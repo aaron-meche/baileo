@@ -1,22 +1,47 @@
-Wix Madefor Display Variable Font
-=================================
+Geologica Variable Font
+=======================
 
-This download contains Wix Madefor Display as both a variable font and static fonts.
+This download contains Geologica as both a variable font and static fonts.
 
-Wix Madefor Display is a variable font with this axis:
+Geologica is a variable font with these axes:
+  CRSV
+  SHRP
+  slnt
   wght
 
 This means all the styles are contained in a single file:
-  WixMadeforDisplay-VariableFont_wght.ttf
+  Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Wix Madefor Display:
-  static/WixMadeforDisplay-Regular.ttf
-  static/WixMadeforDisplay-Medium.ttf
-  static/WixMadeforDisplay-SemiBold.ttf
-  static/WixMadeforDisplay-Bold.ttf
-  static/WixMadeforDisplay-ExtraBold.ttf
+in those cases you can use the static font files for Geologica:
+  static/Geologica-Thin.ttf
+  static/Geologica-ExtraLight.ttf
+  static/Geologica-Light.ttf
+  static/Geologica-Regular.ttf
+  static/Geologica-Medium.ttf
+  static/Geologica-SemiBold.ttf
+  static/Geologica-Bold.ttf
+  static/Geologica-ExtraBold.ttf
+  static/Geologica-Black.ttf
+  static/Geologica_Auto-Thin.ttf
+  static/Geologica_Auto-ExtraLight.ttf
+  static/Geologica_Auto-Light.ttf
+  static/Geologica_Auto-Regular.ttf
+  static/Geologica_Auto-Medium.ttf
+  static/Geologica_Auto-SemiBold.ttf
+  static/Geologica_Auto-Bold.ttf
+  static/Geologica_Auto-ExtraBold.ttf
+  static/Geologica_Auto-Black.ttf
+  static/Geologica_Cursive-Thin.ttf
+  static/Geologica_Cursive-ExtraLight.ttf
+  static/Geologica_Cursive-Light.ttf
+  static/Geologica_Cursive-Regular.ttf
+  static/Geologica_Cursive-Medium.ttf
+  static/Geologica_Cursive-SemiBold.ttf
+  static/Geologica_Cursive-Bold.ttf
+  static/Geologica_Cursive-ExtraBold.ttf
+  static/Geologica_Cursive-Black.ttf
 
 Get started
 -----------
