@@ -187,8 +187,8 @@
 	.app{
 		display: grid;
 		grid-template-columns: 2fr 1fr;
-		gap: 20px;
-		padding: 20px;
+		gap: 15px;
+		padding: 15px;
 	}
 
 	.side{

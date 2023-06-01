@@ -19,7 +19,8 @@
         document.querySelector('.app').style.opacity = 1
 	})
 
-    
+
+
 
 
     // if (typeof window !== 'undefined') {
@@ -32,34 +33,6 @@
     //         })
     //     }
     // }
-
-    // Go to login page if not logged in
-    // if (storage.read('user_id') == undefined) { // if no id
-    //     if (typeof window !== 'undefined' && $page.url.pathname !== '/account') {
-    //         window.open('/account', '_self')
-    //     }
-    // } else { // verify id and key
-    //     db.user.read((user) => {
-    //         if (storage.read('user_key') !== user.key) {
-    //             alert('Account Lockout: Client key invalid')
-    //             auth.logout()
-    //         }
-    //     })
-    // }
-
-
-
-    // Safety storage functions
-    // function default_storage_value(attr, val) {
-    //     if (!storage.exists(attr)) {
-    //         storage.set(attr, val)
-    //     }
-    // }
-    // default_storage_value('watching title', 'The Office')
-    // default_storage_value('shuffle', 'false')
-    // default_storage_value('autoplay', 'true')
-    // default_storage_value('autoplay buffer', 30)
-    // default_storage_value('menu status', 'true')
 </script>
 
 <!--  -->
