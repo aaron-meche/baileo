@@ -75,6 +75,14 @@ export const db = {
             onlyOnce: true
         })
     },
+    listen: (path, callback) => {
+        const dbRef = ref(database, path)
+        
+        onValue(dbRef, (snapshot) => {
+            const value = snapshot.val()
+            callback(value)
+        },)
+    },
     write: (path, data, callback) => {
         const dbRef = ref(database, path)
 

@@ -19,7 +19,7 @@
 	// Get Currently Watching
 	let continue_watching = []
 	if (typeof window !== "undefined") {
-		db.read('users/' + storage.read('username'), (user) => {
+		db.listen('users/' + storage.read('username'), (user) => {
 			if (user.library) {
 				continue_watching = Object.keys(user.library)
 			}

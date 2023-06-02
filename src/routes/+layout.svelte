@@ -50,7 +50,7 @@
 <style>
     .app{
         opacity: 0;
-        transition: opacity 0.5s;
+        transition: opacity 0.25s;
     }
 
     .top-bar{

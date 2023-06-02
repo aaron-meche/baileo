@@ -52,6 +52,15 @@
 		else {
 			media.path = `https://209.163.185.11/videos/${media.title}.mp4`
 		}
+
+		setTimeout(() => {
+			if (document.querySelector('video').readyState == 0 && storage.read('file-server-connection') !== 'true') {
+				let accept_transfer = confirm('To continue watching media, you must allow your browser to read data from the file server.')
+				if (accept_transfer) {
+					window.open('https://209.163.185.11/', '_self')
+				}
+			}
+		}, 5000);
 	}
 
 
@@ -67,6 +76,8 @@
 
 		video.addEventListener('durationchange', () => {
 			video.currentTime = media.progress * video.duration
+
+			storage.write('file-server-connection', 'true')
 		})
 	}
 

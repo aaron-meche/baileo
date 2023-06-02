@@ -71,13 +71,13 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: rgb(75 75 75);
+		background: var(--e-fg);
 		border-radius: 100vh;
 		cursor: pointer;
 	}
 
 	.navigation button.inactive{
-		opacity: 0.25;
+		opacity: 25%;
         cursor: default;
 	}
 
