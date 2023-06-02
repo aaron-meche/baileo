@@ -621,6 +621,11 @@ export const mediaDB = {
         cat: "horror",
     },
 
+    "The Founder": {
+        type: "Movie",
+        cat: "drama historical",
+    },
+
     "The Holiday": {
         type: "Movie", 
         cat: "romcom christmas", 

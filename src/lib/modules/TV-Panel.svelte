@@ -71,7 +71,7 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: var(--e-fg);``
+		background: var(--e-fg);
 		border-radius: 100vh;
 		cursor: pointer;
 	}
