@@ -656,6 +656,11 @@ export const mediaDB = {
         cat: "drama", 
     },
 
+    "The Witch": {
+        type: "Movie",
+        cat: "horror",
+    },
+
     "Trick r Treat": {
         type: "Movie",
         cat: "horror",
