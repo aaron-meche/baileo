@@ -1,0 +1,36 @@
+[debug] [2023-06-06T04:32:19.371Z] ----------------------------------------------------------------------
+[debug] [2023-06-06T04:32:19.372Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-06-06T04:32:19.372Z] CLI Version:   12.1.0
+[debug] [2023-06-06T04:32:19.372Z] Platform:      darwin
+[debug] [2023-06-06T04:32:19.372Z] Node Version:  v18.14.0
+[debug] [2023-06-06T04:32:19.374Z] Time:          Mon Jun 05 2023 23:32:19 GMT-0500 (Central Daylight Time)
+[debug] [2023-06-06T04:32:19.374Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-06T04:32:19.376Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-06-06T04:32:19.432Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-06T04:32:19.432Z] > authorizing via signed-in user (aameche18@gmail.com)
+[debug] [2023-06-06T04:32:19.433Z] [iam] checking project baileo-4009d for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2023-06-06T04:32:19.433Z] > refreshing access token with scopes: []
+[debug] [2023-06-06T04:32:19.434Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-06-06T04:32:19.434Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-06T04:32:19.611Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-06-06T04:32:19.611Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-06-06T04:32:19.626Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-06-06T04:32:19.627Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-06T04:32:19.640Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/baileo-4009d:testIamPermissions [none]
+[debug] [2023-06-06T04:32:19.640Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/baileo-4009d:testIamPermissions x-goog-quota-user=projects/baileo-4009d
+[debug] [2023-06-06T04:32:19.640Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/baileo-4009d:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-06-06T04:32:19.925Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/baileo-4009d:testIamPermissions 200
+[debug] [2023-06-06T04:32:19.926Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/baileo-4009d:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-06-06T04:32:19.926Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d [none]
+[debug] [2023-06-06T04:32:20.182Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d 200
+[debug] [2023-06-06T04:32:20.182Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d {"projectId":"baileo-4009d","projectNumber":"308681359309","displayName":"Baileo","name":"projects/baileo-4009d","resources":{"hostingSite":"baileo-4009d","realtimeDatabaseInstance":"baileo-4009d-default-rtdb"},"state":"ACTIVE","etag":"1_48dada1c-a7cf-4158-b00d-110f39cdb4d4"}
+[debug] [2023-06-06T04:32:20.182Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d [none]
+[debug] [2023-06-06T04:32:20.417Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d 200
+[debug] [2023-06-06T04:32:20.417Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/baileo-4009d {"projectId":"baileo-4009d","projectNumber":"308681359309","displayName":"Baileo","name":"projects/baileo-4009d","resources":{"hostingSite":"baileo-4009d","realtimeDatabaseInstance":"baileo-4009d-default-rtdb"},"state":"ACTIVE","etag":"1_48dada1c-a7cf-4158-b00d-110f39cdb4d4"}
+[info] 
+[info] === Deploying to 'baileo-4009d'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2023-06-06T04:32:20.420Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/baileo-4009d/locations/-/instances/baileo-4009d-default-rtdb [none]

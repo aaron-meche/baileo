@@ -12,15 +12,15 @@
     }
     username = username.charAt(0).toUpperCase() + username.slice(1)
 
-    let last_watched = {}
-    if (typeof window !== 'undefined') {
-        db.read('users/' + storage.read('username'), (user) => {
-            if (user.watching && user.library?.[user.watching]) {
-                last_watched.title = user.watching
-                last_watched.progress = Math.floor(user.library[user.watching].progress * 100)
-            }
-        })
-    }
+    // let last_watched = {}
+    // if (typeof window !== 'undefined') {
+        // db.read('users/' + storage.read('username'), (user) => {
+        //     if (user.watching && user.library?.[user.watching]) {
+        //         last_watched.title = user.watching
+        //         last_watched.progress = Math.floor(user.library[user.watching].progress * 100)
+        //     }
+        // })
+    // }
 
     const account_prompt = {
         yes: () => {
@@ -45,8 +45,8 @@
         }
     }
 
-    function resume_watching() {
-        window.open('/watch', '_self')
+    function watch_library() {
+        alert('Invalid')
     }
 
     function random_watch() {
@@ -55,10 +55,6 @@
         db.write('users/' + storage.read('username') + '/watching', random_title, () => {
             window.open('/watch', '_self')
         })
-    }
-
-    function utility() {
-        alert('Utility Unavailable')
     }
 
     function your_account() {
@@ -74,16 +70,16 @@
         <h1>Welcome back, {username}</h1>
         
         <div class="section">
-            {#if last_watched.title}
-                <button on:click={resume_watching}>
-                    <img icon src="icons/play.svg" alt="Icon">
-                    <div>
-                        <h3>Resume Watching</h3>
-                        <h4>{last_watched.title} ({last_watched.progress}%)</h4>
-                    </div>
-                </button>
-            {/if}
-            
+            <!-- Library -->
+            <button on:click={watch_library}>
+                <img icon src="icons/history.svg" alt="Icon">
+                <div>
+                    <h3>Your Library</h3>
+                    <h4>Watch history and saved lists</h4>
+                </div>
+            </button>
+
+            <!-- Random watch -->
             <button on:click={random_watch}>
                 <img icon src="icons/shuffle.svg" alt="Icon">
                 <div>
@@ -91,20 +87,22 @@
                     <h4>Pick something random to watch</h4>
                 </div>
             </button>
-            
-            <button on:click={utility}>
-                <img icon src="icons/utility.svg" alt="Icon">
-                <div>
-                    <h3>Utility</h3>
-                    <h4>Embedded convenience features</h4>
-                </div>
-            </button>
 
+            <!-- Account preferences -->
             <button on:click={your_account}>
                 <img icon src="icons/profile.svg" alt="Icon">
                 <div>
                     <h3>Your Account</h3>
                     <h4>Account preferences</h4>
+                </div>
+            </button>
+
+            <!-- Log out of account -->
+            <button on:click={auth.logout}>
+                <img icon src="icons/close.svg" alt="Icon">
+                <div>
+                    <h3>Log Out</h3>
+                    <h4>Log out of this account</h4>
                 </div>
             </button>
         </div>
@@ -138,30 +136,34 @@
         position: relative;
         display: grid;
         gap: 15px;
-		padding: 0 10px;
+		padding: 0 15px;
 	}
+
+    h1{
+        text-align: center;
+    }
 
     .section{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
     }
 
     button{
         display: grid;
-        row-gap: 5px;
+        grid-template-columns: min-content auto;
+        align-items: center;
+        column-gap: 15px;
         padding: 15px;
-        border: solid 2px var(--e-fg);
-        border-bottom-color: var(--accent) !important;
+        border: solid 2px var(--fg);
         border-radius: 10px;
         font-size: 10pt;
         font-weight: 400;
-        text-align: center;
     }
 
     button:hover{
         background: var(--fg);
-        border-color: gray;
+        border-color: var(--e-fg);
     }
 
     button img{

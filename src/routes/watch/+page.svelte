@@ -48,14 +48,16 @@
 	const find_mediaPath = () => {
 		if (media.type == 'TV Show') { 
 			media.path = `https://209.163.185.11/videos/${media.title}/Season ${media.season + 1}/${mediaDB[media.title].seasons[media.season][media.episode]}.mp4`
+			media.caption_path = `https://209.163.185.11/captions/${media.title}/Season ${media.season + 1}/${mediaDB[media.title].seasons[media.season][media.episode]}.srt`
 		} 
 		else {
 			media.path = `https://209.163.185.11/videos/${media.title}.mp4`
+			media.caption_path = `https://209.163.185.11/captions/${media.title}.srt`
 		}
 
 		setTimeout(() => {
-			if (document.querySelector('video').readyState == 0 && storage.read('file-server-connection') !== 'true') {
-				let accept_transfer = confirm('To continue watching media, you must allow your browser to read data from the file server.')
+			if (document.querySelector('video').readyState == 0) {
+				let accept_transfer = confirm('Error! Server connection error\nYou must permit your browser to read data from the file server.')
 				if (accept_transfer) {
 					window.open('https://209.163.185.11/', '_self')
 				}
@@ -76,8 +78,6 @@
 
 		video.addEventListener('durationchange', () => {
 			video.currentTime = media.progress * video.duration
-
-			storage.write('file-server-connection', 'true')
 		})
 	}
 
@@ -223,7 +223,7 @@
 	}
 
 	.module{
-		border: solid 2px var(--e-fg);
+		border: solid 2px var(--fg);
 		border-radius: 5px;
 		padding: 20px;
 	}
@@ -232,8 +232,6 @@
 		height: fit-content;
 		border-radius: 5px;
 		overflow: hidden;
-		background: black;
-		box-shadow: 0 5px 25px black;
 	}
 
 	video{
@@ -264,12 +262,11 @@
 		font-size: 10pt;
 		font-weight: 500;
 		border-radius: 5px;
-		border: solid 1px var(--e-fg);
-		border-bottom-color: var(--accent) !important;
+		border: solid 2px var(--fg);
 	}
 
 	.action-buttons button:hover{
-		border-color: gray;
+		border-color: var(--e-fg);
 		background: var(--fg);
 	}
 

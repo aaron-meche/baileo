@@ -16,7 +16,8 @@
     } from 'svelte'
 
     onMount(async () => {
-        document.querySelector('.app').style.opacity = 1
+        document.querySelector('.app').style.visibility = 'visible'
+        document.querySelector('.loading').style.visibility = 'hidden'
 	})
 
 
@@ -37,6 +38,10 @@
 
 <!--  -->
 
+<div class="loading">
+    <img src="loading.gif" alt="Loading">
+</div>
+
 <div class="app">
     <div class="top-bar">
         <TopNavbar/>
@@ -49,13 +54,27 @@
 
 <style>
     .app{
-        opacity: 0;
-        transition: opacity 0.25s;
+        visibility: hidden;
     }
 
     .top-bar{
         position: sticky;
         top: 0;
         z-index: 5;
+    }
+
+    .loading{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .loading img{
+        height: 50px;
     }
 </style>

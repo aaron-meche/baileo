@@ -60,12 +60,18 @@ export const auth = {
             auth.login(username, password, callback())
         })
     },
+    logout: () => {
+        storage.clear()
+        window.open('/', '_self')
+    }
 }
 
 
 // (NEW) Firebase Database
 export const db = {
     read: (path, callback) => {
+        if (typeof window =="undefined") return
+
         const dbRef = ref(database, path)
         
         onValue(dbRef, (snapshot) => {
@@ -76,6 +82,8 @@ export const db = {
         })
     },
     listen: (path, callback) => {
+        if (typeof window =="undefined") return
+
         const dbRef = ref(database, path)
         
         onValue(dbRef, (snapshot) => {
@@ -84,6 +92,8 @@ export const db = {
         },)
     },
     write: (path, data, callback) => {
+        if (typeof window =="undefined") return
+
         const dbRef = ref(database, path)
 
         set(dbRef, data)
@@ -97,6 +107,8 @@ export const db = {
             });
     },
     writeAll: (contents, callback) => {
+        if (typeof window =="undefined") return
+
         let collect = []
         for (let i = 0; i < contents.length; i++) {
             collect.push(db.write(contents[i][0], contents[i][1]))
@@ -110,6 +122,8 @@ export const db = {
             })
     },
     delete: (path, callback) => {
+        if (typeof window =="undefined") return
+
         remove(ref(database, path))
             .then(() => {
                 if (callback) callback()
@@ -612,7 +626,7 @@ export const mediaDB = {
     },
 
     "The Devil Wears Prada": {
-        type: "Movie", 
+        type: "Movie",
         cat: "drama", 
     },
 

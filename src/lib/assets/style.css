@@ -1,6 +1,6 @@
 @font-face {
     font-family: BaileyFont;
-    src: url('$lib/assets/Geologica/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf');
+    src: url('$lib/assets/Gantari/Gantari-VariableFont_wght.ttf');
 }
 
 :root{
@@ -11,11 +11,11 @@
         inset -4px -4px 12px rgba(255, 255, 255, 0.1),
         inset 4px 4px 12px rgba(0, 0, 0);
 
-    --bg: #101010;
-    --fg: #202020;
-    --e-fg: #353535;
+    --bg: rgb(25, 20, 30);
+    --fg: rgb(44, 34, 53);
+    --e-fg: rgb(73, 59, 89);
 
-    --accent: #f9da51;
+    --accent: rgb(120, 80, 245);
 }
 
 body{
@@ -46,6 +46,11 @@ img{
     display: block;
 }
 
+a{
+    all: unset;
+    cursor: pointer;
+}
+
 button{
     all: unset;
     cursor: pointer;
@@ -64,7 +69,7 @@ h1{
     all: unset;
     display: block;
 
-    font-size: 18pt;
+    font-size: 20pt;
     font-weight: 600;
 }
 
@@ -73,7 +78,7 @@ h2{
     display: block;
 
     font-size: 15pt;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--accent);
 }
 

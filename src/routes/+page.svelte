@@ -59,7 +59,7 @@
 <style>
 	.content{
 		display: grid;
-		row-gap: 60px;
+		row-gap: 45px;
 		padding: 45px 0;
 	}
 </style>
