@@ -16,6 +16,7 @@
 	}
 
 
+	// Once, check database for saved progress
 	const find_watchProgress = (user) => {
 		if (user?.library?.[media.title]?.progress >= 0) {
 			media.progress = user.library[media.title].progress
@@ -45,6 +46,7 @@
 	}
 
 
+	// Once, calculate media path
 	const find_mediaPath = () => {
 		if (media.type == 'TV Show') { 
 			media.path = `https://209.163.185.11/videos/${media.title}/Season ${media.season + 1}/${mediaDB[media.title].seasons[media.season][media.episode]}.mp4`
@@ -54,10 +56,22 @@
 			media.path = `https://209.163.185.11/videos/${media.title}.mp4`
 			media.caption_path = `https://209.163.185.11/captions/${media.title}.srt`
 		}
+	}
 
+
+	// Once, get media description of TV Show
+	const find_mediaDescription = () => {
+		if (media.type == 'TV Show') {
+			media.description = `S${media.season + 1}, E${media.episode + 1} - ${serverTypeConversion(mediaDB[media.title].seasons[media.season][media.episode])}`
+		}
+	}
+
+
+	// Timeout, check if server is connected
+	const verify_serverConnection = () => {
 		setTimeout(() => {
 			if (document.querySelector('video').readyState == 0) {
-				let accept_transfer = confirm('Error! Server connection error\nYou must permit your browser to read data from the file server.')
+				let accept_transfer = confirm('Server connection error!\nYou must permit your browser to read data from the file server.')
 				if (accept_transfer) {
 					window.open('https://209.163.185.11/', '_self')
 				}
@@ -66,13 +80,7 @@
 	}
 
 
-	const find_mediaDescription = () => {
-		if (media.type == 'TV Show') {
-			media.description = `S${media.season + 1}, E${media.episode + 1} - ${serverTypeConversion(mediaDB[media.title].seasons[media.season][media.episode])}`
-		}
-	}
-
-
+	// Once, change time of video to progress time
 	const load_watchProgress = () => {
 		const video = document.querySelector('video')
 
@@ -82,6 +90,7 @@
 	}
 
 
+	// Interval, continuously update database with watch progress
 	const update_watchProgress = () => {
 		const video = document.querySelector('video')
 		
@@ -94,8 +103,15 @@
 			}
 		}, 500);
 	}
+
+	// const manage_watchSyncInfo = () => {
+	// 	db.read(`users/${storage.read('username')}/library/${media.title}/sync`, (data) => {
+
+	// 	})
+	// }
 	
 
+	// Welcoming function
 	if (typeof window !== 'undefined') {
 		window.addEventListener('keydown', (e) => {
 			const video = document.querySelector('video')
@@ -109,6 +125,8 @@
 			}
 		})
 
+		if (!storage.exists('username')) window.open('/', '_self')
+
 		db.read('users/' + storage.read('username'), (user) => {
 			media.title = user['watching']
 			media.type = mediaDB[media.title]['type']
@@ -117,8 +135,10 @@
 			find_watchProgress(user)
 			find_mediaPath()
 			find_mediaDescription()
+			verify_serverConnection()
 			load_watchProgress()
 		    update_watchProgress()
+			manage_watchSyncInfo()
 		})
 	}
 </script>

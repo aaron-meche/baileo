@@ -39,18 +39,20 @@
     .item{
         position: relative;
         top: 0;
-        border-radius: 5px;
         padding: 5px;
+        border-bottom: solid 2px transparent;
         cursor: default;
         opacity: 80%;
         transition: opacity 0.25s, box-shadow 0.25s;
 	}
 
     .item:hover{
+        position: relative;
         color: var(--accent);
         opacity: 100%;
         z-index: 1;
         box-shadow: 0 5px 25px black;
+        border-bottom-color: var(--accent);
     }
 
     .img-wrapper{
@@ -61,7 +63,7 @@
     img{
         width: 100%;
         aspect-ratio: 16 / 9;
-        border-radius: inherit;
+        border-radius: 5px;
         object-fit: cover;
     }
 

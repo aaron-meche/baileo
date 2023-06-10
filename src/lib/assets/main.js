@@ -286,9 +286,14 @@ export function isServerConnected(url) {
 
 // On home page, handle onclick for media item with title
 export function handleMediaItemClick(title) {
-    db.write(`users/${storage.read('username')}/watching`, title, () => {
-        window.open('/watch', '_self')
-    })
+    if (storage.exists('username')) {
+        db.write(`users/${storage.read('username')}/watching`, title, () => {
+            window.open('/watch', '_self')
+        })
+    }
+    else {
+        alert('You must be logged in to watch!')
+    }
 }
 
 
@@ -513,6 +518,11 @@ export const mediaDB = {
     "Hidden Figures": {
         type: "Movie", 
         cat: "drama historical",
+    },
+
+    "Interstellar": {
+        type: "Movie",
+        cat: "drama",
     },
 
     "It": {
