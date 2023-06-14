@@ -46,7 +46,6 @@
     <div class="top-bar">
         <TopNavbar/>
     </div>
-    <div class="top-bar-border"></div>
     
     <slot/>
 </div>
@@ -62,12 +61,6 @@
         position: sticky;
         top: 0;
         z-index: 5;
-    }
-
-    .top-bar-border{
-        height: 2px;
-        width: 100vw;
-        background: var(--fg);
     }
 
     .loading{

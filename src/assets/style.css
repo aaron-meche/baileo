@@ -11,11 +11,11 @@
         inset -4px -4px 12px rgba(255, 255, 255, 0.1),
         inset 4px 4px 12px rgba(0, 0, 0);
 
-    --bg: rgb(25, 20, 30);
-    --fg: rgb(44, 34, 53);
-    --e-fg: rgb(73, 59, 89);
+    --bg: rgb(15, 10, 20);
+    --fg: rgb(29, 20, 37);
+    --e-fg: rgb(64, 47, 80);
 
-    --accent: rgb(120, 80, 245);
+    --accent: rgb(132, 111, 250);
 }
 
 body{
@@ -70,7 +70,7 @@ h1{
     display: block;
 
     font-size: 18pt;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 h2{
