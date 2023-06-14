@@ -4,7 +4,7 @@
         db,
         storage,
         mediaDB
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
     let username = storage.exists('username') ? storage.read('username') : 'guest'
     if (username.includes('guest')) {
@@ -69,67 +69,45 @@
     {#if storage.exists('username')}
         <h1>Welcome back, {username}</h1>
         
-        <section>
-            <div class="list">
-                <!-- Library -->
-                <button on:click={watch_library}>
-                    <img icon src="icons/history.svg" alt="Icon">
-                    <div>
-                        <h3>Your Library</h3>
-                        <h4>Watch history and saved lists</h4>
-                    </div>
-                </button>
-    
-                <!-- Random watch -->
-                <button on:click={random_watch}>
-                    <img icon src="icons/shuffle.svg" alt="Icon">
-                    <div>
-                        <h3>Random Watch</h3>
-                        <h4>Pick something random to watch</h4>
-                    </div>
-                </button>
-    
-                <!-- Account preferences -->
-                <button on:click={your_account}>
-                    <img icon src="icons/profile.svg" alt="Icon">
-                    <div>
-                        <h3>Your Account</h3>
-                        <h4>Account preferences</h4>
-                    </div>
-                </button>
-    
-                <!-- Log out of account -->
-                <button on:click={auth.logout}>
-                    <img icon src="icons/close.svg" alt="Icon">
-                    <div>
-                        <h3>Log Out</h3>
-                        <h4>Log out of this account</h4>
-                    </div>
-                </button>
-            </div>
-        </section>
+        <div class="grid">
+            <!-- Library -->
+            <button on:click={watch_library}>
+                <img icon src="icons/history.svg" alt="Icon">
+                <h3>Your Library</h3>
+            </button>
+
+            <!-- Random watch -->
+            <button on:click={random_watch}>
+                <img icon src="icons/shuffle.svg" alt="Icon">
+                <h3>Random Watch</h3>
+            </button>
+
+            <!-- Account preferences -->
+            <button on:click={your_account}>
+                <img icon src="icons/profile.svg" alt="Icon">
+                <h3>Your Account</h3>
+            </button>
+
+            <!-- Log out of account -->
+            <button on:click={auth.logout}>
+                <img icon src="icons/close.svg" alt="Icon">
+                <h3>Log Out</h3>
+            </button>
+        </div>
     {:else}
         <h1>Want to use a login?</h1>
 
-        <section>
-            <div class="list">
-                <button on:click={account_prompt.yes}>
-                    <img icon src="icons/complete.svg" alt="Icon">
-                    <div>
-                        <h3>Yes</h3>
-                        <h4>Online account</h4>
-                    </div>
-                </button>
-                
-                <button on:click={account_prompt.no}>
-                    <img icon src="icons/close.svg" alt="Icon">
-                    <div>
-                        <h3>No</h3>
-                        <h4>Local account</h4>
-                    </div>
-                </button>
-            </div>
-        </section>
+        <div class="grid">
+            <button on:click={account_prompt.yes}>
+                <img icon src="icons/complete.svg" alt="Icon">
+                <h3>Yes</h3>
+            </button>
+            
+            <button on:click={account_prompt.no}>
+                <img icon src="icons/close.svg" alt="Icon">
+                <h3>No</h3>
+            </button>
+        </div>
     {/if}
 </div>
 
@@ -139,42 +117,37 @@
 	.wrapper{
         display: grid;
         gap: 15px;
-		padding: 0 15px;
+		padding: 0 4%;
 	}
 
     h1{
         text-align: center;
     }
 
-    section{
+    .grid{
         display: grid;
-        row-gap: 10px;
-    }
-
-    .list{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
     }
 
     button{
         display: grid;
-        grid-template-columns: min-content auto;
-        align-items: center;
-        column-gap: 15px;
-        padding: 10px 15px;
+        row-gap: 5px;
+        text-align: center;
+        padding: 10px;
         border: solid 2px var(--e-fg);
+        background: var(--fg);
         border-radius: 10px;
         font-size: 10pt;
         font-weight: 400;
     }
 
     button:hover{
-        background: var(--fg);
-        border-bottom-color: var(--accent);
+        background: var(--e-fg);
     }
-
+    
     button img{
+        height: 25px;
         margin: auto;
     }
 </style>

@@ -5,10 +5,10 @@
 		media_controls,
 		serverTypeConversion,
 		storage
-	} from '$lib/assets/main'
+	} from '$assets/main'
 
-	import TvModule from '$lib/modules/TV-Panel.svelte'
-	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
+	import TvModule from '$modules/TV-Panel.svelte'
+	import MoreToWatchModule from '$modules/More-to-Watch.svelte'
 
 
 	let media = {

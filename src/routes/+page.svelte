@@ -3,10 +3,10 @@
 		mediaDB, 
 		storage,
 		db
-	} from '$lib/assets/main'
+	} from '$assets/main'
 	
-	import MediaSection from '$lib/components/Media-Section.svelte'
-  	import AccountStatusBar from '$lib/components/Account-Status-Bar.svelte';
+	import MediaSection from '$components/Media-Section.svelte'
+  	import AccountStatusBar from '$components/Account-Status-Bar.svelte';
 
 	function searchMedia(attr, val) {
 		let collection = []
@@ -59,7 +59,7 @@
 <style>
 	.content{
 		display: grid;
-		row-gap: 30px;
-		padding: 30px 0;
+		row-gap: 40px;
+		padding: 40px 0;
 	}
 </style>

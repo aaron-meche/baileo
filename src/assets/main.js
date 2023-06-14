@@ -11,13 +11,13 @@ import {
 } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDDSQmLL5A756k_vWlc4Zk_ysZ5hd8cB-k",
-  authDomain: "baileo-4009d.firebaseapp.com",
-  databaseURL: "https://baileo-4009d-default-rtdb.firebaseio.com",
-  projectId: "baileo-4009d",
-  storageBucket: "baileo-4009d.appspot.com",
-  messagingSenderId: "308681359309",
-  appId: "1:308681359309:web:b57d82dc080ba772af4e84"
+    apiKey: "AIzaSyDDSQmLL5A756k_vWlc4Zk_ysZ5hd8cB-k",
+    authDomain: "baileo-4009d.firebaseapp.com",
+    databaseURL: "https://baileo-4009d-default-rtdb.firebaseio.com",
+    projectId: "baileo-4009d",
+    storageBucket: "baileo-4009d.appspot.com",
+    messagingSenderId: "308681359309",
+    appId: "1:308681359309:web:b57d82dc080ba772af4e84"
 }
 
 const app = initializeApp(firebaseConfig)

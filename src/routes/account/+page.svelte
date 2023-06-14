@@ -3,7 +3,7 @@
         auth,
         db,
         storage
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
 
 

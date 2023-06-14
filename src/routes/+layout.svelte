@@ -1,11 +1,11 @@
 <script>
-    import '$lib/assets/style.css'
-    import TopNavbar from '$lib/components/Top-Navbar.svelte'
+    import '$assets/style.css'
+    import TopNavbar from '$components/Top-Navbar.svelte'
 
 	import { 
         db,
         storage
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
     import { 
         page 
@@ -46,6 +46,7 @@
     <div class="top-bar">
         <TopNavbar/>
     </div>
+    <div class="top-bar-border"></div>
     
     <slot/>
 </div>
@@ -61,6 +62,12 @@
         position: sticky;
         top: 0;
         z-index: 5;
+    }
+
+    .top-bar-border{
+        height: 2px;
+        width: 100vw;
+        background: var(--fg);
     }
 
     .loading{

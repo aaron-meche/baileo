@@ -4,7 +4,7 @@
 	import { 
 		storage, 
 		mediaDB 
-	} from '$lib/assets/main'
+	} from '$assets/main'
 
 	const restTime = 2
 	let clock = restTime

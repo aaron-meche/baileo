@@ -1,7 +1,7 @@
 <script>
     import {
         storage
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
     import { 
         page 

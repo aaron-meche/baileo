@@ -2,22 +2,20 @@
     export let title
 
     import { 
+        db,
         mediaDB, 
         storage 
-    } from '$lib/assets/main'
+    } from '$assets/main'
     
     let type = mediaDB[title]['type']
     let caption = type
-    let progress = 0
-    let progress_label = ''
+    $: progress = 0
 
-    if (storage.exists(title + ' progress')) {
-        progress = storage.get(title + ' progress') * 100
-
-        if (type == 'TV Show') {
-            progress_label = ` - S${storage.get(title + ' season')}, E${storage.get(title + ' episode')}`
+    db.listen('users/' + storage.read('username') + '/library', (library) => {
+        if (library[title]) {
+            progress = library[title]['progress'] * 100
         }
-    }
+    })
 </script>
 
 <!--  -->
@@ -25,11 +23,12 @@
 <div class="item" type='media-item'>
     <div class="img-wrapper">
         <img src="thumbnails/{title}.jpeg" alt="Thumbnail" loading="lazy">
+        <div class="progress" style='width: {progress}%'></div>
     </div>
 
     <div class="info">
         <h3>{title}</h3>
-        <h4>{caption} {progress_label}</h4>
+        <h4>{caption}</h4>
     </div>
 </div>
 
@@ -39,25 +38,19 @@
     .item{
         position: relative;
         top: 0;
-        padding: 5px;
-        border-bottom: solid 2px transparent;
+        opacity: 75%;
         cursor: default;
-        opacity: 80%;
-        transition: opacity 0.25s, box-shadow 0.25s;
+        border-bottom: solid 3px transparent;
+        transition: opacity 0.25s;
 	}
 
     .item:hover{
-        position: relative;
-        color: var(--accent);
         opacity: 100%;
-        z-index: 1;
-        box-shadow: 0 5px 25px black;
         border-bottom-color: var(--accent);
     }
 
     .img-wrapper{
         position: relative;
-        border-radius: inherit;
     }
 
     img{
@@ -65,6 +58,15 @@
         aspect-ratio: 16 / 9;
         border-radius: 5px;
         object-fit: cover;
+    }
+
+    .progress{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: white;
+        box-shadow: 0 -2px 4px black;
     }
 
     .info{

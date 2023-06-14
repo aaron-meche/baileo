@@ -1,12 +1,12 @@
 <script>
-    import Menu from '$lib/components/Menu.svelte'
+    import Menu from '$components/Menu.svelte'
 
     import {
         db,
         storage,
         mediaDB,
         handleMediaItemClick
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
     import { 
         page 
@@ -67,13 +67,12 @@
     .wrapper{
         display: grid;
         align-items: center;
-        padding: 10px 0;
+        padding: 15px 0;
         background: var(--bg);
-        box-shadow: 0 0 15px rgb(0, 0, 0);
     }
 
     .horizontal-scroll{
-        padding: 0 15px;
+        padding: 0 4%;
     }
 
     .horizontal-scroll .item{
@@ -82,18 +81,18 @@
         padding: 10px;
         margin-right: 10px;
         border-radius: 5px;
+        background: var(--fg);
         border: solid 2px var(--e-fg);
         font-size: 10pt;
         cursor: pointer;
     }
     
     .horizontal-scroll .item:hover{
-        background: var(--fg);
+        background: var(--e-fg);
     }
 
     .horizontal-scroll .item.active{
-        background: var(--fg);
-        border-bottom-color: var(--accent);
+        background: var(--e-fg);
     }
 
     .horizontal-scroll .item img{

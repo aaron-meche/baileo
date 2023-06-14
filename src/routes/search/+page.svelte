@@ -2,9 +2,9 @@
 		import { 
 		mediaDB, 
 		storage
-	} from '$lib/assets/main'
+	} from '$assets/main'
 	
-	import MediaSection from '$lib/components/Media-Section.svelte'
+	import MediaSection from '$components/Media-Section.svelte'
 
 	function searchMedia(attr, val) {
 		let collection = []

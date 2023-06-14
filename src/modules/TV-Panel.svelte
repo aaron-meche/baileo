@@ -6,7 +6,7 @@
         media_controls,
         serverTypeConversion,
         storage 
-    } from '$lib/assets/main'
+    } from '$assets/main'
 
     function previousSeason() {
         media_controls.open_episode(media.title, media.season - 1, 0)

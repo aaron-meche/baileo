@@ -5,9 +5,9 @@
 		mediaDB, 
 		handleMediaItemClick,
 		shuffle
-	} from '$lib/assets/main'
+	} from '$assets/main'
 
-	import MediaItem from '$lib/components/Media-Item.svelte'
+	import MediaItem from '$components/Media-Item.svelte'
 
 	items = shuffle(items)
 </script>
@@ -32,14 +32,15 @@
 	section{
 		display: grid;
 		row-gap: 10px;
-		padding: 0 10px;
+		padding: 0 4%;
 	}
 
 	.media-grid{
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
 		align-items: flex-start;
-		row-gap: 15px;
+		row-gap: 20px;
+		column-gap: 10px;
 	}
 
 	@media screen and (orientation: portrait) {
