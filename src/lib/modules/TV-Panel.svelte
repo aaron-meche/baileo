@@ -6,7 +6,7 @@
         media_controls,
         serverTypeConversion,
         storage 
-    } from '$assets/main'
+    } from '$lib/assets/main'
 
     function previousSeason() {
         media_controls.open_episode(media.title, media.season - 1, 0)
@@ -24,22 +24,22 @@
 
     <div class="navigation">
         {#if media.season !== 0}
-            <button on:click={previousSeason} class="left"><img src="icons/left.svg" alt="Icon"></button>
+            <button clickable on:click={previousSeason} class="left"><img src="icons/left.svg" alt="Icon"></button>
         {:else}
-            <button class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
+            <button clickable class="left inactive"><img src="icons/left.svg" alt="Icon"></button>
         {/if}
 
         {#if media.season + 1 !== mediaDB[media.title].seasons.length}
-            <button on:click={nextSeason} class="right"><img src="icons/right.svg" alt="Icon"></button>
+            <button clickable on:click={nextSeason} class="right"><img src="icons/right.svg" alt="Icon"></button>
         {:else}
-            <button class="right inactive"><img src="icons/right.svg" alt="Icon"></button>
+            <button clickable class="right inactive"><img src="icons/right.svg" alt="Icon"></button>
         {/if}
     </div>
 </div>
 
 <div class="episode-list">
     {#each mediaDB[media.title]['seasons'][media.season] as episode, e}
-        <button class="item {e == media.episode ? 'active' : ''}" on:click={() => media_controls.open_episode(media.title, media.season, e)}>
+        <button clickable class="item {e == media.episode ? 'active' : ''}" on:click={() => media_controls.open_episode(media.title, media.season, e)}>
             <div class="title">{serverTypeConversion(episode)}</div>
             <div class="count">E{e + 1}</div>
         </button>
@@ -71,7 +71,7 @@
 		height: 20px;
 		padding: 5px;
 		aspect-ratio: 1 / 1;
-		background: var(--e-fg);
+		background: var(--l2);
 		border-radius: 100vh;
 		cursor: pointer;
 	}
@@ -97,11 +97,11 @@
     }
 
     .episode-list .item:hover{
-        background: var(--fg);
+        background: var(--l1);
     }
     
     .episode-list .item.active{
-        background: var(--fg);
+        background: var(--l1);
         color: var(--accent) !important;
         font-weight: 600;
     }

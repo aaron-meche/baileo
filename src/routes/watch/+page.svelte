@@ -5,16 +5,12 @@
 		media_controls,
 		serverTypeConversion,
 		storage
-	} from '$assets/main'
+	} from '$lib/assets/main'
 
-	import TvModule from '$modules/TV-Panel.svelte'
-	import MoreToWatchModule from '$modules/More-to-Watch.svelte'
+	import TvModule from '$lib/modules/TV-Panel.svelte'
+	import MoreToWatchModule from '$lib/modules/More-to-Watch.svelte'
 
-
-	let media = {
-		title: "Loading...",
-	}
-
+	let media = {}
 
 	// Once, check database for saved progress
 	const find_watchProgress = (user) => {
@@ -135,7 +131,7 @@
 			find_watchProgress(user)
 			find_mediaPath()
 			find_mediaDescription()
-			verify_serverConnection()
+			// verify_serverConnection()
 			load_watchProgress()
 		    update_watchProgress()
 			manage_watchSyncInfo()
@@ -145,153 +141,69 @@
 
 <!--  -->
 
-<svelte:head>
-	<title>{media.title}</title>
-</svelte:head>
-
-<!--  -->
-
 {#if typeof window !== 'undefined'}
-<div class="app">
 
-	<div class="side content">
-		<div class="video-wrapper">
-			<!-- svelte-ignore a11y-media-has-caption -->
-			<video src={media.path} controls autoplay></video>
-		</div>
-
-		<div class="info">
-			<div class="title">{media.title}</div>
-
-			{#if media.type == 'TV Show'}
-				<div class="description">{media.description}</div>
-			{/if}
-		</div>
-
-		<div class="action-buttons horizontal-scroll">
-			{#if media.type == 'TV Show'}
-				<button on:click={media_controls.next_episode(media)}>
-					<img src="icons/next.svg" alt="Icon">
-					Next Episode
-				</button>
-			{/if}
-
-			<button on:click={media_controls.download(media)}>
-				<img src="icons/download.svg" alt="Icon">
-				Download
-			</button>
-
-			{#if media.type == 'TV Show'}
-				<button on:click={media_controls.random_episode(media.title)}>
-					<img src="icons/shuffle.svg" alt="Icon">
-					Random Episode
-				</button>
-			{/if}
-
-			<button on:click={media_controls.remove_from_library(media.title)}>
-				<img src="icons/trash.svg" alt="Icon">
-				Remove from Library
-			</button>
-		</div>
-	</div>
-
-
-
-	<div class="side modules">
-		{#if media.type == 'TV Show'}
-			<div class="module">
-				<TvModule media={media}/>
-			</div>
-		{/if}
-
-		<!-- <div class="module"> -->
-			<!-- <MoreToWatchModule title={media.title}/> -->
-		<!-- </div> -->
-	</div>
-
+<div class="top-bar">
+	<h1>{media.title}</h1>
+	{#if media.type == 'TV Show'}
+		<h3>{media.description}</h3>
+	{/if}
 </div>
+
+<div class="video-wrapper">
+	<!-- svelte-ignore a11y-media-has-caption -->
+	<video src={media.path} controls autoplay></video>
+</div>
+
+<div class="lateral-grid horizontal-scroll">
+	{#if media.type == 'TV Show'}
+		<button clickable class="standard-button" on:click={media_controls.next_episode(media)}>
+			<img icon src="icons/next.svg" alt="Icon">
+			Next Episode
+		</button>
+
+		<button clickable class="standard-button" on:click={media_controls.random_episode(media.title)}>
+			<img icon src="icons/shuffle.svg" alt="Icon">
+			Random Episode
+		</button>
+	{/if}
+
+	<button clickable class="standard-button" on:click={media_controls.download(media)}>
+		<img icon src="icons/download.svg" alt="Icon">
+		Download
+	</button>
+
+	<button clickable class="standard-button" on:click={media_controls.remove_from_library(media.title)}>
+		<img icon src="icons/trash.svg" alt="Icon">
+		Remove from Library
+	</button>
+</div>
+
 {/if}
 
 <!--  -->
 
 <style>
-	.app{
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		gap: 15px;
-		padding: 15px;
-	}
-
-	.side{
-		height: fit-content;
-	}
-
-	.side.content{
-		display: grid;
-		row-gap: 20px;
-	}
-
-	.side.modules{
-		display: grid;
-		row-gap: 20px;
-	}
-
-	@media screen and (orientation: portrait) {
-		.app{
-			grid-template-columns: 1fr;
-		}
-	}
-
-	.module{
-		border: solid 2px var(--fg);
-		border-radius: 5px;
-		padding: 20px;
-	}
-
 	.video-wrapper{
-		height: fit-content;
-		border-radius: 5px;
+		margin: 0 4vw;
+		border-radius: 10px;
 		overflow: hidden;
 	}
 
 	video{
+		height: 100%;
+		max-height: 70vh;
 		width: 100%;
 		display: block;
 	}
 
-	.title{
-		font-size: 15pt;
-		font-weight: 600;
-	}
-	
-	.description{
-		font-size: 12pt;
-		font-weight: 500;
-		color: gray;
+	.lateral-grid{
+		gap: 10px;
+		padding: 0 4vw;
 	}
 
-	.action-buttons{
-		cursor: default;
-	}
-	
-	.action-buttons button{
-		display: inline-flex;
-		align-items: center;
-		padding: 10px;
-		margin-right: 20px;
-		font-size: 10pt;
-		font-weight: 500;
-		border-radius: 5px;
-		border: solid 2px var(--fg);
-	}
-
-	.action-buttons button:hover{
-		border-color: var(--e-fg);
-		background: var(--fg);
-	}
-
-	.action-buttons img{
-		height: 15px;
-		margin-right: 10px;
+	.horizontal-scroll{
+		width: fit-content;
+		padding: 20px 4vw;
 	}
 </style>

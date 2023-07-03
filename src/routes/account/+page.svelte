@@ -3,7 +3,7 @@
         auth,
         db,
         storage
-    } from '$assets/main'
+    } from '$lib/assets/main'
 
 
 
@@ -50,7 +50,7 @@
         <input password_input type="password" placeholder='Password'>
     </section>
 
-    <button on:click={processAccountForm}>Continue</button>
+    <button clickable on:click={processAccountForm}>Continue</button>
 </form>
 
 
@@ -64,7 +64,7 @@
         padding: 20px;
         margin: 20px auto;
         border-radius: 10px;
-        border: solid 5px var(--fg);
+        border: solid 5px var(--l1);
     }
 
     .title{
@@ -107,7 +107,7 @@
         padding: 10px;
         border-radius: 5px;
         border: solid 2px gray;
-        background: var(--fg);
+        background: var(--l1);
     }
 
     input:focus{

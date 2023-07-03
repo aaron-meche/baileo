@@ -67,6 +67,38 @@ export const auth = {
 }
 
 
+let cache = {}
+// User data management
+export const user = {
+    gather: (callback) => {
+        if (typeof window =="undefined") return
+
+        db.listen(`users/${storage.read('username')}`, (data) => {
+            cache.userData = data
+            callback(data)
+        })
+    },
+    read: async () => {
+        if (typeof window =="undefined") return
+        // if (cache == {}) console.log(cache)
+
+        return 
+        // // If userData is already available in the cache, callback it
+        // if (cache.userData) {
+        //     return cache.userData
+        // } else {
+        //     return awai
+        // }
+    },
+    write: (callback) => {
+        if (typeof window =="undefined") return
+
+        cache.userData = callback(cache.userData)
+        db.write(`users/${storage.read('username')}`, cache.userData)
+    }
+}
+
+
 // (NEW) Firebase Database
 export const db = {
     read: (path, callback) => {
@@ -261,10 +293,10 @@ export const media_controls = {
         link.href = `${media.path}`
         link.click()
     },
-    random_episode: (title) => {
-        let randomSeason = Math.floor(Math.random() * mediaDB[title].seasons.length)
-        let randomEpisode = Math.floor(Math.random() * mediaDB[title].seasons[randomSeason].length)
-        media_controls.open_episode(title, randomSeason, randomEpisode)
+    random_episode: (media) => {
+        let randomSeason = Math.floor(Math.random() * mediaDB[media.title].seasons.length)
+        let randomEpisode = Math.floor(Math.random() * mediaDB[media.title].seasons[randomSeason].length)
+        media_controls.open_episode(media.title, randomSeason, randomEpisode)
     },
     remove_from_library: (title, callback) => {
         db.delete('users/' + storage.read('username') + '/library/' + title, () => {
@@ -400,17 +432,17 @@ export const mediaDB = {
         ]
     },
 
-    // "Superstore": {
-    //     type: "TV Show",
-    //     cat: "comedy",
-    //     sTotal: 6,
-    //     s1: ["Pilot","Magazine Profile","Shots and Salsa","Mannequin","Shoplifter","Secret Shopper","Color Wars","Wedding Day Sale","All-Nighter","Demotion","Labor"],
-    //     s2: ["Olympics","Strike","Back to Work","Guns, Pills and Birds","Spokesman Scandal","Dog Adoption Day","Halloween Theft","Election Day","Seasonal Help","Black Friday","Lost and Found","Rebranding","Ladies- Lunch","Valentine-s Day","Super Hot Store","Wellness Fair","Integrity Award","Mateo-s Last Day","Glenn-s Kids","Spring Cleaning","Cheyenne-s Wedding","Tornado"],
-    //     s3: ["Grand Re-Opening","Brett-s Dead","Part-Time Hires","Workplace Bullying","Sal-s Dead","Health Fund","Christmas Eve","Viral Video","Golden Globes Party","High Volume Store","Angels and Mermaids","Groundhog Day","Video Game Release","Safety Training","Amnesty","Target","District Manager","Local Vendors Day","Lottery","Gender Reveal","Aftermath","Town Hall"],
-    //     s4: ["Back to School","Baby Shower","Toxic Workplace","Costume Competition","Delivery Day","Maternity Leave","New Initiative","Managers- Conference","Shadowing Glenn","Cloud 9 Academy","Steps Challenge","Blizzard","Love Birds","Minor Crimes","Salary","Easter","Quincea\u00f1era","Cloud Green","Scanners","#Cloud9Fail","Sandra-s Fight","Employee Appreciation Day"],
-    //     s5: ["Cloud 9.0","Testimonials","Forced Hire","Mall Closing","Self-Care","Trick-or-Treat","Shoplifter Rehab","Toy Drive","Curbside Pickup","Negotiations","Lady Boss","Myrtle","Favoritism","Sandra-s Wedding","Cereal Bar","Employee App","Zephra Cares","Playdate","Carol-s Back","Customer Safari","California (Part 1)"],
-    //     s6: ["Essential","California (Part 2)","Floor Supervisor","Prize Wheel","Hair Care Products","Biscuit","The Trough","Ground Rules","Conspiracy","Depositions","Deep Cleaning","Customer Satisfaction","Lowell Anderson","Perfect Store","All Sales Final"],
-    // },
+    "Superstore": {
+        type: "TV Show",
+        cat: "comedy",
+        sTotal: 6,
+        s1: ["Pilot","Magazine Profile","Shots and Salsa","Mannequin","Shoplifter","Secret Shopper","Color Wars","Wedding Day Sale","All-Nighter","Demotion","Labor"],
+        s2: ["Olympics","Strike","Back to Work","Guns, Pills and Birds","Spokesman Scandal","Dog Adoption Day","Halloween Theft","Election Day","Seasonal Help","Black Friday","Lost and Found","Rebranding","Ladies- Lunch","Valentine-s Day","Super Hot Store","Wellness Fair","Integrity Award","Mateo-s Last Day","Glenn-s Kids","Spring Cleaning","Cheyenne-s Wedding","Tornado"],
+        s3: ["Grand Re-Opening","Brett-s Dead","Part-Time Hires","Workplace Bullying","Sal-s Dead","Health Fund","Christmas Eve","Viral Video","Golden Globes Party","High Volume Store","Angels and Mermaids","Groundhog Day","Video Game Release","Safety Training","Amnesty","Target","District Manager","Local Vendors Day","Lottery","Gender Reveal","Aftermath","Town Hall"],
+        s4: ["Back to School","Baby Shower","Toxic Workplace","Costume Competition","Delivery Day","Maternity Leave","New Initiative","Managers- Conference","Shadowing Glenn","Cloud 9 Academy","Steps Challenge","Blizzard","Love Birds","Minor Crimes","Salary","Easter","Quincea\u00f1era","Cloud Green","Scanners","#Cloud9Fail","Sandra-s Fight","Employee Appreciation Day"],
+        s5: ["Cloud 9.0","Testimonials","Forced Hire","Mall Closing","Self-Care","Trick-or-Treat","Shoplifter Rehab","Toy Drive","Curbside Pickup","Negotiations","Lady Boss","Myrtle","Favoritism","Sandra-s Wedding","Cereal Bar","Employee App","Zephra Cares","Playdate","Carol-s Back","Customer Safari","California (Part 1)"],
+        s6: ["Essential","California (Part 2)","Floor Supervisor","Prize Wheel","Hair Care Products","Biscuit","The Trough","Ground Rules","Conspiracy","Depositions","Deep Cleaning","Customer Satisfaction","Lowell Anderson","Perfect Store","All Sales Final"],
+    },
 
     "The Office": {
         type: "TV Show", 

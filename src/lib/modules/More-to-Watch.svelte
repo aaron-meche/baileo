@@ -5,7 +5,7 @@
         mediaDB, 
         storage, 
         handleMediaItemClick 
-    } from '$assets/main'
+    } from '$lib/assets/main'
 
     let category = mediaDB[title]['cat']
     let pool = []
@@ -50,7 +50,7 @@
 <div class="module-title">Similar Media</div>
 <div class="list">
     {#each concentratePool as title}
-        <button on:click={() => handleMediaItemClick(title)} class="media-item">
+        <button clickable on:click={() => handleMediaItemClick(title)} class="media-item">
             <img src='thumbnails/{title}.jpeg' alt="Media Thumbnail">
             <div class="info">
                 <div class="title">{title}</div>
@@ -85,7 +85,7 @@
     }
 
     .media-item:hover{
-        background: var(--fg);
+        background: var(--l1);
     }
 
     img{

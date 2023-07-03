@@ -1,7 +1,7 @@
 <script>
     import {
         storage
-    } from '$assets/main'
+    } from '$lib/assets/main'
 
     import { 
         page 
@@ -15,13 +15,13 @@
 <!--  -->
 
 <div class="wrapper">
-    <button class="item {$page.url.pathname === '/' ? 'active' : ''}" on:click={() => open_page('/')}><img src="icons/home.svg" alt="Icon"> Home</button>
-    <button class="item {$page.url.pathname === '/search' ? 'active' : ''}" on:click={() => open_page('/search')}><img src="icons/search.svg" alt="Icon"> Search</button>
-    <button class="item {$page.url.pathname === '/watch' ? 'active' : ''}" on:click={() => open_page('/watch')}><img src="icons/play.svg" alt="Icon"> Watch</button>
+    <button clickable class="item {$page.url.pathname === '/' ? 'active' : ''}" on:click={() => open_page('/')}><img src="icons/home.svg" alt="Icon"> Home</button>
+    <button clickable class="item {$page.url.pathname === '/search' ? 'active' : ''}" on:click={() => open_page('/search')}><img src="icons/search.svg" alt="Icon"> Search</button>
+    <button clickable class="item {$page.url.pathname === '/watch' ? 'active' : ''}" on:click={() => open_page('/watch')}><img src="icons/play.svg" alt="Icon"> Watch</button>
 
     {#if storage.read('user_id') !== undefined}
-        <button class="item" on:click={() => auth.logallout()}><img src="icons/trash.svg" alt="Icon">Clear All Logins</button>
-        <button class="item" on:click={() => auth.logout()}><img src="icons/close.svg" alt="Icon">Log Out</button>
+        <button clickable class="item" on:click={() => auth.logallout()}><img src="icons/trash.svg" alt="Icon">Clear All Logins</button>
+        <button clickable class="item" on:click={() => auth.logout()}><img src="icons/close.svg" alt="Icon">Log Out</button>
     {/if}
 </div>
 
@@ -31,7 +31,7 @@
     .wrapper{
         height: 100%;
         margin: auto;
-        background: var(--e-fg);
+        background: var(--l2);
         border-radius: 5px;
         overflow: auto;
         cursor: default;

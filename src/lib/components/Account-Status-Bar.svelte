@@ -1,10 +1,12 @@
 <script>
+    import MediaSection from '$lib/components/Media-Section.svelte';
+
     import {
         auth,
         db,
         storage,
         mediaDB
-    } from '$assets/main'
+    } from '$lib/assets/main'
 
     let username = storage.exists('username') ? storage.read('username') : 'guest'
     if (username.includes('guest')) {
@@ -58,8 +60,19 @@
     }
 
     function your_account() {
-        alert('Your Account')
+        // alert('Your Account')
+        console.log('empty button')
     }
+
+    // Get Currently Watching
+	let continue_watching = []
+	if (typeof window !== "undefined") {
+		db.listen('users/' + storage.read('username'), (user) => {
+			if (user.library) {
+				continue_watching = Object.keys(user.library)
+			}
+		})
+	}
 </script>
 
 <!--  -->
@@ -67,45 +80,41 @@
 
 <div class="wrapper">
     {#if storage.exists('username')}
-        <h1>Welcome back, {username}</h1>
-        
-        <div class="grid">
+        <div class="lateral-grid horizontal-scroll">
             <!-- Library -->
-            <button on:click={watch_library}>
-                <img icon src="icons/history.svg" alt="Icon">
-                <h3>Your Library</h3>
-            </button>
+            <a clickable class="standard-button" href="/search">
+                <img icon src="icons/search.svg" alt="Icon">
+                Search
+            </a>
 
             <!-- Random watch -->
-            <button on:click={random_watch}>
+            <button clickable class="standard-button" on:click={random_watch}>
                 <img icon src="icons/shuffle.svg" alt="Icon">
-                <h3>Random Watch</h3>
+                Random Watch
             </button>
 
             <!-- Account preferences -->
-            <button on:click={your_account}>
+            <button clickable class="standard-button" on:click={your_account}>
                 <img icon src="icons/profile.svg" alt="Icon">
-                <h3>Your Account</h3>
+                Your Account
             </button>
 
             <!-- Log out of account -->
-            <button on:click={auth.logout}>
+            <button clickable class="standard-button" on:click={auth.logout}>
                 <img icon src="icons/close.svg" alt="Icon">
-                <h3>Log Out</h3>
+                Log Out
             </button>
         </div>
     {:else}
-        <h1>Want to use a login?</h1>
-
-        <div class="grid">
-            <button on:click={account_prompt.yes}>
+        <div class="lateral-grid horizontal-scroll">
+            <button clickable class="standard-button" on:click={account_prompt.yes}>
                 <img icon src="icons/complete.svg" alt="Icon">
-                <h3>Yes</h3>
+                Yes
             </button>
             
-            <button on:click={account_prompt.no}>
+            <button clickable class="standard-button" on:click={account_prompt.no}>
                 <img icon src="icons/close.svg" alt="Icon">
-                <h3>No</h3>
+                No
             </button>
         </div>
     {/if}
@@ -115,39 +124,13 @@
 
 <style>
 	.wrapper{
+        width: fit-content;
         display: grid;
-        gap: 15px;
-		padding: 0 4%;
+		row-gap: 50px;
+        padding-inline: 4vw;
 	}
 
-    h1{
-        text-align: center;
-    }
-
-    .grid{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .lateral-grid{
         gap: 10px;
-    }
-
-    button{
-        display: grid;
-        row-gap: 5px;
-        text-align: center;
-        padding: 10px;
-        border: solid 2px var(--e-fg);
-        background: var(--fg);
-        border-radius: 10px;
-        font-size: 10pt;
-        font-weight: 400;
-    }
-
-    button:hover{
-        background: var(--e-fg);
-    }
-    
-    button img{
-        height: 25px;
-        margin: auto;
     }
 </style>

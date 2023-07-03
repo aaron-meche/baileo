@@ -1,0 +1,146 @@
+@font-face {
+    font-family: Lexend;
+    src: url('$lib/assets/Lexend_Deca/LexendDeca-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Figtree;
+    src: url('$lib/assets/Figtree/Figtree-VariableFont_wght.ttf');
+}
+
+:root{
+    --neu-rest: 
+        -4px -4px 12px rgba(255, 255, 255, 0.1),
+        4px 4px 12px rgba(0, 0, 0);
+    --neu-active: 
+        inset -4px -4px 12px rgba(255, 255, 255, 0.1),
+        inset 4px 4px 12px rgba(0, 0, 0);
+
+    --hue: 240;
+
+    --font: hsl(var(--hue), 60%, 85%);
+    /* --font: hsl(var(--hue), 60%, 15%); */
+
+    --bg: hsl(var(--hue), 25%, 15%);
+    --l1: hsl(var(--hue), 25%, 25%);
+    --l2: hsl(var(--hue), 25%, 35%);
+    --l3: hsl(var(--hue), 25%, 45%);
+    
+    /* --bg: hsl(var(--hue), 25%, 85%); */
+    /* --l1: hsl(var(--hue), 25%, 75%); */
+    /* --l2: hsl(var(--hue), 25%, 65%); */
+    /* --l3: hsl(var(--hue), 25%, 55%); */
+
+    --accent: hsl(var(--hue), 100%, 75%);
+}
+
+body{
+    margin: 0;
+    color: var(--font);
+    background: var(--bg);
+    font-family: Figtree;
+    font-size: 14px;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+.top-bar{
+    display: grid;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: hsl(var(--hue), 25%, 15%, 50%);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    padding: 20px 4vw;
+    margin-top: 20px;
+}
+
+.horizontal-scroll{
+    overflow-x: scroll;
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.horizontal-scroll > *{
+    display: inline-block;
+    font-size: 12pt;
+}
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+
+.lateral-grid{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: left;
+}
+
+img{
+    display: block;
+}
+
+a{
+    all: unset;
+    cursor: pointer;
+}
+
+button{
+    all: unset;
+    cursor: pointer;
+}
+
+img[icon]{
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.standard-button{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var(--l1);
+    border: solid 2px var(--l2);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 50ms, border-color 50ms;
+}
+
+.standard-button:hover{
+    background: var(--l2);
+    border-color: var(--l3);
+}
+
+input{
+    all: unset;
+    cursor: text;
+}
+
+h1{
+    all: unset;
+    display: block;
+
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+h2{
+    all: unset;
+    display: block;
+    
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h3{
+    all: unset;
+    display: block;
+
+    font-size: 16px;
+    font-weight: 600;
+}
