@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Figtree;
+    src: url('$lib/Figtree/Figtree-VariableFont_wght.ttf');
+}
+
+:root{
+  --c-hue: calc(var(--hue) + 40);
+    --hue: 260;
+  --s-hue: calc(var(--hue) - 40);
+    
+    --accent: hsl(var(--hue), 64%, 64%);
+    --font: hsl(var(--hue), 64%, 92%);
+    --bg: hsl(var(--hue), 24%, 12%);
+
+  --c1: hsl(var(--c-hue), 24%, 20%);
+    --l1: hsl(var(--hue), 24%, 20%);
+  --s1: hsl(var(--s-hue), 24%, 20%);
+
+  --c2: hsl(var(--c-hue), 24%, 28%);
+    --l2: hsl(var(--hue), 24%, 28%);
+  --s2: hsl(var(--s-hue), 24%, 28%);
+
+  --c3: hsl(var(--c-hue), 24%, 36%);
+    --l3: hsl(var(--hue), 24%, 36%);
+  --s3: hsl(var(--s-hue), 24%, 36%);
+
+  --c4: hsl(var(--c-hue), 24%, 44%);
+    --l4: hsl(var(--hue), 24%, 44%);
+  --s4: hsl(var(--s-hue), 24%, 44%);
+
+  --c5: hsl(var(--c-hue), 24%, 28%);
+    --l5: hsl(var(--hue), 24%, 52%);
+  --s5: hsl(var(--s-hue), 24%, 28%);
+
+  --c6: hsl(var(--c-hue), 24%, 28%);
+    --l6: hsl(var(--hue), 24%, 60%);
+  --s6: hsl(var(--s-hue), 24%, 28%);
+
+    --inline-moat: 8vw;
+}
+
+body{
+    margin: 0;
+    background: var(--bg);
+    font-family: Figtree;
+    color: var(--font);
+}
+
+.horizontal-scroll{
+    overflow-x: scroll;
+    white-space: nowrap;
+    font-size: 0;
+}
+.horizontal-scroll > *{
+    display: inline-block;
+    font-size: initial;
+}
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+.horizontal-scroll::-moz-progress-bar{
+    display: none;
+}
