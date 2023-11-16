@@ -7,6 +7,7 @@
 
 <div class="media-item">
     <img src="thumbnails/{item.title}.jpeg" alt="Thumbnail">
+
     <div class="info">
         <div class="title">{item.title}</div>
         <div class="caption">{mediaDB.find(media_item => media_item.title == item.title).type}</div>
@@ -17,33 +18,28 @@
 
 <style>
     .media-item{
-        display: inline-grid;
-        width: 160pt;
-        row-gap: 12pt;
-        padding: 8pt;
-        margin-right: 8pt;
-        border-radius: 4pt;
-        /* background: var(--l1); */
-        background: linear-gradient(to top right, var(--l1), transparent);
+        display: grid;
+        grid-template-columns: min-content auto;
+        align-items: center;
+        gap: 8pt;
     }
 
-    .media-item:hover{
-        background: linear-gradient(to top right, var(--c2), var(--s2));
-    }
-
-    .media-item img{
-        width: 100%;
+    img{
+        display: inline-block;
+        width: 80pt;
         aspect-ratio: 16/9;
         object-fit: cover;
-        border-radius: inherit;
+        border-radius: 2pt;
     }
 
-    .media-item .info{
-        font-weight: 599;
+    .info{
+        display: inline-block;
+        font-size: 12pt;
+        font-weight: 500;
     }
 
-    .media-item .caption{
-        font-size: 10pt;
+    .caption{
+        font-weight: 400;
         opacity: 0.5;
     }
 </style>

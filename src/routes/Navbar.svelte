@@ -1,40 +1,64 @@
 <script>
     import { page } from '$app/stores'
+
+    const pages = [
+        {
+            path: "/",
+            title: "Explore"
+        },
+        {
+            path: "/watch",
+            title: "Watch"
+        },
+        {
+            path: "/library",
+            title: "Library"
+        },
+        {
+            path: "/settings",
+            title: "Settings"
+        }
+    ]
 </script>
 
 <!--  -->
 
 <div class="wrapper">
-    <a class="logo" href="/">baileo</a>
-    <a class="{$page.url.pathname == '/' ? 'active' : ''}" href="/">Explore</a>
-    <a class="{$page.url.pathname == '/search' ? 'active' : ''}" href="/search">Search</a>
-    <a class="{$page.url.pathname == '/watch' ? 'active' : ''}" href="/watch">Watch</a>
-    <a class="{$page.url.pathname == '/settings' ? 'active' : ''}" href="/settings">Settings</a>
+
+    {#each pages as item}
+        <a class="{$page.url.pathname == item.path ? 'active' : ''}" href="{item.path}">
+            {item.title}
+        </a>
+    {/each}
+
+    <!-- {#if pages.filten(item)} -->
+   
 </div>
 
 <!--  -->
 
 <style>
     .wrapper{
-        padding: 8pt var(--inline-moat);
-        /* background: linear-gradient(to bottom, var(--l1), transparent); */
-        background: var(--bg);
+        padding: 0 var(--inline-moat);
+        text-align: center;
+        background: var(--bg-transparent);
+        backdrop-filter: blur(12pt);
+        -webkit-backdrop-filter: blur(12pt);
         font-size: 0;
     }
 
     .logo{
         color: var(--accent);
         opacity: 1;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     a{
         display: inline-block;
-        padding: 4pt 8pt;
-        margin-right: 4pt;
+        padding: 8pt 16pt;
         font-size: 10pt;
-        font-weight: 599;
-        opacity: 0.5;
+        font-weight: 500;
+        opacity: 0.75;
     }
 
     a:hover{
@@ -43,10 +67,9 @@
 
     a.active{
         opacity: 1;
-        background: linear-gradient(to bottom left, var(--l1), transparent);
-        background: var(--l1);
+        /* background: linear-gradient(to bottom left, var(--l1), transparent); */
+        /* background: var(--l1); */
         color: var(--accent);
-        
-        border-radius: 4pt;
+        border-top: solid 2pt var(--accent);
     }
 </style>

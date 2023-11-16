@@ -27,8 +27,10 @@
         <input type="text" id="searchInput" on:input={refineSearch} placeholder="Search" value="">
     </div>
     
-    <MediaSection title="TV Shows" items={refined_list.filter(item => item.type == "TV Show")} />
-    <MediaSection title="Movies" items={refined_list.filter(item => item.type == "Movie")} />
+    <div class="media-grid">
+        <MediaSection title="Movies" items={refined_list.filter(item => item.type == "Movie")} />
+        <MediaSection title="TV Shows" items={refined_list.filter(item => item.type == "TV Show")} />
+    </div>
 </div>
 
 <!--  -->
@@ -38,28 +40,26 @@
         margin: 0 var(--inline-moat);
     }
 
-    input{
-        width: calc(100% - 24pt);
-        padding: 4pt 12pt;
-        background: linear-gradient(to top right, var(--l1), transparent);
-        font-size: 14pt;
-        font-weight: 599;
-        border: solid 1pt var(--l2);
-        border-radius: 4pt;
-    }
-
-    input:focus{
-        background: linear-gradient(to top right, var(--c2), var(--s2));
-        border-color: var(--l4);
-    }
-
     .media-grid{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160pt, 1fr));
-        gap: 8pt;
+        gap: 12pt;
+        margin: 0 var(--inline-moat);
     }
 
-    .media-item{
-        width: 100pt;
+    input{
+        width: calc(100% - 32pt);
+        padding: 8pt 16pt;
+        /* background: linear-gradient(to top right, var(--l1), transparent); */
+        background: var(--l1);
+        border: solid 2pt var(--l2);
+        font-size: 14pt;
+        font-weight: 599;
+        border-radius: 2pt;
+    }
+
+
+    input:focus{
+        border-bottom-color: var(--accent);
     }
 </style>

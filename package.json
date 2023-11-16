@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,5 +14,8 @@
     "svelte": "^4.0.5",
     "vite": "^4.4.2"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "firebase": "^10.4.0"
+  }
 }

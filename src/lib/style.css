@@ -1,11 +1,7 @@
-
-
-
-
 .page{
     display: grid;
-    row-gap: 32pt;
-    padding: 16pt var(--inline-moat);
+    row-gap: 24pt;
+    padding: 24pt var(--inline-moat);
 }
 .page.moat-delete{
     padding-inline: 0;
@@ -13,24 +9,57 @@
 .page.block-delete{
     padding-block: 0;
 }
-
-h1,h2,h3,h4,h5,h6,a,img,button,input{
-    all: unset;
-    display: block;
+.page.padding-delete{
+    padding: 0;
 }
 
-input::placeholder{
-    opacity: 0.8;
-}
-
-h1{
-    font-size: 32pt;
+.menu-title{
+    font-size: 16pt;
     font-weight: 600;
-    letter-spacing: -0.2pt;
+    margin-left: 12pt;
+    margin-bottom: 4pt;
 }
-
-h2{
-    font-size: 20pt;
+.menu-caption{
     font-weight: 500;
-    letter-spacing: -0.2pt;
+    margin-left: 2pt;
+    opacity: 0.75;
+}
+.menu{
+    padding: 4pt;
+    background: var(--l1);
+    border-radius: 2pt;
+    overflow: auto;
+}
+.list{
+    display: grid;
+}
+.grid{
+    display: grid;
+}
+.scroll{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-size: 0;
+    white-space: nowrap;
+}
+.scroll > * {
+    display: inline-block;
+    font-size: initial;
+}
+.scroll::-webkit-scrollbar{
+    display: none;
+}
+.scroll::-moz-progress-bar{
+    display: none;
+}
+.menu > *{
+    padding: 8pt;
+    border: solid 2pt transparent;
+    border-radius: inherit;
+    cursor: pointer;
+}
+.menu > *:hover{
+    background: var(--l2);
+    border-color: var(--l3);
 }

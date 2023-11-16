@@ -5,11 +5,11 @@
     import Navbar from "./Navbar.svelte";
     import { onMount } from "svelte";
 
-    onMount(() => {
-        db.subscribe(data => {
-            document.documentElement.style.setProperty("--hue", data.theme_color)
-        })
-    })
+    // onMount(() => {
+    //     db.subscribe(data => {
+    //         document.documentElement.style.setProperty("--hue", data.theme_color)
+    //     })
+    // })
 </script>
 
 <!--  -->
