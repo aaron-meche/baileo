@@ -7,7 +7,7 @@ export default {
 			// these options are set automatically — see below
 			pages: 'docs',
 			assets: 'docs',
-			fallback: 'index.html',
+			fallback: undefined,
 			precompress: false,
 			strict: true
 		})
