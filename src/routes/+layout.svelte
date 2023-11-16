@@ -1,5 +1,4 @@
 <script>
-    export const prerender = true;
     import "$lib/main.css"
     import "$lib/style.css"
     import { db } from "$lib/data";

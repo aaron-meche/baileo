@@ -19,6 +19,14 @@
             title: "Settings"
         }
     ]
+
+    let list_of_paths = []
+    pages.forEach(path => {
+        list_of_paths.push(path)
+    })
+    if (!list_of_paths.includes($page.url.pathname)) {
+        console.log("does not work")
+    }
 </script>
 
 <!--  -->
