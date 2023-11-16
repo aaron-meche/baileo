@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Baileo
+name: sveltekit
 
 on:
   # Runs on pushes targeting the default branch
@@ -31,13 +31,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: bun install
+        
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
+      - name: Build Project
+        run: bun run build
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
-          path: '.'
+          path: 'build/'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
