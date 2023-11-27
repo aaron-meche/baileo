@@ -1,54 +1,35 @@
 <script>
-    import { mediaDB, shuffle } from "$lib/index";
-    import { db } from "$lib/data";
-    import MediaSection from "./MediaSection.svelte";
-    import UserActionButtons from "./UserActionButtons.svelte";
-
+    import LeftPanel from "./Panel_Left.svelte";
+    import MainPanel from "./Panel_Main.svelte";
 </script>
 
 <!--  -->
 
-<div class="page">
-    <div class="user-section">
-        <div class="heading">
-            Welcome back, Aaron
-        </div>
+<div class="section-grid">
+    <section class="left">
+        <LeftPanel />
+    </section>
 
-        <div class="user-section">
-            <UserActionButtons />
-        </div>
-    </div>
-
-    <div class="media-grid">
-        <MediaSection title="Movies" items={mediaDB.filter(item => item.type == "Movie")} />
-        <MediaSection title="TV Shows" items={mediaDB.filter(item => item.type == "TV Show")} />
-        <MediaSection title="Comedies" items={mediaDB.filter(item => item.cat == "comedy")} />
-        <MediaSection title="Animations" items={mediaDB.filter(item => item.cat == "animation")} />
-        <MediaSection title="Dramas" items={mediaDB.filter(item => item.cat == "drama")} />
-        <MediaSection title="Horror" items={mediaDB.filter(item => item.cat == "horror")} />
-        <MediaSection title="Marvel" items={mediaDB.filter(item => item.cat == "marvel")} />
-        <MediaSection title="Romantic Comedies" items={mediaDB.filter(item => item.cat == "romcom")} />
-    </div>
+    <section>
+        <MainPanel />
+    </section>
 </div>
 
 <!--  -->
 
 <style>
-    .user-section{
-        width: 360pt;
-        margin: auto;
-        text-align: center;
-    }
-
-    .heading{
-        margin-bottom: 8pt;
-        font-size: 24pt;
-        font-weight: 700;
-    }
-
-    .media-grid{
+    .section-grid{
+        height: 100vh;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240pt, 1fr));
-        gap: 36pt 12pt;
+        grid-template-columns: 200pt auto;
+    }
+
+    section{
+        padding: 24pt 0;
+        overflow: auto;
+    }
+
+    section.left{
+        background: var(--l1);
     }
 </style>

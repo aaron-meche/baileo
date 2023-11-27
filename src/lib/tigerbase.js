@@ -1,32 +1,39 @@
-export const tb = {
-    http_req: async (URL) => {
-        try {
-            const response = await fetch(URL);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return await response.json(); // If the server returns JSON
-        } catch (error) {
-            return {"error": error}
-        }
-    },
+let URL
 
-    connect: (URL, Password) => {
-        return tb.http_req(`${URL}/connect/${Password}`)
-    },
-
-    read: (DB, Path) => {
-        return tb.http_req(`${DB.URL}/${Path}`)
-    },
-    
-    login: async (DB, user, pass) => {
-        const response = await tb.http_req(`${DB.URL}/login/${user}/${pass}`)
-
-        if (Object.keys(response).length > 0) {
-            return true
+async function http_req(URL) {
+    try {
+        const response = await fetch(URL)
+        if (!response.ok) {
+            throw new Error('Network response was not ok')
         }
-        else {
-            return false
-        }
+        return await response.json()
+    } catch (error) {
+        return {"error": error}
     }
+}
+
+export async function connect(url, password, success, failure) {
+    URL = url
+    return http_req(`${URL}/connect/${password}`).then(response => {
+        if (response !== undefined) success()
+        else failure()
+    })
+}
+
+export async function auth() {
+    return true
+}
+
+export async function login() {
+    const response = await http_req(`${URL}`)
+
+    return http_req(`${URL}`).then(response => {
+        if (success) success(response)
+    }).catch(error => {
+        if (failure) failure(error)
+    })
+}
+
+export async function read(DB, Path) {
+    return http_req(`${DB.URL}/${Path}`)
 }

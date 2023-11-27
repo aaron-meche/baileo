@@ -1,13 +1,15 @@
 <script>
     import "$lib/main.css"
     import "$lib/style.css"
-    import { db } from "$lib/data";
-    import Navbar from "./Navbar.svelte";
-    import { onMount } from "svelte";
+    // import * as tb from "$lib/tigerbase";
 
-    // onMount(() => {
-    //     db.subscribe(data => {
-    //         document.documentElement.style.setProperty("--hue", data.theme_color)
+    // tb.connect("http://localhost:2005", "GingerLSU19", () => {
+    //     tb.auth(() => {
+    //         // logged in
+
+    //     }, () => {
+    //         // not logged in
+
     //     })
     // })
 </script>
@@ -15,19 +17,11 @@
 <!--  -->
 
 <div class="app">
-    <div class="navbar">
-        <Navbar />
-    </div>
-
     <slot />
 </div>
 
 <!--  -->
 
 <style>
-    .navbar{
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
+
 </style>
