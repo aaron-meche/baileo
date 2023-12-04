@@ -1,5 +1,6 @@
 <script>
-    export let title, items
+    export let title
+    export let items = []
     import { db } from "$lib/data"
     import { mediaDB, shuffle } from "$lib/index"
     import MediaItem from "./MediaItem.svelte";

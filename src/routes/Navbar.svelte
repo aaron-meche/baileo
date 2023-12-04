@@ -2,7 +2,6 @@
     import { page } from '$app/stores'
     import { db } from "$lib/data"
     import { storage, mediaDB } from "$lib/index"
-    import Launchpad from './Launchpad.svelte';
 
     let currently_watching
     db.subscribe(data => {

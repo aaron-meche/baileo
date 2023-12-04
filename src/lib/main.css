@@ -55,12 +55,7 @@
 	--l4: hsl(var(--hue), var(--sat), calc(var(--strt) + (4 * var(--diff))));
 	--l5: hsl(var(--hue), var(--sat), calc(var(--strt) + (5 * var(--diff))));
 	--l6: hsl(var(--hue), var(--sat), calc(var(--strt) + (6 * var(--diff))));
-<<<<<<< HEAD
     --alert: hsl(0, 70%, 58%);
-=======
-    --good: hsl(119, 70%, 58%);
-    --bad: hsl(0, 70%, 58%);
->>>>>>> a5756be942876a06eeead388793ed88bd792824e
 
 	--inline-moat: 8vw;
 }
@@ -69,23 +64,11 @@
 	:root{
 		--strt: 92%;
 		--diff: -6%;
-<<<<<<< HEAD
         --accent: hsl(var(--hue), 48%, 48%);
 		--font: hsl(var(--hue), 0%, 8%);
         --alert: hsl(0, 83%, 49%);
-=======
-        --accent: hsl(var(--hue), 48%, 36%);
-		--font: hsl(var(--hue), 0%, 8%);
-        --good: hsl(127, 100%, 28%);
-        --bad: hsl(0, 83%, 49%);
->>>>>>> a5756be942876a06eeead388793ed88bd792824e
 	}
 }
-
-.status.good{ color: var(--good) }
-.status.bad { color: var(--bad)  }
-.status.bg.good{ background: var(--good) }
-.status.bg.bad { background: var(--bad)  }
 
 @media (prefers-color-scheme: dark) {
     img.icon{
@@ -105,12 +88,14 @@ h1,h2,h3,h4,h5,h6,a,img,button,input{
     display: block;
 }
 h1{
-    font-size: 24pt;
-    font-weight: 700;
+    font-size: 32pt;
+    font-weight: 600;
+    letter-spacing: -0.2pt;
 }
 h2{
     font-size: 20pt;
     font-weight: 500;
+    letter-spacing: -0.2pt;
 }
 button{
     cursor: pointer;
