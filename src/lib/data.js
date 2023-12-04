@@ -5,31 +5,28 @@ import { writable } from 'svelte/store'
 import { storage } from '$lib/index'
 
 let initial_db = {
-    currently_watching: "Mean Girls",
-    library: [
-        {
-            title: "The Office",
-            progress: 0.3,
-            season: 1,
-            episode: 1
-        },
-        {
-            title: "Mean Girls",
-            progress: 0.6
-        }
-    ]
+    username: "aaronmeche",
+    auth_key: 100,
+
+    currently_watching: null,
+    library: [],
 }
 
-const app_title = "baileo-c.09/06/23"
+const app_title = "baileo 11/26/23 2"
 const storage_ref = `localDB-${app_title}`
 
-// if (storage.exists(storage_ref)) {
-//     if (storage.read(`localDB-${app_title}`))
+export const db = storage.exists(storage_ref) ? writable(JSON.parse(storage.read(storage_ref))) : writable(initial_db)
 
-// }
+db.subscribe(db => {
+    let data
+    
+    if (db == undefined) {
+        data = initial_db
+        if (typeof window !== "undefined") window.open("/", "_self")
+    }
+    else {
+        data = JSON.stringify(db)
+    }
 
-export const db = storage.exists(`localDB-${app_title}`) ? writable(JSON.parse(storage.read(`localDB-${app_title}`))) : writable(initial_db)
-
-db.subscribe(value => {
-    storage.write(`localDB-${app_title}`, JSON.stringify(value))
+    storage.write(storage_ref, data)
 })

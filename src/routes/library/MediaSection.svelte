@@ -8,11 +8,15 @@
 <!--  -->
 
 <div class="wrapper">
-    <div class="menu-title">{title}</div>
-    <div class="menu scroll">
-        {#each items as item} 
-            <MediaItem item={item} />
-        {/each}
+    <div class="menu">
+        <div class="title">{title}</div>
+        <div class="scroll">
+            {#each items as item} 
+                <div class="item">
+                    <MediaItem item={item} />
+                </div>
+            {/each}
+        </div>
     </div>
 </div>
 
@@ -21,5 +25,9 @@
 <style>
     .scroll{
         width: calc(100vw - (var(--inline-moat) * 2));
+    }
+
+    .item{
+        padding: 8pt;
     }
 </style>

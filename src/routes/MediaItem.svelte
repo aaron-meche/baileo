@@ -18,18 +18,19 @@
 
 <style>
     .media-item{
+        width: 160pt;
         display: grid;
-        grid-template-columns: min-content auto;
-        align-items: center;
         gap: 8pt;
+        padding: 8pt;
     }
 
     img{
         display: inline-block;
-        width: 80pt;
-        aspect-ratio: 16/9;
+        width: 100%;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         border-radius: 2pt;
+        overflow: hidden;
     }
 
     .info{

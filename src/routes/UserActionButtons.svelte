@@ -18,34 +18,36 @@
 <!--  -->
 
 <section>
-    <div class="menu grid">
-        <button>
-            <img class="icon" src="icons/play.svg" alt="play">
-            <div class="text">
-                Continue Watching
-            </div>
-        </button>
-
-        <button>
-            <img class="icon" src="icons/history.svg" alt="book">
-            <div class="text">
-                Watch History
-            </div>
-        </button>
-
-        <button>
-            <img class="icon" src="icons/list.svg" alt="book">
-            <div class="text">
-                Playlists
-            </div>
-        </button>
-
-        <button>
-            <img class="icon" src="icons/gear.svg" alt="book">
-            <div class="text">
-                Settings
-            </div>
-        </button>
+    <div class="menu">
+        <div class="grid">
+            <button class="item">
+                <img class="icon" src="icons/play.svg" alt="play">
+                <div class="text">
+                    Continue Watching
+                </div>
+            </button>
+    
+            <button class="item">
+                <img class="icon" src="icons/history.svg" alt="book">
+                <div class="text">
+                    Watch History
+                </div>
+            </button>
+    
+            <button class="item">
+                <img class="icon" src="icons/list.svg" alt="book">
+                <div class="text">
+                    Playlists
+                </div>
+            </button>
+    
+            <button class="item">
+                <img class="icon" src="icons/gear.svg" alt="book">
+                <div class="text">
+                    Settings
+                </div>
+            </button>
+        </div>
     </div>
 </section>
 
@@ -53,14 +55,13 @@
 
 <style>
     .grid{
-        grid-template-columns: repeat(auto-fit, minmax(120pt, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160pt, 1fr));
     }
 
     button{
         display: grid;
         grid-template-columns: min-content auto;
         gap: 8pt;
-        padding: 8pt 12pt;
         /* border-radius: 2pt; */
         align-items: center;
         text-align: left;

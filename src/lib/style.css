@@ -2,6 +2,8 @@
     display: grid;
     row-gap: 24pt;
     padding: 24pt var(--inline-moat);
+    font-size: 12pt;
+    font-weight: 400;
 }
 .page.moat-delete{
     padding-inline: 0;
@@ -13,37 +15,59 @@
     padding: 0;
 }
 
-.menu-title{
-    font-size: 16pt;
-    font-weight: 600;
-    margin-left: 12pt;
-    margin-bottom: 4pt;
-}
-.menu-caption{
-    font-weight: 500;
-    margin-left: 2pt;
-    opacity: 0.75;
-}
 .menu{
-    padding: 4pt;
-    background: var(--l1);
     border-radius: 2pt;
     overflow: auto;
 }
+.menu .item{
+    border-radius: inherit;
+    cursor: pointer;
+}
+.menu .item:hover{
+    background: var(--l2);
+}
+
+.menu > .title{
+    font-size: 16pt;
+    font-weight: 600;
+    margin: 0 8pt;
+    margin-bottom: 4pt;
+}
+.menu > .caption{
+    font-weight: 500;
+    margin: 0 12pt;
+    margin-bottom: 4pt;
+    opacity: 0.75;
+}
+
 .list{
     display: grid;
+    padding: 4pt;
+    background: var(--l1);
 }
+.list > *{
+    padding: 4pt;
+}
+
 .grid{
     display: grid;
+    gap: 2pt;
 }
+.grid > *{
+    padding: 8pt;
+    background: var(--l1);
+}
+
 .scroll{
     display: flex;
+    padding: 4pt 0;
+    background: none;
     overflow-x: scroll;
     overflow-y: hidden;
     font-size: 0;
     white-space: nowrap;
 }
-.scroll > * {
+.scroll > *{
     display: inline-block;
     font-size: initial;
 }
@@ -53,13 +77,9 @@
 .scroll::-moz-progress-bar{
     display: none;
 }
-.menu > *{
-    padding: 8pt;
-    border: solid 2pt transparent;
-    border-radius: inherit;
-    cursor: pointer;
+.page.moat-delete .scroll{
+    padding-inline: var(--inline-moat);
 }
-.menu > *:hover{
-    background: var(--l2);
-    border-color: var(--l3);
+.page.moat-delete .menu > .title{
+    padding-inline: var(--inline-moat);
 }

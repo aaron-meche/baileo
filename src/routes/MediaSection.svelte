@@ -1,14 +1,10 @@
 <script>
     export let title, items
     import { db } from "$lib/data"
-    import { mediaDB } from "$lib/index"
+    import { mediaDB, shuffle } from "$lib/index"
     import MediaItem from "./MediaItem.svelte";
-    // import MediaPanel from "./MediaPanel.svelte";
 
-    let isMediaPanelOpen = false;
-    function toggleMediaPanel() {
-        isMediaPanelOpen = !isMediaPanelOpen
-    }
+    items = shuffle(items)
 
     function selectItem(title) {
         db.update(data => {
@@ -20,22 +16,24 @@
 
 <!--  -->
 
-<section>
-    <div class="menu-title">{title}</div>
-    
-    <div class="menu list">
+<div class="menu">
+    <div class="title">{title}</div>
+    <div class="scroll">
         {#each items as item}
-            <a href="/watch" on:click={() => selectItem(item.title)}>
-                <MediaItem item={item} />
-            </a>
+            {#if item.type == "TV Show"}
+                <a class="item" href="/episode-selector" on:click={() => selectItem(item.title)}>
+                    <MediaItem item={item} />
+                </a>
+            {:else}
+                <a class="item" href="/watch" on:click={() => selectItem(item.title)}>
+                    <MediaItem item={item} />
+                </a>
+            {/if}
         {/each}
     </div>
-</section>
+</div>
 
 <!--  -->
 
 <style>
-    .list{
-        max-height: 300pt;
-    }
 </style>

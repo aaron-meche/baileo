@@ -6,7 +6,7 @@
 
 <!--  -->
 
-<button class="item">
+<button>
     <img src="thumbnails/{item.title}.jpeg" alt="thumbnail">
 
     <div class="info">
@@ -18,13 +18,14 @@
 <!--  -->
 
 <style>
-    .item{
+    button{
         display: inline-grid;
         row-gap: 8pt;
     }
 
     img{
         width: 160pt;
+        aspect-ratio: 16 / 9;
     }
 
     .media-title{

@@ -8,8 +8,8 @@
 
 <!--  -->
 
-<div class="page">
-    <div class="user-section">
+<div class="page moat-delete">
+    <!-- <div class="user-section">
         <div class="heading">
             Welcome back, Aaron
         </div>
@@ -17,7 +17,7 @@
         <div class="user-section">
             <UserActionButtons />
         </div>
-    </div>
+    </div> -->
 
     <div class="media-grid">
         <MediaSection title="Movies" items={mediaDB.filter(item => item.type == "Movie")} />
@@ -48,7 +48,6 @@
 
     .media-grid{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240pt, 1fr));
-        gap: 36pt 12pt;
+        gap: 24pt;
     }
 </style>

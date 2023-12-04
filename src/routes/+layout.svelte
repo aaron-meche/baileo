@@ -1,15 +1,14 @@
 <script>
     import "$lib/main.css"
     import "$lib/style.css"
-    import { db } from "$lib/data";
+    import * as tb from "$lib/tigerbase";
     import Navbar from "./Navbar.svelte";
     import { onMount } from "svelte";
 
-    // onMount(() => {
-    //     db.subscribe(data => {
-    //         document.documentElement.style.setProperty("--hue", data.theme_color)
-    //     })
-    // })
+    let random_hue = Math.floor((Math.random() * 360))
+    onMount(() => {
+        document.documentElement.style.setProperty('--hue', random_hue);
+    })
 </script>
 
 <!--  -->

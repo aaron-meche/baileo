@@ -5,7 +5,7 @@
 }
 @font-face {
     font-family: BaileyScript;
-    src: url('$lib/SansSerif/Bold.otf') format('opentype');
+    src: url('$lib/SansSerif/Light.otf') format('opentype');
     font-weight: 300;
 }
 @font-face {
@@ -40,13 +40,12 @@
 }
 
 :root{
-	--hue: 220;
+	--hue: 200;
 	--sat: 12%;
 	--strt: 8%;
-	--diff: 6%;
+	--diff: 4%;
 
 	--accent: hsl(var(--hue), 48%, 64%);
-	/* --font: hsl(var(--hue), 64%, 92%); */
 	--font: hsl(var(--hue), 0%, 92%);
 	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
 	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 50%);
@@ -56,6 +55,7 @@
 	--l4: hsl(var(--hue), var(--sat), calc(var(--strt) + (4 * var(--diff))));
 	--l5: hsl(var(--hue), var(--sat), calc(var(--strt) + (5 * var(--diff))));
 	--l6: hsl(var(--hue), var(--sat), calc(var(--strt) + (6 * var(--diff))));
+    --alert: hsl(0, 70%, 58%);
 
 	--inline-moat: 8vw;
 }
@@ -65,8 +65,8 @@
 		--strt: 92%;
 		--diff: -6%;
         --accent: hsl(var(--hue), 48%, 48%);
-		/* --font: hsl(var(--hue), 64%, 8%); */
 		--font: hsl(var(--hue), 0%, 8%);
+        --alert: hsl(0, 83%, 49%);
 	}
 }
 
@@ -81,22 +81,6 @@ body{
     background: var(--bg);
     font-family: BaileyScript;
     color: var(--font);
-}
-
-.horizontal-scroll{
-    overflow-x: scroll;
-    white-space: nowrap;
-    font-size: 0;
-}
-.horizontal-scroll > *{
-    display: inline-block;
-    font-size: initial;
-}
-.horizontal-scroll::-webkit-scrollbar{
-    display: none;
-}
-.horizontal-scroll::-moz-progress-bar{
-    display: none;
 }
 
 h1,h2,h3,h4,h5,h6,a,img,button,input{
