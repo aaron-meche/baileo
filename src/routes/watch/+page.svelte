@@ -7,15 +7,16 @@
     const base_server_url = "http://209.163.185.11/videos"
     // strings
     let source_url // url of video
-    let currently_watching = "The Office" // title of media
+    let currently_watching // title of media
     // objects
-    let media_item
-    let progress = {}
+    let media_item // media data
+    let progress // watch progress data
 
+    // main
     db.subscribe(data => {
         currently_watching = data.currently_watching
         media_item = mediaDB.find(item => item.title == currently_watching)
-        progress = data.library.find(item => item.title == currently_watching)
+        progress = data.library.find(object => object.title == media_item.title)
 
         // if not in library
         if (progress == undefined) {
@@ -34,29 +35,16 @@
                 return data
             })
         }
-
-        // switch (media_item.type) {
-        //     case "TV Show":
-        //         media_item.episode_title = mediaDB.find(object => object.title == media_item.title).seasons[progress.season - 1][progress.episode - 1]
-        //         source_url = `${base_server_url}/${currently_watching}/Season ${progress.season}/${media_item.episode_title}.mp4`
-        //         break
-        //     case "Movie":
-        //         source_url = `${base_server_url}/${currently_watching}.mp4`
-        //         break
-        //     default:
-        //         source_url = `${base_server_url}/Mean Girls.mp4`
-        //         break
-        // }
-        // // source url
-        if (media_item.type == "TV Show") {
-            media_episode_title = mediaDB.find(object => object.title == media_item.title).seasons[progress.season - 1][progress.episode - 1]
-            source_url = `${base_server_url}/${currently_watching}/Season ${progress.season}/${media_item.episode_title}.mp4`
-        }
-        else {
-            source_url = `${base_server_url}/${currently_watching}.mp4`
-        }
     })
-    // main
+
+    // source url
+    if (media_item.type == "TV Show") {
+        media_item.episode_title = mediaDB.find(object => object.title == media_item.title).seasons[progress.season - 1][progress.episode - 1]
+        source_url = `${base_server_url}/${currently_watching}/Season ${progress.season}/${media_item.episode_title}.mp4`
+    }
+    else {
+        source_url = `${base_server_url}/${currently_watching}.mp4`
+    }
 
     // update progress
     onMount(() => {
