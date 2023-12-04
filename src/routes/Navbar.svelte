@@ -44,10 +44,10 @@
         {/if}
     {/if}
 
-    <button class="item">
+    <a class="item {$page.url.pathname == '/search' ? 'active' : ''}" href="/search">
         <img class="icon" src="icons/search.svg" alt="">
         Search
-    </button>
+    </a>
 
     <button on:click={resetData} class="item">
         <img class="icon" src="icons/delete.svg" alt="">

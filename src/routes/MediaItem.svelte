@@ -35,7 +35,6 @@
 
     .info{
         display: inline-block;
-        font-size: 12pt;
         font-weight: 500;
     }
 
