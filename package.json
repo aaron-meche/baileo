@@ -1,18 +1,17 @@
 {
-  "name": "baileo",
-  "version": "0.0.1",
-  "devDependencies": {
-    "@sveltejs/adapter-auto": "^2.0.0",
-    "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.27.4",
-    "svelte": "^4.0.5",
-    "vite": "^4.4.2"
-  },
-  "private": true,
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "type": "module"
+	"name": "wrapper",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.27.4",
+		"svelte": "^4.2.7",
+		"vite": "^4.4.2"
+	},
+	"type": "module"
 }
