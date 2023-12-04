@@ -5,7 +5,7 @@
 
     let data = mediaDB.find(item => item.title == title)
     let active_season = 1
-    $: seasons = data.seasons
+    let seasons = data.seasons
     $: episodes = data.seasons[active_season - 1]
     
     function openSeason(season) {

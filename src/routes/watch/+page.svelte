@@ -7,56 +7,43 @@
     const base_server_url = "http://209.163.185.11/videos"
     // strings
     let source_url // url of video
-    let currently_watching // title of media
-    // objects
-    let media_item // media data
-    let progress // watch progress data
+    let media_obj
+    let progress_obj
 
-    // main
-    db.subscribe(data => {
-        currently_watching = data.currently_watching
-        media_item = mediaDB.find(item => item.title == currently_watching)
-        progress = data.library.find(object => object.title == media_item.title)
-
-        // if not in library
-        if (progress == undefined) {
-            // creating the object to push to library
-            // ...
-            // only fit for movies, tv shows are
-            // protected by episode selector
-            let object_to_push = {
-                title: media_item.title,
-                progress: 0,
-            }
-
-            // push object to library
-            db.update(data => {
-                data.library.push(object_to_push)
-                return data
-            })
-        }
-    })
-
-    // source url
-    if (media_item.type == "TV Show") {
-        media_item.episode_title = mediaDB.find(object => object.title == media_item.title).seasons[progress.season - 1][progress.episode - 1]
-        source_url = `${base_server_url}/${currently_watching}/Season ${progress.season}/${media_item.episode_title}.mp4`
-    }
-    else {
-        source_url = `${base_server_url}/${currently_watching}.mp4`
-    }
-
-    // update progress
     onMount(() => {
-        let video = document.querySelector("video")
-        video.addEventListener("timeupdate", () => {
-            progress.progress = video.currentTime / video.duration
+        db.update(data => {
+            media_obj = mediaDB.find(item => item.title == data.currently_watching)
+            progress_obj = data.library.find(item => item.title == data.currently_watching)
+    
+            // source url
+            if (media_obj.type == "TV Show") {
+                media_obj.episode_title = mediaDB.find(object => object.title == media_obj.title).seasons[progress_obj.season - 1][progress_obj.episode - 1]
+                source_url = `${base_server_url}/${media_obj.title}/Season ${progress_obj.season}/${media_obj.episode_title}.mp4`
+            }
+            else {
+                source_url = `${base_server_url}/${media_obj.title}.mp4`
+            }
+    
+            return data
         })
     })
+
+
+    // // update progress
+    // onMount(() => {
+    //     let video = document.querySelector("video")
+    //     video.addEventListener("timeupdate", () => {
+    //         db.update(data => {
+    //             data.library.find(item => item.title == library_obj.title)
+    //         })
+    //         progress.progress = video.currentTime / video.duration
+    //     })
+    // })
 </script>
 
 <!--  -->
 
+{#if media_obj !== undefined}
 <div class="page">
     <div class="viewer">
         <!-- svelte-ignore a11y-media-has-caption -->
@@ -64,17 +51,17 @@
         
         <div class="media-data">
             <div class="media-title">
-                {currently_watching}
+                {media_obj.title}
             </div>
-            
-            {#if media_item.type == "TV Show"}
+            {#if media_obj.type == "TV Show"}
                 <div class="media-caption">
-                    S{progress.season} E{progress.episode}, {media_item.episode_title}
+                    S{progress_obj.season} E{progress_obj.episode}, {media_obj.episode_title}
                 </div>
             {/if}
         </div>
     </div>
 </div>
+{/if}
 
 <!--  -->
 
