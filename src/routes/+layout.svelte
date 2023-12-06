@@ -1,31 +1,46 @@
 <script>
     import "$lib/main.css"
     import "$lib/style.css"
-    import Navbar from "./Navbar.svelte";
-    import { onMount } from "svelte";
+    import Header from "./Header.svelte";
+    import Sidebar from "./Sidebar.svelte";
 
-    // let random_hue = Math.floor((Math.random() * 360))
-    // onMount(() => {
-    //     document.documentElement.style.setProperty('--hue', random_hue);
-    // })
 </script>
 
 <!--  -->
 
 <div class="app">
-    <div class="navbar">
-        <Navbar />
+    <div class="header">
+        <!-- <Header /> -->
     </div>
 
-    <slot />
+    <div class="sidebar">
+        <Sidebar />
+    </div>
+
+    <div class="content">
+        <slot />
+    </div>
 </div>
 
 <!--  -->
 
 <style>
-    .navbar{
-        position: sticky;
-        top: 0;
-        z-index: 100;
+    .app{
+        position: relative;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 160pt auto;
+        gap: 8pt;
+        padding-inline: 8pt;
+    }
+    
+    .app > *{
+        height: 100%;
+        overflow: auto;
+    }
+
+    .header{
+        height: 12pt;
+        grid-column: 1 / 3;
     }
 </style>

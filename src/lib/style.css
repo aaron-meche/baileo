@@ -1,7 +1,7 @@
 .page{
     display: grid;
     row-gap: 24pt;
-    padding: 24pt var(--inline-moat);
+    padding: 4pt;
     font-size: 12pt;
     font-weight: 400;
 }
@@ -76,10 +76,4 @@
 }
 .scroll::-moz-progress-bar{
     display: none;
-}
-.page.moat-delete .scroll{
-    padding-inline: var(--inline-moat);
-}
-.page.moat-delete .menu > .title{
-    padding-inline: var(--inline-moat);
 }

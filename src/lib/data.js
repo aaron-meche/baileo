@@ -5,14 +5,11 @@ import { writable } from 'svelte/store'
 import { storage } from '$lib/index'
 
 let initial_db = {
-    username: "aaronmeche",
-    auth_key: 100,
-
     currently_watching: null,
     library: [],
 }
 
-const app_title = "baileo 11/26/23 2"
+const app_title = "baileo 12/23 2"
 const storage_ref = `localDB-${app_title}`
 
 export const db = storage.exists(storage_ref) ? writable(JSON.parse(storage.read(storage_ref))) : writable(initial_db)

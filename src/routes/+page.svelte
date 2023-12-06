@@ -3,12 +3,19 @@
     import { db } from "$lib/data";
     import MediaSection from "./MediaSection.svelte";
 
+    let library_items
+    db.subscribe(data => {
+        library_items = data.library
+    })
 </script>
 
 <!--  -->
 
 <div class="page moat-delete">
     <div class="media-grid">
+        {#if library_items.length > 0}
+            <MediaSection title="Continue Watching" items={library_items} />
+        {/if}
         <MediaSection title="Movies" items={mediaDB.filter(item => item.type == "Movie")} />
         <MediaSection title="TV Shows" items={mediaDB.filter(item => item.type == "TV Show")} />
         <MediaSection title="Comedies" items={mediaDB.filter(item => item.cat == "comedy")} />
@@ -23,18 +30,6 @@
 <!--  -->
 
 <style>
-    .user-section{
-        width: 360pt;
-        margin: auto;
-        text-align: center;
-    }
-
-    .heading{
-        margin-bottom: 8pt;
-        font-size: 24pt;
-        font-weight: 700;
-    }
-
     .media-grid{
         display: grid;
         gap: 24pt;

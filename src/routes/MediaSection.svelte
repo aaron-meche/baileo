@@ -5,8 +5,6 @@
     import { mediaDB, shuffle } from "$lib/index"
     import MediaItem from "./MediaItem.svelte";
 
-    items = shuffle(items)
-
     function selectItem(title) {
         db.update(data => {
             data.currently_watching = title

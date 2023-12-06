@@ -40,13 +40,14 @@
 }
 
 :root{
-	--hue: 270;
+	--hue: 240;
 	--sat: 12%;
 	--strt: 8%;
 	--diff: 4%;
 
 	--accent: hsl(var(--hue), 48%, 64%);
-	--font: hsl(var(--hue), 0%, 92%);
+	--contrast: hsl(var(--hue), 0%, 92%);
+	--contrast-transparent: hsl(var(--hue), 0%, 92%, 50%);
 	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
 	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 50%);
 	--l1: hsl(var(--hue), var(--sat), calc(var(--strt) + (1 * var(--diff))));
@@ -65,11 +66,16 @@
 		--strt: 92%;
 		--diff: -6%;
         --accent: hsl(var(--hue), 48%, 48%);
-		--font: hsl(var(--hue), 0%, 8%);
+		--contrast: hsl(var(--hue), 0%, 8%);
+        --contrast-transparent: hsl(var(--hue), 0%, 8%, 50%);
         --alert: hsl(0, 83%, 49%);
 	}
 }
 
+img.icon{
+    display: inline-block;
+    height: 1em;
+}
 @media (prefers-color-scheme: dark) {
     img.icon{
         filter: invert(1) !important;
@@ -80,7 +86,7 @@ body{
     margin: 0;
     background: var(--bg);
     font-family: BaileyScript;
-    color: var(--font);
+    color: var(--contrast);
 }
 
 h1,h2,h3,h4,h5,h6,a,img,button,input{
@@ -105,4 +111,23 @@ input{
 }
 input::placeholder{
     opacity: 0.8;
+}
+
+.horizontal-scroll{
+    display: flex;
+    background: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-size: 0;
+    white-space: nowrap;
+}
+.horizontal-scroll > *{
+    display: inline-block;
+    font-size: initial;
+}
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+.horizontal-scroll::-moz-progress-bar{
+    display: none;
 }
