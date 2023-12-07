@@ -43,4 +43,8 @@
         height: 12pt;
         grid-column: 1 / 3;
     }
+
+    .content{
+        min-height: 100vh;
+    }
 </style>

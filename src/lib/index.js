@@ -168,17 +168,16 @@ export const mediaDB = [
         ]
     },
 
-    // "Wanda Vision": {
-    //     type: "TV Show", 
-    //     cat: "marvel", 
-    //     sTotal: 1,
-    //     s1: ["Filmed Before a Live Studio Audience", "Don-t Touch That Dial", "Now In Color", "We Interrupt This Program", "On a Very Special Episode...", "All-New Holloween Spectacular", "Breaking the Fourth Wall", "Previously On", "The Series Finale"],
-    // },
-
     {
         title: "A Quiet Place",
         type: "Movie",
         cat: "horror"
+    },
+
+    {
+        title: "American Pie",
+        type: "Movie",
+        cat: "comedy"
     },
 
     {
@@ -203,6 +202,12 @@ export const mediaDB = [
         title: "Black Panther",
         type: "Movie",
         cat: "marvel",
+    },
+
+    {
+        title: "Cars",
+        type: "Movie",
+        cat: "animation"
     },
 
     {
@@ -272,9 +277,33 @@ export const mediaDB = [
     },
 
     {
+        title: "Five Nights at Freddys",
+        type: "Movie",
+        cat: "horror"
+    },
+
+    {
+        title: "Get Hard",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
+        title: "Halloween",
+        type: "Movie",
+        cat: "horror"
+    },
+
+    {
         title: "Hidden Figures",
         type: "Movie", 
         cat: "drama historical",
+    },
+
+    {
+        title: "House",
+        type: "Movie",
+        cat: "drama horror comedy"
     },
 
     {
@@ -284,39 +313,21 @@ export const mediaDB = [
     },
 
     {
-        title: "It",
-        type: "Movie",
-        cat: "horror"
-    },
-
-    {
         title: "It - Chapter 2",
         type: "Movie",
         cat: "horror"
     },
 
     {
-        title: "Just Friends",
-        type: "Movie", 
-        cat: "romcom", 
-    },
-
-    {
-        title: "Just Married",
-        type: "Movie", 
-        cat: "romcom", 
-    },
-
-    {
-        title: "Knives Out",
-        type: "Movie", 
-        cat: "drama", 
+        title: "It",
+        type: "Movie",
+        cat: "horror"
     },
 
     {
         title: "Legally Blonde",
-        type: "Movie", 
-        cat: "comedy", 
+        type: "Movie",
+        cat: "comedy"
     },
 
     {
@@ -350,9 +361,9 @@ export const mediaDB = [
     },
 
     {
-        title: "Pitch Perfect",
-        type: "Movie", 
-        cat: "comedy", 
+        title: "No Country For Old Men",
+        type: "Movie",
+        cat: "horror"
     },
 
     {
@@ -386,6 +397,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Superbad",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
         title: "Ted",
         type: "Movie", 
         cat: "comedy", 
@@ -410,15 +427,21 @@ export const mediaDB = [
     },
 
     {
-        title: "The Conjuring",
+        title: "The Bucket List",
         type: "Movie",
-        cat: "horror",
+        cat: "drama"
     },
 
     {
-        title: "The Devil Wears Prada",
+        title: "The Cat In The Hat",
         type: "Movie",
-        cat: "drama", 
+        cat: "comedy"
+    },
+
+    {
+        title: "The Conjuring",
+        type: "Movie",
+        cat: "horror",
     },
 
     {
@@ -434,9 +457,21 @@ export const mediaDB = [
     },
 
     {
-        title: "The Holiday",
-        type: "Movie", 
-        cat: "romcom christmas", 
+        title: "The Hangover",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
+        title: "The Hangover Part II",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
+        title: "The Hangover Part III",
+        type: "Movie",
+        cat: "comedy"
     },
 
     {
@@ -452,6 +487,12 @@ export const mediaDB = [
     },
 
     {
+        title: "The Interview",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
         title: "The Notebook",
         type: "Movie", 
         cat: "drama", 
@@ -464,21 +505,27 @@ export const mediaDB = [
     },
 
     {
+        title: "The Shining",
+        type: "Movie",
+        cat: "horror"
+    },
+
+    {
         title: "The Waterboy",
         type: "Movie", 
         cat: "comedy", 
     },
 
     {
-        title: "The Wedding Planner",
-        type: "Movie", 
-        cat: "drama", 
+        title: "The Witch",
+        type: "Movie",
+        cat: "horror"
     },
 
     {
-        title: "The Witch",
+        title: "The Wolf of Wall Street",
         type: "Movie",
-        cat: "horror",
+        cat: "comedy drama"
     },
 
     {
@@ -497,5 +544,11 @@ export const mediaDB = [
         title: "Venom",
         type: "Movie",
         cat: 'marvel'
+    },
+
+    {
+        title: "Wedding Crashers",
+        type: "Movie",
+        cat: "comedy"
     },
 ]

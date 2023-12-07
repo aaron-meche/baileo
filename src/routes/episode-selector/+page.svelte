@@ -64,31 +64,29 @@
 
 <!--  -->
 
-<div class="page moat-delete">
-    <div>
-        <div class="section-title">{media_title}</div>
-    
-        <div class="episode-selector">
-            <div class="season-list">
-                {#each seasons as season, i}
-                    <button on:click={() => openSeason(i + 1)} class="item {active_season - 1 == i ? "active" : ""}">
-                        Season {i + 1}
-                    </button>
-                {/each}
-            </div>
-    
-            <div class="episode-list">
-                {#each episodes as episode, i}
-                    <a href="/watch" on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}">
-                    <!-- <a on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}"> -->
-                        <div class="label">S{active_season} E{i + 1}</div>
-                        <div class="title">{episode}</div>
-                    </a>
-                {/each}
-            </div>
+<div>
+    <div class="section-title">{media_title}</div>
+
+    <div class="episode-selector">
+        <div class="season-list">
+            {#each seasons as season, i}
+                <button on:click={() => openSeason(i + 1)} class="item {active_season - 1 == i ? "active" : ""}">
+                    Season {i + 1}
+                </button>
+            {/each}
+        </div>
+
+        <div class="episode-list">
+            {#each episodes as episode, i}
+                <a href="/watch" on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}">
+                <!-- <a on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}"> -->
+                    <div class="label">S{active_season} E{i + 1}</div>
+                    <div class="title">{episode}</div>
+                </a>
+            {/each}
         </div>
     </div>
-    </div>
+</div>
 
 <!--  -->
 
