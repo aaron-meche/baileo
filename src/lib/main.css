@@ -38,6 +38,11 @@
     src: url('$lib/SansSerif/ExtraBlack.otf') format('opentype');
     font-weight: 900;
 }
+@font-face {
+    font-family: LexendDeca;
+    src: url("$lib/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+
 
 :root{
 	--hue: 240;
@@ -47,9 +52,9 @@
 
 	--accent: hsl(var(--hue), 48%, 64%);
 	--contrast: hsl(var(--hue), 0%, 92%);
-	--contrast-transparent: hsl(var(--hue), 0%, 92%, 50%);
+	--contrast-transparent: hsl(var(--hue), 0%, 92%, 40%);
 	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
-	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 50%);
+	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 40%);
 	--l1: hsl(var(--hue), var(--sat), calc(var(--strt) + (1 * var(--diff))));
 	--l2: hsl(var(--hue), var(--sat), calc(var(--strt) + (2 * var(--diff))));
 	--l3: hsl(var(--hue), var(--sat), calc(var(--strt) + (3 * var(--diff))));
@@ -67,7 +72,7 @@
 		--diff: -6%;
         --accent: hsl(var(--hue), 48%, 48%);
 		--contrast: hsl(var(--hue), 0%, 8%);
-        --contrast-transparent: hsl(var(--hue), 0%, 8%, 50%);
+        --contrast-transparent: hsl(var(--hue), 0%, 8%, 40%);
         --alert: hsl(0, 83%, 49%);
 	}
 }

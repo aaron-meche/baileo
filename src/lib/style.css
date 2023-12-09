@@ -16,11 +16,10 @@
 }
 
 .menu{
-    border-radius: 2pt;
     overflow: auto;
 }
 .menu .item{
-    border-radius: inherit;
+    border-radius: 2pt;
     cursor: pointer;
 }
 .menu .item:hover{
@@ -40,27 +39,9 @@
     opacity: 0.75;
 }
 
-.list{
-    display: grid;
-    padding: 4pt;
-    background: var(--l1);
-}
-.list > *{
-    padding: 4pt;
-}
-
-.grid{
-    display: grid;
-    gap: 2pt;
-}
-.grid > *{
-    padding: 8pt;
-    background: var(--l1);
-}
-
 .scroll{
     display: flex;
-    padding: 4pt 0;
+    padding-right: 24pt;
     background: none;
     overflow-x: scroll;
     overflow-y: hidden;

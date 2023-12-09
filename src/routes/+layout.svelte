@@ -10,7 +10,7 @@
 
 <div class="app">
     <div class="header">
-        <!-- <Header /> -->
+        <Header />
     </div>
 
     <div class="sidebar">
@@ -26,12 +26,11 @@
 
 <style>
     .app{
-        position: relative;
         height: 100vh;
+        width: 100vw;
         display: grid;
         grid-template-columns: 160pt auto;
-        gap: 8pt;
-        padding-inline: 8pt;
+        grid-template-rows: min-content auto;
     }
     
     .app > *{
@@ -40,11 +39,15 @@
     }
 
     .header{
-        height: 12pt;
         grid-column: 1 / 3;
     }
 
+    .sidebar{
+        padding-top: 8pt;
+        padding-inline: 8pt;
+    }
+
     .content{
-        min-height: 100vh;
+        padding-top: 8pt;
     }
 </style>

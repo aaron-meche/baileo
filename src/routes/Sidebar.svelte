@@ -20,7 +20,7 @@
 
 <!--  -->
 
-<div class="navbar">
+<div class="sidebar">
     <a class="item {$page.url.pathname == '/' ? 'active' : ''}" href="/">
         <img class="icon" src="icons/book.svg" alt="">
         Explore
@@ -57,9 +57,8 @@
 <!--  -->
 
 <style>
-    .navbar{
+    .sidebar{
         display: grid;
-        padding-block: 4pt;
     }
 
     .item{
@@ -94,9 +93,9 @@
     .item.active{
         opacity: 1;
         border-left-color: var(--accent);
-        background: linear-gradient(to left, var(--l1), var(--l4));
+        background: linear-gradient(to left, var(--l1), var(--l2));
         background-size: 200% 200%;
-        animation: gradientAnimation 10s ease infinite;
+        animation: gradientAnimation 5s ease infinite;
     }
 
     img{

@@ -1,6 +1,7 @@
 <script>
     import { mediaDB } from "$lib/index"
     import { db } from "$lib/data"
+    import { onMount } from "svelte"
     import SearchError from "./SearchError.svelte";
 
     function openMedia(item) {
@@ -10,22 +11,24 @@
         })
     }
 
-    let search_bar
-    let val
-    let items_to_display = mediaDB
-    function keyPress(e) {
-        val = search_bar.value
-        items_to_display = mediaDB.filter(item => item.title.toLowerCase().includes(val.toLowerCase()))
-    }
+    let search_result = []
+    db.subscribe(data => {
+        search_result = data.search_result
+    })
+
+    onMount(() => {
+        db.update(data => {
+            data.search_result = mediaDB
+            return data
+        })
+    })
 </script>
 
 <!--  -->
 
 <div class="page moat-delete">
-    <input class="search" bind:this={search_bar} on:keyup={() => keyPress()} type="text" placeholder="What do you want to watch?">
-
     <div class="media-grid">
-        {#each items_to_display as item}
+        {#each search_result as item}
             <a href="/{item.type == "TV Show" ? "episode-selector" : "watch"}" on:click={() => openMedia(item)} class="item">
                 <img class="thumbnail" src="thumbnails/{item.title}.jpeg" alt="">
                 <div class="info">
@@ -36,29 +39,17 @@
         {/each}
     </div>
 
-    {#if items_to_display.length == 0}
-        <SearchError val={val} />
+    {#if search_result.length == 0}
+        <SearchError />
     {/if}
 </div>
 
 <!--  -->
 
 <style>
-    .search{
-        padding: 8pt 12pt;
-        border: solid 1pt var(--l2);
-        border-color: var(--contrast-transparent);
-        border-radius: 4pt;
-        transition-duration: 200ms;
-    }
-
-    .search:focus{
-        background: var(--l1);
-    }
-
     .media-grid{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140pt, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160pt, 1fr));
         row-gap: 8pt;
     }
     

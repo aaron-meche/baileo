@@ -1,11 +1,12 @@
 <script>
-    import { mediaDB, shuffle } from "$lib/index";
+    import { mediaDB } from "$lib/index";
     import { db } from "$lib/data";
     import MediaSection from "./MediaSection.svelte";
 
     let library_items
-    db.subscribe(data => {
+    db.update(data => {
         library_items = data.library
+        return data
     })
 </script>
 

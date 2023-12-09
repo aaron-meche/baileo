@@ -108,6 +108,7 @@
         height: fit-content;
         padding: 4pt;
         background: var(--l1);
+        border-radius: 4pt;
     }
     .item{
         width: calc(100% - 16pt);

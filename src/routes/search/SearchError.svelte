@@ -7,9 +7,7 @@
 
 <div class="error">
     <img src="icons/dog.png" alt="">
-    <p>Sorry, we don't have <strong>{val}</strong><br>
-        <!-- Do you want to request we add it?</p>
-    <button class="action-button">Request</button> -->
+    <p>Sorry, we have results to show!<br>
 </div>
 
 <!--  -->
