@@ -3,62 +3,37 @@
     import { db } from "$lib/data"
     import { onMount } from "svelte"
 
-    let media_item = {} // object
-    let media_title = "" // string
-    let seasons = [] // array of seasons
-    let episodes = [] // array of episodes
-    let active_season = 1 // num selected season
-    let progress_season // num current season
-    let progress_episode // num current episode
+    let media_title = ""
+    let active_season = 1
+    let seasons = []
+    $: episodes = []
+    let progress = {}
+
+    function openSeason(s) {
+        active_season = s
+        episodes = seasons[s - 1]
+    }
+
     onMount(() => {
         db.update(data => {
-            media_item = mediaDB.find(item => item.title == data.currently_watching)
-            refreshData(media_item)
-            return data
-        })
-
-        let focus_season = 1
-        db.update(data => {
-            let library = data.library
-            let item = library.find(item => item.title == media_title)
-            if (item) {
-                focus_season = item.season
+            media_title = data.currently_watching
+            seasons = mediaDB.find(item => item.title == media_title)?.seasons
+            
+            let libitem = data.library.find(item => item.title == media_title)
+            if (libitem) {
+                openSeason(libitem.season)
+                progress.season = libitem.season
+                progress.episode = libitem.episode
+            }
+            else {
+                openSeason(1)
             }
             return data
         })
     })
 
-    function refreshData(item) {
-        media_title = item.title
-        seasons = item.seasons
-        episodes = item.seasons[active_season - 1]
-    }
-
-    function openSeason(num) {
-        active_season = num
-        refreshData(media_item)
-    }
-
     function openEpisode(s, e) {
-        db.update(data => {
-            let library = data.library
-            let item = library.find(item => item.title == media_title)
-            if (item) {
-                item.title = media_title
-                item.season =  s
-                item.episode = e
-                item.progress = 0
-            }
-            else {
-                library.push({
-                    title: media_title,
-                    season:  s,
-                    episode: e,
-                    progress: 0,
-                })
-            }
-            return data
-        })
+
     }
 </script>
 
@@ -78,7 +53,7 @@
 
         <div class="episode-list">
             {#each episodes as episode, i}
-                <a href="/watch" on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}">
+                <a href="/watch" on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress.season && (i + 1) == progress.episode ? "active" : ""}">
                 <!-- <a on:click={() => openEpisode(active_season, i + 1)} class="item {active_season == progress_season && (i + 1) == progress_episode ? "active" : ""}"> -->
                     <div class="label">S{active_season} E{i + 1}</div>
                     <div class="title">{episode}</div>

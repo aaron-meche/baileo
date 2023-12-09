@@ -16,26 +16,33 @@
             return data
         })
     }
+
+    // function checkForPerfectSearch() {
+    //     if (mediaDB.filter(item => item.title.toLowerCase() == val.toLowerCase()).length == 1) {
+    //         db.update(data => )
+    //     }
+    // }
 </script>
 
 <!--  -->
 
 <div class="bar">
-    {#if $page.url.pathname == "/search"}
-        <input class="search" bind:this={search_bar} on:keyup={() => keyPress()} type="text" placeholder="What do you want to watch?">
-    {:else}
-        <a href="/search">
-            <input class="search" placeholder="What do you want to watch?">
-        </a>
-    {/if}
+    <input class="search" bind:this={search_bar} on:keyup={() => keyPress()} type="text" placeholder="What do you want to watch?">
+    <div class="results">
+    
+    </div>
 </div>
+
 
 <!--  -->
 
 <style>
     .bar{
+        position: relative;
         width: 100vw;
+        /* background: var(--background-transparent); */
         padding: 4pt;
+        overflow: visible;
     }
 
     .search{

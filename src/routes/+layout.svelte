@@ -49,5 +49,6 @@
 
     .content{
         padding-top: 8pt;
+        padding-inline: 8pt;
     }
 </style>
