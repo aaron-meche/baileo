@@ -22,7 +22,7 @@
 
 <div class="sidebar">
     <a class="item {$page.url.pathname == '/' ? 'active' : ''}" href="/">
-        <img class="icon" src="icons/book.svg" alt="">
+        <img class="icon" src="icons/compass.svg" alt="">
         Explore
     </a>
 
@@ -31,7 +31,7 @@
         Library
     </a> -->
 
-    {#if has_watched && $page.url.pathname == '/watch'}
+    <!-- {#if has_watched && $page.url.pathname == '/watch'}
         <a class="item {$page.url.pathname == '/watch' ? 'active' : ''}" href="/episode-selector">
             <img class="icon" src="icons/list.svg" alt="">
             {currently_watching}
@@ -41,7 +41,17 @@
             <img class="icon" src="icons/play.svg" alt="">
             {currently_watching}
         </a>
-    {/if}
+    {/if} -->
+
+    <!-- <a class="item {$page.url.pathname == '/library' ? 'active' : ''}" href="/library">
+        <img class="icon" src="icons/history.svg" alt="">
+        Your Library
+    </a> -->
+
+    <!-- <a class="item {$page.url.pathname == '/favorites' ? 'active' : ''}" href="/favorites">
+        <img class="icon" src="icons/love.svg" alt="">
+        Favorites
+    </a> -->
 
     <a class="item {$page.url.pathname == '/search' ? 'active' : ''}" href="/search">
         <img class="icon" src="icons/search.svg" alt="">
@@ -59,6 +69,7 @@
 <style>
     .sidebar{
         display: grid;
+        padding: 12pt 4pt;
     }
 
     .item{
@@ -79,7 +90,7 @@
         opacity: 1;
     }
 
-    @keyframes gradientAnimation {
+    /* @keyframes gradientAnimation {
         0% {
             background-position: 0% 50%;
         }
@@ -89,13 +100,16 @@
         100% {
             background-position: 0% 50%;
         }
-    }
+    } */
     .item.active{
-        opacity: 1;
+        /* opacity: 1;
         border-left-color: var(--accent);
         background: linear-gradient(to left, var(--l1), var(--l2));
         background-size: 200% 200%;
-        animation: gradientAnimation 5s ease infinite;
+        animation: gradientAnimation 5s ease infinite; */
+        opacity: 1;
+        background: var(--l2);
+        border-left-color: var(--accent);
     }
 
     img{

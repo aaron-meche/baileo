@@ -31,6 +31,7 @@
         display: grid;
         grid-template-columns: 160pt auto;
         grid-template-rows: min-content auto;
+        overflow: hidden;
     }
     
     .app > *{
@@ -40,15 +41,5 @@
 
     .header{
         grid-column: 1 / 3;
-    }
-
-    .sidebar{
-        padding-top: 8pt;
-        padding-inline: 8pt;
-    }
-
-    .content{
-        padding-top: 8pt;
-        padding-inline: 8pt;
     }
 </style>

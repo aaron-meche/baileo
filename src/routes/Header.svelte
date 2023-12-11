@@ -17,22 +17,35 @@
         })
     }
 
-    // function checkForPerfectSearch() {
-    //     if (mediaDB.filter(item => item.title.toLowerCase() == val.toLowerCase()).length == 1) {
-    //         db.update(data => )
-    //     }
-    // }
+    let library, currently_watching
+    db.subscribe(data => {
+        library = data.library
+        currently_watching = data.currently_watching
+    })
+
+    function watchMedia(title) {
+        db.update(data => {
+            data.currently_watching = title
+            return data
+        })
+        if ($page.url.pathname == "/watch") window.location.reload()
+    }
 </script>
 
 <!--  -->
 
 <div class="bar">
-    <div class="logo">
-        <img src="icons/logo.png" alt="">
+    <a href="/" class="logo">
         baileo
-    </div>
+    </a>
 
-    <input class="search" bind:this={search_bar} on:keyup={() => keyPress()} type="text" placeholder="What do you want to watch?">
+    <div class="tabs scroll">
+        {#each library as item}
+            <a href="/watch" on:click={() => watchMedia(item.title)} class="tab {$page.url.pathname == "/watch" && currently_watching == item.title ? "active" : ""}">
+                {item.title}
+            </a>
+        {/each}
+    </div>
 </div>
 
 
@@ -43,38 +56,36 @@
         display: grid;
         grid-template-columns: 160pt auto;
         align-items: center;
-        width: 100vw;
-        /* background: var(--background-transparent); */
         padding: 4pt;
         overflow: visible;
     }
 
     .logo{
-        display: grid;
-        grid-template-columns: min-content auto;
-        gap: 8pt;
-        padding: 0 8pt;
-        font-size: 1.2em;
-        font-weight: 600;
+        text-align: center;
+        font-size: 14pt;
+        font-weight: 500;
         color: var(--accent);
     }
 
-    .logo img{
-        display: inline-block;
-        height: 1.5em;
-
+    .tab{
+        display: inline-flex;
+        align-items: center;
+        padding: 4pt 12pt;
+        font-size: 10pt;
+        font-weight: 500;
+        border-bottom: solid 1pt transparent;
+        opacity: 0.6;
     }
 
-    .search{
-        width: 40%;
-        margin: auto;
-        padding: 8pt 12pt;
+    .tab.active{
+        background: var(--l2) !important;
+        /* color: var(--accent); */
+        border-bottom-color: var(--accent);
+        opacity: 1;
+    }
+
+    .tab:hover{
         background: var(--l1);
-        border-radius: 4pt;
-        transition-duration: 200ms;
-    }
-
-    .search:focus{
-        background: var(--l2);
+        cursor: pointer;
     }
 </style>

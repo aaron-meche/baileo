@@ -1,5 +1,4 @@
 <script>
-    export let currentTime, duration
     import { mediaDB } from "$lib/index"
     import { db } from "$lib/data"
 
@@ -64,18 +63,8 @@
 
 <!--  -->
 
-<div class="scruff-bar">
-    <div class="progress-bar">
-        <div class="value" style="width: {100 * progress}%"></div>
-    </div>
-    <div class="info-grid">
-        <div>{convertSecondsToMinSec(Math.floor(currentTime))}</div>
-        <div style="text-align: right">{convertSecondsToMinSec(Math.floor(duration))}</div>
-    </div>
-</div>
-
 <div class="horizontal-scroll">
-    <!-- <a class="button" href="/watch" on:click={nextEpisode}>
+    <a class="button" href="/watch" on:click={nextEpisode}>
         <img class="icon" src="icons/right.svg" alt="">
         Next Episode
     </a>
@@ -87,7 +76,7 @@
 
     <button class="button" on:click={toggleLove}>
         <img class="icon alone" src="icons/{is_loved ? "love" : "unlove"}.svg" alt="">
-    </button> -->
+    </button>
 </div>
 
 <!--  -->
@@ -97,16 +86,16 @@
         display: flex;
         align-items: center;
         padding: 8pt 12pt;
-        margin-right: 8pt;
+        margin-right: 4pt;
         background: var(--l1);
-        border: solid 1pt var(--l4);
+        border: solid 1pt var(--l2);
         border-radius: 4pt;
         transition-duration: 200ms;
     }
 
     .button:hover{
         background: var(--l2);
-        border-color: var(--l6);
+        border-color: var(--l4);
     }
 
     .icon{
@@ -115,32 +104,5 @@
 
     .icon.alone{
         margin: 0;
-    }
-
-    .scruff-bar:hover .progress-bar{
-        height: 8pt;
-        opacity: 1;
-    }
-
-    .progress-bar{
-        height: 2pt;
-        margin-bottom: 2pt;
-        background: var(--contrast-transparent);
-        border-radius: 2pt;
-        overflow: hidden;
-        opacity: 0.5;
-        transition-duration: 200ms;
-        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .progress-bar .value{
-        height: 100%;
-        background: var(--contrast);
-    }
-
-    .info-grid{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        font-size: 10pt;
     }
 </style>

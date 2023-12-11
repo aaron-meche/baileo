@@ -2,7 +2,7 @@
     import { db } from "$lib/data"
     import { mediaDB } from "$lib/index"
     import { onMount } from "svelte"
-    // import VideoControls from "./VideoControls.svelte";
+    import VideoControls from "./VideoControls.svelte";
 
     let loaded = false
     // finals
@@ -49,7 +49,9 @@
             if (loaded) {
                 let library = data.library
                 let item = library.find(item => item.title == media_item.title)
-                item.progress = (video.currentTime / video.duration).toFixed(2)
+                if (item) {
+                    item.progress = (video.currentTime / video.duration).toFixed(2)
+                }
                 return data
             }
         })
@@ -81,7 +83,7 @@
                 {/if}
             </div>
             
-            <!-- <VideoControls currentTime={currentTime} duration={duration} /> -->
+            <VideoControls />
         </div>
     {:else}
         <h2>.....</h2>
@@ -93,7 +95,7 @@
 <style>
     .viewer{
         display: grid;
-        row-gap: 16pt;
+        row-gap: 12pt;
     }
 
     video{

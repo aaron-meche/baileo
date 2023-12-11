@@ -1,7 +1,7 @@
 .page{
     display: grid;
     row-gap: 24pt;
-    padding: 4pt;
+    padding: 12pt 4pt;
     font-size: 12pt;
     font-weight: 400;
 }
@@ -41,7 +41,6 @@
 
 .scroll{
     display: flex;
-    padding-right: 24pt;
     background: none;
     overflow-x: scroll;
     overflow-y: hidden;

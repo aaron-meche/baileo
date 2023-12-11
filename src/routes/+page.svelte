@@ -3,16 +3,20 @@
     import { db } from "$lib/data";
     import MediaSection from "./MediaSection.svelte";
 
-    let library_items
+    let library_items = []
     db.update(data => {
-        library_items = data.library
+        let items = []
+        data.library.forEach(item => {
+            items.push(mediaDB.find(elem => elem.title == item.title))
+        })
+        library_items = items
         return data
     })
 </script>
 
 <!--  -->
 
-<div class="page moat-delete">
+<div class="page">
     <div class="media-grid">
         {#if library_items.length > 0}
             <MediaSection title="Continue Watching" items={library_items} />

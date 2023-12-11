@@ -14,34 +14,35 @@
         episodes = seasons[s - 1]
     }
 
+    function openEpisode(s, e) {
+        db.update(data => {
+            let item = data.library.find(item => item.title == media_title)
+            item.season = s
+            item.episode = e
+            item.progress = 0
+            return data
+        })
+    }
+
     onMount(() => {
         db.update(data => {
             media_title = data.currently_watching
-            seasons = mediaDB.find(item => item.title == media_title)?.seasons
+            seasons = mediaDB.find(item => item.title == media_title).seasons
             
             let libitem = data.library.find(item => item.title == media_title)
-            if (libitem) {
-                openSeason(libitem.season)
-                progress.season = libitem.season
-                progress.episode = libitem.episode
-            }
-            else {
-                openSeason(1)
-            }
+            openSeason(libitem.season)
+            progress.season = libitem.season
+            progress.episode = libitem.episode
             return data
         })
     })
-
-    function openEpisode(s, e) {
-
-    }
 </script>
 
 <!--  -->
 
-<div>
+<div class="wrapper">
+    <img src="thumbnails/{media_title}.jpeg" alt="">
     <div class="section-title">{media_title}</div>
-
     <div class="episode-selector">
         <div class="season-list">
             {#each seasons as season, i}
@@ -66,6 +67,14 @@
 <!--  -->
 
 <style>
+    .wrapper{
+        width: 50vw;
+    }
+
+    img{
+        width: 100%;
+    }
+
     .section-title{
         margin-left: 12pt;
         margin-bottom: 4pt;
@@ -78,6 +87,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 12pt;
         border-radius: 2pt;
+        background: red;
     }
     .episode-selector > *{
         height: fit-content;

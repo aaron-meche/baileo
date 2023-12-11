@@ -27,6 +27,10 @@
 <!--  -->
 
 <div class="page moat-delete">
+    <div class="search-bar">
+        <input type="text" placeholder="I want to watch...">
+    </div>
+
     <div class="media-grid">
         {#each search_result as item}
             <a href="/{item.type == "TV Show" ? "episode-selector" : "watch"}" on:click={() => openMedia(item)} class="item">

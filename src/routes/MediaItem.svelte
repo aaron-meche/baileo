@@ -39,10 +39,12 @@
 
 <style>
     .media-item{
+        position: relative;
         width: 160pt;
         display: grid;
         gap: 8pt;
         padding: 8pt;
+        /* text-align: center; */
     }
 
     img{
@@ -55,7 +57,7 @@
 
     .progress{
         height: 2pt;
-        background: var(--contrast-transparent);
+        background: var(--l2);
         border-radius: 100vh;
         overflow: hidden;
     }
