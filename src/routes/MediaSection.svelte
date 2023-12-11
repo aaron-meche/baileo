@@ -3,7 +3,12 @@
     export let items = []
     import { db } from "$lib/data"
     import { mediaDB, shuffle } from "$lib/index"
-    import MediaItem from "./MediaItem.svelte";
+    import MediaItem from "./MediaItem.svelte"
+
+    let library
+    db.subscribe(data => {
+        library = data.library
+    })
 
     function selectItem(item) {
         db.update(data => {
@@ -35,12 +40,12 @@
     <div class="title">{title}</div>
     <div class="scroll">
         {#each items as item}
-            {#if item.type == "TV Show"}
-                <a class="item" on:click={() => selectItem(item)} href="/episode-selector">
+            {#if library.find(elem => elem.title == item.title) || item.type == "Movie"}
+                <a class="item" on:click={() => selectItem(item)} href="/watch">
                     <MediaItem item={item} />
                 </a>
             {:else}
-                <a class="item" on:click={() => selectItem(item)} href="/watch">
+                <a class="item" on:click={() => selectItem(item)} href="/episode-selector">
                     <MediaItem item={item} />
                 </a>
             {/if}

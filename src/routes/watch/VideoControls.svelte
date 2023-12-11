@@ -51,6 +51,13 @@
         })
     }
 
+    function trashHistory() {
+        db.update(data => {
+            data.library = data.library.filter(elem => elem.title !== data.currently_watching)
+            return data
+        })
+    }
+
     function toggleLove() {
         db.update(data => {
             let library = data.library
@@ -68,11 +75,16 @@
         <img class="icon" src="icons/right.svg" alt="">
         Next Episode
     </a>
-
+    
     <button class="button">
         <img class="icon" src="icons/video.svg" alt="">
-        Save Moment
+        Record
     </button>
+
+    <a class="button" on:click={trashHistory} href="/">
+        <img class="icon" src="icons/trash.svg" alt="">
+        Remove from Library
+    </a>
 
     <button class="button" on:click={toggleLove}>
         <img class="icon alone" src="icons/{is_loved ? "love" : "unlove"}.svg" alt="">
@@ -85,9 +97,10 @@
     .button{
         display: flex;
         align-items: center;
-        padding: 8pt 12pt;
-        margin-right: 4pt;
+        padding: 4pt 8pt;
+        margin-right: 8pt;
         background: var(--l1);
+        font-size: 10pt;
         border: solid 1pt var(--l2);
         border-radius: 4pt;
         transition-duration: 200ms;

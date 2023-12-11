@@ -68,14 +68,16 @@
 
 <style>
     .wrapper{
-        width: 50vw;
+        padding: 12pt 4pt;
     }
 
     img{
-        width: 100%;
+        width: 60%;
+        border-radius: 4pt;
     }
 
     .section-title{
+        margin-top: 12pt;
         margin-left: 12pt;
         margin-bottom: 4pt;
         font-size: 16pt;
@@ -87,7 +89,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 12pt;
         border-radius: 2pt;
-        background: red;
     }
     .episode-selector > *{
         height: fit-content;
@@ -108,6 +109,7 @@
         font-size: 10pt;
     }
     .item.active{
+        font-weight: 500;
         color: var(--accent);
         background: var(--l2);
     }
