@@ -45,6 +45,10 @@
                 {item.title}
             </a>
         {/each}
+
+        <!-- <div class="search">
+            <input type="text" placeholder="Search...">
+        </div> -->
     </div>
 </div>
 
@@ -70,10 +74,12 @@
     .tab{
         display: inline-flex;
         align-items: center;
-        padding: 4pt 12pt;
+        padding: 4pt 8pt;
+        margin-right: 8pt;
         font-size: 10pt;
         font-weight: 500;
         border-bottom: solid 1pt transparent;
+        border-radius: 2pt;
         opacity: 0.6;
     }
 
@@ -87,5 +93,16 @@
     .tab:hover{
         background: var(--l1);
         cursor: pointer;
+    }
+
+    .search{
+        font-size: 10pt;
+        font-weight: 500;
+    }
+
+    input{
+        padding: 4pt 12pt;
+        background: var(--l1);
+        border-bottom: solid 2pt var(--l4);
     }
 </style>

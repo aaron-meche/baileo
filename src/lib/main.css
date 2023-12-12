@@ -90,7 +90,7 @@ img.icon{
 body{
     margin: 0;
     background: var(--bg);
-    font-family: BaileyScript;
+    font-family: BaileyScript !important;
     color: var(--contrast);
 }
 
@@ -115,6 +115,7 @@ input{
     cursor: text;
 }
 input::placeholder{
+    font-family: BaileyScript;
     opacity: 0.8;
 }
 

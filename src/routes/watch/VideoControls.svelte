@@ -75,6 +75,11 @@
         <img class="icon" src="icons/right.svg" alt="">
         Next Episode
     </a>
+
+    <a class="button" href="/episode-selector">
+        <img class="icon" src="icons/list.svg" alt="">
+        View Episodes
+    </a>
     
     <button class="button">
         <img class="icon" src="icons/video.svg" alt="">
