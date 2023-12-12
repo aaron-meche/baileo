@@ -28,27 +28,28 @@
             let library = data.library
             let lib_item = library.find(item => item.title == data.currently_watching)
             let media_item = mediaDB.find(item => item.title == data.currently_watching)
-            console.log(library)
+
             let max_season = media_item.seasons.length
             let curr_season_length = media_item.seasons[lib_item.season - 1].length
     
-            if (season == max_season && episode == curr_season_length) {
+            if (lib_item.season == max_season && lib_item.episode == curr_season_length) {
+                lib_item.season = 1
+                lib_item.episode = 1
+                alert("Series Complete!")
+            }
+            else if (lib_item.episode == curr_season_length) {
                 lib_item.season += 1
                 lib_item.episode = 1
-                alert("Season Complete!")
-            }
-            else if (episode == curr_season_length) {
-                lib_item.season += 1
-                lib_item.episode = 0
             }
             else {
                 lib_item.episode += 1
             }
-
-            console.log(library)
+            
+            lib_item.progress = 0
 
             return data
         })
+        console.log('ez')
     }
 
     function trashHistory() {
@@ -70,7 +71,25 @@
 
 <!--  -->
 
-<div class="horizontal-scroll">
+<!-- <div class="scroll">
+    <a class="button" href="/watch" on:click={nextEpisode}>
+        <img class="icon" src="icons/left.svg" alt="">
+        <div class="info">
+            Back
+            <div class="caption">S1 E3, Episodes</div>
+        </div>
+    </a>
+
+    <a class="button" href="/watch" on:click={nextEpisode}>
+        <img class="icon" src="icons/right.svg" alt="">
+        <div class="info">
+            Next
+            <div class="caption">S1 E5, Pamagic</div>
+        </div>
+    </a>
+</div> -->
+
+<div class="scroll">
     <a class="button" href="/watch" on:click={nextEpisode}>
         <img class="icon" src="icons/right.svg" alt="">
         Next Episode

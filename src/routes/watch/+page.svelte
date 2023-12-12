@@ -17,7 +17,7 @@
     let duration = 0 // int live
 
     onMount(() => {
-        db.update(data => {
+        db.subscribe(data => {
             media_item = mediaDB.find(item => item.title == data.currently_watching)
             progress = data.library.find(item => item.title == data.currently_watching)
             
@@ -37,6 +37,7 @@
             return data
         })
     })
+
 
     function onVideoLoad() {
         video.currentTime = progress.progress * video.duration
