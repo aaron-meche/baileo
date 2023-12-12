@@ -36,7 +36,7 @@
 
 <div class="bar">
     <a href="/" class="logo">
-        baileo
+        baileo Sunset a
     </a>
 
     <div class="tabs scroll">
