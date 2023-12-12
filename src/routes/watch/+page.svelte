@@ -1,6 +1,7 @@
 <script>
     import { db } from "$lib/data"
     import { mediaDB } from "$lib/index"
+    import { nextEpisode } from "./control"
     import { onMount } from "svelte"
     import VideoControls from "./VideoControls.svelte";
 
@@ -39,11 +40,11 @@
     })
 
 
-    function onVideoLoad() {
+    function onLoad() {
         video.currentTime = progress.progress * video.duration
     }
 
-    function onVideoTimeUpdate() {
+    function onTimeUpdate() {
         currentTime = video.currentTime
         duration = video.duration
         db.update(data => {
@@ -53,9 +54,18 @@
                 if (item) {
                     item.progress = (video.currentTime / video.duration).toFixed(2)
                 }
+
+                if (currentTime > duration - 30) {
+                    nextEpisode()
+                }
+
                 return data
             }
         })
+    }
+
+    function onLoadable() {
+        video.play()
     }
 </script>
 
@@ -67,8 +77,9 @@
             <!-- svelte-ignore a11y-media-has-caption -->
             <video 
                 bind:this={video} 
-                on:loadeddata={onVideoLoad}
-                on:timeupdate={onVideoTimeUpdate}
+                on:loadeddata={onLoad}
+                on:timeupdate={onTimeUpdate}
+                on:canplay={onLoadable}
                 controls
                 src={video_url}
             ></video>
@@ -94,6 +105,10 @@
 <!--  -->
 
 <style>
+    .page{
+        padding-right: 24pt;
+    }
+
     .viewer{
         display: grid;
         row-gap: 12pt;

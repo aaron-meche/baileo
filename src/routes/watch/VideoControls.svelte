@@ -1,9 +1,11 @@
 <script>
     import { mediaDB } from "$lib/index"
     import { db } from "$lib/data"
+    import { prevEpisode, nextEpisode } from "./control"
 
     let progress = 0
     let is_loved // bool
+    let should_prev_ep // bool
     db.subscribe(data => {
         let library = data.library
         let item = library.find(item => item.title == data.currently_watching)
@@ -11,6 +13,13 @@
 
         item.love = item.love ? item.love : false
         is_loved = item.love
+
+        if (item.season == 1 && item.episode == 1) {
+            should_prev_ep = false
+        }
+        else { 
+            should_prev_ep = true
+        }
     })
 
     function convertSecondsToMinSec(seconds) {
@@ -21,57 +30,6 @@
         const paddedSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
 
         return minutes + ":" + paddedSeconds;
-    }
-
-    function prevEpisode() {
-        db.update(data => {
-            let library = data.library
-            let lib_item = library.find(item => item.title == data.currently_watching)
-            let media_item = mediaDB.find(item => item.title == data.currently_watching)
-    
-            if (lib_item.season == 1 && lib_item.episode == 1) {
-                alert("...cannot go behind beinning...")
-            }
-            else if (lib_item.episode == 1) {
-                lib_item.season -= 1
-                lib_item.episode = media_item.seasons[lib_item.season - 1].length
-            }
-            else {
-                lib_item.episode -= 1
-            }
-            
-            lib_item.progress = 0
-
-            return data
-        })
-    }
-
-    function nextEpisode() {
-        db.update(data => {
-            let library = data.library
-            let lib_item = library.find(item => item.title == data.currently_watching)
-            let media_item = mediaDB.find(item => item.title == data.currently_watching)
-
-            let max_season = media_item.seasons.length
-            let curr_season_length = media_item.seasons[lib_item.season - 1].length
-    
-            if (lib_item.season == max_season && lib_item.episode == curr_season_length) {
-                lib_item.season = 1
-                lib_item.episode = 1
-                alert("Series Complete!")
-            }
-            else if (lib_item.episode == curr_season_length) {
-                lib_item.season += 1
-                lib_item.episode = 1
-            }
-            else {
-                lib_item.episode += 1
-            }
-            
-            lib_item.progress = 0
-
-            return data
-        })
     }
 
     function trashHistory() {
@@ -112,29 +70,30 @@
 </div> -->
 
 <div class="scroll">
-    <a class="button" href="/watch" on:click={prevEpisode}>
-        <img class="icon" src="icons/left.svg" alt="">
-        Backward
-    </a>
+    {#if should_prev_ep}
+        <a class="button" href="/watch" on:click={prevEpisode}>
+            <img class="icon alone" src="icons/left.svg" alt="">
+        </a>
+    {/if}
 
     <a class="button" href="/watch" on:click={nextEpisode}>
         <img class="icon" src="icons/right.svg" alt="">
-        Forward
+        Next Episode
     </a>
 
     <a class="button" href="/episode-selector">
         <img class="icon" src="icons/list.svg" alt="">
-        View Episodes
+        Episodes
     </a>
     
     <button class="button">
         <img class="icon" src="icons/video.svg" alt="">
-        Record
+        Clip
     </button>
 
     <a class="button" on:click={trashHistory} href="/">
         <img class="icon" src="icons/trash.svg" alt="">
-        Remove from Library
+        Remove
     </a>
 
     <button class="button" on:click={toggleLove}>

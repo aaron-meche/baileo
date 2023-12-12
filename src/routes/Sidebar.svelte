@@ -31,7 +31,7 @@
         Library
     </a> -->
 
-    <!-- {#if has_watched && $page.url.pathname == '/watch'}
+    {#if has_watched && $page.url.pathname == '/watch'}
         <a class="item {$page.url.pathname == '/watch' ? 'active' : ''}" href="/episode-selector">
             <img class="icon" src="icons/list.svg" alt="">
             {currently_watching}
@@ -41,12 +41,7 @@
             <img class="icon" src="icons/play.svg" alt="">
             {currently_watching}
         </a>
-    {/if} -->
-
-    <!-- <a class="item {$page.url.pathname == '/library' ? 'active' : ''}" href="/library">
-        <img class="icon" src="icons/history.svg" alt="">
-        Your Library
-    </a> -->
+    {/if}
 
     <!-- <a class="item {$page.url.pathname == '/favorites' ? 'active' : ''}" href="/favorites">
         <img class="icon" src="icons/love.svg" alt="">
