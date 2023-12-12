@@ -23,6 +23,29 @@
         return minutes + ":" + paddedSeconds;
     }
 
+    function prevEpisode() {
+        db.update(data => {
+            let library = data.library
+            let lib_item = library.find(item => item.title == data.currently_watching)
+            let media_item = mediaDB.find(item => item.title == data.currently_watching)
+    
+            if (lib_item.season == 1 && lib_item.episode == 1) {
+                alert("...cannot go behind beinning...")
+            }
+            else if (lib_item.episode == 1) {
+                lib_item.season -= 1
+                lib_item.episode = media_item.seasons[lib_item.season - 1].length
+            }
+            else {
+                lib_item.episode -= 1
+            }
+            
+            lib_item.progress = 0
+
+            return data
+        })
+    }
+
     function nextEpisode() {
         db.update(data => {
             let library = data.library
@@ -49,7 +72,6 @@
 
             return data
         })
-        console.log('ez')
     }
 
     function trashHistory() {
@@ -90,9 +112,14 @@
 </div> -->
 
 <div class="scroll">
+    <a class="button" href="/watch" on:click={prevEpisode}>
+        <img class="icon" src="icons/left.svg" alt="">
+        Backward
+    </a>
+
     <a class="button" href="/watch" on:click={nextEpisode}>
         <img class="icon" src="icons/right.svg" alt="">
-        Next Episode
+        Forward
     </a>
 
     <a class="button" href="/episode-selector">
