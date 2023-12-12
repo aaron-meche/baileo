@@ -40,15 +40,15 @@
     <div class="title">{title}</div>
     <div class="scroll">
         {#each items as item}
-            {#if library.find(elem => elem.title == item.title) || item.type == "Movie"}
+            <!-- {#if library.find(elem => elem.title == item.title) || item.type == "Movie"} -->
                 <a class="item" on:click={() => selectItem(item)} href="/watch">
                     <MediaItem item={item} />
                 </a>
-            {:else}
+            <!-- {:else}
                 <a class="item" on:click={() => selectItem(item)} href="/episode-selector">
                     <MediaItem item={item} />
                 </a>
-            {/if}
+            {/if} -->
         {/each}
     </div>
 </div>
