@@ -74,7 +74,7 @@
     .tab{
         display: inline-flex;
         align-items: center;
-        padding: 4pt 8pt;
+        padding: 4pt 12pt;
         margin-right: 8pt;
         font-size: 10pt;
         font-weight: 500;
