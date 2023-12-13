@@ -6,6 +6,7 @@
     let progress = 0
     let is_loved // bool
     let should_prev_ep // bool
+    let media_type // string
     db.subscribe(data => {
         let library = data.library
         let item = library.find(item => item.title == data.currently_watching)
@@ -20,6 +21,9 @@
         else { 
             should_prev_ep = true
         }
+
+        let mediaitem = mediaDB.find(item => item.title == data.currently_watching)
+        media_type = mediaitem.type
     })
 
     function convertSecondsToMinSec(seconds) {
@@ -70,21 +74,28 @@
 </div> -->
 
 <div class="scroll">
-    {#if should_prev_ep}
-        <a class="button" href="/watch" on:click={prevEpisode}>
-            <img class="icon alone" src="icons/left.svg" alt="">
+    {#if media_type == "TV Show"}
+        {#if should_prev_ep}
+            <a class="button" href="/watch" on:click={prevEpisode}>
+                <img class="icon alone" src="icons/left.svg" alt="">
+            </a>
+        {/if}
+
+        <a class="button" href="/watch" on:click={nextEpisode}>
+            <img class="icon" src="icons/right.svg" alt="">
+            Next Episode
+        </a>
+
+        <a class="button" href="/episode-selector">
+            <img class="icon" src="icons/list.svg" alt="">
+            Episodes
+        </a>
+
+        <a class="button" href="/insomnia">
+            <img class="icon" src="icons/moon.svg" alt="">
+            Insomnia
         </a>
     {/if}
-
-    <a class="button" href="/watch" on:click={nextEpisode}>
-        <img class="icon" src="icons/right.svg" alt="">
-        Next Episode
-    </a>
-
-    <a class="button" href="/episode-selector">
-        <img class="icon" src="icons/list.svg" alt="">
-        Episodes
-    </a>
     
     <button class="button">
         <img class="icon" src="icons/video.svg" alt="">

@@ -39,6 +39,10 @@
     font-weight: 900;
 }
 @font-face {
+    font-family: Figtree;
+    src: url("$lib/Figtree/Figtree-VariableFont_wght.ttf");
+}
+@font-face {
     font-family: LexendDeca;
     src: url("$lib/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
 }
