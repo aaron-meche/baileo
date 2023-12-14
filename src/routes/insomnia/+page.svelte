@@ -123,7 +123,7 @@
 <style>
     .window{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         gap: 12pt;
         height: 100vh;
         width: 100vw;
@@ -133,12 +133,13 @@
         background: black;
         font-size: 36pt;
         font-weight: 300;
-        color: red;
+        color: rgba(150, 0, 0, 0.579);
     }
 
     .clock{
         font-family: LexendDeca;
         font-size: 100pt;
+        text-align: center;
     }
 
     video{
@@ -148,6 +149,7 @@
         aspect-ratio: 16 / 9;
         border-radius: 4pt;
         background: black;
+        opacity: 0.4;
     }
 
     .media-info{

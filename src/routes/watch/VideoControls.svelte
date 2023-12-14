@@ -2,6 +2,7 @@
     import { mediaDB } from "$lib/index"
     import { db } from "$lib/data"
     import { prevEpisode, nextEpisode } from "./control"
+    import Page from "../insomnia/+page.svelte";
 
     let progress = 0
     let is_loved // bool
@@ -34,6 +35,20 @@
         const paddedSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
 
         return minutes + ":" + paddedSeconds;
+    }
+
+    function openInsomnia() {
+        function openWindow() {
+            var windowFeatures = "menubar=no,toolbar=no,status=no,width=1000,height=600";
+            var newWindow = window.open("/insomnia", "_blank", windowFeatures);
+
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') { 
+                // Popup blocked or failed to open
+                alert("Popup blocked or failed to open");
+            }
+        }
+
+        openWindow()
     }
 
     function trashHistory() {
@@ -91,10 +106,10 @@
             Episodes
         </a>
 
-        <a class="button" href="/insomnia">
+        <button on:click={openInsomnia} class="button">
             <img class="icon" src="icons/moon.svg" alt="">
             Insomnia
-        </a>
+        </button>
     {/if}
     
     <button class="button">
