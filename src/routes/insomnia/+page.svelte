@@ -139,6 +139,7 @@
         font-size: 36pt;
         font-weight: 300;
         opacity: 0.5;
+        cursor: none
     }
 
     .clock{
