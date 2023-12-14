@@ -88,6 +88,7 @@
 <!--  -->
 
 <div class="window">
+    <div class="ui">
     {#if loaded}
         <div class="clock">
             <div class="time">{displayClock}</div>
@@ -116,30 +117,42 @@
             </div>
         </div>
     {/if}
+    </div>
 </div>
 
 <!--  -->
 
 <style>
     .window{
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 12pt;
-        height: 100vh;
-        width: 100vw;
+        height: 100vmax;
+        width: 100vmax;
         position: fixed;
         top: 0;
         left: 0;
         background: black;
+    }
+
+    .ui{
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        color: red;
         font-size: 36pt;
         font-weight: 300;
-        color: rgba(150, 0, 0, 0.579);
+        opacity: 0.5;
     }
 
     .clock{
+        height: 100%;
         font-family: LexendDeca;
-        font-size: 100pt;
+        /* font-size: 80pt;  */
         text-align: center;
+    }
+
+    .time{
+        padding-top: 36pt;
+        margin: auto;
+        font-size: 8vmax;
+        font-weight: 600;
     }
 
     video{
@@ -148,12 +161,12 @@
         width: 100%;
         aspect-ratio: 16 / 9;
         border-radius: 4pt;
+        opacity: 0.5;
         background: black;
-        opacity: 0.4;
     }
 
     .media-info{
-        /* padding: 24pt; */
+        font-size: 5vmax;
     }
 
     .media-caption{
