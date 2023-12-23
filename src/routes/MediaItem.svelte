@@ -3,6 +3,7 @@
     import { db } from "$lib/data"
     import { mediaDB } from "$lib/index"
 
+    let progressObj
     let progress
     let media_type = ""
     db.update(data => {
@@ -11,21 +12,53 @@
         if (libitem) {
             progress = libitem.progress * 100
         }
+        progressObj = libitem
         media_type = mediaDB.find(media => media.title == item.title).type
         return data
     })
+    let library
+    db.subscribe(data => {
+        library = data.library
+    })
+
+    function selectItem() {
+        db.update(data => {
+            data.currently_watching = item.title
+
+            let template = {
+                title: item.title,
+                progress: 0
+            }
+
+            if (item.type == "TV Show") {
+                template.season = 1
+                template.episode = 1
+            }
+
+            let libitem = data.library.find(elem => elem.title == item.title)
+            if (!libitem) {
+                data.library.push(template)
+            }
+            
+            return data
+        })
+    }
 </script>
 
 <!--  -->
 
-<div class="media-item">
+<a on:click={selectItem} href="/watch" class="media-item">
     <div class="image">
         <img src="thumbnails/{item.title}.jpeg" alt="Thumbnail" loading="lazy">
     </div>
     
     <div class="info">
         <div class="title">{item.title}</div>
-        <div class="caption">{media_type}</div>
+        {#if progress && media_type == "TV Show"}
+            <div class="caption">S{progressObj.season} E{progressObj.episode} - {mediaDB.find(elem => elem.title == item.title).seasons[progressObj.season - 1][progressObj.episode - 1]}</div>
+        {:else}
+            <div class="caption">{media_type}</div>
+        {/if}
     </div>
 
     {#if progress}
@@ -33,25 +66,30 @@
             <div class="value" style="width: {progress}%"></div>
         </div>
     {/if}
-</div>
+</a>
 
 <!--  -->
 
 <style>
     .media-item{
         position: relative;
-        width: 160pt;
+        max-width: 240pt;
         display: grid;
         gap: 8pt;
         padding: 8pt;
-        /* text-align: center; */
+        border-radius: 4pt;
+        cursor: pointer;
+    }
+
+    .media-item:hover{
+        background: var(--l1);
     }
 
     img{
         width: 100%;
         aspect-ratio: 16 / 9;
         object-fit: cover;
-        border-radius: 2pt;
+        border-radius: 4pt;
         overflow: hidden;
     }
 

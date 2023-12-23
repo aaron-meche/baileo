@@ -36,7 +36,7 @@
 
 <div class="bar">
     <a href="/" class="logo">
-        baileo Sunset c
+        baileo
     </a>
 
     <div class="tabs scroll">
@@ -78,21 +78,13 @@
         margin-right: 8pt;
         font-size: 10pt;
         font-weight: 500;
-        border-bottom: solid 1pt transparent;
-        border-radius: 2pt;
-        opacity: 0.6;
+        border: solid 1pt transparent;
+        border-radius: 4pt;
     }
 
     .tab.active{
-        background: var(--l2) !important;
-        /* color: var(--accent); */
-        border-bottom-color: var(--accent);
-        opacity: 1;
-    }
-
-    .tab:hover{
-        background: var(--l1);
-        cursor: pointer;
+        background: var(--l2);
+        border-color: var(--l4);
     }
 
     .search{

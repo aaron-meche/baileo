@@ -42,6 +42,10 @@
 
     function onLoad() {
         video.currentTime = progress.progress * video.duration
+
+        db.update(data => {
+            return data
+        })
     }
 
     function onTimeUpdate() {
@@ -64,7 +68,7 @@
         })
     }
 
-    function onLoadable() {
+    function onCanplay() {
         video.play()
     }
 </script>
@@ -79,7 +83,7 @@
                 bind:this={video} 
                 on:loadeddata={onLoad}
                 on:timeupdate={onTimeUpdate}
-                on:canplay={onLoadable}
+                on:canplay={onCanplay}
                 controls
                 src={video_url}
             ></video>
@@ -105,10 +109,6 @@
 <!--  -->
 
 <style>
-    .page{
-        padding-right: 24pt;
-    }
-
     .viewer{
         display: grid;
         row-gap: 12pt;

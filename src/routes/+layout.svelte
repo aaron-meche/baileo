@@ -9,10 +9,6 @@
 <!--  -->
 
 <div class="app">
-    <div class="header">
-        <Header />
-    </div>
-
     <div class="sidebar">
         <Sidebar />
     </div>
@@ -25,21 +21,16 @@
 <!--  -->
 
 <style>
-    .app{
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
         height: 100vh;
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 160pt auto;
-        grid-template-rows: min-content auto;
-        overflow: hidden;
-    }
-    
-    .app > *{
-        height: 100%;
+        width: 200pt;
         overflow: auto;
     }
-
-    .header{
-        grid-column: 1 / 3;
+    
+    .content{
+        margin-left: 200pt;
     }
 </style>

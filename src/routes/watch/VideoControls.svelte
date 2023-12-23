@@ -66,6 +66,11 @@
             return data
         })
     }
+
+    let next_episode_button
+    function revealNextEpisode() {
+        
+    }
 </script>
 
 <!--  -->
@@ -107,24 +112,17 @@
         </a>
 
         <button on:click={openInsomnia} class="button">
-            <img class="icon" src="icons/moon.svg" alt="">
-            Insomnia
+            <img class="icon alone" src="icons/moon.svg" alt="">
         </button>
     {/if}
-    
-    <button class="button">
-        <img class="icon" src="icons/video.svg" alt="">
-        Clip
-    </button>
 
     <a class="button" on:click={trashHistory} href="/">
-        <img class="icon" src="icons/trash.svg" alt="">
-        Remove
+        <img class="icon alone" src="icons/trash.svg" alt="">
     </a>
 
-    <button class="button" on:click={toggleLove}>
+    <!-- <button class="button" on:click={toggleLove}>
         <img class="icon alone" src="icons/{is_loved ? "love" : "unlove"}.svg" alt="">
-    </button>
+    </button> -->
 </div>
 
 <!--  -->
