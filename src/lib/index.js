@@ -187,6 +187,18 @@ export const mediaDB = [
     },
 
     {
+        title: "Anchorman",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
+        title: "Anchorman 2",
+        type: "Movie",
+        cat: "comedy"
+    },
+
+    {
         title: "Avengers ENDGAME",
         type: "Movie",
         cat: "marvel",
