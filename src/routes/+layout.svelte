@@ -3,7 +3,14 @@
     import "$lib/style.css"
     import Header from "./Header.svelte";
     import Sidebar from "./Sidebar.svelte";
+    import { db } from "$lib/data"
+    import { beforeUpdate, onMount } from "svelte";
 
+    beforeUpdate(() => {
+        db.subscribe(data => {
+            document.documentElement.style.setProperty("--hue", data.hue)
+        })
+    })
 </script>
 
 <!--  -->

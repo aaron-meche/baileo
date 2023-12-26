@@ -5,7 +5,7 @@
 
     let progressObj
     let progress
-    let media_type = ""
+    $: media_type = mediaDB.find(media => media.title == item.title).type
     db.update(data => {
         let lib = data.library
         let libitem = lib.find(media => media.title == item.title)
@@ -13,7 +13,6 @@
             progress = libitem.progress * 100
         }
         progressObj = libitem
-        media_type = mediaDB.find(media => media.title == item.title).type
         return data
     })
     let library

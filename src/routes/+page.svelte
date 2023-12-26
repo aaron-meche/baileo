@@ -20,8 +20,9 @@
     }
 
     function addFilter(key, val) {
-        items = mediaDB.filter(item => item[key] == val)
-        console.log(items, mediaDB.filter(item => item.type == "TV Show"))
+        // items = mediaDB.filter(item => item[key] == val)
+        searchBar.value = val
+        updateSearch()
     }
 
     function arraysAreEqual(array1, array2) {

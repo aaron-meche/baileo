@@ -21,6 +21,20 @@
     function resetData() {
         storage.clear()
     }
+
+    let colors = ["Red", "Orange", "Yellow", "Green", "Teal", "Blue", "Purple"]
+    let hues = [0, 40, 75, 120, 170, 200, 280, 330]
+    let active_hue
+    db.subscribe(data => {
+        active_hue = data.hue
+    })
+
+    function updateHue(num) {
+        db.update(data => {
+            data.hue = hues[num]
+            return data
+        })
+    }
 </script>
 
 <!--  -->
@@ -35,10 +49,12 @@
             Explore
         </a>
 
+        {#if library.length > 0}
         <a class="item {$page.url.pathname == '/library' ? 'active' : ''}" href="/library">
             <img class="icon" src="icons/history.svg" alt="">
             Your Library
         </a>
+        {/if}
 
         <!-- <a class="item {$page.url.pathname == '/insomnia' ? 'active' : ''}" href="/insomnia">
             <img class="icon" src="icons/moon.svg" alt="">
@@ -51,6 +67,7 @@
         </button> -->
     </section>
 
+    {#if library.length > 0}
     <section>
         <div class="label">Continue Watching</div>
     
@@ -68,6 +85,17 @@
                     </div>
                 </div>
             </a>
+        {/each}
+    </section>
+    {/if}
+
+    <section>
+        <div class="label">Theme Color</div>
+        {#each colors as color, i}
+            <button on:click={() => updateHue(i)} class="item color-item {active_hue == hues[i] ? "active" : ""}">
+                <div class="color {color.toLowerCase()}"></div>
+                {color}
+            </button>
         {/each}
     </section>
 
@@ -89,12 +117,12 @@
 <style>
     .sidebar{
         display: grid;
-        padding: 12pt;
+        padding: 24pt 12pt;
         overflow: auto;
     }
 
     section{
-        margin-bottom: 12pt;
+        margin-bottom: 24pt;
     }
 
     .label{
@@ -104,6 +132,7 @@
     }
 
     .item{
+        position: relative;
         display: grid;
         grid-template-columns: min-content auto;
         align-items: center;
@@ -112,30 +141,20 @@
         font-size: 10pt;
         font-weight: 500;
         border-radius: 4pt;
+        opacity: 0.75;
         cursor: pointer;
+    }
+
+    button{
+        width: calc(100% - 16pt);
     }
 
     .item:hover{
         background: var(--l1);
+        opacity: 1;
     }
 
-    /* @keyframes gradientAnimation {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    } */
     .item.active{
-        /* opacity: 1;
-        border-left-color: var(--accent);
-        background: linear-gradient(to left, var(--l1), var(--l2));
-        background-size: 200% 200%;
-        animation: gradientAnimation 5s ease infinite; */
         opacity: 1;
         background: var(--l2);
     }
@@ -168,5 +187,29 @@
         height: 100%;
         background: var(--contrast);
         border-radius: inherit;
+    }
+
+    .color{
+        height: 0.5em;
+        aspect-ratio: 1 / 1;
+        border-radius: 100em;
+        background: var(--contrast);
+    }
+
+    .red{ background: hsl(0, 64%, 48%) }
+    .orange{ background: hsl(40, 64%, 48%) }
+    .yellow{ background: hsl(75, 64%, 48%) }
+    .green{ background: hsl(120, 64%, 48%) }
+    .teal{ background: hsl(170, 64%, 48%) }
+    .blue{ background: hsl(200, 64%, 48%) }
+    .purple{ background: hsl(280, 64%, 48%) }
+    .pink{ background: hsl(330, 64%, 48%) }
+
+    .color-item{
+        padding-block: 4pt;
+    }
+
+    .color-item.active{
+        color: var(--accent);
     }
 </style>
