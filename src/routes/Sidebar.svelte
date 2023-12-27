@@ -67,6 +67,20 @@
         </button> -->
     </section>
 
+    <!-- <section>
+        <div class="label">Finances</div>
+
+        <a class="item {$page.url.pathname == '/credit' ? 'active' : ''}" href="/credit">
+            <img class="icon" src="icons/credit-card.svg" alt="">
+            Credit Cards
+        </a>
+    
+        <a class="item {$page.url.pathname == '/income' ? 'active' : ''}" href="/income">
+            <img class="icon" src="icons/coins.svg" alt="">
+            Income
+        </a>
+    </section> -->
+
     {#if library.length > 0}
     <section>
         <div class="label">Continue Watching</div>

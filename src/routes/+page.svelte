@@ -52,9 +52,6 @@
         <div class="horizontal-selector horizontal-scroll">
             <button class="item {arraysAreEqual(items, mediaDB.filter(item => item.type == "TV Show")) ? "active" : ""}" on:click={() => addFilter("type", "TV Show")}>TV Show</button>
             <button class="item {arraysAreEqual(items, mediaDB.filter(item => item.type == "Movie")) ? "active" : ""}" on:click={() => addFilter("type", "Movie")}>Movie</button>
-        </div>
-
-        <div class="horizontal-selector horizontal-scroll">
             <button class="item {arraysAreEqual(items, mediaDB.filter(item => item.cat == "comedy")) ? "active" : ""}" on:click={() => addFilter("cat", "comedy")}>Comedy</button>
             <button class="item {arraysAreEqual(items, mediaDB.filter(item => item.cat == "animation")) ? "active" : ""}" on:click={() => addFilter("cat", "animation")}>Animations</button>
             <button class="item {arraysAreEqual(items, mediaDB.filter(item => item.cat == "drama")) ? "active" : ""}" on:click={() => addFilter("cat", "drama")}>Dramas</button>
@@ -75,10 +72,9 @@
     input{
         height: 1em;
         margin-right: 1.25em;
-        padding: 0.75em 1.25em;
-        /* background: var(--l1); */
-        border: solid 1pt var(--l3);
-        border-radius: 0.5em;
+        padding: 0.75em;
+        border-bottom: solid 1pt var(--l6);
+        border-radius: 0.2em;
     }
 
     input:focus{
