@@ -67,7 +67,7 @@
         </button> -->
     </section>
 
-    <!-- <section>
+    <section>
         <div class="label">Finances</div>
 
         <a class="item {$page.url.pathname == '/credit' ? 'active' : ''}" href="/credit">
@@ -79,7 +79,7 @@
             <img class="icon" src="icons/coins.svg" alt="">
             Income
         </a>
-    </section> -->
+    </section>
 
     {#if library.length > 0}
     <section>

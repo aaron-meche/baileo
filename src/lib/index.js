@@ -247,6 +247,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Daddys Home",
+        type: "Movie",
+        cat: "christmas comedy"
+    },
+
+    {
         title: "Daddys Home 2",
         type: "Movie", 
         cat: "christmas comedy", 
