@@ -120,6 +120,10 @@
         <img class="icon alone" src="icons/trash.svg" alt="">
     </a>
 
+    <a class="button" on:click={trashHistory} href="/">
+        <img class="icon alone" src="icons/trash.svg" alt="">
+    </a>
+
     <!-- <button class="button" on:click={toggleLove}>
         <img class="icon alone" src="icons/{is_loved ? "love" : "unlove"}.svg" alt="">
     </button> -->

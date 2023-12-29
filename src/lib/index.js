@@ -169,6 +169,12 @@ export const mediaDB = [
     },
 
     {
+        title: "21 Jump Street",
+        type: "Movie",
+        cat: "comedy classic"
+    },
+
+    {
         title: "A Quiet Place",
         type: "Movie",
         cat: "horror"
@@ -525,7 +531,7 @@ export const mediaDB = [
     {
         title: "The Other Guys",
         type: "Movie", 
-        cat: "comedy", 
+        cat: "comedy classic", 
     },
 
     {
