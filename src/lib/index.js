@@ -589,7 +589,7 @@ export const mediaDB = [
     },
 
     {
-        title: "Were The Millers",
+        title: "Were the Millers",
         type: "Movie",
         cat: "comedy classic"
     },
