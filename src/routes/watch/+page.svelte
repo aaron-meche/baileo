@@ -98,7 +98,6 @@
                 on:canplay={onCanplay}
                 controls
                 src={video_url}
-                title={media_item.title}
             ></video>
 
             <div class="media-data">
