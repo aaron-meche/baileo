@@ -1,0 +1,143 @@
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/ExtraLight.otf') format('opentype');
+    font-weight: 200;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/Light.otf') format('opentype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/Regular.otf') format('opentype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/Medium.otf') format('opentype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/Bold.otf') format('opentype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/ExtraBold.otf') format('opentype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/Black.otf') format('opentype');
+    font-weight: 800;
+}
+@font-face {
+    font-family: BaileyScript;
+    src: url('$lib/SansSerif/ExtraBlack.otf') format('opentype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: Figtree;
+    src: url("$lib/Figtree/Figtree-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: LexendDeca;
+    src: url("$lib/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+
+
+:root{
+	--hue: 330;
+	--sat: 12%;
+	--strt: 8%;
+	--diff: 4%;
+
+	--accent: hsl(var(--hue), 48%, 64%);
+	--contrast: hsl(var(--hue), 0%, 92%);
+	--contrast-transparent: hsl(var(--hue), 0%, 92%, 40%);
+	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
+	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 40%);
+	--l1: hsl(var(--hue), var(--sat), calc(var(--strt) + (1 * var(--diff))));
+	--l2: hsl(var(--hue), var(--sat), calc(var(--strt) + (2 * var(--diff))));
+	--l3: hsl(var(--hue), var(--sat), calc(var(--strt) + (3 * var(--diff))));
+	--l4: hsl(var(--hue), var(--sat), calc(var(--strt) + (4 * var(--diff))));
+	--l5: hsl(var(--hue), var(--sat), calc(var(--strt) + (5 * var(--diff))));
+	--l6: hsl(var(--hue), var(--sat), calc(var(--strt) + (6 * var(--diff))));
+    --alert: hsl(0, 70%, 58%);
+
+	--inline-moat: 8vw;
+}
+
+@media (prefers-color-scheme: light) {
+	:root{
+		--strt: 92%;
+		--diff: -6%;
+        --accent: hsl(var(--hue), 48%, 48%);
+		--contrast: hsl(var(--hue), 0%, 8%);
+        --contrast-transparent: hsl(var(--hue), 0%, 8%, 40%);
+        --alert: hsl(0, 83%, 49%);
+	}
+}
+
+img.icon{
+    display: inline-block;
+    height: 1em;
+}
+@media (prefers-color-scheme: dark) {
+    img.icon{
+        filter: invert(1) !important;
+    }
+}
+
+body{
+    margin: 0;
+    background: var(--bg);
+    font-family: BaileyScript !important;
+    color: var(--contrast);
+}
+
+h1,h2,h3,h4,h5,h6,a,img,button,input{
+    all: unset;
+    display: block;
+}
+h1{
+    font-size: 32pt;
+    font-weight: 600;
+    letter-spacing: -0.2pt;
+}
+h2{
+    font-size: 20pt;
+    font-weight: 500;
+    letter-spacing: -0.2pt;
+}
+button{
+    cursor: pointer;
+}
+input{
+    cursor: text;
+}
+input::placeholder{
+    font-family: BaileyScript;
+    opacity: 0.8;
+}
+
+.horizontal-scroll{
+    display: flex;
+    background: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-size: 0;
+    white-space: nowrap;
+}
+.horizontal-scroll > *{
+    display: inline-block;
+    font-size: initial;
+}
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+.horizontal-scroll::-moz-progress-bar{
+    display: none;
+}
