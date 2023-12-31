@@ -307,6 +307,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Game Night",
+        type: "Movie",
+        cat: "comedy classic"
+    },
+
+    {
         title: "Get Hard",
         type: "Movie",
         cat: "comedy classic"
