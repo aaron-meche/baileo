@@ -67,6 +67,15 @@ export function serverTypeConversion(string) {
 // Media JSON Database
 export const mediaDB = [
     {
+        title: "American Auto",
+        type: "TV Show", 
+        cat: "comedy", 
+        seasons: [
+            ["Pilot", "White Van", "Earning Call", "The 10k Car", "Millibank, IA", "Commercial", "Recall", "Employee Morale", "Charity Dinner", "Profile"],
+        ]
+    },
+
+    {
         title: "Family Guy",
         type: "TV Show", 
         cat: "comedy", 
