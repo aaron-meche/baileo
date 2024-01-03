@@ -72,6 +72,7 @@ export const mediaDB = [
         cat: "comedy", 
         seasons: [
             ["Pilot", "White Van", "Earning Call", "The 10k Car", "Millibank, IA", "Commercial", "Recall", "Employee Morale", "Charity Dinner", "Profile"],
+            ["Crisis", "Most Hated CEO", "Celebrity", "Cost Cutting", "Going Green", "The Letter", "Young Designers", "Hack", "Night Out", "Passion Project", "Funeral", "Dealer Event", "Judgement Day"]
         ]
     },
 

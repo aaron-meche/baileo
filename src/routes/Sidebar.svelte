@@ -67,7 +67,7 @@
         </button> -->
     </section>
 
-    <section>
+    <!-- <section>
         <div class="label">Finances</div>
 
         <a class="item {$page.url.pathname == '/credit' ? 'active' : ''}" href="/credit">
@@ -79,7 +79,7 @@
             <img class="icon" src="icons/coins.svg" alt="">
             Income
         </a>
-    </section>
+    </section> -->
 
     {#if library.length > 0}
     <section>
@@ -131,12 +131,12 @@
 <style>
     .sidebar{
         display: grid;
-        padding: 24pt 12pt;
+        padding: 16pt 12pt;
         overflow: auto;
     }
 
     section{
-        margin-bottom: 24pt;
+        margin-bottom: 16pt;
     }
 
     .label{
@@ -224,6 +224,6 @@
     }
 
     .color-item.active{
-        color: var(--accent);
+        /* color: var(--accent); */
     }
 </style>

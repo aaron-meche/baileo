@@ -72,7 +72,7 @@
 
 @media (prefers-color-scheme: light) {
 	:root{
-		--strt: 92%;
+		--strt: 100%;
 		--diff: -6%;
         --accent: hsl(var(--hue), 48%, 48%);
 		--contrast: hsl(var(--hue), 0%, 8%);
