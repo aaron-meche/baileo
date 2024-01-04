@@ -71,7 +71,7 @@
                     item.progress = (video.currentTime / video.duration).toFixed(2)
                 }
 
-                if (currentTime > duration - 38) {
+                if (currentTime > duration - 2) {
                     nextEpisode()
                 }
 
