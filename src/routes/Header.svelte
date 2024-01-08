@@ -34,67 +34,22 @@
 
 <!--  -->
 
-<div class="bar">
+<div class="wrapper">
     <a href="/" class="logo">
-        baileo
+        baileo 24.0 dev
     </a>
-
-    <div class="tabs scroll">
-        {#each library as item}
-            <a href="/watch" on:click={() => watchMedia(item.title)} class="tab {$page.url.pathname == "/watch" && currently_watching == item.title ? "active" : ""}">
-                {item.title}
-            </a>
-        {/each}
-
-        <!-- <div class="search">
-            <input type="text" placeholder="Search...">
-        </div> -->
-    </div>
 </div>
 
 
 <!--  -->
 
 <style>
-    .bar{
-        display: grid;
-        grid-template-columns: 160pt auto;
-        align-items: center;
-        padding: 4pt;
-        overflow: visible;
+    .wrapper{
+        padding: 8pt 20pt;
     }
 
     .logo{
-        text-align: center;
-        font-size: 14pt;
-        font-weight: 500;
-        color: var(--accent);
-    }
-
-    .tab{
-        display: inline-flex;
-        align-items: center;
-        padding: 4pt 12pt;
-        margin-right: 8pt;
-        font-size: 10pt;
-        font-weight: 500;
-        border: solid 1pt transparent;
-        border-radius: 4pt;
-    }
-
-    .tab.active{
-        background: var(--l2);
-        border-color: var(--l4);
-    }
-
-    .search{
-        font-size: 10pt;
-        font-weight: 500;
-    }
-
-    input{
-        padding: 4pt 12pt;
-        background: var(--l1);
-        border-bottom: solid 2pt var(--l4);
+        font-weight: 600;
+        text-transform: lowercase;
     }
 </style>

@@ -42,7 +42,7 @@
 <div class="sidebar">
 
     <section>
-        <div class="label">baileo by Aaron Meche</div>
+        <div class="label">from January 4</div>
     
         <a class="item {$page.url.pathname == '/' ? 'active' : ''}" href="/">
             <img class="icon" src="icons/compass.svg" alt="">
@@ -55,16 +55,6 @@
             Your Library
         </a>
         {/if}
-
-        <!-- <a class="item {$page.url.pathname == '/insomnia' ? 'active' : ''}" href="/insomnia">
-            <img class="icon" src="icons/moon.svg" alt="">
-            Insomnia
-        </a> -->
-
-        <!-- <button class="item" on:click={resetData}>
-            <img class="icon" src="icons/delete.svg" alt="">
-            Delete Data
-        </button> -->
     </section>
 
     <!-- <section>
@@ -165,6 +155,7 @@
 
     .item:hover{
         background: var(--l1);
+        outline: solid 1pt var(--l4);
         opacity: 1;
     }
 

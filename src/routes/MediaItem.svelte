@@ -82,6 +82,7 @@
 
     .media-item:hover{
         background: var(--l1);
+        outline: solid 1pt var(--l4);
     }
 
     img{

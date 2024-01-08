@@ -251,6 +251,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Central Intelligence",
+        type: "Movie",
+        cat: "comedy classic",
+    },
+
+    {
         title: "Clueless",
         type: "Movie", 
         cat: "comedy", 

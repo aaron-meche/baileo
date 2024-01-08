@@ -17,7 +17,7 @@
 
 <div class="app">
     <div class="head">
-        Baileo
+        <Header />
     </div>
 
     <div class="body">
@@ -39,17 +39,22 @@
         position: relative;
         display: grid;
         grid-template-rows: min-content auto;
-        height: 100vh;
-        width: 100vw;
+        height: 100svh;
+        width: 100svw;
     }
 
     .head{
-        padding: 12pt;
-        background: var(--l1);
+        position: sticky;
+        top: 0;
+        box-shadow: 0 0 4pt var(--contrast-transparent);
+        background: var(--bg);
+        z-index: 2;
     }
 
     .body{
         position: relative;
+        z-index: 1;
+        overflow: auto;
     }
 
     .sidebar{
