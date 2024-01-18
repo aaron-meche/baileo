@@ -93,7 +93,7 @@
     </a>
 </div> -->
 
-<div class="scroll">
+<div class="horizontal-scroll default">
     {#if media_type == "TV Show"}
         {#if should_prev_ep}
             <a class="button" href="/watch" on:click={prevEpisode}>

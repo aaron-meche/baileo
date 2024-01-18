@@ -18,7 +18,7 @@
 
 <!--  -->
 
-<div class="page">
+<div class="page inline-delete">
     <!-- <div class="showcase">
         <img src="thumbnails/The Hangover Part II.jpeg" alt="">
 

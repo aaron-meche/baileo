@@ -1,21 +1,13 @@
 <script>
     import { page } from '$app/stores'
     import { onMount } from 'svelte'
+    import { navigating } from "$app/stores"
     import { db } from "$lib/data"
     import { mediaDB } from "$lib/index"
     import SearchError from "./search/SearchError.svelte";
+    import SearchMenu from './SearchMenu.svelte';
 
-    let search_bar
-    let val
-    let items_to_display = mediaDB
-    function keyPress(e) {
-        val = search_bar.value
-        items_to_display = mediaDB.filter(item => item.title.toLowerCase().includes(val.toLowerCase()))
-        db.update(data => {
-            data.search_result = items_to_display
-            return data
-        })
-    }
+    let search_val = ""
 
     let library, currently_watching
     db.subscribe(data => {
@@ -23,12 +15,17 @@
         currently_watching = data.currently_watching
     })
 
-    function watchMedia(title) {
-        db.update(data => {
-            data.currently_watching = title
-            return data
-        })
-        if ($page.url.pathname == "/watch") window.location.reload()
+    let search_bar, search_window
+    function updateWindowSize() {
+        let xPos = search_bar.offsetLeft
+        let yPos = search_bar.offsetTop
+        search_window.style.top = yPos + "px"
+        search_window.style.left = xPos + "px"
+    }
+
+    $: if ($navigating !== null) {
+        console.log("chaing")
+        search_val = ""
     }
 </script>
 
@@ -42,10 +39,17 @@
 
     <div class="right" style="margin-left: auto">
         {#if currently_watching}
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search" bind:value={search_val}>
         {/if}
     </div>
+
+    {#if search_val != ""}
+        <div class="search-menu">
+            <SearchMenu query={search_val}/>
+        </div>
+    {/if}
 </div>
+
 
 
 <!--  -->
@@ -57,7 +61,6 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem var(--inline-moat);
-        margin: 0 1rem;
     }
 
     .logo{
@@ -80,5 +83,22 @@
         padding: 0.5rem 1rem;
         background: var(--l1);
         border-radius: 0.25rem;
+    }
+
+    input:focus{
+        background: var(--l2);
+    }
+
+    .search-menu{
+        position: absolute;
+        top: 100%;
+        right: var(--inline-moat);
+        height: fit-content;
+        max-height: 25rem;
+        width: 17rem;
+        padding: 0.5rem;
+        background: var(--l1);
+        border-radius: 0.25rem;
+        overflow: auto;
     }
 </style>

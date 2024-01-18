@@ -21,7 +21,7 @@
 <!--  -->
 
 <div class="selector">
-    <div class="horizontal-scroll">
+    <div class="horizontal-scroll default">
         {#each seasons as season, i}
             <button class="item {viewing_season == i + 1 ? "active" : ""}" on:click={() => updateViewingSeason(i + 1)}>Season {i + 1}</button>
         {/each}
@@ -51,6 +51,7 @@
     }
 
     .horizontal-scroll{
+        width: fit-content;
         max-width: 100%;
         padding: 0;
         margin-bottom: 1rem;

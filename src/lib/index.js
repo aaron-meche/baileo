@@ -317,6 +317,18 @@ export const mediaDB = [
     },
 
     {
+        title: "Ferris Buellers Day Off",
+        type: "Movie",
+        cat: "comedy drama"
+    },
+
+    {
+        title: "Fight Club",
+        type: "Movie",
+        cat: "thriller crime drama"
+    },
+
+    {
         title: "Five Nights at Freddys",
         type: "Movie",
         cat: "horror"
@@ -431,6 +443,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Saving Private Ryan",
+        type: "Movie",
+        cat: "war drama action"
+    },
+
+    {
         title: "Spider Man Far From Home",
         type: "Movie", 
         cat: "marvel", 
@@ -509,6 +527,12 @@ export const mediaDB = [
     },
 
     {
+        title: "The Devil Wears Prada",
+        type: "Movie",
+        cat: "comedy drama"
+    },
+
+    {
         title: "The Exorcist",
         type: "Movie",
         cat: "horror",
@@ -518,6 +542,12 @@ export const mediaDB = [
         title: "The Founder",
         type: "Movie",
         cat: "drama historical",
+    },
+
+    {
+        title: "Grand Budapest Hotel",
+        type: "Movie",
+        cat: "comedy adventure"
     },
 
     {
@@ -578,6 +608,12 @@ export const mediaDB = [
         title: "The Shining",
         type: "Movie",
         cat: "horror"
+    },
+
+    {
+        title: "The Truman Show",
+        type: "Movie",
+        cat: "comedy sci-fi"
     },
 
     {
