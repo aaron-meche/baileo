@@ -51,7 +51,7 @@
     }
 
     .horizontal-scroll{
-        width: fit-content;
+        max-width: 100%;
         padding: 0;
         margin-bottom: 1rem;
         background: var(--l2);
@@ -61,19 +61,17 @@
     .item{
         width: 100%;
         padding: 0.5rem 1rem;
-        font-size: 10pt;
+        font-size: 0.8rem;
         font-weight: 500;
-        border: solid 1pt transparent;
         border-radius: 4pt;
     }
 
     .item:hover{
-        background: var(--l2);
-        border-color: var(--l5);
+        background: var(--l3);
     }
 
     .item.active{
-        background: var(--l3);
+        background: var(--l4);
         font-weight: 600;
         color: var(--accent);
     }

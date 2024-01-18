@@ -40,7 +40,7 @@
     .section-title{
         padding: 0 var(--inline-moat);
         margin-left: 1rem;
-        font-size: 16pt;
+        font-size: 1.4rem;
         font-weight: 700;
     }
 
@@ -50,13 +50,11 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem;
-        border-radius: 4pt;
-        border: solid 1pt transparent;
+        border-radius: 0.25rem;
     }
 
     .item:hover{
         background: var(--l1);
-        border-color: var(--l4);
     }
 
     .item img{

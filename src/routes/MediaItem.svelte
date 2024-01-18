@@ -76,7 +76,7 @@
         display: grid;
         gap: 1rem;
         padding: 1rem;
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
         cursor: pointer;
     }
 
@@ -106,7 +106,6 @@
     }
 
     .info{
-        display: inline-block;
         font-weight: 500;
     }
 

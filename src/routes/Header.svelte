@@ -40,14 +40,11 @@
         baileo
     </a>
 
-    <!-- <div class="right" style="margin-left: auto">
+    <div class="right" style="margin-left: auto">
         {#if currently_watching}
-            <a href="/watch" class="button">
-                <img src="icons/history.svg" class="icon" alt="icon">
-                Pickup
-            </a>
+            <input type="text" placeholder="Search">
         {/if}
-    </div> -->
+    </div>
 </div>
 
 
@@ -78,20 +75,8 @@
         height: 0.7em;
     }
 
-    .button{
-        display: grid;
-        grid-template-columns: min-content auto;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0.5em 1em;
-        font-size: 1rem;
-        font-weight: 500;
-        border: solid 1pt transparent;
-        border-radius: 4pt;
-    }
-
-    .button:hover{
+    input{
+        padding: 0.5rem 1rem;
         background: var(--l1);
-        border-color: var(--l4);
     }
 </style>

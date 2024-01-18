@@ -51,7 +51,7 @@
 :root{
 	--hue: 255;
 	--sat: 8%;
-	--strt: 6%;
+	--strt: 4%;
 	--diff: 4%;
 
 	--accent: hsl(var(--hue), 64%, 64%);
@@ -83,19 +83,20 @@
 	}
 }
 
-img.icon{
-    display: inline-block;
-    height: 1em;
-}
-@media (prefers-color-scheme: dark) {
-    img.icon{
-        filter: invert(1) !important;
+@media (orientation: portrait) {
+    :root{
+        --inline-moat: 5vw;
     }
+}
+
+i{
+    color: var(--font);
 }
 
 body{
     margin: 0;
     background: var(--bg);
+    font-size: 1rem;
     font-family: BaileyScript !important;
     color: var(--contrast);
 }
@@ -105,12 +106,12 @@ h1,h2,h3,h4,h5,h6,a,img,button,input{
     display: block;
 }
 h1{
-    font-size: 32pt;
+    font-size: 1.8rem;
     font-weight: 600;
     letter-spacing: -0.2pt;
 }
 h2{
-    font-size: 20pt;
+    font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: -0.2pt;
 }

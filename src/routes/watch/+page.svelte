@@ -4,7 +4,7 @@
     import { nextEpisode } from "./control"
     import { onMount } from "svelte"
     import VideoControls from "./VideoControls.svelte";
-    import EpisodeSelector from "../EpisodeSelector.svelte";
+    import EpisodeSelector from "./EpisodeSelector.svelte";
 
     let loaded = false
     // finals
@@ -114,9 +114,11 @@
             
             <VideoControls />
             
-            <div class="episode-selector">
-                <EpisodeSelector />
-            </div>
+            {#if media_item.type == "TV Show"}
+                <div class="episode-selector">
+                    <EpisodeSelector />
+                </div>
+            {/if}
         </div>
 
     {:else}
@@ -136,19 +138,18 @@
 
     video{
         display: block;
-        width: 100%;
-        padding: 1pt;
-        background: var(--l3);
+        width: calc(100% - 0.5rem);
+        padding: 0.25rem;
+        background: var(--l1);
         border-radius: 4pt;
     }
 
     .media-title{
-        font-size: 16pt;
+        font-size: 1.4rem;
         font-weight: 700;
     }
 
-    .media-caption{        
-        font-size: 12pt;
+    .media-caption{
         font-weight: 600;
         opacity: 0.5;
     }

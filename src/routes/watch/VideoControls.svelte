@@ -97,28 +97,18 @@
     {#if media_type == "TV Show"}
         {#if should_prev_ep}
             <a class="button" href="/watch" on:click={prevEpisode}>
-                <img class="icon alone" src="icons/left.svg" alt="">
+                <i class="fa-solid fa-arrow-left alone"></i>
             </a>
         {/if}
 
         <a class="button" href="/watch" on:click={nextEpisode}>
-            <img class="icon" src="icons/right.svg" alt="">
+            <i class="fa-solid fa-arrow-right"></i>
             Next Episode
         </a>
-
-        <a class="button" href="/episode-selector">
-            <img class="icon" src="icons/list.svg" alt="">
-            Episodes
-        </a>
-
-        <button on:click={openInsomnia} class="button">
-            <img class="icon" src="icons/moon.svg" alt="">
-            Insomnia
-        </button>
     {/if}
 
     <a class="button" on:click={trashHistory} href="/">
-        <img class="icon" src="icons/trash.svg" alt="">
+        <i class="fa-solid fa-trash"></i>
         Remove from Library
     </a>
 </div>
@@ -130,24 +120,22 @@
         display: flex;
         align-items: center;
         padding: 0.5rem 1rem;
-        margin-right: 8pt;
+        margin-right: 0.5rem;
         background: var(--l1);
-        font-size: 10pt;
+        font-size: 0.8rem;
         font-weight: 500;
-        border: solid 1pt var(--l3);
         border-radius: 4pt;
     }
 
     .button:hover{
         background: var(--l2);
-        border-color: var(--l6);
     }
 
-    .icon{
+    i{
         margin-right: 8pt;
     }
 
-    .icon.alone{
+    i.alone{
         margin: 0;
     }
 </style>

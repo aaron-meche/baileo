@@ -25,7 +25,7 @@
     .section-title{
         padding: 0 var(--inline-moat);
         margin-left: 1rem;
-        font-size: 16pt;
+        font-size: 1.4rem;
         font-weight: 700;
     }
 </style>
