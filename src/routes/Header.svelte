@@ -76,7 +76,9 @@
     }
 
     input{
+        width: 16rem;
         padding: 0.5rem 1rem;
         background: var(--l1);
+        border-radius: 0.25rem;
     }
 </style>
