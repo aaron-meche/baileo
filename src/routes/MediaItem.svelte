@@ -76,14 +76,12 @@
         display: grid;
         gap: 1rem;
         padding: 1rem;
-        border: solid 1pt transparent;
-        border-radius: 4pt;
+        border-radius: 0.5rem;
         cursor: pointer;
     }
 
     .media-item:hover{
         background: var(--l1);
-        border-color: var(--l4);
     }
 
     img{

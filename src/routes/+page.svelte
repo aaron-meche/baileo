@@ -32,7 +32,7 @@
         <LibrarySection />
     {/if}
 
-    <MediaSection title="Classics by Aaron" items={mediaDB.filter(item => item.cat.includes("classic"))} />
+    <MediaSection title="Classic Comedies" items={mediaDB.filter(item => item.cat.includes("classic"))} />
     <MediaSection title="Animation Movies" items={mediaDB.filter(item => item.cat.includes("animation") && item.type == "Movie")} />
     <MediaSection title="Drama Movies" items={mediaDB.filter(item => item.cat.includes("drama") && item.type == "Movie")} />
     <MediaSection title="Horror Movies" items={mediaDB.filter(item => item.cat.includes("horror") && item.type == "Movie")} />
