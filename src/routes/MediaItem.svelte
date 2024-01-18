@@ -72,17 +72,18 @@
 <style>
     .media-item{
         position: relative;
-        max-width: 240pt;
+        width: 16rem;
         display: grid;
-        gap: 8pt;
-        padding: 8pt;
+        gap: 1rem;
+        padding: 1rem;
+        border: solid 1pt transparent;
         border-radius: 4pt;
         cursor: pointer;
     }
 
     .media-item:hover{
         background: var(--l1);
-        outline: solid 1pt var(--l4);
+        border-color: var(--l4);
     }
 
     img{
@@ -112,7 +113,6 @@
     }
 
     .caption{
-        font-weight: 400;
         opacity: 0.5;
     }
 </style>

@@ -112,21 +112,15 @@
         </a>
 
         <button on:click={openInsomnia} class="button">
-            <img class="icon alone" src="icons/moon.svg" alt="">
+            <img class="icon" src="icons/moon.svg" alt="">
+            Insomnia
         </button>
     {/if}
 
     <a class="button" on:click={trashHistory} href="/">
-        <img class="icon alone" src="icons/trash.svg" alt="">
+        <img class="icon" src="icons/trash.svg" alt="">
+        Remove from Library
     </a>
-
-    <a class="button" on:click={trashHistory} href="/">
-        <img class="icon alone" src="icons/trash.svg" alt="">
-    </a>
-
-    <!-- <button class="button" on:click={toggleLove}>
-        <img class="icon alone" src="icons/{is_loved ? "love" : "unlove"}.svg" alt="">
-    </button> -->
 </div>
 
 <!--  -->
@@ -135,18 +129,18 @@
     .button{
         display: flex;
         align-items: center;
-        padding: 4pt 8pt;
+        padding: 0.5rem 1rem;
         margin-right: 8pt;
         background: var(--l1);
         font-size: 10pt;
-        border: solid 1pt var(--l2);
+        font-weight: 500;
+        border: solid 1pt var(--l3);
         border-radius: 4pt;
-        transition-duration: 200ms;
     }
 
     .button:hover{
         background: var(--l2);
-        border-color: var(--l4);
+        border-color: var(--l6);
     }
 
     .icon{

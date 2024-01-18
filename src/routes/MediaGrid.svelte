@@ -18,6 +18,6 @@
     .grid{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160pt, 1fr));
-        row-gap: 16pt;
+
     }
 </style>

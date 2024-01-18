@@ -449,6 +449,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Spy",
+        type: "Movie",
+        cat: "comedy classic",
+    },
+
+    {
         title: "Step Brothers",
         type: "Movie", 
         cat: "comedy classic", 

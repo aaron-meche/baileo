@@ -27,3 +27,15 @@ db.subscribe(db => {
 
     storage.write(storage_ref, data)
 })
+
+
+
+
+
+
+
+export function openMedia(title) {
+    db.update(data => {
+        data.currently_watching = title
+    })
+}

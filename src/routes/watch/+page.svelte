@@ -4,6 +4,7 @@
     import { nextEpisode } from "./control"
     import { onMount } from "svelte"
     import VideoControls from "./VideoControls.svelte";
+    import EpisodeSelector from "../EpisodeSelector.svelte";
 
     let loaded = false
     // finals
@@ -87,7 +88,7 @@
 
 <!--  -->
 
-<div class="page">
+<div class="page padding-delete">
     {#if loaded}
         <div class="viewer">
             <!-- svelte-ignore a11y-media-has-caption -->
@@ -112,7 +113,12 @@
             </div>
             
             <VideoControls />
+            
+            <div class="episode-selector">
+                <EpisodeSelector />
+            </div>
         </div>
+
     {:else}
         <h2>.....</h2>
     {/if}
@@ -123,24 +129,27 @@
 <style>
     .viewer{
         display: grid;
-        row-gap: 12pt;
+        width: calc(100vw - (2 * var(--inline-moat)));
+        padding: 0 var(--inline-moat);
+        row-gap: 1rem;
     }
 
     video{
         display: block;
-        height: fit-content;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        padding: 1pt;
+        background: var(--l3);
         border-radius: 4pt;
-        background: black;
     }
 
     .media-title{
         font-size: 16pt;
-        font-weight: 600;
+        font-weight: 700;
     }
 
-    .media-caption{
-        opacity: 0.75;
+    .media-caption{        
+        font-size: 12pt;
+        font-weight: 600;
+        opacity: 0.5;
     }
 </style>

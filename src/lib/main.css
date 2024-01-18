@@ -49,12 +49,14 @@
 
 
 :root{
-	--hue: 330;
-	--sat: 12%;
+	--hue: 255;
+	--sat: 8%;
 	--strt: 8%;
 	--diff: 4%;
 
-	--accent: hsl(var(--hue), 48%, 64%);
+	--accent: hsl(var(--hue), 64%, 64%);
+	--accent-transparent: hsl(var(--hue), 48%, 64%, 40%);
+    --true-accent: hsl(255, 89%, 64%);
 	--contrast: hsl(var(--hue), 0%, 92%);
 	--contrast-transparent: hsl(var(--hue), 0%, 92%, 40%);
 	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
@@ -67,7 +69,7 @@
 	--l6: hsl(var(--hue), var(--sat), calc(var(--strt) + (6 * var(--diff))));
     --alert: hsl(0, 70%, 58%);
 
-	--inline-moat: 8vw;
+	--inline-moat: 8rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -124,6 +126,9 @@ input::placeholder{
 }
 
 .horizontal-scroll{
+    width: calc(100vw - (2 * var(--inline-moat)));
+    padding: 0 var(--inline-moat);
+    
     display: flex;
     background: none;
     overflow-x: scroll;

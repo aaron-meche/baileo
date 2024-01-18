@@ -1,8 +1,7 @@
 .page{
     display: grid;
-    row-gap: 24pt;
-    padding: 16pt 12pt;
-    padding-left: 0;
+    row-gap: 2rem;
+    padding: 2rem 0;
     font-size: 12pt;
     font-weight: 400;
 }
