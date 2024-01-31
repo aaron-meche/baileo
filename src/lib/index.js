@@ -269,6 +269,12 @@ export const mediaDB = [
     },
 
     {
+        title: "Cowboy Bebop",
+        type: "Movie",
+        cat: "animation western"
+    },
+
+    {
         title: "Daddys Home",
         type: "Movie",
         cat: "christmas comedy"

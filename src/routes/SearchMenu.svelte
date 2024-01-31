@@ -57,6 +57,7 @@
         padding: 0.5rem;
         font-weight: 500;
         border-radius: 0.25rem;
+        outline: solid 1pt lime;
     }
     
     .item:hover{

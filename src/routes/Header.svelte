@@ -60,7 +60,7 @@
         grid-template-columns: min-content auto;
         align-items: center;
         gap: 1rem;
-        padding: 1rem var(--inline-moat);
+        padding: 1rem calc(var(--inline-moat) + 1rem);
     }
 
     .logo{
@@ -92,7 +92,7 @@
     .search-menu{
         position: absolute;
         top: 100%;
-        right: var(--inline-moat);
+        right: calc(var(--inline-moat) + 1rem);
         height: fit-content;
         max-height: 25rem;
         width: 17rem;
