@@ -4,8 +4,6 @@
     display: grid;
     row-gap: 2rem;
     padding: 2rem var(--inline-moat);
-    font-size: 1rem;
-    font-weight: 400;
 }
 .page.inline-delete{
     padding-inline: 0;
@@ -20,19 +18,12 @@
 /* Horizontal Scroll */
 
 .horizontal-scroll{
-    width: calc(100vw - (2 * var(--inline-moat)));
-    padding: 0 var(--inline-moat);
-    
     display: flex;
     background: none;
     overflow-x: scroll;
     overflow-y: hidden;
     font-size: 0;
     white-space: nowrap;
-}
-.horizontal-scroll.default{
-    width: 100%;
-    padding: 0;
 }
 .horizontal-scroll > *{
     display: inline-block;

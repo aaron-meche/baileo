@@ -1,0 +1,18 @@
+
+Attributes
+    name
+        Home Page
+    route
+        /
+        /home
+    desciption
+        This is the home page.
+
+Components
+    top navigation bar
+        import ./Navigation
+    search section
+        import ./Search
+    item pool
+        import ./ItemPool
+

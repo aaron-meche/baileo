@@ -49,9 +49,9 @@
 
 
 :root{
-	--hue: 255;
+	--hue: 220;
 	--sat: 8%;
-	--strt: 4%;
+	--strt: 6%;
 	--diff: 4%;
 
 	--accent: hsl(var(--hue), 64%, 64%);
@@ -59,6 +59,8 @@
     --true-accent: hsl(255, 89%, 64%);
 	--contrast: hsl(var(--hue), 0%, 92%);
 	--contrast-transparent: hsl(var(--hue), 0%, 92%, 40%);
+	--pure: hsl(var(--hue), 0%, 8%);
+	--pure-transparent: hsl(var(--hue), 0%, 8%, 40%);
 	--bg: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))));
 	--bg-transparent: hsl(var(--hue), var(--sat), calc(var(--strt) + (0 * var(--diff))), 40%);
 	--l1: hsl(var(--hue), var(--sat), calc(var(--strt) + (1 * var(--diff))));
@@ -69,7 +71,7 @@
 	--l6: hsl(var(--hue), var(--sat), calc(var(--strt) + (6 * var(--diff))));
     --alert: hsl(0, 70%, 58%);
 
-	--inline-moat: 8rem;
+	--inline-moat: 6rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -79,6 +81,9 @@
         --accent: hsl(var(--hue), 48%, 48%);
 		--contrast: hsl(var(--hue), 0%, 8%);
         --contrast-transparent: hsl(var(--hue), 0%, 8%, 40%);
+        --pure: hsl(var(--hue), 0%, 92%);
+        --pure-transparent: hsl(var(--hue), 0%, 92%, 40%);
+
         --alert: hsl(0, 83%, 49%);
 	}
 }

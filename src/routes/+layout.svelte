@@ -15,10 +15,6 @@
 <!--  -->
 
 <div class="app">
-    <div class="head">
-        <Header />
-    </div>
-
     <div class="body">
         <slot />
     </div>
