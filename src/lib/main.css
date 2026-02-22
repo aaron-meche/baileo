@@ -40,9 +40,9 @@
 }
 
 :root{
-	--hue: 260;
-	--sat: 8%;
-	--strt: 6%;
+	--hue: 270;
+	--sat: 24%;
+	--strt: 4%;
 	--diff: 4%;
 
 	--accent: hsl(var(--hue), 48%, 64%);
@@ -83,15 +83,34 @@
 
 body{
     height: 100%;
+    min-height: 100vh;
     margin: 0;
-    background: var(--bg);
+    background: linear-gradient(to bottom right, var(--bg), var(--l05));
     font-size: 1rem;
     font-family: BaileyScript !important;
     color: var(--contrast);
-    overflow: hidden;
 }
 
 a,button,input{
     all: unset;
     display: block;
+}
+
+.horizontal-scroll{
+    display: flex;
+    background: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-size: 0;
+    white-space: nowrap;
+}
+.horizontal-scroll > *{
+    display: inline-block;
+    font-size: initial;
+}
+.horizontal-scroll::-webkit-scrollbar{
+    display: none;
+}
+.horizontal-scroll::-moz-progress-bar{
+    display: none;
 }

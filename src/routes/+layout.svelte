@@ -18,7 +18,7 @@
 		<button>
 			<div class="fa-solid fa-bars"></div>
 		</button>
-		<div class="logo">baileo build test</div>
+		<a href={resolve("/")} class="logo">baileo</a>
 	</div>
 	<div class="right">
 		<button>
@@ -37,7 +37,7 @@
 		grid-template-columns: auto min-content;
 		position: sticky;
 		top: 0;
-		background: linear-gradient(to top right, var(--l05), transparent);
+		background: linear-gradient(to top right, var(--l1), var(--l05));
 		padding: 0.5rem 1rem;
 	}
 
@@ -47,6 +47,7 @@
 
 	.navbar .logo{
 		margin-left: 0.5rem;
+		cursor: pointer;
 	}
 
 	.navbar button{
@@ -58,7 +59,7 @@
 	}
 
 	.navbar button:hover{
-		background: var(--l1);
-		outline: solid 1pt var(--l3);
+		background: var(--l2);
+		outline: solid 1pt var(--l4);
 	}
 </style>

@@ -1,1 +1,0 @@
-import{a as e,f as i}from"../chunks/D6JLS2rJ.js";import"../chunks/CRQIkz0r.js";var p=i('<div class="page svelte-1uha8ag">This is the main page.</div>');function s(a){var o=p();e(a,o)}export{s as component};
